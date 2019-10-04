@@ -12,11 +12,7 @@ interface TransactionConfig {
   account?: string;
 }
 
-export const sendTransaction = async (
-  config: TransactionConfig,
-  options?: SendOptions,
-  args?: any[],
-) => {
+export const sendTransaction = async (config: TransactionConfig, options?: SendOptions, args?: any[]) => {
   if (typeof config.contract === 'string' && !config.address) {
     throw new Error('Missing address for contract creation.');
   }
@@ -27,9 +23,10 @@ export const sendTransaction = async (
   // console.log('=========================================');
 
   const env = config.environment;
-  const instance = typeof config.contract === 'string' ? getContract(env, config.contract, config.address) : config.contract;
+  const instance =
+    typeof config.contract === 'string' ? getContract(env, config.contract, config.address) : config.contract;
   const transaction = instance.methods[config.method](...(args || [])) as ContractSendMethod;
-  const opts = options || await transactionOptions(env, transaction, config.account);
+  const opts = options || (await transactionOptions(env, transaction, config.account));
   const receipt = await new Promise<TransactionReceipt>((resolve, reject) => {
     const send = transaction.send(opts);
     send.once('receipt', receipt => resolve(receipt)).catch(error => reject(error));

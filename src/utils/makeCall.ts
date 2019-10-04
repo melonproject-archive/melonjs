@@ -9,8 +9,8 @@ const cache = new Map<string, any>();
 export interface CallConfig {
   environment: Environment;
   contract: Contract | string;
-  method: string,
-  address?: string,
+  method: string;
+  address?: string;
 }
 
 export const makeCall = async <T>(config: CallConfig, args?: any[]): Promise<T> => {
@@ -25,7 +25,8 @@ export const makeCall = async <T>(config: CallConfig, args?: any[]): Promise<T> 
   const key = md5(JSON.stringify({ block, address, method, args }));
 
   if (!cache.has(key)) {
-    const instance = typeof config.contract === 'string' ? getContract(env, config.contract, config.address) : config.contract;
+    const instance =
+      typeof config.contract === 'string' ? getContract(env, config.contract, config.address) : config.contract;
     const promise = instance.methods[method](...(args || [])).call(undefined, block);
     cache.set(key, promise);
     return await promise;
