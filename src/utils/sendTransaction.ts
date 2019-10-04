@@ -1,6 +1,6 @@
 import { TransactionReceipt } from 'web3-core';
 import { ContractSendMethod, Contract, SendOptions } from 'web3-eth-contract';
-import { Environment } from '../types';
+import { Environment } from '../';
 import { getContract } from './getContract';
 import { transactionOptions } from './transactionOptions';
 

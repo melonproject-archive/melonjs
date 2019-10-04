@@ -1,5 +1,5 @@
 import { ContractSendMethod } from 'web3-eth-contract';
-import { Environment } from '../types';
+import { Environment } from '../';
 
 export const estimateGas = async (env: Environment, method: ContractSendMethod, account?: string) => {
   const latestBlock = await env.eth.getBlock('latest');

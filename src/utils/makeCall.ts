@@ -1,4 +1,4 @@
-import { Environment } from '../types';
+import { Environment } from '../';
 import { getContract } from './getContract';
 import md5 from 'md5';
 import { Contract } from 'web3-eth-contract';

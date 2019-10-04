@@ -1,5 +1,5 @@
 import { ContractSendMethod, SendOptions } from 'web3-eth-contract';
-import { Environment } from '../types';
+import { Environment } from '../';
 import { estimateGas } from './estimateGas';
 
 export const transactionOptions = async (env: Environment, transaction: ContractSendMethod, account?: string) => {

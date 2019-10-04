@@ -1,5 +1,5 @@
 import { Contract } from 'web3-eth-contract';
-import { Environment } from '../types';
+import { Environment } from '../';
 
 const contracts = new Map<string, Contract>();
 
