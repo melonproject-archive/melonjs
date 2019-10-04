@@ -1,0 +1,35 @@
+# Node dependencies.
+node_modules/
+
+# Ignore all generated files.
+package-lock.json
+coverage/
+dist/
+
+# Ignore generated abi and binary files.
+contracts/**/*.bin
+contracts/**/*.abi
+
+# Ignore secrets and configuration files.
+secrets/
+config/*
+!config/development/
+!config/kovan/
+!config/mainnet/
+
+# Ignore ganache database.
+db/
+
+# Ignore generated package.
+kyber-reserve
+
+# Ignore all dot files.
+.*
+
+# Ignore all log files.
+*.log
+
+# Allowed dot files
+!.gitignore
+!.dockerignore
+!.prettierrc

@@ -1,0 +1,54 @@
+{
+  "name": "@melonproject/melonjs",
+  "version": "0.0.0",
+  "description": "Technology Regulated and Operated Investment Funds.",
+  "main": "index.js",
+  "typings": "index.d.ts",
+  "license": "GPL-3.0",
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "tsc --project . && copy package.json dist",
+    "dev": "ts-node --transpile-only src",
+    "watch": "copy package.json dist && tsc --watch --project .",
+    "format": "prettier --write src/{*,**/*}.ts",
+    "lint:prettier": "yarn prettier --list-different src/{*,**/*}.ts",
+    "lint:tslint": "tsc --noEmit && tslint src/{*,**/*}.ts",
+    "lint": "yarn lint:tslint && yarn lint:prettier",
+    "typecheck": "tsc --project . --noEmit"
+  },
+  "dependencies": {
+    "bignumber.js": "^9.0.0",
+    "eth-provider": "^0.2.5",
+    "md5": "^2.2.1",
+    "web3": "^2.0.0-alpha.1",
+    "web3-core": "^2.0.0-alpha.1",
+    "web3-eth": "^2.0.0-alpha.1",
+    "web3-eth-contract": "^2.0.0-alpha.1",
+    "web3-utils": "^2.0.0-alpha.1"
+  },
+  "devDependencies": {
+    "@types/md5": "^2.1.33",
+    "copy": "^0.3.2",
+    "husky": "^3.0.5",
+    "lint-staged": "^9.3.0",
+    "prettier": "^1.14.3",
+    "rimraf": "^2.6.2",
+    "ts-node": "^8.4.1",
+    "tslint": "^5.11.0",
+    "tslint-config-airbnb": "^5.11.0",
+    "tslint-config-prettier": "^1.15.0",
+    "typescript": "^3.6.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn lint"
+    }
+  },
+  "lint-staged": {
+    "*.ts": [
+      "yarn format && yarn typecheck",
+      "git add"
+    ]
+  }
+}

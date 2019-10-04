@@ -1,0 +1,16 @@
+[
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "EIP712_DOMAIN_HASH",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  }
+]
