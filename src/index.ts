@@ -1,4 +1,5 @@
 import { Eth } from 'web3-eth';
+
 export { estimateGas } from './utils/estimateGas';
 export { getContract } from './utils/getContract';
 export { includesAddress } from './utils/includesAddress';
@@ -6,6 +7,12 @@ export { makeCall } from './utils/makeCall';
 export { sameAddress } from './utils/sameAddress';
 export { sendTransaction } from './utils/sendTransaction';
 export { transactionOptions } from './utils/transactionOptions';
+
+export { getFundRoutes } from './methods/Hub/getFundRoutes';
+export { getFundName } from './methods/Hub/getFundName';
+export { getFundManager } from './methods/Hub/getFundManager';
+
+export { getLastFundId } from './methods/Version/getLastFundId';
 
 export interface Environment {
   eth: Eth;

@@ -5,21 +5,29 @@
   "main": "index.js",
   "typings": "index.d.ts",
   "license": "GPL-3.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "clean": "rimraf dist",
-    "build": "tsc --project . && copy package.json dist",
+    "prebuild": "yarn clean",
+    "build": "tsc --project .",
+    "postbuild": "copy package.json dist",
     "dev": "ts-node --transpile-only src",
-    "watch": "copy package.json dist && tsc --watch --project .",
+    "prewatch": "copy package.json dist",
+    "watch": "tsc --watch --project .",
+    "test": "echo \"No tests specified.\" && exit 0",
     "format": "prettier --write src/{*,**/*}.ts",
     "lint:prettier": "yarn prettier --list-different src/{*,**/*}.ts",
     "lint:tslint": "tsc --noEmit && tslint src/{*,**/*}.ts",
     "lint": "yarn lint:tslint && yarn lint:prettier",
-    "typecheck": "tsc --project . --noEmit"
+    "typecheck": "tsc --project . --noEmit",
+    "prerelease": "yarn build",
+    "release": "yarn version && copy package.json dist && yarn publish dist --non-interactive"
   },
   "dependencies": {
     "bignumber.js": "^9.0.0",
     "eth-provider": "^0.2.5",
-    "md5": "^2.2.1",
     "web3": "^2.0.0-alpha.1",
     "web3-core": "^2.0.0-alpha.1",
     "web3-eth": "^2.0.0-alpha.1",
@@ -32,6 +40,7 @@
     "glob": "^7.1.4",
     "husky": "^3.0.8",
     "lint-staged": "^9.4.1",
+    "np": "^5.1.0",
     "prettier": "^1.14.3",
     "rimraf": "^2.6.2",
     "ts-node": "^8.4.1",
@@ -51,5 +60,10 @@
       "yarn format && yarn typecheck",
       "git add"
     ]
+  },
+  "np": {
+    "yarn": true,
+    "releaseDraft": false,
+    "contents": "dist"
   }
 }
