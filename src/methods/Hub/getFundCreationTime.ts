@@ -1,13 +1,12 @@
-import { toUtf8 } from 'web3-utils';
 import { makeCall, BasicCallConfig } from '../../utils/makeCall';
 
-export const getFundName = async (config: BasicCallConfig, hubAddress: string) => {
+export const getFundCreationTime = async (config: BasicCallConfig, hubAddress: string) => {
   const result = await makeCall<string>({
     ...config,
     address: hubAddress,
     contract: 'Hub',
-    method: 'name',
+    method: 'creationTime',
   });
 
-  return toUtf8(result);
+  return new Date(parseInt(`${result}`, 10) * 1000);
 };

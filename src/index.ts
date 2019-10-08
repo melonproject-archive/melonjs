@@ -11,6 +11,10 @@ export { transactionOptions } from './utils/transactionOptions';
 export { getFundRoutes } from './methods/Hub/getFundRoutes';
 export { getFundName } from './methods/Hub/getFundName';
 export { getFundManager } from './methods/Hub/getFundManager';
+export { getFundCreator } from './methods/Hub/getFundCreator';
+export { getFundCreationTime } from './methods/Hub/getFundCreationTime';
+
+export { getFundCalculations } from './methods/Accounting/getFundCalculations';
 
 export { getLastFundId } from './methods/Version/getLastFundId';
 
