@@ -18,6 +18,8 @@ export { getFundCalculations } from './methods/Accounting/getFundCalculations';
 
 export { getLastFundId } from './methods/Version/getLastFundId';
 
+export { getLatestPriceFeedUpdate } from './methods/PriceSource/getLatestPriceFeedUpdate';
+
 export interface Environment {
   eth: Eth;
   deployment: Deployment;
