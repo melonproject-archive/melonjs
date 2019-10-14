@@ -20,6 +20,8 @@ export { getLastFundId } from './methods/Version/getLastFundId';
 
 export { getLatestPriceFeedUpdate } from './methods/PriceSource/getLatestPriceFeedUpdate';
 
+export { getBalanceOf } from './methods/Token/getBalanceOf';
+
 export interface Environment {
   eth: Eth;
   deployment: Deployment;
