@@ -1,2 +1,4 @@
-export { default as mainnet } from './deployments/mainnet.json';
-export { default as kovan } from './deployments/kovan.json';
+import mainnet from './deployments/mainnet.json';
+import kovan from './deployments/kovan.json';
+
+export { mainnet, kovan };

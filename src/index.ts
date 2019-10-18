@@ -1,31 +1,17 @@
-import { Eth } from 'web3-eth';
-
 export { estimateGas } from './utils/estimateGas';
-export { getContract } from './utils/getContract';
 export { includesAddress } from './utils/includesAddress';
-export { makeCall } from './utils/makeCall';
 export { sameAddress } from './utils/sameAddress';
-export { sendTransaction } from './utils/sendTransaction';
 export { transactionOptions } from './utils/transactionOptions';
 
-export { getFundRoutes } from './methods/Hub/getFundRoutes';
-export { getFundName } from './methods/Hub/getFundName';
-export { getFundManager } from './methods/Hub/getFundManager';
-export { getFundCreator } from './methods/Hub/getFundCreator';
-export { getFundCreationTime } from './methods/Hub/getFundCreationTime';
+export { Contract } from './api/Contract';
+export { Environment } from './api/Environment';
+export { Version } from './api/Version';
+export { PriceSource } from './api/PriceSource';
+export { Accounting } from './api/Accounting';
+export { Token } from './api/Token';
+export { Hub } from './api/Hub';
 
-export { getFundCalculations } from './methods/Accounting/getFundCalculations';
-
-export { getLastFundId } from './methods/Version/getLastFundId';
-
-export { getLatestPriceFeedUpdate } from './methods/PriceSource/getLatestPriceFeedUpdate';
-
-export { getBalanceOf } from './methods/Token/getBalanceOf';
-
-export interface Environment {
-  eth: Eth;
-  deployment: Deployment;
-}
+export type Address = string;
 
 export interface DeploymentMetadata {
   deployer: string;
@@ -77,12 +63,12 @@ export interface MelonContracts {
   };
 }
 
-export interface Token {
+export interface TokenDefinition {
   address: string;
   decimals: number;
   symbol: string;
   name: string;
-  reserveMin: string;
+  reserveMin: number;
 }
 
 export interface ExchangeConfig {
@@ -91,7 +77,7 @@ export interface ExchangeConfig {
 }
 
 export interface ThirdPartyContracts {
-  tokens: Token[];
+  tokens: TokenDefinition[];
   exchanges: {
     kyber: KyberEnvironment;
     matchingMarket: string;

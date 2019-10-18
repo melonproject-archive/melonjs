@@ -2,12 +2,7 @@
   "compilerOptions": {
     "target": "es2015",
     "module": "commonjs",
-    "lib": [
-      "es2015",
-      "es2017.object",
-      "es2017.string",
-      "dom"
-    ],
+    "lib": ["es2015", "es2017.object", "es2017.string", "dom"],
     "rootDir": "src",
     "outDir": "dist",
     "declaration": true,
@@ -25,7 +20,5 @@
     "removeComments": false,
     "resolveJsonModule": true
   },
-  "include": [
-    "src/**/*"
-  ]
+  "include": ["src/**/*"]
 }
