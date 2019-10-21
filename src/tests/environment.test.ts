@@ -8,7 +8,7 @@ describe('Environment', () => {
   it('getLastUpdate', async () => {
     const client = new Eth(new HttpProvider('https://mainnet.melonport.com'));
     const environment = new Environment(client, mainnet);
-    const source = new PriceSource(environment);
+    const source = PriceSource.forDeployment(environment);
     const update = await source.getLastUpdate();
     console.log(update);
   });

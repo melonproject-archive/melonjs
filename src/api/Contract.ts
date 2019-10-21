@@ -1,15 +1,11 @@
 import BigNumber from 'bignumber.js';
 import md5 from 'md5';
 import { Contract as EthContract } from 'web3-eth-contract';
-import { Environment, ContractName } from './Environment';
+import { Environment } from './Environment';
 
-export class Contract {
-  public readonly contract: EthContract;
-  public readonly address: string;
-
-  constructor(public readonly environment: Environment, contract: EthContract | ContractName, address?: string) {
-    this.contract = typeof contract === 'string' ? this.environment.getContract(contract, address) : contract;
-    this.address = this.contract.address;
+export abstract class Contract {
+  constructor(public readonly environment: Environment, public readonly contract: EthContract) {
+    // Nothing to do here.
   }
 
   protected makeCall<TReturn = any, TArgs extends any[] = any[]>(
