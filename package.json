@@ -28,7 +28,6 @@
   "dependencies": {
     "bignumber.js": "^9.0.0",
     "eth-provider": "^0.2.5",
-    "md5": "^2.2.1",
     "ramda": "^0.26.1",
     "web3": "^2.0.0-alpha.1",
     "web3-core": "^2.0.0-alpha.1",
@@ -38,6 +37,7 @@
   },
   "devDependencies": {
     "@types/jest": "^24.0.19",
+    "@types/lru-cache": "^5.1.0",
     "@types/md5": "^2.1.33",
     "@types/ramda": "^0.26.33",
     "copy": "^0.3.2",
@@ -45,6 +45,7 @@
     "husky": "^3.0.8",
     "jest": "^24.9.0",
     "lint-staged": "^9.4.1",
+    "lru-cache": "^5.1.1",
     "np": "^5.1.0",
     "prettier": "^1.14.3",
     "rimraf": "^2.6.2",

@@ -18,7 +18,7 @@ export class Accounting extends Contract {
     super(environment, new environment.client.Contract(abi as any, address));
   }
 
-  public async performCalculations(block?: BigNumber) {
+  public async performCalculations(block?: number) {
     const result = await this.makeCall('performCalculations', undefined, block);
 
     return {

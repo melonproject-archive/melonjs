@@ -17,7 +17,7 @@ export class Version extends Contract {
     super(environment, new environment.client.Contract(abi as any, address));
   }
 
-  public async getLastFundId(block?: BigNumber) {
+  public async getLastFundId(block?: number) {
     const result = await this.makeCall('getLastFundId', undefined, block);
     return new BigNumber(`${result}`);
   }

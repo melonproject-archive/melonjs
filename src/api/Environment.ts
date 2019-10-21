@@ -9,13 +9,15 @@ export interface CacheHandler {
   reset: () => void;
 }
 
+export interface EnvironmentOptions {
+  cache?: CacheHandler;
+}
+
 export class Environment {
-  constructor(
-    public readonly client: Eth,
-    public readonly deployment: Deployment,
-    public readonly cache?: CacheHandler,
-  ) {
-    // Nothing to do here.
+  public readonly cache: CacheHandler;
+
+  constructor(public readonly client: Eth, public readonly deployment: Deployment, options?: EnvironmentOptions) {
+    this.cache = options && options.cache;
   }
 
   public getAddress(location: string) {

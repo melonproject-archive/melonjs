@@ -1,5 +1,3 @@
-import BigNumber from 'bignumber.js';
-import md5 from 'md5';
 import { Contract as EthContract } from 'web3-eth-contract';
 import { Environment } from './Environment';
 
@@ -8,23 +6,36 @@ export abstract class Contract {
     // Nothing to do here.
   }
 
-  protected makeCall<TReturn = any, TArgs extends any[] = any[]>(
+  protected async makeCall<TReturn = any, TArgs extends any[] = any[]>(
     name: string,
     args?: TArgs,
-    block?: BigNumber,
+    block?: number,
   ): Promise<TReturn> {
-    const bloq = block && block.toFixed(0);
+    const address = this.contract.address;
     const cache = this.environment.cache;
-    const key = cache && `${block}:${name}:${md5(JSON.stringify(args))}`;
-    if (cache && cache.has(key)) {
-      return cache.get(key)!;
+
+    try {
+      const key = cache && `${address}:${block}:${name}${args ? `:${JSON.stringify(args)}` : ''}`;
+      if (cache && cache.has(key)) {
+        return cache.get(key)!;
+      }
+
+      const promise = this.doMakeCall(name, args, block);
+      cache && cache.set(key, promise);
+
+      return await promise;
+    } catch (e) {
+      throw new Error(`Failed to call ${name} at ${address}: ${e.toString()}`);
     }
+  }
 
+  protected doMakeCall<TReturn = any, TArgs extends any[] = any[]>(
+    name: string,
+    args?: TArgs,
+    block?: number,
+  ): Promise<TReturn> {
     const fn = this.contract.methods[name];
-    const promise = fn(...(args || [])).call(undefined, bloq);
-    cache && cache.set(key, promise);
-
-    return promise;
+    return fn(...(args || [])).call(undefined, block);
   }
 
   // protected sendTransaction() {

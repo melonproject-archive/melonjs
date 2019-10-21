@@ -17,7 +17,7 @@ export class PriceSource extends Contract {
     super(environment, new environment.client.Contract(abi as any, address));
   }
 
-  public async getLastUpdate(block?: BigNumber) {
+  public async getLastUpdate(block?: number) {
     const result = await this.makeCall('getLastUpdate', undefined, block);
     const timestamp = new BigNumber(result.toString()).multipliedBy(1000).toNumber();
     return new Date(timestamp);

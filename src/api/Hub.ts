@@ -1,4 +1,3 @@
-import BigNumber from 'bignumber.js';
 import { toUtf8 } from 'web3-utils';
 import abi from '../contracts/Hub.abi.json';
 import { Contract } from './Contract';
@@ -24,25 +23,25 @@ export class Hub extends Contract {
     super(environment, new environment.client.Contract(abi as any, address));
   }
 
-  public async creationTime(block?: BigNumber) {
+  public async creationTime(block?: number) {
     const result = await this.makeCall('creationTime', undefined, block);
     return new Date(parseInt(`${result}`, 10) * 1000);
   }
 
-  public async creator(block?: BigNumber) {
+  public async creator(block?: number) {
     return this.makeCall<string>('creator', undefined, block);
   }
 
-  public async manager(block?: BigNumber) {
+  public async manager(block?: number) {
     return this.makeCall<string>('manager', undefined, block);
   }
 
-  public async name(block?: BigNumber) {
+  public async name(block?: number) {
     const result = await this.makeCall<string>('name', undefined, block);
     return result && toUtf8(result);
   }
 
-  public async routes(block?: BigNumber) {
+  public async routes(block?: number) {
     const result = await this.makeCall<FundRoutes>('routes', undefined, block);
     const routes: FundRoutes = {
       accounting: result.accounting,

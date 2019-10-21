@@ -33,7 +33,7 @@ export class Token extends Contract {
     super(environment, new environment.client.Contract(abi as any, token.address));
   }
 
-  public async balanceOf(who: Address, block?: BigNumber) {
+  public async balanceOf(who: Address, block?: number) {
     const result = await this.makeCall('balanceOf', [who], block);
     return new BigNumber(fromWei(`${result}`));
   }
