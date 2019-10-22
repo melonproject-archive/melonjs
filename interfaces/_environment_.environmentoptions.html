@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Contract | @melonproject/melonjs</title>
+	<title>EnvironmentOptions | @melonproject/melonjs</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -52,13 +52,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_contracts_contract_.html">&quot;contracts/Contract&quot;</a>
+					<a href="../modules/_environment_.html">&quot;Environment&quot;</a>
 				</li>
 				<li>
-					<a href="_contracts_contract_.contract.html">Contract</a>
+					<a href="_environment_.environmentoptions.html">EnvironmentOptions</a>
 				</li>
 			</ul>
-			<h1>Class Contract</h1>
+			<h1>Interface EnvironmentOptions</h1>
 		</div>
 	</div>
 </header>
@@ -69,24 +69,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">Contract</span>
-						<ul class="tsd-hierarchy">
-							<li>
-								<a href="_contracts_version_.version.html" class="tsd-signature-type">Version</a>
-							</li>
-							<li>
-								<a href="_contracts_pricesource_.pricesource.html" class="tsd-signature-type">PriceSource</a>
-							</li>
-							<li>
-								<a href="_contracts_accounting_.accounting.html" class="tsd-signature-type">Accounting</a>
-							</li>
-							<li>
-								<a href="_contracts_token_.token.html" class="tsd-signature-type">Token</a>
-							</li>
-							<li>
-								<a href="_contracts_hub_.hub.html" class="tsd-signature-type">Hub</a>
-							</li>
-						</ul>
+						<span class="target">EnvironmentOptions</span>
 					</li>
 				</ul>
 			</section>
@@ -95,118 +78,25 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Constructors</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_contracts_contract_.contract.html#constructor" class="tsd-kind-icon">constructor</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_contracts_contract_.contract.html#contract" class="tsd-kind-icon">contract</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_contracts_contract_.contract.html#environment" class="tsd-kind-icon">environment</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section tsd-is-private-protected">
-							<h3>Methods</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-protected"><a href="_contracts_contract_.contract.html#makecall" class="tsd-kind-icon">make<wbr>Call</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_environment_.environmentoptions.html#cache" class="tsd-kind-icon">cache</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Constructors</h2>
-				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
-					<a name="constructor" class="tsd-anchor"></a>
-					<h3>constructor</h3>
-					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Contract<span class="tsd-signature-symbol">(</span>environment<span class="tsd-signature-symbol">: </span><a href="_contracts_environment_.environment.html" class="tsd-signature-type">Environment</a>, contract<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">EthContract</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_contracts_contract_.contract.html" class="tsd-signature-type">Contract</a></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/72f7348/src/contracts/Contract.ts#L4">contracts/Contract.ts:4</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>environment: <a href="_contracts_environment_.environment.html" class="tsd-signature-type">Environment</a></h5>
-								</li>
-								<li>
-									<h5>contract: <span class="tsd-signature-type">EthContract</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_contracts_contract_.contract.html" class="tsd-signature-type">Contract</a></h4>
-						</li>
-					</ul>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="contract" class="tsd-anchor"></a>
-					<h3>contract</h3>
-					<div class="tsd-signature tsd-kind-icon">contract<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EthContract</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="cache" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> cache</h3>
+					<div class="tsd-signature tsd-kind-icon">cache<span class="tsd-signature-symbol">:</span> <a href="_environment_.cachehandler.html" class="tsd-signature-type">CacheHandler</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/72f7348/src/contracts/Contract.ts#L5">contracts/Contract.ts:5</a></li>
+							<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/master/src/Environment.ts#L13">Environment.ts:13</a></li>
 						</ul>
 					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="environment" class="tsd-anchor"></a>
-					<h3>environment</h3>
-					<div class="tsd-signature tsd-kind-icon">environment<span class="tsd-signature-symbol">:</span> <a href="_contracts_environment_.environment.html" class="tsd-signature-type">Environment</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/72f7348/src/contracts/Contract.ts#L5">contracts/Contract.ts:5</a></li>
-						</ul>
-					</aside>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-private-protected">
-				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-protected">
-					<a name="makecall" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagProtected">Protected</span> make<wbr>Call</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-protected">
-						<li class="tsd-signature tsd-kind-icon">make<wbr>Call&lt;TReturn, TArgs&gt;<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, args<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">TArgs</span>, block<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TReturn</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/72f7348/src/contracts/Contract.ts#L9">contracts/Contract.ts:9</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-type-parameters-title">Type parameters</h4>
-							<ul class="tsd-type-parameters">
-								<li>
-									<h4>TReturn</h4>
-								</li>
-								<li>
-									<h4>TArgs<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h4>
-								</li>
-							</ul>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>name: <span class="tsd-signature-type">string</span></h5>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> args: <span class="tsd-signature-type">TArgs</span></h5>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> block: <span class="tsd-signature-type">number</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TReturn</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
 				</section>
 			</section>
 		</div>
@@ -217,13 +107,19 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_contracts_accounting_.html">"contracts/<wbr>Accounting"</a>
-					</li>
-					<li class="current tsd-kind-external-module">
-						<a href="../modules/_contracts_contract_.html">"contracts/<wbr>Contract"</a>
+						<a href="../modules/_address_.html">"<wbr>Address"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_contracts_environment_.html">"contracts/<wbr>Environment"</a>
+						<a href="../modules/_contract_.html">"<wbr>Contract"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_deployment_.html">"<wbr>Deployment"</a>
+					</li>
+					<li class="current tsd-kind-external-module">
+						<a href="../modules/_environment_.html">"<wbr>Environment"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_contracts_accounting_.html">"contracts/<wbr>Accounting"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_contracts_hub_.html">"contracts/<wbr>Hub"</a>
@@ -236,9 +132,6 @@
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_contracts_version_.html">"contracts/<wbr>Version"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_index_.html">"index"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_utils_estimategas_.html">"utils/estimate<wbr>Gas"</a>
@@ -256,22 +149,19 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="../classes/_environment_.environment.html" class="tsd-kind-icon">Environment</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_environment_.cachehandler.html" class="tsd-kind-icon">Cache<wbr>Handler</a>
+					</li>
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-class tsd-parent-kind-external-module">
-						<a href="_contracts_contract_.contract.html" class="tsd-kind-icon">Contract</a>
+					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_environment_.environmentoptions.html" class="tsd-kind-icon">Environment<wbr>Options</a>
 						<ul>
-							<li class=" tsd-kind-constructor tsd-parent-kind-class">
-								<a href="_contracts_contract_.contract.html#constructor" class="tsd-kind-icon">constructor</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_contracts_contract_.contract.html#contract" class="tsd-kind-icon">contract</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_contracts_contract_.contract.html#environment" class="tsd-kind-icon">environment</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-protected">
-								<a href="_contracts_contract_.contract.html#makecall" class="tsd-kind-icon">make<wbr>Call</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_environment_.environmentoptions.html#cache" class="tsd-kind-icon">cache</a>
 							</li>
 						</ul>
 					</li>

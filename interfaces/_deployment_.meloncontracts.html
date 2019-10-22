@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>CacheHandler | @melonproject/melonjs</title>
+	<title>MelonContracts | @melonproject/melonjs</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -52,13 +52,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_contracts_environment_.html">&quot;contracts/Environment&quot;</a>
+					<a href="../modules/_deployment_.html">&quot;Deployment&quot;</a>
 				</li>
 				<li>
-					<a href="_contracts_environment_.cachehandler.html">CacheHandler</a>
+					<a href="_deployment_.meloncontracts.html">MelonContracts</a>
 				</li>
 			</ul>
-			<h1>Interface CacheHandler</h1>
+			<h1>Interface MelonContracts</h1>
 		</div>
 	</div>
 </header>
@@ -69,7 +69,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">CacheHandler</span>
+						<span class="target">MelonContracts</span>
 					</li>
 				</ul>
 			</section>
@@ -80,10 +80,15 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_environment_.cachehandler.html#get" class="tsd-kind-icon">get</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_environment_.cachehandler.html#has" class="tsd-kind-icon">has</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_environment_.cachehandler.html#reset" class="tsd-kind-icon">reset</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_environment_.cachehandler.html#set" class="tsd-kind-icon">set</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_deployment_.meloncontracts.html#adapters" class="tsd-kind-icon">adapters</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_deployment_.meloncontracts.html#engine" class="tsd-kind-icon">engine</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_deployment_.meloncontracts.html#factories" class="tsd-kind-icon">factories</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_deployment_.meloncontracts.html#fees" class="tsd-kind-icon">fees</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_deployment_.meloncontracts.html#policies" class="tsd-kind-icon">policies</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_deployment_.meloncontracts.html#pricesource" class="tsd-kind-icon">price<wbr>Source</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_deployment_.meloncontracts.html#ranking" class="tsd-kind-icon">ranking</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_deployment_.meloncontracts.html#registry" class="tsd-kind-icon">registry</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_deployment_.meloncontracts.html#version" class="tsd-kind-icon">version</a></li>
 							</ul>
 						</section>
 					</div>
@@ -92,125 +97,109 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="get" class="tsd-anchor"></a>
-					<h3>get</h3>
-					<div class="tsd-signature tsd-kind-icon">get<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<a name="adapters" class="tsd-anchor"></a>
+					<h3>adapters</h3>
+					<div class="tsd-signature tsd-kind-icon">adapters<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/72f7348/src/contracts/Environment.ts#L7">contracts/Environment.ts:7</a></li>
+							<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/master/src/Deployment.ts#L34">Deployment.ts:34</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
 						<h4>Type declaration</h4>
 						<ul class="tsd-parameters">
-							<li class="tsd-parameter-siganture">
-								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property tsd-is-not-exported">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
-								</ul>
-								<ul class="tsd-descriptions">
-									<li class="tsd-description">
-										<h4 class="tsd-parameters-title">Parameters</h4>
-										<ul class="tsd-parameters">
-											<li>
-												<h5>key: <span class="tsd-signature-type">string</span></h5>
-											</li>
-										</ul>
-										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
-									</li>
-								</ul>
-							</li>
 						</ul>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="has" class="tsd-anchor"></a>
-					<h3>has</h3>
-					<div class="tsd-signature tsd-kind-icon">has<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<a name="engine" class="tsd-anchor"></a>
+					<h3>engine</h3>
+					<div class="tsd-signature tsd-kind-icon">engine<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/72f7348/src/contracts/Environment.ts#L6">contracts/Environment.ts:6</a></li>
+							<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/master/src/Deployment.ts#L29">Deployment.ts:29</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="factories" class="tsd-anchor"></a>
+					<h3>factories</h3>
+					<div class="tsd-signature tsd-kind-icon">factories<span class="tsd-signature-symbol">:</span> <a href="_deployment_.factories.html" class="tsd-signature-type">Factories</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/master/src/Deployment.ts#L33">Deployment.ts:33</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="fees" class="tsd-anchor"></a>
+					<h3>fees</h3>
+					<div class="tsd-signature tsd-kind-icon">fees<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/master/src/Deployment.ts#L46">Deployment.ts:46</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
 						<h4>Type declaration</h4>
 						<ul class="tsd-parameters">
-							<li class="tsd-parameter-siganture">
-								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property tsd-is-not-exported">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
-								</ul>
-								<ul class="tsd-descriptions">
-									<li class="tsd-description">
-										<h4 class="tsd-parameters-title">Parameters</h4>
-										<ul class="tsd-parameters">
-											<li>
-												<h5>key: <span class="tsd-signature-type">string</span></h5>
-											</li>
-										</ul>
-										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
-									</li>
-								</ul>
-							</li>
 						</ul>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="reset" class="tsd-anchor"></a>
-					<h3>reset</h3>
-					<div class="tsd-signature tsd-kind-icon">reset<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<a name="policies" class="tsd-anchor"></a>
+					<h3>policies</h3>
+					<div class="tsd-signature tsd-kind-icon">policies<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/72f7348/src/contracts/Environment.ts#L9">contracts/Environment.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/master/src/Deployment.ts#L42">Deployment.ts:42</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
 						<h4>Type declaration</h4>
 						<ul class="tsd-parameters">
-							<li class="tsd-parameter-siganture">
-								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property tsd-is-not-exported">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-								</ul>
-								<ul class="tsd-descriptions">
-									<li class="tsd-description">
-										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-									</li>
-								</ul>
-							</li>
 						</ul>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="set" class="tsd-anchor"></a>
-					<h3>set</h3>
-					<div class="tsd-signature tsd-kind-icon">set<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<a name="pricesource" class="tsd-anchor"></a>
+					<h3>price<wbr>Source</h3>
+					<div class="tsd-signature tsd-kind-icon">price<wbr>Source<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/72f7348/src/contracts/Environment.ts#L8">contracts/Environment.ts:8</a></li>
+							<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/master/src/Deployment.ts#L28">Deployment.ts:28</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter-siganture">
-								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property tsd-is-not-exported">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
-								</ul>
-								<ul class="tsd-descriptions">
-									<li class="tsd-description">
-										<h4 class="tsd-parameters-title">Parameters</h4>
-										<ul class="tsd-parameters">
-											<li>
-												<h5>key: <span class="tsd-signature-type">string</span></h5>
-											</li>
-											<li>
-												<h5>value: <span class="tsd-signature-type">any</span></h5>
-											</li>
-										</ul>
-										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
-									</li>
-								</ul>
-							</li>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="ranking" class="tsd-anchor"></a>
+					<h3>ranking</h3>
+					<div class="tsd-signature tsd-kind-icon">ranking<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/master/src/Deployment.ts#L31">Deployment.ts:31</a></li>
 						</ul>
-					</div>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="registry" class="tsd-anchor"></a>
+					<h3>registry</h3>
+					<div class="tsd-signature tsd-kind-icon">registry<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/master/src/Deployment.ts#L32">Deployment.ts:32</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="version" class="tsd-anchor"></a>
+					<h3>version</h3>
+					<div class="tsd-signature tsd-kind-icon">version<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/master/src/Deployment.ts#L30">Deployment.ts:30</a></li>
+						</ul>
+					</aside>
 				</section>
 			</section>
 		</div>
@@ -221,13 +210,19 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_contracts_accounting_.html">"contracts/<wbr>Accounting"</a>
+						<a href="../modules/_address_.html">"<wbr>Address"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_contracts_contract_.html">"contracts/<wbr>Contract"</a>
+						<a href="../modules/_contract_.html">"<wbr>Contract"</a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="../modules/_contracts_environment_.html">"contracts/<wbr>Environment"</a>
+						<a href="../modules/_deployment_.html">"<wbr>Deployment"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_environment_.html">"<wbr>Environment"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_contracts_accounting_.html">"contracts/<wbr>Accounting"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_contracts_hub_.html">"contracts/<wbr>Hub"</a>
@@ -240,9 +235,6 @@
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_contracts_version_.html">"contracts/<wbr>Version"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_index_.html">"index"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_utils_estimategas_.html">"utils/estimate<wbr>Gas"</a>
@@ -260,32 +252,65 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/_contracts_environment_.environment.html" class="tsd-kind-icon">Environment</a>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_deployment_.deployment.html" class="tsd-kind-icon">Deployment</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_deployment_.deploymentmetadata.html" class="tsd-kind-icon">Deployment<wbr>Metadata</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_deployment_.ethfinexenvironment.html" class="tsd-kind-icon">Ethfinex<wbr>Environment</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_deployment_.exchangeconfig.html" class="tsd-kind-icon">Exchange<wbr>Config</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_deployment_.factories.html" class="tsd-kind-icon">Factories</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_deployment_.kyberenvironment.html" class="tsd-kind-icon">Kyber<wbr>Environment</a>
 					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_contracts_environment_.cachehandler.html" class="tsd-kind-icon">Cache<wbr>Handler</a>
+						<a href="_deployment_.meloncontracts.html" class="tsd-kind-icon">Melon<wbr>Contracts</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_contracts_environment_.cachehandler.html#get" class="tsd-kind-icon">get</a>
+								<a href="_deployment_.meloncontracts.html#adapters" class="tsd-kind-icon">adapters</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_contracts_environment_.cachehandler.html#has" class="tsd-kind-icon">has</a>
+								<a href="_deployment_.meloncontracts.html#engine" class="tsd-kind-icon">engine</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_contracts_environment_.cachehandler.html#reset" class="tsd-kind-icon">reset</a>
+								<a href="_deployment_.meloncontracts.html#factories" class="tsd-kind-icon">factories</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_contracts_environment_.cachehandler.html#set" class="tsd-kind-icon">set</a>
+								<a href="_deployment_.meloncontracts.html#fees" class="tsd-kind-icon">fees</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_deployment_.meloncontracts.html#policies" class="tsd-kind-icon">policies</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_deployment_.meloncontracts.html#pricesource" class="tsd-kind-icon">price<wbr>Source</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_deployment_.meloncontracts.html#ranking" class="tsd-kind-icon">ranking</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_deployment_.meloncontracts.html#registry" class="tsd-kind-icon">registry</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_deployment_.meloncontracts.html#version" class="tsd-kind-icon">version</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_contracts_environment_.environmentoptions.html" class="tsd-kind-icon">Environment<wbr>Options</a>
+						<a href="_deployment_.thirdpartycontracts.html" class="tsd-kind-icon">Third<wbr>Party<wbr>Contracts</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_deployment_.tokendefinition.html" class="tsd-kind-icon">Token<wbr>Definition</a>
 					</li>
 				</ul>
 			</nav>

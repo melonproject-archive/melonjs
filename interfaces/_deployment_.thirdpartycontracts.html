@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>KyberEnvironment | @melonproject/melonjs</title>
+	<title>ThirdPartyContracts | @melonproject/melonjs</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -52,13 +52,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_index_.html">&quot;index&quot;</a>
+					<a href="../modules/_deployment_.html">&quot;Deployment&quot;</a>
 				</li>
 				<li>
-					<a href="_index_.kyberenvironment.html">KyberEnvironment</a>
+					<a href="_deployment_.thirdpartycontracts.html">ThirdPartyContracts</a>
 				</li>
 			</ul>
-			<h1>Interface KyberEnvironment</h1>
+			<h1>Interface ThirdPartyContracts</h1>
 		</div>
 	</div>
 </header>
@@ -69,7 +69,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">KyberEnvironment</span>
+						<span class="target">ThirdPartyContracts</span>
 					</li>
 				</ul>
 			</section>
@@ -80,9 +80,8 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_index_.kyberenvironment.html#conversionrates" class="tsd-kind-icon">conversion<wbr>Rates</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_index_.kyberenvironment.html#kybernetwork" class="tsd-kind-icon">kyber<wbr>Network</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_index_.kyberenvironment.html#kybernetworkproxy" class="tsd-kind-icon">kyber<wbr>Network<wbr>Proxy</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_deployment_.thirdpartycontracts.html#exchanges" class="tsd-kind-icon">exchanges</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_deployment_.thirdpartycontracts.html#tokens" class="tsd-kind-icon">tokens</a></li>
 							</ul>
 						</section>
 					</div>
@@ -91,32 +90,27 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="conversionrates" class="tsd-anchor"></a>
-					<h3>conversion<wbr>Rates</h3>
-					<div class="tsd-signature tsd-kind-icon">conversion<wbr>Rates<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="exchanges" class="tsd-anchor"></a>
+					<h3>exchanges</h3>
+					<div class="tsd-signature tsd-kind-icon">exchanges<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/72f7348/src/index.ts#L87">index.ts:87</a></li>
+							<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/master/src/Deployment.ts#L68">Deployment.ts:68</a></li>
 						</ul>
 					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="kybernetwork" class="tsd-anchor"></a>
-					<h3>kyber<wbr>Network</h3>
-					<div class="tsd-signature tsd-kind-icon">kyber<wbr>Network<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/72f7348/src/index.ts#L88">index.ts:88</a></li>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
 						</ul>
-					</aside>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="kybernetworkproxy" class="tsd-anchor"></a>
-					<h3>kyber<wbr>Network<wbr>Proxy</h3>
-					<div class="tsd-signature tsd-kind-icon">kyber<wbr>Network<wbr>Proxy<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="tokens" class="tsd-anchor"></a>
+					<h3>tokens</h3>
+					<div class="tsd-signature tsd-kind-icon">tokens<span class="tsd-signature-symbol">:</span> <a href="_deployment_.tokendefinition.html" class="tsd-signature-type">TokenDefinition</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/72f7348/src/index.ts#L89">index.ts:89</a></li>
+							<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/master/src/Deployment.ts#L67">Deployment.ts:67</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -129,13 +123,19 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-external-module">
+						<a href="../modules/_address_.html">"<wbr>Address"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_contract_.html">"<wbr>Contract"</a>
+					</li>
+					<li class="current tsd-kind-external-module">
+						<a href="../modules/_deployment_.html">"<wbr>Deployment"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_environment_.html">"<wbr>Environment"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_contracts_accounting_.html">"contracts/<wbr>Accounting"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_contracts_contract_.html">"contracts/<wbr>Contract"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_contracts_environment_.html">"contracts/<wbr>Environment"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_contracts_hub_.html">"contracts/<wbr>Hub"</a>
@@ -148,9 +148,6 @@
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_contracts_version_.html">"contracts/<wbr>Version"</a>
-					</li>
-					<li class="current tsd-kind-external-module">
-						<a href="../modules/_index_.html">"index"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_utils_estimategas_.html">"utils/estimate<wbr>Gas"</a>
@@ -169,49 +166,43 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_index_.deployment.html" class="tsd-kind-icon">Deployment</a>
+						<a href="_deployment_.deployment.html" class="tsd-kind-icon">Deployment</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_index_.deploymentmetadata.html" class="tsd-kind-icon">Deployment<wbr>Metadata</a>
+						<a href="_deployment_.deploymentmetadata.html" class="tsd-kind-icon">Deployment<wbr>Metadata</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_index_.ethfinexenvironment.html" class="tsd-kind-icon">Ethfinex<wbr>Environment</a>
+						<a href="_deployment_.ethfinexenvironment.html" class="tsd-kind-icon">Ethfinex<wbr>Environment</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_index_.exchangeconfig.html" class="tsd-kind-icon">Exchange<wbr>Config</a>
+						<a href="_deployment_.exchangeconfig.html" class="tsd-kind-icon">Exchange<wbr>Config</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_index_.factories.html" class="tsd-kind-icon">Factories</a>
+						<a href="_deployment_.factories.html" class="tsd-kind-icon">Factories</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_deployment_.kyberenvironment.html" class="tsd-kind-icon">Kyber<wbr>Environment</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_deployment_.meloncontracts.html" class="tsd-kind-icon">Melon<wbr>Contracts</a>
 					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_index_.kyberenvironment.html" class="tsd-kind-icon">Kyber<wbr>Environment</a>
+						<a href="_deployment_.thirdpartycontracts.html" class="tsd-kind-icon">Third<wbr>Party<wbr>Contracts</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_index_.kyberenvironment.html#conversionrates" class="tsd-kind-icon">conversion<wbr>Rates</a>
+								<a href="_deployment_.thirdpartycontracts.html#exchanges" class="tsd-kind-icon">exchanges</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_index_.kyberenvironment.html#kybernetwork" class="tsd-kind-icon">kyber<wbr>Network</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_index_.kyberenvironment.html#kybernetworkproxy" class="tsd-kind-icon">kyber<wbr>Network<wbr>Proxy</a>
+								<a href="_deployment_.thirdpartycontracts.html#tokens" class="tsd-kind-icon">tokens</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_index_.meloncontracts.html" class="tsd-kind-icon">Melon<wbr>Contracts</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_index_.thirdpartycontracts.html" class="tsd-kind-icon">Third<wbr>Party<wbr>Contracts</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_index_.tokendefinition.html" class="tsd-kind-icon">Token<wbr>Definition</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/_index_.html#address" class="tsd-kind-icon">Address</a>
+						<a href="_deployment_.tokendefinition.html" class="tsd-kind-icon">Token<wbr>Definition</a>
 					</li>
 				</ul>
 			</nav>
