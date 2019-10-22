@@ -1,7 +1,7 @@
 import BigNumber from 'bignumber.js';
 import { VersionAbi } from '../abis/Version';
-import { Contract } from './Contract';
-import { Environment } from './Environment';
+import { Contract } from '../Contract';
+import { Environment } from '../Environment';
 
 export class Version extends Contract {
   public static forDeployment(environment: Environment) {

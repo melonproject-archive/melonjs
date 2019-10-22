@@ -1,6 +1,6 @@
 import { path } from 'ramda';
 import { Eth } from 'web3-eth';
-import { Deployment } from '..';
+import { Deployment } from './Deployment';
 
 export interface CacheHandler {
   has: (key: string) => boolean;

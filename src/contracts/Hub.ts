@@ -1,7 +1,7 @@
 import { toUtf8 } from 'web3-utils';
 import { HubAbi } from '../abis/Hub';
-import { Contract } from './Contract';
-import { Environment } from './Environment';
+import { Contract } from '../Contract';
+import { Environment } from '../Environment';
 
 export interface FundRoutes {
   accounting?: string;

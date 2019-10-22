@@ -2,11 +2,11 @@ import BigNumber from 'bignumber.js';
 import LRUCache from 'lru-cache';
 import { Eth } from 'web3-eth';
 import { HttpProvider } from 'web3-providers';
-import { TokenDefinition } from '..';
-import { Environment, CacheHandler } from '../contracts/Environment';
+import { TokenDefinition } from '../Deployment';
+import { Contract } from '../Contract';
+import { Environment, CacheHandler } from '../Environment';
 import { PriceSource } from '../contracts/PriceSource';
 import { Hub } from '../contracts/Hub';
-import { Contract } from '../contracts/Contract';
 import { Token } from '../contracts/Token';
 import deployment from '../deployments/mainnet';
 

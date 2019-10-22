@@ -1,8 +1,8 @@
 import BigNumber from 'bignumber.js';
 import { fromWei } from 'web3-utils';
 import { AccountingAbi } from '../abis/Accounting';
-import { Contract } from './Contract';
-import { Environment } from './Environment';
+import { Contract } from '../Contract';
+import { Environment } from '../Environment';
 
 export interface FundCalculations {
   sharePrice: BigNumber;

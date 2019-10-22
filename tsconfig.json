@@ -22,11 +22,12 @@
   "typedocOptions": {
     "mode": "modules",
     "out": "docs",
-    "exclude": ["**/*.test.ts", "src/abis/**", "src/deployments/**"],
+    "exclude": ["**/*.test.ts", "src/index.ts", "src/abis/**", "src/deployments/**"],
     "excludeExternals": true,
     "excludeNotExported": true,
     "excludePrivate": true,
-    "media": "assets"
+    "media": "assets",
+    "gitRevision": "master"
   },
   "include": ["src/**/*"]
 }

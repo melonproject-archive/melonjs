@@ -9,7 +9,7 @@
     "access": "public"
   },
   "scripts": {
-    "clean": "rimraf dist",
+    "clean": "rimraf dist docs coverage",
     "prebuild": "yarn clean",
     "build": "tsc --project .",
     "postbuild": "cp package.json dist",
@@ -17,6 +17,7 @@
     "prewatch": "cp package.json dist",
     "watch": "tsc --watch --project .",
     "exports": "node scripts/exports",
+    "predocs": "rimraf docs",
     "docs": "typedoc",
     "postdocs": "cp jekyll.config.yml docs/_config.yml",
     "test": "jest",
