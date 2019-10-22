@@ -26,9 +26,10 @@
     "lint:tslint": "tsc --noEmit && tslint src/{*,**/*}.ts",
     "lint": "yarn lint:tslint && yarn lint:prettier",
     "typecheck": "tsc --project . --noEmit",
-    "prerelease": "yarn build",
-    "release": "yarn version && cp package.json dist && yarn publish dist --non-interactive",
-    "postrelease": "yarn docs && gh-pages -d docs"
+    "preversion": "yarn typecheck && yarn test && yarn lint && yarn docs && yarn build",
+    "postversion": "cp package.json dist",
+    "prerelease": "yarn version",
+    "release": "git push --tags && yarn publish dist --tag $npm_package_version && git push && gh-pages -d docs"
   },
   "dependencies": {
     "bignumber.js": "^9.0.0",
