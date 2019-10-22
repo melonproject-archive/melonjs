@@ -1,0 +1,5 @@
+title: '@melonproject/melonjs'
+description: A convenient JavaScript interface to the Melon protocol Ethereum smart contracts.
+
+include:
+  - '*.html' # Needed to include files that start with underscore
