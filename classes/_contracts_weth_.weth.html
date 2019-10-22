@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>PriceSource | @melonproject/melonjs</title>
+	<title>Weth | @melonproject/melonjs</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -52,13 +52,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_contracts_pricesource_.html">&quot;contracts/PriceSource&quot;</a>
+					<a href="../modules/_contracts_weth_.html">&quot;contracts/Weth&quot;</a>
 				</li>
 				<li>
-					<a href="_contracts_pricesource_.pricesource.html">PriceSource</a>
+					<a href="_contracts_weth_.weth.html">Weth</a>
 				</li>
 			</ul>
-			<h1>Class PriceSource</h1>
+			<h1>Class Weth</h1>
 		</div>
 	</div>
 </header>
@@ -69,10 +69,10 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<a href="_contract_.contract.html" class="tsd-signature-type">Contract</a>
+						<a href="_contracts_abstracttoken_.abstracttoken.html" class="tsd-signature-type">AbstractToken</a>
 						<ul class="tsd-hierarchy">
 							<li>
-								<span class="target">PriceSource</span>
+								<span class="target">Weth</span>
 							</li>
 						</ul>
 					</li>
@@ -85,22 +85,24 @@
 						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite"><a href="_contracts_pricesource_.pricesource.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite"><a href="_contracts_weth_.weth.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section tsd-is-inherited">
+						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_contracts_pricesource_.pricesource.html#contract" class="tsd-kind-icon">contract</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_contracts_pricesource_.pricesource.html#environment" class="tsd-kind-icon">environment</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_contracts_weth_.weth.html#contract" class="tsd-kind-icon">contract</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_contracts_weth_.weth.html#environment" class="tsd-kind-icon">environment</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_contracts_weth_.weth.html#token" class="tsd-kind-icon">token</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_pricesource_.pricesource.html#getlastupdate" class="tsd-kind-icon">get<wbr>Last<wbr>Update</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-protected"><a href="_contracts_pricesource_.pricesource.html#makecall" class="tsd-kind-icon">make<wbr>Call</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_contracts_pricesource_.pricesource.html#fordeployment" class="tsd-kind-icon">for<wbr>Deployment</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="_contracts_weth_.weth.html#balanceof" class="tsd-kind-icon">balance<wbr>Of</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-protected"><a href="_contracts_weth_.weth.html#makecall" class="tsd-kind-icon">make<wbr>Call</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="_contracts_weth_.weth.html#finddefinition" class="tsd-kind-icon">find<wbr>Definition</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_contracts_weth_.weth.html#fordeployment" class="tsd-kind-icon">for<wbr>Deployment</a></li>
 							</ul>
 						</section>
 					</div>
@@ -112,14 +114,14 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Price<wbr>Source<span class="tsd-signature-symbol">(</span>environment<span class="tsd-signature-symbol">: </span><a href="_environment_.environment.html" class="tsd-signature-type">Environment</a>, address<span class="tsd-signature-symbol">?: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_contracts_pricesource_.pricesource.html" class="tsd-signature-type">PriceSource</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Weth<span class="tsd-signature-symbol">(</span>environment<span class="tsd-signature-symbol">: </span><a href="_environment_.environment.html" class="tsd-signature-type">Environment</a>, token<span class="tsd-signature-symbol">: </span><a href="../interfaces/_deployment_.tokendefinition.html" class="tsd-signature-type">TokenDefinition</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_contracts_weth_.weth.html" class="tsd-signature-type">Weth</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_contract_.contract.html">Contract</a>.<a href="_contract_.contract.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/master/src/contracts/PriceSource.ts#L15">contracts/PriceSource.ts:15</a></li>
+									<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/master/src/contracts/Weth.ts#L12">contracts/Weth.ts:12</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -128,15 +130,15 @@
 									<h5>environment: <a href="_environment_.environment.html" class="tsd-signature-type">Environment</a></h5>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> address: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
+									<h5>token: <a href="../interfaces/_deployment_.tokendefinition.html" class="tsd-signature-type">TokenDefinition</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_contracts_pricesource_.pricesource.html" class="tsd-signature-type">PriceSource</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_contracts_weth_.weth.html" class="tsd-signature-type">Weth</a></h4>
 						</li>
 					</ul>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
+			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 					<a name="contract" class="tsd-anchor"></a>
@@ -160,38 +162,43 @@
 						</ul>
 					</aside>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="token" class="tsd-anchor"></a>
+					<h3>token</h3>
+					<div class="tsd-signature tsd-kind-icon">token<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_deployment_.tokendefinition.html" class="tsd-signature-type">TokenDefinition</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/master/src/contracts/Weth.ts#L14">contracts/Weth.ts:14</a></li>
+						</ul>
+					</aside>
+				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="getlastupdate" class="tsd-anchor"></a>
-					<h3>get<wbr>Last<wbr>Update</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Last<wbr>Update<span class="tsd-signature-symbol">(</span>block<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Date</span><span class="tsd-signature-symbol">&gt;</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+					<a name="balanceof" class="tsd-anchor"></a>
+					<h3>balance<wbr>Of</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+						<li class="tsd-signature tsd-kind-icon">balance<wbr>Of<span class="tsd-signature-symbol">(</span>who<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a>, block<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Overrides <a href="_contracts_abstracttoken_.abstracttoken.html">AbstractToken</a>.<a href="_contracts_abstracttoken_.abstracttoken.html#balanceof">balanceOf</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/master/src/contracts/PriceSource.ts#L27">contracts/PriceSource.ts:27</a></li>
+									<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/master/src/contracts/Weth.ts#L18">contracts/Weth.ts:18</a></li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Gets the last update of the price feed.</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
+									<h5>who: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
+								</li>
+								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> block: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>The block number to execute the call on.</p>
-									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Date</span><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>A promise resolving to the date of the last price feed update.</p>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -234,17 +241,44 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+					<a name="finddefinition" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> find<wbr>Definition</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">find<wbr>Definition<span class="tsd-signature-symbol">(</span>environment<span class="tsd-signature-symbol">: </span><a href="_environment_.environment.html" class="tsd-signature-type">Environment</a>, which<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_deployment_.tokendefinition.html" class="tsd-signature-type">TokenDefinition</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_contracts_abstracttoken_.abstracttoken.html">AbstractToken</a>.<a href="_contracts_abstracttoken_.abstracttoken.html#finddefinition">findDefinition</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/master/src/contracts/AbstractToken.ts#L9">contracts/AbstractToken.ts:9</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>environment: <a href="_environment_.environment.html" class="tsd-signature-type">Environment</a></h5>
+								</li>
+								<li>
+									<h5>which: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_deployment_.tokendefinition.html" class="tsd-signature-type">TokenDefinition</a></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
 					<a name="fordeployment" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> for<wbr>Deployment</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">for<wbr>Deployment<span class="tsd-signature-symbol">(</span>environment<span class="tsd-signature-symbol">: </span><a href="_environment_.environment.html" class="tsd-signature-type">Environment</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_contracts_pricesource_.pricesource.html" class="tsd-signature-type">PriceSource</a></li>
+						<li class="tsd-signature tsd-kind-icon">for<wbr>Deployment<span class="tsd-signature-symbol">(</span>environment<span class="tsd-signature-symbol">: </span><a href="_environment_.environment.html" class="tsd-signature-type">Environment</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_contracts_weth_.weth.html" class="tsd-signature-type">Weth</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/master/src/contracts/PriceSource.ts#L8">contracts/PriceSource.ts:8</a></li>
+									<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/master/src/contracts/Weth.ts#L10">contracts/Weth.ts:10</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -253,7 +287,7 @@
 									<h5>environment: <a href="_environment_.environment.html" class="tsd-signature-type">Environment</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_contracts_pricesource_.pricesource.html" class="tsd-signature-type">PriceSource</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_contracts_weth_.weth.html" class="tsd-signature-type">Weth</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -289,7 +323,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_contracts_hub_.html">"contracts/<wbr>Hub"</a>
 					</li>
-					<li class="current tsd-kind-external-module">
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_contracts_pricesource_.html">"contracts/<wbr>Price<wbr>Source"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -298,7 +332,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_contracts_version_.html">"contracts/<wbr>Version"</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class="current tsd-kind-external-module">
 						<a href="../modules/_contracts_weth_.html">"contracts/<wbr>Weth"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -320,25 +354,31 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class tsd-parent-kind-external-module">
-						<a href="_contracts_pricesource_.pricesource.html" class="tsd-kind-icon">Price<wbr>Source</a>
+						<a href="_contracts_weth_.weth.html" class="tsd-kind-icon">Weth</a>
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
-								<a href="_contracts_pricesource_.pricesource.html#constructor" class="tsd-kind-icon">constructor</a>
+								<a href="_contracts_weth_.weth.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_contracts_pricesource_.pricesource.html#contract" class="tsd-kind-icon">contract</a>
+								<a href="_contracts_weth_.weth.html#contract" class="tsd-kind-icon">contract</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_contracts_pricesource_.pricesource.html#environment" class="tsd-kind-icon">environment</a>
+								<a href="_contracts_weth_.weth.html#environment" class="tsd-kind-icon">environment</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_contracts_pricesource_.pricesource.html#getlastupdate" class="tsd-kind-icon">get<wbr>Last<wbr>Update</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_contracts_weth_.weth.html#token" class="tsd-kind-icon">token</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+								<a href="_contracts_weth_.weth.html#balanceof" class="tsd-kind-icon">balance<wbr>Of</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-protected">
-								<a href="_contracts_pricesource_.pricesource.html#makecall" class="tsd-kind-icon">make<wbr>Call</a>
+								<a href="_contracts_weth_.weth.html#makecall" class="tsd-kind-icon">make<wbr>Call</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+								<a href="_contracts_weth_.weth.html#finddefinition" class="tsd-kind-icon">find<wbr>Definition</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
-								<a href="_contracts_pricesource_.pricesource.html#fordeployment" class="tsd-kind-icon">for<wbr>Deployment</a>
+								<a href="_contracts_weth_.weth.html#fordeployment" class="tsd-kind-icon">for<wbr>Deployment</a>
 							</li>
 						</ul>
 					</li>
