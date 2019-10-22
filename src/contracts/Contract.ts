@@ -25,7 +25,7 @@ export abstract class Contract {
 
       return await promise;
     } catch (e) {
-      throw new Error(`Failed to call ${name} at ${address}: ${e.toString()}`);
+      throw new Error(`Failed to call ${name} at ${address}: ${e}`);
     }
   }
 

@@ -47,6 +47,7 @@ export interface MelonContracts {
     matchingMarketAdapter: string;
     matchingMarketAccessor: string;
     ethfinexAdapter: string;
+    engineAdapter: string;
   };
   policies: {
     priceTolerance: string;
@@ -63,12 +64,13 @@ export interface TokenDefinition {
   decimals: number;
   symbol: string;
   name: string;
-  reserveMin: number;
+  reserveMin?: number;
 }
 
 export interface ExchangeConfig {
   exchange: string;
   adapter: string;
+  takesCustody: boolean;
 }
 
 export interface ThirdPartyContracts {
@@ -89,4 +91,7 @@ export interface KyberEnvironment {
 
 export interface EthfinexEnvironment {
   exchange: string;
+  wrapperRegistryEFX: string;
+  wrapperPairs: string[];
+  erc20proxy: string;
 }

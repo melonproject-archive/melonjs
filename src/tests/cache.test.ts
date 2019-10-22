@@ -3,12 +3,12 @@ import LRUCache from 'lru-cache';
 import { Eth } from 'web3-eth';
 import { HttpProvider } from 'web3-providers';
 import { TokenDefinition } from '..';
-import { mainnet } from '../deployments';
 import { Environment, CacheHandler } from '../contracts/Environment';
 import { PriceSource } from '../contracts/PriceSource';
 import { Hub } from '../contracts/Hub';
 import { Contract } from '../contracts/Contract';
 import { Token } from '../contracts/Token';
+import deployment from '../deployments/mainnet';
 
 describe('cache handler', () => {
   let client: Eth;
@@ -35,7 +35,7 @@ describe('cache handler', () => {
   });
 
   it('calls should be cached when using cache handler and block number', async () => {
-    const environment = new Environment(client, mainnet, {
+    const environment = new Environment(client, deployment, {
       cache,
     });
 
@@ -48,7 +48,7 @@ describe('cache handler', () => {
   });
 
   it('calls should not be cached when not using a cache handler', async () => {
-    const environment = new Environment(client, mainnet);
+    const environment = new Environment(client, deployment);
     const source = new PriceSource(environment, '0x0');
     // @ts-ignore
     const spy = jest.spyOn(source, 'doMakeCall').mockReturnValue(new Date(Date.now()));
@@ -59,7 +59,7 @@ describe('cache handler', () => {
   });
 
   it('cache should be missed if the block numbers do not match', async () => {
-    const environment = new Environment(client, mainnet, {
+    const environment = new Environment(client, deployment, {
       cache,
     });
 
@@ -73,7 +73,7 @@ describe('cache handler', () => {
   });
 
   it('cache should be missed if addresses do not match', async () => {
-    const environment = new Environment(client, mainnet, {
+    const environment = new Environment(client, deployment, {
       cache,
     });
 
@@ -88,7 +88,7 @@ describe('cache handler', () => {
   });
 
   it('cache should be missed if arguments do not match', async () => {
-    const environment = new Environment(client, mainnet, {
+    const environment = new Environment(client, deployment, {
       cache,
     });
 
@@ -102,7 +102,7 @@ describe('cache handler', () => {
   });
 
   it('cache should be hit if arguments match', async () => {
-    const environment = new Environment(client, mainnet, {
+    const environment = new Environment(client, deployment, {
       cache,
     });
 

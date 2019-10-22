@@ -17,8 +17,7 @@
     "allowJs": false,
     "esModuleInterop": true,
     "moduleResolution": "node",
-    "removeComments": false,
-    "resolveJsonModule": true
+    "removeComments": false
   },
   "typedocOptions": {
     "mode": "modules",

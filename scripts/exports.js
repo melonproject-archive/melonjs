@@ -8,12 +8,13 @@ const glob = require('glob');
 const source = path.resolve(process.cwd(), 'src', 'abis');
 const abis = glob.sync('*.abi.json', { cwd: source });
 
-const contents = abis
-  .map(item => {
-    const name = item.split('.', 1)[0];
-    return `export { default as ${name}Abi } from './abis/${item}';`;
-  })
-  .join('\n');
+abis.forEach(item => {
+  const name = path.basename(item).split('.', 1)[0];
+  const content = fs.readFileSync(path.join(source, item));
+  const destination = path.resolve(process.cwd(), 'src', 'abis', `${name}.ts`);
 
-const destination = path.resolve(process.cwd(), 'src', 'abis.ts');
-fs.writeFileSync(destination, contents, 'utf8');
+  let output = "import { AbiItem } from 'web3-utils';\n\n";
+  output += '// tslint:disable-next-line:variable-name\n';
+  output += `export const ${name}Abi = ${content} as AbiItem[];`;
+  fs.writeFileSync(destination, output, 'utf8');
+});

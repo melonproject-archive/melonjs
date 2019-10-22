@@ -1,5 +1,5 @@
 import { toUtf8 } from 'web3-utils';
-import { HubAbi } from '../abis';
+import { HubAbi } from '../abis/Hub';
 import { Contract } from './Contract';
 import { Environment } from './Environment';
 

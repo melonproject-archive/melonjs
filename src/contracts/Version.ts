@@ -1,5 +1,5 @@
 import BigNumber from 'bignumber.js';
-import { VersionAbi } from '../abis';
+import { VersionAbi } from '../abis/Version';
 import { Contract } from './Contract';
 import { Environment } from './Environment';
 
