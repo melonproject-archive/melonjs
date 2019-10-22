@@ -3,7 +3,7 @@ import { HttpProvider } from 'web3-providers';
 import { Environment } from '../Environment';
 import deployment from '../deployments/mainnet';
 import { Hub, FundRoutes } from './Hub';
-import { toChecksumAddress } from 'web3-utils';
+import { sameAddress } from '../utils/sameAddress';
 
 describe('Hub', () => {
   let environment: Environment;
@@ -24,7 +24,7 @@ describe('Hub', () => {
 
   it('should return the managers as "0x1e1c1ba503cc84b1bcf0151c68a8b5ddc90e4a2e"', async () => {
     const result = await hub.manager();
-    expect(toChecksumAddress(result)).toBe(toChecksumAddress('0x1e1c1ba503cc84b1bcf0151c68a8b5ddc90e4a2e'));
+    expect(sameAddress(result, '0x1e1c1ba503cc84b1bcf0151c68a8b5ddc90e4a2e')).toBe(true);
   });
 
   it('should return the creation time', async () => {
@@ -35,18 +35,20 @@ describe('Hub', () => {
 
   it('should return the routes', async () => {
     routes = await hub.routes();
-    expect(routes).toHaveProperty('accounting');
-    expect(routes).toHaveProperty('engine');
-    expect(routes).toHaveProperty('feeManager');
-    expect(routes).toHaveProperty('mlnToken');
-    expect(routes).toHaveProperty('participation');
-    expect(routes).toHaveProperty('policyManager');
-    expect(routes).toHaveProperty('priceSource');
-    expect(routes).toHaveProperty('registry');
-    expect(routes).toHaveProperty('shares');
-    expect(routes).toHaveProperty('trading');
-    expect(routes).toHaveProperty('vault');
-    expect(routes).toHaveProperty('version');
+    expect(routes).toMatchObject<FundRoutes>({
+      accounting: expect.any(String),
+      engine: expect.any(String),
+      feeManager: expect.any(String),
+      mlnToken: expect.any(String),
+      participation: expect.any(String),
+      policyManager: expect.any(String),
+      priceSource: expect.any(String),
+      registry: expect.any(String),
+      shares: expect.any(String),
+      trading: expect.any(String),
+      vault: expect.any(String),
+      version: expect.any(String),
+    });
   });
 
   it('should return the version address as the creator', async () => {

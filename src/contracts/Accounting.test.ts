@@ -4,7 +4,8 @@ import { Environment } from '../Environment';
 import deployment from '../deployments/mainnet';
 import { Accounting } from './Accounting';
 import BigNumber from 'bignumber.js';
-import { toChecksumAddress } from 'web3-utils';
+import { sameAddress } from '../utils/sameAddress';
+import { Token } from '..';
 
 describe('Accounting', () => {
   let environment: Environment;
@@ -19,14 +20,12 @@ describe('Accounting', () => {
 
   it('should return the default share price', async () => {
     const result = await accounting.defaultSharePrice();
-    expect(result).toStrictEqual(new BigNumber('1000000000000000000'));
+    expect(result.isEqualTo(new BigNumber('1000000000000000000'))).toBe(true);
   });
 
   it('should return WETH address as native asset', async () => {
     const result = await accounting.nativeAsset();
-    expect(toChecksumAddress(result)).toBe(
-      toChecksumAddress(environment.deployment.thirdPartyContracts.tokens[4].address),
-    );
+    expect(sameAddress(result, Token.findDefinition(environment, 'WETH').address)).toBe(true);
   });
 
   it('should return the calculations', async () => {
