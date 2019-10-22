@@ -11,7 +11,7 @@ export class PriceSource extends Contract {
       throw new Error('Missing deployment for price source contract.');
     }
 
-    return new PriceSource(environment, address);
+    return new this(environment, address);
   }
 
   constructor(environment: Environment, address?: Address) {
