@@ -1,7 +1,9 @@
+import BigNumber from 'bignumber.js';
 import { sameAddress } from '../utils/sameAddress';
 import { Address } from '../Address';
 import { Contract } from '../Contract';
 import { Environment } from '../Environment';
+import { fromWei } from 'web3-utils';
 
 export abstract class AbstractToken extends Contract {
   public static findDefinition(environment: Environment, which: Address | string) {
@@ -24,5 +26,10 @@ export abstract class AbstractToken extends Contract {
     }
 
     return token;
+  }
+
+  public async balanceOf(who: Address, block?: number) {
+    const result = await this.makeCall('balanceOf', [who], block);
+    return new BigNumber(fromWei(`${result}`));
   }
 }
