@@ -1,6 +1,6 @@
 {
   "name": "@melonproject/melonjs",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "Technology Regulated and Operated Investment Funds.",
   "main": "index.js",
   "typings": "index.d.ts",
@@ -30,7 +30,8 @@
     "preversion": "yarn typecheck && yarn test && yarn lint && yarn docs && yarn build",
     "postversion": "cp package.json dist",
     "prerelease": "yarn version",
-    "release": "git push --tags && yarn publish dist --tag $npm_package_version --non-interactive && git push && gh-pages -d docs"
+    "release": "git push --tags && yarn publish dist --new-version $npm_package-version",
+    "postrelease": "git push && gh-pages -d docs"
   },
   "dependencies": {
     "bignumber.js": "^9.0.0",
