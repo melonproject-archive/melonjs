@@ -1,4 +1,4 @@
-import { Deployment } from '..';
+import { Deployment } from '../Deployment';
 
 const kovan: Deployment = {
   meta: {
