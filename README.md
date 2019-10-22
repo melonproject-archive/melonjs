@@ -1,4 +1,4 @@
-![Logo](https://github.com/Avantgarde-Finance/melonjs/media/logo.png?raw=true)
+![Logo](https://github.com/Avantgarde-Finance/melonjs/blob/master/media/logo.png?raw=true)
 
 # MelonJS
 
