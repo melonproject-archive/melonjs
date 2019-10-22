@@ -30,7 +30,7 @@
     "preversion": "yarn typecheck && yarn test && yarn lint && yarn docs && yarn build",
     "postversion": "cp package.json dist",
     "prerelease": "yarn version",
-    "release": "git push --tags && yarn publish dist --new-version $npm_package-version --tag",
+    "release": "git push --tags && yarn publish dist --new-version $npm_package_version",
     "postrelease": "git push && gh-pages -d docs"
   },
   "dependencies": {
