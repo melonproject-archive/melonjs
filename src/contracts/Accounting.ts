@@ -20,6 +20,17 @@ export class Accounting extends Contract {
   }
 
   /**
+   * Gets the list of assets owned by a fund
+   *
+   * @param {number} block The block number to execute the call on.
+   * @returns {Promise<BigNumber>} A promise resolving to an array of asset addresses
+   */
+  public async ownedAssets(block?: number) {
+    const result = await this.makeCall('ownedAssets', undefined, block);
+    return result;
+  }
+
+  /**
    * Gets the default share price for a fund.
    *
    * @param {number} block The block number to execute the call on.
