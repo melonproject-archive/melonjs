@@ -2,6 +2,7 @@ import BigNumber from 'bignumber.js';
 import { PriceSourceInterfaceAbi } from '../abis/PriceSourceInterface';
 import { Contract } from '../Contract';
 import { Environment } from '../Environment';
+import { Address } from '../Address';
 
 export class PriceSource extends Contract {
   public static forDeployment(environment: Environment) {
@@ -13,8 +14,8 @@ export class PriceSource extends Contract {
     return new PriceSource(environment, address);
   }
 
-  constructor(environment: Environment, address?: string) {
-    super(environment, new environment.client.Contract(PriceSourceInterfaceAbi as any, address));
+  constructor(environment: Environment, address?: Address) {
+    super(environment, new environment.client.Contract(PriceSourceInterfaceAbi, address));
   }
 
   /**

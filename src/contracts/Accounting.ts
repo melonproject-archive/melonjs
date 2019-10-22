@@ -3,6 +3,7 @@ import { fromWei } from 'web3-utils';
 import { AccountingAbi } from '../abis/Accounting';
 import { Contract } from '../Contract';
 import { Environment } from '../Environment';
+import { Address } from '../Address';
 
 export interface FundCalculations {
   sharePrice: BigNumber;
@@ -14,8 +15,8 @@ export interface FundCalculations {
 }
 
 export class Accounting extends Contract {
-  constructor(environment: Environment, address: string) {
-    super(environment, new environment.client.Contract(AccountingAbi as any, address));
+  constructor(environment: Environment, address: Address) {
+    super(environment, new environment.client.Contract(AccountingAbi, address));
   }
 
   public async performCalculations(block?: number) {

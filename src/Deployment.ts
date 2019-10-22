@@ -1,3 +1,5 @@
+import { Address } from './Address';
+
 export interface Deployment {
   meta: DeploymentMetadata;
   exchangeConfigs: { [key: string]: ExchangeConfig };
@@ -6,7 +8,7 @@ export interface Deployment {
 }
 
 export interface DeploymentMetadata {
-  deployer: string;
+  deployer: Address;
   timestamp: string;
   track: string;
   version: string;
@@ -15,42 +17,42 @@ export interface DeploymentMetadata {
 }
 
 export interface Factories {
-  accountingFactory: string;
-  feeManagerFactory: string;
-  participationFactory: string;
-  policyManagerFactory: string;
-  sharesFactory: string;
-  tradingFactory: string;
-  vaultFactory: string;
+  accountingFactory: Address;
+  feeManagerFactory: Address;
+  participationFactory: Address;
+  policyManagerFactory: Address;
+  sharesFactory: Address;
+  tradingFactory: Address;
+  vaultFactory: Address;
 }
 
 export interface MelonContracts {
-  priceSource: string;
-  engine: string;
-  version: string;
-  ranking: string;
-  registry: string;
+  priceSource: Address;
+  engine: Address;
+  version: Address;
+  ranking: Address;
+  registry: Address;
   factories: Factories;
   adapters: {
-    kyberAdapter: string;
-    zeroExAdapter: string;
-    matchingMarketAdapter: string;
-    matchingMarketAccessor: string;
-    ethfinexAdapter: string;
-    engineAdapter: string;
+    kyberAdapter: Address;
+    zeroExAdapter: Address;
+    matchingMarketAdapter: Address;
+    matchingMarketAccessor: Address;
+    ethfinexAdapter: Address;
+    engineAdapter: Address;
   };
   policies: {
-    priceTolerance: string;
-    userWhitelist: string;
+    priceTolerance: Address;
+    userWhitelist: Address;
   };
   fees: {
-    managementFee: string;
-    performanceFee: string;
+    managementFee: Address;
+    performanceFee: Address;
   };
 }
 
 export interface TokenDefinition {
-  address: string;
+  address: Address;
   decimals: number;
   symbol: string;
   name: string;
@@ -58,8 +60,8 @@ export interface TokenDefinition {
 }
 
 export interface ExchangeConfig {
-  exchange: string;
-  adapter: string;
+  exchange: Address;
+  adapter: Address;
   takesCustody: boolean;
 }
 
@@ -67,20 +69,20 @@ export interface ThirdPartyContracts {
   tokens: TokenDefinition[];
   exchanges: {
     kyber: KyberEnvironment;
-    matchingMarket: string;
-    zeroEx: string;
+    matchingMarket: Address;
+    zeroEx: Address;
     ethfinex: EthfinexEnvironment;
   };
 }
 
 export interface KyberEnvironment {
-  conversionRates: string;
-  kyberNetwork: string;
-  kyberNetworkProxy: string;
+  conversionRates: Address;
+  kyberNetwork: Address;
+  kyberNetworkProxy: Address;
 }
 
 export interface EthfinexEnvironment {
-  exchange: string;
+  exchange: Address;
   wrapperRegistryEFX: string;
   wrapperPairs: string[];
   erc20proxy: string;

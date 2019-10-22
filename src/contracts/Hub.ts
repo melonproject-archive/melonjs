@@ -2,25 +2,26 @@ import { toUtf8 } from 'web3-utils';
 import { HubAbi } from '../abis/Hub';
 import { Contract } from '../Contract';
 import { Environment } from '../Environment';
+import { Address } from '../Address';
 
 export interface FundRoutes {
-  accounting?: string;
-  engine?: string;
-  feeManager?: string;
-  mlnToken?: string;
-  participation?: string;
-  policyManager?: string;
-  priceSource?: string;
-  registry?: string;
-  shares?: string;
-  trading?: string;
-  vault?: string;
-  version?: string;
+  accounting?: Address;
+  engine?: Address;
+  feeManager?: Address;
+  mlnToken?: Address;
+  participation?: Address;
+  policyManager?: Address;
+  priceSource?: Address;
+  registry?: Address;
+  shares?: Address;
+  trading?: Address;
+  vault?: Address;
+  version?: Address;
 }
 
 export class Hub extends Contract {
-  constructor(environment: Environment, address?: string) {
-    super(environment, new environment.client.Contract(HubAbi as any, address));
+  constructor(environment: Environment, address?: Address) {
+    super(environment, new environment.client.Contract(HubAbi, address));
   }
 
   public async creationTime(block?: number) {
