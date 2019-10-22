@@ -1,5 +1,5 @@
 import BigNumber from 'bignumber.js';
-import abi from '../contracts/Version.abi.json';
+import { VersionAbi } from '../abis';
 import { Contract } from './Contract';
 import { Environment } from './Environment';
 
@@ -14,7 +14,7 @@ export class Version extends Contract {
   }
 
   constructor(environment: Environment, address?: string) {
-    super(environment, new environment.client.Contract(abi as any, address));
+    super(environment, new environment.client.Contract(VersionAbi as any, address));
   }
 
   public async getLastFundId(block?: number) {

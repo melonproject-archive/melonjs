@@ -1,7 +1,7 @@
 import BigNumber from 'bignumber.js';
 import { fromWei } from 'web3-utils';
-import abi from '../contracts/ERC20.abi.json';
 import { Address, TokenDefinition } from '..';
+import { ERC20Abi } from '../abis';
 import { sameAddress } from '../utils/sameAddress';
 import { Contract } from './Contract';
 import { Environment } from './Environment';
@@ -30,7 +30,7 @@ export class Token extends Contract {
   }
 
   constructor(environment: Environment, public readonly token: TokenDefinition) {
-    super(environment, new environment.client.Contract(abi as any, token.address));
+    super(environment, new environment.client.Contract(ERC20Abi as any, token.address));
   }
 
   public async balanceOf(who: Address, block?: number) {

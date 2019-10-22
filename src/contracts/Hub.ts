@@ -1,5 +1,5 @@
 import { toUtf8 } from 'web3-utils';
-import abi from '../contracts/Hub.abi.json';
+import { HubAbi } from '../abis';
 import { Contract } from './Contract';
 import { Environment } from './Environment';
 
@@ -20,7 +20,7 @@ export interface FundRoutes {
 
 export class Hub extends Contract {
   constructor(environment: Environment, address?: string) {
-    super(environment, new environment.client.Contract(abi as any, address));
+    super(environment, new environment.client.Contract(HubAbi as any, address));
   }
 
   public async creationTime(block?: number) {

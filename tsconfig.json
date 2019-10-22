@@ -20,5 +20,14 @@
     "removeComments": false,
     "resolveJsonModule": true
   },
+  "typedocOptions": {
+    "mode": "modules",
+    "out": "docs",
+    "exclude": ["**/*.test.ts"],
+    "excludeExternals": true,
+    "excludeNotExported": true,
+    "excludePrivate": true,
+    "media": "assets"
+  },
   "include": ["src/**/*"]
 }

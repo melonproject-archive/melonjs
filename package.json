@@ -4,7 +4,7 @@
   "description": "Technology Regulated and Operated Investment Funds.",
   "main": "index.js",
   "typings": "index.d.ts",
-  "license": "GPL-3.0",
+  "license": "MIT",
   "publishConfig": {
     "access": "public"
   },
@@ -16,6 +16,8 @@
     "dev": "ts-node --transpile-only src",
     "prewatch": "copy package.json dist",
     "watch": "tsc --watch --project .",
+    "exports": "node scripts/exports",
+    "docs": "typedoc",
     "test": "jest",
     "format": "prettier --write src/{*,**/*}.ts",
     "lint:prettier": "yarn prettier --list-different src/{*,**/*}.ts",
@@ -27,9 +29,7 @@
   },
   "dependencies": {
     "bignumber.js": "^9.0.0",
-    "eth-provider": "^0.2.5",
     "ramda": "^0.26.1",
-    "web3": "^2.0.0-alpha.1",
     "web3-core": "^2.0.0-alpha.1",
     "web3-eth": "^2.0.0-alpha.1",
     "web3-eth-contract": "^2.0.0-alpha.1",
@@ -38,7 +38,6 @@
   "devDependencies": {
     "@types/jest": "^24.0.19",
     "@types/lru-cache": "^5.1.0",
-    "@types/md5": "^2.1.33",
     "@types/ramda": "^0.26.33",
     "copy": "^0.3.2",
     "glob": "^7.1.4",
@@ -46,7 +45,6 @@
     "jest": "^24.9.0",
     "lint-staged": "^9.4.1",
     "lru-cache": "^5.1.1",
-    "np": "^5.1.0",
     "prettier": "^1.14.3",
     "rimraf": "^2.6.2",
     "ts-jest": "^24.1.0",
@@ -54,23 +52,18 @@
     "tslint": "^5.11.0",
     "tslint-config-airbnb": "^5.11.0",
     "tslint-config-prettier": "^1.15.0",
+    "typedoc": "^0.15.0",
     "typescript": "^3.6.2"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-push": "yarn lint"
+      "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
     "*.ts": [
-      "yarn format && yarn typecheck",
+      "yarn format",
       "git add"
     ]
-  },
-  "np": {
-    "yarn": true,
-    "releaseDraft": false,
-    "contents": "dist"
   }
 }

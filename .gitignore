@@ -5,6 +5,7 @@ node_modules/
 package-lock.json
 coverage/
 dist/
+docs/
 
 # Ignore all dot files.
 .*
@@ -15,3 +16,6 @@ dist/
 # Allowed dot files
 !.gitignore
 !.prettierrc
+!.prettierignore
+!.travis.yml
+!.editorconfig

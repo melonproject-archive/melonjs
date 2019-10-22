@@ -1,15 +1,10 @@
-export { estimateGas } from './utils/estimateGas';
-export { includesAddress } from './utils/includesAddress';
-export { sameAddress } from './utils/sameAddress';
-export { transactionOptions } from './utils/transactionOptions';
-
-export { Contract } from './api/Contract';
-export { Environment } from './api/Environment';
-export { Version } from './api/Version';
-export { PriceSource } from './api/PriceSource';
-export { Accounting } from './api/Accounting';
-export { Token } from './api/Token';
-export { Hub } from './api/Hub';
+export { Contract } from './contracts/Contract';
+export { Environment } from './contracts/Environment';
+export { Version } from './contracts/Version';
+export { PriceSource } from './contracts/PriceSource';
+export { Accounting } from './contracts/Accounting';
+export { Token } from './contracts/Token';
+export { Hub } from './contracts/Hub';
 
 export type Address = string;
 

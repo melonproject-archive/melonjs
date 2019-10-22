@@ -29,7 +29,7 @@ export abstract class Contract {
     }
   }
 
-  protected doMakeCall<TReturn = any, TArgs extends any[] = any[]>(
+  private doMakeCall<TReturn = any, TArgs extends any[] = any[]>(
     name: string,
     args?: TArgs,
     block?: number,

@@ -1,14 +1,14 @@
+import BigNumber from 'bignumber.js';
 import LRUCache from 'lru-cache';
 import { Eth } from 'web3-eth';
 import { HttpProvider } from 'web3-providers';
-import { mainnet } from '../deployments';
-import { Environment, CacheHandler } from '../api/Environment';
-import { PriceSource } from '../api/PriceSource';
-import { Hub } from '../api/Hub';
-import { Contract } from '../api/Contract';
 import { TokenDefinition } from '..';
-import { Token } from '../api/Token';
-import BigNumber from 'bignumber.js';
+import { mainnet } from '../deployments';
+import { Environment, CacheHandler } from '../contracts/Environment';
+import { PriceSource } from '../contracts/PriceSource';
+import { Hub } from '../contracts/Hub';
+import { Contract } from '../contracts/Contract';
+import { Token } from '../contracts/Token';
 
 describe('cache handler', () => {
   let client: Eth;
@@ -58,7 +58,7 @@ describe('cache handler', () => {
     expect(spy).toHaveBeenCalledTimes(2);
   });
 
-  it("cache should be missed if the block numbers don't match", async () => {
+  it('cache should be missed if the block numbers do not match', async () => {
     const environment = new Environment(client, mainnet, {
       cache,
     });
@@ -72,7 +72,7 @@ describe('cache handler', () => {
     expect(spy).toHaveBeenCalledTimes(2);
   });
 
-  it("cache should be missed if addresses don't match", async () => {
+  it('cache should be missed if addresses do not match', async () => {
     const environment = new Environment(client, mainnet, {
       cache,
     });
@@ -87,7 +87,7 @@ describe('cache handler', () => {
     expect(spy).toHaveBeenCalledTimes(2);
   });
 
-  it("cache should be missed if arguments don't match", async () => {
+  it('cache should be missed if arguments do not match', async () => {
     const environment = new Environment(client, mainnet, {
       cache,
     });

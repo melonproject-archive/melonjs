@@ -1,0 +1,32 @@
+language: node_js
+dist: bionic
+branches:
+  only:
+    - master
+
+node_js:
+  - '8'
+  - '10'
+
+before_install:
+  - curl -o- -L https://yarnpkg.com/install.sh | bash
+  - export PATH="$HOME/.yarn/bin:$PATH"
+
+install: yarn --frozen-lockfile
+
+script:
+  - node --version
+  - yarn --version
+  - yarn typecheck
+  - yarn build
+  - yarn test
+  - yarn lint
+
+notifications:
+  email:
+    on_failure: change
+
+cache:
+  yarn: true
+  directories:
+    - node_modules
