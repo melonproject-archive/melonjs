@@ -1,6 +1,6 @@
 {
   "name": "@melonproject/melonjs",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Technology Regulated and Operated Investment Funds.",
   "main": "index.js",
   "typings": "index.d.ts",
