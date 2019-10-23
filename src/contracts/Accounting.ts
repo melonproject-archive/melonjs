@@ -62,7 +62,11 @@ export class Accounting extends Contract {
    * @param block The block number to execute the call on.
    */
   public async getFundHoldings(block?: number) {
-    const [quantities, assets] = await this.makeCall<[string[], string[]]>('getFundHoldings', undefined, block);
+    const { '0': quantities, '1': assets } = await this.makeCall<{
+      '0': string[];
+      '1': string[];
+    }>('getFundHoldings', undefined);
+
     const output = assets.reduce((carry, key, index) => {
       const quantity = new BigNumber(`${quantities[index]}`);
       return { ...carry, [key]: quantity };
