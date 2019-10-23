@@ -61,4 +61,14 @@ describe('Accounting', () => {
       gavPerShareNetManagementFee: expect.any(BigNumber),
     });
   });
+
+  it('should return the GAV of a fund', async () => {
+    const result = await accounting.getGAV();
+    expect(result.isGreaterThanOrEqualTo(0)).toBe(true);
+  });
+
+  it('should return the asset holding of a fund', async () => {
+    const result = await accounting.getAssetHolding('0xec67005c4e498ec7f55e092bd1d35cbc47c91892');
+    expect(result.isGreaterThanOrEqualTo(0)).toBe(true);
+  });
 });

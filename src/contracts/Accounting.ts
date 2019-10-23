@@ -56,6 +56,16 @@ export class Accounting extends Contract {
   }
 
   /**
+   * Gets a list of all owned assets.
+   *
+   * @param block The block number to execute the call on.
+   */
+  public async getAssetHolding(asset: Address, block?: number) {
+    const result = await this.makeCall<string>('assetHoldings', [asset], block);
+    return new BigNumber(`${result}`);
+  }
+
+  /**
    * Gets the holdings of all owned assets.
    *
    * @param index The index in the ownedAssets array.
@@ -93,6 +103,16 @@ export class Accounting extends Contract {
   public async getNativeAsset(block?: number) {
     const result = await this.makeCall<Address>('NATIVE_ASSET', undefined, block);
     return result;
+  }
+
+  /**
+   * Gets the GAV of a fund.
+   *
+   * @param block The block number to execute the call on.
+   */
+  public async getGAV(block?: number) {
+    const result = await this.makeCall<string>('calcGav', undefined, block);
+    return new BigNumber(`${result}`);
   }
 
   /**
