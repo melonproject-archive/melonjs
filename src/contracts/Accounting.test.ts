@@ -18,10 +18,26 @@ describe('Accounting', () => {
     accounting = new Accounting(environment, '0x1b66598123fefb8759340d4ea6e4b070c4fc4315');
   });
 
+  it('should return an array of fund asset holding', async () => {
+    const result = await accounting.getFundHoldings();
+    const addresses = Object.keys(result);
+    const quantities = Object.values(result);
+
+    expect(addresses.length).toBeGreaterThan(0);
+
+    addresses.forEach(address => {
+      expect(address.startsWith('0x')).toBe(true);
+    });
+
+    quantities.forEach(quantity => {
+      expect(quantity).toBeInstanceOf(BigNumber);
+      expect(quantity.isGreaterThanOrEqualTo(0));
+    });
+  });
+
   it('should return an array of fund assets', async () => {
-    const result = await accounting.ownedAssets();
-    console.log(result);
-    // expect(result.length).toBeGreaterThanOrEqual(0);
+    const result = await accounting.getOwnedAssets();
+    expect(result.length).toBeGreaterThan(1);
   });
 
   it('should return the default share price', async () => {
