@@ -3,6 +3,7 @@
   "version": "0.0.15",
   "description": "Technology Regulated and Operated Investment Funds.",
   "main": "index.js",
+  "module": "bundle.esm.js",
   "typings": "index.d.ts",
   "license": "MIT",
   "publishConfig": {
@@ -11,7 +12,7 @@
   "scripts": {
     "clean": "rimraf dist docs coverage",
     "prebuild": "rimraf build",
-    "build": "tsc",
+    "build": "tsc && rollup --config",
     "postbuild": "cp package.json LICENSE README.md dist",
     "dev": "jest --watch",
     "prewatch": "cp package.json dist",
@@ -55,6 +56,9 @@
     "lru-cache": "^5.1.1",
     "prettier": "^1.14.3",
     "rimraf": "^2.6.2",
+    "rollup": "^1.25.2",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-sourcemaps": "^0.4.2",
     "ts-jest": "^24.1.0",
     "ts-node": "^8.4.1",
     "tslint": "^5.11.0",
