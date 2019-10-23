@@ -74,33 +74,30 @@ export class Accounting extends Contract {
   /**
    * Gets the default share price for a fund.
    *
-   * @param {number} block The block number to execute the call on.
-   * @returns {Promise<BigNumber>} A promise resolving to the default share price
+   * @param block The block number to execute the call on.
    */
-  public async defaultSharePrice(block?: number) {
-    const result = await this.makeCall('DEFAULT_SHARE_PRICE', undefined, block);
+  public async getDefaultSharePrice(block?: number) {
+    const result = await this.makeCall<string>('DEFAULT_SHARE_PRICE', undefined, block);
     return new BigNumber(`${result}`);
   }
 
   /**
-   * Gets the address of the native asset
+   * Gets the address of the native asset.
    *
-   * @param {number} block The block number to execute the call on.
-   * @returns {Promise<Address>} A promise resolving to the address of the native asset
+   * @param block The block number to execute the call on.
    */
-  public async nativeAsset(block?: number) {
+  public async getNativeAsset(block?: number) {
     const result = await this.makeCall<Address>('NATIVE_ASSET', undefined, block);
     return result;
   }
 
   /**
-   * Performs accounting calculations (GAV, NAV, share price, etc)
+   * Performs accounting calculations (GAV, NAV, share price, etc).
    *
-   * @param {number} block The block number to execute the call on.
-   * @returns {Promise<FundCalculations>} A promise resolving to a [[FundCalculations]] object
+   * @param block The block number to execute the call on.
    */
-  public async performCalculations(block?: number) {
-    const result = await this.makeCall('performCalculations', undefined, block);
+  public async getCalculationResults(block?: number) {
+    const result = await this.makeCall<FundCalculations>('performCalculations', undefined, block);
 
     return {
       sharePrice: new BigNumber(fromWei(`${result.sharePrice}`)),

@@ -41,17 +41,17 @@ describe('Accounting', () => {
   });
 
   it('should return the default share price', async () => {
-    const result = await accounting.defaultSharePrice();
+    const result = await accounting.getDefaultSharePrice();
     expect(result.isEqualTo(new BigNumber('1000000000000000000'))).toBe(true);
   });
 
   it('should return WETH address as native asset', async () => {
-    const result = await accounting.nativeAsset();
+    const result = await accounting.getNativeAsset();
     expect(sameAddress(result, Token.findDefinition(environment, 'WETH').address)).toBe(true);
   });
 
   it('should return the calculations for a fund', async () => {
-    const result = await accounting.performCalculations();
+    const result = await accounting.getCalculationResults();
     expect(result).toMatchObject<FundCalculations>({
       sharePrice: expect.any(BigNumber),
       gav: expect.any(BigNumber),
