@@ -14,12 +14,12 @@ export class Version extends Contract {
     return new this(environment, address);
   }
 
-  constructor(environment: Environment, address?: Address) {
+  constructor(environment: Environment, address: Address) {
     super(environment, new environment.client.Contract(VersionAbi, address));
   }
 
   public async getLastFundId(block?: number) {
-    const result = await this.makeCall('getLastFundId', undefined, block);
+    const result = await this.makeCall<string>('getLastFundId', undefined, block);
     return new BigNumber(`${result}`);
   }
 }

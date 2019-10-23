@@ -28,8 +28,8 @@ export abstract class AbstractToken extends Contract {
     return token;
   }
 
-  public async balanceOf(who: Address, block?: number) {
-    const result = await this.makeCall('balanceOf', [who], block);
+  public async getBalanceOf(who: Address, block?: number) {
+    const result = await this.makeCall<string>('balanceOf', [who], block);
     return new BigNumber(fromWei(`${result}`));
   }
 }

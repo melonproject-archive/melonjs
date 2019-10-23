@@ -20,29 +20,29 @@ export interface FundRoutes {
 }
 
 export class Hub extends Contract {
-  constructor(environment: Environment, address?: Address) {
+  constructor(environment: Environment, address: Address) {
     super(environment, new environment.client.Contract(HubAbi, address));
   }
 
-  public async creationTime(block?: number) {
-    const result = await this.makeCall('creationTime', undefined, block);
+  public async getCreationTime(block?: number) {
+    const result = await this.makeCall<string>('creationTime', undefined, block);
     return new Date(parseInt(`${result}`, 10) * 1000);
   }
 
-  public async creator(block?: number) {
+  public async getCreator(block?: number) {
     return this.makeCall<string>('creator', undefined, block);
   }
 
-  public async manager(block?: number) {
+  public async getManager(block?: number) {
     return this.makeCall<string>('manager', undefined, block);
   }
 
-  public async name(block?: number) {
+  public async getName(block?: number) {
     const result = await this.makeCall<string>('name', undefined, block);
     return result && toUtf8(result);
   }
 
-  public async routes(block?: number) {
+  public async getRoutes(block?: number) {
     const result = await this.makeCall<FundRoutes>('routes', undefined, block);
     const routes: FundRoutes = {
       accounting: result.accounting,

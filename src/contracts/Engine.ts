@@ -14,18 +14,17 @@ export class Engine extends Contract {
     return new this(environment, address);
   }
 
-  constructor(environment: Environment, address?: Address) {
+  constructor(environment: Environment, address: Address) {
     super(environment, new environment.client.Contract(EngineAbi, address));
   }
 
   /**
    * Gets the current engine price.
    *
-   * @param {number} block The block number to execute the call on.
-   * @returns {Promise<BigNumber>} ETH per MLN including premium.
+   * @param block The block number to execute the call on.
    */
-  public async enginePrice(block?: number) {
-    const result = await this.makeCall('enginePrice', undefined, block);
+  public async getEnginePrice(block?: number) {
+    const result = await this.makeCall<string>('enginePrice', undefined, block);
     return new BigNumber(`${result}`);
   }
 }

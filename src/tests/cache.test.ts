@@ -82,8 +82,8 @@ describe('cache handler', () => {
     // @ts-ignore
     const spy = jest.spyOn(Contract.prototype, 'doMakeCall').mockReturnValue(new Date(Date.now()));
 
-    await hubOne.creationTime(1);
-    await hubTwo.creationTime(2);
+    await hubOne.getCreationTime(1);
+    await hubTwo.getCreationTime(2);
     expect(spy).toHaveBeenCalledTimes(2);
   });
 
@@ -96,8 +96,8 @@ describe('cache handler', () => {
     // @ts-ignore
     const spy = jest.spyOn(instance, 'doMakeCall').mockReturnValue(new BigNumber(100));
 
-    await instance.balanceOf('0x0', 1);
-    await instance.balanceOf('0x1', 1);
+    await instance.getBalanceOf('0x0', 1);
+    await instance.getBalanceOf('0x1', 1);
     expect(spy).toHaveBeenCalledTimes(2);
   });
 
@@ -110,8 +110,8 @@ describe('cache handler', () => {
     // @ts-ignore
     const spy = jest.spyOn(instance, 'doMakeCall').mockReturnValue(new BigNumber(100));
 
-    await instance.balanceOf('0x0', 1);
-    await instance.balanceOf('0x0', 1);
+    await instance.getBalanceOf('0x0', 1);
+    await instance.getBalanceOf('0x0', 1);
     expect(spy).toHaveBeenCalledTimes(1);
   });
 });
