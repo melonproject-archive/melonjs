@@ -65,7 +65,7 @@ export class Accounting extends Contract {
     const { '0': quantities, '1': assets } = await this.makeCall<{
       '0': string[];
       '1': string[];
-    }>('getFundHoldings', undefined);
+    }>('getFundHoldings', undefined, block);
 
     const output = assets.reduce((carry, key, index) => {
       const quantity = new BigNumber(`${quantities[index]}`);
