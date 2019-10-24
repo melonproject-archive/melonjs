@@ -88,7 +88,7 @@ export class Hub extends Contract {
   }
 
   /**
-   * Is the fund shutdown, i.e. inactive?
+   * Checks if a fund is shut down
    *
    * @param block The block number to execute the call on.
    */
