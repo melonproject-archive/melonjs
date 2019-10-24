@@ -117,7 +117,6 @@ export class Accounting extends Contract {
   }
 
   /**
-<<<<<<< HEAD
    * Gets the native token (address, decimals, symbol).
    *
    * @param block The block number to execute the call on.
@@ -130,9 +129,6 @@ export class Accounting extends Contract {
 
   /**
    * Gets the GAV.
-=======
-   * Gets the GAV of a fund.
->>>>>>> 5a36e0cd47d1da91747aa51d00d19a8bcd0d394c
    *
    * @param block The block number to execute the call on.
    */
