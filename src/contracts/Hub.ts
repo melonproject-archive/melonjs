@@ -24,24 +24,49 @@ export class Hub extends Contract {
     super(environment, new environment.client.Contract(HubAbi, address));
   }
 
+  /**
+   * Gets the creation time .
+   *
+   * @param block The block number to execute the call on.
+   */
   public async getCreationTime(block?: number) {
     const result = await this.makeCall<string>('creationTime', undefined, block);
     return new Date(parseInt(`${result}`, 10) * 1000);
   }
 
+  /**
+   * Gets the creator (i.e. the version contract address).
+   *
+   * @param block The block number to execute the call on.
+   */
   public async getCreator(block?: number) {
-    return this.makeCall<string>('creator', undefined, block);
+    return this.makeCall<Address>('creator', undefined, block);
   }
 
+  /**
+   * Gets the fund manager.
+   *
+   * @param block The block number to execute the call on.
+   */
   public async getManager(block?: number) {
-    return this.makeCall<string>('manager', undefined, block);
+    return this.makeCall<Address>('manager', undefined, block);
   }
 
+  /**
+   * Gets the fund name.
+   *
+   * @param block The block number to execute the call on.
+   */
   public async getName(block?: number) {
     const result = await this.makeCall<string>('name', undefined, block);
     return result && toUtf8(result);
   }
 
+  /**
+   * Gets the fund routes object as [[FundRoutes]].
+   *
+   * @param block The block number to execute the call on.
+   */
   public async getRoutes(block?: number) {
     const result = await this.makeCall<FundRoutes>('routes', undefined, block);
     const routes: FundRoutes = {
@@ -60,5 +85,25 @@ export class Hub extends Contract {
     };
 
     return routes;
+  }
+
+  /**
+   * Checks if a fund is shut down.
+   *
+   * @param block The block number to execute the call on.
+   */
+  public async isShutDown(block?: number) {
+    const result = await this.makeCall<boolean>('isShutDown', undefined, block);
+    return result;
+  }
+
+  /**
+   * Get the fund version
+   *
+   * @param block The block number to execute the call on.
+   */
+  public async getFundVersion(block?: number) {
+    // const { registry, version } = await this.getRoutes(block);
+    // needs registry contract methods (waiting for Luong)
   }
 }
