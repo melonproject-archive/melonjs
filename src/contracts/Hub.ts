@@ -86,4 +86,24 @@ export class Hub extends Contract {
 
     return routes;
   }
+
+  /**
+   * Is the fund shutdown, i.e. inactive?
+   *
+   * @param block The block number to execute the call on.
+   */
+  public async isShutDown(block?: number) {
+    const result = await this.makeCall<boolean>('isShutDown', undefined, block);
+    return result;
+  }
+
+  /**
+   * Get the fund version
+   *
+   * @param block The block number to execute the call on.
+   */
+  public async getFundVersion(block?: number) {
+    // const { registry, version } = await this.getRoutes(block);
+    // needs registry contract methods (waiting for Luong)
+  }
 }
