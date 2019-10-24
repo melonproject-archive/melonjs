@@ -5,6 +5,7 @@ import { AccountingAbi } from '../abis/Accounting';
 import { Contract } from '../Contract';
 import { Environment } from '../Environment';
 import { Address } from '../Address';
+import { Token } from './Token';
 
 export interface FundCalculations {
   sharePrice: BigNumber;
@@ -56,9 +57,19 @@ export class Accounting extends Contract {
   }
 
   /**
+   * Gets the holding of a specific asset.
+   *
+   * @param asset The address of the asset.
+   * @param block The block number to execute the call on.
+   */
+  public async getAssetHolding(asset: Address, block?: number) {
+    const result = await this.makeCall<string>('assetHoldings', [asset], block);
+    return new BigNumber(`${result}`);
+  }
+
+  /**
    * Gets the holdings of all owned assets.
    *
-   * @param index The index in the ownedAssets array.
    * @param block The block number to execute the call on.
    */
   public async getFundHoldings(block?: number) {
@@ -76,7 +87,7 @@ export class Accounting extends Contract {
   }
 
   /**
-   * Gets the default share price for a fund.
+   * Gets the default share price.
    *
    * @param block The block number to execute the call on.
    */
@@ -86,13 +97,44 @@ export class Accounting extends Contract {
   }
 
   /**
-   * Gets the address of the native asset.
+   * Gets the address of the denomination asset.
+   *
+   * @param block The block number to execute the call on.
+   */
+  public async getDenominationAsset(block?: number) {
+    const result = await this.makeCall<Address>('DENOMINATION_ASSET', undefined, block);
+    return result;
+  }
+
+  /**
+   * Gets the address of the native asset (address only).
    *
    * @param block The block number to execute the call on.
    */
   public async getNativeAsset(block?: number) {
     const result = await this.makeCall<Address>('NATIVE_ASSET', undefined, block);
     return result;
+  }
+
+  /**
+   * Gets the native token (address, decimals, symbol).
+   *
+   * @param block The block number to execute the call on.
+   */
+  public async getNativeToken(block?: number) {
+    const result = await this.makeCall<Address>('NATIVE_ASSET', undefined, block);
+    const token = Token.findDefinition(this.environment, result);
+    return token;
+  }
+
+  /**
+   * Gets the GAV.
+   *
+   * @param block The block number to execute the call on.
+   */
+  public async getGAV(block?: number) {
+    const result = await this.makeCall<string>('calcGav', undefined, block);
+    return new BigNumber(`${result}`);
   }
 
   /**
@@ -111,5 +153,17 @@ export class Accounting extends Contract {
       feesInShares: new BigNumber(fromWei(`${result.feesInShares}`)),
       gavPerShareNetManagementFee: new BigNumber(fromWei(`${result.gavPerShareNetManagementFee}`)),
     } as FundCalculations;
+  }
+
+  /**
+   * Gets the share costs in a certain asset.
+   *
+   * @param numShares The number of shares.
+   * @param asset The requested asset.
+   * @param block The block number to execute the call on.
+   */
+  public async getShareCostInAsset(numShares: BigNumber, asset: Address, block?: number) {
+    const result = await this.makeCall<string>('getShareCostInAsset', [numShares.toString(), asset], block);
+    return new BigNumber(`${result}`);
   }
 }

@@ -4,8 +4,7 @@ import { Environment } from '../Environment';
 import deployment from '../deployments/mainnet';
 import { Accounting, FundCalculations } from './Accounting';
 import BigNumber from 'bignumber.js';
-import { sameAddress } from '../utils/sameAddress';
-import { Token } from '..';
+import { Token } from './Token';
 
 describe('Accounting', () => {
   let environment: Environment;
@@ -45,9 +44,19 @@ describe('Accounting', () => {
     expect(result.isEqualTo(new BigNumber('1000000000000000000'))).toBe(true);
   });
 
-  it('should return WETH address as native asset', async () => {
+  it('should return the native asset', async () => {
     const result = await accounting.getNativeAsset();
-    expect(sameAddress(result, Token.findDefinition(environment, 'WETH').address)).toBe(true);
+    expect(Token.findDefinition(environment, result).address.startsWith('0x')).toBe(true);
+  });
+
+  it('should return the native token', async () => {
+    const result = await accounting.getNativeToken();
+    expect(result).toBe(Token.findDefinition(environment, result.address));
+  });
+
+  it('should return the denomination asset', async () => {
+    const result = await accounting.getNativeAsset();
+    expect(Token.findDefinition(environment, result).address.startsWith('0x')).toBe(true);
   });
 
   it('should return the calculations for a fund', async () => {
@@ -60,5 +69,23 @@ describe('Accounting', () => {
       feesInShares: expect.any(BigNumber),
       gavPerShareNetManagementFee: expect.any(BigNumber),
     });
+  });
+
+  it('should return the GAV of a fund', async () => {
+    const result = await accounting.getGAV();
+    expect(result.isGreaterThanOrEqualTo(0)).toBe(true);
+  });
+
+  it('should return the asset holding of a fund', async () => {
+    const result = await accounting.getAssetHolding('0xec67005c4e498ec7f55e092bd1d35cbc47c91892');
+    expect(result.isGreaterThanOrEqualTo(0)).toBe(true);
+  });
+
+  it('should return the share cost in a certain asset', async () => {
+    const result = await accounting.getShareCostInAsset(
+      new BigNumber('100000000'),
+      '0xec67005c4e498ec7f55e092bd1d35cbc47c91892',
+    );
+    expect(result.isGreaterThanOrEqualTo(0)).toBe(true);
   });
 });
