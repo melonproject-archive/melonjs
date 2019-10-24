@@ -57,8 +57,9 @@ export class Accounting extends Contract {
   }
 
   /**
-   * Gets a list of all owned assets.
+   * Gets the holding of a specific asset.
    *
+   * @param asset The address of the asset.
    * @param block The block number to execute the call on.
    */
   public async getAssetHolding(asset: Address, block?: number) {
@@ -69,7 +70,6 @@ export class Accounting extends Contract {
   /**
    * Gets the holdings of all owned assets.
    *
-   * @param index The index in the ownedAssets array.
    * @param block The block number to execute the call on.
    */
   public async getFundHoldings(block?: number) {
@@ -97,7 +97,7 @@ export class Accounting extends Contract {
   }
 
   /**
-   * Gets the adddress of the denomination asset.
+   * Gets the address of the denomination asset.
    *
    * @param block The block number to execute the call on.
    */
@@ -157,7 +157,6 @@ export class Accounting extends Contract {
 
   /**
    * Gets the share costs in a certain asset.
-   *
    *
    * @param numShares The number of shares.
    * @param asset The requested asset.
