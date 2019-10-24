@@ -55,7 +55,7 @@ export interface TokenDefinition {
   address: Address;
   decimals: number;
   symbol: string;
-  name: string;
+  name?: string;
   reserveMin?: number;
 }
 
@@ -84,6 +84,11 @@ export interface KyberEnvironment {
 export interface EthfinexEnvironment {
   exchange: Address;
   wrapperRegistryEFX: string;
-  wrapperPairs: string[];
+  wrapperPairs: EthfinexTokenWrapperPair[];
   erc20proxy: string;
+}
+
+export interface EthfinexTokenWrapperPair {
+  token: string;
+  wrapper: string;
 }

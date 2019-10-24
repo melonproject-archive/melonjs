@@ -1,5 +1,7 @@
 import { Contract as EthContract } from 'web3-eth-contract';
 import { Environment } from './Environment';
+import { Transaction } from './Transaction';
+import { Address } from './Address';
 
 export abstract class Contract {
   constructor(public readonly environment: Environment, public readonly contract: EthContract) {
@@ -7,7 +9,7 @@ export abstract class Contract {
   }
 
   protected async makeCall<TReturn = any, TArgs extends any[] = any[]>(
-    name: string,
+    method: string,
     args?: TArgs,
     block?: number,
   ): Promise<TReturn> {
@@ -15,12 +17,13 @@ export abstract class Contract {
     const cache = this.environment.cache;
 
     try {
-      const key = cache && `${address}:${block}:${name}${args ? `:${JSON.stringify(args)}` : ''}`;
+      const key = cache && `${address}:${block}:${method}${args ? `:${JSON.stringify(args)}` : ''}`;
       if (cache && cache.has(key)) {
         return cache.get(key)!;
       }
 
-      const promise = this.doMakeCall(name, args, block);
+      const fn = this.contract.methods[method];
+      const promise = fn(...(args || [])).call(undefined, block);
       cache && cache.set(key, promise);
 
       return await promise;
@@ -29,24 +32,13 @@ export abstract class Contract {
     }
   }
 
-  private doMakeCall<TReturn = any, TArgs extends any[] = any[]>(
-    name: string,
+  protected createTransaction<TArgs extends any[] = any[], TValue extends string | number = string>(
+    method: string,
+    from: Address,
     args?: TArgs,
-    block?: number,
-  ): Promise<TReturn> {
-    const fn = this.contract.methods[name];
-    return fn(...(args || [])).call(undefined, block);
+    value?: TValue,
+  ) {
+    const fn = this.contract.methods[method];
+    return new Transaction(this.environment, from, fn(...(args || []), value));
   }
-
-  // protected sendTransaction() {
-  //   const env = config.environment;
-  //   const instance =
-  //     typeof config.contract === 'string' ? getContract(env, config.contract, config.address) : config.contract;
-  //   const transaction = instance.methods[config.method](...(args || [])) as ContractSendMethod;
-  //   const opts = options || (await transactionOptions(env, transaction, config.account));
-  //   const receipt = await new Promise<TransactionReceipt>((resolve, reject) => {
-  //     const send = transaction.send(opts);
-  //     send.once('receipt', receipt => resolve(receipt)).catch(error => reject(error));
-  //   });
-  // }
 }
