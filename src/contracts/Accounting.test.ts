@@ -55,7 +55,7 @@ describe('Accounting', () => {
   });
 
   it('should return the denomination asset', async () => {
-    const result = await accounting.getNativeAsset();
+    const result = await accounting.getDenominationAsset();
     expect(Token.findDefinition(environment, result).address.startsWith('0x')).toBe(true);
   });
 
