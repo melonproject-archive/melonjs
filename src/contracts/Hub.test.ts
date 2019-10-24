@@ -55,4 +55,9 @@ describe('Hub', () => {
     const result = await hub.getCreator();
     expect(result).toBe(routes.version);
   });
+
+  it('should return whether or not a fund is shutdown', async () => {
+    const result = await hub.isShutDown();
+    expect(result === true || result === false).toBe(true);
+  });
 });
