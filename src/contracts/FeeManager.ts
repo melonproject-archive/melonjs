@@ -60,10 +60,12 @@ export class FeeManager extends Contract {
   public async getPerformanceFeeInformation(block?: number) {
     const perfFeeAddress = await this.getPerformanceFeeAddress(block);
     const perfFeeContract = new PerformanceFee(this.environment, perfFeeAddress);
-    const [rate = undefined, period = undefined] = await Promise.all([
+
+    const [rate, period] = await Promise.all([
       perfFeeContract.getPerformanceFeeRate(this.contract.address),
       perfFeeContract.getPerformanceFeePeriod(this.contract.address),
     ]);
+
     return {
       rate: new BigNumber(`${rate}`),
       period,

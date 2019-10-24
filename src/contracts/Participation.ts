@@ -32,16 +32,13 @@ export class Participation extends Contract {
    * @param block The block number to execute the call on.
    */
   public async getRequest(investor: Address, block?: number) {
-    const { investmentAsset, investmentAmount, requestedShares, timestamp } = await this.makeCall<Request>(
-      'requests',
-      [investor],
-      block,
-    );
+    const result = await this.makeCall<Request>('requests', [investor], block);
+
     return {
-      investmentAsset,
-      investmentAmount: new BigNumber(`${investmentAmount}`),
-      requestedShares: new BigNumber(`${requestedShares}`),
-      timestamp: new Date(parseInt(`${timestamp}`, 10) * 1000),
+      investmentAsset: result.investmentAsset,
+      investmentAmount: new BigNumber(`${result.investmentAmount}`),
+      requestedShares: new BigNumber(`${result.requestedShares}`),
+      timestamp: new Date(parseInt(`${result.timestamp}`, 10) * 1000),
     } as Request;
   }
 
