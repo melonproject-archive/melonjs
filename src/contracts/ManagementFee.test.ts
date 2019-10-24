@@ -16,7 +16,7 @@ describe('FeeManager', () => {
   });
 
   it('should return management fee rate', async () => {
-    const result = await managementFee.getManagementFeeRate('0x67d8f29C6956e591Bc43C0DCc82b87D6A6Eb76e7');
+    const result = await managementFee.getManagementFeeRate('0x0a98adcc2e15ae6b77c1bfa30a1048597142d66c');
     expect(result.isGreaterThanOrEqualTo(0)).toBe(true);
   });
 });

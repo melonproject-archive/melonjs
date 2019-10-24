@@ -12,6 +12,7 @@ export type ManagementFeeInformation = {
 
 export type PerformanceFeeInformation = {
   rate: BigNumber;
+  period: number;
 };
 
 export class FeeManager extends Contract {
@@ -34,12 +35,9 @@ export class FeeManager extends Contract {
    * @param block The block number to execute the call on.
    */
   public async getManagementFeeInformation(block?: number) {
-    const mgmtFeeAddress = await this.makeCall<Address>('fees', [0], block);
-    const mgmtFeeContract = new ManagementFee(
-      this.environment,
-      this.environment.deployment.melonContracts.fees.managementFee,
-    );
-    const rate = mgmtFeeContract.getManagementFeeRate(mgmtFeeAddress);
+    const mgmtFeeAddress = await this.getManagementFeeAddress(block);
+    const mgmtFeeContract = new ManagementFee(this.environment, mgmtFeeAddress);
+    const rate = await mgmtFeeContract.getManagementFeeRate(this.contract.address);
     return {
       rate: new BigNumber(`${rate}`),
     } as ManagementFeeInformation;
@@ -60,14 +58,15 @@ export class FeeManager extends Contract {
    * @param block The block number to execute the call on.
    */
   public async getPerformanceFeeInformation(block?: number) {
-    const perfFeeAddress = await this.makeCall<Address>('fees', [1], block);
-    const perfFeeContract = new PerformanceFee(
-      this.environment,
-      this.environment.deployment.melonContracts.fees.performanceFee,
-    );
-    const rate = perfFeeContract.getPerformanceFeeRate(perfFeeAddress);
+    const perfFeeAddress = await this.getPerformanceFeeAddress(block);
+    const perfFeeContract = new PerformanceFee(this.environment, perfFeeAddress);
+    const [rate = undefined, period = undefined] = await Promise.all([
+      perfFeeContract.getPerformanceFeeRate(this.contract.address),
+      perfFeeContract.getPerformanceFeePeriod(this.contract.address),
+    ]);
     return {
       rate: new BigNumber(`${rate}`),
+      period,
     } as PerformanceFeeInformation;
   }
 }
