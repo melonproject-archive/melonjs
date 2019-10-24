@@ -22,14 +22,22 @@ export abstract class Contract {
         return cache.get(key)!;
       }
 
-      const fn = this.contract.methods[method];
-      const promise = fn(...(args || [])).call(undefined, block);
+      const promise = this.doMakeCall(method, args, block);
       cache && cache.set(key, promise);
 
       return await promise;
     } catch (e) {
-      throw new Error(`Failed to call ${name} at ${address}: ${e}`);
+      throw new Error(`Failed to call ${method} at ${address}: ${e}`);
     }
+  }
+
+  private doMakeCall<TReturn = any, TArgs extends any[] = any[]>(
+    method: string,
+    args?: TArgs,
+    block?: number,
+  ): Promise<TReturn> {
+    const fn = this.contract.methods[method];
+    return fn(...(args || [])).call(undefined, block);
   }
 
   protected createTransaction<TArgs extends any[] = any[], TValue extends string | number = string>(
