@@ -4,6 +4,7 @@ export { Deployment };
 export { Contract } from './Contract';
 export { Environment } from './Environment';
 export { Address } from './Address';
+export { Transaction, TransactionProcessor } from './Transaction';
 
 export { Version } from './contracts/Version';
 export { PriceSource } from './contracts/PriceSource';

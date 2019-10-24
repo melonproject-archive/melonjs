@@ -40,7 +40,8 @@ describe('CacheHandler', () => {
     });
 
     const source = new PriceSource(environment, '0x0');
-    const spy = jest.spyOn(source, 'doMakeCall' as any).mockReturnValue(new Date(Date.now()));
+    // @ts-ignore
+    const spy = jest.spyOn(source, 'doMakeCall').mockReturnValue(new Date(Date.now()));
 
     await source.getLastUpdate(1);
     await source.getLastUpdate(1);
