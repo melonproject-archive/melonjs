@@ -25,4 +25,26 @@ describe('Trading', () => {
       expect(item.adapter.startsWith('0x')).toBe(true);
     });
   });
+
+  it('should return on open make order object', async () => {
+    const result = await trading.getOpenMakeOrder(
+      '0x39755357759ce0d7f32dc8dc45414cca409ae24e',
+      '0x4f3afec4e5a3f2a6a1a411def7d7dfe50ee057bf',
+    );
+    console.log(result);
+    expect(result).toMatchObject({
+      id: expect.any(Number),
+      expiresAt: expect.any(Date),
+      orderId: expect.any(Number),
+      address: expect.any(String),
+    });
+  });
+
+  it('should check if an order is expired', async () => {
+    const result = await trading.isOrderExpired(
+      '0x39755357759ce0d7f32dc8dc45414cca409ae24e',
+      '0x4f3afec4e5a3f2a6a1a411def7d7dfe50ee057bf',
+    );
+    expect(result === true || result == false).toBe(true);
+  });
 });

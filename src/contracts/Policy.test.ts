@@ -17,7 +17,6 @@ describe('AddressList', () => {
 
   it('should return the identifier of a policy', async () => {
     const result = await policy.getIdentifier();
-    console.log(result);
     expect(result.length).toBeGreaterThan(0);
   });
 });
