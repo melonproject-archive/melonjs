@@ -2,24 +2,21 @@ import { Eth } from 'web3-eth';
 import { HttpProvider } from 'web3-providers';
 import { Environment } from '../Environment';
 import deployment from '../deployments/mainnet';
-import { PolicyManager } from './PolicyManager';
+import { UserWhitelist } from './UserWhitelist';
 
-describe('PolicyManager', () => {
+describe('UserWhitelist', () => {
   let environment: Environment;
-  let policyManager: PolicyManager;
+  let userWhitelist: UserWhitelist;
 
   beforeAll(() => {
     // TODO: This should be replaced with a local ganache test environment using proper test fixtures.
     const client = new Eth(new HttpProvider('https://mainnet.melonport.com'));
     environment = new Environment(client, deployment);
-    policyManager = new PolicyManager(environment, '0xca10ef90f47bcc3ec90edb8bd5c3443cc63d4024');
+    userWhitelist = new UserWhitelist(environment, '0xe69d387c3fe14cdc0bea1b589515cd33837e0705');
   });
 
-  it('should return the policies by signature', async () => {
-    const result = await policyManager.getPoliciesBySignature('0x61346679');
-    expect(result).toMatchObject({
-      pre: expect.any(Array),
-      post: expect.any(Array),
-    });
+  it('should check if an address is whitelisted', async () => {
+    const result = await userWhitelist.isWhitelisted('0x036ca8b5bb89533fd06e0a35b9da10213da98d88');
+    expect(result === true || result === false).toBe(true);
   });
 });
