@@ -10,13 +10,13 @@ export class ManagementFee extends Contract {
   }
 
   /**
-   * Gets the address of the management fee contract.
+   * Gets the management fee rate.
    *
-   * @param address The address of the management fee contract
+   * @param feeManagerAddress The address of the fee manager contract
    * @param block The block number to execute the call on.
    */
-  public async getManagementFeeRate(address: Address, block?: number) {
-    const result = await this.makeCall<Address>('managementFeeRate', [address], block);
+  public async getManagementFeeRate(feeManagerAddress: Address, block?: number) {
+    const result = await this.makeCall<Address>('managementFeeRate', [feeManagerAddress], block);
     return new BigNumber(`${result}`);
   }
 }

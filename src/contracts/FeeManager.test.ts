@@ -29,7 +29,7 @@ describe('FeeManager', () => {
   });
 
   it('should return performance fee contract address', async () => {
-    const result = await feeManager.getManagementFeeAddress();
+    const result = await feeManager.getPerformanceFeeAddress();
     expect(result.startsWith('0x')).toBe(true);
   });
 
@@ -37,6 +37,7 @@ describe('FeeManager', () => {
     const result = await feeManager.getPerformanceFeeInformation();
     expect(result).toMatchObject<PerformanceFeeInformation>({
       rate: expect.any(BigNumber),
+      period: expect.any(Number),
     });
   });
 });

@@ -10,13 +10,24 @@ export class PerformanceFee extends Contract {
   }
 
   /**
-   * Gets the address of the management fee contract.
+   * Gets the performance fee rate.
    *
-   * @param address The address of the performance fee contract
+   * @param address The address of the fee manager contract
    * @param block The block number to execute the call on.
    */
   public async getPerformanceFeeRate(address: Address, block?: number) {
-    const result = await this.makeCall<Address>('performanceFeeRate', [address], block);
+    const result = await this.makeCall<string>('performanceFeeRate', [address], block);
     return new BigNumber(`${result}`);
+  }
+
+  /**
+   * Gets the performance fee period.
+   *
+   * @param address The address of the fee manager contract
+   * @param block The block number to execute the call on.
+   */
+  public async getPerformanceFeePeriod(address: Address, block?: number) {
+    const result = await this.makeCall<string>('performanceFeePeriod', [address], block);
+    return parseInt(result, 10);
   }
 }

@@ -16,7 +16,12 @@ describe('FeeManager', () => {
   });
 
   it('should return performance fee rate', async () => {
-    const result = await performanceFee.getPerformanceFeeRate('0x67d8f29C6956e591Bc43C0DCc82b87D6A6Eb76e7');
+    const result = await performanceFee.getPerformanceFeeRate('0x0a98adcc2e15ae6b77c1bfa30a1048597142d66c');
     expect(result.isGreaterThanOrEqualTo(0)).toBe(true);
+  });
+
+  it('should return performance fee period', async () => {
+    const result = await performanceFee.getPerformanceFeePeriod('0x0a98adcc2e15ae6b77c1bfa30a1048597142d66c');
+    expect(result).toBeGreaterThanOrEqual(0);
   });
 });
