@@ -19,4 +19,9 @@ describe('AddressList', () => {
     const result = await maxPositions.getMaxPositions();
     expect(result.isGreaterThanOrEqualTo(0)).toBe(true);
   });
+
+  it('should return the correct identifier', async () => {
+    const result = await maxPositions.getIdentifier();
+    expect(result).toBe('Max positions');
+  });
 });

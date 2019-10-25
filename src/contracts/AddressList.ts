@@ -19,7 +19,7 @@ export class AddressList extends Contract {
   }
 
   /**
-   * Checks if an address is part of an address list.
+   * Gets all members of an address list.
    *
    * @param address The address to check
    * @param block The block number to execute the call on.

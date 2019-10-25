@@ -12,7 +12,7 @@ export class MaxConcentration extends Contract {
   }
 
   /**
-   * Gets the maximum concentration of an asset in the portfolio
+   * Gets the maximum concentration of an asset in the portfolio.
    *
    * @param block The block number to execute the call on.
    */
