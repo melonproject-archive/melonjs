@@ -4,7 +4,7 @@ import { Environment } from '../Environment';
 import deployment from '../deployments/mainnet';
 import { AssetWhitelist } from './AssetWhitelist';
 
-describe('AddressList', () => {
+describe('AssetWhitelist', () => {
   let environment: Environment;
   let assetWhitelist: AssetWhitelist;
 

@@ -2,28 +2,26 @@ import { Eth } from 'web3-eth';
 import { HttpProvider } from 'web3-providers';
 import { Environment } from '../Environment';
 import deployment from '../deployments/mainnet';
-import { AssetBlacklist } from './AssetBlacklist';
+import { UserWhitelist } from './UserWhitelist';
 
-describe('AssetBlacklist', () => {
+describe('UserWhitelist', () => {
   let environment: Environment;
-  let assetBlacklist: AssetBlacklist;
+  let userWhiteList: UserWhitelist;
 
   beforeAll(() => {
     // TODO: This should be replaced with a local ganache test environment using proper test fixtures.
     const client = new Eth(new HttpProvider('https://mainnet.melonport.com'));
     environment = new Environment(client, deployment);
-    assetBlacklist = new AssetBlacklist(environment, '0x9b113694b924108e21ffac925d406d6b496d074a');
+    userWhiteList = new UserWhitelist(environment, '0xe69d387c3fe14cdc0bea1b589515cd33837e0705');
   });
 
-  it('should return the members of the blacklist', async () => {
-    const result = await assetBlacklist.getMembers();
-    result.map(address => {
-      expect(address.startsWith('0x')).toBe(true);
-    });
+  it('should check whether a user is whitelisted', async () => {
+    const result = await userWhiteList.isWhitelisted('0x036ca8b5bb89533fd06e0a35b9da10213da98d88');
+    expect(result === true || result === false).toBe(true);
   });
 
   it('should return the correct identifier', async () => {
-    const result = await assetBlacklist.getIdentifier();
-    expect(result).toBe('Asset blacklist');
+    const result = await userWhiteList.getIdentifier();
+    expect(result).toBe('UserWhitelist');
   });
 });
