@@ -10,6 +10,7 @@
     "access": "public"
   },
   "scripts": {
+    "postinstall": "yarn codegen",
     "clean": "rimraf dist docs coverage",
     "prebuild": "rimraf build",
     "build": "tsc && rollup --config",
@@ -17,7 +18,7 @@
     "dev": "jest --watch",
     "prewatch": "cp package.json dist",
     "watch": "tsc --watch",
-    "exports": "node scripts/exports",
+    "codegen": "node scripts/codegen",
     "predocs": "rimraf docs",
     "docs": "typedoc",
     "postdocs": "cp jekyll.config.yml docs/_config.yml",
@@ -49,6 +50,7 @@
     "@types/ramda": "^0.26.33",
     "cp": "^0.2.0",
     "gh-pages": "^2.1.1",
+    "glob": "^7.1.5",
     "husky": "^3.0.8",
     "jest": "^24.9.0",
     "lint-staged": "^9.4.1",
@@ -58,6 +60,7 @@
     "rollup": "^1.25.2",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-sourcemaps": "^0.4.2",
+    "tar": "^5.0.5",
     "ts-jest": "^24.1.0",
     "ts-node": "^8.4.1",
     "tslint": "^5.11.0",
