@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>UserWhitelist | @melonproject/melonjs</title>
+	<title>AssetBlacklist | @melonproject/melonjs</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -52,13 +52,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_contracts_userwhitelist_.html">&quot;contracts/UserWhitelist&quot;</a>
+					<a href="../modules/_contracts_assetblacklist_.html">&quot;contracts/AssetBlacklist&quot;</a>
 				</li>
 				<li>
-					<a href="_contracts_userwhitelist_.userwhitelist.html">UserWhitelist</a>
+					<a href="_contracts_assetblacklist_.assetblacklist.html">AssetBlacklist</a>
 				</li>
 			</ul>
-			<h1>Class UserWhitelist</h1>
+			<h1>Class AssetBlacklist</h1>
 		</div>
 	</div>
 </header>
@@ -73,9 +73,12 @@
 					</li>
 					<li>
 						<a href="_contracts_policy_.policy.html" class="tsd-signature-type">Policy</a>
+					</li>
+					<li>
+						<a href="_contracts_addresslist_.addresslist.html" class="tsd-signature-type">AddressList</a>
 						<ul class="tsd-hierarchy">
 							<li>
-								<span class="target">UserWhitelist</span>
+								<span class="target">AssetBlacklist</span>
 							</li>
 						</ul>
 					</li>
@@ -88,23 +91,24 @@
 						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite"><a href="_contracts_userwhitelist_.userwhitelist.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite"><a href="_contracts_assetblacklist_.assetblacklist.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section tsd-is-inherited">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited"><a href="_contracts_userwhitelist_.userwhitelist.html#contract" class="tsd-kind-icon">contract</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited"><a href="_contracts_userwhitelist_.userwhitelist.html#environment" class="tsd-kind-icon">environment</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited"><a href="_contracts_assetblacklist_.assetblacklist.html#contract" class="tsd-kind-icon">contract</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited"><a href="_contracts_assetblacklist_.assetblacklist.html#environment" class="tsd-kind-icon">environment</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section ">
+						<section class="tsd-index-section tsd-is-inherited">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite tsd-is-inherited tsd-is-protected"><a href="_contracts_userwhitelist_.userwhitelist.html#createtransaction" class="tsd-kind-icon">create<wbr>Transaction</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_contracts_userwhitelist_.userwhitelist.html#getidentifier" class="tsd-kind-icon">get<wbr>Identifier</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_userwhitelist_.userwhitelist.html#iswhitelisted" class="tsd-kind-icon">is<wbr>Whitelisted</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite tsd-is-inherited tsd-is-protected"><a href="_contracts_userwhitelist_.userwhitelist.html#makecall" class="tsd-kind-icon">make<wbr>Call</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite tsd-is-inherited tsd-is-protected"><a href="_contracts_assetblacklist_.assetblacklist.html#createtransaction" class="tsd-kind-icon">create<wbr>Transaction</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_contracts_assetblacklist_.assetblacklist.html#getidentifier" class="tsd-kind-icon">get<wbr>Identifier</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_contracts_assetblacklist_.assetblacklist.html#getmembers" class="tsd-kind-icon">get<wbr>Members</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_contracts_assetblacklist_.assetblacklist.html#ismember" class="tsd-kind-icon">is<wbr>Member</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite tsd-is-inherited tsd-is-protected"><a href="_contracts_assetblacklist_.assetblacklist.html#makecall" class="tsd-kind-icon">make<wbr>Call</a></li>
 							</ul>
 						</section>
 					</div>
@@ -116,14 +120,14 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>User<wbr>Whitelist<span class="tsd-signature-symbol">(</span>environment<span class="tsd-signature-symbol">: </span><a href="_environment_.environment.html" class="tsd-signature-type">Environment</a>, address<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_contracts_userwhitelist_.userwhitelist.html" class="tsd-signature-type">UserWhitelist</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Asset<wbr>Blacklist<span class="tsd-signature-symbol">(</span>environment<span class="tsd-signature-symbol">: </span><a href="_environment_.environment.html" class="tsd-signature-type">Environment</a>, address<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_contracts_assetblacklist_.assetblacklist.html" class="tsd-signature-type">AssetBlacklist</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_contract_.contract.html">Contract</a>.<a href="_contract_.contract.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/UserWhitelist.ts#L8">contracts/UserWhitelist.ts:8</a></li>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/AssetBlacklist.ts#L9">contracts/AssetBlacklist.ts:9</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -135,7 +139,7 @@
 									<h5>address: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_contracts_userwhitelist_.userwhitelist.html" class="tsd-signature-type">UserWhitelist</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_contracts_assetblacklist_.assetblacklist.html" class="tsd-signature-type">AssetBlacklist</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -167,7 +171,7 @@
 					</aside>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group ">
+			<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite tsd-is-inherited tsd-is-protected">
 					<a name="createtransaction" class="tsd-anchor"></a>
@@ -244,22 +248,55 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="iswhitelisted" class="tsd-anchor"></a>
-					<h3>is<wbr>Whitelisted</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">is<wbr>Whitelisted<span class="tsd-signature-symbol">(</span>address<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a>, block<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="getmembers" class="tsd-anchor"></a>
+					<h3>get<wbr>Members</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Members<span class="tsd-signature-symbol">(</span>block<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Inherited from <a href="_contracts_addresslist_.addresslist.html">AddressList</a>.<a href="_contracts_addresslist_.addresslist.html#getmembers">getMembers</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/UserWhitelist.ts#L19">contracts/UserWhitelist.ts:19</a></li>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/AddressList.ts#L27">contracts/AddressList.ts:27</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Checks if an address is whitelisted</p>
+									<p>Gets all members of an address list.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> block: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The block number to execute the call on.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="ismember" class="tsd-anchor"></a>
+					<h3>is<wbr>Member</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Member<span class="tsd-signature-symbol">(</span>address<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a>, block<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_contracts_addresslist_.addresslist.html">AddressList</a>.<a href="_contracts_addresslist_.addresslist.html#ismember">isMember</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/AddressList.ts#L17">contracts/AddressList.ts:17</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Checks if an address is part of an address list.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -330,7 +367,7 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="../modules/_contracts_userwhitelist_.html">"contracts/<wbr>User<wbr>Whitelist"</a>
+						<a href="../modules/_contracts_assetblacklist_.html">"contracts/<wbr>Asset<wbr>Blacklist"</a>
 					</li>
 				</ul>
 			</nav>
@@ -339,28 +376,31 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class tsd-parent-kind-external-module">
-						<a href="_contracts_userwhitelist_.userwhitelist.html" class="tsd-kind-icon">User<wbr>Whitelist</a>
+						<a href="_contracts_assetblacklist_.assetblacklist.html" class="tsd-kind-icon">Asset<wbr>Blacklist</a>
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
-								<a href="_contracts_userwhitelist_.userwhitelist.html#constructor" class="tsd-kind-icon">constructor</a>
+								<a href="_contracts_assetblacklist_.assetblacklist.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited">
-								<a href="_contracts_userwhitelist_.userwhitelist.html#contract" class="tsd-kind-icon">contract</a>
+								<a href="_contracts_assetblacklist_.assetblacklist.html#contract" class="tsd-kind-icon">contract</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited">
-								<a href="_contracts_userwhitelist_.userwhitelist.html#environment" class="tsd-kind-icon">environment</a>
+								<a href="_contracts_assetblacklist_.assetblacklist.html#environment" class="tsd-kind-icon">environment</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite tsd-is-inherited tsd-is-protected">
-								<a href="_contracts_userwhitelist_.userwhitelist.html#createtransaction" class="tsd-kind-icon">create<wbr>Transaction</a>
+								<a href="_contracts_assetblacklist_.assetblacklist.html#createtransaction" class="tsd-kind-icon">create<wbr>Transaction</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_contracts_userwhitelist_.userwhitelist.html#getidentifier" class="tsd-kind-icon">get<wbr>Identifier</a>
+								<a href="_contracts_assetblacklist_.assetblacklist.html#getidentifier" class="tsd-kind-icon">get<wbr>Identifier</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_contracts_userwhitelist_.userwhitelist.html#iswhitelisted" class="tsd-kind-icon">is<wbr>Whitelisted</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_contracts_assetblacklist_.assetblacklist.html#getmembers" class="tsd-kind-icon">get<wbr>Members</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_contracts_assetblacklist_.assetblacklist.html#ismember" class="tsd-kind-icon">is<wbr>Member</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite tsd-is-inherited tsd-is-protected">
-								<a href="_contracts_userwhitelist_.userwhitelist.html#makecall" class="tsd-kind-icon">make<wbr>Call</a>
+								<a href="_contracts_assetblacklist_.assetblacklist.html#makecall" class="tsd-kind-icon">make<wbr>Call</a>
 							</li>
 						</ul>
 					</li>
