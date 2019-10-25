@@ -10,7 +10,6 @@
     "access": "public"
   },
   "scripts": {
-    "postinstall": "yarn codegen",
     "clean": "rimraf dist docs coverage",
     "prebuild": "rimraf build",
     "build": "tsc && rollup --config",
@@ -30,7 +29,7 @@
     "lint:tslint": "tsc --noEmit && tslint src/{*,**/*}.ts",
     "lint": "yarn lint:tslint && yarn lint:prettier",
     "typecheck": "tsc --noEmit",
-    "preversion": "yarn typecheck && yarn test && yarn lint && yarn docs && yarn build",
+    "preversion": "yarn codegen && yarn typecheck && yarn test && yarn lint && yarn docs && yarn build",
     "postversion": "cp package.json dist",
     "prerelease": "yarn version",
     "release": "git push --tags && yarn publish dist --new-version $npm_package_version",
