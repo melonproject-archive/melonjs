@@ -6,6 +6,8 @@ package-lock.json
 coverage/
 dist/
 docs/
+
+# The abis are pulled from the protocol release using `yarn codegen`.
 src/abis/
 
 # Ignore all dot files.
