@@ -12,7 +12,7 @@ export class MaxPositions extends Contract {
   }
 
   /**
-   * Gets the maximum number of positions
+   * Gets the maximum number of positions.
    *
    * @param block The block number to execute the call on.
    */

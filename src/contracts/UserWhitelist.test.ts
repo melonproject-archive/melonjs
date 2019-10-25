@@ -2,26 +2,26 @@ import { Eth } from 'web3-eth';
 import { HttpProvider } from 'web3-providers';
 import { Environment } from '../Environment';
 import deployment from '../deployments/mainnet';
-import { MaxConcentration } from './MaxConcentration';
+import { UserWhitelist } from './UserWhitelist';
 
-describe('AddressList', () => {
+describe('UserWhitelist', () => {
   let environment: Environment;
-  let maxConcentration: MaxConcentration;
+  let userWhiteList: UserWhitelist;
 
   beforeAll(() => {
     // TODO: This should be replaced with a local ganache test environment using proper test fixtures.
     const client = new Eth(new HttpProvider('https://mainnet.melonport.com'));
     environment = new Environment(client, deployment);
-    maxConcentration = new MaxConcentration(environment, '0x042fcadfe10396ff5d11791357161af71ca51865');
+    userWhiteList = new UserWhitelist(environment, '0xe69d387c3fe14cdc0bea1b589515cd33837e0705');
   });
 
-  it('should return the price tolerance', async () => {
-    const result = await maxConcentration.getMaxConcentration();
-    expect(result.isGreaterThanOrEqualTo(0)).toBe(true);
+  it('should check whether a user is whitelisted', async () => {
+    const result = await userWhiteList.isWhitelisted('0x036ca8b5bb89533fd06e0a35b9da10213da98d88');
+    expect(result === true || result === false).toBe(true);
   });
 
   it('should return the correct identifier', async () => {
-    const result = await maxConcentration.getIdentifier();
-    expect(result).toBe('Max concentration');
+    const result = await userWhiteList.getIdentifier();
+    expect(result).toBe('UserWhitelist');
   });
 });
