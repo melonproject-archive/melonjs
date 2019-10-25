@@ -3,6 +3,8 @@ import { Contract } from '../Contract';
 import { Environment } from '../Environment';
 import { Address } from '../Address';
 import { ParticipationAbi } from '../abis/Participation.abi';
+import { Spoke } from './Spoke';
+import { applyMixins } from '../utils/applyMixins';
 
 export interface Request {
   investmentAsset: Address;
@@ -97,3 +99,6 @@ export class Participation extends Contract {
     return result;
   }
 }
+
+export interface Participation extends Spoke {}
+applyMixins(Participation, [Spoke]);

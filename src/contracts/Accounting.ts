@@ -6,6 +6,8 @@ import { Contract } from '../Contract';
 import { Environment } from '../Environment';
 import { Address } from '../Address';
 import { Token } from './Token';
+import { Spoke } from './Spoke';
+import { applyMixins } from '../utils/applyMixins';
 
 export interface FundCalculations {
   sharePrice: BigNumber;
@@ -167,3 +169,6 @@ export class Accounting extends Contract {
     return new BigNumber(`${result}`);
   }
 }
+
+export interface Accounting extends Spoke {}
+applyMixins(Accounting, [Spoke]);
