@@ -15,13 +15,18 @@ describe('Shares', () => {
     shares = new Shares(environment, '0x70958d69bd1a550b5f49d4d64d1c8bfa358558cd');
   });
 
-  it('should return name for shares', async () => {
+  it('should return the name for shares', async () => {
     const result = await shares.getName();
     expect(result.length).toBeGreaterThanOrEqual(0);
   });
 
-  it('should return symbol for shares', async () => {
+  it('should return the symbol for shares', async () => {
     const result = await shares.getSymbol();
     expect(result).toBe('MLNF');
+  });
+
+  it('should return the decimals for shares', async () => {
+    const result = await shares.getDecimals();
+    expect(result).toBeGreaterThanOrEqual(0);
   });
 });

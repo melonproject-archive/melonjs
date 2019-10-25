@@ -30,6 +30,16 @@ export class Shares extends Contract {
     const result = await this.makeCall<string>('symbol', undefined, block);
     return result;
   }
+
+  /**
+   * Gets the decimals of the shares.
+   *
+   * @param block The block number to execute the call on.
+   */
+  public async getDecimals(block?: number) {
+    const result = await this.makeCall<string>('decimals', undefined, block);
+    return parseInt(result, 10);
+  }
 }
 
 export interface Shares extends Spoke {}
