@@ -1,8 +1,8 @@
+import BigNumber from 'bignumber.js';
 import { Contract } from '../Contract';
 import { Environment } from '../Environment';
 import { Address } from '../Address';
-import { ManagementFeeAbi } from '../abis/ManagementFee';
-import BigNumber from 'bignumber.js';
+import { ManagementFeeAbi } from '../abis/ManagementFee.abi';
 
 export class ManagementFee extends Contract {
   constructor(environment: Environment, address: Address) {

@@ -1,7 +1,7 @@
 import { Contract } from '../Contract';
 import { Environment } from '../Environment';
 import { Address } from '../Address';
-import { TradingAbi } from '../abis/Trading';
+import { TradingAbi } from '../abis/Trading.abi';
 
 export interface ExchangeInfo {
   exchange: Address;

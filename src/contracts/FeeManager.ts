@@ -1,8 +1,8 @@
+import BigNumber from 'bignumber.js';
 import { Contract } from '../Contract';
 import { Environment } from '../Environment';
 import { Address } from '../Address';
-import { FeeManagerAbi } from '../abis/FeeManager';
-import BigNumber from 'bignumber.js';
+import { FeeManagerAbi } from '../abis/FeeManager.abi';
 import { ManagementFee } from './ManagementFee';
 import { PerformanceFee } from './PerformanceFee';
 

@@ -1,9 +1,9 @@
+import BigNumber from 'bignumber.js';
 import { Eth } from 'web3-eth';
 import { HttpProvider } from 'web3-providers';
 import { Environment } from '../Environment';
 import deployment from '../deployments/mainnet';
 import { FeeManager, ManagementFeeInformation, PerformanceFeeInformation } from './FeeManager';
-import BigNumber from 'bignumber.js';
 
 describe('FeeManager', () => {
   let environment: Environment;

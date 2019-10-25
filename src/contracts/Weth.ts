@@ -1,4 +1,4 @@
-import { WETHAbi } from '../abis/WETH';
+import { WETHAbi } from '../abis/WETH.abi';
 import { TokenDefinition } from '../Deployment';
 import { Environment } from '../Environment';
 import { AbstractToken } from './AbstractToken';

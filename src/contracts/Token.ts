@@ -1,4 +1,4 @@
-import { ERC20Abi } from '../abis/ERC20';
+import { ERC20Abi } from '../abis/ERC20.abi';
 import { Address } from '../Address';
 import { TokenDefinition } from '../Deployment';
 import { Environment } from '../Environment';

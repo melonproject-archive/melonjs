@@ -1,8 +1,10 @@
+import BigNumber from 'bignumber.js';
 import { Contract } from '../Contract';
 import { Environment } from '../Environment';
 import { Address } from '../Address';
-import BigNumber from 'bignumber.js';
-import { MaxPositionsAbi } from '../abis/MaxPositions';
+import { MaxPositionsAbi } from '../abis/MaxPositions.abi';
+import { applyMixins } from '../utils/applyMixins';
+import { Policy } from './Policy';
 
 export class MaxPositions extends Contract {
   constructor(environment: Environment, address: Address) {
@@ -19,3 +21,6 @@ export class MaxPositions extends Contract {
     return new BigNumber(`${result}`);
   }
 }
+
+export interface MaxPositions extends Policy {}
+applyMixins(MaxPositions, [Policy]);

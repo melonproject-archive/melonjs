@@ -1,7 +1,7 @@
 import { Contract } from '../Contract';
 import { Environment } from '../Environment';
 import { Address } from '../Address';
-import { PolicyManagerAbi } from '../abis/PolicyManager';
+import { PolicyManagerAbi } from '../abis/PolicyManager.abi';
 
 export type Policies = {
   pre: Address[];

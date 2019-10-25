@@ -1,7 +1,7 @@
 import { Contract } from '../Contract';
 import { Environment } from '../Environment';
 import { Address } from '../Address';
-import { PolicyAbi } from '../abis/Policy';
+import { PolicyAbi } from '../abis/Policy.abi';
 
 export class Policy extends Contract {
   constructor(environment: Environment, address: Address) {

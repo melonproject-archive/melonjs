@@ -4,7 +4,7 @@ import { Environment } from '../Environment';
 import deployment from '../deployments/mainnet';
 import { Policy } from './Policy';
 
-describe('AddressList', () => {
+describe('Policy', () => {
   let environment: Environment;
   let policy: Policy;
 
@@ -17,7 +17,6 @@ describe('AddressList', () => {
 
   it('should return the identifier of a policy', async () => {
     const result = await policy.getIdentifier();
-    console.log(result);
     expect(result.length).toBeGreaterThan(0);
   });
 });

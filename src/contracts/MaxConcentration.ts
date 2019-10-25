@@ -1,8 +1,10 @@
+import BigNumber from 'bignumber.js';
 import { Contract } from '../Contract';
 import { Environment } from '../Environment';
 import { Address } from '../Address';
-import BigNumber from 'bignumber.js';
-import { MaxConcentrationAbi } from '../abis/MaxConcentration';
+import { MaxConcentrationAbi } from '../abis/MaxConcentration.abi';
+import { applyMixins } from '../utils/applyMixins';
+import { Policy } from './Policy';
 
 export class MaxConcentration extends Contract {
   constructor(environment: Environment, address: Address) {
@@ -19,3 +21,6 @@ export class MaxConcentration extends Contract {
     return new BigNumber(`${result}`);
   }
 }
+
+export interface MaxConcentration extends Policy {}
+applyMixins(MaxConcentration, [Policy]);

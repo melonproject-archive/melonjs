@@ -5,7 +5,7 @@ import { HttpProvider } from 'web3-providers';
 import { TokenDefinition } from './Deployment';
 import { Contract } from './Contract';
 import { Environment, CacheHandler } from './Environment';
-import { PriceSource } from './contracts/PriceSource';
+import { CanonicalPriceFeed } from './contracts/CanonicalPriceFeed';
 import { Hub } from './contracts/Hub';
 import { Token } from './contracts/Token';
 import deployment from './deployments/mainnet';
@@ -39,7 +39,7 @@ describe('CacheHandler', () => {
       cache,
     });
 
-    const source = new PriceSource(environment, '0x0');
+    const source = new CanonicalPriceFeed(environment, '0x0');
     // @ts-ignore
     const spy = jest.spyOn(source, 'doMakeCall').mockReturnValue(new Date(Date.now()));
 
@@ -50,7 +50,7 @@ describe('CacheHandler', () => {
 
   it('calls should not be cached when not using a cache handler', async () => {
     const environment = new Environment(client, deployment);
-    const source = new PriceSource(environment, '0x0');
+    const source = new CanonicalPriceFeed(environment, '0x0');
     // @ts-ignore
     const spy = jest.spyOn(source, 'doMakeCall').mockReturnValue(new Date(Date.now()));
 
@@ -64,7 +64,7 @@ describe('CacheHandler', () => {
       cache,
     });
 
-    const source = new PriceSource(environment, '0x0');
+    const source = new CanonicalPriceFeed(environment, '0x0');
     // @ts-ignore
     const spy = jest.spyOn(source, 'doMakeCall').mockReturnValue(new Date(Date.now()));
 
