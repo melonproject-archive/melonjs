@@ -5,6 +5,8 @@ import { Address } from '../Address';
 import { FeeManagerAbi } from '../abis/FeeManager.abi';
 import { ManagementFee } from './ManagementFee';
 import { PerformanceFee } from './PerformanceFee';
+import { Spoke } from './Spoke';
+import { applyMixins } from '../utils/applyMixins';
 
 export type ManagementFeeInformation = {
   rate: BigNumber;
@@ -72,3 +74,6 @@ export class FeeManager extends Contract {
     } as PerformanceFeeInformation;
   }
 }
+
+export interface FeeManager extends Spoke {}
+applyMixins(FeeManager, [Spoke]);

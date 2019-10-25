@@ -2,6 +2,8 @@ import { Contract } from '../Contract';
 import { Environment } from '../Environment';
 import { Address } from '../Address';
 import { PolicyManagerAbi } from '../abis/PolicyManager.abi';
+import { Spoke } from './Spoke';
+import { applyMixins } from '../utils/applyMixins';
 
 export type Policies = {
   pre: Address[];
@@ -27,3 +29,6 @@ export class PolicyManager extends Contract {
     return policies as Policies;
   }
 }
+
+export interface PolicyManager extends Spoke {}
+applyMixins(PolicyManager, [Spoke]);

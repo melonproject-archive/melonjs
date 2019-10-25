@@ -2,6 +2,8 @@ import { Contract } from '../Contract';
 import { Environment } from '../Environment';
 import { Address } from '../Address';
 import { TradingAbi } from '../abis/Trading.abi';
+import { Spoke } from './Spoke';
+import { applyMixins } from '../utils/applyMixins';
 
 export interface ExchangeInfo {
   exchange: Address;
@@ -38,3 +40,6 @@ export class Trading extends Contract {
     return output;
   }
 }
+
+export interface Trading extends Spoke {}
+applyMixins(Trading, [Spoke]);

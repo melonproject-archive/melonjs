@@ -88,4 +88,9 @@ describe('Accounting', () => {
     );
     expect(result.isGreaterThanOrEqualTo(0)).toBe(true);
   });
+
+  it('should return the address of the engine', async () => {
+    const result = await accounting.getEngine();
+    expect(result).toBe(environment.deployment.melonContracts.engine);
+  });
 });
