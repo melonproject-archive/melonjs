@@ -106,6 +106,7 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-protected"><a href="_contracts_abstracttoken_.abstracttoken.html#createtransaction" class="tsd-kind-icon">create<wbr>Transaction</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_abstracttoken_.abstracttoken.html#getbalanceof" class="tsd-kind-icon">get<wbr>Balance<wbr>Of</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-protected"><a href="_contracts_abstracttoken_.abstracttoken.html#makecall" class="tsd-kind-icon">make<wbr>Call</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_contracts_abstracttoken_.abstracttoken.html#finddefinition" class="tsd-kind-icon">find<wbr>Definition</a></li>
@@ -127,7 +128,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_contract_.contract.html">Contract</a>.<a href="_contract_.contract.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/master/src/Contract.ts#L4">Contract.ts:4</a></li>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Contract.ts#L6">Contract.ts:6</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -153,7 +154,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_contract_.contract.html">Contract</a>.<a href="_contract_.contract.html#contract">contract</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/master/src/Contract.ts#L5">Contract.ts:5</a></li>
+							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Contract.ts#L7">Contract.ts:7</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -164,13 +165,55 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_contract_.contract.html">Contract</a>.<a href="_contract_.contract.html#environment">environment</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/master/src/Contract.ts#L5">Contract.ts:5</a></li>
+							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Contract.ts#L7">Contract.ts:7</a></li>
 						</ul>
 					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-protected">
+					<a name="createtransaction" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> create<wbr>Transaction</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">create<wbr>Transaction&lt;TArgs, TValue&gt;<span class="tsd-signature-symbol">(</span>method<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, from<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a>, args<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">TArgs</span>, value<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">TValue</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_transaction_.transaction.html" class="tsd-signature-type">Transaction</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_contract_.contract.html">Contract</a>.<a href="_contract_.contract.html#createtransaction">createTransaction</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Contract.ts#L43">Contract.ts:43</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>TArgs<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h4>
+								</li>
+								<li>
+									<h4>TValue<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>method: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>from: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> args: <span class="tsd-signature-type">TArgs</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> value: <span class="tsd-signature-type">TValue</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_transaction_.transaction.html" class="tsd-signature-type">Transaction</a></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="getbalanceof" class="tsd-anchor"></a>
 					<h3>get<wbr>Balance<wbr>Of</h3>
@@ -181,7 +224,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/master/src/contracts/AbstractToken.ts#L31">contracts/AbstractToken.ts:31</a></li>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/AbstractToken.ts#L31">contracts/AbstractToken.ts:31</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -201,14 +244,14 @@
 					<a name="makecall" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagProtected">Protected</span> make<wbr>Call</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-protected">
-						<li class="tsd-signature tsd-kind-icon">make<wbr>Call&lt;TReturn, TArgs&gt;<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, args<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">TArgs</span>, block<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TReturn</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">make<wbr>Call&lt;TReturn, TArgs&gt;<span class="tsd-signature-symbol">(</span>method<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, args<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">TArgs</span>, block<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TReturn</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_contract_.contract.html">Contract</a>.<a href="_contract_.contract.html#makecall">makeCall</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/master/src/Contract.ts#L9">Contract.ts:9</a></li>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Contract.ts#L11">Contract.ts:11</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -223,7 +266,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<h5>method: <span class="tsd-signature-type">string</span></h5>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> args: <span class="tsd-signature-type">TArgs</span></h5>
@@ -246,7 +289,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/master/src/contracts/AbstractToken.ts#L9">contracts/AbstractToken.ts:9</a></li>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/AbstractToken.ts#L9">contracts/AbstractToken.ts:9</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -282,6 +325,9 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_environment_.html">"<wbr>Environment"</a>
 					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_transaction_.html">"<wbr>Transaction"</a>
+					</li>
 					<li class="current tsd-kind-external-module">
 						<a href="../modules/_contracts_abstracttoken_.html">"contracts/<wbr>Abstract<wbr>Token"</a>
 					</li>
@@ -289,34 +335,58 @@
 						<a href="../modules/_contracts_accounting_.html">"contracts/<wbr>Accounting"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
+						<a href="../modules/_contracts_addresslist_.html">"contracts/<wbr>Address<wbr>List"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_contracts_canonicalpricefeed_.html">"contracts/<wbr>Canonical<wbr>Price<wbr>Feed"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_contracts_engine_.html">"contracts/<wbr>Engine"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_contracts_feemanager_.html">"contracts/<wbr>Fee<wbr>Manager"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_contracts_hub_.html">"contracts/<wbr>Hub"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_contracts_pricesource_.html">"contracts/<wbr>Price<wbr>Source"</a>
+						<a href="../modules/_contracts_managementfee_.html">"contracts/<wbr>Management<wbr>Fee"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_contracts_maxconcentration_.html">"contracts/<wbr>Max<wbr>Concentration"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_contracts_maxpositions_.html">"contracts/<wbr>Max<wbr>Positions"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_contracts_participation_.html">"contracts/<wbr>Participation"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_contracts_performancefee_.html">"contracts/<wbr>Performance<wbr>Fee"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_contracts_policy_.html">"contracts/<wbr>Policy"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_contracts_policymanager_.html">"contracts/<wbr>Policy<wbr>Manager"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_contracts_pricetolerance_.html">"contracts/<wbr>Price<wbr>Tolerance"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_contracts_token_.html">"contracts/<wbr>Token"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_contracts_trading_.html">"contracts/<wbr>Trading"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_contracts_userwhitelist_.html">"contracts/<wbr>User<wbr>Whitelist"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_contracts_version_.html">"contracts/<wbr>Version"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_contracts_weth_.html">"contracts/<wbr>Weth"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_utils_estimategas_.html">"utils/estimate<wbr>Gas"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_utils_includesaddress_.html">"utils/includes<wbr>Address"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_utils_sameaddress_.html">"utils/same<wbr>Address"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_utils_transactionoptions_.html">"utils/transaction<wbr>Options"</a>
 					</li>
 				</ul>
 			</nav>
@@ -335,6 +405,9 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 								<a href="_contracts_abstracttoken_.abstracttoken.html#environment" class="tsd-kind-icon">environment</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-protected">
+								<a href="_contracts_abstracttoken_.abstracttoken.html#createtransaction" class="tsd-kind-icon">create<wbr>Transaction</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_contracts_abstracttoken_.abstracttoken.html#getbalanceof" class="tsd-kind-icon">get<wbr>Balance<wbr>Of</a>
