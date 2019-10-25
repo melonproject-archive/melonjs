@@ -5,6 +5,14 @@ import { Contract } from '../Contract';
 import { Environment } from '../Environment';
 import { fromWei } from 'web3-utils';
 
+export interface TokenInfo {
+  address: Address;
+  name: string;
+  symbol: string;
+  decimals: number;
+  reserveMin: number;
+}
+
 export abstract class AbstractToken extends Contract {
   public static findDefinition(environment: Environment, which: Address | string) {
     const deployment = environment.deployment.thirdPartyContracts.tokens;
@@ -25,7 +33,7 @@ export abstract class AbstractToken extends Contract {
       throw new Error(`Could not instantiate token class for unknown token ${token}.`);
     }
 
-    return token;
+    return token as TokenInfo;
   }
 
   public async getBalanceOf(who: Address, block?: number) {
