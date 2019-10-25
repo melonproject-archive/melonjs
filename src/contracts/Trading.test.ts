@@ -31,12 +31,11 @@ describe('Trading', () => {
       '0x39755357759ce0d7f32dc8dc45414cca409ae24e',
       '0x4f3afec4e5a3f2a6a1a411def7d7dfe50ee057bf',
     );
-    console.log(result);
     expect(result).toMatchObject({
       id: expect.any(Number),
       expiresAt: expect.any(Date),
-      orderId: expect.any(Number),
-      address: expect.any(String),
+      orderIndex: expect.any(Number),
+      buyAsset: expect.any(String),
     });
   });
 
