@@ -44,6 +44,6 @@ describe('Trading', () => {
       '0x39755357759ce0d7f32dc8dc45414cca409ae24e',
       '0x4f3afec4e5a3f2a6a1a411def7d7dfe50ee057bf',
     );
-    expect(result === true || result == false).toBe(true);
+    expect(result === true || result === false).toBe(true);
   });
 });
