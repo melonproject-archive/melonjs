@@ -12,6 +12,11 @@ export abstract class Contract {
     // Nothing to do here.
   }
 
+  protected createTransaction<TArgs extends any[] = any[]>(method: string, from: Address, args?: TArgs) {
+    const fn = this.contract.methods[method];
+    return new Transaction(fn(...(args || [])), from);
+  }
+
   protected async makeCall<TReturn = any, TArgs extends any[] = any[]>(
     method: string,
     args?: TArgs,
@@ -42,10 +47,5 @@ export abstract class Contract {
   ): Promise<TReturn> {
     const fn = this.contract.methods[method];
     return fn(...(args || [])).call(undefined, block);
-  }
-
-  protected createTransaction<TArgs extends any[] = any[]>(method: string, args?: TArgs) {
-    const fn = this.contract.methods[method];
-    return new Transaction(this.environment, fn(...(args || [])));
   }
 }

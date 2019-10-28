@@ -4,7 +4,7 @@ import { Address } from './Address';
 import { Contract } from './Contract';
 
 export class Transaction<T = TransactionReceipt> {
-  constructor(public readonly transaction: any, public readonly from?: Address) {}
+  constructor(public readonly transaction: any, public readonly from: Address) {}
 
   public send(gas?: number): PromiEvent<T>;
   public send(options?: SendOptions): PromiEvent<T>;
@@ -43,8 +43,8 @@ export class Transaction<T = TransactionReceipt> {
 export class Deployment<T extends Contract> extends Transaction<T> {
   constructor(
     public readonly transaction: any,
+    public readonly from: Address,
     protected readonly ctor: (contract: EthContract) => T,
-    public readonly from?: Address,
   ) {
     super(transaction, from);
   }

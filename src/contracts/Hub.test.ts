@@ -5,7 +5,6 @@ import { createTestEnvironment, TestEnvironment } from '../utils/createTestEnvir
 
 describe('Hub', () => {
   let hub: Hub;
-  let routes: HubRoutes;
   let environment: TestEnvironment;
 
   beforeAll(async () => {
@@ -35,21 +34,37 @@ describe('Hub', () => {
   });
 
   it('should return the routes', async () => {
-    routes = await hub.getRoutes();
-    expect(routes).toMatchObject<HubRoutes>({
-      accounting: expect.any(String),
-      engine: expect.any(String),
-      feeManager: expect.any(String),
-      mlnToken: expect.any(String),
-      participation: expect.any(String),
-      policyManager: expect.any(String),
-      priceSource: expect.any(String),
-      registry: expect.any(String),
-      shares: expect.any(String),
-      trading: expect.any(String),
-      vault: expect.any(String),
-      version: expect.any(String),
-    });
+    const input: HubRoutes = {
+      accounting: '0x0a98adcc2e15ae6b77c1bfa30a1048597142d66c',
+      engine: '0x0a98adcc2e15ae6b77c1bfa30a1048597142d66c',
+      feeManager: '0x0a98adcc2e15ae6b77c1bfa30a1048597142d66c',
+      mlnToken: '0x0a98adcc2e15ae6b77c1bfa30a1048597142d66c',
+      participation: '0x0a98adcc2e15ae6b77c1bfa30a1048597142d66c',
+      policyManager: '0x0a98adcc2e15ae6b77c1bfa30a1048597142d66c',
+      priceSource: '0x0a98adcc2e15ae6b77c1bfa30a1048597142d66c',
+      registry: '0x0a98adcc2e15ae6b77c1bfa30a1048597142d66c',
+      shares: '0x0a98adcc2e15ae6b77c1bfa30a1048597142d66c',
+      trading: '0x0a98adcc2e15ae6b77c1bfa30a1048597142d66c',
+      vault: '0x0a98adcc2e15ae6b77c1bfa30a1048597142d66c',
+      version: '0x0a98adcc2e15ae6b77c1bfa30a1048597142d66c',
+    };
+
+    const tx = hub.setSpokes(environment.accounts[0], input);
+    await tx.send(await tx.estimate());
+
+    const output = await hub.getRoutes();
+    expect(sameAddress(input.accounting, output.accounting)).toBe(true);
+    expect(sameAddress(input.engine, output.engine)).toBe(true);
+    expect(sameAddress(input.feeManager, output.feeManager)).toBe(true);
+    expect(sameAddress(input.mlnToken, output.mlnToken)).toBe(true);
+    expect(sameAddress(input.participation, output.participation)).toBe(true);
+    expect(sameAddress(input.policyManager, output.policyManager)).toBe(true);
+    expect(sameAddress(input.priceSource, output.priceSource)).toBe(true);
+    expect(sameAddress(input.registry, output.registry)).toBe(true);
+    expect(sameAddress(input.shares, output.shares)).toBe(true);
+    expect(sameAddress(input.trading, output.trading)).toBe(true);
+    expect(sameAddress(input.vault, output.vault)).toBe(true);
+    expect(sameAddress(input.version, output.version)).toBe(true);
   });
 
   it('should return the address of the creator', async () => {

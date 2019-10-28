@@ -40,7 +40,7 @@ export class Hub extends Contract {
       arguments: [args.manager, toHex(args.name)],
     });
 
-    return new Deployment(transaction, contract => new this(environment, contract), from);
+    return new Deployment(transaction, from, contract => new this(environment, contract));
   }
 
   /**
@@ -124,5 +124,32 @@ export class Hub extends Contract {
   public async getFundVersion(block?: number) {
     // const { registry, version } = await this.getRoutes(block);
     // needs registry contract methods (waiting for Luong)
+  }
+
+  /**
+   * Sets the spokes on the hub.
+   *
+   * @param from The sender address.
+   * @param spokes The hub routes.
+   */
+  public setSpokes(from: Address, spokes: HubRoutes) {
+    const args = [
+      [
+        spokes.accounting,
+        spokes.feeManager,
+        spokes.participation,
+        spokes.policyManager,
+        spokes.shares,
+        spokes.trading,
+        spokes.vault,
+        spokes.priceSource,
+        spokes.registry,
+        spokes.version,
+        spokes.engine,
+        spokes.mlnToken,
+      ],
+    ];
+
+    return this.createTransaction('setSpokes', from, args);
   }
 }
