@@ -2,6 +2,7 @@ import { Hub, HubRoutes } from './Hub';
 import { HubBytecode } from '../abis/Hub.bin';
 import { sameAddress } from '../utils/sameAddress';
 import { createTestEnvironment, TestEnvironment } from '../utils/createTestEnvironment';
+import { randomAddress } from '../utils/randomAddress';
 
 describe('Hub', () => {
   let hub: Hub;
@@ -35,18 +36,18 @@ describe('Hub', () => {
 
   it('should return the routes', async () => {
     const input: HubRoutes = {
-      accounting: '0x0a98adcc2e15ae6b77c1bfa30a1048597142d66c',
-      engine: '0x0a98adcc2e15ae6b77c1bfa30a1048597142d66c',
-      feeManager: '0x0a98adcc2e15ae6b77c1bfa30a1048597142d66c',
-      mlnToken: '0x0a98adcc2e15ae6b77c1bfa30a1048597142d66c',
-      participation: '0x0a98adcc2e15ae6b77c1bfa30a1048597142d66c',
-      policyManager: '0x0a98adcc2e15ae6b77c1bfa30a1048597142d66c',
-      priceSource: '0x0a98adcc2e15ae6b77c1bfa30a1048597142d66c',
-      registry: '0x0a98adcc2e15ae6b77c1bfa30a1048597142d66c',
-      shares: '0x0a98adcc2e15ae6b77c1bfa30a1048597142d66c',
-      trading: '0x0a98adcc2e15ae6b77c1bfa30a1048597142d66c',
-      vault: '0x0a98adcc2e15ae6b77c1bfa30a1048597142d66c',
-      version: '0x0a98adcc2e15ae6b77c1bfa30a1048597142d66c',
+      accounting: randomAddress(),
+      engine: randomAddress(),
+      feeManager: randomAddress(),
+      mlnToken: randomAddress(),
+      participation: randomAddress(),
+      policyManager: randomAddress(),
+      priceSource: randomAddress(),
+      registry: randomAddress(),
+      shares: randomAddress(),
+      trading: randomAddress(),
+      vault: randomAddress(),
+      version: randomAddress(),
     };
 
     const tx = hub.setSpokes(environment.accounts[0], input);
