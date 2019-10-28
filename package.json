@@ -41,6 +41,7 @@
     "web3-core": "^2.0.0-alpha.1",
     "web3-eth": "^2.0.0-alpha.1",
     "web3-eth-contract": "^2.0.0-alpha.1",
+    "web3-providers": "^2.0.0-alpha.1",
     "web3-utils": "^2.0.0-alpha.1"
   },
   "devDependencies": {
