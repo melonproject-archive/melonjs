@@ -6,11 +6,11 @@ import { Environment } from '../Environment';
 import { fromWei } from 'web3-utils';
 
 export interface TokenInfo {
-  address: Address;
-  name: string;
-  symbol: string;
-  decimals: number;
-  reserveMin: number;
+  readonly address: Address;
+  readonly name?: string;
+  readonly symbol: string;
+  readonly decimals: number;
+  readonly reserveMin?: number;
 }
 
 export abstract class AbstractToken extends Contract {
