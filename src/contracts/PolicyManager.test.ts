@@ -1,7 +1,6 @@
 import { Eth } from 'web3-eth';
 import { HttpProvider } from 'web3-providers';
 import { Environment } from '../Environment';
-import deployment from '../deployments/mainnet';
 import { PolicyManager } from './PolicyManager';
 
 describe('PolicyManager', () => {
@@ -11,7 +10,7 @@ describe('PolicyManager', () => {
   beforeAll(() => {
     // TODO: This should be replaced with a local ganache test environment using proper test fixtures.
     const client = new Eth(new HttpProvider('https://mainnet.melonport.com'));
-    environment = new Environment(client, deployment);
+    environment = new Environment(client);
     policyManager = new PolicyManager(environment, '0xca10ef90f47bcc3ec90edb8bd5c3443cc63d4024');
   });
 

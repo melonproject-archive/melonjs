@@ -1,10 +1,8 @@
 import { Eth } from 'web3-eth';
 import { HttpProvider } from 'web3-providers';
 import { Environment } from '../Environment';
-import deployment from '../deployments/mainnet';
 import { Accounting, FundCalculations } from './Accounting';
 import BigNumber from 'bignumber.js';
-import { Token } from './Token';
 
 describe('Accounting', () => {
   let environment: Environment;
@@ -13,7 +11,7 @@ describe('Accounting', () => {
   beforeAll(() => {
     // TODO: This should be replaced with a local ganache test environment using proper test fixtures.
     const client = new Eth(new HttpProvider('https://mainnet.melonport.com'));
-    environment = new Environment(client, deployment);
+    environment = new Environment(client);
     accounting = new Accounting(environment, '0x1b66598123fefb8759340d4ea6e4b070c4fc4315');
   });
 
@@ -46,17 +44,12 @@ describe('Accounting', () => {
 
   it('should return the native asset', async () => {
     const result = await accounting.getNativeAsset();
-    expect(Token.findDefinition(environment, result).address.startsWith('0x')).toBe(true);
-  });
-
-  it('should return the native token', async () => {
-    const result = await accounting.getNativeToken();
-    expect(result).toBe(Token.findDefinition(environment, result.address));
+    expect(result.startsWith('0x')).toBe(true);
   });
 
   it('should return the denomination asset', async () => {
     const result = await accounting.getDenominationAsset();
-    expect(Token.findDefinition(environment, result).address.startsWith('0x')).toBe(true);
+    expect(result.startsWith('0x')).toBe(true);
   });
 
   it('should return the calculations for a fund', async () => {
@@ -91,6 +84,6 @@ describe('Accounting', () => {
 
   it('should return the address of the engine', async () => {
     const result = await accounting.getEngine();
-    expect(result).toBe(environment.deployment.melonContracts.engine);
+    expect(result).toBe('0x7CaEc96607c5c7190d63B5A650E7CE34472352f5');
   });
 });

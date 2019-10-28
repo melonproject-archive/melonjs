@@ -1,10 +1,7 @@
-import * as Deployment from './Deployment';
-
-export { Deployment };
 export { Contract } from './Contract';
 export { Environment } from './Environment';
 export { Address } from './Address';
-export { Transaction, TransactionProcessor } from './Transaction';
+export { Transaction } from './Transaction';
 
 export { AbstractToken } from './contracts/AbstractToken';
 export { Accounting } from './contracts/Accounting';

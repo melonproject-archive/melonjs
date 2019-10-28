@@ -1,7 +1,6 @@
 import { Eth } from 'web3-eth';
 import { HttpProvider } from 'web3-providers';
 import { Environment } from '../Environment';
-import deployment from '../deployments/mainnet';
 import { MaxPositions } from './MaxPositions';
 
 describe('AddressList', () => {
@@ -11,7 +10,7 @@ describe('AddressList', () => {
   beforeAll(() => {
     // TODO: This should be replaced with a local ganache test environment using proper test fixtures.
     const client = new Eth(new HttpProvider('https://mainnet.melonport.com'));
-    environment = new Environment(client, deployment);
+    environment = new Environment(client);
     maxPositions = new MaxPositions(environment, '0x136f30369c6f387e537b0920ab616240662b9125');
   });
 

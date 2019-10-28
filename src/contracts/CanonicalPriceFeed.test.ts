@@ -2,7 +2,6 @@ import { Eth } from 'web3-eth';
 import { HttpProvider } from 'web3-providers';
 import { Environment } from '../Environment';
 import { CanonicalPriceFeed } from './CanonicalPriceFeed';
-import deployment from '../deployments/mainnet';
 
 describe('CanonicalPriceFeed', () => {
   let environment: Environment;
@@ -10,11 +9,11 @@ describe('CanonicalPriceFeed', () => {
   beforeAll(() => {
     // TODO: This should be replaced with a local ganache test environment using proper test fixtures.
     const client = new Eth(new HttpProvider('https://mainnet.melonport.com'));
-    environment = new Environment(client, deployment);
+    environment = new Environment(client);
   });
 
   it('should return the last price feed update as date object', async () => {
-    const source = CanonicalPriceFeed.forDeployment(environment);
+    const source = new CanonicalPriceFeed(environment, '0x4559DDD9E0a567bD8AB071ac106C1bC2d0C0b6Ef');
     const result = await source.getLastUpdate();
     expect(result).toBeInstanceOf(Date);
 

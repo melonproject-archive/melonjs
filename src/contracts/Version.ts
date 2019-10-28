@@ -5,15 +5,6 @@ import { Environment } from '../Environment';
 import { Address } from '../Address';
 
 export class Version extends Contract {
-  public static forDeployment(environment: Environment) {
-    const address = environment.getAddress('melonContracts.version');
-    if (!address) {
-      throw new Error('Missing deployment for version contract.');
-    }
-
-    return new this(environment, address);
-  }
-
   constructor(environment: Environment, address: Address) {
     super(environment, new environment.client.Contract(VersionAbi, address));
   }

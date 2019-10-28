@@ -2,7 +2,6 @@ import BigNumber from 'bignumber.js';
 import { Eth } from 'web3-eth';
 import { HttpProvider } from 'web3-providers';
 import { Environment } from '../Environment';
-import deployment from '../deployments/mainnet';
 import { FeeManager, ManagementFeeInformation, PerformanceFeeInformation } from './FeeManager';
 
 describe('FeeManager', () => {
@@ -12,7 +11,7 @@ describe('FeeManager', () => {
   beforeAll(() => {
     // TODO: This should be replaced with a local ganache test environment using proper test fixtures.
     const client = new Eth(new HttpProvider('https://mainnet.melonport.com'));
-    environment = new Environment(client, deployment);
+    environment = new Environment(client);
     feeManager = new FeeManager(environment, '0x0a98adcc2e15ae6b77c1bfa30a1048597142d66c');
   });
 

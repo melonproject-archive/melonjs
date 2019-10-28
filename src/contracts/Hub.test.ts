@@ -1,30 +1,31 @@
-import { Eth } from 'web3-eth';
-import { HttpProvider } from 'web3-providers';
-import { Environment } from '../Environment';
-import deployment from '../deployments/mainnet';
-import { Hub, FundRoutes } from './Hub';
+import { Hub, HubRoutes } from './Hub';
+import { HubBytecode } from '../abis/Hub.bin';
 import { sameAddress } from '../utils/sameAddress';
+import { createTestEnvironment, TestEnvironment } from '../utils/createTestEnvironment';
 
 describe('Hub', () => {
-  let environment: Environment;
   let hub: Hub;
-  let routes: FundRoutes;
+  let routes: HubRoutes;
+  let environment: TestEnvironment;
 
-  beforeAll(() => {
-    // TODO: This should be replaced with a local ganache test environment using proper test fixtures.
-    const client = new Eth(new HttpProvider('https://mainnet.melonport.com'));
-    environment = new Environment(client, deployment);
-    hub = new Hub(environment, '0x7362d4dd194cf5174748317da1e960723b78f28c');
+  beforeAll(async () => {
+    environment = await createTestEnvironment();
+    const contract = Hub.deploy(environment, HubBytecode, environment.accounts[0], {
+      manager: environment.accounts[1],
+      name: 'test-fund-1',
+    });
+
+    hub = await contract.send(await contract.estimate());
   });
 
   it('should return the correct fund name', async () => {
     const result = await hub.getName();
-    expect(result).toBe('miFund');
+    expect(result).toBe('test-fund-1');
   });
 
   it('should return the correct manager address', async () => {
     const result = await hub.getManager();
-    expect(sameAddress(result, '0x1e1c1ba503cc84b1bcf0151c68a8b5ddc90e4a2e')).toBe(true);
+    expect(sameAddress(result, environment.accounts[1])).toBe(true);
   });
 
   it('should return the creation time', async () => {
@@ -35,7 +36,7 @@ describe('Hub', () => {
 
   it('should return the routes', async () => {
     routes = await hub.getRoutes();
-    expect(routes).toMatchObject<FundRoutes>({
+    expect(routes).toMatchObject<HubRoutes>({
       accounting: expect.any(String),
       engine: expect.any(String),
       feeManager: expect.any(String),
@@ -51,9 +52,9 @@ describe('Hub', () => {
     });
   });
 
-  it('should return the version address as the creator', async () => {
+  it('should return the address of the creator', async () => {
     const result = await hub.getCreator();
-    expect(result).toBe(routes.version);
+    expect(sameAddress(result, environment.accounts[0])).toBe(true);
   });
 
   it('should return whether or not a fund is shutdown', async () => {

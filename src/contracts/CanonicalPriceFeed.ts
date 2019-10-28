@@ -6,22 +6,6 @@ import { Address } from '../Address';
 
 export class CanonicalPriceFeed extends Contract {
   /**
-   * Creates a [CanonicalPriceFeed] instance for the address specified in the given environment's deployment.
-   *
-   * Automatically resolves the address by looking it up in the address book of the deployment.
-   *
-   * @param environment The environment for which to create the [CanonicalPriceFeed].
-   */
-  public static forDeployment(environment: Environment) {
-    const address = environment.getAddress('melonContracts.priceSource');
-    if (!address) {
-      throw new Error('Missing deployment for price source contract.');
-    }
-
-    return new this(environment, address);
-  }
-
-  /**
    * Constructs a [CanonicalPriceFeed] instance.
    *
    * @param environment The environment to construct the [CanonicalPriceFeed] in.

@@ -2,7 +2,6 @@ import { Eth } from 'web3-eth';
 import { HttpProvider } from 'web3-providers';
 import { Environment } from '../Environment';
 import { Trading } from './Trading';
-import deployment from '../deployments/mainnet';
 
 describe('Trading', () => {
   let environment: Environment;
@@ -11,7 +10,7 @@ describe('Trading', () => {
   beforeAll(() => {
     // TODO: This should be replaced with a local ganache test environment using proper test fixtures.
     const client = new Eth(new HttpProvider('https://mainnet.melonport.com'));
-    environment = new Environment(client, deployment);
+    environment = new Environment(client);
     trading = new Trading(environment, '0x02ebb9c97d81a622506e358fad9ac1a308c482cd');
   });
 

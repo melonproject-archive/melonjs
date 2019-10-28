@@ -5,15 +5,6 @@ import { Environment } from '../Environment';
 import { Address } from '../Address';
 
 export class Engine extends Contract {
-  public static forDeployment(environment: Environment) {
-    const address = environment.getAddress('melonContracts.engine');
-    if (!address) {
-      throw new Error('Missing deployment for engine contract.');
-    }
-
-    return new this(environment, address);
-  }
-
   constructor(environment: Environment, address: Address) {
     super(environment, new environment.client.Contract(EngineAbi, address));
   }

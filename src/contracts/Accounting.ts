@@ -5,7 +5,6 @@ import { AccountingAbi } from '../abis/Accounting.abi';
 import { Contract } from '../Contract';
 import { Environment } from '../Environment';
 import { Address } from '../Address';
-import { Token } from './Token';
 import { Spoke } from './Spoke';
 import { applyMixins } from '../utils/applyMixins';
 
@@ -116,17 +115,6 @@ export class Accounting extends Contract {
   public async getNativeAsset(block?: number) {
     const result = await this.makeCall<Address>('NATIVE_ASSET', undefined, block);
     return result;
-  }
-
-  /**
-   * Gets the native token (address, decimals, symbol).
-   *
-   * @param block The block number to execute the call on.
-   */
-  public async getNativeToken(block?: number) {
-    const result = await this.makeCall<Address>('NATIVE_ASSET', undefined, block);
-    const token = Token.findDefinition(this.environment, result);
-    return token;
   }
 
   /**
