@@ -111,6 +111,6 @@ describe('Hub', () => {
   it('should set the fund to shutdown', async () => {
     const tx = hub.setShutdown(environment.accounts[0]);
     const txResult = await tx.send(await tx.estimate());
-    console.log(txResult);
+    expect(txResult.from).toBe(environment.accounts[0]);
   });
 });

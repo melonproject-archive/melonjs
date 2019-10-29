@@ -19,7 +19,7 @@ describe('Vault', () => {
     vault = await createVault(environment, environment.accounts[0], hub.contract.address);
   });
 
-  it('should return the native asset', async () => {
+  it('should return the version contract address', async () => {
     const result = await vault.getVersion();
     expect(result.startsWith('0x')).toBe(true);
   });
