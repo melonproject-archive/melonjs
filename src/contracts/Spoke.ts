@@ -1,11 +1,25 @@
+import { Contract as EthContract } from 'web3-eth-contract';
 import { Contract } from '../Contract';
 import { Environment } from '../Environment';
 import { Address } from '../Address';
+import { Deployment } from '../Transaction';
 import { SpokeAbi } from '../abis/Spoke.abi';
 
 export class Spoke extends Contract {
-  constructor(environment: Environment, address: Address) {
-    super(environment, new environment.client.Contract(SpokeAbi, address));
+  constructor(environment: Environment, contract: EthContract);
+  constructor(environment: Environment, address: Address);
+  constructor(environment: Environment, address: any) {
+    super(environment, typeof address === 'string' ? new environment.client.Contract(SpokeAbi, address) : address);
+  }
+
+  public static deploy(environment: Environment, data: string, from: Address, hub: Address) {
+    const contract = new environment.client.Contract(SpokeAbi);
+    const transaction = contract.deploy({
+      data,
+      arguments: [hub],
+    });
+
+    return new Deployment(transaction, from, contract => new this(environment, contract));
   }
 
   /**

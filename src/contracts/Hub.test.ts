@@ -1,37 +1,24 @@
+import * as R from 'ramda';
 import { Hub, HubRoutes } from './Hub';
 import { HubBytecode } from '../abis/Hub.bin';
+import { SpokeBytecode } from '../abis/Spoke.bin';
 import { sameAddress } from '../utils/sameAddress';
 import { createTestEnvironment, TestEnvironment } from '../utils/createTestEnvironment';
 import { randomAddress } from '../utils/randomAddress';
+import { Spoke } from './Spoke';
 
 describe('Hub', () => {
   let hub: Hub;
   let environment: TestEnvironment;
-  let hubRoutes: HubRoutes;
 
   beforeAll(async () => {
     environment = await createTestEnvironment();
-    hubRoutes = {
-      accounting: randomAddress(),
-      engine: randomAddress(),
-      feeManager: randomAddress(),
-      mlnToken: randomAddress(),
-      participation: randomAddress(),
-      policyManager: randomAddress(),
-      priceSource: randomAddress(),
-      registry: randomAddress(),
-      shares: randomAddress(),
-      trading: randomAddress(),
-      vault: randomAddress(),
-      version: randomAddress(),
-    };
-
-    const contract = Hub.deploy(environment, HubBytecode, environment.accounts[0], {
+    const deploy = Hub.deploy(environment, HubBytecode, environment.accounts[0], {
       manager: environment.accounts[1],
       name: 'test-fund-1',
     });
 
-    hub = await contract.send(await contract.estimate());
+    hub = await deploy.send(await deploy.estimate());
   });
 
   it('should return the correct fund name', async () => {
@@ -50,44 +37,58 @@ describe('Hub', () => {
     expect(result.getTime()).toBeLessThan(Date.now());
   });
 
-  it('should check that the spokes are not yet set', async () => {
-    const result = await hub.isSpokesSet();
-    expect(result).toBe(false);
-  });
+  it('should manage the hub routes properly', async () => {
+    const deploySpoke = async () => {
+      const deploy = Spoke.deploy(environment, SpokeBytecode, environment.accounts[0], hub.contract.address);
+      const spoke = await deploy.send(await deploy.estimate());
+      return spoke.contract.address;
+    };
 
-  it('should set the spokes', async () => {
-    const tx = hub.setSpokes(environment.accounts[0], hubRoutes);
-    const txResult = await tx.send(await tx.estimate());
+    const deployed = await Promise.all(R.range(0, 7).map(() => deploySpoke()));
+    const routes: HubRoutes = {
+      accounting: deployed[0],
+      feeManager: deployed[1],
+      participation: deployed[2],
+      policyManager: deployed[3],
+      shares: deployed[4],
+      trading: deployed[5],
+      vault: deployed[6],
+      version: randomAddress(),
+      engine: randomAddress(),
+      registry: randomAddress(),
+      mlnToken: randomAddress(),
+      priceSource: randomAddress(),
+    };
 
-    expect(txResult.gasUsed).toBeGreaterThanOrEqual(0);
-  });
+    expect(await hub.isSpokesSet()).toBe(false);
 
-  it('should check that the spokes are set', async () => {
-    const result = await hub.isSpokesSet();
-    expect(result).toBe(true);
-  });
+    {
+      const tx = hub.setSpokes(environment.accounts[0], routes);
+      const txResult = await tx.send(await tx.estimate());
+      expect(txResult.gasUsed).toBeGreaterThanOrEqual(0);
+    }
 
-  it('should set the routing', async () => {
-    const tx = hub.setRouting(environment.accounts[0]);
-    const txResult = await tx.send(await tx.estimate());
+    expect(await hub.isSpokesSet()).toBe(true);
 
-    console.log(txResult);
-  });
+    {
+      const tx = hub.setRouting(environment.accounts[0]);
+      const txResult = await tx.send(await tx.estimate());
+      expect(txResult.gasUsed).toBeGreaterThanOrEqual(0);
+    }
 
-  it('should return the routes', async () => {
     const output = await hub.getRoutes();
-    expect(sameAddress(hubRoutes.accounting, output.accounting)).toBe(true);
-    expect(sameAddress(hubRoutes.engine, output.engine)).toBe(true);
-    expect(sameAddress(hubRoutes.feeManager, output.feeManager)).toBe(true);
-    expect(sameAddress(hubRoutes.mlnToken, output.mlnToken)).toBe(true);
-    expect(sameAddress(hubRoutes.participation, output.participation)).toBe(true);
-    expect(sameAddress(hubRoutes.policyManager, output.policyManager)).toBe(true);
-    expect(sameAddress(hubRoutes.priceSource, output.priceSource)).toBe(true);
-    expect(sameAddress(hubRoutes.registry, output.registry)).toBe(true);
-    expect(sameAddress(hubRoutes.shares, output.shares)).toBe(true);
-    expect(sameAddress(hubRoutes.trading, output.trading)).toBe(true);
-    expect(sameAddress(hubRoutes.vault, output.vault)).toBe(true);
-    expect(sameAddress(hubRoutes.version, output.version)).toBe(true);
+    expect(sameAddress(routes.accounting, output.accounting)).toBe(true);
+    expect(sameAddress(routes.engine, output.engine)).toBe(true);
+    expect(sameAddress(routes.feeManager, output.feeManager)).toBe(true);
+    expect(sameAddress(routes.mlnToken, output.mlnToken)).toBe(true);
+    expect(sameAddress(routes.participation, output.participation)).toBe(true);
+    expect(sameAddress(routes.policyManager, output.policyManager)).toBe(true);
+    expect(sameAddress(routes.priceSource, output.priceSource)).toBe(true);
+    expect(sameAddress(routes.registry, output.registry)).toBe(true);
+    expect(sameAddress(routes.shares, output.shares)).toBe(true);
+    expect(sameAddress(routes.trading, output.trading)).toBe(true);
+    expect(sameAddress(routes.vault, output.vault)).toBe(true);
+    expect(sameAddress(routes.version, output.version)).toBe(true);
   });
 
   it('should return the address of the creator', async () => {
