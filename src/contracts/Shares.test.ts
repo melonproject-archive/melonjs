@@ -1,8 +1,8 @@
 import { createTestEnvironment, TestEnvironment } from '../utils/tests/createTestEnvironment';
 import { Shares } from './Shares';
 import { Hub } from './Hub';
-import { createHub } from '../utils/tests/createHub';
-import { createShares } from '../utils/tests/createShares';
+import { deployHub } from '../utils/tests/deployHub';
+import { deployShares } from '../utils/tests/deployShares';
 
 describe('Shares', () => {
   let environment: TestEnvironment;
@@ -11,12 +11,12 @@ describe('Shares', () => {
 
   beforeAll(async () => {
     environment = await createTestEnvironment();
-    hub = await createHub(environment, environment.accounts[0], {
+    hub = await deployHub(environment, environment.accounts[0], {
       manager: environment.accounts[1],
       name: 'vault-test-fund',
     });
 
-    shares = await createShares(environment, environment.accounts[0], hub.contract.address);
+    shares = await deployShares(environment, environment.accounts[0], hub.contract.address);
   });
 
   it('should return the name for shares', async () => {

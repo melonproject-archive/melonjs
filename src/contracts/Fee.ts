@@ -2,24 +2,19 @@ import { Contract as EthContract } from 'web3-eth-contract';
 import { Contract } from '../Contract';
 import { Environment } from '../Environment';
 import { Address } from '../Address';
-import { ManagementFeeAbi } from '../abis/ManagementFee.abi';
 import { toBigNumber } from '../utils/toBigNumber';
 import { Deployment } from '../Transaction';
-import { Fee } from './Fee';
-import { applyMixins } from '../utils/applyMixins';
+import { FeeAbi } from '../abis/Fee.abi';
 
-export class ManagementFee extends Contract {
+export class Fee extends Contract {
   constructor(environment: Environment, contract: EthContract);
   constructor(environment: Environment, address: Address);
   constructor(environment: Environment, address: any) {
-    super(
-      environment,
-      typeof address === 'string' ? new environment.client.Contract(ManagementFeeAbi, address) : address,
-    );
+    super(environment, typeof address === 'string' ? new environment.client.Contract(FeeAbi, address) : address);
   }
 
   public static deploy(environment: Environment, bytecode: string, from: Address) {
-    const contract = new environment.client.Contract(ManagementFeeAbi);
+    const contract = new environment.client.Contract(FeeAbi);
     const transaction = contract.deploy({
       data: bytecode,
     });
@@ -30,14 +25,10 @@ export class ManagementFee extends Contract {
   /**
    * Gets the management fee rate.
    *
-   * @param feeManagerAddress The address of the fee manager contract
    * @param block The block number to execute the call on.
    */
-  public async getManagementFeeRate(feeManagerAddress: Address, block?: number) {
-    const result = await this.makeCall<string>('managementFeeRate', [feeManagerAddress], block);
+  public async identifier(block?: number) {
+    const result = await this.makeCall<number>('identifier', undefined, block);
     return toBigNumber(result);
   }
 }
-
-export interface ManagementFee extends Fee {}
-applyMixins(ManagementFee, [Fee]);
