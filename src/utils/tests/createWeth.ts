@@ -1,5 +1,5 @@
 import { Address } from '../../Address';
-import { Weth } from '../../contracts/utils/Weth';
+import { Weth } from '../../contracts/dependencies/Weth';
 import { WETHBytecode } from '../../abis/WETH.bin';
 import { TestEnvironment } from './createTestEnvironment';
 

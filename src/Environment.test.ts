@@ -6,7 +6,7 @@ import { Contract } from './Contract';
 import { Environment, CacheHandler } from './Environment';
 import { CanonicalPriceFeed } from './contracts/prices/CanonicalPriceFeed';
 import { Hub } from './contracts/fund/hub/Hub';
-import { Token } from './contracts/utils/Token';
+import { Token } from './contracts/dependencies/Token';
 
 describe('CacheHandler', () => {
   let client: Eth;
