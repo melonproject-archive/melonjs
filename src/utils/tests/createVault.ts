@@ -1,4 +1,4 @@
-import { Vault } from '../../contracts/Vault';
+import { Vault } from '../../contracts/fund/vault/Vault';
 import { VaultBytecode } from '../../abis/Vault.bin';
 import { Address } from '../../Address';
 import { TestEnvironment } from './createTestEnvironment';

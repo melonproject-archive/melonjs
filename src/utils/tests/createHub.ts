@@ -1,4 +1,4 @@
-import { Hub, HubDeployArguments } from '../../contracts/Hub';
+import { Hub, HubDeployArguments } from '../../contracts/fund/hub/Hub';
 import { Address } from '../../Address';
 import { HubBytecode } from '../../abis/Hub.bin';
 import { TestEnvironment } from './createTestEnvironment';

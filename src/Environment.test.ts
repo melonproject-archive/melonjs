@@ -4,9 +4,9 @@ import { Eth } from 'web3-eth';
 import { HttpProvider } from 'web3-providers';
 import { Contract } from './Contract';
 import { Environment, CacheHandler } from './Environment';
-import { CanonicalPriceFeed } from './contracts/CanonicalPriceFeed';
-import { Hub } from './contracts/Hub';
-import { Token } from './contracts/Token';
+import { CanonicalPriceFeed } from './contracts/prices/CanonicalPriceFeed';
+import { Hub } from './contracts/fund/hub/Hub';
+import { Token } from './contracts/utils/Token';
 
 describe('CacheHandler', () => {
   let client: Eth;
