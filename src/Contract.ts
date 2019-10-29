@@ -12,9 +12,14 @@ export abstract class Contract {
     // Nothing to do here.
   }
 
-  protected createTransaction<TArgs extends any[] = any[]>(method: string, from: Address, args?: TArgs) {
+  protected createTransaction<TArgs extends any[] = any[]>(
+    method: string,
+    from: Address,
+    args?: TArgs,
+    value?: number | string,
+  ) {
     const fn = this.contract.methods[method];
-    return new Transaction(fn(...(args || [])), from);
+    return new Transaction(fn(...(args || [])), from, value);
   }
 
   protected async makeCall<TReturn = any, TArgs extends any[] = any[]>(

@@ -1,8 +1,8 @@
-import BigNumber from 'bignumber.js';
 import { EngineAbi } from '../abis/Engine.abi';
 import { Contract } from '../Contract';
 import { Environment } from '../Environment';
 import { Address } from '../Address';
+import { toBigNumber } from '../utils/toBigNumber';
 
 export class Engine extends Contract {
   constructor(environment: Environment, address: Address) {
@@ -16,6 +16,6 @@ export class Engine extends Contract {
    */
   public async getEnginePrice(block?: number) {
     const result = await this.makeCall<string>('enginePrice', undefined, block);
-    return new BigNumber(`${result}`);
+    return toBigNumber(result);
   }
 }
