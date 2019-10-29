@@ -4,7 +4,11 @@ import { Address } from './Address';
 import { Contract } from './Contract';
 
 export class Transaction<T = TransactionReceipt> {
-  constructor(public readonly transaction: any, public readonly from: Address) {}
+  constructor(
+    public readonly transaction: any,
+    public readonly from: Address,
+    public readonly value?: number | string,
+  ) {}
 
   public send(gas?: number): PromiEvent<T>;
   public send(options?: SendOptions): PromiEvent<T>;
@@ -23,6 +27,7 @@ export class Transaction<T = TransactionReceipt> {
 
     const opts: SendOptions = {
       ...(this.from && { from: this.from }),
+      ...(this.value && { value: this.value }),
       ...(typeof options === 'object' && options),
       ...(gas && { gas }),
     };
@@ -33,6 +38,7 @@ export class Transaction<T = TransactionReceipt> {
   public estimate(options?: EstimateGasOptions): Promise<number> {
     const opts: EstimateGasOptions = {
       ...(this.from && { from: this.from }),
+      ...(this.value && { value: this.value }),
       ...options,
     };
 

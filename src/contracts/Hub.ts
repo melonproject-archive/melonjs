@@ -33,10 +33,10 @@ export class Hub extends Contract {
     super(environment, typeof address === 'string' ? new environment.client.Contract(HubAbi, address) : address);
   }
 
-  public static deploy(environment: Environment, data: string, from: Address, args: HubDeployArguments) {
+  public static deploy(environment: Environment, bytecode: string, from: Address, args: HubDeployArguments) {
     const contract = new environment.client.Contract(HubAbi);
     const transaction = contract.deploy({
-      data,
+      data: bytecode,
       arguments: [args.manager, toHex(args.name)],
     });
 
