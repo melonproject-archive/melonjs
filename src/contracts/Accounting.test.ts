@@ -1,7 +1,7 @@
 import * as R from 'ramda';
-import { createTestEnvironment, TestEnvironment } from '../utils/createTestEnvironment';
+import { createTestEnvironment, TestEnvironment } from '../utils/tests/createTestEnvironment';
 import { AccountingBytecode } from '../abis/Accounting.bin';
-import { randomAddress } from '../utils/randomAddress';
+import { randomAddress } from '../utils/tests/randomAddress';
 import { Accounting } from '..';
 import { createWeth } from '../utils/tests/createWeth';
 

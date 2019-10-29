@@ -7,10 +7,6 @@ import { applyMixins } from '../utils/applyMixins';
 import { VaultAbi } from '../abis/Vault.abi';
 import { Deployment } from '../Transaction';
 
-export interface VaultDeployArguments {
-  hub: Address;
-}
-
 export class Vault extends Contract {
   constructor(environment: Environment, contract: EthContract);
   constructor(environment: Environment, address: Address);
@@ -18,11 +14,11 @@ export class Vault extends Contract {
     super(environment, typeof address === 'string' ? new environment.client.Contract(VaultAbi, address) : address);
   }
 
-  public static deploy(environment: Environment, data: string, from: Address, args: VaultDeployArguments) {
+  public static deploy(environment: Environment, data: string, from: Address, hub: Address) {
     const contract = new environment.client.Contract(VaultAbi);
     const transaction = contract.deploy({
       data,
-      arguments: [args.hub],
+      arguments: [hub],
     });
 
     return new Deployment(transaction, from, contract => new this(environment, contract));

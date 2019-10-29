@@ -1,19 +1,22 @@
+import { createTestEnvironment, TestEnvironment } from '../utils/tests/createTestEnvironment';
 import { Shares } from './Shares';
-import { createTestEnvironment, TestEnvironment } from '../utils/createTestEnvironment';
-import { SharesBytecode } from '../abis/Shares.bin';
-import { randomAddress } from '../utils/randomAddress';
+import { Hub } from './Hub';
+import { createHub } from '../utils/tests/createHub';
+import { createShares } from '../utils/tests/createShares';
 
 describe('Shares', () => {
   let environment: TestEnvironment;
   let shares: Shares;
+  let hub: Hub;
 
   beforeAll(async () => {
     environment = await createTestEnvironment();
-    const deploy = Shares.deploy(environment, SharesBytecode, environment.accounts[0], {
-      hub: randomAddress(),
+    hub = await createHub(environment, environment.accounts[0], {
+      manager: environment.accounts[1],
+      name: 'vault-test-fund',
     });
 
-    shares = await deploy.send(await deploy.estimate());
+    shares = await createShares(environment, environment.accounts[0], hub.contract.address);
   });
 
   it('should return the name for shares', async () => {

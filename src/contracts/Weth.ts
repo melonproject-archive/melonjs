@@ -29,4 +29,16 @@ export class Weth extends AbstractToken {
   public withdraw(amount: BigNumber, from: Address) {
     return this.createTransaction('withdraw', from, [amount.toFixed()]);
   }
+
+  public name(block?: number) {
+    return this.makeCall('name', undefined, block);
+  }
+
+  public symbol(block?: number) {
+    return this.makeCall('symbol', undefined, block);
+  }
+
+  public decimals(block?: number) {
+    return this.makeCall('decimals', undefined, block);
+  }
 }

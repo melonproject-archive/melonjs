@@ -3,8 +3,8 @@ import { Hub, HubRoutes } from './Hub';
 import { HubBytecode } from '../abis/Hub.bin';
 import { SpokeBytecode } from '../abis/Spoke.bin';
 import { sameAddress } from '../utils/sameAddress';
-import { createTestEnvironment, TestEnvironment } from '../utils/createTestEnvironment';
-import { randomAddress } from '../utils/randomAddress';
+import { createTestEnvironment, TestEnvironment } from '../utils/tests/createTestEnvironment';
+import { randomAddress } from '../utils/tests/randomAddress';
 import { Spoke } from './Spoke';
 
 describe('Hub', () => {
@@ -54,7 +54,7 @@ describe('Hub', () => {
       shares: spokes[4],
       trading: spokes[5],
       vault: spokes[6],
-      version: randomAddress(),
+      version: environment.accounts[0],
       engine: randomAddress(),
       registry: randomAddress(),
       mlnToken: randomAddress(),

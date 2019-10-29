@@ -1,19 +1,22 @@
-import { createTestEnvironment, TestEnvironment } from '../utils/createTestEnvironment';
+import { createTestEnvironment, TestEnvironment } from '../utils/tests/createTestEnvironment';
+import { Hub } from './Hub';
 import { Vault } from './Vault';
-import { VaultBytecode } from '../abis/Vault.bin';
-import { randomAddress } from '../utils/randomAddress';
+import { createHub } from '../utils/tests/createHub';
+import { createVault } from '../utils/tests/createVault';
 
 describe('Vault', () => {
   let environment: TestEnvironment;
   let vault: Vault;
+  let hub: Hub;
 
   beforeAll(async () => {
     environment = await createTestEnvironment();
-    const deploy = Vault.deploy(environment, VaultBytecode, environment.accounts[0], {
-      hub: randomAddress(),
+    hub = await createHub(environment, environment.accounts[0], {
+      manager: environment.accounts[1],
+      name: 'vault-test-fund-1',
     });
 
-    vault = await deploy.send(await deploy.estimate());
+    vault = await createVault(environment, environment.accounts[0], hub.contract.address);
   });
 
   it('should return the native asset', async () => {
