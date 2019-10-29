@@ -1,12 +1,12 @@
 import * as R from 'ramda';
 import BigNumber from 'bignumber.js';
-import { fromWei } from 'web3-utils';
 import { AccountingAbi } from '../abis/Accounting.abi';
 import { Contract } from '../Contract';
 import { Environment } from '../Environment';
 import { Address } from '../Address';
 import { Spoke } from './Spoke';
 import { applyMixins } from '../utils/applyMixins';
+import { toBigNumber } from '../utils/toBigNumber';
 
 export interface FundCalculations {
   sharePrice: BigNumber;
@@ -65,7 +65,7 @@ export class Accounting extends Contract {
    */
   public async getAssetHolding(asset: Address, block?: number) {
     const result = await this.makeCall<string>('assetHoldings', [asset], block);
-    return new BigNumber(`${result}`);
+    return toBigNumber(result);
   }
 
   /**
@@ -80,7 +80,7 @@ export class Accounting extends Contract {
     }>('getFundHoldings', undefined, block);
 
     const output = assets.reduce((carry, key, index) => {
-      const quantity = new BigNumber(`${quantities[index]}`);
+      const quantity = toBigNumber(quantities[index]);
       return { ...carry, [key]: quantity };
     }, {}) as FundHoldings;
 
@@ -94,7 +94,7 @@ export class Accounting extends Contract {
    */
   public async getDefaultSharePrice(block?: number) {
     const result = await this.makeCall<string>('DEFAULT_SHARE_PRICE', undefined, block);
-    return new BigNumber(`${result}`);
+    return toBigNumber(result);
   }
 
   /**
@@ -124,7 +124,7 @@ export class Accounting extends Contract {
    */
   public async getGAV(block?: number) {
     const result = await this.makeCall<string>('calcGav', undefined, block);
-    return new BigNumber(`${result}`);
+    return toBigNumber(result);
   }
 
   /**
@@ -136,12 +136,12 @@ export class Accounting extends Contract {
     const result = await this.makeCall<FundCalculations>('performCalculations', undefined, block);
 
     return {
-      sharePrice: new BigNumber(fromWei(`${result.sharePrice}`)),
-      gav: new BigNumber(fromWei(`${result.gav}`)),
-      nav: new BigNumber(fromWei(`${result.nav}`)),
-      feesInDenominationAsset: new BigNumber(fromWei(`${result.feesInDenominationAsset}`)),
-      feesInShares: new BigNumber(fromWei(`${result.feesInShares}`)),
-      gavPerShareNetManagementFee: new BigNumber(fromWei(`${result.gavPerShareNetManagementFee}`)),
+      sharePrice: toBigNumber(result.sharePrice),
+      gav: toBigNumber(result.gav),
+      nav: toBigNumber(result.nav),
+      feesInDenominationAsset: toBigNumber(result.feesInDenominationAsset),
+      feesInShares: toBigNumber(result.feesInShares),
+      gavPerShareNetManagementFee: toBigNumber(result.gavPerShareNetManagementFee),
     } as FundCalculations;
   }
 
@@ -154,7 +154,7 @@ export class Accounting extends Contract {
    */
   public async getShareCostInAsset(numShares: BigNumber, asset: Address, block?: number) {
     const result = await this.makeCall<string>('getShareCostInAsset', [numShares.toString(), asset], block);
-    return new BigNumber(`${result}`);
+    return toBigNumber(result);
   }
 }
 

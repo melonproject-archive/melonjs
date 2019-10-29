@@ -7,6 +7,7 @@ import { ManagementFee } from './ManagementFee';
 import { PerformanceFee } from './PerformanceFee';
 import { Spoke } from './Spoke';
 import { applyMixins } from '../utils/applyMixins';
+import { toBigNumber } from '../utils/toBigNumber';
 
 export type ManagementFeeInformation = {
   rate: BigNumber;
@@ -41,7 +42,7 @@ export class FeeManager extends Contract {
     const mgmtFeeContract = new ManagementFee(this.environment, mgmtFeeAddress);
     const rate = await mgmtFeeContract.getManagementFeeRate(this.contract.address);
     return {
-      rate: new BigNumber(`${rate}`),
+      rate: toBigNumber(rate),
     } as ManagementFeeInformation;
   }
 
@@ -69,7 +70,7 @@ export class FeeManager extends Contract {
     ]);
 
     return {
-      rate: new BigNumber(`${rate}`),
+      rate: toBigNumber(rate),
       period,
     } as PerformanceFeeInformation;
   }
