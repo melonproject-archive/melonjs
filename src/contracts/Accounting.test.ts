@@ -3,6 +3,7 @@ import { createTestEnvironment, TestEnvironment } from '../utils/createTestEnvir
 import { AccountingBytecode } from '../abis/Accounting.bin';
 import { randomAddress } from '../utils/randomAddress';
 import { Accounting } from '..';
+import { createWeth } from '../utils/tests/createWeth';
 
 describe('Accounting', () => {
   let environment: TestEnvironment;
@@ -10,11 +11,11 @@ describe('Accounting', () => {
 
   beforeAll(async () => {
     environment = await createTestEnvironment();
-
+    const weth = await createWeth(environment, environment.accounts[0]);
     const deploy = Accounting.deploy(environment, AccountingBytecode, environment.accounts[0], {
       hub: randomAddress(),
-      denominationAsset: randomAddress(),
-      nativeAsset: randomAddress(),
+      denominationAsset: weth.contract.address,
+      nativeAsset: weth.contract.address,
       defaultAssets: R.range(0, 1).map(() => randomAddress()),
     });
 
