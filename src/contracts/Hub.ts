@@ -127,6 +127,16 @@ export class Hub extends Contract {
   }
 
   /**
+   * Checks if the spokes are set
+   *
+   * @param block The block number to execute the call on.
+   */
+  public async isSpokesSet(block?: number) {
+    const result = await this.makeCall<boolean>('spokesSet', undefined, block);
+    return result;
+  }
+
+  /**
    * Sets the spokes on the hub.
    *
    * @param from The sender address.
@@ -151,5 +161,43 @@ export class Hub extends Contract {
     ];
 
     return this.createTransaction('setSpokes', from, args);
+  }
+
+  /**
+   * Checks if the routing is set
+   *
+   * @param block The block number to execute the call on.
+   */
+  public async isRoutingSet(block?: number) {
+    const result = await this.makeCall<boolean>('routingSet', undefined, block);
+    return result;
+  }
+
+  /**
+   * Sets the routing on the hub.
+   *
+   * @param from The sender address.
+   */
+  public setRouting(from: Address) {
+    return this.createTransaction('setRouting', from);
+  }
+
+  /**
+   * Sets the permissions on the hub.
+   *
+   * @param from The sender address.
+   */
+  public setPermissions(from: Address) {
+    return this.createTransaction('setPermissions', from);
+  }
+
+  /**
+   * Checks if the permissions are set
+   *
+   * @param block The block number to execute the call on.
+   */
+  public async isPermissionsSet(block?: number) {
+    const result = await this.makeCall<boolean>('permissionsSet', undefined, block);
+    return result;
   }
 }

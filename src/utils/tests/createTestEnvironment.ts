@@ -1,7 +1,7 @@
 import Web3 from 'web3';
 import { Eth } from 'web3-eth';
-import { Address } from '../Address';
-import { Environment, EnvironmentOptions } from '../Environment';
+import { Address } from '../../Address';
+import { Environment, EnvironmentOptions } from '../../Environment';
 import { HttpProvider } from 'web3-providers';
 
 interface TestEnvironmentOptions extends EnvironmentOptions {

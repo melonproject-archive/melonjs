@@ -1,3 +1,4 @@
+import { Contract as EthContract } from 'web3-eth-contract';
 import BigNumber from 'bignumber.js';
 import { CanonicalPriceFeedAbi } from '../abis/CanonicalPriceFeed.abi';
 import { Contract } from '../Contract';
@@ -24,8 +25,13 @@ export class CanonicalPriceFeed extends Contract {
    * @param environment The environment to construct the [CanonicalPriceFeed] in.
    * @param address The address of the deployed [CanonicalPriceFeed] contract.
    */
-  constructor(environment: Environment, address: Address) {
-    super(environment, new environment.client.Contract(CanonicalPriceFeedAbi, address));
+  constructor(environment: Environment, contract: EthContract);
+  constructor(environment: Environment, address: Address);
+  constructor(environment: Environment, address: any) {
+    super(
+      environment,
+      typeof address === 'string' ? new environment.client.Contract(CanonicalPriceFeedAbi, address) : address,
+    );
   }
 
   /**

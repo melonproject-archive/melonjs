@@ -1,4 +1,5 @@
 import BigNumber from 'bignumber.js';
+import { Contract as EthContract } from 'web3-eth-contract';
 import { Contract } from '../Contract';
 import { Environment } from '../Environment';
 import { Address } from '../Address';
@@ -8,6 +9,7 @@ import { PerformanceFee } from './PerformanceFee';
 import { Spoke } from './Spoke';
 import { applyMixins } from '../utils/applyMixins';
 import { toBigNumber } from '../utils/toBigNumber';
+import { Deployment } from '../Transaction';
 
 export type ManagementFeeInformation = {
   rate: BigNumber;
@@ -18,9 +20,30 @@ export type PerformanceFeeInformation = {
   period: number;
 };
 
+export interface FeeManagerDeployArguments {
+  hub: Address;
+  denominationAsset: Address;
+  fees: Address[];
+  rates: BigNumber[];
+  periods: BigNumber[];
+  registry: Address;
+}
+
 export class FeeManager extends Contract {
-  constructor(environment: Environment, address: Address) {
-    super(environment, new environment.client.Contract(FeeManagerAbi, address));
+  constructor(environment: Environment, contract: EthContract);
+  constructor(environment: Environment, address: Address);
+  constructor(environment: Environment, address: any) {
+    super(environment, typeof address === 'string' ? new environment.client.Contract(FeeManagerAbi, address) : address);
+  }
+
+  public static deploy(environment: Environment, bytecode: string, from: Address, args: FeeManagerDeployArguments) {
+    const contract = new environment.client.Contract(FeeManagerAbi);
+    const transaction = contract.deploy({
+      data: bytecode,
+      arguments: [args.hub, args.denominationAsset, args.fees, args.rates, args.periods, args.registry],
+    });
+
+    return new Deployment(transaction, from, contract => new this(environment, contract));
   }
 
   /**

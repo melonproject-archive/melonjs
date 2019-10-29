@@ -1,8 +1,8 @@
 import { toWei, fromWei } from 'web3-utils';
 import { Weth } from './Weth';
 import { WETHBytecode } from '../abis/WETH.bin';
-import { createTestEnvironment, TestEnvironment } from '../utils/createTestEnvironment';
 import { toBigNumber } from '../utils/toBigNumber';
+import { createTestEnvironment, TestEnvironment } from '../utils/tests/createTestEnvironment';
 
 describe('Weth', () => {
   let environment: TestEnvironment;

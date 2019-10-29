@@ -1,4 +1,5 @@
 import BigNumber from 'bignumber.js';
+import { Contract as EthContract } from 'web3-eth-contract';
 import { Contract } from '../Contract';
 import { Environment } from '../Environment';
 import { Address } from '../Address';
@@ -6,6 +7,7 @@ import { ParticipationAbi } from '../abis/Participation.abi';
 import { Spoke } from './Spoke';
 import { applyMixins } from '../utils/applyMixins';
 import { toBigNumber } from '../utils/toBigNumber';
+import { Deployment } from '../Transaction';
 
 export interface Request {
   investmentAsset: Address;
@@ -14,9 +16,30 @@ export interface Request {
   timestamp: Date;
 }
 
+export interface ParticipationDeployArguments {
+  hub: Address;
+  defaultAssets: Address[];
+  registry: Address;
+}
+
 export class Participation extends Contract {
-  constructor(environment: Environment, address: Address) {
-    super(environment, new environment.client.Contract(ParticipationAbi, address));
+  constructor(environment: Environment, contract: EthContract);
+  constructor(environment: Environment, address: Address);
+  constructor(environment: Environment, address: any) {
+    super(
+      environment,
+      typeof address === 'string' ? new environment.client.Contract(ParticipationAbi, address) : address,
+    );
+  }
+
+  public static deploy(environment: Environment, bytecode: string, from: Address, args: ParticipationDeployArguments) {
+    const contract = new environment.client.Contract(ParticipationAbi);
+    const transaction = contract.deploy({
+      data: bytecode,
+      arguments: [args.hub, args.defaultAssets, args.registry],
+    });
+
+    return new Deployment(transaction, from, contract => new this(environment, contract));
   }
 
   /**

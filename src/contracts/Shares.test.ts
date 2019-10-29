@@ -1,17 +1,22 @@
-import { Eth } from 'web3-eth';
-import { HttpProvider } from 'web3-providers';
-import { Environment } from '../Environment';
+import { createTestEnvironment, TestEnvironment } from '../utils/tests/createTestEnvironment';
 import { Shares } from './Shares';
+import { Hub } from './Hub';
+import { createHub } from '../utils/tests/createHub';
+import { createShares } from '../utils/tests/createShares';
 
 describe('Shares', () => {
-  let environment: Environment;
+  let environment: TestEnvironment;
   let shares: Shares;
+  let hub: Hub;
 
-  beforeAll(() => {
-    // TODO: This should be replaced with a local ganache test environment using proper test fixtures.
-    const client = new Eth(new HttpProvider('https://mainnet.melonport.com'));
-    environment = new Environment(client);
-    shares = new Shares(environment, '0x70958d69bd1a550b5f49d4d64d1c8bfa358558cd');
+  beforeAll(async () => {
+    environment = await createTestEnvironment();
+    hub = await createHub(environment, environment.accounts[0], {
+      manager: environment.accounts[1],
+      name: 'vault-test-fund',
+    });
+
+    shares = await createShares(environment, environment.accounts[0], hub.contract.address);
   });
 
   it('should return the name for shares', async () => {
