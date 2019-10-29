@@ -1,13 +1,12 @@
 import { createTestEnvironment, TestEnvironment } from '../../../utils/tests/createTestEnvironment';
 import { AccountingBytecode } from '../../../abis/Accounting.bin';
-import { Accounting } from './Accounting';
+import { Accounting, FundCalculations } from './Accounting';
 import { deployWeth } from '../../../utils/tests/deployWeth';
 import BigNumber from 'bignumber.js';
 import { Environment } from '../../../Environment';
 
 import { Eth } from 'web3-eth';
 import { HttpProvider } from 'web3-providers';
-import { FundCalculations } from './Accounting';
 import { deployHub } from '../../../utils/tests/deployHub';
 
 describe('Accounting', () => {
