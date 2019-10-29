@@ -4,6 +4,9 @@ import { Environment } from '../Environment';
 import { Address } from '../Address';
 import { PerformanceFeeAbi } from '../abis/PerformanceFee.abi';
 import { toBigNumber } from '../utils/toBigNumber';
+import { Fee } from './Fee';
+import { applyMixins } from '../utils/applyMixins';
+import { Deployment } from '../Transaction';
 
 export class PerformanceFee extends Contract {
   constructor(environment: Environment, contract: EthContract);
@@ -13,6 +16,15 @@ export class PerformanceFee extends Contract {
       environment,
       typeof address === 'string' ? new environment.client.Contract(PerformanceFeeAbi, address) : address,
     );
+  }
+
+  public static deploy(environment: Environment, bytecode: string, from: Address) {
+    const contract = new environment.client.Contract(PerformanceFeeAbi);
+    const transaction = contract.deploy({
+      data: bytecode,
+    });
+
+    return new Deployment(transaction, from, contract => new this(environment, contract));
   }
 
   /**
@@ -37,3 +49,6 @@ export class PerformanceFee extends Contract {
     return parseInt(result, 10);
   }
 }
+
+export interface PerformanceFee extends Fee {}
+applyMixins(PerformanceFee, [Fee]);

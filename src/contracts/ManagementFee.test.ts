@@ -1,6 +1,8 @@
 import { ManagementFee } from './ManagementFee';
 import { TestEnvironment, createTestEnvironment } from '../utils/tests/createTestEnvironment';
 import { deployManagementFee } from '../utils/tests/deployManagementFee';
+import BigNumber from 'bignumber.js';
+import { randomAddress } from '../utils/tests/randomAddress';
 
 describe('FeeManager', () => {
   let environment: TestEnvironment;
@@ -8,17 +10,31 @@ describe('FeeManager', () => {
 
   beforeAll(async () => {
     environment = await createTestEnvironment();
-
     managementFee = await deployManagementFee(environment, environment.accounts[0]);
   });
 
-  // it('should return management fee rate', async () => {
-  //   const result = await managementFee.getManagementFeeRate('0x0a98adcc2e15ae6b77c1bfa30a1048597142d66c');
-  //   expect(result.isGreaterThanOrEqualTo(0)).toBe(true);
-  // });
+  it('should set the management fee parameters', async () => {
+    const tx = managementFee.initializeForUser(environment.accounts[0], {
+      feeRate: new BigNumber('100000000'),
+      feePeriod: 1000,
+      denominationAsset: randomAddress(),
+    });
+    const txResult = await tx.send(await tx.estimate());
+    expect(txResult.gasUsed).toBeGreaterThan(0);
+  });
+
+  it('should get the management fee rate', async () => {
+    const result = await managementFee.getManagementFeeRate(environment.accounts[0]);
+    expect(result.isGreaterThanOrEqualTo(0)).toBe(true);
+  });
+
+  it('should get the last payout time', async () => {
+    const result = await managementFee.getLastPayoutTime(environment.accounts[0]);
+    expect(result.isGreaterThanOrEqualTo(0)).toBe(true);
+  });
 
   it('should return the correct identifier', async () => {
     const result = await managementFee.identifier();
-    expect(result.isEqualTo(0)).toBe(true);
+    expect(result).toBe(0);
   });
 });
