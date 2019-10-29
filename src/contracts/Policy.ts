@@ -1,11 +1,14 @@
+import { Contract as EthContract } from 'web3-eth-contract';
 import { Contract } from '../Contract';
 import { Environment } from '../Environment';
 import { Address } from '../Address';
 import { PolicyAbi } from '../abis/Policy.abi';
 
 export class Policy extends Contract {
-  constructor(environment: Environment, address: Address) {
-    super(environment, new environment.client.Contract(PolicyAbi, address));
+  constructor(environment: Environment, contract: EthContract);
+  constructor(environment: Environment, address: Address);
+  constructor(environment: Environment, address: any) {
+    super(environment, typeof address === 'string' ? new environment.client.Contract(PolicyAbi, address) : address);
   }
 
   /**

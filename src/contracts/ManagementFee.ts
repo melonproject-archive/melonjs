@@ -1,12 +1,18 @@
 import { Contract } from '../Contract';
+import { Contract as EthContract } from 'web3-eth-contract';
 import { Environment } from '../Environment';
 import { Address } from '../Address';
 import { ManagementFeeAbi } from '../abis/ManagementFee.abi';
 import { toBigNumber } from '../utils/toBigNumber';
 
 export class ManagementFee extends Contract {
-  constructor(environment: Environment, address: Address) {
-    super(environment, new environment.client.Contract(ManagementFeeAbi, address));
+  constructor(environment: Environment, contract: EthContract);
+  constructor(environment: Environment, address: Address);
+  constructor(environment: Environment, address: any) {
+    super(
+      environment,
+      typeof address === 'string' ? new environment.client.Contract(ManagementFeeAbi, address) : address,
+    );
   }
 
   /**

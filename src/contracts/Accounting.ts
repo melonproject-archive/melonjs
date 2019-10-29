@@ -181,24 +181,3 @@ export class Accounting extends Contract {
 
 export interface Accounting extends Spoke {}
 applyMixins(Accounting, [Spoke]);
-
-// export class AccountingFactory extends Contract {
-//   constructor(environment: Environment, contract: EthContract);
-//   constructor(environment: Environment, address: Address);
-//   constructor(environment: Environment, address: any) {
-//     super(environment, typeof address === 'string' ? new environment.client.Contract(HubAbi, address) : address);
-//   }
-
-//   public static deploy(environment: Environment, data: string, from: Address, args: HubDeployArguments) {
-//     const contract = new environment.client.Contract(HubAbi);
-//     const transaction = contract.deploy({
-//       data,
-//       arguments: [args.manager, toHex(args.name)],
-//     });
-
-//     return new Deployment(transaction, from, contract => new this(environment, contract));
-//   }
-// }
-
-// export interface AccountingFactory extends Factory {}
-// applyMixins(AccountingFactory, [Factory]);

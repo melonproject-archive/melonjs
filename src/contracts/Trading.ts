@@ -1,9 +1,12 @@
+import { Contract as EthContract } from 'web3-eth-contract';
+
 import { Contract } from '../Contract';
 import { Environment } from '../Environment';
 import { Address } from '../Address';
 import { TradingAbi } from '../abis/Trading.abi';
 import { Spoke } from './Spoke';
 import { applyMixins } from '../utils/applyMixins';
+import { Deployment } from '../Transaction';
 
 export interface ExchangeInfo {
   exchange: Address;
@@ -22,9 +25,28 @@ export interface OpenMakeOrder {
   buyAsset: Address;
 }
 
+export interface TradingDeployArguments {
+  hub: Address;
+  exchanges: Address[];
+  adapters: Address[];
+  registry: Address;
+}
+
 export class Trading extends Contract {
-  constructor(environment: Environment, address: Address) {
-    super(environment, new environment.client.Contract(TradingAbi, address));
+  constructor(environment: Environment, contract: EthContract);
+  constructor(environment: Environment, address: Address);
+  constructor(environment: Environment, address: any) {
+    super(environment, typeof address === 'string' ? new environment.client.Contract(TradingAbi, address) : address);
+  }
+
+  public static deploy(environment: Environment, data: string, from: Address, args: TradingDeployArguments) {
+    const contract = new environment.client.Contract(TradingAbi);
+    const transaction = contract.deploy({
+      data,
+      arguments: [args.hub, args.exchanges, args.adapters, args.registry],
+    });
+
+    return new Deployment(transaction, from, contract => new this(environment, contract));
   }
 
   /**

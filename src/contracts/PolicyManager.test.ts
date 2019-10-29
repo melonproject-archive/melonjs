@@ -1,17 +1,28 @@
-import { Eth } from 'web3-eth';
-import { HttpProvider } from 'web3-providers';
-import { Environment } from '../Environment';
 import { PolicyManager } from './PolicyManager';
+import { createTestEnvironment, TestEnvironment } from '../utils/tests/createTestEnvironment';
+import { PolicyManagerBytecode } from '../abis/PolicyManager.bin';
+import { createHub } from '../utils/tests/createHub';
 
 describe('PolicyManager', () => {
-  let environment: Environment;
+  let environment: TestEnvironment;
   let policyManager: PolicyManager;
 
-  beforeAll(() => {
-    // TODO: This should be replaced with a local ganache test environment using proper test fixtures.
-    const client = new Eth(new HttpProvider('https://mainnet.melonport.com'));
-    environment = new Environment(client);
-    policyManager = new PolicyManager(environment, '0xca10ef90f47bcc3ec90edb8bd5c3443cc63d4024');
+  beforeAll(async () => {
+    environment = await createTestEnvironment();
+
+    const hub = await createHub(environment, environment.accounts[0], {
+      manager: environment.accounts[1],
+      name: 'policyManager-test-fund',
+    });
+
+    const deploy = PolicyManager.deploy(
+      environment,
+      PolicyManagerBytecode,
+      environment.accounts[0],
+      hub.contract.address,
+    );
+
+    policyManager = await deploy.send(await deploy.estimate());
   });
 
   it('should return the policies by signature', async () => {

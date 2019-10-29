@@ -1,6 +1,7 @@
+import { Contract as EthContract } from 'web3-eth-contract';
+
 import { Contract } from '../Contract';
 import { Environment } from '../Environment';
-import { Contract as EthContract } from 'web3-eth-contract';
 import { Address } from '../Address';
 import { Spoke } from './Spoke';
 import { applyMixins } from '../utils/applyMixins';

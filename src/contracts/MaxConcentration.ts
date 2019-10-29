@@ -1,3 +1,4 @@
+import { Contract as EthContract } from 'web3-eth-contract';
 import { Contract } from '../Contract';
 import { Environment } from '../Environment';
 import { Address } from '../Address';
@@ -7,8 +8,13 @@ import { Policy } from './Policy';
 import { toBigNumber } from '../utils/toBigNumber';
 
 export class MaxConcentration extends Contract {
-  constructor(environment: Environment, address: Address) {
-    super(environment, new environment.client.Contract(MaxConcentrationAbi, address));
+  constructor(environment: Environment, contract: EthContract);
+  constructor(environment: Environment, address: Address);
+  constructor(environment: Environment, address: any) {
+    super(
+      environment,
+      typeof address === 'string' ? new environment.client.Contract(MaxConcentrationAbi, address) : address,
+    );
   }
 
   /**

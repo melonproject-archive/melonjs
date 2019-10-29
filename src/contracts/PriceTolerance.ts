@@ -1,3 +1,4 @@
+import { Contract as EthContract } from 'web3-eth-contract';
 import { Contract } from '../Contract';
 import { Environment } from '../Environment';
 import { Address } from '../Address';
@@ -7,8 +8,13 @@ import { toBigNumber } from '../utils/toBigNumber';
 import { Policy } from './Policy';
 
 export class PriceTolerance extends Contract {
-  constructor(environment: Environment, address: Address) {
-    super(environment, new environment.client.Contract(PriceToleranceAbi, address));
+  constructor(environment: Environment, contract: EthContract);
+  constructor(environment: Environment, address: Address);
+  constructor(environment: Environment, address: any) {
+    super(
+      environment,
+      typeof address === 'string' ? new environment.client.Contract(PriceToleranceAbi, address) : address,
+    );
   }
 
   /**

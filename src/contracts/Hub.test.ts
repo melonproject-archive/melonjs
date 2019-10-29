@@ -1,11 +1,11 @@
 import * as R from 'ramda';
 import { Hub, HubRoutes } from './Hub';
-import { HubBytecode } from '../abis/Hub.bin';
 import { SpokeBytecode } from '../abis/Spoke.bin';
 import { sameAddress } from '../utils/sameAddress';
 import { createTestEnvironment, TestEnvironment } from '../utils/tests/createTestEnvironment';
 import { randomAddress } from '../utils/tests/randomAddress';
 import { Spoke } from './Spoke';
+import { createHub } from '../utils/tests/createHub';
 
 describe('Hub', () => {
   let hub: Hub;
@@ -13,17 +13,15 @@ describe('Hub', () => {
 
   beforeAll(async () => {
     environment = await createTestEnvironment();
-    const deploy = Hub.deploy(environment, HubBytecode, environment.accounts[0], {
+    hub = await createHub(environment, environment.accounts[0], {
       manager: environment.accounts[1],
-      name: 'test-fund-1',
+      name: 'hub-test-fund',
     });
-
-    hub = await deploy.send(await deploy.estimate());
   });
 
   it('should return the correct fund name', async () => {
     const result = await hub.getName();
-    expect(result).toBe('test-fund-1');
+    expect(result).toBe('hub-test-fund');
   });
 
   it('should return the correct manager address', async () => {
