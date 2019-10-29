@@ -4,6 +4,7 @@ import { CanonicalPriceFeedAbi } from '../../abis/CanonicalPriceFeed.abi';
 import { Contract } from '../../Contract';
 import { Environment } from '../../Environment';
 import { Address } from '../../Address';
+import { toDate } from '../../utils/toDate';
 
 export interface PriceInfo {
   token: Address;
@@ -101,7 +102,6 @@ export class CanonicalPriceFeed extends Contract {
    */
   public async getLastUpdate(block?: number) {
     const result = await this.makeCall<string>('getLastUpdate', undefined, block);
-    const timestamp = new BigNumber(result.toString()).multipliedBy(1000).toNumber();
-    return new Date(timestamp);
+    return toDate(result);
   }
 }
