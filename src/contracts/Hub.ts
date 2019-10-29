@@ -192,6 +192,7 @@ export class Hub extends Contract {
   }
 
   /**
+<<<<<<< Updated upstream
    * Checks if the permissions are set
    *
    * @param block The block number to execute the call on.
@@ -202,6 +203,8 @@ export class Hub extends Contract {
   }
 
   /**
+=======
+>>>>>>> Stashed changes
    * Sets the fund to shutDown.
    *
    * @param from The sender address.

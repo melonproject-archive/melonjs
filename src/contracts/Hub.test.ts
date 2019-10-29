@@ -107,4 +107,10 @@ describe('Hub', () => {
     const result = await hub.isShutDown();
     expect(result === true || result === false).toBe(true);
   });
+
+  it('should set the fund to shutdown', async () => {
+    const tx = hub.setShutdown(environment.accounts[0]);
+    const txResult = await tx.send(await tx.estimate());
+    console.log(txResult);
+  });
 });
