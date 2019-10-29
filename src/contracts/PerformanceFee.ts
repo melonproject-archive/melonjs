@@ -1,5 +1,5 @@
-import { Contract } from '../Contract';
 import { Contract as EthContract } from 'web3-eth-contract';
+import { Contract } from '../Contract';
 import { Environment } from '../Environment';
 import { Address } from '../Address';
 import { PerformanceFeeAbi } from '../abis/PerformanceFee.abi';
