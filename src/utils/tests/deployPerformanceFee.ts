@@ -1,6 +1,6 @@
 import { Address } from '../../Address';
 import { TestEnvironment } from './createTestEnvironment';
-import { PerformanceFee } from '../../contracts/PerformanceFee';
+import { PerformanceFee } from '../../contracts/fund/fees/PerformanceFee';
 import { PerformanceFeeBytecode } from '../../abis/PerformanceFee.bin';
 
 export async function deployPerformanceFee(environment: TestEnvironment, creator: Address) {
