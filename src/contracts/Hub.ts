@@ -181,4 +181,32 @@ export class Hub extends Contract {
   public setRouting(from: Address) {
     return this.createTransaction('setRouting', from);
   }
+
+  /**
+   * Sets the permissions on the hub.
+   *
+   * @param from The sender address.
+   */
+  public setPermissions(from: Address) {
+    return this.createTransaction('setPermissions', from);
+  }
+
+  /**
+   * Checks if the permissions are set
+   *
+   * @param block The block number to execute the call on.
+   */
+  public async isPermissionsSet(block?: number) {
+    const result = await this.makeCall<boolean>('permissionsSet', undefined, block);
+    return result;
+  }
+
+  /**
+   * Sets the fund to shutDown.
+   *
+   * @param from The sender address.
+   */
+  public setShutdown(from: Address) {
+    return this.createTransaction('shutDownFund', from);
+  }
 }

@@ -1,17 +1,19 @@
-import { Eth } from 'web3-eth';
-import { HttpProvider } from 'web3-providers';
-import { Environment } from '../Environment';
 import { Shares } from './Shares';
+import { createTestEnvironment, TestEnvironment } from '../utils/createTestEnvironment';
+import { SharesBytecode } from '../abis/Shares.bin';
+import { randomAddress } from '../utils/randomAddress';
 
 describe('Shares', () => {
-  let environment: Environment;
+  let environment: TestEnvironment;
   let shares: Shares;
 
-  beforeAll(() => {
-    // TODO: This should be replaced with a local ganache test environment using proper test fixtures.
-    const client = new Eth(new HttpProvider('https://mainnet.melonport.com'));
-    environment = new Environment(client);
-    shares = new Shares(environment, '0x70958d69bd1a550b5f49d4d64d1c8bfa358558cd');
+  beforeAll(async () => {
+    environment = await createTestEnvironment();
+    const deploy = Shares.deploy(environment, SharesBytecode, environment.accounts[0], {
+      hub: randomAddress(),
+    });
+
+    shares = await deploy.send(await deploy.estimate());
   });
 
   it('should return the name for shares', async () => {

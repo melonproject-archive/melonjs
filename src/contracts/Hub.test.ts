@@ -60,8 +60,6 @@ describe('Hub', () => {
       priceSource: randomAddress(),
     };
 
-    expect(await hub.isSpokesSet()).toBe(false);
-
     {
       const tx = hub.setSpokes(environment.accounts[0], routes);
       const txResult = await tx.send(await tx.estimate());
@@ -89,6 +87,14 @@ describe('Hub', () => {
     expect(sameAddress(routes.trading, output.trading)).toBe(true);
     expect(sameAddress(routes.vault, output.vault)).toBe(true);
     expect(sameAddress(routes.version, output.version)).toBe(true);
+
+    {
+      const tx = hub.setPermissions(environment.accounts[0]);
+      const txResult = await tx.send(await tx.estimate());
+      expect(txResult.gasUsed).toBeGreaterThanOrEqual(0);
+    }
+
+    expect(await hub.isPermissionsSet()).toBe(true);
   });
 
   it('should return the address of the creator', async () => {
