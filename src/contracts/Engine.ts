@@ -16,7 +16,7 @@ export class Engine extends Contract {
    */
   public async getAmguPrice(block?: number) {
     const result = await this.makeCall<string>('amguPrice', undefined, block);
-    return new BigNumber(`${result}`);
+    return toBigNumber(result);
   }
 
   /**
@@ -36,7 +36,7 @@ export class Engine extends Contract {
    */
   public async getFrozenEther(block?: number) {
     const result = await this.makeCall<string>('frozenEther', undefined, block);
-    return new BigNumber(`${result}`);
+    return toBigNumber(result);
   }
 
   /**
@@ -46,7 +46,7 @@ export class Engine extends Contract {
    */
   public async getLiquidEther(block?: number) {
     const result = await this.makeCall<string>('liquidEther', undefined, block);
-    return new BigNumber(`${result}`);
+    return toBigNumber(result);
   }
 
   /**
@@ -56,7 +56,7 @@ export class Engine extends Contract {
    */
   public async getPremiumPercent(block?: number) {
     const result = await this.makeCall<string>('premiumPercent', undefined, block);
-    return new BigNumber(`${result}`);
+    return toBigNumber(result);
   }
 
   /**
@@ -75,7 +75,7 @@ export class Engine extends Contract {
    */
   public async getTotalEtherConsumed(block?: number) {
     const result = await this.makeCall<string>('totalEtherConsumed', undefined, block);
-    return new BigNumber(`${result}`);
+    return toBigNumber(result);
   }
 
   /**
@@ -85,7 +85,7 @@ export class Engine extends Contract {
    */
   public async getTotalAmguConsumed(block?: number) {
     const result = await this.makeCall<string>('totalAmguConsumed', undefined, block);
-    return new BigNumber(`${result}`);
+    return toBigNumber(result);
   }
 
   /**
@@ -95,6 +95,6 @@ export class Engine extends Contract {
    */
   public async getTotalMlnBurned(block?: number) {
     const result = await this.makeCall<string>('totalMlnBurned', undefined, block);
-    return new BigNumber(`${result}`);
+    return toBigNumber(result);
   }
 }

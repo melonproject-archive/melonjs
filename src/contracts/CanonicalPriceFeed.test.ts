@@ -2,6 +2,7 @@ import { Eth } from 'web3-eth';
 import { HttpProvider } from 'web3-providers';
 import { Environment } from '../Environment';
 import { CanonicalPriceFeed } from './CanonicalPriceFeed';
+import { sameAddress } from '../utils/sameAddress';
 
 describe('CanonicalPriceFeed', () => {
   let environment: Environment;
@@ -32,7 +33,7 @@ describe('CanonicalPriceFeed', () => {
     const result = await source.getQuoteToken();
     const weth = '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2';
 
-    expect(result).toEqual(weth);
+    expect(sameAddress(weth, result)).toBe(true);
   });
 
   it('should return the price of a token pair', async () => {

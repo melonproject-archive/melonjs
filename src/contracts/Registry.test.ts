@@ -1,6 +1,5 @@
 import { Eth } from 'web3-eth';
 import { HttpProvider } from 'web3-providers';
-import deployment from '../deployments/mainnet';
 import { Environment } from '../Environment';
 import { Registry } from './Registry';
 
@@ -11,26 +10,18 @@ describe('Registry', () => {
   beforeAll(() => {
     // TODO: This should be replaced with a local ganache test environment using proper test fixtures.
     const client = new Eth(new HttpProvider('https://mainnet.melonport.com'));
-    environment = new Environment(client, deployment);
-    registry = Registry.forDeployment(environment);
+    environment = new Environment(client);
+    registry = new Registry(environment, '0x1Bfd21f7db126a5966d2C09492676807a68859Ba');
   });
 
   it('should return the information of a version', async () => {
-    const versionAddress = environment.deployment.melonContracts.version;
-    const result = await registry.getVersionInformation(versionAddress);
-    expect(result.exists == true).toBe(true);
+    const result = await registry.getVersionInformation('0x01Bde0b02740D6311e4a87CA112DeEEddb057EFB');
+    expect(result.exists).toBe(true);
     expect(result.name.startsWith('0x')).toBe(true);
   });
 
   it('should check if a fee was registered', async () => {
-    const feeAddresses = environment.deployment.melonContracts.fees;
-    const result = await registry.isFeeRegistered(feeAddresses.managementFee);
-    const result1 = await registry.isFeeRegistered(feeAddresses.performanceFee);
-    expect(result == true && result1 == true).toBe(true);
-  });
-
-  it('should return the information of the registry', async () => {
-    const result = await registry.getRegistryInfomation();
-    console.log(result);
+    const result = await registry.isFeeRegistered('0x67d8f29C6956e591Bc43C0DCc82b87D6A6Eb76e7');
+    expect(result === true || result === false).toBe(true);
   });
 });
