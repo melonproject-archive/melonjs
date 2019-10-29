@@ -1,6 +1,6 @@
 {
   "name": "@melonproject/melonjs",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "description": "Technology Regulated and Operated Investment Funds.",
   "main": "index.js",
   "module": "bundle.esm.js",
