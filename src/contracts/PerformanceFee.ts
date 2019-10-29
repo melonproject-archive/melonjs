@@ -1,8 +1,8 @@
-import BigNumber from 'bignumber.js';
 import { Contract } from '../Contract';
 import { Environment } from '../Environment';
 import { Address } from '../Address';
 import { PerformanceFeeAbi } from '../abis/PerformanceFee.abi';
+import { toBigNumber } from '../utils/toBigNumber';
 
 export class PerformanceFee extends Contract {
   constructor(environment: Environment, address: Address) {
@@ -17,7 +17,7 @@ export class PerformanceFee extends Contract {
    */
   public async getPerformanceFeeRate(address: Address, block?: number) {
     const result = await this.makeCall<string>('performanceFeeRate', [address], block);
-    return new BigNumber(`${result}`);
+    return toBigNumber(result);
   }
 
   /**

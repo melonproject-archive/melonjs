@@ -1,9 +1,9 @@
-import BigNumber from 'bignumber.js';
 import { Contract } from '../Contract';
 import { Environment } from '../Environment';
 import { Address } from '../Address';
 import { PriceToleranceAbi } from '../abis/PriceTolerance.abi';
 import { applyMixins } from '../utils/applyMixins';
+import { toBigNumber } from '../utils/toBigNumber';
 import { Policy } from './Policy';
 
 export class PriceTolerance extends Contract {
@@ -18,7 +18,7 @@ export class PriceTolerance extends Contract {
    */
   public async getPriceTolerance(block?: number) {
     const result = await this.makeCall<string>('tolerance', undefined, block);
-    return new BigNumber(`${result}`);
+    return toBigNumber(result);
   }
 }
 
