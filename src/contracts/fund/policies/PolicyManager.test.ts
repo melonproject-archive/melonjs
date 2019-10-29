@@ -1,7 +1,7 @@
 import { PolicyManager } from './PolicyManager';
 import { createTestEnvironment, TestEnvironment } from '../../../utils/tests/createTestEnvironment';
 import { PolicyManagerBytecode } from '../../../abis/PolicyManager.bin';
-import { createHub } from '../../../utils/tests/createHub';
+import { deployHub } from '../../../utils/tests/deployHub';
 
 describe('PolicyManager', () => {
   let environment: TestEnvironment;
@@ -10,7 +10,7 @@ describe('PolicyManager', () => {
   beforeAll(async () => {
     environment = await createTestEnvironment();
 
-    const hub = await createHub(environment, environment.accounts[0], {
+    const hub = await deployHub(environment, environment.accounts[0], {
       manager: environment.accounts[1],
       name: 'policyManager-test-fund',
     });

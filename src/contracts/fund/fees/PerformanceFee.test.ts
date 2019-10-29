@@ -1,26 +1,42 @@
-import { Eth } from 'web3-eth';
-import { HttpProvider } from 'web3-providers';
-import { Environment } from '../../../Environment';
 import { PerformanceFee } from './PerformanceFee';
+import { createTestEnvironment, TestEnvironment } from '../../../utils/tests/createTestEnvironment';
+import { deployPerformanceFee } from '../../../utils/tests/deployPerformanceFee';
+import { BigNumber } from 'bignumber.js';
+import { deployWeth } from '../../../utils/tests/deployWeth';
 
 describe('FeeManager', () => {
-  let environment: Environment;
+  let environment: TestEnvironment;
   let performanceFee: PerformanceFee;
 
-  beforeAll(() => {
-    // TODO: This should be replaced with a local ganache test environment using proper test fixtures.
-    const client = new Eth(new HttpProvider('https://mainnet.melonport.com'));
-    environment = new Environment(client);
-    performanceFee = new PerformanceFee(environment, '0xcc44FcFE13d4AeC61F1835Fb5F8ae7eBE06d42cD');
+  beforeAll(async () => {
+    environment = await createTestEnvironment();
+    performanceFee = await deployPerformanceFee(environment, environment.accounts[0]);
   });
 
-  it('should return performance fee rate', async () => {
-    const result = await performanceFee.getPerformanceFeeRate('0x0a98adcc2e15ae6b77c1bfa30a1048597142d66c');
+  it('should set the performance fee parameters', async () => {
+    const weth = await deployWeth(environment, environment.accounts[0]);
+
+    const tx = performanceFee.initializeForUser(environment.accounts[0], {
+      feeRate: new BigNumber('100000000'),
+      feePeriod: 1000,
+      denominationAsset: weth.contract.address,
+    });
+    const txResult = await tx.send(await tx.estimate());
+    expect(txResult.gasUsed).toBeGreaterThan(0);
+  });
+
+  it('should get the performance fee rate', async () => {
+    const result = await performanceFee.getPerformanceFeeRate(environment.accounts[0]);
     expect(result.isGreaterThanOrEqualTo(0)).toBe(true);
   });
 
-  it('should return performance fee period', async () => {
-    const result = await performanceFee.getPerformanceFeePeriod('0x0a98adcc2e15ae6b77c1bfa30a1048597142d66c');
-    expect(result).toBeGreaterThanOrEqual(0);
+  it('should get the last payout time', async () => {
+    const result = await performanceFee.getPerformanceFeeRate(environment.accounts[0]);
+    expect(result.isGreaterThanOrEqualTo(0)).toBe(true);
+  });
+
+  it('should return the correct identifier', async () => {
+    const result = await performanceFee.identifier();
+    expect(result).toBe(1);
   });
 });

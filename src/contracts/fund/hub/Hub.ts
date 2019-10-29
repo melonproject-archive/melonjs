@@ -122,8 +122,8 @@ export class Hub extends Contract {
    * @param block The block number to execute the call on.
    */
   public async getFundVersion(block?: number) {
-    // const { registry, version } = await this.getRoutes(block);
-    // needs registry contract methods (waiting for Luong)
+    const result = await this.makeCall<Address>('version', undefined, block);
+    return result;
   }
 
   /**

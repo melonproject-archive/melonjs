@@ -1,14 +1,14 @@
 import { createTestEnvironment, TestEnvironment } from '../../../utils/tests/createTestEnvironment';
 import { AccountingBytecode } from '../../../abis/Accounting.bin';
-import { Accounting } from '../../..';
-import { createWeth } from '../../../utils/tests/createWeth';
+import { Accounting } from './Accounting';
+import { deployWeth } from '../../../utils/tests/deployWeth';
 import BigNumber from 'bignumber.js';
 import { Environment } from '../../../Environment';
 
 import { Eth } from 'web3-eth';
 import { HttpProvider } from 'web3-providers';
 import { FundCalculations } from './Accounting';
-import { createHub } from '../../../utils/tests/createHub';
+import { deployHub } from '../../../utils/tests/deployHub';
 
 describe('Accounting', () => {
   let environment: TestEnvironment;
@@ -20,12 +20,12 @@ describe('Accounting', () => {
   beforeAll(async () => {
     environment = await createTestEnvironment();
 
-    const hub = await createHub(environment, environment.accounts[0], {
+    const hub = await deployHub(environment, environment.accounts[0], {
       manager: environment.accounts[1],
       name: 'accounting-test-fund',
     });
 
-    const weth = await createWeth(environment, environment.accounts[0]);
+    const weth = await deployWeth(environment, environment.accounts[0]);
     const deploy = Accounting.deploy(environment, AccountingBytecode, environment.accounts[0], {
       hub: hub.contract.address,
       denominationAsset: weth.contract.address,

@@ -5,7 +5,7 @@ import { sameAddress } from '../../../utils/sameAddress';
 import { createTestEnvironment, TestEnvironment } from '../../../utils/tests/createTestEnvironment';
 import { randomAddress } from '../../../utils/tests/randomAddress';
 import { Spoke } from './Spoke';
-import { createHub } from '../../../utils/tests/createHub';
+import { deployHub } from '../../../utils/tests/deployHub';
 
 describe('Hub', () => {
   let hub: Hub;
@@ -13,7 +13,7 @@ describe('Hub', () => {
 
   beforeAll(async () => {
     environment = await createTestEnvironment();
-    hub = await createHub(environment, environment.accounts[0], {
+    hub = await deployHub(environment, environment.accounts[0], {
       manager: environment.accounts[1],
       name: 'hub-test-fund',
     });
@@ -104,5 +104,10 @@ describe('Hub', () => {
   it('should return whether or not a fund is shutdown', async () => {
     const result = await hub.isShutDown();
     expect(result === true || result === false).toBe(true);
+  });
+
+  it('should return the fund version', async () => {
+    const result = await hub.getFundVersion();
+    expect(sameAddress(result, environment.accounts[0])).toBe(true);
   });
 });

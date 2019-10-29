@@ -1,8 +1,8 @@
 import { createTestEnvironment, TestEnvironment } from '../../../utils/tests/createTestEnvironment';
 import { Hub } from '../hub/Hub';
 import { Vault } from './Vault';
-import { createHub } from '../../../utils/tests/createHub';
-import { createVault } from '../../../utils/tests/createVault';
+import { deployHub } from '../../../utils/tests/deployHub';
+import { deployVault } from '../../../utils/tests/deployVault';
 
 describe('Vault', () => {
   let environment: TestEnvironment;
@@ -11,12 +11,12 @@ describe('Vault', () => {
 
   beforeAll(async () => {
     environment = await createTestEnvironment();
-    hub = await createHub(environment, environment.accounts[0], {
+    hub = await deployHub(environment, environment.accounts[0], {
       manager: environment.accounts[1],
       name: 'vault-test-fund-1',
     });
 
-    vault = await createVault(environment, environment.accounts[0], hub.contract.address);
+    vault = await deployVault(environment, environment.accounts[0], hub.contract.address);
   });
 
   it('should return the version contract address', async () => {
