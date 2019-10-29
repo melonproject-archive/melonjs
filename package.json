@@ -1,6 +1,6 @@
 {
   "name": "@melonproject/melonjs",
-  "version": "0.0.18",
+  "version": "0.0.20",
   "description": "Technology Regulated and Operated Investment Funds.",
   "main": "index.js",
   "module": "bundle.esm.js",
@@ -22,7 +22,7 @@
     "docs": "typedoc",
     "postdocs": "cp jekyll.config.yml docs/_config.yml",
     "pretest": "rimraf coverage",
-    "test": "jest --verbose",
+    "test": "jest --verbose --config tests/jest.config.js",
     "coverage": "yarn test --coverage",
     "format": "prettier --write src/{*,**/*}.ts",
     "lint:prettier": "yarn prettier --list-different src/{*,**/*}.ts",
@@ -41,6 +41,7 @@
     "web3-core": "^2.0.0-alpha.1",
     "web3-eth": "^2.0.0-alpha.1",
     "web3-eth-contract": "^2.0.0-alpha.1",
+    "web3-providers": "^2.0.0-alpha.1",
     "web3-utils": "^2.0.0-alpha.1"
   },
   "devDependencies": {
@@ -48,6 +49,7 @@
     "@types/lru-cache": "^5.1.0",
     "@types/ramda": "^0.26.33",
     "cp": "^0.2.0",
+    "ganache-core": "^2.8.0",
     "gh-pages": "^2.1.1",
     "glob": "^7.1.5",
     "husky": "^3.0.8",
@@ -66,7 +68,9 @@
     "tslint-config-airbnb": "^5.11.0",
     "tslint-config-prettier": "^1.15.0",
     "typedoc": "^0.15.0",
-    "typescript": "^3.6.2"
+    "typescript": "^3.6.2",
+    "uuid": "^3.3.3",
+    "web3": "^2.0.0-alpha.1"
   },
   "husky": {
     "hooks": {

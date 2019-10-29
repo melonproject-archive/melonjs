@@ -1,10 +1,12 @@
-import { toUtf8 } from 'web3-utils';
+import { toUtf8, toHex } from 'web3-utils';
+import { Contract as EthContract } from 'web3-eth-contract';
 import { HubAbi } from '../abis/Hub.abi';
 import { Contract } from '../Contract';
 import { Environment } from '../Environment';
 import { Address } from '../Address';
+import { Deployment } from '../Transaction';
 
-export interface FundRoutes {
+export interface HubRoutes {
   accounting?: Address;
   engine?: Address;
   feeManager?: Address;
@@ -19,9 +21,26 @@ export interface FundRoutes {
   version?: Address;
 }
 
+export interface HubDeployArguments {
+  name: string;
+  manager: string;
+}
+
 export class Hub extends Contract {
-  constructor(environment: Environment, address: Address) {
-    super(environment, new environment.client.Contract(HubAbi, address));
+  constructor(environment: Environment, contract: EthContract);
+  constructor(environment: Environment, address: Address);
+  constructor(environment: Environment, address: any) {
+    super(environment, typeof address === 'string' ? new environment.client.Contract(HubAbi, address) : address);
+  }
+
+  public static deploy(environment: Environment, bytecode: string, from: Address, args: HubDeployArguments) {
+    const contract = new environment.client.Contract(HubAbi);
+    const transaction = contract.deploy({
+      data: bytecode,
+      arguments: [args.manager, toHex(args.name)],
+    });
+
+    return new Deployment(transaction, from, contract => new this(environment, contract));
   }
 
   /**
@@ -63,13 +82,13 @@ export class Hub extends Contract {
   }
 
   /**
-   * Gets the fund routes object as [[FundRoutes]].
+   * Gets the fund routes object as [[HubRoutes]].
    *
    * @param block The block number to execute the call on.
    */
   public async getRoutes(block?: number) {
-    const result = await this.makeCall<FundRoutes>('routes', undefined, block);
-    const routes: FundRoutes = {
+    const result = await this.makeCall<HubRoutes>('routes', undefined, block);
+    const routes: HubRoutes = {
       accounting: result.accounting,
       engine: result.engine,
       feeManager: result.feeManager,
@@ -105,5 +124,32 @@ export class Hub extends Contract {
   public async getFundVersion(block?: number) {
     // const { registry, version } = await this.getRoutes(block);
     // needs registry contract methods (waiting for Luong)
+  }
+
+  /**
+   * Sets the spokes on the hub.
+   *
+   * @param from The sender address.
+   * @param spokes The hub routes.
+   */
+  public setSpokes(from: Address, spokes: HubRoutes) {
+    const args = [
+      [
+        spokes.accounting,
+        spokes.feeManager,
+        spokes.participation,
+        spokes.policyManager,
+        spokes.shares,
+        spokes.trading,
+        spokes.vault,
+        spokes.priceSource,
+        spokes.registry,
+        spokes.version,
+        spokes.engine,
+        spokes.mlnToken,
+      ],
+    ];
+
+    return this.createTransaction('setSpokes', from, args);
   }
 }

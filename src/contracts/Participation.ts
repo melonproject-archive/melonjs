@@ -5,6 +5,7 @@ import { Address } from '../Address';
 import { ParticipationAbi } from '../abis/Participation.abi';
 import { Spoke } from './Spoke';
 import { applyMixins } from '../utils/applyMixins';
+import { toBigNumber } from '../utils/toBigNumber';
 
 export interface Request {
   investmentAsset: Address;
@@ -38,8 +39,8 @@ export class Participation extends Contract {
 
     return {
       investmentAsset: result.investmentAsset,
-      investmentAmount: new BigNumber(`${result.investmentAmount}`),
-      requestedShares: new BigNumber(`${result.requestedShares}`),
+      investmentAmount: toBigNumber(result.investmentAmount),
+      requestedShares: toBigNumber(result.requestedShares),
       timestamp: new Date(parseInt(`${result.timestamp}`, 10) * 1000),
     } as Request;
   }

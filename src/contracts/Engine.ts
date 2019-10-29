@@ -1,19 +1,10 @@
-import BigNumber from 'bignumber.js';
 import { EngineAbi } from '../abis/Engine.abi';
 import { Contract } from '../Contract';
 import { Environment } from '../Environment';
 import { Address } from '../Address';
+import { toBigNumber } from '../utils/toBigNumber';
 
 export class Engine extends Contract {
-  public static forDeployment(environment: Environment) {
-    const address = environment.getAddress('melonContracts.engine');
-    if (!address) {
-      throw new Error('Missing deployment for engine contract.');
-    }
-
-    return new this(environment, address);
-  }
-
   constructor(environment: Environment, address: Address) {
     super(environment, new environment.client.Contract(EngineAbi, address));
   }
@@ -35,7 +26,7 @@ export class Engine extends Contract {
    */
   public async getEnginePrice(block?: number) {
     const result = await this.makeCall<string>('enginePrice', undefined, block);
-    return new BigNumber(`${result}`);
+    return toBigNumber(result);
   }
 
   /**

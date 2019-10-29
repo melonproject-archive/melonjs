@@ -1,69 +1,93 @@
-import { SendOptions as EthSendOptions, EstimateGasOptions as EthEstimateGasOptions } from 'web3-eth-contract';
+import { SendOptions, EstimateGasOptions, Contract as EthContract } from 'web3-eth-contract';
 import { PromiEvent, TransactionReceipt } from 'web3-core';
-import { Environment } from './Environment';
 import { Address } from './Address';
+import { Contract } from './Contract';
 
-interface EthTransaction {
-  send(options?: EthSendOptions): PromiEvent<TransactionReceipt>;
-  estimateGas(options?: EthEstimateGasOptions): Promise<number>;
-}
-
-export interface EstimateOptions {
-  gas?: number;
-}
-
-export interface SendOptions extends EstimateOptions {
-  gasPrice?: string;
-}
-
-export class Transaction {
+export class Transaction<T = TransactionReceipt> {
   constructor(
-    public readonly environment: Environment,
+    public readonly transaction: any,
     public readonly from: Address,
-    public readonly transaction: EthTransaction,
     public readonly value?: number | string,
   ) {}
 
-  public send(options?: SendOptions) {
-    const opts: EthSendOptions = {
-      ...(options.gasPrice && { gasPrice: options.gasPrice }),
-      ...(options.gas && { gas: options.gas }),
+  public send(gas?: number): PromiEvent<T>;
+  public send(options?: SendOptions): PromiEvent<T>;
+  public send(options?: any) {
+    const gas: number = (() => {
+      if (typeof options === 'object' && options.gas) {
+        return options.gas;
+      }
+
+      if (!isNaN(options) && isFinite(options)) {
+        return options;
+      }
+
+      return undefined;
+    })();
+
+    const opts: SendOptions = {
+      ...(this.from && { from: this.from }),
       ...(this.value && { value: this.value }),
-      from: this.from,
+      ...(typeof options === 'object' && options),
+      ...(gas && { gas }),
     };
 
-    return new TransactionProcessor(this.transaction.send(opts));
+    return this.transaction.send(opts);
   }
 
-  public estimate(options?: EstimateOptions) {
-    const opts: EthEstimateGasOptions = {
-      ...(options.gas && { gas: options.gas }),
+  public estimate(options?: EstimateGasOptions): Promise<number> {
+    const opts: EstimateGasOptions = {
+      ...(this.from && { from: this.from }),
       ...(this.value && { value: this.value }),
-      from: this.from,
+      ...options,
     };
 
     return this.transaction.estimateGas(opts);
   }
 }
 
-export class TransactionProcessor {
-  constructor(private transaction: PromiEvent<TransactionReceipt>) {}
-
-  public getHash() {
-    return new Promise<string>((resolve, reject) => {
-      this.transaction.once('transactionHash', resolve).catch(reject);
-      this.transaction.once('error', reject).catch(reject);
-    });
+export class Deployment<T extends Contract> extends Transaction<T> {
+  constructor(
+    public readonly transaction: any,
+    public readonly from: Address,
+    protected readonly ctor: (contract: EthContract) => T,
+  ) {
+    super(transaction, from);
   }
 
-  public getReceipt() {
-    return new Promise<TransactionReceipt>((resolve, reject) => {
-      this.transaction.once('receipt', resolve).catch(reject);
-      this.transaction.once('error', reject).catch(reject);
+  public send(gas?: number): PromiEvent<T>;
+  public send(options?: SendOptions): PromiEvent<T>;
+  public send(options?: any) {
+    const result = (super.send(options) as any) as PromiEvent<EthContract>;
+    const promise = new Promise<T>((resolve, reject) => {
+      result.catch(reject);
+      result.then(receipt => {
+        try {
+          resolve(this.ctor(receipt));
+        } catch (e) {
+          reject(e);
+        }
+      });
     });
-  }
 
-  public getConfirmationsStream() {
-    // TODO: Add observable stream here.
+    return (new Proxy(result, {
+      get: (target: any, name) => {
+        if (name === 'resolve' || name === 'reject') {
+          return target[name];
+        }
+
+        if (name === 'then') {
+          return promise.then.bind(promise);
+        }
+
+        if (name === 'catch') {
+          return promise.catch.bind(promise);
+        }
+
+        if (target.eventEmitter[name]) {
+          return target.eventEmitter[name];
+        }
+      },
+    }) as any) as PromiEvent<T>;
   }
 }

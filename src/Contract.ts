@@ -3,9 +3,23 @@ import { Environment } from './Environment';
 import { Transaction } from './Transaction';
 import { Address } from './Address';
 
+export interface ContractDeployArguments {
+  from?: Address;
+}
+
 export abstract class Contract {
   constructor(public readonly environment: Environment, public readonly contract: EthContract) {
     // Nothing to do here.
+  }
+
+  protected createTransaction<TArgs extends any[] = any[]>(
+    method: string,
+    from: Address,
+    args?: TArgs,
+    value?: number | string,
+  ) {
+    const fn = this.contract.methods[method];
+    return new Transaction(fn(...(args || [])), from, value);
   }
 
   protected async makeCall<TReturn = any, TArgs extends any[] = any[]>(
@@ -38,15 +52,5 @@ export abstract class Contract {
   ): Promise<TReturn> {
     const fn = this.contract.methods[method];
     return fn(...(args || [])).call(undefined, block);
-  }
-
-  protected createTransaction<TArgs extends any[] = any[], TValue extends string | number = string>(
-    method: string,
-    from: Address,
-    args?: TArgs,
-    value?: TValue,
-  ) {
-    const fn = this.contract.methods[method];
-    return new Transaction(this.environment, from, fn(...(args || []), value));
   }
 }

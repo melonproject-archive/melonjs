@@ -1,7 +1,6 @@
 import { Eth } from 'web3-eth';
 import { HttpProvider } from 'web3-providers';
 import { Environment } from '../Environment';
-import deployment from '../deployments/mainnet';
 import { PerformanceFee } from './PerformanceFee';
 
 describe('FeeManager', () => {
@@ -11,8 +10,8 @@ describe('FeeManager', () => {
   beforeAll(() => {
     // TODO: This should be replaced with a local ganache test environment using proper test fixtures.
     const client = new Eth(new HttpProvider('https://mainnet.melonport.com'));
-    environment = new Environment(client, deployment);
-    performanceFee = new PerformanceFee(environment, environment.deployment.melonContracts.fees.performanceFee);
+    environment = new Environment(client);
+    performanceFee = new PerformanceFee(environment, '0xcc44FcFE13d4AeC61F1835Fb5F8ae7eBE06d42cD');
   });
 
   it('should return performance fee rate', async () => {

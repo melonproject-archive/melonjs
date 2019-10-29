@@ -1,10 +1,10 @@
-import BigNumber from 'bignumber.js';
 import { Contract } from '../Contract';
 import { Environment } from '../Environment';
 import { Address } from '../Address';
 import { MaxPositionsAbi } from '../abis/MaxPositions.abi';
 import { applyMixins } from '../utils/applyMixins';
 import { Policy } from './Policy';
+import { toBigNumber } from '../utils/toBigNumber';
 
 export class MaxPositions extends Contract {
   constructor(environment: Environment, address: Address) {
@@ -18,7 +18,7 @@ export class MaxPositions extends Contract {
    */
   public async getMaxPositions(block?: number) {
     const result = await this.makeCall<string>('maxPositions', undefined, block);
-    return new BigNumber(`${result}`);
+    return toBigNumber(result);
   }
 }
 

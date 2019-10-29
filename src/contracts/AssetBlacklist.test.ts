@@ -1,7 +1,6 @@
 import { Eth } from 'web3-eth';
 import { HttpProvider } from 'web3-providers';
 import { Environment } from '../Environment';
-import deployment from '../deployments/mainnet';
 import { AssetBlacklist } from './AssetBlacklist';
 
 describe('AssetBlacklist', () => {
@@ -11,7 +10,7 @@ describe('AssetBlacklist', () => {
   beforeAll(() => {
     // TODO: This should be replaced with a local ganache test environment using proper test fixtures.
     const client = new Eth(new HttpProvider('https://mainnet.melonport.com'));
-    environment = new Environment(client, deployment);
+    environment = new Environment(client);
     assetBlacklist = new AssetBlacklist(environment, '0x9b113694b924108e21ffac925d406d6b496d074a');
   });
 
