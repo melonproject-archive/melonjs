@@ -38,21 +38,22 @@ describe('Hub', () => {
   });
 
   it('should manage the hub routes properly', async () => {
-    const deploySpoke = async () => {
-      const deploy = Spoke.deploy(environment, SpokeBytecode, environment.accounts[0], hub.contract.address);
-      const spoke = await deploy.send(await deploy.estimate());
-      return spoke.contract.address;
-    };
+    const spokes = await Promise.all(
+      R.range(0, 7).map(async () => {
+        const deploy = Spoke.deploy(environment, SpokeBytecode, environment.accounts[0], hub.contract.address);
+        const spoke = await deploy.send(await deploy.estimate());
+        return spoke.contract.address;
+      }),
+    );
 
-    const deployed = await Promise.all(R.range(0, 7).map(() => deploySpoke()));
     const routes: HubRoutes = {
-      accounting: deployed[0],
-      feeManager: deployed[1],
-      participation: deployed[2],
-      policyManager: deployed[3],
-      shares: deployed[4],
-      trading: deployed[5],
-      vault: deployed[6],
+      accounting: spokes[0],
+      feeManager: spokes[1],
+      participation: spokes[2],
+      policyManager: spokes[3],
+      shares: spokes[4],
+      trading: spokes[5],
+      vault: spokes[6],
       version: randomAddress(),
       engine: randomAddress(),
       registry: randomAddress(),
