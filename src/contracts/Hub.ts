@@ -200,13 +200,4 @@ export class Hub extends Contract {
     const result = await this.makeCall<boolean>('permissionsSet', undefined, block);
     return result;
   }
-
-  /**
-   * Sets the fund to shutDown.
-   *
-   * @param from The sender address.
-   */
-  public setShutdown(from: Address) {
-    return this.createTransaction('shutDownFund', from);
-  }
 }
