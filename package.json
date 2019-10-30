@@ -1,6 +1,6 @@
 {
   "name": "@melonproject/melonjs",
-  "version": "0.0.21",
+  "version": "0.0.20",
   "description": "Technology Regulated and Operated Investment Funds.",
   "main": "index.js",
   "module": "bundle.esm.js",
@@ -17,6 +17,7 @@
     "dev": "jest --watch",
     "prewatch": "cp package.json dist",
     "watch": "tsc --watch",
+    "precodegen": "rimraf src/abis",
     "codegen": "node scripts/codegen",
     "predocs": "rimraf docs",
     "docs": "typedoc",
