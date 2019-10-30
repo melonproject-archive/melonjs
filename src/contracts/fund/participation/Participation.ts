@@ -65,7 +65,7 @@ export class Participation extends Contract {
       investmentAsset: result.investmentAsset,
       investmentAmount: toBigNumber(result.investmentAmount),
       requestedShares: toBigNumber(result.requestedShares),
-      timestamp: toDate(`${result.timestamp}`),
+      timestamp: toDate(result.timestamp),
     } as Request;
   }
 

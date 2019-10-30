@@ -1,4 +1,3 @@
-import BigNumber from 'bignumber.js';
 import LRUCache from 'lru-cache';
 import { Eth } from 'web3-eth';
 import { HttpProvider } from 'web3-providers';
@@ -7,6 +6,7 @@ import { Environment, CacheHandler } from './Environment';
 import { CanonicalPriceFeed } from './contracts/prices/CanonicalPriceFeed';
 import { Hub } from './contracts/fund/hub/Hub';
 import { Token } from './contracts/dependencies/Token';
+import { toBigNumber } from './utils/toBigNumber';
 
 describe('CacheHandler', () => {
   let client: Eth;
@@ -31,7 +31,7 @@ describe('CacheHandler', () => {
 
     const source = new CanonicalPriceFeed(environment, '0x0');
     // @ts-ignore
-    const spy = jest.spyOn(source, 'doMakeCall').mockReturnValue(new Date(Date.now()));
+    const spy = jest.spyOn(source, 'doMakeCall').mockReturnValue(Date.now());
 
     await source.getLastUpdate(1);
     await source.getLastUpdate(1);
@@ -42,7 +42,7 @@ describe('CacheHandler', () => {
     const environment = new Environment(client);
     const source = new CanonicalPriceFeed(environment, '0x0');
     // @ts-ignore
-    const spy = jest.spyOn(source, 'doMakeCall').mockReturnValue(new Date(Date.now()));
+    const spy = jest.spyOn(source, 'doMakeCall').mockReturnValue(Date.now());
 
     await source.getLastUpdate(1);
     await source.getLastUpdate(1);
@@ -56,7 +56,7 @@ describe('CacheHandler', () => {
 
     const source = new CanonicalPriceFeed(environment, '0x0');
     // @ts-ignore
-    const spy = jest.spyOn(source, 'doMakeCall').mockReturnValue(new Date(Date.now()));
+    const spy = jest.spyOn(source, 'doMakeCall').mockReturnValue(Date.now());
 
     await source.getLastUpdate(1);
     await source.getLastUpdate(2);
@@ -71,7 +71,7 @@ describe('CacheHandler', () => {
     const hubOne = new Hub(environment, '0x0');
     const hubTwo = new Hub(environment, '0x1');
     // @ts-ignore
-    const spy = jest.spyOn(Contract.prototype, 'doMakeCall').mockReturnValue(new Date(Date.now()));
+    const spy = jest.spyOn(Contract.prototype, 'doMakeCall').mockReturnValue(Date.now());
 
     await hubOne.getCreationTime(1);
     await hubTwo.getCreationTime(2);
@@ -85,7 +85,7 @@ describe('CacheHandler', () => {
 
     const instance = new Token(environment, '0x0');
     // @ts-ignore
-    const spy = jest.spyOn(instance, 'doMakeCall').mockReturnValue(new BigNumber(100));
+    const spy = jest.spyOn(instance, 'doMakeCall').mockReturnValue(toBigNumber(100));
 
     await instance.getBalanceOf('0x0', 1);
     await instance.getBalanceOf('0x1', 1);
@@ -99,7 +99,7 @@ describe('CacheHandler', () => {
 
     const instance = new Token(environment, '0x0');
     // @ts-ignore
-    const spy = jest.spyOn(instance, 'doMakeCall').mockReturnValue(new BigNumber(100));
+    const spy = jest.spyOn(instance, 'doMakeCall').mockReturnValue(toBigNumber(100));
 
     await instance.getBalanceOf('0x0', 1);
     await instance.getBalanceOf('0x0', 1);
