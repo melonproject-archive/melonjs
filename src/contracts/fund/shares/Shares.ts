@@ -45,5 +45,5 @@ export class Shares extends Contract {
   }
 }
 
-export interface Shares extends Spoke {}
+export interface Shares extends Spoke, Token {}
 applyMixins(Shares, [Spoke, Token]);
