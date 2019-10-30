@@ -99,9 +99,11 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="_transaction_.deployment.html#ctor" class="tsd-kind-icon">ctor</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_transaction_.deployment.html#clazz" class="tsd-kind-icon">clazz</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_transaction_.deployment.html#environment" class="tsd-kind-icon">environment</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite"><a href="_transaction_.deployment.html#from" class="tsd-kind-icon">from</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite"><a href="_transaction_.deployment.html#transaction" class="tsd-kind-icon">transaction</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_transaction_.deployment.html#value" class="tsd-kind-icon">value</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -120,44 +122,29 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Deployment<span class="tsd-signature-symbol">(</span>transaction<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, from<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a>, ctor<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_transaction_.deployment.html" class="tsd-signature-type">Deployment</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Deployment<span class="tsd-signature-symbol">(</span>clazz<span class="tsd-signature-symbol">: </span><a href="_contract_.contract.html" class="tsd-signature-type">Contract</a>, environment<span class="tsd-signature-symbol">: </span><a href="_environment_.environment.html" class="tsd-signature-type">Environment</a>, transaction<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, from<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_transaction_.deployment.html" class="tsd-signature-type">Deployment</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_transaction_.transaction.html">Transaction</a>.<a href="_transaction_.transaction.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Transaction.ts#L43">Transaction.ts:43</a></li>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Transaction.ts#L50">Transaction.ts:50</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
+									<h5>clazz: <a href="_contract_.contract.html" class="tsd-signature-type">Contract</a></h5>
+								</li>
+								<li>
+									<h5>environment: <a href="_environment_.environment.html" class="tsd-signature-type">Environment</a></h5>
+								</li>
+								<li>
 									<h5>transaction: <span class="tsd-signature-type">any</span></h5>
 								</li>
 								<li>
 									<h5>from: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
-								</li>
-								<li>
-									<h5>ctor: <span class="tsd-signature-type">function</span></h5>
-									<ul class="tsd-parameters">
-										<li class="tsd-parameter-siganture">
-											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
-												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>contract<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">EthContract</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
-											</ul>
-											<ul class="tsd-descriptions">
-												<li class="tsd-description">
-													<h4 class="tsd-parameters-title">Parameters</h4>
-													<ul class="tsd-parameters">
-														<li>
-															<h5>contract: <span class="tsd-signature-type">EthContract</span></h5>
-														</li>
-													</ul>
-													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span></h4>
-												</li>
-											</ul>
-										</li>
-									</ul>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_transaction_.deployment.html" class="tsd-signature-type">Deployment</a></h4>
@@ -167,36 +154,25 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-protected">
-					<a name="ctor" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagProtected">Protected</span> ctor</h3>
-					<div class="tsd-signature tsd-kind-icon">ctor<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="clazz" class="tsd-anchor"></a>
+					<h3>clazz</h3>
+					<div class="tsd-signature tsd-kind-icon">clazz<span class="tsd-signature-symbol">:</span> <a href="_contract_.contract.html" class="tsd-signature-type">Contract</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Transaction.ts#L47">Transaction.ts:47</a></li>
+							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Transaction.ts#L52">Transaction.ts:52</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter-siganture">
-								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-class tsd-is-not-exported">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>contract<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">EthContract</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
-								</ul>
-								<ul class="tsd-descriptions">
-									<li class="tsd-description">
-										<h4 class="tsd-parameters-title">Parameters</h4>
-										<ul class="tsd-parameters">
-											<li>
-												<h5>contract: <span class="tsd-signature-type">EthContract</span></h5>
-											</li>
-										</ul>
-										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span></h4>
-									</li>
-								</ul>
-							</li>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="environment" class="tsd-anchor"></a>
+					<h3>environment</h3>
+					<div class="tsd-signature tsd-kind-icon">environment<span class="tsd-signature-symbol">:</span> <a href="_environment_.environment.html" class="tsd-signature-type">Environment</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Transaction.ts#L53">Transaction.ts:53</a></li>
 						</ul>
-					</div>
+					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-overwrite">
 					<a name="from" class="tsd-anchor"></a>
@@ -205,7 +181,7 @@
 					<aside class="tsd-sources">
 						<p>Overrides <a href="_transaction_.transaction.html">Transaction</a>.<a href="_transaction_.transaction.html#from">from</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Transaction.ts#L46">Transaction.ts:46</a></li>
+							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Transaction.ts#L55">Transaction.ts:55</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -216,7 +192,18 @@
 					<aside class="tsd-sources">
 						<p>Overrides <a href="_transaction_.transaction.html">Transaction</a>.<a href="_transaction_.transaction.html#transaction">transaction</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Transaction.ts#L45">Transaction.ts:45</a></li>
+							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Transaction.ts#L54">Transaction.ts:54</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="value" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> value</h3>
+					<div class="tsd-signature tsd-kind-icon">value<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_transaction_.transaction.html">Transaction</a>.<a href="_transaction_.transaction.html#value">value</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Transaction.ts#L11">Transaction.ts:11</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -234,7 +221,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_transaction_.transaction.html">Transaction</a>.<a href="_transaction_.transaction.html#estimate">estimate</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Transaction.ts#L33">Transaction.ts:33</a></li>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Transaction.ts#L39">Transaction.ts:39</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -259,7 +246,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_transaction_.transaction.html">Transaction</a>.<a href="_transaction_.transaction.html#send">send</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Transaction.ts#L52">Transaction.ts:52</a></li>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Transaction.ts#L60">Transaction.ts:60</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -274,7 +261,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_transaction_.transaction.html">Transaction</a>.<a href="_transaction_.transaction.html#send">send</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Transaction.ts#L53">Transaction.ts:53</a></li>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Transaction.ts#L61">Transaction.ts:61</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -310,14 +297,20 @@
 							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
 								<a href="_transaction_.deployment.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected">
-								<a href="_transaction_.deployment.html#ctor" class="tsd-kind-icon">ctor</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_transaction_.deployment.html#clazz" class="tsd-kind-icon">clazz</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_transaction_.deployment.html#environment" class="tsd-kind-icon">environment</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite">
 								<a href="_transaction_.deployment.html#from" class="tsd-kind-icon">from</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite">
 								<a href="_transaction_.deployment.html#transaction" class="tsd-kind-icon">transaction</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="_transaction_.deployment.html#value" class="tsd-kind-icon">value</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 								<a href="_transaction_.deployment.html#estimate" class="tsd-kind-icon">estimate</a>
