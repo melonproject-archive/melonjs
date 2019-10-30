@@ -1,8 +1,8 @@
-import { Contract } from '../../Contract';
-import { PriceToleranceAbi } from '../../abis/PriceTolerance.abi';
-import { applyMixins } from '../../utils/applyMixins';
-import { toBigNumber } from '../../utils/toBigNumber';
-import { Policy } from '../fund/policies/Policy';
+import { Contract } from '../../../Contract';
+import { PriceToleranceAbi } from '../../../abis/PriceTolerance.abi';
+import { applyMixins } from '../../../utils/applyMixins';
+import { toBigNumber } from '../../../utils/toBigNumber';
+import { Policy } from './Policy';
 
 export class PriceTolerance extends Contract {
   public static readonly abi = PriceToleranceAbi;

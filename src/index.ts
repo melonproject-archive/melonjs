@@ -20,12 +20,12 @@ export { Participation, ParticipationDeployArguments } from './contracts/fund/pa
 export { PerformanceFee } from './contracts/fund/fees/PerformanceFee';
 export { Policy } from './contracts/fund/policies/Policy';
 export { PolicyManager } from './contracts/fund/policies/PolicyManager';
-export { PriceTolerance } from './contracts/prices/PriceTolerance';
+export { PriceTolerance } from './contracts/fund/policies/PriceTolerance';
 export { Shares } from './contracts/fund/shares/Shares';
 export { Spoke } from './contracts/fund/hub/Spoke';
 export { Token } from './contracts/dependencies/Token';
 export { Trading, TradingDeployArguments } from './contracts/fund/trading/Trading';
 export { UserWhitelist } from './contracts/fund/policies/UserWhitelist';
+export { Vault } from './contracts/fund/vault/Vault';
 export { Version } from './contracts/version/Version';
 export { Weth } from './contracts/dependencies/Weth';
-export { Vault } from './contracts/fund/vault/Vault';

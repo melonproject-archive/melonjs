@@ -1,6 +1,6 @@
 import { Eth } from 'web3-eth';
 import { HttpProvider } from 'web3-providers';
-import { Environment } from '../../Environment';
+import { Environment } from '../../../Environment';
 import { PriceTolerance } from './PriceTolerance';
 
 describe('AddressList', () => {
