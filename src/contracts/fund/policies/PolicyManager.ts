@@ -1,11 +1,9 @@
-import { Contract as EthContract } from 'web3-eth-contract';
 import { Contract } from '../../../Contract';
 import { Environment } from '../../../Environment';
 import { Address } from '../../../Address';
 import { PolicyManagerAbi } from '../../../abis/PolicyManager.abi';
 import { Spoke } from '../hub/Spoke';
 import { applyMixins } from '../../../utils/applyMixins';
-import { Deployment } from '../../../Transaction';
 
 export type Policies = {
   pre: Address[];
@@ -13,23 +11,10 @@ export type Policies = {
 };
 
 export class PolicyManager extends Contract {
-  constructor(environment: Environment, contract: EthContract);
-  constructor(environment: Environment, address: Address);
-  constructor(environment: Environment, address: any) {
-    super(
-      environment,
-      typeof address === 'string' ? new environment.client.Contract(PolicyManagerAbi, address) : address,
-    );
-  }
+  public static readonly abi = PolicyManagerAbi;
 
-  public static deploy(environment: Environment, data: string, from: Address, hub: Address) {
-    const contract = new environment.client.Contract(PolicyManagerAbi);
-    const transaction = contract.deploy({
-      data,
-      arguments: [hub],
-    });
-
-    return new Deployment(transaction, from, contract => new this(environment, contract));
+  public static deploy(environment: Environment, bytecode: string, from: Address, hub: Address) {
+    return super.createDeployment<PolicyManager>(environment, bytecode, from, [hub]);
   }
 
   /**

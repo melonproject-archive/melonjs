@@ -1,15 +1,34 @@
+import { AbiItem } from 'web3-utils';
 import { Contract as EthContract } from 'web3-eth-contract';
 import { Environment } from './Environment';
-import { Transaction } from './Transaction';
+import { Transaction, Deployment } from './Transaction';
 import { Address } from './Address';
 
-export interface ContractDeployArguments {
-  from?: Address;
-}
+export class Contract {
+  public static readonly abi: AbiItem[];
+  public readonly contract: EthContract;
 
-export abstract class Contract {
-  constructor(public readonly environment: Environment, public readonly contract: EthContract) {
-    // Nothing to do here.
+  constructor(environment: Environment, contract: EthContract);
+  constructor(environment: Environment, address: Address);
+  constructor(environment: Environment, address: any);
+  constructor(public readonly environment: Environment, address: any) {
+    const abi = (this.constructor as typeof Contract).abi;
+    this.contract = typeof address === 'string' ? new environment.client.Contract(abi, address) : address;
+  }
+
+  public static createDeployment<TContract extends Contract, TArgs extends any[] = any[]>(
+    environment: Environment,
+    bytecode: string,
+    from: Address,
+    args?: TArgs,
+  ) {
+    const contract = new environment.client.Contract(this.abi);
+    const transaction = contract.deploy({
+      ...(args && { arguments: args }),
+      data: bytecode,
+    });
+
+    return new Deployment<TContract>(this, environment, transaction, from);
   }
 
   protected createTransaction<TArgs extends any[] = any[]>(

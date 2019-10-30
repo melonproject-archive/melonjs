@@ -3,7 +3,6 @@ export { Environment } from './Environment';
 export { Address } from './Address';
 export { Transaction } from './Transaction';
 
-export { AbstractToken } from './contracts/dependencies/AbstractToken';
 export { Accounting, AccountingDeployArguments } from './contracts/fund/accounting/Accounting';
 export { AddressList } from './contracts/fund/policies/AddressList';
 export { AssetBlacklist } from './contracts/fund/policies/AssetBlacklist';

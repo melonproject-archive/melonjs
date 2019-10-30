@@ -1,28 +1,17 @@
 import { Contract } from '../../../Contract';
-import { Contract as EthContract } from 'web3-eth-contract';
 import { Environment } from '../../../Environment';
 import { Address } from '../../../Address';
 import { Spoke } from '../hub/Spoke';
 import { applyMixins } from '../../../utils/applyMixins';
 import { SharesAbi } from '../../../abis/Shares.abi';
 import { hexToString } from 'web3-utils';
-import { Deployment } from '../../../Transaction';
+import { Token } from '../../dependencies/Token';
 
 export class Shares extends Contract {
-  constructor(environment: Environment, contract: EthContract);
-  constructor(environment: Environment, address: Address);
-  constructor(environment: Environment, address: any) {
-    super(environment, typeof address === 'string' ? new environment.client.Contract(SharesAbi, address) : address);
-  }
+  public static readonly abi = SharesAbi;
 
-  public static deploy(environment: Environment, data: string, from: Address, hub: Address) {
-    const contract = new environment.client.Contract(SharesAbi);
-    const transaction = contract.deploy({
-      data,
-      arguments: [hub],
-    });
-
-    return new Deployment(transaction, from, contract => new this(environment, contract));
+  public static deploy(environment: Environment, bytecode: string, from: Address, hub: Address) {
+    return super.createDeployment<Shares>(environment, bytecode, from, [hub]);
   }
 
   /**
@@ -57,4 +46,4 @@ export class Shares extends Contract {
 }
 
 export interface Shares extends Spoke {}
-applyMixins(Shares, [Spoke]);
+applyMixins(Shares, [Spoke, Token]);

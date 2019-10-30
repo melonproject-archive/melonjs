@@ -1,10 +1,8 @@
 import { toUtf8, toHex } from 'web3-utils';
-import { Contract as EthContract } from 'web3-eth-contract';
 import { HubAbi } from '../../../abis/Hub.abi';
 import { Contract } from '../../../Contract';
 import { Environment } from '../../../Environment';
 import { Address } from '../../../Address';
-import { Deployment } from '../../../Transaction';
 
 export interface HubRoutes {
   accounting?: Address;
@@ -27,20 +25,10 @@ export interface HubDeployArguments {
 }
 
 export class Hub extends Contract {
-  constructor(environment: Environment, contract: EthContract);
-  constructor(environment: Environment, address: Address);
-  constructor(environment: Environment, address: any) {
-    super(environment, typeof address === 'string' ? new environment.client.Contract(HubAbi, address) : address);
-  }
+  public static readonly abi = HubAbi;
 
   public static deploy(environment: Environment, bytecode: string, from: Address, args: HubDeployArguments) {
-    const contract = new environment.client.Contract(HubAbi);
-    const transaction = contract.deploy({
-      data: bytecode,
-      arguments: [args.manager, toHex(args.name)],
-    });
-
-    return new Deployment(transaction, from, contract => new this(environment, contract));
+    return super.createDeployment<Hub>(environment, bytecode, from, [args.manager, toHex(args.name)]);
   }
 
   /**
