@@ -1,11 +1,11 @@
 import { Contract as EthContract } from 'web3-eth-contract';
-import { Contract } from '../../Contract';
-import { Environment } from '../../Environment';
-import { Address } from '../../Address';
-import { PriceToleranceAbi } from '../../abis/PriceTolerance.abi';
-import { applyMixins } from '../../utils/applyMixins';
-import { toBigNumber } from '../../utils/toBigNumber';
-import { Policy } from '../fund/policies/Policy';
+import { Contract } from '../../../Contract';
+import { Environment } from '../../../Environment';
+import { Address } from '../../../Address';
+import { PriceToleranceAbi } from '../../../abis/PriceTolerance.abi';
+import { applyMixins } from '../../../utils/applyMixins';
+import { toBigNumber } from '../../../utils/toBigNumber';
+import { Policy } from './Policy';
 
 export class PriceTolerance extends Contract {
   constructor(environment: Environment, contract: EthContract);
