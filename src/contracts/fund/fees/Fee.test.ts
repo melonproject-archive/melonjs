@@ -1,8 +1,8 @@
+import BigNumber from 'bignumber.js';
 import { TestEnvironment, createTestEnvironment } from '../../../utils/tests/createTestEnvironment';
 import { deployManagementFee } from '../../../utils/tests/deployManagementFee';
-import { Fee } from './Fee';
 import { randomAddress } from '../../../utils/tests/randomAddress';
-import BigNumber from 'bignumber.js';
+import { Fee } from './Fee';
 
 describe('FeeManager', () => {
   let environment: TestEnvironment;

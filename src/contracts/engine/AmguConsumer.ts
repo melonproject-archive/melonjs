@@ -1,12 +1,9 @@
 import { Contract } from '../../Contract';
-import { Environment } from '../../Environment';
 import { Address } from '../../Address';
 import { AmguConsumerAbi } from '../../abis/AmguConsumer.abi';
 
 export class AmguConsumer extends Contract {
-  constructor(environment: Environment, address: Address) {
-    super(environment, new environment.client.Contract(AmguConsumerAbi, address));
-  }
+  public static readonly abi = AmguConsumerAbi;
 
   public async getAmguToken(block?: number) {
     const result = await this.makeCall<Address>('mlnToken', undefined, block);

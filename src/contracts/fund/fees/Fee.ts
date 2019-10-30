@@ -1,9 +1,7 @@
-import { Contract as EthContract } from 'web3-eth-contract';
 import { Contract } from '../../../Contract';
 import { Environment } from '../../../Environment';
 import { Address } from '../../../Address';
 import { toBigNumber } from '../../../utils/toBigNumber';
-import { Deployment } from '../../../Transaction';
 import { FeeAbi } from '../../../abis/Fee.abi';
 import BigNumber from 'bignumber.js';
 
@@ -14,19 +12,10 @@ export interface FeeInitializationArguments {
 }
 
 export class Fee extends Contract {
-  constructor(environment: Environment, contract: EthContract);
-  constructor(environment: Environment, address: Address);
-  constructor(environment: Environment, address: any) {
-    super(environment, typeof address === 'string' ? new environment.client.Contract(FeeAbi, address) : address);
-  }
+  public static readonly abi = FeeAbi;
 
   public static deploy(environment: Environment, bytecode: string, from: Address) {
-    const contract = new environment.client.Contract(FeeAbi);
-    const transaction = contract.deploy({
-      data: bytecode,
-    });
-
-    return new Deployment(transaction, from, contract => new this(environment, contract));
+    return super.createDeployment<Fee>(environment, bytecode, from);
   }
 
   /**
