@@ -8,6 +8,7 @@ import { Spoke } from '../hub/Spoke';
 import { applyMixins } from '../../../utils/applyMixins';
 import { toBigNumber } from '../../../utils/toBigNumber';
 import { Deployment } from '../../../Transaction';
+import { toDate } from '../../../utils/toDate';
 
 export interface Request {
   investmentAsset: Address;
@@ -64,7 +65,7 @@ export class Participation extends Contract {
       investmentAsset: result.investmentAsset,
       investmentAmount: toBigNumber(result.investmentAmount),
       requestedShares: toBigNumber(result.requestedShares),
-      timestamp: new Date(parseInt(`${result.timestamp}`, 10) * 1000),
+      timestamp: toDate(result.timestamp),
     } as Request;
   }
 

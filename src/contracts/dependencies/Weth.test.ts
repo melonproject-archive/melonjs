@@ -34,4 +34,9 @@ describe('Weth', () => {
     const final = await weth.getBalanceOf(environment.accounts[1]);
     expect(fromWei(final.toFixed())).toBe('0');
   });
+
+  it('should return the total supply of the token', async () => {
+    const result = await weth.getTotalSupply();
+    expect(fromWei(result.toFixed())).toBe('0');
+  });
 });
