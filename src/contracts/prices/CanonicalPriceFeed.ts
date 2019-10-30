@@ -2,17 +2,19 @@ import BigNumber from 'bignumber.js';
 import { CanonicalPriceFeedAbi } from '../../abis/CanonicalPriceFeed.abi';
 import { Contract } from '../../Contract';
 import { Address } from '../../Address';
+import { toDate } from '../../utils/toDate';
+import { toBigNumber } from '../../utils/toBigNumber';
 
 export interface PriceInfo {
   token: Address;
   price: BigNumber;
-  timestamp: BigNumber;
+  timestamp: Date;
 }
 
 export interface PricesInfo {
   [index: number]: {
     price: BigNumber;
-    timestamp: BigNumber;
+    timestamp: Date;
   };
 }
 
@@ -42,8 +44,8 @@ export class CanonicalPriceFeed extends Contract {
 
     return {
       token,
-      price: new BigNumber(price),
-      timestamp: new BigNumber(timestamp),
+      price: toBigNumber(price),
+      timestamp: toDate(timestamp),
     } as PriceInfo;
   }
 
@@ -61,8 +63,8 @@ export class CanonicalPriceFeed extends Contract {
     return tokens.reduce((carry, token, index) => {
       const item: PriceInfo = {
         token,
-        price: new BigNumber(prices[index]),
-        timestamp: new BigNumber(timestamps[index]),
+        price: toBigNumber(prices[index]),
+        timestamp: toDate(timestamps[index]),
       };
 
       return [...carry, item];
@@ -86,7 +88,6 @@ export class CanonicalPriceFeed extends Contract {
    */
   public async getLastUpdate(block?: number) {
     const result = await this.makeCall<string>('getLastUpdate', undefined, block);
-    const timestamp = new BigNumber(result.toString()).multipliedBy(1000).toNumber();
-    return new Date(timestamp);
+    return toDate(result);
   }
 }

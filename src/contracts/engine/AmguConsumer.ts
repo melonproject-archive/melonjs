@@ -5,20 +5,39 @@ import { AmguConsumerAbi } from '../../abis/AmguConsumer.abi';
 export class AmguConsumer extends Contract {
   public static readonly abi = AmguConsumerAbi;
 
-  public async getAmguToken(block?: number) {
-    const result = await this.makeCall<Address>('mlnToken', undefined, block);
-    return result;
+  /**
+   * Gets the amgu token.
+   *
+   * @param block The block number to execute the call on.
+   */
+  public getAmguToken(block?: number) {
+    return this.makeCall<Address>('mlnToken', undefined, block);
   }
 
-  public async getEngine(block?: number) {
-    return await this.makeCall<Address>('engine', undefined, block);
+  /**
+   * Gets the engine address.
+   *
+   * @param block The block number to execute the call on.
+   */
+  public getEngine(block?: number) {
+    return this.makeCall<Address>('engine', undefined, block);
   }
 
-  public async getPriceSource(block?: number) {
-    return await this.makeCall<Address>('priceSource', undefined, block);
+  /**
+   * Gets the price source address.
+   *
+   * @param block The block number to execute the call on.
+   */
+  public getPriceSource(block?: number) {
+    return this.makeCall<Address>('priceSource', undefined, block);
   }
 
-  public async getVersion(block?: number) {
-    return await this.makeCall<Address>('version', undefined, block);
+  /**
+   * Gets the version address.
+   *
+   * @param block The block number to execute the call on.
+   */
+  public getVersion(block?: number) {
+    return this.makeCall<Address>('version', undefined, block);
   }
 }
