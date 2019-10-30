@@ -1,9 +1,7 @@
-import { Contract as EthContract } from 'web3-eth-contract';
 import { Contract } from '../../Contract';
 import { Environment } from '../../Environment';
 import { Address } from '../../Address';
 import { FundFactoryAbi } from '../../abis/FundFactory.abi';
-import { Deployment } from '../../Transaction';
 import { Factory } from './Factory';
 import { applyMixins } from '../../utils/applyMixins';
 
@@ -19,32 +17,19 @@ export interface FundFactoryDeployArguments {
 }
 
 export class FundFactory extends Contract {
-  constructor(environment: Environment, contract: EthContract);
-  constructor(environment: Environment, address: Address);
-  constructor(environment: Environment, address: any) {
-    super(
-      environment,
-      typeof address === 'string' ? new environment.client.Contract(FundFactoryAbi, address) : address,
-    );
-  }
+  public static readonly abi = FundFactoryAbi;
 
-  public static deploy(environment: Environment, data: string, from: Address, args: FundFactoryDeployArguments) {
-    const contract = new environment.client.Contract(FundFactoryAbi);
-    const transaction = contract.deploy({
-      data,
-      arguments: [
-        args.accountingFactory,
-        args.feeManagerFactory,
-        args.participationFactory,
-        args.sharesFactory,
-        args.tradingFactory,
-        args.vaultFactory,
-        args.policyManagerFactory,
-        args.version,
-      ],
-    });
-
-    return new Deployment(transaction, from, contract => new this(environment, contract));
+  public static deploy(environment: Environment, bytecode: string, from: Address, args: FundFactoryDeployArguments) {
+    return super.createDeployment<FundFactory>(environment, bytecode, from, [
+      args.accountingFactory,
+      args.feeManagerFactory,
+      args.participationFactory,
+      args.sharesFactory,
+      args.tradingFactory,
+      args.vaultFactory,
+      args.policyManagerFactory,
+      args.version,
+    ]);
   }
 }
 

@@ -1,13 +1,11 @@
 import * as R from 'ramda';
 import BigNumber from 'bignumber.js';
-import { Contract as EthContract } from 'web3-eth-contract';
 import { AccountingAbi } from '../../../abis/Accounting.abi';
 import { Contract } from '../../../Contract';
 import { Environment } from '../../../Environment';
 import { Address } from '../../../Address';
 import { Spoke } from '../hub/Spoke';
 import { applyMixins } from '../../../utils/applyMixins';
-import { Deployment } from '../../../Transaction';
 import { toBigNumber } from '../../../utils/toBigNumber';
 
 export interface FundCalculations {
@@ -31,20 +29,15 @@ export interface AccountingDeployArguments {
 }
 
 export class Accounting extends Contract {
-  constructor(environment: Environment, contract: EthContract);
-  constructor(environment: Environment, address: Address);
-  constructor(environment: Environment, address: any) {
-    super(environment, typeof address === 'string' ? new environment.client.Contract(AccountingAbi, address) : address);
-  }
+  public static readonly abi = AccountingAbi;
 
-  public static deploy(environment: Environment, data: string, from: Address, args: AccountingDeployArguments) {
-    const contract = new environment.client.Contract(AccountingAbi);
-    const transaction = contract.deploy({
-      data,
-      arguments: [args.hub, args.denominationAsset, args.nativeAsset, args.defaultAssets],
-    });
-
-    return new Deployment(transaction, from, contract => new this(environment, contract));
+  public static deploy(environment: Environment, bytecode: string, from: Address, args: AccountingDeployArguments) {
+    return super.createDeployment<Accounting>(environment, bytecode, from, [
+      args.hub,
+      args.denominationAsset,
+      args.nativeAsset,
+      args.defaultAssets,
+    ]);
   }
 
   /**

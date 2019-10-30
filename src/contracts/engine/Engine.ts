@@ -1,13 +1,10 @@
 import { EngineAbi } from '../../abis/Engine.abi';
 import { Contract } from '../../Contract';
-import { Environment } from '../../Environment';
 import { Address } from '../../Address';
 import { toBigNumber } from '../../utils/toBigNumber';
 
 export class Engine extends Contract {
-  constructor(environment: Environment, address: Address) {
-    super(environment, new environment.client.Contract(EngineAbi, address));
-  }
+  public static readonly abi = EngineAbi;
 
   /**
    * Gets the amgu price.

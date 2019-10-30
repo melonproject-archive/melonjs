@@ -1,21 +1,11 @@
-import { Contract as EthContract } from 'web3-eth-contract';
 import { Contract } from '../../../Contract';
-import { Environment } from '../../../Environment';
-import { Address } from '../../../Address';
 import { MaxPositionsAbi } from '../../../abis/MaxPositions.abi';
 import { applyMixins } from '../../../utils/applyMixins';
 import { Policy } from './Policy';
 import { toBigNumber } from '../../../utils/toBigNumber';
 
 export class MaxPositions extends Contract {
-  constructor(environment: Environment, contract: EthContract);
-  constructor(environment: Environment, address: Address);
-  constructor(environment: Environment, address: any) {
-    super(
-      environment,
-      typeof address === 'string' ? new environment.client.Contract(MaxPositionsAbi, address) : address,
-    );
-  }
+  public static readonly abi = MaxPositionsAbi;
 
   /**
    * Gets the maximum number of positions.

@@ -1,30 +1,16 @@
-import { Contract as EthContract } from 'web3-eth-contract';
 import { Fee } from './Fee';
 import { applyMixins } from '../../../utils/applyMixins';
 import { Environment } from '../../../Environment';
 import { Address } from '../../../Address';
 import { ManagementFeeAbi } from '../../../abis/ManagementFee.abi';
 import { Contract } from '../../../Contract';
-import { Deployment } from '../../../Transaction';
 import { toBigNumber } from '../../../utils/toBigNumber';
 
 export class ManagementFee extends Contract {
-  constructor(environment: Environment, contract: EthContract);
-  constructor(environment: Environment, address: Address);
-  constructor(environment: Environment, address: any) {
-    super(
-      environment,
-      typeof address === 'string' ? new environment.client.Contract(ManagementFeeAbi, address) : address,
-    );
-  }
+  public static readonly abi = ManagementFeeAbi;
 
   public static deploy(environment: Environment, bytecode: string, from: Address) {
-    const contract = new environment.client.Contract(ManagementFeeAbi);
-    const transaction = contract.deploy({
-      data: bytecode,
-    });
-
-    return new Deployment(transaction, from, contract => new this(environment, contract));
+    return super.createDeployment<ManagementFee>(environment, bytecode, from);
   }
 
   /**

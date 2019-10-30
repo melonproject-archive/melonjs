@@ -1,6 +1,5 @@
 import { Contract } from '../../Contract';
 import { Address } from '../../Address';
-import { Environment } from '../../Environment';
 import { RegistryAbi } from '../../abis/Registry.abi';
 
 export interface VersionInformation {
@@ -9,9 +8,7 @@ export interface VersionInformation {
 }
 
 export class Registry extends Contract {
-  constructor(environment: Environment, address: Address) {
-    super(environment, new environment.client.Contract(RegistryAbi, address));
-  }
+  public static readonly abi = RegistryAbi;
 
   public getEngine(block?: number) {
     return this.makeCall<Address>('engine', undefined, block);

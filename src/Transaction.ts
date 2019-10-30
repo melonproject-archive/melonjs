@@ -2,6 +2,7 @@ import { SendOptions, EstimateGasOptions, Contract as EthContract } from 'web3-e
 import { PromiEvent, TransactionReceipt } from 'web3-core';
 import { Address } from './Address';
 import { Contract } from './Contract';
+import { Environment } from './Environment';
 
 export class Transaction<T = TransactionReceipt> {
   constructor(
@@ -48,9 +49,10 @@ export class Transaction<T = TransactionReceipt> {
 
 export class Deployment<T extends Contract> extends Transaction<T> {
   constructor(
+    public readonly clazz: typeof Contract,
+    public readonly environment: Environment,
     public readonly transaction: any,
     public readonly from: Address,
-    protected readonly ctor: (contract: EthContract) => T,
   ) {
     super(transaction, from);
   }
@@ -63,7 +65,7 @@ export class Deployment<T extends Contract> extends Transaction<T> {
       result.catch(reject);
       result.then(receipt => {
         try {
-          resolve(this.ctor(receipt));
+          resolve(new this.clazz(this.environment, receipt) as T);
         } catch (e) {
           reject(e);
         }

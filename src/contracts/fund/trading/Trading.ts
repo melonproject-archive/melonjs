@@ -1,12 +1,9 @@
-import { Contract as EthContract } from 'web3-eth-contract';
-
 import { Contract } from '../../../Contract';
 import { Environment } from '../../../Environment';
 import { Address } from '../../../Address';
 import { TradingAbi } from '../../../abis/Trading.abi';
 import { Spoke } from '../hub/Spoke';
 import { applyMixins } from '../../../utils/applyMixins';
-import { Deployment } from '../../../Transaction';
 
 export interface ExchangeInfo {
   exchange: Address;
@@ -33,20 +30,15 @@ export interface TradingDeployArguments {
 }
 
 export class Trading extends Contract {
-  constructor(environment: Environment, contract: EthContract);
-  constructor(environment: Environment, address: Address);
-  constructor(environment: Environment, address: any) {
-    super(environment, typeof address === 'string' ? new environment.client.Contract(TradingAbi, address) : address);
-  }
+  public static readonly abi = TradingAbi;
 
-  public static deploy(environment: Environment, data: string, from: Address, args: TradingDeployArguments) {
-    const contract = new environment.client.Contract(TradingAbi);
-    const transaction = contract.deploy({
-      data,
-      arguments: [args.hub, args.exchanges, args.adapters, args.registry],
-    });
-
-    return new Deployment(transaction, from, contract => new this(environment, contract));
+  public static deploy(environment: Environment, bytecode: string, from: Address, args: TradingDeployArguments) {
+    return super.createDeployment<Trading>(environment, bytecode, from, [
+      args.hub,
+      args.exchanges,
+      args.adapters,
+      args.registry,
+    ]);
   }
 
   /**
