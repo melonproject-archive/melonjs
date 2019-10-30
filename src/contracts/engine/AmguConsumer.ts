@@ -9,8 +9,7 @@ export class AmguConsumer extends Contract {
   }
 
   public async getAmguToken(block?: number) {
-    const result = await this.makeCall<Address>('mlnToken', undefined, block);
-    return result;
+    return await this.makeCall<Address>('mlnToken', undefined, block);
   }
 
   public async getEngine(block?: number) {
