@@ -4,11 +4,11 @@ import { Address } from '../../Address';
 import { toBigNumber } from '../../utils/toBigNumber';
 import { Contract } from '../../Contract';
 
-export class Token extends Contract {
+export class ERC20WithFields extends Contract {
   public static readonly abi = ERC20WithFieldsAbi;
 
   public static deploy(environment: Environment, bytecode: string, from: Address) {
-    return super.createDeployment<Token>(environment, bytecode, from);
+    return super.createDeployment<ERC20WithFields>(environment, bytecode, from);
   }
 
   /**
@@ -44,14 +44,29 @@ export class Token extends Contract {
     return toBigNumber(result);
   }
 
-  public name(block?: number) {
+  /**
+   * Gets the name of the token.
+   *
+   * @param block The block number to execute the call on.
+   */
+  public getName(block?: number) {
     return this.makeCall('name', undefined, block);
   }
 
+  /**
+   * Gets the symbol of the token.
+   *
+   * @param block The block number to execute the call on.
+   */
   public symbol(block?: number) {
     return this.makeCall('symbol', undefined, block);
   }
 
+  /**
+   * Gets the decimals of the token.
+   *
+   * @param block The block number to execute the call on.
+   */
   public decimals(block?: number) {
     return this.makeCall('decimals', undefined, block);
   }

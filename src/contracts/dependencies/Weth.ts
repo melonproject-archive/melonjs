@@ -2,9 +2,9 @@ import BigNumber from 'bignumber.js';
 import { WETHAbi } from '../../abis/WETH.abi';
 import { Environment } from '../../Environment';
 import { Address } from '../../Address';
-import { Token } from './Token';
+import { ERC20WithFields } from './ERC20WithFields';
 
-export class Weth extends Token {
+export class Weth extends ERC20WithFields {
   public static readonly abi = WETHAbi;
 
   public static deploy(environment: Environment, bytecode: string, from: Address) {

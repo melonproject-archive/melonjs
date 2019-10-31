@@ -91,8 +91,8 @@ export class Trading extends Contract {
    * @param asset The address of the asset
    * @param block The block number to execute the call on.
    */
-  public async isOrderExpired(exchange: Address, asset: Address, block?: number) {
-    return await this.makeCall<boolean>('isOrderExpired', [exchange, asset], block);
+  public isOrderExpired(exchange: Address, asset: Address, block?: number) {
+    return this.makeCall<boolean>('isOrderExpired', [exchange, asset], block);
   }
 }
 
