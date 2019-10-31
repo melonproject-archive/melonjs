@@ -5,7 +5,7 @@ import { Contract } from './Contract';
 import { Environment, CacheHandler } from './Environment';
 import { CanonicalPriceFeed } from './contracts/prices/CanonicalPriceFeed';
 import { Hub } from './contracts/fund/hub/Hub';
-import { Token } from './contracts/dependencies/Token';
+import { ERC20WithFields } from './contracts/dependencies/ERC20WithFields';
 import { toBigNumber } from './utils/toBigNumber';
 
 describe('CacheHandler', () => {
@@ -83,7 +83,7 @@ describe('CacheHandler', () => {
       cache,
     });
 
-    const instance = new Token(environment, '0x0');
+    const instance = new ERC20WithFields(environment, '0x0');
     // @ts-ignore
     const spy = jest.spyOn(instance, 'doMakeCall').mockReturnValue(toBigNumber(100));
 
@@ -97,7 +97,7 @@ describe('CacheHandler', () => {
       cache,
     });
 
-    const instance = new Token(environment, '0x0');
+    const instance = new ERC20WithFields(environment, '0x0');
     // @ts-ignore
     const spy = jest.spyOn(instance, 'doMakeCall').mockReturnValue(toBigNumber(100));
 

@@ -5,7 +5,7 @@ import { Spoke } from '../hub/Spoke';
 import { applyMixins } from '../../../utils/applyMixins';
 import { SharesAbi } from '../../../abis/Shares.abi';
 import { hexToString } from 'web3-utils';
-import { Token } from '../../dependencies/Token';
+import { StandardToken } from '../../dependencies/StandardToken';
 
 export class Shares extends Contract {
   public static readonly abi = SharesAbi;
@@ -45,5 +45,5 @@ export class Shares extends Contract {
   }
 }
 
-export interface Shares extends Spoke, Token {}
-applyMixins(Shares, [Spoke, Token]);
+export interface Shares extends Spoke, StandardToken {}
+applyMixins(Shares, [Spoke, StandardToken]);
