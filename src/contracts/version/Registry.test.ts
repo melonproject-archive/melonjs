@@ -1,27 +1,53 @@
-import { Eth } from 'web3-eth';
-import { HttpProvider } from 'web3-providers';
-import { Environment } from '../../Environment';
 import { Registry } from './Registry';
+import { TestEnvironment, createTestEnvironment } from '../../utils/tests/createTestEnvironment';
+import { deployRegistry } from '../../utils/tests/deployRegistry';
+import { randomAddress } from '../../utils/tests/randomAddress';
+import { deployWeth } from '../../utils/tests/deployWeth';
+import BigNumber from 'bignumber.js';
 
 describe('Registry', () => {
-  let environment: Environment;
+  let environment: TestEnvironment;
   let registry: Registry;
 
-  beforeAll(() => {
-    // TODO: This should be replaced with a local ganache test environment using proper test fixtures.
-    const client = new Eth(new HttpProvider('https://mainnet.melonport.com'));
-    environment = new Environment(client);
-    registry = new Registry(environment, '0x1Bfd21f7db126a5966d2C09492676807a68859Ba');
+  beforeAll(async () => {
+    environment = await createTestEnvironment();
+    registry = await deployRegistry(environment, environment.accounts[0], environment.accounts[0]);
   });
 
-  it('should return the information of a version', async () => {
-    const result = await registry.getVersionInformation('0x01Bde0b02740D6311e4a87CA112DeEEddb057EFB');
-    expect(result.exists).toBe(true);
-    expect(result.name.startsWith('0x')).toBe(true);
+  it('should return the registered versions', async () => {
+    const result = await registry.getRegisteredVersions();
+    expect(result.length).toBeGreaterThanOrEqual(0);
   });
 
-  it('should check if a fee was registered', async () => {
-    const result = await registry.isFeeRegistered('0x67d8f29C6956e591Bc43C0DCc82b87D6A6Eb76e7');
-    expect(result === true || result === false).toBe(true);
+  it('should register fees and check if they were indeed registered', async () => {
+    const [managementFeeAdress, performanceFeeAddress] = [randomAddress(), randomAddress()];
+
+    const tx = await registry.registerFees(environment.accounts[0], [managementFeeAdress, performanceFeeAddress]);
+    await tx.send(await tx.estimate());
+
+    {
+      const result = await registry.isFeeRegistered(managementFeeAdress);
+      expect(result).toBe(true);
+    }
+
+    {
+      const result = await registry.isFeeRegistered(performanceFeeAddress);
+      expect(result).toBe(true);
+    }
+  });
+
+  it('should register an asset and check if it was indeed registered', async () => {
+    const weth = await deployWeth(environment, environment.accounts[0]);
+
+    const tx = await registry.registerAsset(environment.accounts[0], {
+      address: weth.contract.address,
+      name: 'Test Asset',
+      symbol: 'TAT',
+      url: 'https://tat.tat/',
+      reserveMin: new BigNumber(100000),
+      standards: [1, 2, 3],
+      sigs: ['0000'],
+    });
+    await tx.send(await tx.estimate());
   });
 });

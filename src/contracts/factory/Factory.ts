@@ -1,9 +1,14 @@
 import { Contract } from '../../Contract';
 import { Address } from '../../Address';
 import { FactoryAbi } from '../../abis/Factory.abi';
+import { Environment } from '../../Environment';
 
 export class Factory extends Contract {
   public static readonly abi = FactoryAbi;
+
+  public static deploy(environment: Environment, bytecode: string, from: Address) {
+    return super.createDeployment<Factory>(environment, bytecode, from);
+  }
 
   /**
    * Checks if an address is an instance of the factory
