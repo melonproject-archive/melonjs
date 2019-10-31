@@ -49,5 +49,24 @@ describe('Registry', () => {
       sigs: ['0000'],
     });
     await tx.send(await tx.estimate());
+
+    const result = await registry.getAssetInformation(weth.contract.address);
+    expect(result.exists).toBe(true);
+  });
+
+  it('should register an exchange adapter and check if it was indeed registered', async () => {
+    const exchangeAdress = randomAddress();
+    const adapterAddress = randomAddress();
+
+    const tx = await registry.registerExchangeAdapter(environment.accounts[0], {
+      exchange: exchangeAdress,
+      adapter: adapterAddress,
+      takesCustody: true,
+      sigs: ['0000'],
+    });
+    await tx.send(await tx.estimate());
+
+    const result = await registry.isExchangeAdapterRegistered(adapterAddress);
+    expect(typeof result).toBe('boolean');
   });
 });
