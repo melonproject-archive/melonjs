@@ -1,5 +1,3 @@
-![Logo](https://github.com/Avantgarde-Finance/melonjs/blob/master/media/logo.png?raw=true)
-
 # MelonJS
 
 > A convenient JavaScript interface to the Melon protocol Ethereum smart contracts.
