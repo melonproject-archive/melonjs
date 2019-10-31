@@ -2,7 +2,7 @@
 
 > A convenient JavaScript interface to the Melon protocol Ethereum smart contracts.
 
-[![Build status](https://img.shields.io/travis/Avantgarde-Finance/melonjs)](https://travis-ci.org/Avantgarde-Finance/melonjs)
+[![Build status](https://img.shields.io/travis/melonproject/melonjs)](https://travis-ci.org/melonproject/melonjs)
 [![Package version](https://img.shields.io/npm/v/@melonproject/melonjs)](https://www.npmjs.com/package/@melonproject/melonjs)
 ![License](https://img.shields.io/npm/l/@melonproject/melonjs)
 
@@ -53,4 +53,4 @@ Please note that all repositories hosted under this organization follow our [Cod
 [yarn]: https://yarnpkg.com
 [node]: https://nodejs.org
 [npm]: https://www.npmjs.com/package/@melonproject/melonjs
-[coc]: https://github.com/Avantgarde-Finance/melonjs/blob/master/CODE_OF_CONDUCT.md
+[coc]: https://github.com/melonproject/melonjs/blob/master/CODE_OF_CONDUCT.md
