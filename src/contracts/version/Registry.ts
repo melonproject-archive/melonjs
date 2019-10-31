@@ -1,6 +1,7 @@
 import { Contract } from '../../Contract';
 import { Address } from '../../Address';
 import { RegistryAbi } from '../../abis/Registry.abi';
+import { Environment } from '../../Environment';
 
 export interface VersionInformation {
   exists: boolean;
@@ -9,6 +10,10 @@ export interface VersionInformation {
 
 export class Registry extends Contract {
   public static readonly abi = RegistryAbi;
+
+  public static deploy(environment: Environment, bytecode: string, from: Address, owner: Address) {
+    return super.createDeployment<Registry>(environment, bytecode, from, [owner]);
+  }
 
   public getEngine(block?: number) {
     return this.makeCall<Address>('engine', undefined, block);
@@ -65,6 +70,10 @@ export class Registry extends Contract {
 
   public getVersionInformation(versionAddress: Address, block?: number) {
     return this.makeCall<VersionInformation>('versionInformation', [versionAddress], block);
+  }
+
+  public registerFees(from: Address, feeAddresses: Address[]) {
+    return this.createTransaction('registerFees', from, [feeAddresses]);
   }
 
   public isFeeRegistered(feeAddress: Address, block?: number) {

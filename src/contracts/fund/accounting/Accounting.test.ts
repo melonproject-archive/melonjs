@@ -2,11 +2,11 @@ import BigNumber from 'bignumber.js';
 import { Eth } from 'web3-eth';
 import { HttpProvider } from 'web3-providers';
 import { createTestEnvironment, TestEnvironment } from '../../../utils/tests/createTestEnvironment';
-import { AccountingBytecode } from '../../../abis/Accounting.bin';
 import { Accounting, FundCalculations } from './Accounting';
-import { deployWeth } from '../../../utils/tests/deployWeth';
 import { Environment } from '../../../Environment';
+import { deployWeth } from '../../../utils/tests/deployWeth';
 import { deployHub } from '../../../utils/tests/deployHub';
+import { deployAccounting } from '../../../utils/tests/deployAccounting';
 
 describe('Accounting', () => {
   let environment: TestEnvironment;
@@ -24,14 +24,13 @@ describe('Accounting', () => {
     });
 
     const weth = await deployWeth(environment, environment.accounts[0]);
-    const deploy = Accounting.deploy(environment, AccountingBytecode, environment.accounts[0], {
+
+    accounting = await deployAccounting(environment, environment.accounts[0], {
       hub: hub.contract.address,
       denominationAsset: weth.contract.address,
       nativeAsset: weth.contract.address,
       defaultAssets: [weth.contract.address],
     });
-
-    accounting = await deploy.send(await deploy.estimate());
 
     // some tests are still done with the mainnet deployment
     const client = new Eth(new HttpProvider('https://mainnet.melonport.com'));

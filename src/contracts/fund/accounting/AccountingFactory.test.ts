@@ -18,7 +18,7 @@ describe('AccountingFactory', () => {
     accountingFactory = await deploy.send(await deploy.estimate());
   });
 
-  it('should check if a contract is an instance of a factory', async () => {
+  it('should check if a contract is an instance of AccountingFactory', async () => {
     const result = await accountingFactory.isInstance(randomAddress());
     expect(typeof result).toBe('boolean');
   });
