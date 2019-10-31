@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>FeeManagerDeployArguments | @melonproject/melonjs</title>
+	<title>AssetInformation | @melonproject/melonjs</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -52,13 +52,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_contracts_fund_fees_feemanager_.html">&quot;contracts/fund/fees/FeeManager&quot;</a>
+					<a href="../modules/_contracts_version_registry_.html">&quot;contracts/version/Registry&quot;</a>
 				</li>
 				<li>
-					<a href="_contracts_fund_fees_feemanager_.feemanagerdeployarguments.html">FeeManagerDeployArguments</a>
+					<a href="_contracts_version_registry_.assetinformation.html">AssetInformation</a>
 				</li>
 			</ul>
-			<h1>Interface FeeManagerDeployArguments</h1>
+			<h1>Interface AssetInformation</h1>
 		</div>
 	</div>
 </header>
@@ -69,7 +69,12 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">FeeManagerDeployArguments</span>
+						<span class="tsd-signature-type">AssetBaseInformation</span>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">AssetInformation</span>
+							</li>
+						</ul>
 					</li>
 				</ul>
 			</section>
@@ -80,12 +85,13 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_fund_fees_feemanager_.feemanagerdeployarguments.html#denominationasset" class="tsd-kind-icon">denomination<wbr>Asset</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_fund_fees_feemanager_.feemanagerdeployarguments.html#fees" class="tsd-kind-icon">fees</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_fund_fees_feemanager_.feemanagerdeployarguments.html#hub" class="tsd-kind-icon">hub</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_fund_fees_feemanager_.feemanagerdeployarguments.html#periods" class="tsd-kind-icon">periods</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_fund_fees_feemanager_.feemanagerdeployarguments.html#rates" class="tsd-kind-icon">rates</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_fund_fees_feemanager_.feemanagerdeployarguments.html#registry" class="tsd-kind-icon">registry</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_version_registry_.assetinformation.html#decimals" class="tsd-kind-icon">decimals</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_version_registry_.assetinformation.html#exists" class="tsd-kind-icon">exists</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_contracts_version_registry_.assetinformation.html#name" class="tsd-kind-icon">name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_contracts_version_registry_.assetinformation.html#sigs" class="tsd-kind-icon">sigs</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_contracts_version_registry_.assetinformation.html#standards" class="tsd-kind-icon">standards</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_contracts_version_registry_.assetinformation.html#symbol" class="tsd-kind-icon">symbol</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_contracts_version_registry_.assetinformation.html#url" class="tsd-kind-icon">url</a></li>
 							</ul>
 						</section>
 					</div>
@@ -94,62 +100,77 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="denominationasset" class="tsd-anchor"></a>
-					<h3>denomination<wbr>Asset</h3>
-					<div class="tsd-signature tsd-kind-icon">denomination<wbr>Asset<span class="tsd-signature-symbol">:</span> <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></div>
+					<a name="decimals" class="tsd-anchor"></a>
+					<h3>decimals</h3>
+					<div class="tsd-signature tsd-kind-icon">decimals<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/fees/FeeManager.ts#L23">contracts/fund/fees/FeeManager.ts:23</a></li>
+							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/version/Registry.ts#L27">contracts/version/Registry.ts:27</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="fees" class="tsd-anchor"></a>
-					<h3>fees</h3>
-					<div class="tsd-signature tsd-kind-icon">fees<span class="tsd-signature-symbol">:</span> <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a><span class="tsd-signature-symbol">[]</span></div>
+					<a name="exists" class="tsd-anchor"></a>
+					<h3>exists</h3>
+					<div class="tsd-signature tsd-kind-icon">exists<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/fees/FeeManager.ts#L24">contracts/fund/fees/FeeManager.ts:24</a></li>
+							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/version/Registry.ts#L28">contracts/version/Registry.ts:28</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="hub" class="tsd-anchor"></a>
-					<h3>hub</h3>
-					<div class="tsd-signature tsd-kind-icon">hub<span class="tsd-signature-symbol">:</span> <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="name" class="tsd-anchor"></a>
+					<h3>name</h3>
+					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from AssetBaseInformation.name</p>
 						<ul>
-							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/fees/FeeManager.ts#L22">contracts/fund/fees/FeeManager.ts:22</a></li>
+							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/version/Registry.ts#L14">contracts/version/Registry.ts:14</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="periods" class="tsd-anchor"></a>
-					<h3>periods</h3>
-					<div class="tsd-signature tsd-kind-icon">periods<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="sigs" class="tsd-anchor"></a>
+					<h3>sigs</h3>
+					<div class="tsd-signature tsd-kind-icon">sigs<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from AssetBaseInformation.sigs</p>
 						<ul>
-							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/fees/FeeManager.ts#L26">contracts/fund/fees/FeeManager.ts:26</a></li>
+							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/version/Registry.ts#L18">contracts/version/Registry.ts:18</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="rates" class="tsd-anchor"></a>
-					<h3>rates</h3>
-					<div class="tsd-signature tsd-kind-icon">rates<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">[]</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="standards" class="tsd-anchor"></a>
+					<h3>standards</h3>
+					<div class="tsd-signature tsd-kind-icon">standards<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from AssetBaseInformation.standards</p>
 						<ul>
-							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/fees/FeeManager.ts#L25">contracts/fund/fees/FeeManager.ts:25</a></li>
+							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/version/Registry.ts#L17">contracts/version/Registry.ts:17</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="registry" class="tsd-anchor"></a>
-					<h3>registry</h3>
-					<div class="tsd-signature tsd-kind-icon">registry<span class="tsd-signature-symbol">:</span> <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="symbol" class="tsd-anchor"></a>
+					<h3>symbol</h3>
+					<div class="tsd-signature tsd-kind-icon">symbol<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from AssetBaseInformation.symbol</p>
 						<ul>
-							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/fees/FeeManager.ts#L27">contracts/fund/fees/FeeManager.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/version/Registry.ts#L15">contracts/version/Registry.ts:15</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="url" class="tsd-anchor"></a>
+					<h3>url</h3>
+					<div class="tsd-signature tsd-kind-icon">url<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from AssetBaseInformation.url</p>
+						<ul>
+							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/version/Registry.ts#L16">contracts/version/Registry.ts:16</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -162,47 +183,50 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="../modules/_contracts_fund_fees_feemanager_.html">"contracts/fund/fees/<wbr>Fee<wbr>Manager"</a>
+						<a href="../modules/_contracts_version_registry_.html">"contracts/version/<wbr>Registry"</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/_contracts_fund_fees_feemanager_.feemanager.html" class="tsd-kind-icon">Fee<wbr>Manager</a>
+						<a href="../classes/_contracts_version_registry_.registry.html" class="tsd-kind-icon">Registry</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_contracts_version_registry_.assetcreation.html" class="tsd-kind-icon">Asset<wbr>Creation</a>
 					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_contracts_fund_fees_feemanager_.feemanagerdeployarguments.html" class="tsd-kind-icon">Fee<wbr>Manager<wbr>Deploy<wbr>Arguments</a>
+						<a href="_contracts_version_registry_.assetinformation.html" class="tsd-kind-icon">Asset<wbr>Information</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_contracts_fund_fees_feemanager_.feemanagerdeployarguments.html#denominationasset" class="tsd-kind-icon">denomination<wbr>Asset</a>
+								<a href="_contracts_version_registry_.assetinformation.html#decimals" class="tsd-kind-icon">decimals</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_contracts_fund_fees_feemanager_.feemanagerdeployarguments.html#fees" class="tsd-kind-icon">fees</a>
+								<a href="_contracts_version_registry_.assetinformation.html#exists" class="tsd-kind-icon">exists</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_contracts_fund_fees_feemanager_.feemanagerdeployarguments.html#hub" class="tsd-kind-icon">hub</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_contracts_version_registry_.assetinformation.html#name" class="tsd-kind-icon">name</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_contracts_fund_fees_feemanager_.feemanagerdeployarguments.html#periods" class="tsd-kind-icon">periods</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_contracts_version_registry_.assetinformation.html#sigs" class="tsd-kind-icon">sigs</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_contracts_fund_fees_feemanager_.feemanagerdeployarguments.html#rates" class="tsd-kind-icon">rates</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_contracts_version_registry_.assetinformation.html#standards" class="tsd-kind-icon">standards</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_contracts_fund_fees_feemanager_.feemanagerdeployarguments.html#registry" class="tsd-kind-icon">registry</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_contracts_version_registry_.assetinformation.html#symbol" class="tsd-kind-icon">symbol</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_contracts_version_registry_.assetinformation.html#url" class="tsd-kind-icon">url</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/_contracts_fund_fees_feemanager_.html#managementfeeinformation" class="tsd-kind-icon">Management<wbr>Fee<wbr>Information</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/_contracts_fund_fees_feemanager_.html#performancefeeinformation" class="tsd-kind-icon">Performance<wbr>Fee<wbr>Information</a>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_contracts_version_registry_.versioninformation.html" class="tsd-kind-icon">Version<wbr>Information</a>
 					</li>
 				</ul>
 			</nav>
