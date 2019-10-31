@@ -1,14 +1,26 @@
 {
   "name": "@melonproject/melonjs",
-  "version": "0.0.20",
-  "description": "Technology Regulated and Operated Investment Funds.",
+  "version": "0.0.21",
+  "description": "A convenient JavaScript interface to the Melon protocol Ethereum smart contracts.",
   "main": "index.js",
   "module": "bundle.esm.js",
   "typings": "index.d.ts",
   "license": "MIT",
+  "author": "Avantgarde Finance <team@avantgarde.finance>",
+  "homepage": "https://melonprotocol.com",
   "publishConfig": {
     "access": "public"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/melonproject/melonjs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/melonproject/melonjs/issues"
+  },
+  "contributors": [
+    "Sebastian Siemssen <fubhy@fubhy.com>"
+  ],
   "scripts": {
     "clean": "rimraf dist docs coverage",
     "prebuild": "rimraf build",
