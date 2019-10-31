@@ -1,18 +1,45 @@
-import { Eth } from 'web3-eth';
-import { HttpProvider } from 'web3-providers';
-import { Environment } from '../../../Environment';
 import { Participation } from './Participation';
 import BigNumber from 'bignumber.js';
+import { createTestEnvironment, TestEnvironment } from '../../../utils/tests/createTestEnvironment';
+import { deployHub } from '../../../utils/tests/deployHub';
+import { deployWeth } from '../../../utils/tests/deployWeth';
+import { deployRegistry } from '../../../utils/tests/deployRegistry';
+import { Registry } from '../../version/Registry';
+import { deployParticipation } from '../../../utils/tests/deployParticipation';
 
 describe('Participation', () => {
-  let environment: Environment;
+  let environment: TestEnvironment;
   let participation: Participation;
+  let registry: Registry;
 
-  beforeAll(() => {
-    // TODO: This should be replaced with a local ganache test environment using proper test fixtures.
-    const client = new Eth(new HttpProvider('https://mainnet.melonport.com'));
-    environment = new Environment(client);
-    participation = new Participation(environment, '0x931a30d1989108b0dbf424b958a87e3ecb695b7d');
+  beforeAll(async () => {
+    environment = await createTestEnvironment();
+
+    const hub = await deployHub(environment, environment.accounts[0], {
+      manager: environment.accounts[1],
+      name: 'accounting-test-fund',
+    });
+
+    const weth = await deployWeth(environment, environment.accounts[0]);
+
+    registry = await deployRegistry(environment, environment.accounts[0], environment.accounts[0]);
+
+    const tx = await registry.registerAsset(environment.accounts[0], {
+      address: weth.contract.address,
+      name: 'Test Asset',
+      symbol: 'TAT',
+      url: 'https://tat.tat/',
+      reserveMin: new BigNumber(100000),
+      standards: [1, 2, 3],
+      sigs: ['0000'],
+    });
+    await tx.send(await tx.estimate());
+
+    participation = await deployParticipation(environment, environment.accounts[0], {
+      hub: hub.contract.address,
+      defaultAssets: [weth.contract.address],
+      registry: registry.contract.address,
+    });
   });
 
   it('should return an array of investor addresses', async () => {
@@ -38,10 +65,12 @@ describe('Participation', () => {
     expect(result === true || result === false).toBe(true);
   });
 
-  it('should return whether an investor has a valid request', async () => {
-    const result = await participation.hasValidRequest('0x8a2da4fc8c6854be3f754f8dddd37a2b9d69c8c2');
-    expect(result === true || result === false).toBe(true);
-  });
+  // requires price source contract
+
+  // it('should return whether an investor has a valid request', async () => {
+  //   const result = await participation.hasValidRequest('0x8a2da4fc8c6854be3f754f8dddd37a2b9d69c8c2');
+  //   expect(result === true || result === false).toBe(true);
+  // });
 
   it('should return whether an investor has an expired request', async () => {
     const result = await participation.hasExpiredRequest('0x8a2da4fc8c6854be3f754f8dddd37a2b9d69c8c2');

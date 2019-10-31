@@ -2,6 +2,8 @@ import { Registry } from './Registry';
 import { TestEnvironment, createTestEnvironment } from '../../utils/tests/createTestEnvironment';
 import { deployRegistry } from '../../utils/tests/deployRegistry';
 import { randomAddress } from '../../utils/tests/randomAddress';
+import { deployWeth } from '../../utils/tests/deployWeth';
+import BigNumber from 'bignumber.js';
 
 describe('Registry', () => {
   let environment: TestEnvironment;
@@ -32,5 +34,20 @@ describe('Registry', () => {
       const result = await registry.isFeeRegistered(performanceFeeAddress);
       expect(result).toBe(true);
     }
+  });
+
+  it('should register an asset and check if it was indeed registered', async () => {
+    const weth = await deployWeth(environment, environment.accounts[0]);
+
+    const tx = await registry.registerAsset(environment.accounts[0], {
+      address: weth.contract.address,
+      name: 'Test Asset',
+      symbol: 'TAT',
+      url: 'https://tat.tat/',
+      reserveMin: new BigNumber(100000),
+      standards: [1, 2, 3],
+      sigs: ['0000'],
+    });
+    await tx.send(await tx.estimate());
   });
 });

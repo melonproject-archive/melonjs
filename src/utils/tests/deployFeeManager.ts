@@ -8,14 +8,7 @@ export async function deployFeeManager(
   creator: Address,
   args: FeeManagerDeployArguments,
 ) {
-  const deploy = FeeManager.deploy(environment, FeeManagerBytecode, creator, {
-    hub: args.hub,
-    denominationAsset: args.denominationAsset,
-    fees: args.fees,
-    rates: args.rates,
-    periods: args.periods,
-    registry: args.registry,
-  });
+  const deploy = FeeManager.deploy(environment, FeeManagerBytecode, creator, args);
 
   return await deploy.send(await deploy.estimate());
 }

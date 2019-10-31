@@ -8,12 +8,7 @@ export async function deployAccounting(
   creator: Address,
   args: AccountingDeployArguments,
 ) {
-  const deploy = Accounting.deploy(environment, AccountingBytecode, creator, {
-    hub: args.hub,
-    denominationAsset: args.denominationAsset,
-    nativeAsset: args.nativeAsset,
-    defaultAssets: args.defaultAssets,
-  });
+  const deploy = Accounting.deploy(environment, AccountingBytecode, creator, args);
 
   return await deploy.send(await deploy.estimate());
 }

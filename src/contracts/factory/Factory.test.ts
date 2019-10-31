@@ -12,7 +12,6 @@ describe('Factory', () => {
     environment = await createTestEnvironment();
 
     const deploy = Factory.deploy(environment, FactoryBytecode, environment.accounts[0]);
-
     factory = await deploy.send(await deploy.estimate());
   });
 
