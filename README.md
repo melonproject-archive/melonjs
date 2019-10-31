@@ -8,14 +8,11 @@
 
 ## Installation
 
-This library is published as an [npm package][npm]. You can install it through npm, npx or yarn.
+This library is published as an [npm package][npm]. You can install it through npm or yarn.
 
 ```
 # Using yarn
 yarn install @melonproject/melonjs
-
-# Using npx
-npx install @melonproject/melonjs
 
 # Using npm
 npm install @melonproject/melonjs
