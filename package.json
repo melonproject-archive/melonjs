@@ -19,7 +19,8 @@
     "url": "https://github.com/melonproject/melonjs/issues"
   },
   "contributors": [
-    "Sebastian Siemssen <fubhy@fubhy.com>"
+    "Sebastian Siemssen <fubhy@fubhy.com>",
+    "Ivan Herger <ivan@herger.org>"
   ],
   "scripts": {
     "clean": "rimraf dist docs coverage",

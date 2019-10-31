@@ -10,7 +10,7 @@ export interface VersionInformation {
   name: string;
 }
 
-interface AssetBaseInformation {
+export interface AssetBaseInformation {
   name: string;
   symbol: string;
   url: string;
@@ -19,13 +19,20 @@ interface AssetBaseInformation {
 }
 
 export interface AssetCreation extends AssetBaseInformation {
-  address: string;
+  address: Address;
   reserveMin: BigNumber;
 }
 
 export interface AssetInformation extends AssetBaseInformation {
   decimals: number;
   exists: boolean;
+}
+
+export interface ExchangeAdapterInformation {
+  exchange: Address;
+  adapter: Address;
+  takesCustody: boolean;
+  sigs: string[];
 }
 
 export class Registry extends Contract {
@@ -59,8 +66,21 @@ export class Registry extends Contract {
     return this.makeCall<Address[]>('getRegisteredAssets', undefined, block);
   }
 
+  public registerExchangeAdapter(from: Address, args: ExchangeAdapterInformation) {
+    return this.createTransaction('registerExchangeAdapter', from, [
+      args.exchange,
+      args.adapter,
+      args.takesCustody,
+      args.sigs.map(sig => hexToBytes(utf8ToHex(sig))),
+    ]);
+  }
+
   public getRegisteredExchangeAdapters(block?: number) {
     return this.makeCall<Address[]>('getRegisteredExchangeAdapters', undefined, block);
+  }
+
+  public isExchangeAdapterRegistered(adapter: Address, block?: number) {
+    return this.makeCall<boolean>('exchangeAdapterIsRegistered', [adapter], block);
   }
 
   public getRegisteredVersions(block?: number) {
