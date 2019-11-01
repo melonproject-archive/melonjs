@@ -3,8 +3,10 @@ import { WETHAbi } from '../../abis/WETH.abi';
 import { Environment } from '../../Environment';
 import { Address } from '../../Address';
 import { ERC20WithFields } from './ERC20WithFields';
+import { Contract } from '../../Contract';
+import { applyMixins } from '../../utils/applyMixins';
 
-export class Weth extends ERC20WithFields {
+export class Weth extends Contract {
   public static readonly abi = WETHAbi;
 
   public static deploy(environment: Environment, bytecode: string, from: Address) {
@@ -19,3 +21,6 @@ export class Weth extends ERC20WithFields {
     return this.createTransaction('withdraw', from, [amount.toFixed()]);
   }
 }
+
+export interface Weth extends ERC20WithFields {}
+applyMixins(Weth, [ERC20WithFields]);

@@ -46,8 +46,8 @@ export class FeeManager extends Contract {
    *
    * @param block The block number to execute the call on.
    */
-  public async getManagementFeeAddress(block?: number) {
-    return await this.makeCall<Address>('fees', [0], block);
+  public getManagementFeeAddress(block?: number) {
+    return this.makeCall<Address>('fees', [0], block);
   }
 
   /**
@@ -69,8 +69,8 @@ export class FeeManager extends Contract {
    *
    * @param block The block number to execute the call on.
    */
-  public async getPerformanceFeeAddress(block?: number) {
-    return await this.makeCall<Address>('fees', [1], block);
+  public getPerformanceFeeAddress(block?: number) {
+    return this.makeCall<Address>('fees', [1], block);
   }
 
   /**

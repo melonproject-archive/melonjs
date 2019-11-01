@@ -37,9 +37,8 @@ export class Participation extends Contract {
    *
    * @param block The block number to execute the call on.
    */
-  public async getHistoricalInvestors(block?: number) {
-    const result = await this.makeCall<Address[]>('getHistoricalInvestors', undefined, block);
-    return result;
+  public getHistoricalInvestors(block?: number) {
+    return this.makeCall<Address[]>('getHistoricalInvestors', undefined, block);
   }
 
   /**
@@ -64,9 +63,8 @@ export class Participation extends Contract {
    * @param investor The address of the investor
    * @param block The block number to execute the call on.
    */
-  public async hasRequest(investor: Address, block?: number) {
-    const result = await this.makeCall<boolean>('hasRequest', [investor], block);
-    return result;
+  public hasRequest(investor: Address, block?: number) {
+    return this.makeCall<boolean>('hasRequest', [investor], block);
   }
 
   /**
@@ -75,9 +73,8 @@ export class Participation extends Contract {
    * @param investor The address of the investor
    * @param block The block number to execute the call on.
    */
-  public async hasValidRequest(investor: Address, block?: number) {
-    const result = await this.makeCall<boolean>('hasValidRequest', [investor], block);
-    return result;
+  public hasValidRequest(investor: Address, block?: number) {
+    return this.makeCall<boolean>('hasValidRequest', [investor], block);
   }
 
   /**
@@ -86,9 +83,8 @@ export class Participation extends Contract {
    * @param investor The address of the investor
    * @param block The block number to execute the call on.
    */
-  public async hasExpiredRequest(investor: Address, block?: number) {
-    const result = await this.makeCall<boolean>('hasExpiredRequest', [investor], block);
-    return result;
+  public hasExpiredRequest(investor: Address, block?: number) {
+    return this.makeCall<boolean>('hasExpiredRequest', [investor], block);
   }
 
   /**
@@ -97,9 +93,8 @@ export class Participation extends Contract {
    * @param investor The address of the investor
    * @param block The block number to execute the call on.
    */
-  public async hasInvested(investor: Address, block?: number) {
-    const result = await this.makeCall<boolean>('hasInvested', [investor], block);
-    return result;
+  public hasInvested(investor: Address, block?: number) {
+    return this.makeCall<boolean>('hasInvested', [investor], block);
   }
 
   /**
@@ -108,9 +103,8 @@ export class Participation extends Contract {
    * @param investor The address of the investor
    * @param block The block number to execute the call on.
    */
-  public async canInvestWithAsset(asset: Address, block?: number) {
-    const result = await this.makeCall<boolean>('investAllowed', [asset], block);
-    return result;
+  public canInvestWithAsset(asset: Address, block?: number) {
+    return this.makeCall<boolean>('investAllowed', [asset], block);
   }
 }
 

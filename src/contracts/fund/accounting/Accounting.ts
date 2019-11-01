@@ -56,9 +56,8 @@ export class Accounting extends Contract {
    * @param index The index in the ownedAssets array.
    * @param block The block number to execute the call on.
    */
-  public async getOwnedAsset(index: number, block?: number) {
-    const result = await this.makeCall<Address>('ownedAssets', [index], block);
-    return result;
+  public getOwnedAsset(index: number, block?: number) {
+    return this.makeCall<Address>('ownedAssets', [index], block);
   }
 
   /**
@@ -116,9 +115,8 @@ export class Accounting extends Contract {
    *
    * @param block The block number to execute the call on.
    */
-  public async getDenominationAsset(block?: number) {
-    const result = await this.makeCall<Address>('DENOMINATION_ASSET', undefined, block);
-    return result;
+  public getDenominationAsset(block?: number) {
+    return this.makeCall<Address>('DENOMINATION_ASSET', undefined, block);
   }
 
   /**
@@ -126,9 +124,8 @@ export class Accounting extends Contract {
    *
    * @param block The block number to execute the call on.
    */
-  public async getNativeAsset(block?: number) {
-    const result = await this.makeCall<Address>('NATIVE_ASSET', undefined, block);
-    return result;
+  public getNativeAsset(block?: number) {
+    return this.makeCall<Address>('NATIVE_ASSET', undefined, block);
   }
 
   /**
