@@ -1,5 +1,5 @@
 export { Contract } from './Contract';
-export { Environment } from './Environment';
+export { Environment, EnvironmentOptions } from './Environment';
 export { Address } from './Address';
 export { Transaction } from './Transaction';
 
