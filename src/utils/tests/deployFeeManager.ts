@@ -10,5 +10,5 @@ export async function deployFeeManager(
 ) {
   const deploy = FeeManager.deploy(environment, FeeManagerBytecode, creator, args);
 
-  return await deploy.send(await deploy.estimate());
+  return await deploy.send(await deploy.estimateGas());
 }

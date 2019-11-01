@@ -17,12 +17,17 @@ describe('AddressList', () => {
     addresses = R.range(0, 5).map(address => randomAddress());
 
     const deploy = AddressList.deploy(environment, AddressListBytecode, environment.accounts[0], addresses);
-    addressList = await deploy.send(await deploy.estimate());
+    addressList = await deploy.send(await deploy.estimateGas());
   });
 
   it('should check if an address is member of an address list', async () => {
     const result = await addressList.isMember(addresses[1]);
     expect(result === true || result === false).toBe(true);
+  });
+
+  it('should return the correct number of members', async () => {
+    const result = await addressList.getMemberCount();
+    expect(result.isEqualTo(addresses.length)).toBe(true);
   });
 
   it('should return a list of members', async () => {

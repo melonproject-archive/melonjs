@@ -21,7 +21,7 @@ describe('FundFactory', () => {
       vaultFactory: randomAddress(),
       version: randomAddress(),
     });
-    fundFactory = await deploy.send(await deploy.estimate());
+    fundFactory = await deploy.send(await deploy.estimateGas());
   });
 
   it('should check if a contract is an instance of a factory', async () => {

@@ -5,5 +5,5 @@ import { TestEnvironment } from './createTestEnvironment';
 
 export async function deployShares(environment: TestEnvironment, creator: Address, hub: Address) {
   const deploy = Shares.deploy(environment, SharesBytecode, creator, hub);
-  return await deploy.send(await deploy.estimate());
+  return await deploy.send(await deploy.estimateGas());
 }

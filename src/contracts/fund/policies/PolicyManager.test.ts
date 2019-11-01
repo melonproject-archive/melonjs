@@ -22,7 +22,7 @@ describe('PolicyManager', () => {
       hub.contract.address,
     );
 
-    policyManager = await deploy.send(await deploy.estimate());
+    policyManager = await deploy.send(await deploy.estimateGas());
   });
 
   it('should return the policies by signature', async () => {

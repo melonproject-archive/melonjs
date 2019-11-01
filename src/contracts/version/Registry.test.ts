@@ -23,7 +23,7 @@ describe('Registry', () => {
     const [managementFeeAdress, performanceFeeAddress] = [randomAddress(), randomAddress()];
 
     const tx = await registry.registerFees(environment.accounts[0], [managementFeeAdress, performanceFeeAddress]);
-    await tx.send(await tx.estimate());
+    await tx.send(await tx.estimateGas());
 
     {
       const result = await registry.isFeeRegistered(managementFeeAdress);
@@ -48,7 +48,7 @@ describe('Registry', () => {
       standards: [1, 2, 3],
       sigs: ['0000'],
     });
-    await tx.send(await tx.estimate());
+    await tx.send(await tx.estimateGas());
 
     const result = await registry.getAssetInformation(weth.contract.address);
     expect(result.exists).toBe(true);
@@ -64,7 +64,7 @@ describe('Registry', () => {
       takesCustody: true,
       sigs: ['0000'],
     });
-    await tx.send(await tx.estimate());
+    await tx.send(await tx.estimateGas());
 
     const result = await registry.isExchangeAdapterRegistered(adapterAddress);
     expect(typeof result).toBe('boolean');

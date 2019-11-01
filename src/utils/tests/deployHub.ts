@@ -5,5 +5,5 @@ import { TestEnvironment } from './createTestEnvironment';
 
 export async function deployHub(environment: TestEnvironment, creator: Address, args: HubDeployArguments) {
   const deploy = Hub.deploy(environment, HubBytecode, creator, args);
-  return await deploy.send(await deploy.estimate());
+  return await deploy.send(await deploy.estimateGas());
 }

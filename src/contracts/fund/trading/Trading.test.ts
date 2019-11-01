@@ -33,7 +33,7 @@ describe('Trading', () => {
       takesCustody: true,
       sigs: ['0000'],
     });
-    await tx.send(await tx.estimate());
+    await tx.send(await tx.estimateGas());
 
     trading = await deployTrading(environment, environment.accounts[0], {
       hub: hub.contract.address,

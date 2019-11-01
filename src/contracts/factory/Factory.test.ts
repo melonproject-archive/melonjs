@@ -12,7 +12,7 @@ describe('Factory', () => {
     environment = await createTestEnvironment();
 
     const deploy = Factory.deploy(environment, FactoryBytecode, environment.accounts[0]);
-    factory = await deploy.send(await deploy.estimate());
+    factory = await deploy.send(await deploy.estimateGas());
   });
 
   it('should check if a contract is an instance of a factory', async () => {

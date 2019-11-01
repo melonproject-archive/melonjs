@@ -14,7 +14,7 @@ describe('TradingFactory', () => {
     environment = await createTestEnvironment();
 
     const deploy = TradingFactory.deploy(environment, TradingFactoryBytecode, environment.accounts[0]);
-    tradingFactory = await deploy.send(await deploy.estimate());
+    tradingFactory = await deploy.send(await deploy.estimateGas());
   });
 
   it('should check if a contract is an instance of TradingFactory', async () => {
@@ -38,7 +38,7 @@ describe('TradingFactory', () => {
       takesCustody: true,
       sigs: ['0000'],
     });
-    await txExchangeAdapter.send(await txExchangeAdapter.estimate());
+    await txExchangeAdapter.send(await txExchangeAdapter.estimateGas());
 
     const tx = tradingFactory.createInstance(environment.accounts[0], {
       hub: hub.contract.address,
@@ -47,7 +47,7 @@ describe('TradingFactory', () => {
       registry: registry.contract.address,
     });
 
-    const txResult = await tx.send(await tx.estimate());
+    const txResult = await tx.send(await tx.estimateGas());
     expect(txResult.gasUsed).toBeGreaterThanOrEqual(0);
     expect(txResult.status).toBe(true);
   });

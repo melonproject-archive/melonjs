@@ -1,24 +1,28 @@
-import { Eth } from 'web3-eth';
-import { HttpProvider } from 'web3-providers';
-import { Environment } from '../../../Environment';
+import * as R from 'ramda';
 import { AssetBlacklist } from './AssetBlacklist';
+import { TestEnvironment, createTestEnvironment } from '../../../utils/tests/createTestEnvironment';
+import { Address } from '../../../Address';
+import { randomAddress } from '../../../utils/tests/randomAddress';
+import { AssetBlacklistBytecode } from '../../../abis/AssetBlacklist.bin';
 
 describe('AssetBlacklist', () => {
-  let environment: Environment;
+  let environment: TestEnvironment;
   let assetBlacklist: AssetBlacklist;
+  let addresses: Address[];
 
-  beforeAll(() => {
-    // TODO: This should be replaced with a local ganache test environment using proper test fixtures.
-    const client = new Eth(new HttpProvider('https://mainnet.melonport.com'));
-    environment = new Environment(client);
-    assetBlacklist = new AssetBlacklist(environment, '0x9b113694b924108e21ffac925d406d6b496d074a');
+  beforeAll(async () => {
+    environment = await createTestEnvironment();
+
+    addresses = R.range(0, 5).map(address => randomAddress());
+
+    const deploy = AssetBlacklist.deploy(environment, AssetBlacklistBytecode, environment.accounts[0], addresses);
+    assetBlacklist = await deploy.send(await deploy.estimateGas());
   });
 
-  it('should return the members of the blacklist', async () => {
-    const result = await assetBlacklist.getMembers();
-    result.map(address => {
-      expect(address.startsWith('0x')).toBe(true);
-    });
+  it('should return the correct position', async () => {
+    const result = await assetBlacklist.getPosition();
+    console.log(result);
+    expect(result).toBe(0);
   });
 
   it('should return the correct identifier', async () => {

@@ -11,7 +11,7 @@ describe('ExchangeAdapter', () => {
     environment = await createTestEnvironment();
 
     const deploy = ExchangeAdapter.deploy(environment, ExchangeAdapterBytecode, environment.accounts[0]);
-    exchangeAdapter = await deploy.send(await deploy.estimate());
+    exchangeAdapter = await deploy.send(await deploy.estimateGas());
   });
 
   it('should check if the exchange adapter has an address', async () => {

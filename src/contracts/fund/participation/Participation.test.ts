@@ -33,7 +33,7 @@ describe('Participation', () => {
       standards: [1, 2, 3],
       sigs: ['0000'],
     });
-    await tx.send(await tx.estimate());
+    await tx.send(await tx.estimateGas());
 
     participation = await deployParticipation(environment, environment.accounts[0], {
       hub: hub.contract.address,

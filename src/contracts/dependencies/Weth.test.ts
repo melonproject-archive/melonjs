@@ -11,7 +11,7 @@ describe('Weth', () => {
   beforeAll(async () => {
     environment = await createTestEnvironment();
     const contract = Weth.deploy(environment, WETHBytecode, environment.accounts[0]);
-    weth = await contract.send(await contract.estimate());
+    weth = await contract.send(await contract.estimateGas());
   });
 
   it('should allow deposit and withdrawal', async () => {
@@ -20,7 +20,7 @@ describe('Weth', () => {
 
     {
       const tx = weth.deposit(toBigNumber(toWei('1')), environment.accounts[1]);
-      await tx.send(await tx.estimate());
+      await tx.send(await tx.estimateGas());
     }
 
     const after = await weth.getBalanceOf(environment.accounts[1]);
@@ -28,7 +28,7 @@ describe('Weth', () => {
 
     {
       const tx = weth.withdraw(toBigNumber(toWei('1')), environment.accounts[1]);
-      await tx.send(await tx.estimate());
+      await tx.send(await tx.estimateGas());
     }
 
     const final = await weth.getBalanceOf(environment.accounts[1]);
