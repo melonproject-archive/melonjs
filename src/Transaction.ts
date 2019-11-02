@@ -36,7 +36,7 @@ export class Transaction<T = TransactionReceipt> {
     return this.transaction.send(opts);
   }
 
-  public estimate(options?: Partial<EstimateGasOptions>): Promise<number> {
+  public estimateGas(options?: Partial<EstimateGasOptions>): Promise<number> {
     const opts: EstimateGasOptions = {
       ...(this.from && { from: this.from }),
       ...(this.value && { value: this.value }),

@@ -26,13 +26,13 @@ describe('FeeManager', () => {
         feePeriod: 1000,
         denominationAsset: randomAddress(),
       });
-      const txResult = await tx.send(await tx.estimate());
+      const txResult = await tx.send(await tx.estimateGas());
       expect(txResult.gasUsed).toBeGreaterThan(0);
     }
 
     {
       const tx = fee.updateState(environment.accounts[0]);
-      const txResult = await tx.send(await tx.estimate());
+      const txResult = await tx.send(await tx.estimateGas());
       expect(txResult.gasUsed).toBeGreaterThan(0);
     }
   });

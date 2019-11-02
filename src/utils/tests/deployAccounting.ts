@@ -10,5 +10,5 @@ export async function deployAccounting(
 ) {
   const deploy = Accounting.deploy(environment, AccountingBytecode, creator, args);
 
-  return await deploy.send(await deploy.estimate());
+  return await deploy.send(await deploy.estimateGas());
 }

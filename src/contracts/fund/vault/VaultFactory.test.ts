@@ -13,7 +13,7 @@ describe('VaultFactory', () => {
     environment = await createTestEnvironment();
 
     const deploy = VaultFactory.deploy(environment, VaultFactoryBytecode, environment.accounts[0]);
-    vaultFactory = await deploy.send(await deploy.estimate());
+    vaultFactory = await deploy.send(await deploy.estimateGas());
   });
 
   it('should check if a contract is an instance of the VaultFactory', async () => {
@@ -29,7 +29,7 @@ describe('VaultFactory', () => {
 
     const tx = vaultFactory.createInstance(environment.accounts[0], hub.contract.address);
 
-    const txResult = await tx.send(await tx.estimate());
+    const txResult = await tx.send(await tx.estimateGas());
     expect(txResult.gasUsed).toBeGreaterThanOrEqual(0);
     expect(txResult.status).toBe(true);
   });

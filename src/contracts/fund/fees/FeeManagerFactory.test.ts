@@ -18,7 +18,7 @@ describe('FeeManagerFactory', () => {
     environment = await createTestEnvironment();
 
     const deploy = FeeManagerFactory.deploy(environment, FeeManagerFactoryBytecode, environment.accounts[0]);
-    feeManagerFactory = await deploy.send(await deploy.estimate());
+    feeManagerFactory = await deploy.send(await deploy.estimateGas());
   });
 
   it('should check if a contract is an instance of the FeeManagerFactory', async () => {
@@ -41,7 +41,7 @@ describe('FeeManagerFactory', () => {
       managementFee.contract.address,
       performanceFee.contract.address,
     ]);
-    await txRegisterFees.send(await txRegisterFees.estimate());
+    await txRegisterFees.send(await txRegisterFees.estimateGas());
 
     const tx = feeManagerFactory.createInstance(environment.accounts[0], {
       hub: hub.contract.address,
@@ -52,7 +52,7 @@ describe('FeeManagerFactory', () => {
       registry: registry.contract.address,
     });
 
-    const txResult = await tx.send(await tx.estimate());
+    const txResult = await tx.send(await tx.estimateGas());
     expect(txResult.gasUsed).toBeGreaterThanOrEqual(0);
     expect(txResult.status).toBe(true);
   });

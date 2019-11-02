@@ -16,7 +16,7 @@ describe('ParticipationFactory', () => {
     environment = await createTestEnvironment();
 
     const deploy = ParticipationFactory.deploy(environment, ParticipationFactoryBytecode, environment.accounts[0]);
-    participationFactory = await deploy.send(await deploy.estimate());
+    participationFactory = await deploy.send(await deploy.estimateGas());
   });
 
   it('should check if a contract is an instance of the ParticipationFactory', async () => {
@@ -43,7 +43,7 @@ describe('ParticipationFactory', () => {
       standards: [1, 2, 3],
       sigs: ['0000'],
     });
-    await txRegisterAsset.send(await txRegisterAsset.estimate());
+    await txRegisterAsset.send(await txRegisterAsset.estimateGas());
 
     const tx = participationFactory.createInstance(environment.accounts[0], {
       hub: hub.contract.address,
@@ -51,7 +51,7 @@ describe('ParticipationFactory', () => {
       registry: registry.contract.address,
     });
 
-    const txResult = await tx.send(await tx.estimate());
+    const txResult = await tx.send(await tx.estimateGas());
     expect(txResult.gasUsed).toBeGreaterThanOrEqual(0);
     expect(txResult.status).toBe(true);
   });

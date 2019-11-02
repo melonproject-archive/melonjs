@@ -10,5 +10,5 @@ export async function deployParticipation(
 ) {
   const deploy = Participation.deploy(environment, ParticipationBytecode, creator, args);
 
-  return await deploy.send(await deploy.estimate());
+  return await deploy.send(await deploy.estimateGas());
 }

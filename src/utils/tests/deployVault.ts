@@ -5,5 +5,5 @@ import { TestEnvironment } from './createTestEnvironment';
 
 export async function deployVault(environment: TestEnvironment, creator: Address, hub: Address) {
   const deploy = Vault.deploy(environment, VaultBytecode, creator, hub);
-  return await deploy.send(await deploy.estimate());
+  return await deploy.send(await deploy.estimateGas());
 }

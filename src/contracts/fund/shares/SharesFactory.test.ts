@@ -13,7 +13,7 @@ describe('SharesFactory', () => {
     environment = await createTestEnvironment();
 
     const deploy = SharesFactory.deploy(environment, SharesFactoryBytecode, environment.accounts[0]);
-    sharesFactory = await deploy.send(await deploy.estimate());
+    sharesFactory = await deploy.send(await deploy.estimateGas());
   });
 
   it('should check if a contract is an instance of the SharesFactory', async () => {
@@ -29,7 +29,7 @@ describe('SharesFactory', () => {
 
     const tx = sharesFactory.createInstance(environment.accounts[0], hub.contract.address);
 
-    const txResult = await tx.send(await tx.estimate());
+    const txResult = await tx.send(await tx.estimateGas());
     expect(txResult.gasUsed).toBeGreaterThanOrEqual(0);
     expect(txResult.status).toBe(true);
   });

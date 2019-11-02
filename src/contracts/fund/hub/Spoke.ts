@@ -15,9 +15,8 @@ export class Spoke extends Contract {
    *
    * @param block The block number to execute the call on.
    */
-  public async getEngine(block?: number) {
-    const result = await this.makeCall<string>('engine', undefined, block);
-    return result;
+  public getEngine(block?: number) {
+    return this.makeCall<string>('engine', undefined, block);
   }
 
   /**
@@ -25,9 +24,8 @@ export class Spoke extends Contract {
    *
    * @param block The block number to execute the call on.
    */
-  public async getMlnToken(block?: number) {
-    const result = await this.makeCall<string>('mlnToken', undefined, block);
-    return result;
+  public getMlnToken(block?: number) {
+    return this.makeCall<string>('mlnToken', undefined, block);
   }
 
   /**
@@ -35,9 +33,8 @@ export class Spoke extends Contract {
    *
    * @param block The block number to execute the call on.
    */
-  public async getPriceSource(block?: number) {
-    const result = await this.makeCall<string>('priceSource', undefined, block);
-    return result;
+  public getPriceSource(block?: number) {
+    return this.makeCall<string>('priceSource', undefined, block);
   }
 
   /**
@@ -45,9 +42,8 @@ export class Spoke extends Contract {
    *
    * @param block The block number to execute the call on.
    */
-  public async getVersion(block?: number) {
-    const result = await this.makeCall<string>('version', undefined, block);
-    return result;
+  public getVersion(block?: number) {
+    return this.makeCall<string>('version', undefined, block);
   }
 
   /**
@@ -55,8 +51,7 @@ export class Spoke extends Contract {
    *
    * @param block The block number to execute the call on.
    */
-  public async getRegistry(block?: number) {
-    const result = await this.makeCall<string>('registry', undefined, block);
-    return result;
+  public getRegistry(block?: number) {
+    return this.makeCall<string>('registry', undefined, block);
   }
 }

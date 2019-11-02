@@ -3,6 +3,7 @@ import { HubAbi } from '../../../abis/Hub.abi';
 import { Contract } from '../../../Contract';
 import { Environment } from '../../../Environment';
 import { Address } from '../../../Address';
+import { toDate } from '../../../utils/toDate';
 
 export interface HubRoutes {
   accounting?: Address;
@@ -38,7 +39,7 @@ export class Hub extends Contract {
    */
   public async getCreationTime(block?: number) {
     const result = await this.makeCall<string>('creationTime', undefined, block);
-    return new Date(parseInt(`${result}`, 10) * 1000);
+    return toDate(result);
   }
 
   /**
@@ -46,7 +47,7 @@ export class Hub extends Contract {
    *
    * @param block The block number to execute the call on.
    */
-  public async getCreator(block?: number) {
+  public getCreator(block?: number) {
     return this.makeCall<Address>('creator', undefined, block);
   }
 
@@ -55,7 +56,7 @@ export class Hub extends Contract {
    *
    * @param block The block number to execute the call on.
    */
-  public async getManager(block?: number) {
+  public getManager(block?: number) {
     return this.makeCall<Address>('manager', undefined, block);
   }
 
@@ -99,9 +100,8 @@ export class Hub extends Contract {
    *
    * @param block The block number to execute the call on.
    */
-  public async isShutDown(block?: number) {
-    const result = await this.makeCall<boolean>('isShutDown', undefined, block);
-    return result;
+  public isShutDown(block?: number) {
+    return this.makeCall<boolean>('isShutDown', undefined, block);
   }
 
   /**
@@ -109,9 +109,8 @@ export class Hub extends Contract {
    *
    * @param block The block number to execute the call on.
    */
-  public async getFundVersion(block?: number) {
-    const result = await this.makeCall<Address>('version', undefined, block);
-    return result;
+  public getFundVersion(block?: number) {
+    return this.makeCall<Address>('version', undefined, block);
   }
 
   /**
@@ -119,9 +118,8 @@ export class Hub extends Contract {
    *
    * @param block The block number to execute the call on.
    */
-  public async isSpokesSet(block?: number) {
-    const result = await this.makeCall<boolean>('spokesSet', undefined, block);
-    return result;
+  public isSpokesSet(block?: number) {
+    return this.makeCall<boolean>('spokesSet', undefined, block);
   }
 
   /**
@@ -156,9 +154,8 @@ export class Hub extends Contract {
    *
    * @param block The block number to execute the call on.
    */
-  public async isRoutingSet(block?: number) {
-    const result = await this.makeCall<boolean>('routingSet', undefined, block);
-    return result;
+  public isRoutingSet(block?: number) {
+    return this.makeCall<boolean>('routingSet', undefined, block);
   }
 
   /**
@@ -184,8 +181,7 @@ export class Hub extends Contract {
    *
    * @param block The block number to execute the call on.
    */
-  public async isPermissionsSet(block?: number) {
-    const result = await this.makeCall<boolean>('permissionsSet', undefined, block);
-    return result;
+  public isPermissionsSet(block?: number) {
+    return this.makeCall<boolean>('permissionsSet', undefined, block);
   }
 }
