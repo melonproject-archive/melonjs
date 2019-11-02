@@ -21,7 +21,6 @@ describe('AssetBlacklist', () => {
 
   it('should return the correct position', async () => {
     const result = await assetBlacklist.getPosition();
-    console.log(result);
     expect(result).toBe(0);
   });
 

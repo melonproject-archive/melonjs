@@ -15,7 +15,6 @@ const filename = `melon-protocol-${version}`;
 const organization = 'melonproject';
 const project = 'protocol';
 const release = `https://github.com/${organization}/${project}/releases/download/${version}/${filename}.tar.gz`;
-console.log(release);
 
 function download(from, to) {
   return new Promise((resolve, reject) => {
