@@ -12,7 +12,7 @@ export class Transaction<T = TransactionReceipt> {
   ) {}
 
   public send(gas?: number): PromiEvent<T>;
-  public send(options?: SendOptions): PromiEvent<T>;
+  public send(options?: Partial<SendOptions>): PromiEvent<T>;
   public send(options?: any) {
     const gas: number = (() => {
       if (typeof options === 'object' && options.gas) {
@@ -36,7 +36,7 @@ export class Transaction<T = TransactionReceipt> {
     return this.transaction.send(opts);
   }
 
-  public estimateGas(options?: EstimateGasOptions): Promise<number> {
+  public estimateGas(options?: Partial<EstimateGasOptions>): Promise<number> {
     const opts: EstimateGasOptions = {
       ...(this.from && { from: this.from }),
       ...(this.value && { value: this.value }),
@@ -58,7 +58,7 @@ export class Deployment<T extends Contract> extends Transaction<T> {
   }
 
   public send(gas?: number): PromiEvent<T>;
-  public send(options?: SendOptions): PromiEvent<T>;
+  public send(options?: Partial<SendOptions>): PromiEvent<T>;
   public send(options?: any) {
     const result = (super.send(options) as any) as PromiEvent<EthContract>;
     const promise = new Promise<T>((resolve, reject) => {
