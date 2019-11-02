@@ -22,7 +22,7 @@ export class AddressList extends Contract {
   }
 
   /**
-   * Gets all members of an address list.
+   * Gets the number of members of an address list.
    *
    * @param address The address to check
    * @param block The block number to execute the call on.
