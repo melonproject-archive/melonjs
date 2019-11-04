@@ -3,18 +3,15 @@ import { AddressList } from './AddressList';
 import { TestEnvironment, createTestEnvironment } from '../../../utils/tests/createTestEnvironment';
 import { AddressListBytecode } from '../../../abis/AddressList.bin';
 import { randomAddress } from '../../../utils/tests/randomAddress';
-import { Address } from '../../../Address';
 import { sameAddress } from '../../../utils/sameAddress';
 
 describe('AddressList', () => {
   let environment: TestEnvironment;
   let addressList: AddressList;
-  let addresses: Address[];
+  const addresses = R.range(0, 5).map(address => randomAddress());
 
   beforeAll(async () => {
     environment = await createTestEnvironment();
-
-    addresses = R.range(0, 5).map(address => randomAddress());
 
     const deploy = AddressList.deploy(environment, AddressListBytecode, environment.accounts[0], addresses);
     addressList = await deploy.send(await deploy.estimateGas());

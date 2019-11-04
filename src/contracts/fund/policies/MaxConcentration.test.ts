@@ -6,12 +6,10 @@ import BigNumber from 'bignumber.js';
 describe('MaxConcentration', () => {
   let environment: TestEnvironment;
   let maxConcentration: MaxConcentration;
-  let max: BigNumber;
+  const max = new BigNumber('100000000000000000');
 
   beforeAll(async () => {
     environment = await createTestEnvironment();
-
-    max = new BigNumber('100000000000000000');
 
     const deploy = MaxConcentration.deploy(environment, MaxConcentrationBytecode, environment.accounts[0], max);
     maxConcentration = await deploy.send(await deploy.estimateGas());

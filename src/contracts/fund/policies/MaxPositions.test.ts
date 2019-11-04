@@ -5,12 +5,10 @@ import { MaxPositionsBytecode } from '../../../abis/MaxPositions.bin';
 describe('MaxPositions', () => {
   let environment: TestEnvironment;
   let maxPositions: MaxPositions;
-  let max: number;
+  const max = 10;
 
   beforeAll(async () => {
     environment = await createTestEnvironment();
-
-    max = 10;
 
     const deploy = MaxPositions.deploy(environment, MaxPositionsBytecode, environment.accounts[0], max);
     maxPositions = await deploy.send(await deploy.estimateGas());

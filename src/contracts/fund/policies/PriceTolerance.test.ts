@@ -6,12 +6,10 @@ import BigNumber from 'bignumber.js';
 describe('PriceTolerance', () => {
   let environment: TestEnvironment;
   let priceTolerance: PriceTolerance;
-  let tolerance: number;
+  const tolerance = 10;
 
   beforeAll(async () => {
     environment = await createTestEnvironment();
-
-    tolerance = 10;
 
     const deploy = PriceTolerance.deploy(environment, PriceToleranceBytecode, environment.accounts[0], tolerance);
     priceTolerance = await deploy.send(await deploy.estimateGas());

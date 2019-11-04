@@ -1,19 +1,16 @@
 import * as R from 'ramda';
 import { AssetWhitelist } from './AssetWhitelist';
 import { TestEnvironment, createTestEnvironment } from '../../../utils/tests/createTestEnvironment';
-import { Address } from '../../../Address';
 import { randomAddress } from '../../../utils/tests/randomAddress';
 import { AssetWhitelistBytecode } from '../../../abis/AssetWhitelist.bin';
 
 describe('AssetWhitelist', () => {
   let environment: TestEnvironment;
   let assetWhitelist: AssetWhitelist;
-  let addresses: Address[];
+  const addresses = R.range(0, 5).map(address => randomAddress());
 
   beforeAll(async () => {
     environment = await createTestEnvironment();
-
-    addresses = R.range(0, 5).map(address => randomAddress());
 
     const deploy = AssetWhitelist.deploy(environment, AssetWhitelistBytecode, environment.accounts[0], addresses);
     assetWhitelist = await deploy.send(await deploy.estimateGas());
