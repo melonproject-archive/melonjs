@@ -38,6 +38,7 @@ describe('TradingFactory', () => {
       takesCustody: true,
       sigs: ['0000'],
     });
+
     await txExchangeAdapter.send(await txExchangeAdapter.estimateGas());
 
     const tx = tradingFactory.createInstance(environment.accounts[0], {

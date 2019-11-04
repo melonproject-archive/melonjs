@@ -8,9 +8,9 @@ import { Weth } from '../../dependencies/Weth';
 import { deployWeth } from '../../../utils/tests/deployWeth';
 
 describe('Trading', () => {
+  const exchangeAddress = randomAddress();
   let environment: TestEnvironment;
   let trading: Trading;
-  let exchangeAddress = randomAddress();
   let weth: Weth;
 
   beforeAll(async () => {
@@ -22,7 +22,6 @@ describe('Trading', () => {
     });
 
     weth = await deployWeth(environment, environment.accounts[0]);
-
     const adapterAddress = randomAddress();
     const registry = await deployRegistry(environment, environment.accounts[0], environment.accounts[0]);
     const tx = registry.registerExchangeAdapter(environment.accounts[0], {
