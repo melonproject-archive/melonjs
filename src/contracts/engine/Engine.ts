@@ -2,9 +2,20 @@ import { EngineAbi } from '../../abis/Engine.abi';
 import { Contract } from '../../Contract';
 import { Address } from '../../Address';
 import { toBigNumber } from '../../utils/toBigNumber';
+import { Environment } from '../../Environment';
+import BigNumber from 'bignumber.js';
+
+export interface EngineDeployArguments {
+  delay: BigNumber;
+  registry: Address;
+}
 
 export class Engine extends Contract {
   public static readonly abi = EngineAbi;
+
+  public static deploy(environment: Environment, bytecode: string, from: Address, args: EngineDeployArguments) {
+    return super.createDeployment<Engine>(environment, bytecode, from, [args.delay.toString(), args.registry]);
+  }
 
   /**
    * Gets the amgu price.

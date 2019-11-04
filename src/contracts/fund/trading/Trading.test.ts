@@ -4,14 +4,13 @@ import { deployHub } from '../../../utils/tests/deployHub';
 import { deployTrading } from '../../../utils/tests/deployTrading';
 import { deployRegistry } from '../../../utils/tests/deployRegistry';
 import { randomAddress } from '../../../utils/tests/randomAddress';
-import { Address } from '../../../Address';
 import { Weth } from '../../dependencies/Weth';
 import { deployWeth } from '../../../utils/tests/deployWeth';
 
 describe('Trading', () => {
   let environment: TestEnvironment;
   let trading: Trading;
-  let exchangeAddress: Address;
+  let exchangeAddress = randomAddress();
   let weth: Weth;
 
   beforeAll(async () => {
@@ -24,7 +23,6 @@ describe('Trading', () => {
 
     weth = await deployWeth(environment, environment.accounts[0]);
 
-    exchangeAddress = randomAddress();
     const adapterAddress = randomAddress();
     const registry = await deployRegistry(environment, environment.accounts[0], environment.accounts[0]);
     const tx = registry.registerExchangeAdapter(environment.accounts[0], {

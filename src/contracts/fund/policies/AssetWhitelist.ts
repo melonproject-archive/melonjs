@@ -4,9 +4,14 @@ import { applyMixins } from '../../../utils/applyMixins';
 import { Policy } from './Policy';
 import { AddressList } from './AddressList';
 import { AssetWhitelistAbi } from '../../../abis/AssetWhitelist.abi';
+import { Environment } from '../../../Environment';
 
 export class AssetWhitelist extends Contract {
   public static readonly abi = AssetWhitelistAbi;
+
+  public static deploy(environment: Environment, bytecode: string, from: Address, members: Address[]) {
+    return super.createDeployment<AssetWhitelist>(environment, bytecode, from, [members]);
+  }
 
   /**
    * Gets the maximum number of positions.

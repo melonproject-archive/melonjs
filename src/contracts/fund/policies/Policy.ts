@@ -15,7 +15,7 @@ export class Policy extends Contract {
   public static readonly abi = PolicyAbi;
 
   public static deploy(environment: Environment, bytecode: string, from: Address) {
-    return super.createDeployment<Policy>(environment, bytecode, from);
+    return super.createDeployment<Policy>(environment, bytecode, from, []);
   }
 
   /**

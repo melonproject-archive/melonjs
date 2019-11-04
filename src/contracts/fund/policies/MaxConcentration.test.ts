@@ -1,22 +1,23 @@
-import { Eth } from 'web3-eth';
-import { HttpProvider } from 'web3-providers';
-import { Environment } from '../../../Environment';
 import { MaxConcentration } from './MaxConcentration';
+import { TestEnvironment, createTestEnvironment } from '../../../utils/tests/createTestEnvironment';
+import { MaxConcentrationBytecode } from '../../../abis/MaxConcentration.bin';
+import BigNumber from 'bignumber.js';
 
-describe('AddressList', () => {
-  let environment: Environment;
+describe('MaxConcentration', () => {
+  let environment: TestEnvironment;
   let maxConcentration: MaxConcentration;
+  const max = new BigNumber('100000000000000000');
 
-  beforeAll(() => {
-    // TODO: This should be replaced with a local ganache test environment using proper test fixtures.
-    const client = new Eth(new HttpProvider('https://mainnet.melonport.com'));
-    environment = new Environment(client);
-    maxConcentration = new MaxConcentration(environment, '0x042fcadfe10396ff5d11791357161af71ca51865');
+  beforeAll(async () => {
+    environment = await createTestEnvironment();
+
+    const deploy = MaxConcentration.deploy(environment, MaxConcentrationBytecode, environment.accounts[0], max);
+    maxConcentration = await deploy.send(await deploy.estimateGas());
   });
 
   it('should return the price tolerance', async () => {
     const result = await maxConcentration.getMaxConcentration();
-    expect(result.isGreaterThanOrEqualTo(0)).toBe(true);
+    expect(result.isEqualTo(max)).toBe(true);
   });
 
   it('should return the correct identifier', async () => {

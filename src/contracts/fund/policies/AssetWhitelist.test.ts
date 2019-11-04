@@ -1,29 +1,24 @@
-import { Eth } from 'web3-eth';
-import { HttpProvider } from 'web3-providers';
-import { Environment } from '../../../Environment';
+import * as R from 'ramda';
 import { AssetWhitelist } from './AssetWhitelist';
+import { TestEnvironment, createTestEnvironment } from '../../../utils/tests/createTestEnvironment';
+import { randomAddress } from '../../../utils/tests/randomAddress';
+import { AssetWhitelistBytecode } from '../../../abis/AssetWhitelist.bin';
 
 describe('AssetWhitelist', () => {
-  let environment: Environment;
+  let environment: TestEnvironment;
   let assetWhitelist: AssetWhitelist;
+  const addresses = R.range(0, 5).map(address => randomAddress());
 
-  beforeAll(() => {
-    // TODO: This should be replaced with a local ganache test environment using proper test fixtures.
-    const client = new Eth(new HttpProvider('https://mainnet.melonport.com'));
-    environment = new Environment(client);
-    assetWhitelist = new AssetWhitelist(environment, '0x0a0ada038b2d4f29a9790a8c22903a1c654b9f8a');
+  beforeAll(async () => {
+    environment = await createTestEnvironment();
+
+    const deploy = AssetWhitelist.deploy(environment, AssetWhitelistBytecode, environment.accounts[0], addresses);
+    assetWhitelist = await deploy.send(await deploy.estimateGas());
   });
 
-  it('should return the index of an asset on the whitelist', async () => {
-    const result = await assetWhitelist.getAssetIndex('0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2');
-    expect(result).toBeGreaterThanOrEqual(0);
-  });
-
-  it('should return the members of the whitelist', async () => {
-    const result = await assetWhitelist.getMembers();
-    result.map(address => {
-      expect(address.startsWith('0x')).toBe(true);
-    });
+  it('should return the correct position', async () => {
+    const result = await assetWhitelist.getPosition();
+    expect(result).toBe(0);
   });
 
   it('should return the correct identifier', async () => {
