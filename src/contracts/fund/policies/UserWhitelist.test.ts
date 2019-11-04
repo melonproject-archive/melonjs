@@ -1,22 +1,27 @@
-import { Eth } from 'web3-eth';
-import { HttpProvider } from 'web3-providers';
-import { Environment } from '../../../Environment';
+import * as R from 'ramda';
 import { UserWhitelist } from './UserWhitelist';
+import { TestEnvironment, createTestEnvironment } from '../../../utils/tests/createTestEnvironment';
+import { Address } from '../../../Address';
+import { randomAddress } from '../../../utils/tests/randomAddress';
+import { UserWhitelistBytecode } from '../../../abis/UserWhitelist.bin';
 
 describe('UserWhitelist', () => {
-  let environment: Environment;
+  let environment: TestEnvironment;
   let userWhiteList: UserWhitelist;
+  let addresses: Address[];
 
-  beforeAll(() => {
-    // TODO: This should be replaced with a local ganache test environment using proper test fixtures.
-    const client = new Eth(new HttpProvider('https://mainnet.melonport.com'));
-    environment = new Environment(client);
-    userWhiteList = new UserWhitelist(environment, '0xe69d387c3fe14cdc0bea1b589515cd33837e0705');
+  beforeAll(async () => {
+    environment = await createTestEnvironment();
+
+    addresses = R.range(0, 5).map(address => randomAddress());
+
+    const deploy = UserWhitelist.deploy(environment, UserWhitelistBytecode, environment.accounts[0], addresses);
+    userWhiteList = await deploy.send(await deploy.estimateGas());
   });
 
   it('should check whether a user is whitelisted', async () => {
-    const result = await userWhiteList.isWhitelisted('0x036ca8b5bb89533fd06e0a35b9da10213da98d88');
-    expect(result === true || result === false).toBe(true);
+    const result = await userWhiteList.isWhitelisted(addresses[3]);
+    expect(result).toBe(true);
   });
 
   it('should return the correct identifier', async () => {

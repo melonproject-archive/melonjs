@@ -1,22 +1,24 @@
-import { Eth } from 'web3-eth';
-import { HttpProvider } from 'web3-providers';
-import { Environment } from '../../../Environment';
 import { MaxPositions } from './MaxPositions';
+import { TestEnvironment, createTestEnvironment } from '../../../utils/tests/createTestEnvironment';
+import { MaxPositionsBytecode } from '../../../abis/MaxPositions.bin';
 
-describe('AddressList', () => {
-  let environment: Environment;
+describe('MaxPositions', () => {
+  let environment: TestEnvironment;
   let maxPositions: MaxPositions;
+  let max: number;
 
-  beforeAll(() => {
-    // TODO: This should be replaced with a local ganache test environment using proper test fixtures.
-    const client = new Eth(new HttpProvider('https://mainnet.melonport.com'));
-    environment = new Environment(client);
-    maxPositions = new MaxPositions(environment, '0x136f30369c6f387e537b0920ab616240662b9125');
+  beforeAll(async () => {
+    environment = await createTestEnvironment();
+
+    max = 10;
+
+    const deploy = MaxPositions.deploy(environment, MaxPositionsBytecode, environment.accounts[0], max);
+    maxPositions = await deploy.send(await deploy.estimateGas());
   });
 
-  it('should return the price tolerance', async () => {
+  it('should return the max number of positions', async () => {
     const result = await maxPositions.getMaxPositions();
-    expect(result.isGreaterThanOrEqualTo(0)).toBe(true);
+    expect(result).toEqual(max);
   });
 
   it('should return the correct identifier', async () => {

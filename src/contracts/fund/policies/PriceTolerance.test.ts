@@ -1,21 +1,24 @@
-import { Eth } from 'web3-eth';
-import { HttpProvider } from 'web3-providers';
-import { Environment } from '../../../Environment';
 import { PriceTolerance } from './PriceTolerance';
+import { TestEnvironment, createTestEnvironment } from '../../../utils/tests/createTestEnvironment';
+import { PriceToleranceBytecode } from '../../../abis/PriceTolerance.bin';
+import BigNumber from 'bignumber.js';
 
-describe('AddressList', () => {
-  let environment: Environment;
+describe('PriceTolerance', () => {
+  let environment: TestEnvironment;
   let priceTolerance: PriceTolerance;
+  let tolerance: number;
 
-  beforeAll(() => {
-    // TODO: This should be replaced with a local ganache test environment using proper test fixtures.
-    const client = new Eth(new HttpProvider('https://mainnet.melonport.com'));
-    environment = new Environment(client);
-    priceTolerance = new PriceTolerance(environment, '0xde723fcc4a29400bae09ab341c914f4ba9b97e56');
+  beforeAll(async () => {
+    environment = await createTestEnvironment();
+
+    tolerance = 10;
+
+    const deploy = PriceTolerance.deploy(environment, PriceToleranceBytecode, environment.accounts[0], tolerance);
+    priceTolerance = await deploy.send(await deploy.estimateGas());
   });
 
   it('should return the price tolerance', async () => {
     const result = await priceTolerance.getPriceTolerance();
-    expect(result.isGreaterThanOrEqualTo(0)).toBe(true);
+    expect(result.isEqualTo(new BigNumber('1e16').multipliedBy(tolerance))).toBe(true);
   });
 });
