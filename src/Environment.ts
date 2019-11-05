@@ -12,7 +12,7 @@ export interface EnvironmentOptions {
 }
 
 export class Environment {
-  public readonly cache: CacheHandler;
+  public readonly cache?: CacheHandler;
 
   constructor(public readonly client: Eth, options?: EnvironmentOptions) {
     this.cache = options && options.cache;
