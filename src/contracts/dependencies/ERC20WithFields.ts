@@ -58,7 +58,7 @@ export class ERC20WithFields extends Contract {
    *
    * @param block The block number to execute the call on.
    */
-  public symbol(block?: number) {
+  public getSymbol(block?: number) {
     return this.makeCall('symbol', undefined, block);
   }
 
@@ -67,7 +67,7 @@ export class ERC20WithFields extends Contract {
    *
    * @param block The block number to execute the call on.
    */
-  public decimals(block?: number) {
+  public getDecimals(block?: number) {
     return this.makeCall('decimals', undefined, block);
   }
 }
