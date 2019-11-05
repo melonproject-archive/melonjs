@@ -105,7 +105,6 @@ describe('Accounting', () => {
       .mockResolvedValue({ '0x0': new BigNumber('10'), '0x1': new BigNumber('11') });
 
     const result = await accounting.getFundHoldings();
-    console.log(result);
     const addresses = Object.keys(result);
     const quantities = Object.values(result);
 
