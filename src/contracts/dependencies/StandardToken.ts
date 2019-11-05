@@ -4,6 +4,8 @@ import { toBigNumber } from '../../utils/toBigNumber';
 import { Contract } from '../../Contract';
 import { StandardTokenAbi } from '../../abis/StandardToken.abi';
 import BigNumber from 'bignumber.js';
+import { ERC20WithFields } from './ERC20WithFields';
+import { applyMixins } from '../../utils/applyMixins';
 
 export class StandardToken extends Contract {
   public static readonly abi = StandardTokenAbi;
@@ -89,3 +91,6 @@ export class StandardToken extends Contract {
     return this.createTransaction('decreaseApproval', owner, [spender, amount.toString()]);
   }
 }
+
+export interface StandardToken extends ERC20WithFields {}
+applyMixins(StandardToken, [ERC20WithFields]);
