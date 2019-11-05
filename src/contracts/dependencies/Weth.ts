@@ -5,6 +5,7 @@ import { Address } from '../../Address';
 import { ERC20WithFields } from './ERC20WithFields';
 import { Contract } from '../../Contract';
 import { applyMixins } from '../../utils/applyMixins';
+import { OutOfBalanceError } from '../../errors/OutOfBalanceError';
 
 export class Weth extends Contract {
   public static readonly abi = WETHAbi;
@@ -18,7 +19,12 @@ export class Weth extends Contract {
   }
 
   public withdraw(amount: BigNumber, from: Address) {
-    return this.createTransaction('withdraw', from, [amount.toFixed()]);
+    return this.createTransaction('withdraw', from, [amount.toFixed()], undefined, async () => {
+      const balance = await this.getBalanceOf(from);
+      if (balance.isGreaterThanOrEqualTo(amount)) {
+        throw new OutOfBalanceError(amount.toNumber(), balance.toNumber());
+      }
+    });
   }
 }
 

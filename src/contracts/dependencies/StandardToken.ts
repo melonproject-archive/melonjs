@@ -6,6 +6,9 @@ import { StandardTokenAbi } from '../../abis/StandardToken.abi';
 import BigNumber from 'bignumber.js';
 import { ERC20WithFields } from './ERC20WithFields';
 import { applyMixins } from '../../utils/applyMixins';
+import { OutOfBalanceError } from '../../errors/OutOfBalanceError';
+import { isZeroAddress } from '../../utils/isZeroAddress';
+import { ZeroAddressError } from '../../errors/ZeroAddressError';
 
 export class StandardToken extends Contract {
   public static readonly abi = StandardTokenAbi;
@@ -55,7 +58,13 @@ export class StandardToken extends Contract {
    * @param amount The amount to transfer
    */
   public transfer(from: Address, to: Address, amount: BigNumber) {
-    return this.createTransaction('transfer', from, [to, amount.toString()]);
+    return this.createTransaction('transfer', from, [to, amount.toString()], undefined, async () => {
+      const balance = await this.getBalanceOf(from);
+      if (!amount.isLessThanOrEqualTo(balance)) {
+        throw new OutOfBalanceError(amount.toNumber(), balance.toNumber());
+      }
+      if (isZeroAddress(to)) throw new ZeroAddressError();
+    });
   }
 
   /**

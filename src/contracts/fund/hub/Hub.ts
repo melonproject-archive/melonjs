@@ -4,6 +4,20 @@ import { Contract } from '../../../Contract';
 import { Environment } from '../../../Environment';
 import { Address } from '../../../Address';
 import { toDate } from '../../../utils/toDate';
+import { ValidationError } from '../../../errors/ValidationError';
+import { sameAddress } from '../../../utils/sameAddress';
+
+export class OnlyCreatorError extends ValidationError {
+  constructor(public readonly sender: Address, public readonly creator: Address, message?: string) {
+    super(message || `Only creator can do this. Sender: ${sender}, Creator: ${creator}`);
+  }
+}
+
+export class SetupError extends ValidationError {
+  constructor(public readonly isSetup: boolean, message?: string) {
+    super(message);
+  }
+}
 
 export interface HubRoutes {
   accounting?: Address;
@@ -30,6 +44,11 @@ export class Hub extends Contract {
 
   public static deploy(environment: Environment, bytecode: string, from: Address, args: HubDeployArguments) {
     return super.createDeployment<Hub>(environment, bytecode, from, [args.manager, toHex(args.name)]);
+  }
+
+  private async validateCreator(from: Address) {
+    const creator = await this.getCreator();
+    if (!sameAddress(from, creator)) throw new OnlyCreatorError(from, creator);
   }
 
   /**
@@ -146,7 +165,14 @@ export class Hub extends Contract {
       ],
     ];
 
-    return this.createTransaction('setSpokes', from, args);
+    return this.createTransaction('setSpokes', from, args, undefined, async () => {
+      await this.validateCreator(from);
+
+      const isSpokesSet = await this.isSpokesSet();
+      if (isSpokesSet) {
+        throw new SetupError(isSpokesSet, `Spokes are already set. isSpokesSet: ${isSpokesSet}`);
+      }
+    });
   }
 
   /**
@@ -164,7 +190,19 @@ export class Hub extends Contract {
    * @param from The sender address.
    */
   public setRouting(from: Address) {
-    return this.createTransaction('setRouting', from);
+    return this.createTransaction('setRouting', from, undefined, undefined, async () => {
+      await this.validateCreator(from);
+
+      const isSpokesSet = await this.isSpokesSet();
+      if (!isSpokesSet) {
+        throw new SetupError(isSpokesSet, `Spokes must be set. isSpokesSet: ${isSpokesSet}`);
+      }
+
+      const isRoutingSet = await this.isRoutingSet();
+      if (isRoutingSet) {
+        throw new SetupError(isRoutingSet, `Routing is already set. isRoutingSet: ${isRoutingSet}`);
+      }
+    });
   }
 
   /**
@@ -173,7 +211,24 @@ export class Hub extends Contract {
    * @param from The sender address.
    */
   public setPermissions(from: Address) {
-    return this.createTransaction('setPermissions', from);
+    return this.createTransaction('setPermissions', from, undefined, undefined, async () => {
+      await this.validateCreator(from);
+
+      const isSpokesSet = await this.isSpokesSet();
+      if (!isSpokesSet) {
+        throw new SetupError(isSpokesSet, `Spokes must be set. isSpokesSet: ${isSpokesSet}`);
+      }
+
+      const isRoutingSet = await this.isRoutingSet();
+      if (!isRoutingSet) {
+        throw new SetupError(isRoutingSet, `Routing must be set. isRoutingSet: ${isRoutingSet}`);
+      }
+
+      const isPermissionsSet = await this.isPermissionsSet();
+      if (isPermissionsSet) {
+        throw new SetupError(isPermissionsSet, `Permissions are already set. isPermissionsSet: ${isPermissionsSet}`);
+      }
+    });
   }
 
   /**

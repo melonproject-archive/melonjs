@@ -9,6 +9,7 @@ export class Transaction<T = TransactionReceipt> {
     public readonly transaction: any,
     public readonly from: Address,
     public readonly value?: number | string,
+    public readonly validate?: () => Promise<void>,
   ) {}
 
   public send(gas?: number): PromiEvent<T>;

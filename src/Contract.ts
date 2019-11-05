@@ -36,9 +36,10 @@ export class Contract {
     from: Address,
     args?: TArgs,
     value?: number | string,
+    validate?: () => Promise<void>,
   ) {
     const fn = this.contract.methods[method];
-    return new Transaction(fn(...(args || [])), from, value);
+    return new Transaction(fn(...(args || [])), from, value, validate);
   }
 
   protected async makeCall<TReturn = any, TArgs extends any[] = any[]>(

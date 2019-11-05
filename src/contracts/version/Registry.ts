@@ -4,6 +4,20 @@ import { RegistryAbi } from '../../abis/Registry.abi';
 import { Environment } from '../../Environment';
 import BigNumber from 'bignumber.js';
 import { utf8ToHex, hexToBytes } from 'web3-utils';
+import { ValidationError } from '../../errors/ValidationError';
+import { toBigNumber } from '../../utils/toBigNumber';
+
+export class RegisteredEntityError extends ValidationError {
+  constructor(public readonly exists: boolean, message?: string) {
+    super(message);
+  }
+}
+
+export class MaxRegisteredEntitiesReachedError extends ValidationError {
+  constructor(public readonly numberOfEntities: number, public readonly maxNumberOfEntities: number, message?: string) {
+    super(message);
+  }
+}
 
 export interface VersionInformation {
   exists: boolean;
@@ -42,6 +56,11 @@ export class Registry extends Contract {
     return super.createDeployment<Registry>(environment, bytecode, from, [owner]);
   }
 
+  public async getMaxRegisteredEntities(block?: number) {
+    const result = await this.makeCall<string>('MAX_REGISTERED_ENTITIES', undefined, block);
+    return toBigNumber(result);
+  }
+
   public getEngine(block?: number) {
     return this.makeCall<Address>('engine', undefined, block);
   }
@@ -67,12 +86,31 @@ export class Registry extends Contract {
   }
 
   public registerExchangeAdapter(from: Address, args: ExchangeAdapterInformation) {
-    return this.createTransaction('registerExchangeAdapter', from, [
-      args.exchange,
-      args.adapter,
-      args.takesCustody,
-      args.sigs.map(sig => hexToBytes(utf8ToHex(sig))),
-    ]);
+    return this.createTransaction(
+      'registerExchangeAdapter',
+      from,
+      [args.exchange, args.adapter, args.takesCustody, args.sigs.map(sig => hexToBytes(utf8ToHex(sig)))],
+      undefined,
+      async () => {
+        const exchangeInfo = await this.getExchangeInformation(args.adapter);
+        if (exchangeInfo.exists) {
+          throw new RegisteredEntityError(
+            exchangeInfo.exists,
+            `Adapter already exists. Adapter exists: ${exchangeInfo.exists}`,
+          );
+        }
+
+        const adapters = await this.getRegisteredExchangeAdapters();
+        const maxRegisteredEntities = await this.getMaxRegisteredEntities();
+        if (maxRegisteredEntities.isLessThanOrEqualTo(adapters.length)) {
+          throw new MaxRegisteredEntitiesReachedError(
+            adapters.length,
+            maxRegisteredEntities.toNumber(),
+            `Exchange limit reached. Adapters: ${adapters.length}, Limit: ${maxRegisteredEntities.toNumber()}`,
+          );
+        }
+      },
+    );
   }
 
   public getRegisteredExchangeAdapters(block?: number) {
@@ -88,15 +126,39 @@ export class Registry extends Contract {
   }
 
   public registerAsset(from: Address, args: AssetCreation) {
-    return this.createTransaction('registerAsset', from, [
-      args.address,
-      args.name,
-      args.symbol,
-      args.url,
-      args.reserveMin.toString(),
-      args.standards,
-      args.sigs.map(sig => hexToBytes(utf8ToHex(sig))),
-    ]);
+    return this.createTransaction(
+      'registerAsset',
+      from,
+      [
+        args.address,
+        args.name,
+        args.symbol,
+        args.url,
+        args.reserveMin.toString(),
+        args.standards,
+        args.sigs.map(sig => hexToBytes(utf8ToHex(sig))),
+      ],
+      undefined,
+      async () => {
+        const assets = await this.getRegisteredAssets();
+        const maxRegisteredEntities = await this.getMaxRegisteredEntities();
+        if (maxRegisteredEntities.isLessThanOrEqualTo(assets.length)) {
+          throw new MaxRegisteredEntitiesReachedError(
+            assets.length,
+            maxRegisteredEntities.toNumber(),
+            `Number of registered assets reached limit. Number of assets: ${assets.length}, Litmit: ${maxRegisteredEntities}`,
+          );
+        }
+
+        const assetInfo = await this.getAssetInformation(args.address);
+        if (assetInfo.exists) {
+          throw new RegisteredEntityError(
+            assetInfo.exists,
+            `The asset is already registered. Asset exists: ${assetInfo.exists}`,
+          );
+        }
+      },
+    );
   }
 
   public getAssetInformation(assetAddress: Address, block?: number) {
