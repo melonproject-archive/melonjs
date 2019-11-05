@@ -105,7 +105,11 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_contracts_fund_shares_shares_.shares.html#approve" class="tsd-kind-icon">approve</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite tsd-is-inherited tsd-is-protected"><a href="_contracts_fund_shares_shares_.shares.html#createtransaction" class="tsd-kind-icon">create<wbr>Transaction</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_contracts_fund_shares_shares_.shares.html#decreaseapproval" class="tsd-kind-icon">decrease<wbr>Approval</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_contracts_fund_shares_shares_.shares.html#getallowance" class="tsd-kind-icon">get<wbr>Allowance</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_contracts_fund_shares_shares_.shares.html#getbalanceof" class="tsd-kind-icon">get<wbr>Balance<wbr>Of</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_fund_shares_shares_.shares.html#getdecimals" class="tsd-kind-icon">get<wbr>Decimals</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_contracts_fund_shares_shares_.shares.html#getengine" class="tsd-kind-icon">get<wbr>Engine</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_contracts_fund_shares_shares_.shares.html#getmlntoken" class="tsd-kind-icon">get<wbr>Mln<wbr>Token</a></li>
@@ -115,7 +119,9 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_fund_shares_shares_.shares.html#getsymbol" class="tsd-kind-icon">get<wbr>Symbol</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_contracts_fund_shares_shares_.shares.html#gettotalsupply" class="tsd-kind-icon">get<wbr>Total<wbr>Supply</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_contracts_fund_shares_shares_.shares.html#getversion" class="tsd-kind-icon">get<wbr>Version</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_contracts_fund_shares_shares_.shares.html#increaseapproval" class="tsd-kind-icon">increase<wbr>Approval</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite tsd-is-inherited tsd-is-protected"><a href="_contracts_fund_shares_shares_.shares.html#makecall" class="tsd-kind-icon">make<wbr>Call</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_contracts_fund_shares_shares_.shares.html#transfer" class="tsd-kind-icon">transfer</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite tsd-is-inherited tsd-is-static"><a href="_contracts_fund_shares_shares_.shares.html#createdeployment" class="tsd-kind-icon">create<wbr>Deployment</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-static"><a href="_contracts_fund_shares_shares_.shares.html#deploy" class="tsd-kind-icon">deploy</a></li>
 							</ul>
@@ -234,6 +240,50 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="approve" class="tsd-anchor"></a>
+					<h3>approve</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">approve<span class="tsd-signature-symbol">(</span>owner<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a>, spender<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a>, amount<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_transaction_.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionReceipt</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_contracts_dependencies_standardtoken_.standardtoken.html">StandardToken</a>.<a href="_contracts_dependencies_standardtoken_.standardtoken.html#approve">approve</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/dependencies/StandardToken.ts#L66">contracts/dependencies/StandardToken.ts:66</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Approve the spender address to spend the specified amount of tokens on behalf of the owner address</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>owner: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The address to transfer from</p>
+									</div>
+								</li>
+								<li>
+									<h5>spender: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The address to transfer to</p>
+									</div>
+								</li>
+								<li>
+									<h5>amount: <span class="tsd-signature-type">BigNumber</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The amount to transfer</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_transaction_.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionReceipt</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite tsd-is-inherited tsd-is-protected">
 					<a name="createtransaction" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagProtected">Protected</span> create<wbr>Transaction</h3>
@@ -271,6 +321,132 @@
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_transaction_.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionReceipt</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="decreaseapproval" class="tsd-anchor"></a>
+					<h3>decrease<wbr>Approval</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">decrease<wbr>Approval<span class="tsd-signature-symbol">(</span>owner<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a>, spender<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a>, amount<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_transaction_.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionReceipt</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_contracts_dependencies_standardtoken_.standardtoken.html">StandardToken</a>.<a href="_contracts_dependencies_standardtoken_.standardtoken.html#decreaseapproval">decreaseApproval</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/dependencies/StandardToken.ts#L88">contracts/dependencies/StandardToken.ts:88</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Decrease the approved amount of tokens that a spender can spend</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>owner: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The address to transfer from</p>
+									</div>
+								</li>
+								<li>
+									<h5>spender: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The address to transfer to</p>
+									</div>
+								</li>
+								<li>
+									<h5>amount: <span class="tsd-signature-type">BigNumber</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The amount to transfer</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_transaction_.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionReceipt</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="getallowance" class="tsd-anchor"></a>
+					<h3>get<wbr>Allowance</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Allowance<span class="tsd-signature-symbol">(</span>owner<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a>, spender<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a>, block<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_contracts_dependencies_standardtoken_.standardtoken.html">StandardToken</a>.<a href="_contracts_dependencies_standardtoken_.standardtoken.html#getallowance">getAllowance</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/dependencies/StandardToken.ts#L43">contracts/dependencies/StandardToken.ts:43</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Gets the amount of tokens that an owner allowed to a spender.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>owner: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The address of the owner</p>
+									</div>
+								</li>
+								<li>
+									<h5>spender: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The address of the spender</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> block: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The block number to execute the call on.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="getbalanceof" class="tsd-anchor"></a>
+					<h3>get<wbr>Balance<wbr>Of</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Balance<wbr>Of<span class="tsd-signature-symbol">(</span>owner<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a>, block<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_contracts_dependencies_standardtoken_.standardtoken.html">StandardToken</a>.<a href="_contracts_dependencies_standardtoken_.standardtoken.html#getbalanceof">getBalanceOf</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/dependencies/StandardToken.ts#L31">contracts/dependencies/StandardToken.ts:31</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Gets the balance of the specified address.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>owner: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The address of the owner</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> block: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The block number to execute the call on.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -348,7 +524,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_contracts_fund_hub_spoke_.spoke.html">Spoke</a>.<a href="_contracts_fund_hub_spoke_.spoke.html#getmlntoken">getMlnToken</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/hub/Spoke.ts#L28">contracts/fund/hub/Spoke.ts:28</a></li>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/hub/Spoke.ts#L27">contracts/fund/hub/Spoke.ts:27</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -411,7 +587,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_contracts_fund_hub_spoke_.spoke.html">Spoke</a>.<a href="_contracts_fund_hub_spoke_.spoke.html#getpricesource">getPriceSource</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/hub/Spoke.ts#L38">contracts/fund/hub/Spoke.ts:38</a></li>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/hub/Spoke.ts#L36">contracts/fund/hub/Spoke.ts:36</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -443,7 +619,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_contracts_fund_hub_spoke_.spoke.html">Spoke</a>.<a href="_contracts_fund_hub_spoke_.spoke.html#getregistry">getRegistry</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/hub/Spoke.ts#L58">contracts/fund/hub/Spoke.ts:58</a></li>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/hub/Spoke.ts#L54">contracts/fund/hub/Spoke.ts:54</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -506,7 +682,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_contracts_dependencies_standardtoken_.standardtoken.html">StandardToken</a>.<a href="_contracts_dependencies_standardtoken_.standardtoken.html#gettotalsupply">getTotalSupply</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/dependencies/StandardToken.ts#L19">contracts/dependencies/StandardToken.ts:19</a></li>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/dependencies/StandardToken.ts#L20">contracts/dependencies/StandardToken.ts:20</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -538,7 +714,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_contracts_fund_hub_spoke_.spoke.html">Spoke</a>.<a href="_contracts_fund_hub_spoke_.spoke.html#getversion">getVersion</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/hub/Spoke.ts#L48">contracts/fund/hub/Spoke.ts:48</a></li>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/hub/Spoke.ts#L45">contracts/fund/hub/Spoke.ts:45</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -556,6 +732,50 @@
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="increaseapproval" class="tsd-anchor"></a>
+					<h3>increase<wbr>Approval</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">increase<wbr>Approval<span class="tsd-signature-symbol">(</span>owner<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a>, spender<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a>, amount<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_transaction_.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionReceipt</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_contracts_dependencies_standardtoken_.standardtoken.html">StandardToken</a>.<a href="_contracts_dependencies_standardtoken_.standardtoken.html#increaseapproval">increaseApproval</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/dependencies/StandardToken.ts#L77">contracts/dependencies/StandardToken.ts:77</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Increase the approved amount of tokens that a spender can spend</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>owner: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The address to transfer from</p>
+									</div>
+								</li>
+								<li>
+									<h5>spender: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The address to transfer to</p>
+									</div>
+								</li>
+								<li>
+									<h5>amount: <span class="tsd-signature-type">BigNumber</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The amount to transfer</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_transaction_.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionReceipt</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -596,6 +816,50 @@
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TReturn</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="transfer" class="tsd-anchor"></a>
+					<h3>transfer</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">transfer<span class="tsd-signature-symbol">(</span>from<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a>, to<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a>, amount<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_transaction_.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionReceipt</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_contracts_dependencies_standardtoken_.standardtoken.html">StandardToken</a>.<a href="_contracts_dependencies_standardtoken_.standardtoken.html#transfer">transfer</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/dependencies/StandardToken.ts#L55">contracts/dependencies/StandardToken.ts:55</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Transfer tokens to a specified address</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>from: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The address to transfer from</p>
+									</div>
+								</li>
+								<li>
+									<h5>to: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The address to transfer to</p>
+									</div>
+								</li>
+								<li>
+									<h5>amount: <span class="tsd-signature-type">BigNumber</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The amount to transfer</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_transaction_.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionReceipt</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -707,8 +971,20 @@
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-static">
 								<a href="_contracts_fund_shares_shares_.shares.html#abi" class="tsd-kind-icon">abi</a>
 							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_contracts_fund_shares_shares_.shares.html#approve" class="tsd-kind-icon">approve</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite tsd-is-inherited tsd-is-protected">
 								<a href="_contracts_fund_shares_shares_.shares.html#createtransaction" class="tsd-kind-icon">create<wbr>Transaction</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_contracts_fund_shares_shares_.shares.html#decreaseapproval" class="tsd-kind-icon">decrease<wbr>Approval</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_contracts_fund_shares_shares_.shares.html#getallowance" class="tsd-kind-icon">get<wbr>Allowance</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_contracts_fund_shares_shares_.shares.html#getbalanceof" class="tsd-kind-icon">get<wbr>Balance<wbr>Of</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_contracts_fund_shares_shares_.shares.html#getdecimals" class="tsd-kind-icon">get<wbr>Decimals</a>
@@ -737,8 +1013,14 @@
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 								<a href="_contracts_fund_shares_shares_.shares.html#getversion" class="tsd-kind-icon">get<wbr>Version</a>
 							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_contracts_fund_shares_shares_.shares.html#increaseapproval" class="tsd-kind-icon">increase<wbr>Approval</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite tsd-is-inherited tsd-is-protected">
 								<a href="_contracts_fund_shares_shares_.shares.html#makecall" class="tsd-kind-icon">make<wbr>Call</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_contracts_fund_shares_shares_.shares.html#transfer" class="tsd-kind-icon">transfer</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite tsd-is-inherited tsd-is-static">
 								<a href="_contracts_fund_shares_shares_.shares.html#createdeployment" class="tsd-kind-icon">create<wbr>Deployment</a>

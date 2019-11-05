@@ -104,9 +104,12 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite tsd-is-inherited tsd-is-protected"><a href="_contracts_fund_policies_pricetolerance_.pricetolerance.html#createtransaction" class="tsd-kind-icon">create<wbr>Transaction</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_contracts_fund_policies_pricetolerance_.pricetolerance.html#getidentifier" class="tsd-kind-icon">get<wbr>Identifier</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_contracts_fund_policies_pricetolerance_.pricetolerance.html#getposition" class="tsd-kind-icon">get<wbr>Position</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_fund_policies_pricetolerance_.pricetolerance.html#getpricetolerance" class="tsd-kind-icon">get<wbr>Price<wbr>Tolerance</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite tsd-is-inherited tsd-is-protected"><a href="_contracts_fund_policies_pricetolerance_.pricetolerance.html#makecall" class="tsd-kind-icon">make<wbr>Call</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_contracts_fund_policies_pricetolerance_.pricetolerance.html#rule" class="tsd-kind-icon">rule</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite tsd-is-inherited tsd-is-static"><a href="_contracts_fund_policies_pricetolerance_.pricetolerance.html#createdeployment" class="tsd-kind-icon">create<wbr>Deployment</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-static"><a href="_contracts_fund_policies_pricetolerance_.pricetolerance.html#deploy" class="tsd-kind-icon">deploy</a></li>
 							</ul>
 						</section>
 					</div>
@@ -216,7 +219,7 @@
 					<aside class="tsd-sources">
 						<p>Overrides <a href="_contract_.contract.html">Contract</a>.<a href="_contract_.contract.html#abi">abi</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/policies/PriceTolerance.ts#L8">contracts/fund/policies/PriceTolerance.ts:8</a></li>
+							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/policies/PriceTolerance.ts#L10">contracts/fund/policies/PriceTolerance.ts:10</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -274,7 +277,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_contracts_fund_policies_policy_.policy.html">Policy</a>.<a href="_contracts_fund_policies_policy_.policy.html#getidentifier">getIdentifier</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/policies/Policy.ts#L12">contracts/fund/policies/Policy.ts:12</a></li>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/policies/Policy.ts#L26">contracts/fund/policies/Policy.ts:26</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -295,6 +298,38 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="getposition" class="tsd-anchor"></a>
+					<h3>get<wbr>Position</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Position<span class="tsd-signature-symbol">(</span>block<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_contracts_fund_policies_policy_.policy.html">Policy</a>.<a href="_contracts_fund_policies_policy_.policy.html#getposition">getPosition</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/policies/Policy.ts#L35">contracts/fund/policies/Policy.ts:35</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Gets the position of a policy (0: pre, 1: post).</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> block: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The block number to execute the call on.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="getpricetolerance" class="tsd-anchor"></a>
 					<h3>get<wbr>Price<wbr>Tolerance</h3>
@@ -305,7 +340,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/policies/PriceTolerance.ts#L15">contracts/fund/policies/PriceTolerance.ts:15</a></li>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/policies/PriceTolerance.ts#L21">contracts/fund/policies/PriceTolerance.ts:21</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -366,6 +401,44 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="rule" class="tsd-anchor"></a>
+					<h3>rule</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">rule<span class="tsd-signature-symbol">(</span>input<span class="tsd-signature-symbol">: </span><a href="../interfaces/_contracts_fund_policies_policy_.policyrule.html" class="tsd-signature-type">PolicyRule</a>, block<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_contracts_fund_policies_policy_.policy.html">Policy</a>.<a href="_contracts_fund_policies_policy_.policy.html#rule">rule</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/policies/Policy.ts#L45">contracts/fund/policies/Policy.ts:45</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Checks wheter a rule is true or false</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>input: <a href="../interfaces/_contracts_fund_policies_policy_.policyrule.html" class="tsd-signature-type">PolicyRule</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The input for the rule</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> block: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The block number to execute the call on.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite tsd-is-inherited tsd-is-static">
 					<a name="createdeployment" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> create<wbr>Deployment</h3>
@@ -409,6 +482,39 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-static">
+					<a name="deploy" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> deploy</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">deploy<span class="tsd-signature-symbol">(</span>environment<span class="tsd-signature-symbol">: </span><a href="_environment_.environment.html" class="tsd-signature-type">Environment</a>, bytecode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, from<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a>, tolerance<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_transaction_.deployment.html" class="tsd-signature-type">Deployment</a><span class="tsd-signature-symbol">&lt;</span><a href="_contracts_fund_policies_pricetolerance_.pricetolerance.html" class="tsd-signature-type">PriceTolerance</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overrides <a href="_contracts_fund_policies_policy_.policy.html">Policy</a>.<a href="_contracts_fund_policies_policy_.policy.html#deploy">deploy</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/policies/PriceTolerance.ts#L12">contracts/fund/policies/PriceTolerance.ts:12</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>environment: <a href="_environment_.environment.html" class="tsd-signature-type">Environment</a></h5>
+								</li>
+								<li>
+									<h5>bytecode: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>from: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
+								</li>
+								<li>
+									<h5>tolerance: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_transaction_.deployment.html" class="tsd-signature-type">Deployment</a><span class="tsd-signature-symbol">&lt;</span><a href="_contracts_fund_policies_pricetolerance_.pricetolerance.html" class="tsd-signature-type">PriceTolerance</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
 			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -447,14 +553,23 @@
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 								<a href="_contracts_fund_policies_pricetolerance_.pricetolerance.html#getidentifier" class="tsd-kind-icon">get<wbr>Identifier</a>
 							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_contracts_fund_policies_pricetolerance_.pricetolerance.html#getposition" class="tsd-kind-icon">get<wbr>Position</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_contracts_fund_policies_pricetolerance_.pricetolerance.html#getpricetolerance" class="tsd-kind-icon">get<wbr>Price<wbr>Tolerance</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite tsd-is-inherited tsd-is-protected">
 								<a href="_contracts_fund_policies_pricetolerance_.pricetolerance.html#makecall" class="tsd-kind-icon">make<wbr>Call</a>
 							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_contracts_fund_policies_pricetolerance_.pricetolerance.html#rule" class="tsd-kind-icon">rule</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite tsd-is-inherited tsd-is-static">
 								<a href="_contracts_fund_policies_pricetolerance_.pricetolerance.html#createdeployment" class="tsd-kind-icon">create<wbr>Deployment</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-static">
+								<a href="_contracts_fund_policies_pricetolerance_.pricetolerance.html#deploy" class="tsd-kind-icon">deploy</a>
 							</li>
 						</ul>
 					</li>

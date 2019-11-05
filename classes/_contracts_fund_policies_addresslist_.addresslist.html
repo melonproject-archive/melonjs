@@ -108,10 +108,12 @@
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-protected"><a href="_contracts_fund_policies_addresslist_.addresslist.html#createtransaction" class="tsd-kind-icon">create<wbr>Transaction</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_fund_policies_addresslist_.addresslist.html#getmembercount" class="tsd-kind-icon">get<wbr>Member<wbr>Count</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_fund_policies_addresslist_.addresslist.html#getmembers" class="tsd-kind-icon">get<wbr>Members</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_fund_policies_addresslist_.addresslist.html#ismember" class="tsd-kind-icon">is<wbr>Member</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-protected"><a href="_contracts_fund_policies_addresslist_.addresslist.html#makecall" class="tsd-kind-icon">make<wbr>Call</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-static"><a href="_contracts_fund_policies_addresslist_.addresslist.html#createdeployment" class="tsd-kind-icon">create<wbr>Deployment</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_contracts_fund_policies_addresslist_.addresslist.html#deploy" class="tsd-kind-icon">deploy</a></li>
 							</ul>
 						</section>
 					</div>
@@ -216,7 +218,7 @@
 					<aside class="tsd-sources">
 						<p>Overrides <a href="_contract_.contract.html">Contract</a>.<a href="_contract_.contract.html#abi">abi</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/policies/AddressList.ts#L6">contracts/fund/policies/AddressList.ts:6</a></li>
+							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/policies/AddressList.ts#L8">contracts/fund/policies/AddressList.ts:8</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -263,6 +265,37 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getmembercount" class="tsd-anchor"></a>
+					<h3>get<wbr>Member<wbr>Count</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Member<wbr>Count<span class="tsd-signature-symbol">(</span>block<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/policies/AddressList.ts#L30">contracts/fund/policies/AddressList.ts:30</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Gets the number of members of an address list.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> block: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The block number to execute the call on.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="getmembers" class="tsd-anchor"></a>
 					<h3>get<wbr>Members</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -272,7 +305,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/policies/AddressList.ts#L24">contracts/fund/policies/AddressList.ts:24</a></li>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/policies/AddressList.ts#L41">contracts/fund/policies/AddressList.ts:41</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -303,7 +336,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/policies/AddressList.ts#L14">contracts/fund/policies/AddressList.ts:14</a></li>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/policies/AddressList.ts#L20">contracts/fund/policies/AddressList.ts:20</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -411,6 +444,38 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="deploy" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> deploy</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">deploy<span class="tsd-signature-symbol">(</span>environment<span class="tsd-signature-symbol">: </span><a href="_environment_.environment.html" class="tsd-signature-type">Environment</a>, bytecode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, from<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a>, members<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_transaction_.deployment.html" class="tsd-signature-type">Deployment</a><span class="tsd-signature-symbol">&lt;</span><a href="_contracts_fund_policies_addresslist_.addresslist.html" class="tsd-signature-type">AddressList</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/policies/AddressList.ts#L10">contracts/fund/policies/AddressList.ts:10</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>environment: <a href="_environment_.environment.html" class="tsd-signature-type">Environment</a></h5>
+								</li>
+								<li>
+									<h5>bytecode: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>from: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
+								</li>
+								<li>
+									<h5>members: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_transaction_.deployment.html" class="tsd-signature-type">Deployment</a><span class="tsd-signature-symbol">&lt;</span><a href="_contracts_fund_policies_addresslist_.addresslist.html" class="tsd-signature-type">AddressList</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
 			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -447,6 +512,9 @@
 								<a href="_contracts_fund_policies_addresslist_.addresslist.html#createtransaction" class="tsd-kind-icon">create<wbr>Transaction</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_contracts_fund_policies_addresslist_.addresslist.html#getmembercount" class="tsd-kind-icon">get<wbr>Member<wbr>Count</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_contracts_fund_policies_addresslist_.addresslist.html#getmembers" class="tsd-kind-icon">get<wbr>Members</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
@@ -457,6 +525,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-static">
 								<a href="_contracts_fund_policies_addresslist_.addresslist.html#createdeployment" class="tsd-kind-icon">create<wbr>Deployment</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+								<a href="_contracts_fund_policies_addresslist_.addresslist.html#deploy" class="tsd-kind-icon">deploy</a>
 							</li>
 						</ul>
 					</li>
