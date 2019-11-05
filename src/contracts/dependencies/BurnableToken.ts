@@ -5,6 +5,7 @@ import { PreminedTokenAbi } from '../../abis/PreminedToken.abi';
 import { applyMixins } from '../../utils/applyMixins';
 import { PreminedToken, PreminedTokenDeployArguments } from './PreminedToken';
 import { BigNumber } from 'bignumber.js';
+
 export class BurnableToken extends Contract {
   public static readonly abi = PreminedTokenAbi;
 
