@@ -1,6 +1,6 @@
 import { TestEnvironment, createTestEnvironment } from '../../utils/tests/createTestEnvironment';
-import { BurnableToken } from './BurnableToken';
 import { BurnableTokenBytecode } from '../../abis/BurnableToken.bin';
+import { BurnableToken } from './BurnableToken';
 
 describe('BurnableToken', () => {
   let environment: TestEnvironment;
