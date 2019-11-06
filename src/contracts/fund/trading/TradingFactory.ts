@@ -20,7 +20,8 @@ export class TradingFactory extends Contract {
    * @param args The trading deploy arguments as [[TradingDeployArguments]].
    */
   public createInstance(from: Address, args: TradingDeployArguments) {
-    return this.createTransaction('createInstance', from, [args.hub, args.exchanges, args.adapters, args.registry]);
+    const methodArgs = [args.hub, args.exchanges, args.adapters, args.registry];
+    return this.createTransaction({ from, method: 'createInstance', methodArgs });
   }
 }
 

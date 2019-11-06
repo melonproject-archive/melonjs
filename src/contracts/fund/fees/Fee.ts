@@ -45,17 +45,15 @@ export class Fee extends Contract {
    * @param fee The fee rate, period and denomination asset
    */
   public initializeForUser(from: Address, fee: FeeInitializationArguments) {
-    return this.createTransaction('initializeForUser', from, [
-      fee.feeRate.toString(),
-      fee.feePeriod,
-      fee.denominationAsset,
-    ]);
+    const method = 'initializeForUser';
+    const methodArgs = [fee.feeRate.toString(), fee.feePeriod, fee.denominationAsset];
+    return this.createTransaction({ from, method, methodArgs });
   }
 
   /**
    * Updates the state for a fee
    */
   public updateState(from: Address) {
-    return this.createTransaction('updateState', from);
+    return this.createTransaction({ from, method: 'updateState' });
   }
 }

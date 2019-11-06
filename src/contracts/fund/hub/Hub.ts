@@ -148,7 +148,8 @@ export class Hub extends Contract {
    * @param spokes The hub routes.
    */
   public setSpokes(from: Address, spokes: HubRoutes) {
-    const args = [
+    const method = 'setSpokes';
+    const methodArgs = [
       [
         spokes.accounting,
         spokes.feeManager,
@@ -165,14 +166,16 @@ export class Hub extends Contract {
       ],
     ];
 
-    return this.createTransaction('setSpokes', from, args, undefined, async () => {
+    const validate = async () => {
       await this.validateCreator(from);
 
       const isSpokesSet = await this.isSpokesSet();
       if (isSpokesSet) {
         throw new SetupError(isSpokesSet, `Spokes are already set. isSpokesSet: ${isSpokesSet}`);
       }
-    });
+    };
+
+    return this.createTransaction({ from, method, methodArgs, validate });
   }
 
   /**
@@ -190,19 +193,25 @@ export class Hub extends Contract {
    * @param from The sender address.
    */
   public setRouting(from: Address) {
-    return this.createTransaction('setRouting', from, undefined, undefined, async () => {
+    const validate = async () => {
       await this.validateCreator(from);
+
+      let message;
 
       const isSpokesSet = await this.isSpokesSet();
       if (!isSpokesSet) {
-        throw new SetupError(isSpokesSet, `Spokes must be set. isSpokesSet: ${isSpokesSet}`);
+        message = `Spokes must be set. isSpokesSet: ${isSpokesSet}`;
+        throw new SetupError(isSpokesSet, message);
       }
 
       const isRoutingSet = await this.isRoutingSet();
       if (isRoutingSet) {
-        throw new SetupError(isRoutingSet, `Routing is already set. isRoutingSet: ${isRoutingSet}`);
+        message = `Routing is already set. isRoutingSet: ${isRoutingSet}`;
+        throw new SetupError(isRoutingSet, message);
       }
-    });
+    };
+
+    return this.createTransaction({ from, method: 'setRouting', validate });
   }
 
   /**
@@ -211,24 +220,31 @@ export class Hub extends Contract {
    * @param from The sender address.
    */
   public setPermissions(from: Address) {
-    return this.createTransaction('setPermissions', from, undefined, undefined, async () => {
+    const validate = async () => {
       await this.validateCreator(from);
+
+      let message;
 
       const isSpokesSet = await this.isSpokesSet();
       if (!isSpokesSet) {
-        throw new SetupError(isSpokesSet, `Spokes must be set. isSpokesSet: ${isSpokesSet}`);
+        message = `Spokes must be set. isSpokesSet: ${isSpokesSet}`;
+        throw new SetupError(isSpokesSet, message);
       }
 
       const isRoutingSet = await this.isRoutingSet();
       if (!isRoutingSet) {
-        throw new SetupError(isRoutingSet, `Routing must be set. isRoutingSet: ${isRoutingSet}`);
+        message = `Routing must be set. isRoutingSet: ${isRoutingSet}`;
+        throw new SetupError(isRoutingSet, message);
       }
 
       const isPermissionsSet = await this.isPermissionsSet();
       if (isPermissionsSet) {
-        throw new SetupError(isPermissionsSet, `Permissions are already set. isPermissionsSet: ${isPermissionsSet}`);
+        message = `Permissions are already set. isPermissionsSet: ${isPermissionsSet}`;
+        throw new SetupError(isPermissionsSet, message);
       }
-    });
+    };
+
+    return this.createTransaction({ from, method: 'setPermissions', validate });
   }
 
   /**

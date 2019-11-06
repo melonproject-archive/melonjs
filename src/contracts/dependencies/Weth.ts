@@ -15,16 +15,21 @@ export class Weth extends Contract {
   }
 
   public deposit(amount: BigNumber, from: Address) {
-    return this.createTransaction('deposit', from, undefined, amount.toFixed());
+    const method = 'deposit';
+    const value = amount.toFixed();
+    return this.createTransaction({ from, method, value });
   }
 
   public withdraw(amount: BigNumber, from: Address) {
-    return this.createTransaction('withdraw', from, [amount.toFixed()], undefined, async () => {
+    const method = 'withdraw';
+    const methodArgs = [amount.toFixed()];
+    const validate = async () => {
       const balance = await this.getBalanceOf(from);
-      if (balance.isGreaterThanOrEqualTo(amount)) {
+      if (!amount.isLessThanOrEqualTo(balance)) {
         throw new OutOfBalanceError(amount.toNumber(), balance.toNumber());
       }
-    });
+    };
+    return this.createTransaction({ from, method, methodArgs, validate });
   }
 }
 
