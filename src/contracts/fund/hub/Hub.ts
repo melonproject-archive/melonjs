@@ -8,40 +8,52 @@ import { ValidationError } from '../../../errors/ValidationError';
 import { sameAddress } from '../../../utils/sameAddress';
 
 export class OnlyCreatorError extends ValidationError {
+  public name = 'OnlyCreatorError';
+
   constructor(
     public readonly sender: Address,
     public readonly creator: Address,
-    message: string = 'Only creator can do this.'
+    message: string = 'Only creator can do this.',
   ) {
     super(message);
   }
 }
 
 export class SpokesNotSetError extends ValidationError {
+  public name = 'SpokesNotSetError';
+
   constructor(message: string = 'Spokes must be set.') {
     super(message);
   }
 }
 
 export class SpokesAlreadySetError extends ValidationError {
+  public name = 'SpokesAlreadySetError';
+
   constructor(message: string = 'Spokes are already set.') {
     super(message);
   }
 }
 
 export class RoutingNotSetError extends ValidationError {
+  public name = 'RoutingNotSetError';
+
   constructor(message: string = 'Routing must be set.') {
     super(message);
   }
 }
 
 export class RoutingAlreadySetError extends ValidationError {
+  public name = 'RoutingAlreadySetError';
+
   constructor(message: string = 'Routing is already set.') {
     super(message);
   }
 }
 
 export class PermissionsAlreadySetError extends ValidationError {
+  public name = 'PermissionsAlreadySetError';
+
   constructor(message: string = 'Permissions are already set.') {
     super(message);
   }

@@ -1,5 +1,6 @@
 import { ValidationError } from './ValidationError';
 
 export class ZeroAddressError extends ValidationError {
-  public readonly message = "The address can't be address(0)";
+  public name = 'ZeroAddressError';
+  public message = "The address can't be empty (address(0)).";
 }
