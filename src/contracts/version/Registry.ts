@@ -7,15 +7,31 @@ import { utf8ToHex, hexToBytes } from 'web3-utils';
 import { ValidationError } from '../../errors/ValidationError';
 import { toBigNumber } from '../../utils/toBigNumber';
 
-export class RegisteredEntityError extends ValidationError {
-  constructor(public readonly exists: boolean, message?: string) {
-    super(message);
+export class ExchangeAdapterAlreadyRegistered extends ValidationError {
+  constructor(message?: string) {
+    super(message || 'Exchange adapter is already registered.');
   }
 }
 
-export class OutOfBoundEntities extends ValidationError {
-  constructor(public readonly numberOfEntities: number, public readonly maxNumberOfEntities: number, message?: string) {
-    super(message);
+export class ExchangeAdaptersRegisteredOutOfBound extends ValidationError {
+  constructor(
+    public readonly numberOfAdapters: number,
+    public readonly maxRegisteredAdapters: number,
+    message?: string,
+  ) {
+    super(message || 'Number of registered exchange adapters exceeds the maxium.');
+  }
+}
+
+export class AssetAlreadyRegistered extends ValidationError {
+  constructor(message?: string) {
+    super(message || 'Asset is already registered.');
+  }
+}
+
+export class AssetsRegisteredOutOfBound extends ValidationError {
+  constructor(public readonly numberOfAsset: number, public readonly maxRegisteredAssets: number, message?: string) {
+    super(message || 'Number of registered assets exceeds the maximum.');
   }
 }
 
@@ -95,19 +111,15 @@ export class Registry extends Contract {
     ];
 
     const validate = async () => {
-      let message;
-
       const exchangeInfo = await this.getExchangeInformation(args.adapter);
       if (exchangeInfo.exists) {
-        message = `Adapter already exists. Adapter exists: ${exchangeInfo.exists}`;
-        throw new RegisteredEntityError(exchangeInfo.exists, message);
+        throw new ExchangeAdapterAlreadyRegistered();
       }
 
       const adapters = await this.getRegisteredExchangeAdapters();
       const maxRegisteredEntities = await this.getMaxRegisteredEntities();
       if (maxRegisteredEntities.isLessThanOrEqualTo(adapters.length)) {
-        message = `Exchange limit reached. Adapters: ${adapters.length}, Limit: ${maxRegisteredEntities.toNumber()}`;
-        throw new OutOfBoundEntities(adapters.length, maxRegisteredEntities.toNumber(), message);
+        throw new ExchangeAdaptersRegisteredOutOfBound(adapters.length, maxRegisteredEntities.toNumber());
       }
     };
 
@@ -139,19 +151,15 @@ export class Registry extends Contract {
     ];
 
     const validate = async () => {
-      let message;
-
       const assets = await this.getRegisteredAssets();
       const maxRegisteredEntities = await this.getMaxRegisteredEntities();
       if (maxRegisteredEntities.isLessThanOrEqualTo(assets.length)) {
-        message = `Number of registered assets reached limit. Number of assets: ${assets.length}, Litmit: ${maxRegisteredEntities}`;
-        throw new OutOfBoundEntities(assets.length, maxRegisteredEntities.toNumber(), message);
+        throw new AssetsRegisteredOutOfBound(assets.length, maxRegisteredEntities.toNumber());
       }
 
       const assetInfo = await this.getAssetInformation(args.address);
       if (assetInfo.exists) {
-        message = `The asset is already registered. Asset exists: ${assetInfo.exists}`;
-        throw new RegisteredEntityError(assetInfo.exists, message);
+        throw new AssetAlreadyRegistered();
       }
     };
 

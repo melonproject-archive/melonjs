@@ -9,13 +9,33 @@ import { sameAddress } from '../../../utils/sameAddress';
 
 export class OnlyCreatorError extends ValidationError {
   constructor(public readonly sender: Address, public readonly creator: Address, message?: string) {
-    super(message || `Only creator can do this. Sender: ${sender}, Creator: ${creator}`);
+    super(message || 'Only creator can do this.');
   }
 }
 
-export class SetupError extends ValidationError {
-  constructor(public readonly isSetup: boolean, message?: string) {
-    super(message);
+export class SpokesNotSetError extends ValidationError {
+  constructor(message?: string) {
+    super(message || 'Spokes must be set.');
+  }
+}
+export class SpokesAlreadySetError extends ValidationError {
+  constructor(message?: string) {
+    super(message || 'Spokes are already set.');
+  }
+}
+export class RoutingNotSetError extends ValidationError {
+  constructor(message?: string) {
+    super(message || 'Routing must be set.');
+  }
+}
+export class RoutingAlreadySetError extends ValidationError {
+  constructor(message?: string) {
+    super(message || 'Routing is already set.');
+  }
+}
+export class PermissionsAlreadySetError extends ValidationError {
+  constructor(message?: string) {
+    super(message || 'Permissions are already set.');
   }
 }
 
@@ -171,7 +191,7 @@ export class Hub extends Contract {
 
       const isSpokesSet = await this.isSpokesSet();
       if (isSpokesSet) {
-        throw new SetupError(isSpokesSet, `Spokes are already set. isSpokesSet: ${isSpokesSet}`);
+        throw new SpokesAlreadySetError();
       }
     };
 
@@ -196,18 +216,14 @@ export class Hub extends Contract {
     const validate = async () => {
       await this.validateCreator(from);
 
-      let message;
-
       const isSpokesSet = await this.isSpokesSet();
       if (!isSpokesSet) {
-        message = `Spokes must be set. isSpokesSet: ${isSpokesSet}`;
-        throw new SetupError(isSpokesSet, message);
+        throw new SpokesNotSetError();
       }
 
       const isRoutingSet = await this.isRoutingSet();
       if (isRoutingSet) {
-        message = `Routing is already set. isRoutingSet: ${isRoutingSet}`;
-        throw new SetupError(isRoutingSet, message);
+        throw new RoutingAlreadySetError();
       }
     };
 
@@ -223,24 +239,19 @@ export class Hub extends Contract {
     const validate = async () => {
       await this.validateCreator(from);
 
-      let message;
-
       const isSpokesSet = await this.isSpokesSet();
       if (!isSpokesSet) {
-        message = `Spokes must be set. isSpokesSet: ${isSpokesSet}`;
-        throw new SetupError(isSpokesSet, message);
+        throw new SpokesNotSetError();
       }
 
       const isRoutingSet = await this.isRoutingSet();
       if (!isRoutingSet) {
-        message = `Routing must be set. isRoutingSet: ${isRoutingSet}`;
-        throw new SetupError(isRoutingSet, message);
+        throw new RoutingNotSetError();
       }
 
       const isPermissionsSet = await this.isPermissionsSet();
       if (isPermissionsSet) {
-        message = `Permissions are already set. isPermissionsSet: ${isPermissionsSet}`;
-        throw new SetupError(isPermissionsSet, message);
+        throw new PermissionsAlreadySetError();
       }
     };
 
