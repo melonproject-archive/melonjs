@@ -76,7 +76,9 @@ export class Hub extends Contract {
 
   private async validateCreator(from: Address) {
     const creator = await this.getCreator();
-    if (!sameAddress(from, creator)) throw new OnlyCreatorError(from, creator);
+    if (!sameAddress(from, creator)) {
+      throw new OnlyCreatorError(from, creator);
+    }
   }
 
   /**
