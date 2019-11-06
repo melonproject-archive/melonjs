@@ -1,29 +1,42 @@
 export { Contract } from './Contract';
-export { Environment, EnvironmentOptions } from './Environment';
+export { Environment, EnvironmentOptions, CacheHandler } from './Environment';
 export { Address } from './Address';
-export { Transaction } from './Transaction';
+export { Transaction, Deployment } from './Transaction';
 
-export { Accounting, AccountingDeployArguments } from './contracts/fund/accounting/Accounting';
+export { ValidationError } from './errors/ValidationError';
+export { OutOfBalanceError } from './errors/OutOfBalanceError';
+export { ZeroAddressError } from './errors/ZeroAddressError';
+
+export { Accounting, AccountingDeployArguments, FundCalculations } from './contracts/fund/accounting/Accounting';
 export { AccountingFactory } from './contracts/fund/accounting/AccountingFactory';
 export { AddressList } from './contracts/fund/policies/AddressList';
 export { AssetBlacklist } from './contracts/fund/policies/AssetBlacklist';
 export { AssetWhitelist } from './contracts/fund/policies/AssetWhitelist';
-export { CanonicalPriceFeed } from './contracts/prices/CanonicalPriceFeed';
-export { Engine } from './contracts/engine/Engine';
+export { CanonicalPriceFeed, PricesInfo } from './contracts/prices/CanonicalPriceFeed';
+export { Engine, EngineDeployArguments } from './contracts/engine/Engine';
 export { ERC20WithFields } from './contracts/dependencies/ERC20WithFields';
 export { Factory } from './contracts/factory/Factory';
 export { Fee } from './contracts/fund/fees/Fee';
 export { FeeManager, FeeManagerDeployArguments } from './contracts/fund/fees/FeeManager';
 export { FeeManagerFactory } from './contracts/fund/fees/FeeManagerFactory';
-export { FundFactory } from './contracts/factory/FundFactory';
-export { Hub, HubDeployArguments, HubRoutes } from './contracts/fund/hub/Hub';
+export { FundFactory, FundFactoryDeployArguments } from './contracts/factory/FundFactory';
+export {
+  Hub,
+  HubDeployArguments,
+  HubRoutes,
+  OnlyCreatorError,
+  SpokesAlreadySetError,
+  SpokesNotSetError,
+  RoutingAlreadySetError,
+  RoutingNotSetError,
+} from './contracts/fund/hub/Hub';
 export { ManagementFee } from './contracts/fund/fees/ManagementFee';
 export { MaxConcentration } from './contracts/fund/policies/MaxConcentration';
 export { MaxPositions } from './contracts/fund/policies/MaxPositions';
 export { Participation, ParticipationDeployArguments } from './contracts/fund/participation/Participation';
 export { ParticipationFactory } from './contracts/fund/participation/ParticipationFactory';
 export { PerformanceFee } from './contracts/fund/fees/PerformanceFee';
-export { Policy } from './contracts/fund/policies/Policy';
+export { Policy, PolicyRule } from './contracts/fund/policies/Policy';
 export { PolicyManager } from './contracts/fund/policies/PolicyManager';
 export { PolicyManagerFactory } from './contracts/fund/policies/PolicyManagerFactory';
 export { PriceTolerance } from './contracts/fund/policies/PriceTolerance';
@@ -36,4 +49,15 @@ export { UserWhitelist } from './contracts/fund/policies/UserWhitelist';
 export { Vault } from './contracts/fund/vault/Vault';
 export { VaultFactory } from './contracts/fund/vault/VaultFactory';
 export { Version } from './contracts/version/Version';
+export {
+  Registry,
+  AssetBaseInformation,
+  AssetCreation,
+  AssetInformation,
+  ExchangeAdapterInformation,
+  AssetAlreadyRegisteredError,
+  AssetsRegisteredOutOfBoundsError,
+  ExchangeAdapterAlreadyRegisteredError,
+  ExchangeAdaptersRegisteredOutOfBoundsError,
+} from './contracts/version/Registry';
 export { Weth } from './contracts/dependencies/Weth';
