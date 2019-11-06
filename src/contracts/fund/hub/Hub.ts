@@ -229,7 +229,7 @@ export class Hub extends Contract {
         throw new SpokesNotSetError();
       }
 
-      if (wait this.isRoutingSet()) {
+      if (await this.isRoutingSet()) {
         throw new RoutingAlreadySetError();
       }
     };
