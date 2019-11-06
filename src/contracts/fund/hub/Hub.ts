@@ -8,34 +8,42 @@ import { ValidationError } from '../../../errors/ValidationError';
 import { sameAddress } from '../../../utils/sameAddress';
 
 export class OnlyCreatorError extends ValidationError {
-  constructor(public readonly sender: Address, public readonly creator: Address, message?: string) {
-    super(message || 'Only creator can do this.');
+  constructor(
+    public readonly sender: Address,
+    public readonly creator: Address,
+    message: string = 'Only creator can do this.'
+  ) {
+    super(message);
   }
 }
 
 export class SpokesNotSetError extends ValidationError {
-  constructor(message?: string) {
-    super(message || 'Spokes must be set.');
+  constructor(message: string = 'Spokes must be set.') {
+    super(message);
   }
 }
+
 export class SpokesAlreadySetError extends ValidationError {
-  constructor(message?: string) {
-    super(message || 'Spokes are already set.');
+  constructor(message: string = 'Spokes are already set.') {
+    super(message);
   }
 }
+
 export class RoutingNotSetError extends ValidationError {
-  constructor(message?: string) {
-    super(message || 'Routing must be set.');
+  constructor(message: string = 'Routing must be set.') {
+    super(message);
   }
 }
+
 export class RoutingAlreadySetError extends ValidationError {
-  constructor(message?: string) {
-    super(message || 'Routing is already set.');
+  constructor(message: string = 'Routing is already set.') {
+    super(message);
   }
 }
+
 export class PermissionsAlreadySetError extends ValidationError {
-  constructor(message?: string) {
-    super(message || 'Permissions are already set.');
+  constructor(message: string = 'Permissions are already set.') {
+    super(message);
   }
 }
 
@@ -189,8 +197,7 @@ export class Hub extends Contract {
     const validate = async () => {
       await this.validateCreator(from);
 
-      const isSpokesSet = await this.isSpokesSet();
-      if (isSpokesSet) {
+      if (await this.isSpokesSet()) {
         throw new SpokesAlreadySetError();
       }
     };
@@ -216,13 +223,11 @@ export class Hub extends Contract {
     const validate = async () => {
       await this.validateCreator(from);
 
-      const isSpokesSet = await this.isSpokesSet();
-      if (!isSpokesSet) {
+      if (!(await this.isSpokesSet())) {
         throw new SpokesNotSetError();
       }
 
-      const isRoutingSet = await this.isRoutingSet();
-      if (isRoutingSet) {
+      if (wait this.isRoutingSet()) {
         throw new RoutingAlreadySetError();
       }
     };
@@ -239,18 +244,15 @@ export class Hub extends Contract {
     const validate = async () => {
       await this.validateCreator(from);
 
-      const isSpokesSet = await this.isSpokesSet();
-      if (!isSpokesSet) {
+      if (!(await this.isSpokesSet())) {
         throw new SpokesNotSetError();
       }
 
-      const isRoutingSet = await this.isRoutingSet();
-      if (!isRoutingSet) {
+      if (!(await this.isRoutingSet())) {
         throw new RoutingNotSetError();
       }
 
-      const isPermissionsSet = await this.isPermissionsSet();
-      if (isPermissionsSet) {
+      if (await this.isPermissionsSet()) {
         throw new PermissionsAlreadySetError();
       }
     };
