@@ -4,6 +4,60 @@ import { Contract } from '../../../Contract';
 import { Environment } from '../../../Environment';
 import { Address } from '../../../Address';
 import { toDate } from '../../../utils/toDate';
+import { ValidationError } from '../../../errors/ValidationError';
+import { sameAddress } from '../../../utils/sameAddress';
+
+export class OnlyCreatorError extends ValidationError {
+  public name = 'OnlyCreatorError';
+
+  constructor(
+    public readonly sender: Address,
+    public readonly creator: Address,
+    message: string = 'Only creator can do this.',
+  ) {
+    super(message);
+  }
+}
+
+export class SpokesNotSetError extends ValidationError {
+  public name = 'SpokesNotSetError';
+
+  constructor(message: string = 'Spokes must be set.') {
+    super(message);
+  }
+}
+
+export class SpokesAlreadySetError extends ValidationError {
+  public name = 'SpokesAlreadySetError';
+
+  constructor(message: string = 'Spokes are already set.') {
+    super(message);
+  }
+}
+
+export class RoutingNotSetError extends ValidationError {
+  public name = 'RoutingNotSetError';
+
+  constructor(message: string = 'Routing must be set.') {
+    super(message);
+  }
+}
+
+export class RoutingAlreadySetError extends ValidationError {
+  public name = 'RoutingAlreadySetError';
+
+  constructor(message: string = 'Routing is already set.') {
+    super(message);
+  }
+}
+
+export class PermissionsAlreadySetError extends ValidationError {
+  public name = 'PermissionsAlreadySetError';
+
+  constructor(message: string = 'Permissions are already set.') {
+    super(message);
+  }
+}
 
 export interface HubRoutes {
   accounting?: Address;
@@ -30,6 +84,13 @@ export class Hub extends Contract {
 
   public static deploy(environment: Environment, bytecode: string, from: Address, args: HubDeployArguments) {
     return super.createDeployment<Hub>(environment, bytecode, from, [args.manager, toHex(args.name)]);
+  }
+
+  private async validateCreator(from: Address) {
+    const creator = await this.getCreator();
+    if (!sameAddress(from, creator)) {
+      throw new OnlyCreatorError(from, creator);
+    }
   }
 
   /**
@@ -129,7 +190,8 @@ export class Hub extends Contract {
    * @param spokes The hub routes.
    */
   public setSpokes(from: Address, spokes: HubRoutes) {
-    const args = [
+    const method = 'setSpokes';
+    const methodArgs = [
       [
         spokes.accounting,
         spokes.feeManager,
@@ -146,7 +208,15 @@ export class Hub extends Contract {
       ],
     ];
 
-    return this.createTransaction('setSpokes', from, args);
+    const validate = async () => {
+      await this.validateCreator(from);
+
+      if (await this.isSpokesSet()) {
+        throw new SpokesAlreadySetError();
+      }
+    };
+
+    return this.createTransaction({ from, method, methodArgs, validate });
   }
 
   /**
@@ -164,7 +234,19 @@ export class Hub extends Contract {
    * @param from The sender address.
    */
   public setRouting(from: Address) {
-    return this.createTransaction('setRouting', from);
+    const validate = async () => {
+      await this.validateCreator(from);
+
+      if (!(await this.isSpokesSet())) {
+        throw new SpokesNotSetError();
+      }
+
+      if (await this.isRoutingSet()) {
+        throw new RoutingAlreadySetError();
+      }
+    };
+
+    return this.createTransaction({ from, method: 'setRouting', validate });
   }
 
   /**
@@ -173,7 +255,23 @@ export class Hub extends Contract {
    * @param from The sender address.
    */
   public setPermissions(from: Address) {
-    return this.createTransaction('setPermissions', from);
+    const validate = async () => {
+      await this.validateCreator(from);
+
+      if (!(await this.isSpokesSet())) {
+        throw new SpokesNotSetError();
+      }
+
+      if (!(await this.isRoutingSet())) {
+        throw new RoutingNotSetError();
+      }
+
+      if (await this.isPermissionsSet()) {
+        throw new PermissionsAlreadySetError();
+      }
+    };
+
+    return this.createTransaction({ from, method: 'setPermissions', validate });
   }
 
   /**

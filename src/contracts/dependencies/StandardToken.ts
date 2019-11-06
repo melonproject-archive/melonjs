@@ -6,6 +6,9 @@ import { StandardTokenAbi } from '../../abis/StandardToken.abi';
 import BigNumber from 'bignumber.js';
 import { ERC20WithFields } from './ERC20WithFields';
 import { applyMixins } from '../../utils/applyMixins';
+import { OutOfBalanceError } from '../../errors/OutOfBalanceError';
+import { isZeroAddress } from '../../utils/isZeroAddress';
+import { ZeroAddressError } from '../../errors/ZeroAddressError';
 
 export class StandardToken extends Contract {
   public static readonly abi = StandardTokenAbi;
@@ -55,7 +58,18 @@ export class StandardToken extends Contract {
    * @param amount The amount to transfer
    */
   public transfer(from: Address, to: Address, amount: BigNumber) {
-    return this.createTransaction('transfer', from, [to, amount.toString()]);
+    const method = 'transfer';
+    const methodArgs = [to, amount.toString()];
+
+    const validate = async () => {
+      const balance = await this.getBalanceOf(from);
+      if (!amount.isLessThanOrEqualTo(balance)) {
+        throw new OutOfBalanceError(amount.toNumber(), balance.toNumber());
+      }
+      if (isZeroAddress(to)) throw new ZeroAddressError();
+    };
+
+    return this.createTransaction({ from, method, methodArgs, validate });
   }
 
   /**
@@ -66,7 +80,8 @@ export class StandardToken extends Contract {
    * @param amount The amount to transfer
    */
   public approve(owner: Address, spender: Address, amount: BigNumber) {
-    return this.createTransaction('approve', owner, [spender, amount.toString()]);
+    const methodArgs = [spender, amount.toString()];
+    return this.createTransaction({ from: owner, method: 'approve', methodArgs });
   }
 
   /**
@@ -77,7 +92,9 @@ export class StandardToken extends Contract {
    * @param amount The amount to transfer
    */
   public increaseApproval(owner: Address, spender: Address, amount: BigNumber) {
-    return this.createTransaction('increaseApproval', owner, [spender, amount.toString()]);
+    const method = 'increaseApproval';
+    const methodArgs = [spender, amount.toString()];
+    return this.createTransaction({ from: owner, method, methodArgs });
   }
 
   /**
@@ -88,7 +105,9 @@ export class StandardToken extends Contract {
    * @param amount The amount to transfer
    */
   public decreaseApproval(owner: Address, spender: Address, amount: BigNumber) {
-    return this.createTransaction('decreaseApproval', owner, [spender, amount.toString()]);
+    const method = 'decreaseApproval';
+    const methodArgs = [spender, amount.toString()];
+    return this.createTransaction({ from: owner, method, methodArgs });
   }
 }
 

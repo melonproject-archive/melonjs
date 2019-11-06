@@ -20,7 +20,8 @@
   },
   "contributors": [
     "Sebastian Siemssen <fubhy@fubhy.com>",
-    "Ivan Herger <ivan@herger.org>"
+    "Ivan Herger <ivan@herger.org>",
+    "Luong Nguyen <luongnt.58@gmail.com>"
   ],
   "scripts": {
     "clean": "rimraf dist docs coverage",

@@ -19,7 +19,8 @@ export class SharesFactory extends Contract {
    * @param hub The hub address.
    */
   public createInstance(from: Address, hub: Address) {
-    return this.createTransaction('createInstance', from, [hub]);
+    const methodArgs = [hub];
+    return this.createTransaction({ from, method: 'createInstance', methodArgs });
   }
 }
 

@@ -20,14 +20,15 @@ export class FeeManagerFactory extends Contract {
    * @param args The FeeManager deploy arguments as [[FeeManagerDeployArguments]].
    */
   public createInstance(from: Address, args: FeeManagerDeployArguments) {
-    return this.createTransaction('createInstance', from, [
+    const methodArgs = [
       args.hub,
       args.denominationAsset,
       args.fees,
       args.rates.map(fee => fee.toString()),
       args.periods,
       args.registry,
-    ]);
+    ];
+    return this.createTransaction({ from, method: 'createInstance', methodArgs });
   }
 }
 

@@ -4,6 +4,48 @@ import { RegistryAbi } from '../../abis/Registry.abi';
 import { Environment } from '../../Environment';
 import BigNumber from 'bignumber.js';
 import { utf8ToHex, hexToBytes } from 'web3-utils';
+import { ValidationError } from '../../errors/ValidationError';
+import { toBigNumber } from '../../utils/toBigNumber';
+
+export class ExchangeAdapterAlreadyRegisteredError extends ValidationError {
+  public name = 'ExchangeAdapterAlreadyRegisteredError';
+
+  constructor(message: string = 'Exchange adapter is already registered.') {
+    super(message);
+  }
+}
+
+export class ExchangeAdaptersRegisteredOutOfBoundsError extends ValidationError {
+  public name = 'ExchangeAdaptersRegisteredOutOfBoundsError';
+
+  constructor(
+    public readonly numberOfAdapters: number,
+    public readonly maxRegisteredAdapters: number,
+    message: string = 'Number of registered exchange adapters exceeds the maxium.',
+  ) {
+    super(message);
+  }
+}
+
+export class AssetAlreadyRegisteredError extends ValidationError {
+  public name = 'AssetAlreadyRegisteredError';
+
+  constructor(message: string = 'Asset is already registered.') {
+    super(message);
+  }
+}
+
+export class AssetsRegisteredOutOfBoundsError extends ValidationError {
+  public name = 'AssetsRegisteredOutOfBoundsError';
+
+  constructor(
+    public readonly numberOfAsset: number,
+    public readonly maxRegisteredAssets: number,
+    message: string = 'Number of registered assets exceeds the maximum.',
+  ) {
+    super(message);
+  }
+}
 
 export interface VersionInformation {
   exists: boolean;
@@ -42,6 +84,11 @@ export class Registry extends Contract {
     return super.createDeployment<Registry>(environment, bytecode, from, [owner]);
   }
 
+  public async getMaxRegisteredEntities(block?: number) {
+    const result = await this.makeCall<string>('MAX_REGISTERED_ENTITIES', undefined, block);
+    return toBigNumber(result);
+  }
+
   public getEngine(block?: number) {
     return this.makeCall<Address>('engine', undefined, block);
   }
@@ -67,12 +114,31 @@ export class Registry extends Contract {
   }
 
   public registerExchangeAdapter(from: Address, args: ExchangeAdapterInformation) {
-    return this.createTransaction('registerExchangeAdapter', from, [
+    const method = 'registerExchangeAdapter';
+    const methodArgs = [
       args.exchange,
       args.adapter,
       args.takesCustody,
       args.sigs.map(sig => hexToBytes(utf8ToHex(sig))),
-    ]);
+    ];
+
+    const validate = async () => {
+      const info = await this.getExchangeInformation(args.adapter);
+      if (info.exists) {
+        throw new ExchangeAdapterAlreadyRegisteredError();
+      }
+
+      const [adapters, max] = await Promise.all([
+        this.getRegisteredExchangeAdapters(),
+        this.getMaxRegisteredEntities(),
+      ]);
+
+      if (max.isLessThanOrEqualTo(adapters.length)) {
+        throw new ExchangeAdaptersRegisteredOutOfBoundsError(adapters.length, max.toNumber());
+      }
+    };
+
+    return this.createTransaction({ from, method, methodArgs, validate });
   }
 
   public getRegisteredExchangeAdapters(block?: number) {
@@ -88,7 +154,8 @@ export class Registry extends Contract {
   }
 
   public registerAsset(from: Address, args: AssetCreation) {
-    return this.createTransaction('registerAsset', from, [
+    const method = 'registerAsset';
+    const methodArgs = [
       args.address,
       args.name,
       args.symbol,
@@ -96,7 +163,22 @@ export class Registry extends Contract {
       args.reserveMin.toString(),
       args.standards,
       args.sigs.map(sig => hexToBytes(utf8ToHex(sig))),
-    ]);
+    ];
+
+    const validate = async () => {
+      const [assets, max] = await Promise.all([this.getRegisteredAssets(), this.getMaxRegisteredEntities()]);
+
+      if (max.isLessThanOrEqualTo(assets.length)) {
+        throw new AssetsRegisteredOutOfBoundsError(assets.length, max.toNumber());
+      }
+
+      const info = await this.getAssetInformation(args.address);
+      if (info.exists) {
+        throw new AssetAlreadyRegisteredError();
+      }
+    };
+
+    return this.createTransaction({ from, method, methodArgs, validate });
   }
 
   public getAssetInformation(assetAddress: Address, block?: number) {
@@ -117,7 +199,9 @@ export class Registry extends Contract {
   }
 
   public registerFees(from: Address, feeAddresses: Address[]) {
-    return this.createTransaction('registerFees', from, [feeAddresses]);
+    const method = 'registerFees';
+    const methodArgs = [feeAddresses];
+    return this.createTransaction({ from, method, methodArgs });
   }
 
   public isFeeRegistered(feeAddress: Address, block?: number) {

@@ -4,6 +4,14 @@ import { Environment } from './Environment';
 import { Transaction, Deployment } from './Transaction';
 import { Address } from './Address';
 
+interface CreateTransactionArgs<TArgs> {
+  method: string;
+  from: Address;
+  methodArgs?: TArgs;
+  value?: number | string;
+  validate?: () => Promise<void>;
+}
+
 export class Contract {
   public static readonly abi: AbiItem[];
   public readonly contract: EthContract;
@@ -31,14 +39,10 @@ export class Contract {
     return new Deployment<TContract>(this, environment, transaction, from);
   }
 
-  protected createTransaction<TArgs extends any[] = any[]>(
-    method: string,
-    from: Address,
-    args?: TArgs,
-    value?: number | string,
-  ) {
+  protected createTransaction<TArgs extends any[] = any[]>(args: CreateTransactionArgs<TArgs>) {
+    const { method, from, methodArgs, value, validate } = args;
     const fn = this.contract.methods[method];
-    return new Transaction(fn(...(args || [])), from, value);
+    return new Transaction(fn(...(methodArgs || [])), from, value, validate);
   }
 
   protected async makeCall<TReturn = any, TArgs extends any[] = any[]>(
