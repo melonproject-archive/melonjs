@@ -3,6 +3,9 @@ import { Weth } from './Weth';
 import { WETHBytecode } from '../../abis/WETH.bin';
 import { toBigNumber } from '../../utils/toBigNumber';
 import { createTestEnvironment, TestEnvironment } from '../../utils/tests/createTestEnvironment';
+import { OutOfBalanceError } from '../../errors/OutOfBalanceError';
+import { randomAddress } from '../../utils/tests/randomAddress';
+import BigNumber from 'bignumber.js';
 
 describe('Weth', () => {
   let environment: TestEnvironment;
@@ -38,5 +41,18 @@ describe('Weth', () => {
   it('should return the total supply of the token', async () => {
     const result = await weth.getTotalSupply();
     expect(fromWei(result.toFixed())).toBe('0');
+  });
+
+  it('should throw OutOfBalanceError', async () => {
+    const tx = weth.withdraw(new BigNumber(2), randomAddress());
+
+    jest.spyOn(weth, 'getBalanceOf').mockReturnValue(new Promise(resolve => resolve(new BigNumber(1))));
+
+    const rejects = expect(tx.validate()).rejects;
+    await rejects.toThrowError(OutOfBalanceError);
+    await rejects.toMatchObject({
+      amount: expect.any(Number),
+      balance: expect.any(Number),
+    });
   });
 });
