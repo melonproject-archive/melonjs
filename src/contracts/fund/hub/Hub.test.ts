@@ -1,5 +1,14 @@
 import * as R from 'ramda';
-import { Hub, HubRoutes } from './Hub';
+import {
+  Hub,
+  HubRoutes,
+  SpokesNotSetError,
+  SpokesAlreadySetError,
+  RoutingNotSetError,
+  RoutingAlreadySetError,
+  PermissionsAlreadySetError,
+  OnlyCreatorError,
+} from './Hub';
 import { SpokeBytecode } from '../../../abis/Spoke.bin';
 import { sameAddress } from '../../../utils/sameAddress';
 import { createTestEnvironment, TestEnvironment } from '../../../utils/tests/createTestEnvironment';
@@ -109,5 +118,103 @@ describe('Hub', () => {
   it('should return the fund version', async () => {
     const result = await hub.getFundVersion();
     expect(sameAddress(result, environment.accounts[0])).toBe(true);
+  });
+
+  it('should throw OnlyCreatorError in setSpokes', async () => {
+    const from = randomAddress();
+    const tx = hub.setSpokes(from, {});
+
+    const creator = randomAddress();
+    jest.spyOn(hub, 'getCreator').mockReturnValue(new Promise(resolve => resolve(creator)));
+
+    await expect(tx.validate()).rejects.toThrowError(OnlyCreatorError);
+  });
+
+  it('should throw SpokesAlreadySetError in setSpokes', async () => {
+    const from = randomAddress();
+    const tx = hub.setSpokes(from, {});
+
+    jest.spyOn(hub, 'getCreator').mockReturnValue(new Promise(resolve => resolve(from)));
+    jest.spyOn(hub, 'isSpokesSet').mockReturnValue(new Promise(resolve => resolve(true)));
+
+    await expect(tx.validate()).rejects.toThrowError(SpokesAlreadySetError);
+  });
+
+  it('should throw OnlyCreatorError in setRouting', async () => {
+    const from = randomAddress();
+    const tx = hub.setRouting(from);
+
+    const creator = randomAddress();
+    jest.spyOn(hub, 'getCreator').mockReturnValue(new Promise(resolve => resolve(creator)));
+
+    await expect(tx.validate()).rejects.toThrowError(OnlyCreatorError);
+  });
+
+  it('should throw SpokesNotSetError in setRouting', async () => {
+    const from = randomAddress();
+    const tx = hub.setRouting(from);
+
+    jest.spyOn(hub, 'getCreator').mockReturnValue(new Promise(resolve => resolve(from)));
+    jest.spyOn(hub, 'isRoutingSet').mockReturnValue(new Promise(resolve => resolve(false)));
+    jest.spyOn(hub, 'isSpokesSet').mockReturnValue(new Promise(resolve => resolve(false)));
+
+    await expect(tx.validate()).rejects.toThrowError(SpokesNotSetError);
+  });
+
+  it('should throw RoutingAlreadySetError in setRouting', async () => {
+    const from = randomAddress();
+    const tx = hub.setRouting(from);
+
+    jest.spyOn(hub, 'getCreator').mockReturnValue(new Promise(resolve => resolve(from)));
+    jest.spyOn(hub, 'isRoutingSet').mockReturnValue(new Promise(resolve => resolve(true)));
+    jest.spyOn(hub, 'isSpokesSet').mockReturnValue(new Promise(resolve => resolve(true)));
+
+    await expect(tx.validate()).rejects.toThrowError(RoutingAlreadySetError);
+  });
+
+  it('should throw OnlyCreatorError in setPermissions', async () => {
+    const from = randomAddress();
+    const tx = hub.setPermissions(from);
+
+    const creator = randomAddress();
+    jest.spyOn(hub, 'getCreator').mockReturnValue(new Promise(resolve => resolve(creator)));
+
+    await expect(tx.validate()).rejects.toThrowError(OnlyCreatorError);
+  });
+
+  it('should throw SpokesNotSetError in setPermissions', async () => {
+    const from = randomAddress();
+    const tx = hub.setPermissions(from);
+
+    jest.spyOn(hub, 'getCreator').mockReturnValue(new Promise(resolve => resolve(from)));
+    jest.spyOn(hub, 'isRoutingSet').mockReturnValue(new Promise(resolve => resolve(true)));
+    jest.spyOn(hub, 'isPermissionsSet').mockReturnValue(new Promise(resolve => resolve(false)));
+    jest.spyOn(hub, 'isSpokesSet').mockReturnValue(new Promise(resolve => resolve(false)));
+
+    await expect(tx.validate()).rejects.toThrowError(SpokesNotSetError);
+  });
+
+  it('should throw RoutingNotSetError in setPermissions', async () => {
+    const from = randomAddress();
+    const tx = hub.setPermissions(from);
+
+    jest.spyOn(hub, 'getCreator').mockReturnValue(new Promise(resolve => resolve(from)));
+    jest.spyOn(hub, 'isRoutingSet').mockReturnValue(new Promise(resolve => resolve(false)));
+    jest.spyOn(hub, 'isPermissionsSet').mockReturnValue(new Promise(resolve => resolve(false)));
+    jest.spyOn(hub, 'isSpokesSet').mockReturnValue(new Promise(resolve => resolve(true)));
+
+    await expect(tx.validate()).rejects.toThrowError(RoutingNotSetError);
+  });
+
+  it('should throw PermissionsAlreadySetError in setPermissions', async () => {
+    const from = randomAddress();
+    const tx = hub.setPermissions(from);
+
+    jest.spyOn(hub, 'getCreator').mockReturnValue(new Promise(resolve => resolve(from)));
+    jest.spyOn(hub, 'isRoutingSet').mockReturnValue(new Promise(resolve => resolve(true)));
+    jest.spyOn(hub, 'isPermissionsSet').mockReturnValue(new Promise(resolve => resolve(true)));
+    jest.spyOn(hub, 'isSpokesSet').mockReturnValue(new Promise(resolve => resolve(true)));
+
+    await expect(tx.validate()).rejects.toThrowError(PermissionsAlreadySetError);
   });
 });
