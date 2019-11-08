@@ -4,11 +4,20 @@ import { Address } from '../../../Address';
 import { toBigNumber } from '../../../utils/toBigNumber';
 import { FeeAbi } from '../../../abis/Fee.abi';
 import BigNumber from 'bignumber.js';
+import { ValidationError } from '../../../errors/ValidationError';
 
 export interface FeeInitializationArguments {
   feeRate: BigNumber;
   feePeriod: number;
   denominationAsset: Address;
+}
+
+export class FeeAlreadyInitializedError extends ValidationError {
+  public readonly name = 'FeeAlreadyInitializedError';
+
+  constructor(message: string = 'Fee is already initialized for user.') {
+    super(message);
+  }
 }
 
 export class Fee extends Contract {
@@ -39,6 +48,17 @@ export class Fee extends Contract {
   }
 
   /**
+   * Gets the last payout time.
+   *
+   * @param feeManagerAddress The address of the fee manager contract
+   * @param block The block number to execute the call on.
+   */
+  public async getLastPayoutTime(feeManagerAddress: Address, block?: number) {
+    const result = await this.makeCall<string>('lastPayoutTime', [feeManagerAddress], block);
+    return toBigNumber(result);
+  }
+
+  /**
    * Initializes a fee for a user (e.g. sets the parameters for a fund)
    *
    * @param from The sender address
@@ -47,7 +67,13 @@ export class Fee extends Contract {
   public initializeForUser(from: Address, fee: FeeInitializationArguments) {
     const method = 'initializeForUser';
     const methodArgs = [fee.feeRate.toString(), fee.feePeriod, fee.denominationAsset];
-    return this.createTransaction({ from, method, methodArgs });
+
+    const validate = async () => {
+      const lastPayoutTime = await this.getLastPayoutTime(from);
+      if (!lastPayoutTime.isZero()) throw new FeeAlreadyInitializedError();
+    };
+
+    return this.createTransaction({ from, method, methodArgs, validate });
   }
 
   /**

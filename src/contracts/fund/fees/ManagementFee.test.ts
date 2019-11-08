@@ -1,5 +1,6 @@
 import BigNumber from 'bignumber.js';
 import { ManagementFee } from './ManagementFee';
+import { FeeAlreadyInitializedError } from './Fee';
 import { TestEnvironment, createTestEnvironment } from '../../../utils/tests/createTestEnvironment';
 import { deployManagementFee } from '../../../utils/tests/deployManagementFee';
 import { randomAddress } from '../../../utils/tests/randomAddress';
@@ -21,6 +22,18 @@ describe('FeeManager', () => {
     });
     const txResult = await tx.send(await tx.estimateGas());
     expect(txResult.gasUsed).toBeGreaterThan(0);
+  });
+
+  it('should throw FeeAlreadyInitializedError', async () => {
+    const tx = managementFee.initializeForUser('', {
+      feeRate: new BigNumber(0),
+      feePeriod: 0,
+      denominationAsset: '',
+    });
+
+    jest.spyOn(managementFee, 'getLastPayoutTime').mockReturnValue(new Promise(resolve => resolve(new BigNumber(1))));
+
+    await expect(tx.validate()).rejects.toThrowError(FeeAlreadyInitializedError);
   });
 
   it('should get the management fee rate', async () => {
