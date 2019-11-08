@@ -23,17 +23,6 @@ export class ManagementFee extends Contract {
     const result = await this.makeCall<string>('managementFeeRate', [feeManagerAddress], block);
     return toBigNumber(result);
   }
-
-  /**
-   * Gets the last payout time.
-   *
-   * @param feeManagerAddress The address of the fee manager contract
-   * @param block The block number to execute the call on.
-   */
-  public async getLastPayoutTime(feeManagerAddress: Address, block?: number) {
-    const result = await this.makeCall<string>('lastPayoutTime', [feeManagerAddress], block);
-    return toBigNumber(result);
-  }
 }
 
 export interface ManagementFee extends Fee {}
