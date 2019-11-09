@@ -131,8 +131,8 @@ export class FundFactory extends Contract {
     const methodArgs = [
       args.name,
       args.fees,
-      args.feeRates,
-      args.feePeriods,
+      args.feeRates.map(rate => rate.toString()),
+      args.feePeriods.map(period => Performance.toString()),
       args.exchanges,
       args.adapters,
       args.denominationAsset,
@@ -141,11 +141,11 @@ export class FundFactory extends Contract {
 
     const validate = async () => {
       const hub = await this.getManagersToHubs(from);
-      this.validateComponentSet(hub);
+      this.validateComponentNotSet(hub);
 
       const registryAddress = await this.getRegistry();
       const registry = new Registry(this.environment, registryAddress);
-      if (!registry.isAssetRegistered(args.denominationAsset)) {
+      if (!(await registry.isAssetRegistered(args.denominationAsset))) {
         throw new DenominationAssetNotRegisteredError();
       }
     };
