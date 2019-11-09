@@ -207,4 +207,8 @@ export class Registry extends Contract {
   public isFeeRegistered(feeAddress: Address, block?: number) {
     return this.makeCall<boolean>('isFeeRegistered', [feeAddress], block);
   }
+
+  public isAssetRegistered(asset: Address, block?: number) {
+    return this.makeCall<boolean>('assetIsRegistered', [asset], block);
+  }
 }
