@@ -19,26 +19,38 @@ export class DenominationAssetNotRegisteredError extends ValidationError {
   }
 }
 
-export class ComponentNotSet extends ValidationError {
-  public readonly name = 'ComponentNotSet';
-
-  constructor(message: string = 'This step has already been run.') {
-    super(message);
-  }
-}
-
-export class ComponentSet extends ValidationError {
-  public readonly name = 'ComponentSet';
-
-  constructor(message: string = 'Component prerequisite not met.') {
-    super(message);
-  }
-}
-
-export class SetupAlreadyComplete extends ValidationError {
-  public readonly name = 'SetupAlreadyComplete';
+export class FundSetupAlreadyCompleteError extends ValidationError {
+  public readonly name = 'FundSetupAlreadyCompleteError';
 
   constructor(message: string = 'Setup already complete.') {
+    super(message);
+  }
+}
+
+export class FundSetupNotStartedError extends ValidationError {
+  public readonly name = 'FundSetupNotStartedError';
+
+  constructor(message: string = 'Fund setup has not been started yet.') {
+    super(message);
+  }
+}
+
+export class FundSetupAlreadyStartedError extends ValidationError {
+  public readonly name = 'FundSetupAlreadyStartedError';
+
+  constructor(message: string = 'Fund setup has already been started.') {
+    super(message);
+  }
+}
+
+export class RouteNotCreatedError extends ValidationError {
+  constructor(public readonly name: string, message: string = 'Route has not been created.') {
+    super(message);
+  }
+}
+
+export class RouteAlreadyCreatedError extends ValidationError {
+  constructor(public readonly name: string, message: string = 'Route has already been created.') {
     super(message);
   }
 }
@@ -81,19 +93,23 @@ export class FundFactory extends Contract {
     ]);
   }
 
-  private componentExists(component: Address) {
-    return !isZeroAddress(component);
-  }
-
-  private validateComponentNotSet(component: Address) {
-    if (this.componentExists(component)) {
-      throw new ComponentNotSet();
+  private validateFundSetupStarted(hub: Address) {
+    if (isZeroAddress(hub)) {
+      throw new FundSetupNotStartedError();
     }
   }
 
-  private validateComponentSet(component: Address) {
-    if (!this.componentExists(component)) {
-      throw new ComponentSet();
+  private validateRouteNotCreated(routes: HubRoutes, route: keyof HubRoutes) {
+    const routeName = route.charAt(0).toUpperCase() + route.substring(1);
+    if (isZeroAddress(routes[route])) {
+      throw new RouteNotCreatedError(`${routeName}NotCreatedError`, `${routeName} has not been created.`);
+    }
+  }
+
+  private validateRouteAlreadyCreated(routes: HubRoutes, route: keyof HubRoutes) {
+    const routeName = route.charAt(0).toUpperCase() + route.substring(1);
+    if (!isZeroAddress(routes[route])) {
+      throw new RouteAlreadyCreatedError(`${routeName}AlreadyCreated`, `${routeName} has already been created.`);
     }
   }
 
@@ -105,7 +121,7 @@ export class FundFactory extends Contract {
     return this.makeCall<Address>('managersToHubs', [manager], block);
   }
 
-  public async getManagersToRoutes(manager: Address, block?: number) {
+  public async getManagersToRoutes(manager: Address, block?: number): Promise<HubRoutes> {
     const result = await this.makeCall<HubRoutes>('managersToRoutes', [manager], block);
     return R.pick(
       [
@@ -123,7 +139,7 @@ export class FundFactory extends Contract {
         'version',
       ],
       result,
-    );
+    ) as HubRoutes;
   }
 
   public beginSetup(from: Address, args: Settings) {
@@ -132,7 +148,7 @@ export class FundFactory extends Contract {
       args.name,
       args.fees,
       args.feeRates.map(rate => rate.toString()),
-      args.feePeriods.map(period => Performance.toString()),
+      args.feePeriods.map(period => period.toString()),
       args.exchanges,
       args.adapters,
       args.denominationAsset,
@@ -141,7 +157,9 @@ export class FundFactory extends Contract {
 
     const validate = async () => {
       const hub = await this.getManagersToHubs(from);
-      this.validateComponentNotSet(hub);
+      if (!isZeroAddress(hub)) {
+        throw new FundSetupAlreadyStartedError();
+      }
 
       const registryAddress = await this.getRegistry();
       const registry = new Registry(this.environment, registryAddress);
@@ -155,8 +173,10 @@ export class FundFactory extends Contract {
 
   public createAccouting(from: Address) {
     const validate = async () => {
-      this.validateComponentSet(await this.getManagersToHubs(from));
-      this.validateComponentNotSet((await this.getManagersToRoutes(from)).accounting);
+      this.validateFundSetupStarted(await this.getManagersToHubs(from));
+
+      const routes = await this.getManagersToRoutes(from);
+      this.validateRouteAlreadyCreated(routes, 'accounting');
     };
 
     return this.createTransaction({ from, method: 'createAccouting', validate });
@@ -164,8 +184,10 @@ export class FundFactory extends Contract {
 
   public createFeeManager(from: Address) {
     const validate = async () => {
-      this.validateComponentSet(await this.getManagersToHubs(from));
-      this.validateComponentNotSet((await this.getManagersToRoutes(from)).accounting);
+      this.validateFundSetupStarted(await this.getManagersToHubs(from));
+
+      const routes = await this.getManagersToRoutes(from);
+      this.validateRouteAlreadyCreated(routes, 'feeManager');
     };
 
     return this.createTransaction({ from, method: 'createFeeManager', validate });
@@ -173,8 +195,10 @@ export class FundFactory extends Contract {
 
   public createParticipation(from: Address) {
     const validate = async () => {
-      this.validateComponentSet(await this.getManagersToHubs(from));
-      this.validateComponentNotSet((await this.getManagersToRoutes(from)).participation);
+      this.validateFundSetupStarted(await this.getManagersToHubs(from));
+
+      const routes = await this.getManagersToRoutes(from);
+      this.validateRouteAlreadyCreated(routes, 'participation');
     };
 
     return this.createTransaction({ from, method: 'createParticipation', validate });
@@ -182,8 +206,10 @@ export class FundFactory extends Contract {
 
   public createPolicyManager(from: Address) {
     const validate = async () => {
-      this.validateComponentSet(await this.getManagersToHubs(from));
-      this.validateComponentNotSet((await this.getManagersToRoutes(from)).policyManager);
+      this.validateFundSetupStarted(await this.getManagersToHubs(from));
+
+      const routes = await this.getManagersToRoutes(from);
+      this.validateRouteAlreadyCreated(routes, 'policyManager');
     };
 
     return this.createTransaction({ from, method: 'createPolicyManager', validate });
@@ -191,8 +217,10 @@ export class FundFactory extends Contract {
 
   public createShares(from: Address) {
     const validate = async () => {
-      this.validateComponentSet(await this.getManagersToHubs(from));
-      this.validateComponentNotSet((await this.getManagersToRoutes(from)).shares);
+      this.validateFundSetupStarted(await this.getManagersToHubs(from));
+
+      const routes = await this.getManagersToRoutes(from);
+      this.validateRouteAlreadyCreated(routes, 'shares');
     };
 
     return this.createTransaction({ from, method: 'createShares', validate });
@@ -200,8 +228,10 @@ export class FundFactory extends Contract {
 
   public createTrading(from: Address) {
     const validate = async () => {
-      this.validateComponentSet(await this.getManagersToHubs(from));
-      this.validateComponentNotSet((await this.getManagersToRoutes(from)).trading);
+      this.validateFundSetupStarted(await this.getManagersToHubs(from));
+
+      const routes = await this.getManagersToRoutes(from);
+      this.validateRouteAlreadyCreated(routes, 'trading');
     };
 
     return this.createTransaction({ from, method: 'createTrading', validate });
@@ -209,8 +239,10 @@ export class FundFactory extends Contract {
 
   public createVault(from: Address) {
     const validate = async () => {
-      this.validateComponentSet(await this.getManagersToHubs(from));
-      this.validateComponentNotSet((await this.getManagersToRoutes(from)).vault);
+      this.validateFundSetupStarted(await this.getManagersToHubs(from));
+
+      const routes = await this.getManagersToRoutes(from);
+      this.validateRouteAlreadyCreated(routes, 'vault');
     };
 
     return this.createTransaction({ from, method: 'createVault', validate });
@@ -220,23 +252,18 @@ export class FundFactory extends Contract {
     const validate = async () => {
       const hub = await this.getManagersToHubs(from);
       if (await this.isInstance(hub)) {
-        throw new SetupAlreadyComplete();
+        throw new FundSetupAlreadyCompleteError();
+      }
+
+      if (isZeroAddress(hub)) {
+        throw new FundSetupNotStartedError();
       }
 
       const routes = await this.getManagersToRoutes(from);
 
-      if (
-        !this.componentExists(hub) ||
-        !this.componentExists(routes.accounting) ||
-        !this.componentExists(routes.participation) ||
-        !this.componentExists(routes.feeManager) ||
-        !this.componentExists(routes.policyManager) ||
-        !this.componentExists(routes.shares) ||
-        !this.componentExists(routes.trading) ||
-        !this.componentExists(routes.vault)
-      ) {
-        throw new ComponentNotSet('Components must be set before completing setup.');
-      }
+      Object.keys(routes).forEach((route: keyof HubRoutes) => {
+        this.validateRouteNotCreated(routes, route);
+      });
     };
 
     return this.createTransaction({ from, method: 'completeSetup', validate });
