@@ -10,6 +10,7 @@ import { Registry } from '../version/Registry';
 import { isZeroAddress } from '../../utils/isZeroAddress';
 import { ValidationError } from '../../errors/ValidationError';
 import { HubRoutes } from '../fund/hub/Hub';
+import { padLeft, stringToHex } from 'web3-utils';
 
 export class DenominationAssetNotRegisteredError extends ValidationError {
   public readonly name = 'DenominationAssetNotRegisteredError';
@@ -145,7 +146,7 @@ export class FundFactory extends Contract {
   public beginSetup(from: Address, args: Settings) {
     const method = 'beginSetup';
     const methodArgs = [
-      args.name,
+      padLeft(stringToHex(args.name), 64),
       args.fees,
       args.feeRates.map(rate => rate.toString()),
       args.feePeriods.map(period => period.toString()),
