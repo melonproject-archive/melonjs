@@ -88,6 +88,6 @@ export class CanonicalPriceFeed extends Contract {
    */
   public async getLastUpdate(block?: number) {
     const result = await this.makeCall<string>('getLastUpdate', undefined, block);
-    return toDate(result);
+    return result && toDate(result);
   }
 }
