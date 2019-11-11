@@ -124,7 +124,7 @@ export class FundFactory extends Contract {
 
   public async getManagersToRoutes(manager: Address, block?: number): Promise<HubRoutes> {
     const result = await this.makeCall<HubRoutes>('managersToRoutes', [manager], block);
-    return R.pick(
+    const addresses = R.pick(
       [
         'accounting',
         'engine',
@@ -141,6 +141,18 @@ export class FundFactory extends Contract {
       ],
       result,
     ) as HubRoutes;
+
+    return Object.keys(addresses).reduce(
+      (carry, key: keyof typeof addresses) => {
+        const address = addresses[key];
+        if (isZeroAddress(address)) {
+          return carry;
+        }
+
+        return { ...carry, [key]: address };
+      },
+      {} as HubRoutes,
+    );
   }
 
   public beginSetup(from: Address, args: Settings) {
