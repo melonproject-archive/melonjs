@@ -186,15 +186,10 @@ export class FundFactory extends Contract {
 
   public createAccounting(from: Address) {
     const validate = async () => {
-      console.log('here');
       this.validateFundSetupStarted(await this.getManagersToHubs(from));
-      console.log('there');
 
       const routes = await this.getManagersToRoutes(from);
-      console.log('fa');
-
       this.validateRouteAlreadyCreated(routes, 'accounting');
-      console.log('b');
     };
 
     return this.createTransaction({ from, method: 'createAccounting', validate });
