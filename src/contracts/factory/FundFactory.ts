@@ -109,7 +109,7 @@ export class FundFactory extends Contract {
 
   private validateRouteAlreadyCreated(routes: HubRoutes, route: keyof HubRoutes) {
     const routeName = route.charAt(0).toUpperCase() + route.substring(1);
-    if (!isZeroAddress(routes[route])) {
+    if (routes[route] && !isZeroAddress(routes[route])) {
       throw new RouteAlreadyCreatedError(`${routeName}AlreadyCreated`, `${routeName} has already been created.`);
     }
   }
