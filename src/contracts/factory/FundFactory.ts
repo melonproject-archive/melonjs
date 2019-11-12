@@ -184,7 +184,7 @@ export class FundFactory extends Contract {
     return this.createTransaction({ from, method, methodArgs, validate });
   }
 
-  public createAccouting(from: Address) {
+  public createAccounting(from: Address) {
     const validate = async () => {
       this.validateFundSetupStarted(await this.getManagersToHubs(from));
 
@@ -192,7 +192,7 @@ export class FundFactory extends Contract {
       this.validateRouteAlreadyCreated(routes, 'accounting');
     };
 
-    return this.createTransaction({ from, method: 'createAccouting', validate });
+    return this.createTransaction({ from, method: 'createAccounting', validate });
   }
 
   public createFeeManager(from: Address) {
