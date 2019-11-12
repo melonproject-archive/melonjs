@@ -51,7 +51,7 @@ export class Contract {
     block?: number,
   ): Promise<TReturn> {
     const address = this.contract.address;
-    const cache = this.environment.cache;
+    const cache = block && this.environment.cache;
 
     try {
       const key = cache && `${address}:${block}:${method}${args ? `:${JSON.stringify(args)}` : ''}`;
