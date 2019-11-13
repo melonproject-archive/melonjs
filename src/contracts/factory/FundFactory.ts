@@ -299,7 +299,7 @@ export class FundFactory extends Contract {
   }
 
   /**
-   * Gets the address of the mln token
+   * Gets the address of the MLN token
    *
    * @param block The block number to execute the call on.
    */
