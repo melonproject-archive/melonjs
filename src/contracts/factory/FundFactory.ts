@@ -278,12 +278,6 @@ export class FundFactory extends Contract {
     return this.createTransaction({ from, method: 'completeSetup', validate });
   }
 
-  // function version() public view returns (address) { return address(version); }
-  // function registry() public view returns (address) { return address(registry); }
-  // function getExchangesInfo(address user) public view returns (address[]) {
-  //     return (managersToSettings[user].exchanges);
-  // }
-
   /**
    * Gets the funds address based on the fund id (position in funds array)
    *
