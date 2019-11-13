@@ -114,10 +114,6 @@ export class FundFactory extends Contract {
     }
   }
 
-  public getRegistry(block?: number) {
-    return this.makeCall<Address>('registry', undefined, block);
-  }
-
   public getManagersToHubs(manager: Address, block?: number) {
     return this.makeCall<Address>('managersToHubs', [manager], block);
   }
@@ -280,6 +276,77 @@ export class FundFactory extends Contract {
     };
 
     return this.createTransaction({ from, method: 'completeSetup', validate });
+  }
+
+  // function version() public view returns (address) { return address(version); }
+  // function registry() public view returns (address) { return address(registry); }
+  // function getExchangesInfo(address user) public view returns (address[]) {
+  //     return (managersToSettings[user].exchanges);
+  // }
+
+  /**
+   * Gets the funds address based on the fund id (position in funds array)
+   *
+   * @param id The id of the fund
+   * @param block The block number to execute the call on.
+   */
+  public getFundById(id: number, block?: number) {
+    return this.makeCall<Address>('getFundById', [id], block);
+  }
+
+  /**
+   * Gets the last fund id
+   *
+   * @param block The block number to execute the call on.
+   */
+  public async getLastFundId(block?: number) {
+    const result = await this.makeCall<string>('getLastFundId', undefined, block);
+    return parseInt(result, 10);
+  }
+
+  /**
+   * Gets the address of the mln token
+   *
+   * @param block The block number to execute the call on.
+   */
+  public getMlnToken(block?: number) {
+    return this.makeCall<Address>('mlnToken', undefined, block);
+  }
+
+  /**
+   * Gets the address of the engine
+   *
+   * @param block The block number to execute the call on.
+   */
+  public getEngine(block?: number) {
+    return this.makeCall<Address>('engine', undefined, block);
+  }
+
+  /**
+   * Gets the address of the price source contract
+   *
+   * @param block The block number to execute the call on.
+   */
+  public getPriceSource(block?: number) {
+    return this.makeCall<Address>('priceSource', undefined, block);
+  }
+
+  /**
+   * Gets the address of the version contract
+   *
+   * @param block The block number to execute the call on.
+   */
+  public getVersion(block?: number) {
+    return this.makeCall<Address>('version', undefined, block);
+  }
+
+  /**
+   * Gets the address of the registry contract
+   *
+   * @param block The block number to execute the call on.
+   */
+  public getRegistry(block?: number) {
+    return this.makeCall<Address>('registry', undefined, block);
   }
 }
 

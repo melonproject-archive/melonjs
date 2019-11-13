@@ -10,6 +10,7 @@ import { deployRegistry } from '../../utils/tests/deployRegistry';
 import { randomAddress } from '../../utils/tests/randomAddress';
 import { deployWeth } from '../../utils/tests/deployWeth';
 import BigNumber from 'bignumber.js';
+import { sameAddress } from '../../utils/sameAddress';
 
 describe('Registry', () => {
   let environment: TestEnvironment;
@@ -196,5 +197,16 @@ describe('Registry', () => {
       numberOfAsset: expect.any(Number),
       maxRegisteredAssets: expect.any(Number),
     });
+  });
+
+  it('should set and get the MLN token', async () => {
+    const mlnAddress = randomAddress();
+    const tx = registry.setMlnToken(environment.accounts[0], mlnAddress);
+    const txResult = await tx.send(await tx.estimateGas());
+    expect(txResult.gasUsed).toBeGreaterThanOrEqual(0);
+    expect(txResult.status).toBe(true);
+
+    const result = await registry.getMlnToken();
+    expect(sameAddress(result, mlnAddress)).toBe(true);
   });
 });

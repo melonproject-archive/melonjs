@@ -93,6 +93,10 @@ export class Registry extends Contract {
     return this.makeCall<Address>('engine', undefined, block);
   }
 
+  public setMlnToken(from: Address, token: Address) {
+    return this.createTransaction({ from, method: 'setMlnToken', methodArgs: [token] });
+  }
+
   public getMlnToken(block?: number) {
     return this.makeCall<Address>('mlnToken', undefined, block);
   }

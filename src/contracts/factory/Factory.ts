@@ -17,7 +17,6 @@ export class Factory extends Contract {
    * @param block The block number to execute the call on.
    */
   public async isInstance(address: Address, block?: number) {
-    const result = await this.makeCall<boolean>('isInstance', [address], block);
-    return result;
+    return this.makeCall<boolean>('isInstance', [address], block);
   }
 }
