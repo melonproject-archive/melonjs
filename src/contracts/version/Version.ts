@@ -5,14 +5,14 @@ import { applyMixins } from '../../utils/applyMixins';
 import { Address } from '../../Address';
 import { Environment } from '../../Environment';
 
-export interface VersionDeployArgumtents extends FundFactoryDeployArguments {
+export interface VersionDeployArguments extends FundFactoryDeployArguments {
   postDeployOwner: Address;
 }
 
 export class Version extends Contract {
   public static readonly abi = VersionAbi;
 
-  public static deploy(environment: Environment, bytecode: string, from: Address, args: VersionDeployArgumtents) {
+  public static deploy(environment: Environment, bytecode: string, from: Address, args: VersionDeployArguments) {
     return super.createDeployment<Version>(environment, bytecode, from, [
       args.accountingFactory,
       args.feeManagerFactory,
