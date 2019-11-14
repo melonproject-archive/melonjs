@@ -10,7 +10,7 @@ import { Registry } from '../version/Registry';
 import { isZeroAddress } from '../../utils/isZeroAddress';
 import { ValidationError } from '../../errors/ValidationError';
 import { HubRoutes } from '../fund/hub/Hub';
-import { padLeft, stringToHex } from 'web3-utils';
+import { stringToBytes } from '../../utils/tests/stringToBytes';
 
 export class DenominationAssetNotRegisteredError extends ValidationError {
   public readonly name = 'DenominationAssetNotRegisteredError';
@@ -151,10 +151,20 @@ export class FundFactory extends Contract {
     );
   }
 
+  /**
+   * Gets the settings for a manager
+   *
+   * @param manager The address of the manager
+   * @param block The block number to execute the call on.
+   */
+  public async getManagersToSettings(manager: Address, block?: number) {
+    return this.makeCall<Settings>('managersToSettings', [manager], block);
+  }
+
   public beginSetup(from: Address, args: Settings) {
     const method = 'beginSetup';
     const methodArgs = [
-      padLeft(stringToHex(args.name), 64),
+      stringToBytes(args.name, 32),
       args.fees,
       args.feeRates.map(rate => rate.toString()),
       args.feePeriods.map(period => period.toString()),
@@ -341,6 +351,10 @@ export class FundFactory extends Contract {
    */
   public getRegistry(block?: number) {
     return this.makeCall<Address>('registry', undefined, block);
+  }
+
+  public getAccountingFactory(block?: number) {
+    return this.makeCall<any>('accountingFactory', undefined, block);
   }
 }
 

@@ -26,6 +26,11 @@ describe('Registry', () => {
     expect(result.length).toBeGreaterThanOrEqual(0);
   });
 
+  it('should check wether a version name already exists', async () => {
+    const result = await registry.versionNameExists('test-version');
+    expect(result).toBe(false);
+  });
+
   it('should register fees and check if they were indeed registered', async () => {
     const [managementFeeAdress, performanceFeeAddress] = [randomAddress(), randomAddress()];
 

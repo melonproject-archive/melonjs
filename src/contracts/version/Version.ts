@@ -4,9 +4,20 @@ import { FundFactory, FundFactoryDeployArguments } from '../factory/FundFactory'
 import { applyMixins } from '../../utils/applyMixins';
 import { Address } from '../../Address';
 import { Environment } from '../../Environment';
+import { sameAddress } from '../../utils/sameAddress';
+import { ValidationError } from '../../errors/ValidationError';
 
-export interface VersionDeployArguments extends FundFactoryDeployArguments {
+export interface VersionDeployArguments extends Omit<FundFactoryDeployArguments, 'version'> {
+  registry: Address;
   postDeployOwner: Address;
+}
+
+export class OnlyManagerCanShutDownFundError extends ValidationError {
+  public name = 'OnlyManagerCanShutDownFundError';
+
+  constructor(message: string = 'Only the manager can shutdown their fund.') {
+    super(message);
+  }
 }
 
 export class Version extends Contract {
@@ -21,7 +32,7 @@ export class Version extends Contract {
       args.tradingFactory,
       args.vaultFactory,
       args.policyManagerFactory,
-      args.version,
+      args.registry,
       args.postDeployOwner,
     ]);
   }
@@ -29,10 +40,19 @@ export class Version extends Contract {
   /**
    * Shut down a fund
    *
+   * @param from The address of the sender
+   * @param hub The address of the fund hub
    * @param block The block number to execute the call on.
    */
   public shutDownFund(from: Address, hub: Address) {
-    return this.createTransaction({ from, method: 'shutDownFund', methodArgs: [hub] });
+    const validate = async () => {
+      const managersToHubs = await this.getManagersToHubs(from);
+      if (!sameAddress(managersToHubs, hub)) {
+        throw new OnlyManagerCanShutDownFundError();
+      }
+    };
+
+    return this.createTransaction({ from, method: 'shutDownFund', methodArgs: [hub], validate });
   }
 }
 

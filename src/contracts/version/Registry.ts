@@ -6,6 +6,7 @@ import BigNumber from 'bignumber.js';
 import { utf8ToHex, hexToBytes } from 'web3-utils';
 import { ValidationError } from '../../errors/ValidationError';
 import { toBigNumber } from '../../utils/toBigNumber';
+import { stringToBytes } from '../../utils/tests/stringToBytes';
 
 export class ExchangeAdapterAlreadyRegisteredError extends ValidationError {
   public name = 'ExchangeAdapterAlreadyRegisteredError';
@@ -23,6 +24,22 @@ export class ExchangeAdaptersRegisteredOutOfBoundsError extends ValidationError 
     public readonly maxRegisteredAdapters: number,
     message: string = 'Number of registered exchange adapters exceeds the maxium.',
   ) {
+    super(message);
+  }
+}
+
+export class VersionAlreadyRegisteredError extends ValidationError {
+  public name = 'VersionAlreadyRegisteredError';
+
+  constructor(message: string = 'Version is already registered.') {
+    super(message);
+  }
+}
+
+export class VersionNameAlreadyExistsError extends ValidationError {
+  public name = 'VersionNameAlreadyExistsError';
+
+  constructor(message: string = 'Version name already exists.') {
     super(message);
   }
 }
@@ -93,12 +110,28 @@ export class Registry extends Contract {
     return this.makeCall<Address>('engine', undefined, block);
   }
 
+  /**
+   * Sets the MLN token
+   *
+   * @param from The address of the sender
+   * @param asset The address of the MLN token
+   */
   public setMlnToken(from: Address, token: Address) {
     return this.createTransaction({ from, method: 'setMlnToken', methodArgs: [token] });
   }
 
   public getMlnToken(block?: number) {
     return this.makeCall<Address>('mlnToken', undefined, block);
+  }
+
+  /**
+   * Sets the native asset
+   *
+   * @param from The address of the sender
+   * @param asset The address of the native asset
+   */
+  public setNativeAsset(from: Address, asset: Address) {
+    return this.createTransaction({ from, method: 'setNativeAsset', methodArgs: [asset] });
   }
 
   public getNativeAsset(block?: number) {
@@ -153,6 +186,33 @@ export class Registry extends Contract {
     return this.makeCall<boolean>('exchangeAdapterIsRegistered', [adapter], block);
   }
 
+  /**
+   * Register a version
+   *
+   * @param from The address of the sender
+   * @param versionAddress The address of the version
+   * @param name The name of the version
+   */
+  public registerVersion(from: Address, versionAddress: Address, name: string) {
+    const method = 'registerVersion';
+    const methodArgs = [versionAddress, stringToBytes(name, 32)];
+
+    const validate = async () => {
+      const versionInformation = await this.getVersionInformation(versionAddress);
+
+      if (versionInformation.exists) {
+        throw new VersionAlreadyRegisteredError();
+      }
+
+      const versionNameExists = await this.versionNameExists(name);
+      if (versionNameExists) {
+        throw new VersionNameAlreadyExistsError();
+      }
+    };
+
+    return this.createTransaction({ from, method, methodArgs, validate });
+  }
+
   public getRegisteredVersions(block?: number) {
     return this.makeCall<Address[]>('getRegisteredVersions', undefined, block);
   }
@@ -200,6 +260,16 @@ export class Registry extends Contract {
 
   public getVersionInformation(versionAddress: Address, block?: number) {
     return this.makeCall<VersionInformation>('versionInformation', [versionAddress], block);
+  }
+
+  /**
+   * Checks if a version name already exists
+   *
+   * @param name The name of the version
+   * @param block The block number to execute the call on.
+   */
+  public versionNameExists(name: string, block?: number) {
+    return this.makeCall<boolean>('versionNameExists', [stringToBytes(name, 32)], block);
   }
 
   public registerFees(from: Address, feeAddresses: Address[]) {

@@ -1,6 +1,5 @@
 import { Contract } from '../../../Contract';
 import { PolicyAbi } from '../../../abis/Policy.abi';
-import { Environment } from '../../../Environment';
 import { Address } from '../../../Address';
 import { BigNumber } from 'bignumber.js';
 
@@ -13,10 +12,6 @@ export interface PolicyRule {
 
 export class Policy extends Contract {
   public static readonly abi = PolicyAbi;
-
-  public static deploy(environment: Environment, bytecode: string, from: Address) {
-    return super.createDeployment<Policy>(environment, bytecode, from, []);
-  }
 
   /**
    * Gets the identifier of a policy.
@@ -43,6 +38,6 @@ export class Policy extends Contract {
    * @param block The block number to execute the call on.
    */
   public rule(input: PolicyRule, block?: number) {
-    return this.makeCall<number>('position', undefined, block);
+    return this.makeCall<boolean>('position', [input], block);
   }
 }
