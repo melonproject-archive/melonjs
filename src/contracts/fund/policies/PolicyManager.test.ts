@@ -25,6 +25,15 @@ describe('PolicyManager', () => {
     policyManager = await deploy.send(await deploy.estimateGas());
   });
 
+  // it('should register a policy', async () => {
+  //   const deploy = MaxPositions.deploy(environment, MaxPositionsBytecode, environment.accounts[0], 10);
+  //   const maxPositions = await deploy.send(await deploy.estimateGas());
+
+  //   const tx = policyManager.registerPolicy(environment.accounts[1], '0x61346679', maxPositions.contract.address);
+  //   const txResult = await tx.send(await tx.estimateGas());
+  //   console.log(txResult.gasUsed);
+  // });
+
   it('should return the policies by signature', async () => {
     const result = await policyManager.getPoliciesBySignature('0x61346679');
     expect(result).toMatchObject({
