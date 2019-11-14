@@ -10,6 +10,7 @@ import { deployRegistry } from '../../utils/tests/deployRegistry';
 import { randomAddress } from '../../utils/tests/randomAddress';
 import { deployWeth } from '../../utils/tests/deployWeth';
 import BigNumber from 'bignumber.js';
+import { sameAddress } from '../../utils/sameAddress';
 
 describe('Registry', () => {
   let environment: TestEnvironment;
@@ -23,6 +24,11 @@ describe('Registry', () => {
   it('should return the registered versions', async () => {
     const result = await registry.getRegisteredVersions();
     expect(result.length).toBeGreaterThanOrEqual(0);
+  });
+
+  it('should check wether a version name already exists', async () => {
+    const result = await registry.versionNameExists('test-version');
+    expect(result).toBe(false);
   });
 
   it('should register fees and check if they were indeed registered', async () => {
@@ -196,5 +202,16 @@ describe('Registry', () => {
       numberOfAsset: expect.any(Number),
       maxRegisteredAssets: expect.any(Number),
     });
+  });
+
+  it('should set and get the MLN token', async () => {
+    const mlnAddress = randomAddress();
+    const tx = registry.setMlnToken(environment.accounts[0], mlnAddress);
+    const txResult = await tx.send(await tx.estimateGas());
+    expect(txResult.gasUsed).toBeGreaterThanOrEqual(0);
+    expect(txResult.status).toBe(true);
+
+    const result = await registry.getMlnToken();
+    expect(sameAddress(result, mlnAddress)).toBe(true);
   });
 });

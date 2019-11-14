@@ -28,4 +28,14 @@ describe('FundFactory', () => {
     const result = fundFactory.contract.address;
     expect(result.startsWith('0x')).toBe(true);
   });
+
+  it('should return the address of the version', async () => {
+    const result = await fundFactory.getVersion();
+    expect(result.startsWith('0x')).toBe(true);
+  });
+
+  it('should return the address of the registry', async () => {
+    const result = await fundFactory.getRegistry();
+    expect(result.startsWith('0x')).toBe(true);
+  });
 });
