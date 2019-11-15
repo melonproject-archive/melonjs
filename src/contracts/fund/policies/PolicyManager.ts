@@ -7,6 +7,8 @@ import { applyMixins } from '../../../utils/applyMixins';
 import { Policy } from './Policy';
 import { ValidationError } from '../../../errors/ValidationError';
 import { hexToBytes } from 'web3-utils';
+import { DSAuthority } from '../../dependencies/DSAuthority';
+import { encodeFunctionSignature } from '../../../utils/encodeFunctionSignature';
 
 export type Policies = {
   pre: Address[];
@@ -45,10 +47,11 @@ export class PolicyManager extends Contract {
    */
   public registerPolicy(from: Address, signature: string, policyAddress: Address) {
     const validate = async () => {
-      // const hub = await this.getHub();
-      // const auth = new DSAuthority(this.environment, hub);
-      // need to be able to get function signatures (implement util function)
-      const authorized = true; // auth.canCall(hub, this.contract.address, 'somesig');
+      const hub = await this.getHub();
+      const auth = new DSAuthority(this.environment, hub);
+
+      const registerSignature = encodeFunctionSignature(PolicyManagerAbi, 'register');
+      const authorized = auth.canCall(hub, this.contract.address, registerSignature);
       if (!authorized) {
         throw new NotAuthorizedError();
       }
