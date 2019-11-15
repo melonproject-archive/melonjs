@@ -48,7 +48,7 @@ export class PolicyManager extends Contract {
       // const hub = await this.getHub();
       // const auth = new DSAuthority(this.environment, hub);
       // need to be able to get function signatures (implement util function)
-      const authorized = true; //auth.canCall(hub, this.contract.address, 'somesig');
+      const authorized = true; // auth.canCall(hub, this.contract.address, 'somesig');
       if (!authorized) {
         throw new NotAuthorizedError();
       }
