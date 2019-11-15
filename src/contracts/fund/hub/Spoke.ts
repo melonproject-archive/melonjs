@@ -54,4 +54,13 @@ export class Spoke extends Contract {
   public getRegistry(block?: number) {
     return this.makeCall<string>('registry', undefined, block);
   }
+
+  /**
+   * Gets the address of the hub
+   *
+   * @param block The block number to execute the call on.
+   */
+  public getHub(block?: number) {
+    return this.makeCall<string>('hub', undefined, block);
+  }
 }

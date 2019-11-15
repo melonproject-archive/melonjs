@@ -2,14 +2,17 @@ import { Spoke } from './Spoke';
 import { TestEnvironment, createTestEnvironment } from '../../../utils/tests/createTestEnvironment';
 import { deploySpoke } from '../../../utils/tests/deploySpoke';
 import { deployHub } from '../../../utils/tests/deployHub';
+import { Hub } from './Hub';
+import { sameAddress } from '../../../utils/sameAddress';
 
 describe('Spoke', () => {
   let environment: TestEnvironment;
   let spoke: Spoke;
+  let hub: Hub;
 
   beforeAll(async () => {
     environment = await createTestEnvironment();
-    const hub = await deployHub(environment, environment.accounts[0], {
+    hub = await deployHub(environment, environment.accounts[0], {
       name: 'spoke-test-fund',
       manager: environment.accounts[1],
     });
@@ -39,5 +42,10 @@ describe('Spoke', () => {
   it('should return the address of the registry', async () => {
     const result = await spoke.getRegistry();
     expect(result.startsWith('0x')).toBe(true);
+  });
+
+  it('should return the address of the hub', async () => {
+    const result = await spoke.getHub();
+    expect(sameAddress(result, hub.contract.address)).toBe(true);
   });
 });
