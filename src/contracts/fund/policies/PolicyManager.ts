@@ -10,11 +10,6 @@ import { hexToBytes } from 'web3-utils';
 import { DSAuthority } from '../../dependencies/authorization/DSAuthority';
 import { encodeFunctionSignature } from '../../../utils/encodeFunctionSignature';
 import { ExchangeAdapterAbi } from '../../../abis/ExchangeAdapter.abi';
-import { MaxPositions } from './MaxPositions';
-import { MaxConcentration } from './MaxConcentration';
-import { PriceTolerance } from './PriceTolerance';
-import { AssetWhitelist } from './AssetWhitelist';
-import { AssetBlacklist } from './AssetBlacklist';
 import { EthfinexAdapterAbi } from '../../../abis/EthfinexAdapter.abi';
 import { ParticipationAbi } from '../../../abis/Participation.abi';
 
@@ -94,38 +89,6 @@ export class PolicyManager extends Contract {
     return policies as Policies;
   }
 
-  private async getParametersForPolicy(identifier: string, address: Address, block?: number): Promise<string> {
-    switch (identifier) {
-      case 'Max positions': {
-        const policy = new MaxPositions(this.environment, address);
-        const parameters = await policy.getMaxPositions(block);
-        return `${parameters}`;
-      }
-      case 'Max concentration': {
-        const policy = new MaxConcentration(this.environment, address);
-        const parameters = await policy.getMaxConcentration(block);
-        return parameters.toString();
-      }
-      case 'Price tolerance': {
-        const policy = new PriceTolerance(this.environment, address);
-        const parameters = await policy.getPriceTolerance(block);
-        return parameters.toString();
-      }
-      case 'Asset whitelist': {
-        const policy = new AssetWhitelist(this.environment, address);
-        const parameters = await policy.getMembers(block);
-        return parameters.join(', ');
-      }
-      case 'Asset blacklist': {
-        const policy = new AssetBlacklist(this.environment, address);
-        const parameters = await policy.getMembers(block);
-        return parameters.join(', ');
-      }
-      default:
-        return '';
-    }
-  }
-
   /**
    * Gets a list of policies (with parameters) that are registered for a fund
    *
@@ -158,12 +121,10 @@ export class PolicyManager extends Contract {
     const policyObjects = uniquePolicyAddresses.map(async address => {
       const policy = new Policy(this.environment, address);
       const identifier = await policy.getIdentifier(block);
-      const parameters = await this.getParametersForPolicy(identifier, address, block);
 
       return {
         address,
         identifier,
-        parameters,
       };
     });
 
