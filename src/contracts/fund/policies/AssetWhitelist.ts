@@ -1,10 +1,10 @@
 import { Contract } from '../../../Contract';
-import { Address } from '../../../Address';
 import { applyMixins } from '../../../utils/applyMixins';
 import { Policy } from './Policy';
 import { AddressList } from './AddressList';
 import { AssetWhitelistAbi } from '../../../abis/AssetWhitelist.abi';
 import { Environment } from '../../../Environment';
+import { Address } from '../../../Address';
 
 export class AssetWhitelist extends Contract {
   public static readonly abi = AssetWhitelistAbi;
