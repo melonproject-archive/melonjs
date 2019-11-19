@@ -1,9 +1,9 @@
-import { Environment } from '../../Environment';
-import { Address } from '../../Address';
-import { Contract } from '../../Contract';
-import { PreminedTokenAbi } from '../../abis/PreminedToken.abi';
+import { Environment } from '../../../Environment';
+import { Address } from '../../../Address';
+import { Contract } from '../../../Contract';
+import { PreminedTokenAbi } from '../../../abis/PreminedToken.abi';
 import { StandardToken } from './StandardToken';
-import { applyMixins } from '../../utils/applyMixins';
+import { applyMixins } from '../../../utils/applyMixins';
 
 export interface PreminedTokenDeployArguments {
   symbol: string;

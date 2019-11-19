@@ -1,6 +1,6 @@
-import { Address } from '../../Address';
-import { Contract } from '../../Contract';
-import { DSAuthorityAbi } from '../../abis/DSAuthority.abi';
+import { Address } from '../../../Address';
+import { Contract } from '../../../Contract';
+import { DSAuthorityAbi } from '../../../abis/DSAuthority.abi';
 
 export class DSAuthority extends Contract {
   public static readonly abi = DSAuthorityAbi;

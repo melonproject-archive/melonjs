@@ -1,7 +1,7 @@
-import { Environment } from '../../Environment';
-import { Address } from '../../Address';
-import { Contract } from '../../Contract';
-import { DSAuthAbi } from '../../abis/DSAuth.abi';
+import { Environment } from '../../../Environment';
+import { Address } from '../../../Address';
+import { Contract } from '../../../Contract';
+import { DSAuthAbi } from '../../../abis/DSAuth.abi';
 
 export class DSAuth extends Contract {
   public static readonly abi = DSAuthAbi;

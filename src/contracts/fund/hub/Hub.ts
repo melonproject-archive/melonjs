@@ -6,7 +6,7 @@ import { Address } from '../../../Address';
 import { toDate } from '../../../utils/toDate';
 import { ValidationError } from '../../../errors/ValidationError';
 import { sameAddress } from '../../../utils/sameAddress';
-import { DSGuard } from '../../dependencies/DSGuard';
+import { DSGuard } from '../../dependencies/authorization/DSGuard';
 import { applyMixins } from '../../../utils/applyMixins';
 
 export class OnlyCreatorError extends ValidationError {

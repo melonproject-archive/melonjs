@@ -7,7 +7,7 @@ import { applyMixins } from '../../../utils/applyMixins';
 import { Policy } from './Policy';
 import { ValidationError } from '../../../errors/ValidationError';
 import { hexToBytes } from 'web3-utils';
-import { DSAuthority } from '../../dependencies/DSAuthority';
+import { DSAuthority } from '../../dependencies/authorization/DSAuthority';
 import { encodeFunctionSignature } from '../../../utils/encodeFunctionSignature';
 
 export type Policies = {

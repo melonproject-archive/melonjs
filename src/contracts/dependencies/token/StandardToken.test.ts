@@ -1,10 +1,10 @@
-import { TestEnvironment, createTestEnvironment } from '../../utils/tests/createTestEnvironment';
+import { TestEnvironment, createTestEnvironment } from '../../../utils/tests/createTestEnvironment';
 import { StandardToken } from './StandardToken';
-import { StandardTokenBytecode } from '../../abis/StandardToken.bin';
+import { StandardTokenBytecode } from '../../../abis/StandardToken.bin';
 import BigNumber from 'bignumber.js';
-import { randomAddress } from '../../utils/tests/randomAddress';
-import { OutOfBalanceError } from '../../errors/OutOfBalanceError';
-import { ZeroAddressError } from '../../errors/ZeroAddressError';
+import { randomAddress } from '../../../utils/tests/randomAddress';
+import { OutOfBalanceError } from '../../../errors/OutOfBalanceError';
+import { ZeroAddressError } from '../../../errors/ZeroAddressError';
 
 describe('StandardToken', () => {
   let environment: TestEnvironment;

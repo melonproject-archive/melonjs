@@ -5,7 +5,7 @@ import { Spoke } from '../hub/Spoke';
 import { applyMixins } from '../../../utils/applyMixins';
 import { SharesAbi } from '../../../abis/Shares.abi';
 import { hexToString } from 'web3-utils';
-import { StandardToken } from '../../dependencies/StandardToken';
+import { StandardToken } from '../../dependencies/token/StandardToken';
 
 export class Shares extends Contract {
   public static readonly abi = SharesAbi;

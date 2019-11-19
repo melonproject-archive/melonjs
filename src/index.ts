@@ -14,7 +14,7 @@ export { AssetBlacklist } from './contracts/fund/policies/AssetBlacklist';
 export { AssetWhitelist } from './contracts/fund/policies/AssetWhitelist';
 export { CanonicalPriceFeed, PricesInfo } from './contracts/prices/CanonicalPriceFeed';
 export { Engine, EngineDeployArguments } from './contracts/engine/Engine';
-export { ERC20WithFields } from './contracts/dependencies/ERC20WithFields';
+export { ERC20WithFields } from './contracts/dependencies/token/ERC20WithFields';
 export { Factory } from './contracts/factory/Factory';
 export { Fee } from './contracts/fund/fees/Fee';
 export { FeeManager, FeeManagerDeployArguments } from './contracts/fund/fees/FeeManager';
@@ -43,7 +43,7 @@ export { PriceTolerance } from './contracts/fund/policies/PriceTolerance';
 export { Shares } from './contracts/fund/shares/Shares';
 export { SharesFactory } from './contracts/fund/shares/SharesFactory';
 export { Spoke } from './contracts/fund/hub/Spoke';
-export { StandardToken } from './contracts/dependencies/StandardToken';
+export { StandardToken } from './contracts/dependencies/token/StandardToken';
 export { Trading, TradingDeployArguments } from './contracts/fund/trading/Trading';
 export { UserWhitelist } from './contracts/fund/policies/UserWhitelist';
 export { Vault } from './contracts/fund/vault/Vault';
@@ -60,4 +60,4 @@ export {
   ExchangeAdapterAlreadyRegisteredError,
   ExchangeAdaptersRegisteredOutOfBoundsError,
 } from './contracts/version/Registry';
-export { Weth } from './contracts/dependencies/Weth';
+export { Weth } from './contracts/dependencies/token/Weth';

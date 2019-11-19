@@ -1,8 +1,8 @@
-import { Environment } from '../../Environment';
-import { Address } from '../../Address';
-import { Contract } from '../../Contract';
-import { PermissiveAuthorityAbi } from '../../abis/PermissiveAuthority.abi';
-import { applyMixins } from '../../utils/applyMixins';
+import { Environment } from '../../../Environment';
+import { Address } from '../../../Address';
+import { Contract } from '../../../Contract';
+import { PermissiveAuthorityAbi } from '../../../abis/PermissiveAuthority.abi';
+import { applyMixins } from '../../../utils/applyMixins';
 import { DSAuthority } from './DSAuthority';
 
 export class PermissiveAuthority extends Contract {

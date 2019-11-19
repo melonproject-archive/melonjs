@@ -1,5 +1,5 @@
-import { TestEnvironment, createTestEnvironment } from '../../utils/tests/createTestEnvironment';
-import { BurnableTokenBytecode } from '../../abis/BurnableToken.bin';
+import { TestEnvironment, createTestEnvironment } from '../../../utils/tests/createTestEnvironment';
+import { BurnableTokenBytecode } from '../../../abis/BurnableToken.bin';
 import { BurnableToken } from './BurnableToken';
 
 describe('BurnableToken', () => {

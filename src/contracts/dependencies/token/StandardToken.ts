@@ -1,14 +1,14 @@
-import { Environment } from '../../Environment';
-import { Address } from '../../Address';
-import { toBigNumber } from '../../utils/toBigNumber';
-import { Contract } from '../../Contract';
-import { StandardTokenAbi } from '../../abis/StandardToken.abi';
+import { Environment } from '../../../Environment';
+import { Address } from '../../../Address';
+import { toBigNumber } from '../../../utils/toBigNumber';
+import { Contract } from '../../../Contract';
+import { StandardTokenAbi } from '../../../abis/StandardToken.abi';
 import BigNumber from 'bignumber.js';
 import { ERC20WithFields } from './ERC20WithFields';
-import { applyMixins } from '../../utils/applyMixins';
-import { OutOfBalanceError } from '../../errors/OutOfBalanceError';
-import { isZeroAddress } from '../../utils/isZeroAddress';
-import { ZeroAddressError } from '../../errors/ZeroAddressError';
+import { applyMixins } from '../../../utils/applyMixins';
+import { OutOfBalanceError } from '../../../errors/OutOfBalanceError';
+import { isZeroAddress } from '../../../utils/isZeroAddress';
+import { ZeroAddressError } from '../../../errors/ZeroAddressError';
 
 export class StandardToken extends Contract {
   public static readonly abi = StandardTokenAbi;

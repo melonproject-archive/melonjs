@@ -5,7 +5,7 @@ import { Version } from './Version';
 import BigNumber from 'bignumber.js';
 import { sameAddress } from '../../utils/sameAddress';
 import { deployVersion } from '../../utils/tests/deployVersion';
-import { Weth } from '../dependencies/Weth';
+import { Weth } from '../dependencies/token/Weth';
 import { deployWeth } from '../../utils/tests/deployWeth';
 import { deployRegistry } from '../../utils/tests/deployRegistry';
 import { Registry } from './Registry';

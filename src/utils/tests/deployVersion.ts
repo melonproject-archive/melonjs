@@ -7,7 +7,7 @@ import { VersionBytecode } from '../../abis/Version.bin';
 import { randomAddress } from './randomAddress';
 import { BigNumber } from 'bignumber.js';
 import { Registry } from '../../contracts/version/Registry';
-import { Weth } from '../../contracts/dependencies/Weth';
+import { Weth } from '../../contracts/dependencies/token/Weth';
 import { FeeManagerFactory } from '../../contracts/fund/fees/FeeManagerFactory';
 
 export async function deployVersion(environment: TestEnvironment, creator: Address, registry: Registry, weth: Weth) {
