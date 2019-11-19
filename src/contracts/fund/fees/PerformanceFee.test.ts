@@ -4,6 +4,7 @@ import { createTestEnvironment, TestEnvironment } from '../../../utils/tests/cre
 import { deployPerformanceFee } from '../../../utils/tests/deployPerformanceFee';
 import { BigNumber } from 'bignumber.js';
 import { deployWeth } from '../../../utils/tests/deployWeth';
+import { randomAddress } from '../../../utils/tests/randomAddress';
 
 describe('FeeManager', () => {
   let environment: TestEnvironment;
@@ -44,8 +45,11 @@ describe('FeeManager', () => {
   });
 
   it('should get the last payout time', async () => {
-    const result = await performanceFee.getPerformanceFeeRate(environment.accounts[0]);
-    expect(result.isGreaterThanOrEqualTo(0)).toBe(true);
+    jest.spyOn(performanceFee, 'getLastPayoutTime').mockReturnValue(new Promise(resolve => resolve(new BigNumber(1))));
+
+    const result = await performanceFee.getLastPayoutTime(randomAddress());
+    console.log(result);
+    expect(result.isEqualTo(1)).toBe(true);
   });
 
   it('should return the correct identifier', async () => {

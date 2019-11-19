@@ -3,7 +3,7 @@ import { createTestEnvironment, TestEnvironment } from '../../../utils/tests/cre
 import { PolicyManagerBytecode } from '../../../abis/PolicyManager.bin';
 import { MaxPositionsBytecode } from '../../../abis/MaxPositions.bin';
 import { MaxPositions } from './MaxPositions';
-import { PermissiveAuthority } from '../../dependencies/PermissiveAuthority';
+import { PermissiveAuthority } from '../../dependencies/authorization/PermissiveAuthority';
 import { PermissiveAuthorityBytecode } from '../../../abis/PermissiveAuthority.bin';
 
 describe('PolicyManager', () => {

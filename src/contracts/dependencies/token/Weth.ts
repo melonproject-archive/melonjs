@@ -1,11 +1,11 @@
 import BigNumber from 'bignumber.js';
-import { WETHAbi } from '../../abis/WETH.abi';
-import { Environment } from '../../Environment';
-import { Address } from '../../Address';
+import { WETHAbi } from '../../../abis/WETH.abi';
+import { Environment } from '../../../Environment';
+import { Address } from '../../../Address';
 import { ERC20WithFields } from './ERC20WithFields';
-import { Contract } from '../../Contract';
-import { applyMixins } from '../../utils/applyMixins';
-import { OutOfBalanceError } from '../../errors/OutOfBalanceError';
+import { Contract } from '../../../Contract';
+import { applyMixins } from '../../../utils/applyMixins';
+import { OutOfBalanceError } from '../../../errors/OutOfBalanceError';
 
 export class Weth extends Contract {
   public static readonly abi = WETHAbi;

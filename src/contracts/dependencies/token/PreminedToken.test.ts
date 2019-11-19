@@ -1,6 +1,6 @@
-import { TestEnvironment, createTestEnvironment } from '../../utils/tests/createTestEnvironment';
+import { TestEnvironment, createTestEnvironment } from '../../../utils/tests/createTestEnvironment';
 import { PreminedToken } from './PreminedToken';
-import { PreminedTokenBytecode } from '../../abis/PreminedToken.bin';
+import { PreminedTokenBytecode } from '../../../abis/PreminedToken.bin';
 
 describe('PreminedToken', () => {
   let environment: TestEnvironment;

@@ -1,8 +1,8 @@
-import { Environment } from '../../Environment';
-import { Address } from '../../Address';
-import { Contract } from '../../Contract';
-import { DSGuardAbi } from '../../abis/DSGuard.abi';
-import { applyMixins } from '../../utils/applyMixins';
+import { Environment } from '../../../Environment';
+import { Address } from '../../../Address';
+import { Contract } from '../../../Contract';
+import { DSGuardAbi } from '../../../abis/DSGuard.abi';
+import { applyMixins } from '../../../utils/applyMixins';
 import { DSAuth } from './DSAuth';
 import { DSAuthority } from './DSAuthority';
 

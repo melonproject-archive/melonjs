@@ -1,7 +1,7 @@
-import { TestEnvironment, createTestEnvironment } from '../../utils/tests/createTestEnvironment';
+import { TestEnvironment, createTestEnvironment } from '../../../utils/tests/createTestEnvironment';
 import { PreminedToken } from './PreminedToken';
 import { MaliciousToken } from './MaliciousToken';
-import { MaliciousTokenBytecode } from '../../abis/MaliciousToken.bin';
+import { MaliciousTokenBytecode } from '../../../abis/MaliciousToken.bin';
 
 describe('MaliciousToken', () => {
   let environment: TestEnvironment;

@@ -7,8 +7,11 @@ import { applyMixins } from '../../../utils/applyMixins';
 import { Policy } from './Policy';
 import { ValidationError } from '../../../errors/ValidationError';
 import { hexToBytes } from 'web3-utils';
-import { DSAuthority } from '../../dependencies/DSAuthority';
+import { DSAuthority } from '../../dependencies/authorization/DSAuthority';
 import { encodeFunctionSignature } from '../../../utils/encodeFunctionSignature';
+import { ExchangeAdapterAbi } from '../../../abis/ExchangeAdapter.abi';
+import { EthfinexAdapterAbi } from '../../../abis/EthfinexAdapter.abi';
+import { ParticipationAbi } from '../../../abis/Participation.abi';
 
 export type Policies = {
   pre: Address[];
@@ -89,18 +92,15 @@ export class PolicyManager extends Contract {
   /**
    * Gets a list of policies (with parameters) that are registered for a fund
    *
-   * @param signature The signature of the policies
    * @param block The block number to execute the call on.
    */
   public async getPolicies(block?: number) {
     const sigsToCheck = [
-      '0x79705be7', // make order
-      '0xe51be6e8', // take order
-      // getFunctionIdentifier(env, FunctionSignatures.makeOrder),
-      // getFunctionIdentifier(env, FunctionSignatures.takeOrder),
-      // getFunctionIdentifier(env, FunctionSignatures.cancelOrder),
-      // getFunctionIdentifier(env, FunctionSignatures.withdrawTokens),
-      // getFunctionIdentifier(env, FunctionSignatures.requestInvestment),
+      encodeFunctionSignature(ExchangeAdapterAbi, 'makeOrder'),
+      encodeFunctionSignature(ExchangeAdapterAbi, 'takeOrder'),
+      encodeFunctionSignature(ExchangeAdapterAbi, 'cancelOrder'),
+      encodeFunctionSignature(EthfinexAdapterAbi, 'withdrawTokens'),
+      encodeFunctionSignature(ParticipationAbi, 'requestInvestment'),
     ];
 
     const retrievedPolicies = await Promise.all(
@@ -120,13 +120,11 @@ export class PolicyManager extends Contract {
 
     const policyObjects = uniquePolicyAddresses.map(async address => {
       const policy = new Policy(this.environment, address);
-      const name = await policy.getIdentifier(block);
-      // const parameters = await getParametersForPolicy(env, name, address);
+      const identifier = await policy.getIdentifier(block);
 
       return {
         address,
-        name,
-        // parameters,
+        identifier,
       };
     });
 

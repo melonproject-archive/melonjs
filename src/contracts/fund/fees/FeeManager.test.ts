@@ -8,7 +8,7 @@ import { deployPerformanceFee } from '../../../utils/tests/deployPerformanceFee'
 import { Hub } from '../hub/Hub';
 import { deployHub } from '../../../utils/tests/deployHub';
 import { deployFeeManager } from '../../../utils/tests/deployFeeManager';
-import { Weth } from '../../dependencies/Weth';
+import { Weth } from '../../dependencies/token/Weth';
 import { deployWeth } from '../../../utils/tests/deployWeth';
 import { Registry } from '../../version/Registry';
 import { deployRegistry } from '../../../utils/tests/deployRegistry';

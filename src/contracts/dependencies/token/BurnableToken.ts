@@ -1,8 +1,8 @@
-import { Environment } from '../../Environment';
-import { Address } from '../../Address';
-import { Contract } from '../../Contract';
-import { PreminedTokenAbi } from '../../abis/PreminedToken.abi';
-import { applyMixins } from '../../utils/applyMixins';
+import { Environment } from '../../../Environment';
+import { Address } from '../../../Address';
+import { Contract } from '../../../Contract';
+import { PreminedTokenAbi } from '../../../abis/PreminedToken.abi';
+import { applyMixins } from '../../../utils/applyMixins';
 import { PreminedToken, PreminedTokenDeployArguments } from './PreminedToken';
 import { BigNumber } from 'bignumber.js';
 

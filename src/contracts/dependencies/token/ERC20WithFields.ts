@@ -1,8 +1,8 @@
-import { ERC20WithFieldsAbi } from '../../abis/ERC20WithFields.abi';
-import { Environment } from '../../Environment';
-import { Address } from '../../Address';
-import { toBigNumber } from '../../utils/toBigNumber';
-import { Contract } from '../../Contract';
+import { ERC20WithFieldsAbi } from '../../../abis/ERC20WithFields.abi';
+import { Environment } from '../../../Environment';
+import { Address } from '../../../Address';
+import { toBigNumber } from '../../../utils/toBigNumber';
+import { Contract } from '../../../Contract';
 
 export class ERC20WithFields extends Contract {
   public static readonly abi = ERC20WithFieldsAbi;

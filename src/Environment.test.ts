@@ -5,7 +5,7 @@ import { Contract } from './Contract';
 import { Environment, CacheHandler } from './Environment';
 import { CanonicalPriceFeed } from './contracts/prices/CanonicalPriceFeed';
 import { Hub } from './contracts/fund/hub/Hub';
-import { ERC20WithFields } from './contracts/dependencies/ERC20WithFields';
+import { ERC20WithFields } from './contracts/dependencies/token/ERC20WithFields';
 import { toBigNumber } from './utils/toBigNumber';
 
 describe('CacheHandler', () => {
