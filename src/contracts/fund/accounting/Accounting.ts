@@ -7,6 +7,7 @@ import { Address } from '../../../Address';
 import { Spoke } from '../hub/Spoke';
 import { applyMixins } from '../../../utils/applyMixins';
 import { toBigNumber } from '../../../utils/toBigNumber';
+import { AmguConsumer } from '../../engine/AmguConsumer';
 
 export interface FundCalculations {
   sharePrice: BigNumber;
@@ -167,7 +168,16 @@ export class Accounting extends Contract {
     const result = await this.makeCall<string>('getShareCostInAsset', [numShares.toString(), asset], block);
     return toBigNumber(result);
   }
+
+  /**
+   * Triggers the reward all fees function (and performs some accounting updates)
+   *
+   * @param from The address of the sender.
+   */
+  public triggerRewardAllFees(from: Address) {
+    return this.createTransaction({ from, method: 'triggerRewardAllFees' });
+  }
 }
 
-export interface Accounting extends Spoke {}
-applyMixins(Accounting, [Spoke]);
+export interface Accounting extends Spoke, AmguConsumer {}
+applyMixins(Accounting, [Spoke, AmguConsumer]);
