@@ -63,6 +63,13 @@ describe('FeeManager', () => {
     });
   });
 
+  it('should return management fee amount', async () => {
+    jest.spyOn(feeManager, 'getManagementFeeAmount').mockResolvedValue(new BigNumber('100000000'));
+
+    const result = await feeManager.getManagementFeeAmount();
+    expect(result.isGreaterThanOrEqualTo(0)).toBe(true);
+  });
+
   it('should return performance fee contract address', async () => {
     const result = await feeManager.getPerformanceFeeAddress();
     expect(result.startsWith('0x')).toBe(true);
@@ -74,5 +81,21 @@ describe('FeeManager', () => {
       rate: expect.any(BigNumber),
       period: expect.any(Number),
     });
+  });
+
+  it('should get the high watermark', async () => {
+    const result = await performanceFee.getHighWaterMark(feeManager.contract.address);
+    expect(result.isGreaterThanOrEqualTo(0)).toBe(true);
+  });
+
+  it('should get the initialize time', async () => {
+    const result = await performanceFee.getInitializeTime(feeManager.contract.address);
+    expect(result).toBeInstanceOf(Date);
+    expect(result.getTime()).toBeLessThan(Date.now());
+  });
+
+  it('should check whether the performance fee can be updated', async () => {
+    const result = await performanceFee.canUpdate(feeManager.contract.address);
+    expect(result === false || result === true).toBe(true);
   });
 });

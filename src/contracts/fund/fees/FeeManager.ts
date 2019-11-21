@@ -65,6 +65,16 @@ export class FeeManager extends Contract {
   }
 
   /**
+   * Gets the amount of accrued and unpaid management fee.
+   *
+   * @param block The block number to execute the call on.
+   */
+  public async getManagementFeeAmount(block?: number) {
+    const result = await this.makeCall<string>('managementFeeAmount', undefined, block);
+    return toBigNumber(result);
+  }
+
+  /**
    * Gets the address of the performance fee contract.
    *
    * @param block The block number to execute the call on.
@@ -91,6 +101,16 @@ export class FeeManager extends Contract {
       rate: toBigNumber(rate),
       period,
     } as PerformanceFeeInformation;
+  }
+
+  /**
+   * Gets the amount of accrued and unpaid performance fee.
+   *
+   * @param block The block number to execute the call on.
+   */
+  public async getPerformanceFeeAmount(block?: number) {
+    const result = await this.makeCall<BigNumber>('performanceFeeAmount', undefined, block);
+    return toBigNumber(result);
   }
 }
 

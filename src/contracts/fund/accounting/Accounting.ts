@@ -8,6 +8,9 @@ import { Spoke } from '../hub/Spoke';
 import { applyMixins } from '../../../utils/applyMixins';
 import { toBigNumber } from '../../../utils/toBigNumber';
 import { AmguConsumer } from '../../engine/AmguConsumer';
+// import { FeeManager } from '../fees/FeeManager';
+// import { ManagementFee } from '../fees/ManagementFee';
+// import { PerformanceFee } from '../fees/PerformanceFee';
 
 export interface FundCalculations {
   sharePrice: BigNumber;
@@ -175,7 +178,14 @@ export class Accounting extends Contract {
    * @param from The address of the sender.
    */
   public triggerRewardAllFees(from: Address) {
-    return this.createTransaction({ from, method: 'triggerRewardAllFees' });
+    const validate = async () => {
+      // const routes = await this.getRoutes();
+      // const feeManager = new FeeManager(this.environment, routes.feeManager);
+      // const managementFee = new ManagementFee(this.environment, await feeManager.getManagementFeeAddress());
+      // const performanceFee = new PerformanceFee(this.environment, await feeManager.getPerformanceFeeAddress());
+    };
+
+    return this.createTransaction({ from, method: 'triggerRewardAllFees', validate });
   }
 }
 

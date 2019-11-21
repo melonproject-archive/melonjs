@@ -5,6 +5,7 @@ import { PerformanceFeeAbi } from '../../../abis/PerformanceFee.abi';
 import { toBigNumber } from '../../../utils/toBigNumber';
 import { Fee } from './Fee';
 import { applyMixins } from '../../../utils/applyMixins';
+import { toDate } from '../../../utils/toDate';
 
 export class PerformanceFee extends Contract {
   public static readonly abi = PerformanceFeeAbi;
@@ -33,6 +34,49 @@ export class PerformanceFee extends Contract {
   public async getPerformanceFeePeriod(address: Address, block?: number) {
     const result = await this.makeCall<string>('performanceFeePeriod', [address], block);
     return parseInt(result, 10);
+  }
+
+  /**
+   * Gets the current high water mark
+   *
+   * @param address The address of the fee manager contract
+   * @param block The block number to execute the call on.
+   */
+  public async getHighWaterMark(address: Address, block?: number) {
+    const result = await this.makeCall<string>('highWaterMark', [address], block);
+    return toBigNumber(result);
+  }
+
+  /**
+   * Gets the last payout time
+   *
+   * @param address The address of the fee manager contract
+   * @param block The block number to execute the call on.
+   */
+  public async getLastPayoutTime(address: Address, block?: number) {
+    const result = await this.makeCall<string>('lastPayoutTime', [address], block);
+    return toBigNumber(result);
+  }
+
+  /**
+   * Gets the initialize time
+   *
+   * @param address The address of the fee manager contract
+   * @param block The block number to execute the call on.
+   */
+  public async getInitializeTime(address: Address, block?: number) {
+    const result = await this.makeCall<string>('initializeTime', [address], block);
+    return toDate(result);
+  }
+
+  /**
+   * Checks wether the performance fee can be updated
+   *
+   * @param address The address of the fee manager contract
+   * @param block The block number to execute the call on.
+   */
+  public canUpdate(address: Address, block?: number) {
+    return this.makeCall<boolean>('canUpdate', [address], block);
   }
 }
 

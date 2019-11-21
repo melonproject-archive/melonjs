@@ -43,7 +43,7 @@ export class Fee extends Contract {
    * @param block The block number to execute the call on.
    */
   public async feeAmount(block?: number) {
-    const result = await this.makeCall<number>('feeAmount', undefined, block);
+    const result = await this.makeCall<string>('feeAmount', undefined, block);
     return toBigNumber(result);
   }
 
