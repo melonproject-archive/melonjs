@@ -112,6 +112,22 @@ export class FeeManager extends Contract {
     const result = await this.makeCall<BigNumber>('performanceFeeAmount', undefined, block);
     return toBigNumber(result);
   }
+
+  /**
+   * Rewards the management fee
+   *
+   * @param from The address of the sender
+   */
+  public rewardManagementFee(from: Address) {
+    const validate = async () => {
+      // const routes = await this.getRoutes();
+      // const feeManager = new FeeManager(this.environment, routes.feeManager);
+      // const managementFee = new ManagementFee(this.environment, await feeManager.getManagementFeeAddress());
+      // const performanceFee = new PerformanceFee(this.environment, await feeManager.getPerformanceFeeAddress());
+    };
+
+    return this.createTransaction({ from, method: 'rewardManagementFee', validate });
+  }
 }
 
 export interface FeeManager extends Spoke {}
