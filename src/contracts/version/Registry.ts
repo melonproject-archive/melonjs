@@ -285,4 +285,14 @@ export class Registry extends Contract {
   public isAssetRegistered(asset: Address, block?: number) {
     return this.makeCall<boolean>('assetIsRegistered', [asset], block);
   }
+
+  /**
+   * Get the incentive amount
+   *
+   * @param block The block number to execute the call on.
+   */
+  public async getIncentive(block?: number) {
+    const result = await this.makeCall<string>('incentive', undefined, block);
+    return toBigNumber(result);
+  }
 }

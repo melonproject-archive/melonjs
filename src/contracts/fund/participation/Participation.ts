@@ -7,6 +7,7 @@ import { Spoke } from '../hub/Spoke';
 import { applyMixins } from '../../../utils/applyMixins';
 import { toBigNumber } from '../../../utils/toBigNumber';
 import { toDate } from '../../../utils/toDate';
+import { ValidationError } from '../../../errors/ValidationError';
 
 export interface Request {
   investmentAsset: Address;
@@ -19,6 +20,14 @@ export interface ParticipationDeployArguments {
   hub: Address;
   defaultAssets: Address[];
   registry: Address;
+}
+
+export class InvestmentWithThisAssetNotAllowedError extends ValidationError {
+  public name = 'InvestmentWithThisAssetNotAllowedError';
+
+  constructor(message: string = 'Investment with this asset is not allowed.') {
+    super(message);
+  }
 }
 
 export class Participation extends Contract {
@@ -105,6 +114,30 @@ export class Participation extends Contract {
    */
   public canInvestWithAsset(asset: Address, block?: number) {
     return this.makeCall<boolean>('investAllowed', [asset], block);
+  }
+
+  /**
+   * Request investment into a fund
+   *
+   * @param from The sender address.
+   * @param args The request arguments .
+   */
+  public requestInvestment(from: Address, args: Omit<Request, 'timestamp'>) {
+    const validate = async () => {
+      const canInvestWithAsset = await this.canInvestWithAsset(args.investmentAsset);
+      if (!canInvestWithAsset) {
+        throw new InvestmentWithThisAssetNotAllowedError(
+          `Investment with asset ${args.investmentAsset} is not allowed`,
+        );
+      }
+    };
+    const methodArgs = [args.requestedShares.toString(), args.investmentAmount.toString(), args.investmentAsset];
+    return this.createTransaction({
+      from,
+      method: 'requestInvestment',
+      methodArgs,
+      validate,
+    });
   }
 }
 

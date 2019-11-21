@@ -6,11 +6,13 @@ import { deployWeth } from '../../../utils/tests/deployWeth';
 import { deployRegistry } from '../../../utils/tests/deployRegistry';
 import { Registry } from '../../version/Registry';
 import { deployParticipation } from '../../../utils/tests/deployParticipation';
+import { Weth } from '../../dependencies/token/Weth';
 
 describe('Participation', () => {
   let environment: TestEnvironment;
   let participation: Participation;
   let registry: Registry;
+  let weth: Weth;
 
   beforeAll(async () => {
     environment = await createTestEnvironment();
@@ -20,7 +22,7 @@ describe('Participation', () => {
       name: 'accounting-test-fund',
     });
 
-    const weth = await deployWeth(environment, environment.accounts[0]);
+    weth = await deployWeth(environment, environment.accounts[0]);
 
     registry = await deployRegistry(environment, environment.accounts[0], environment.accounts[0]);
 
