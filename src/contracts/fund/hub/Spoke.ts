@@ -2,6 +2,7 @@ import { Contract } from '../../../Contract';
 import { Environment } from '../../../Environment';
 import { Address } from '../../../Address';
 import { SpokeAbi } from '../../../abis/Spoke.abi';
+import { HubRoutes } from './Hub';
 
 export class Spoke extends Contract {
   public static readonly abi = SpokeAbi;
@@ -62,5 +63,30 @@ export class Spoke extends Contract {
    */
   public getHub(block?: number) {
     return this.makeCall<string>('hub', undefined, block);
+  }
+
+  /**
+   * Gets the routes of the hub
+   *
+   * @param block The block number to execute the call on.
+   */
+  public async getRoutes(block?: number) {
+    const result = await this.makeCall<HubRoutes>('routes', undefined, block);
+    const routes: HubRoutes = {
+      accounting: result.accounting,
+      engine: result.engine,
+      feeManager: result.feeManager,
+      mlnToken: result.mlnToken,
+      participation: result.participation,
+      policyManager: result.policyManager,
+      priceSource: result.priceSource,
+      registry: result.registry,
+      shares: result.shares,
+      trading: result.trading,
+      vault: result.vault,
+      version: result.version,
+    };
+
+    return routes;
   }
 }
