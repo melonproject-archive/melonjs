@@ -48,7 +48,6 @@ describe('FeeManager', () => {
     jest.spyOn(performanceFee, 'getLastPayoutTime').mockReturnValue(new Promise(resolve => resolve(new BigNumber(1))));
 
     const result = await performanceFee.getLastPayoutTime(randomAddress());
-    console.log(result);
     expect(result.isEqualTo(1)).toBe(true);
   });
 
