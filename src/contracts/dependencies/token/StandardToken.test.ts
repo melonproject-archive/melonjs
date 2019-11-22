@@ -13,7 +13,7 @@ describe('StandardToken', () => {
   beforeAll(async () => {
     environment = await createTestEnvironment();
     const deploy = StandardToken.deploy(environment, StandardTokenBytecode, environment.accounts[0]);
-    standardToken = await deploy.send(await deploy.estimateGas());
+    standardToken = await deploy.send(await deploy.prepare());
   });
 
   it('should return balance of the token', async () => {

@@ -25,12 +25,13 @@ describe('Trading', () => {
     const adapterAddress = randomAddress();
     const registry = await deployRegistry(environment, environment.accounts[0], environment.accounts[0]);
     const tx = registry.registerExchangeAdapter(environment.accounts[0], {
-      exchange: exchangeAddress,
-      adapter: adapterAddress,
+      exchangeAddress,
+      adapterAddress,
       takesCustody: true,
       sigs: ['0000'],
     });
-    await tx.send(await tx.estimateGas());
+
+    await tx.send(await tx.prepare());
 
     trading = await deployTrading(environment, environment.accounts[0], {
       hub: hub.contract.address,

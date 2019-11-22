@@ -37,10 +37,16 @@ export class CanonicalPriceFeed extends Contract {
    * @param block The block number to execute the call on.
    */
   public async getPrice(token: Address, block?: number) {
-    const { '0': price, '1': timestamp } = await this.makeCall<{
+    const result = await this.makeCall<{
       '0': string;
       '1': string;
     }>('getPrice', [token], block);
+
+    if (!result) {
+      return undefined;
+    }
+
+    const { '0': price, '1': timestamp } = result;
 
     return {
       token,
@@ -56,10 +62,17 @@ export class CanonicalPriceFeed extends Contract {
    * @param block The block number to execute the call on.
    */
   public async getPrices(tokens: Address[], block?: number) {
-    const { '0': prices, '1': timestamps } = await this.makeCall<{
+    const result = await this.makeCall<{
       '0': string[];
       '1': string[];
     }>('getPrices', [tokens], block);
+
+    if (!result) {
+      return undefined;
+    }
+
+    const { '0': prices, '1': timestamps } = result;
+
     return tokens.reduce((carry, token, index) => {
       const item: PriceInfo = {
         token,

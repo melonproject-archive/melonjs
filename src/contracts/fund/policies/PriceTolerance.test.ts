@@ -12,7 +12,7 @@ describe('PriceTolerance', () => {
     environment = await createTestEnvironment();
 
     const deploy = PriceTolerance.deploy(environment, PriceToleranceBytecode, environment.accounts[0], tolerance);
-    priceTolerance = await deploy.send(await deploy.estimateGas());
+    priceTolerance = await deploy.send(await deploy.prepare());
   });
 
   it('should return the price tolerance', async () => {

@@ -69,7 +69,7 @@ export class PolicyManager extends Contract {
     return this.createTransaction({
       from,
       method: 'register',
-      methodArgs: [hexToBytes(signature), policyAddress],
+      args: [hexToBytes(signature), policyAddress],
       validate,
     });
   }

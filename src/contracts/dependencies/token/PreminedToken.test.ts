@@ -13,7 +13,7 @@ describe('PreminedToken', () => {
       decimals: 12,
       name: 'Turbo Test Token',
     });
-    preminedToken = await deploy.send(await deploy.estimateGas());
+    preminedToken = await deploy.send(await deploy.prepare());
   });
 
   it('should return balance of the token', async () => {

@@ -14,7 +14,7 @@ describe('MaliciousToken', () => {
       decimals: 15,
       name: 'Malicous Monster Money',
     });
-    maliciousToken = await deploy.send(await deploy.estimateGas());
+    maliciousToken = await deploy.send(await deploy.prepare());
   });
 
   it('should return balance of the token', async () => {

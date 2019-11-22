@@ -13,7 +13,7 @@ describe('AssetWhitelist', () => {
     environment = await createTestEnvironment();
 
     const deploy = AssetWhitelist.deploy(environment, AssetWhitelistBytecode, environment.accounts[0], addresses);
-    assetWhitelist = await deploy.send(await deploy.estimateGas());
+    assetWhitelist = await deploy.send(await deploy.prepare());
   });
 
   it('should return the correct position', async () => {

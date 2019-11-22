@@ -15,7 +15,7 @@ describe('AccountingFactory', () => {
 
     const deploy = AccountingFactory.deploy(environment, AccountingFactoryBytecode, environment.accounts[0]);
 
-    accountingFactory = await deploy.send(await deploy.estimateGas());
+    accountingFactory = await deploy.send(await deploy.prepare());
   });
 
   it('should check if a contract is an instance of AccountingFactory', async () => {
@@ -37,7 +37,7 @@ describe('AccountingFactory', () => {
       defaultAssets: [weth.contract.address],
     });
 
-    const txResult = await tx.send(await tx.estimateGas());
+    const txResult = await tx.send(await tx.prepare());
     expect(txResult.gasUsed).toBeGreaterThanOrEqual(0);
     expect(txResult.status).toBe(true);
   });

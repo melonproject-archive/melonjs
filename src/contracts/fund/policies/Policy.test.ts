@@ -12,7 +12,7 @@ describe('Policy', () => {
 
     // Policy itself cannot be deployed (empty bytecode, it's really just an interface)
     const deploy = MaxPositions.deploy(environment, MaxPositionsBytecode, environment.accounts[0], max);
-    maxPositions = await deploy.send(await deploy.estimateGas());
+    maxPositions = await deploy.send(await deploy.prepare());
   });
 
   it('should return the identifier of a policy', async () => {

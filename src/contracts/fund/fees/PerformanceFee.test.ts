@@ -23,7 +23,7 @@ describe('FeeManager', () => {
       feePeriod: 1000,
       denominationAsset: weth.contract.address,
     });
-    const txResult = await tx.send(await tx.estimateGas());
+    const txResult = await tx.send(await tx.prepare());
     expect(txResult.gasUsed).toBeGreaterThan(0);
   });
 

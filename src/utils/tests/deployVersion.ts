@@ -16,14 +16,14 @@ export async function deployVersion(environment: TestEnvironment, creator: Addre
     AccountingFactoryBytecode,
     environment.accounts[0],
   );
-  const accountingFactory = await deployAccountingFactory.send(await deployAccountingFactory.estimateGas());
+  const accountingFactory = await deployAccountingFactory.send(await deployAccountingFactory.prepare());
 
   const deployFeeManagerFactory = FeeManagerFactory.deploy(
     environment,
     AccountingFactoryBytecode,
     environment.accounts[0],
   );
-  const feeManagerFactory = await deployFeeManagerFactory.send(await deployAccountingFactory.estimateGas());
+  const feeManagerFactory = await deployFeeManagerFactory.send(await deployAccountingFactory.prepare());
 
   const deploy = Version.deploy(environment, VersionBytecode, creator, {
     accountingFactory: accountingFactory.contract.address,
@@ -36,7 +36,7 @@ export async function deployVersion(environment: TestEnvironment, creator: Addre
     registry: registry.contract.address,
     postDeployOwner: creator,
   });
-  const version = await deploy.send(await deploy.estimateGas());
+  const version = await deploy.send(await deploy.prepare());
 
   {
     const tx = registry.registerAsset(creator, {
@@ -48,22 +48,22 @@ export async function deployVersion(environment: TestEnvironment, creator: Addre
       standards: [1, 2, 3],
       sigs: ['0000'],
     });
-    await tx.send(await tx.estimateGas());
+    await tx.send(await tx.prepare());
   }
 
   {
     const tx = registry.setNativeAsset(creator, weth.contract.address);
-    await tx.send(await tx.estimateGas());
+    await tx.send(await tx.prepare());
   }
 
   {
     const tx = registry.registerVersion(creator, version.contract.address, 'test-version');
-    await tx.send(await tx.estimateGas());
+    await tx.send(await tx.prepare());
   }
 
   {
     const tx = registry.setMlnToken(creator, randomAddress());
-    await tx.send(await tx.estimateGas());
+    await tx.send(await tx.prepare());
   }
 
   return version;

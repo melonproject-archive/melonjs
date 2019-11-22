@@ -39,7 +39,7 @@ describe('FeeManager', () => {
       managementFee.contract.address,
       performanceFee.contract.address,
     ]);
-    await tx.send(await tx.estimateGas());
+    await tx.send(await tx.prepare());
 
     feeManager = await deployFeeManager(environment, environment.accounts[0], {
       hub: hub.contract.address,

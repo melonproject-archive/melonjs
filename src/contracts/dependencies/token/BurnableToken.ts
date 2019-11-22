@@ -20,8 +20,8 @@ export class BurnableToken extends Contract {
    * @param amount The amount to transfer
    */
   public burn(from: Address, amount: BigNumber) {
-    const methodArgs = [amount.toString()];
-    return this.createTransaction({ from, method: 'decreaseApproval', methodArgs });
+    const args = [amount.toString()];
+    return this.createTransaction({ from, method: 'decreaseApproval', args });
   }
 }
 

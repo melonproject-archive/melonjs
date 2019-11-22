@@ -6,6 +6,8 @@ export { Transaction, Deployment } from './Transaction';
 export { ValidationError } from './errors/ValidationError';
 export { OutOfBalanceError } from './errors/OutOfBalanceError';
 export { ZeroAddressError } from './errors/ZeroAddressError';
+export { HubIsShutdownError } from './errors/HubIsShutdownError';
+export { SpokeNotInitializedError } from './errors/SpokeNotInitializedError';
 
 export { Accounting, AccountingDeployArguments, FundCalculations } from './contracts/fund/accounting/Accounting';
 export { AccountingFactory } from './contracts/fund/accounting/AccountingFactory';
@@ -33,7 +35,13 @@ export {
 export { ManagementFee } from './contracts/fund/fees/ManagementFee';
 export { MaxConcentration } from './contracts/fund/policies/MaxConcentration';
 export { MaxPositions } from './contracts/fund/policies/MaxPositions';
-export { Participation, ParticipationDeployArguments } from './contracts/fund/participation/Participation';
+export {
+  Request,
+  InvestmentAssetNotAllowedError,
+  InvestmentRequestExistsError,
+  Participation,
+  ParticipationDeployArguments,
+} from './contracts/fund/participation/Participation';
 export { ParticipationFactory } from './contracts/fund/participation/ParticipationFactory';
 export { PerformanceFee } from './contracts/fund/fees/PerformanceFee';
 export { Policy, PolicyRule } from './contracts/fund/policies/Policy';
@@ -54,7 +62,8 @@ export {
   AssetBaseInformation,
   AssetCreation,
   AssetInformation,
-  ExchangeAdapterInformation,
+  ExchangeInformation,
+  RegisterExchangeAdapterArgs,
   AssetAlreadyRegisteredError,
   AssetsRegisteredOutOfBoundsError,
   ExchangeAdapterAlreadyRegisteredError,

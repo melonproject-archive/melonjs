@@ -13,7 +13,7 @@ describe('AssetBlacklist', () => {
     environment = await createTestEnvironment();
 
     const deploy = AssetBlacklist.deploy(environment, AssetBlacklistBytecode, environment.accounts[0], addresses);
-    assetBlacklist = await deploy.send(await deploy.estimateGas());
+    assetBlacklist = await deploy.send(await deploy.prepare());
   });
 
   it('should return the correct position', async () => {

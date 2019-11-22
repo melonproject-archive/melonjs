@@ -13,7 +13,7 @@ describe('PolicyManagerFactory', () => {
     environment = await createTestEnvironment();
 
     const deploy = PolicyManagerFactory.deploy(environment, PolicyManagerFactoryBytecode, environment.accounts[0]);
-    policyManagerFactory = await deploy.send(await deploy.estimateGas());
+    policyManagerFactory = await deploy.send(await deploy.prepare());
   });
 
   it('should check if a contract is an instance of the PolicyManagerFactory', async () => {
@@ -29,7 +29,7 @@ describe('PolicyManagerFactory', () => {
 
     const tx = policyManagerFactory.createInstance(environment.accounts[0], hub.contract.address);
 
-    const txResult = await tx.send(await tx.estimateGas());
+    const txResult = await tx.send(await tx.prepare());
     expect(txResult.gasUsed).toBeGreaterThanOrEqual(0);
     expect(txResult.status).toBe(true);
   });
