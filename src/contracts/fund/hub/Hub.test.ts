@@ -48,7 +48,7 @@ describe('Hub', () => {
     const spokes = await Promise.all(
       R.range(0, 7).map(async () => {
         const deploy = Spoke.deploy(environment, SpokeBytecode, environment.accounts[0], hub.contract.address);
-        const spoke = await deploy.send(await deploy.estimateGas());
+        const spoke = await deploy.send(await deploy.prepare());
         return spoke.contract.address;
       }),
     );
@@ -70,7 +70,7 @@ describe('Hub', () => {
 
     {
       const tx = hub.setSpokes(environment.accounts[0], routes);
-      const txResult = await tx.send(await tx.estimateGas());
+      const txResult = await tx.send(await tx.prepare());
       expect(txResult.gasUsed).toBeGreaterThanOrEqual(0);
     }
 
@@ -78,7 +78,7 @@ describe('Hub', () => {
 
     {
       const tx = hub.setRouting(environment.accounts[0]);
-      const txResult = await tx.send(await tx.estimateGas());
+      const txResult = await tx.send(await tx.prepare());
       expect(txResult.gasUsed).toBeGreaterThanOrEqual(0);
     }
 
@@ -98,7 +98,7 @@ describe('Hub', () => {
 
     {
       const tx = hub.setPermissions(environment.accounts[0]);
-      const txResult = await tx.send(await tx.estimateGas());
+      const txResult = await tx.send(await tx.prepare());
       expect(txResult.gasUsed).toBeGreaterThanOrEqual(0);
     }
 

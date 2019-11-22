@@ -19,9 +19,9 @@ export class ParticipationFactory extends Contract {
    * @param from The sender address.
    * @param args The participation deploy arguments as [[ParticipationDeployArguments]].
    */
-  public createInstance(from: Address, args: ParticipationDeployArguments) {
-    const methodArgs = [args.hub, args.defaultAssets, args.registry];
-    return this.createTransaction({ from, method: 'createInstance', methodArgs });
+  public createInstance(from: Address, deployArgs: ParticipationDeployArguments) {
+    const args = [deployArgs.hub, deployArgs.defaultAssets, deployArgs.registry];
+    return this.createTransaction({ from, method: 'createInstance', args });
   }
 }
 

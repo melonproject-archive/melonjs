@@ -1,3 +1,4 @@
+import BigNumber from 'bignumber.js';
 import { AbiItem } from 'web3-utils';
 import { Contract as EthContract } from 'web3-eth-contract';
 import { Environment } from './Environment';
@@ -7,9 +8,11 @@ import { Address } from './Address';
 interface CreateTransactionArgs<TArgs> {
   method: string;
   from: Address;
-  methodArgs?: TArgs;
-  value?: number | string;
+  args?: TArgs;
+  value?: BigNumber;
   validate?: () => Promise<void>;
+  amgu?: (gas: number) => Promise<BigNumber>;
+  incentive?: (gas: number) => Promise<BigNumber>;
 }
 
 export class Contract {
@@ -40,9 +43,8 @@ export class Contract {
   }
 
   protected createTransaction<TArgs extends any[] = any[]>(args: CreateTransactionArgs<TArgs>) {
-    const { method, from, methodArgs, value, validate } = args;
-    const fn = this.contract.methods[method];
-    return new Transaction(fn(...(methodArgs || [])), from, value, validate);
+    const fn = this.contract.methods[args.method];
+    return new Transaction(fn(...(args.args || [])), args.from, args.value, args.validate, args.amgu, args.incentive);
   }
 
   protected async makeCall<TReturn = any, TArgs extends any[] = any[]>(

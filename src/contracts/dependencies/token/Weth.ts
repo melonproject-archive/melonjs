@@ -22,14 +22,14 @@ export class Weth extends Contract {
 
   public withdraw(amount: BigNumber, from: Address) {
     const method = 'withdraw';
-    const methodArgs = [amount.toFixed()];
+    const args = [amount.toFixed()];
     const validate = async () => {
       const balance = await this.getBalanceOf(from);
       if (!amount.isLessThanOrEqualTo(balance)) {
         throw new OutOfBalanceError(amount.toNumber(), balance.toNumber());
       }
     };
-    return this.createTransaction({ from, method, methodArgs, validate });
+    return this.createTransaction({ from, method, args, validate });
   }
 }
 

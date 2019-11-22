@@ -5,6 +5,10 @@ export function toBigNumber(value: any) {
     return value;
   }
 
+  if (!value) {
+    return new BigNumber(0);
+  }
+
   const stringified = `${value}`;
   if (!isNaN(parseFloat(stringified))) {
     return new BigNumber(`${value}`);

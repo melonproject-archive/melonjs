@@ -1,8 +1,8 @@
 import * as R from 'ramda';
+import BigNumber from 'bignumber.js';
 import { TestEnvironment, createTestEnvironment } from '../../utils/tests/createTestEnvironment';
 import { randomAddress } from '../../utils/tests/randomAddress';
 import { Version } from './Version';
-import BigNumber from 'bignumber.js';
 import { sameAddress } from '../../utils/sameAddress';
 import { deployVersion } from '../../utils/tests/deployVersion';
 import { Weth } from '../dependencies/token/Weth';
@@ -39,12 +39,13 @@ describe('Version', () => {
       fees: [randomAddress(), randomAddress()],
       feeRates: [new BigNumber(2).multipliedBy('1e16'), new BigNumber(20).multipliedBy('1e16')],
       feePeriods: [new BigNumber(0), new BigNumber(90).multipliedBy(60 * 60 * 24)],
-      exchanges: R.range(0, 5).map(item => randomAddress()),
-      adapters: R.range(0, 5).map(item => randomAddress()),
+      exchanges: R.range(0, 5).map(() => randomAddress()),
+      adapters: R.range(0, 5).map(() => randomAddress()),
       denominationAsset: weth.contract.address,
       defaultAssets: [weth.contract.address],
     });
-    const txResult = await tx.send(await tx.estimateGas());
+
+    const txResult = await tx.send(await tx.prepare());
     expect(txResult.gasUsed).toBeGreaterThan(0);
   });
 });

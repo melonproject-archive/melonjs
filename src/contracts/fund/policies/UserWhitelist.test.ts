@@ -13,7 +13,7 @@ describe('UserWhitelist', () => {
     environment = await createTestEnvironment();
 
     const deploy = UserWhitelist.deploy(environment, UserWhitelistBytecode, environment.accounts[0], addresses);
-    userWhiteList = await deploy.send(await deploy.estimateGas());
+    userWhiteList = await deploy.send(await deploy.prepare());
   });
 
   it('should check whether a user is whitelisted', async () => {

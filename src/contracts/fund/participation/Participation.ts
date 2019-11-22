@@ -7,6 +7,7 @@ import { Spoke } from '../hub/Spoke';
 import { applyMixins } from '../../../utils/applyMixins';
 import { toBigNumber } from '../../../utils/toBigNumber';
 import { toDate } from '../../../utils/toDate';
+import { AmguConsumer } from '../../engine/AmguConsumer';
 
 export interface Request {
   investmentAsset: Address;
@@ -106,7 +107,21 @@ export class Participation extends Contract {
   public canInvestWithAsset(asset: Address, block?: number) {
     return this.makeCall<boolean>('investAllowed', [asset], block);
   }
+
+  /**
+   * Request investment.
+   *
+   * @param from The address of the sender.
+   */
+  public requestInvestment(from: Address) {
+    const validate = async () => {
+      // Fund not shut down.
+      // Fund initialized.
+    };
+
+    return this.createTransaction({ from, method: 'triggerRewardAllFees', validate });
+  }
 }
 
-export interface Participation extends Spoke {}
-applyMixins(Participation, [Spoke]);
+export interface Participation extends Spoke, AmguConsumer {}
+applyMixins(Participation, [Spoke, AmguConsumer]);

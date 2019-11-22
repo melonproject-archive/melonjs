@@ -13,7 +13,7 @@ describe('BurnableToken', () => {
       decimals: 9,
       name: 'Burn baby burn',
     });
-    burnableToken = await deploy.send(await deploy.estimateGas());
+    burnableToken = await deploy.send(await deploy.prepare());
   });
 
   it('should return balance of the token', async () => {

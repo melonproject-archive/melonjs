@@ -19,7 +19,7 @@ describe('PolicyManager', () => {
       environment.accounts[0],
     );
 
-    const permissiveAuthority = await deployPermissiveAuthority.send(await deployPermissiveAuthority.estimateGas());
+    const permissiveAuthority = await deployPermissiveAuthority.send(await deployPermissiveAuthority.prepare());
 
     const deploy = PolicyManager.deploy(
       environment,
@@ -28,15 +28,15 @@ describe('PolicyManager', () => {
       permissiveAuthority.contract.address, // instead of hub to prevent auth problems
     );
 
-    policyManager = await deploy.send(await deploy.estimateGas());
+    policyManager = await deploy.send(await deploy.prepare());
   });
 
   it('should register a policy', async () => {
     const deploy = MaxPositions.deploy(environment, MaxPositionsBytecode, environment.accounts[0], 10);
-    const maxPositions = await deploy.send(await deploy.estimateGas());
+    const maxPositions = await deploy.send(await deploy.prepare());
 
     const tx = policyManager.registerPolicy(environment.accounts[0], '0x61346679', maxPositions.contract.address);
-    const txResult = await tx.send(await tx.estimateGas());
+    const txResult = await tx.send(await tx.prepare());
     expect(txResult.gasUsed).toBeGreaterThanOrEqual(0);
   });
 

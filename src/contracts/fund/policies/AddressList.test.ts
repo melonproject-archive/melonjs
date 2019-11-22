@@ -14,7 +14,7 @@ describe('AddressList', () => {
     environment = await createTestEnvironment();
 
     const deploy = AddressList.deploy(environment, AddressListBytecode, environment.accounts[0], addresses);
-    addressList = await deploy.send(await deploy.estimateGas());
+    addressList = await deploy.send(await deploy.prepare());
   });
 
   it('should check if an address is member of an address list', async () => {

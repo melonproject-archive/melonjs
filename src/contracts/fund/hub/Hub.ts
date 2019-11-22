@@ -193,7 +193,7 @@ export class Hub extends Contract {
    */
   public setSpokes(from: Address, spokes: HubRoutes) {
     const method = 'setSpokes';
-    const methodArgs = [
+    const args = [
       [
         spokes.accounting,
         spokes.feeManager,
@@ -218,7 +218,7 @@ export class Hub extends Contract {
       }
     };
 
-    return this.createTransaction({ from, method, methodArgs, validate });
+    return this.createTransaction({ from, method, args, validate });
   }
 
   /**

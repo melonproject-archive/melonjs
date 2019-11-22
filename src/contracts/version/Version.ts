@@ -52,7 +52,7 @@ export class Version extends Contract {
       }
     };
 
-    return this.createTransaction({ from, method: 'shutDownFund', methodArgs: [hub], validate });
+    return this.createTransaction({ from, method: 'shutDownFund', args: [hub], validate });
   }
 }
 

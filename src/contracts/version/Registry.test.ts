@@ -35,7 +35,7 @@ describe('Registry', () => {
     const [managementFeeAdress, performanceFeeAddress] = [randomAddress(), randomAddress()];
 
     const tx = await registry.registerFees(environment.accounts[0], [managementFeeAdress, performanceFeeAddress]);
-    await tx.send(await tx.estimateGas());
+    await tx.send(await tx.prepare());
 
     {
       const result = await registry.isFeeRegistered(managementFeeAdress);
@@ -50,7 +50,6 @@ describe('Registry', () => {
 
   it('should register an asset and check if it was indeed registered', async () => {
     const weth = await deployWeth(environment, environment.accounts[0]);
-
     const tx = await registry.registerAsset(environment.accounts[0], {
       address: weth.contract.address,
       name: 'Test Asset',
@@ -60,23 +59,25 @@ describe('Registry', () => {
       standards: [1, 2, 3],
       sigs: ['0000'],
     });
-    await tx.send(await tx.estimateGas());
+
+    await tx.send(await tx.prepare());
 
     const result = await registry.getAssetInformation(weth.contract.address);
     expect(result.exists).toBe(true);
   });
 
   it('should register an exchange adapter and check if it was indeed registered', async () => {
-    const exchangeAdress = randomAddress();
+    const exchangeAddress = randomAddress();
     const adapterAddress = randomAddress();
 
     const tx = await registry.registerExchangeAdapter(environment.accounts[0], {
-      exchange: exchangeAdress,
-      adapter: adapterAddress,
+      exchangeAddress,
+      adapterAddress,
       takesCustody: true,
       sigs: ['0000'],
     });
-    await tx.send(await tx.estimateGas());
+
+    await tx.send(await tx.prepare());
 
     const result = await registry.isExchangeAdapterRegistered(adapterAddress);
     expect(typeof result).toBe('boolean');
@@ -84,8 +85,8 @@ describe('Registry', () => {
 
   it('should throw ExchangeAdapterAlreadyRegisteredError', async () => {
     const tx = registry.registerExchangeAdapter('', {
-      exchange: '',
-      adapter: '',
+      exchangeAddress: '',
+      adapterAddress: '',
       takesCustody: true,
       sigs: [],
     });
@@ -108,8 +109,8 @@ describe('Registry', () => {
 
   it('should throw ExchangeAdaptersRegisteredOutOfBoundsError', async () => {
     const tx = registry.registerExchangeAdapter('', {
-      exchange: '',
-      adapter: '',
+      exchangeAddress: '',
+      adapterAddress: '',
       takesCustody: true,
       sigs: [],
     });
@@ -124,6 +125,7 @@ describe('Registry', () => {
         }),
       ),
     );
+
     jest
       .spyOn(registry, 'getRegisteredExchangeAdapters')
       .mockReturnValue(new Promise(resolve => resolve([undefined, undefined])));
@@ -207,7 +209,7 @@ describe('Registry', () => {
   it('should set and get the MLN token', async () => {
     const mlnAddress = randomAddress();
     const tx = registry.setMlnToken(environment.accounts[0], mlnAddress);
-    const txResult = await tx.send(await tx.estimateGas());
+    const txResult = await tx.send(await tx.prepare());
     expect(txResult.gasUsed).toBeGreaterThanOrEqual(0);
     expect(txResult.status).toBe(true);
 

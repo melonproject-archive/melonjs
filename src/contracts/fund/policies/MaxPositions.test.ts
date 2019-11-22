@@ -11,7 +11,7 @@ describe('MaxPositions', () => {
     environment = await createTestEnvironment();
 
     const deploy = MaxPositions.deploy(environment, MaxPositionsBytecode, environment.accounts[0], max);
-    maxPositions = await deploy.send(await deploy.estimateGas());
+    maxPositions = await deploy.send(await deploy.prepare());
   });
 
   it('should return the max number of positions', async () => {

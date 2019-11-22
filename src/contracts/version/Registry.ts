@@ -1,8 +1,8 @@
+import BigNumber from 'bignumber.js';
 import { Contract } from '../../Contract';
 import { Address } from '../../Address';
 import { RegistryAbi } from '../../abis/Registry.abi';
 import { Environment } from '../../Environment';
-import BigNumber from 'bignumber.js';
 import { utf8ToHex, hexToBytes } from 'web3-utils';
 import { ValidationError } from '../../errors/ValidationError';
 import { toBigNumber } from '../../utils/toBigNumber';
@@ -87,11 +87,15 @@ export interface AssetInformation extends AssetBaseInformation {
   exists: boolean;
 }
 
-export interface ExchangeAdapterInformation {
-  exchange: Address;
-  adapter: Address;
+export interface ExchangeInformation {
+  exists: boolean;
+  exchangeAddress: Address;
   takesCustody: boolean;
   sigs: string[];
+}
+
+interface RegisterExchangeAdapterArgs extends Omit<ExchangeInformation, 'exists'> {
+  adapterAddress: Address;
 }
 
 export class Registry extends Contract {
@@ -117,7 +121,7 @@ export class Registry extends Contract {
    * @param asset The address of the MLN token
    */
   public setMlnToken(from: Address, token: Address) {
-    return this.createTransaction({ from, method: 'setMlnToken', methodArgs: [token] });
+    return this.createTransaction({ from, method: 'setMlnToken', args: [token] });
   }
 
   public getMlnToken(block?: number) {
@@ -131,7 +135,7 @@ export class Registry extends Contract {
    * @param asset The address of the native asset
    */
   public setNativeAsset(from: Address, asset: Address) {
-    return this.createTransaction({ from, method: 'setNativeAsset', methodArgs: [asset] });
+    return this.createTransaction({ from, method: 'setNativeAsset', args: [asset] });
   }
 
   public getNativeAsset(block?: number) {
@@ -150,17 +154,17 @@ export class Registry extends Contract {
     return this.makeCall<Address[]>('getRegisteredAssets', undefined, block);
   }
 
-  public registerExchangeAdapter(from: Address, args: ExchangeAdapterInformation) {
+  public registerExchangeAdapter(from: Address, registerArgs: RegisterExchangeAdapterArgs) {
     const method = 'registerExchangeAdapter';
-    const methodArgs = [
-      args.exchange,
-      args.adapter,
-      args.takesCustody,
-      args.sigs.map(sig => hexToBytes(utf8ToHex(sig))),
+    const args = [
+      registerArgs.exchangeAddress,
+      registerArgs.adapterAddress,
+      registerArgs.takesCustody,
+      registerArgs.sigs.map(sig => hexToBytes(utf8ToHex(sig))),
     ];
 
     const validate = async () => {
-      const info = await this.getExchangeInformation(args.adapter);
+      const info = await this.getExchangeInformation(registerArgs.adapterAddress);
       if (info.exists) {
         throw new ExchangeAdapterAlreadyRegisteredError();
       }
@@ -175,7 +179,7 @@ export class Registry extends Contract {
       }
     };
 
-    return this.createTransaction({ from, method, methodArgs, validate });
+    return this.createTransaction({ from, method, args, validate });
   }
 
   public getRegisteredExchangeAdapters(block?: number) {
@@ -195,7 +199,7 @@ export class Registry extends Contract {
    */
   public registerVersion(from: Address, versionAddress: Address, name: string) {
     const method = 'registerVersion';
-    const methodArgs = [versionAddress, stringToBytes(name, 32)];
+    const args = [versionAddress, stringToBytes(name, 32)];
 
     const validate = async () => {
       const versionInformation = await this.getVersionInformation(versionAddress);
@@ -210,23 +214,23 @@ export class Registry extends Contract {
       }
     };
 
-    return this.createTransaction({ from, method, methodArgs, validate });
+    return this.createTransaction({ from, method, args, validate });
   }
 
   public getRegisteredVersions(block?: number) {
     return this.makeCall<Address[]>('getRegisteredVersions', undefined, block);
   }
 
-  public registerAsset(from: Address, args: AssetCreation) {
+  public registerAsset(from: Address, registerArgs: AssetCreation) {
     const method = 'registerAsset';
-    const methodArgs = [
-      args.address,
-      args.name,
-      args.symbol,
-      args.url,
-      args.reserveMin.toString(),
-      args.standards,
-      args.sigs.map(sig => hexToBytes(utf8ToHex(sig))),
+    const args = [
+      registerArgs.address,
+      registerArgs.name,
+      registerArgs.symbol,
+      registerArgs.url,
+      registerArgs.reserveMin.toString(),
+      registerArgs.standards,
+      registerArgs.sigs.map(sig => hexToBytes(utf8ToHex(sig))),
     ];
 
     const validate = async () => {
@@ -236,26 +240,21 @@ export class Registry extends Contract {
         throw new AssetsRegisteredOutOfBoundsError(assets.length, max.toNumber());
       }
 
-      const info = await this.getAssetInformation(args.address);
+      const info = await this.getAssetInformation(registerArgs.address);
       if (info.exists) {
         throw new AssetAlreadyRegisteredError();
       }
     };
 
-    return this.createTransaction({ from, method, methodArgs, validate });
+    return this.createTransaction({ from, method, args, validate });
   }
 
   public getAssetInformation(assetAddress: Address, block?: number) {
     return this.makeCall<AssetInformation>('assetInformation', [assetAddress], block);
   }
 
-  public getExchangeInformation(exAdapterAddress: Address, block?: number) {
-    return this.makeCall<{
-      exists: boolean;
-      exchangeAddress: Address;
-      takesCustody: boolean;
-      sigs: string[];
-    }>('exchangeInformation', [exAdapterAddress], block);
+  public getExchangeInformation(adapterAddress: Address, block?: number) {
+    return this.makeCall<ExchangeInformation>('exchangeInformation', [adapterAddress], block);
   }
 
   public getVersionInformation(versionAddress: Address, block?: number) {
@@ -274,8 +273,8 @@ export class Registry extends Contract {
 
   public registerFees(from: Address, feeAddresses: Address[]) {
     const method = 'registerFees';
-    const methodArgs = [feeAddresses];
-    return this.createTransaction({ from, method, methodArgs });
+    const args = [feeAddresses];
+    return this.createTransaction({ from, method, args });
   }
 
   public isFeeRegistered(feeAddress: Address, block?: number) {

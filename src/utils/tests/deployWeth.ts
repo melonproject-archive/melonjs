@@ -5,5 +5,5 @@ import { TestEnvironment } from './createTestEnvironment';
 
 export async function deployWeth(environment: TestEnvironment, creator: Address) {
   const deploy = Weth.deploy(environment, WETHBytecode, creator);
-  return await deploy.send(await deploy.estimateGas());
+  return await deploy.send(await deploy.prepare());
 }

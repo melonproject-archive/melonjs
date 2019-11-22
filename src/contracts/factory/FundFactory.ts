@@ -1,4 +1,4 @@
-import * as R from 'ramda';
+import { pick } from 'ramda';
 import { Contract } from '../../Contract';
 import { Environment } from '../../Environment';
 import { Address } from '../../Address';
@@ -11,6 +11,7 @@ import { isZeroAddress } from '../../utils/isZeroAddress';
 import { ValidationError } from '../../errors/ValidationError';
 import { HubRoutes } from '../fund/hub/Hub';
 import { stringToBytes } from '../../utils/tests/stringToBytes';
+import { AmguConsumer } from '../engine/AmguConsumer';
 
 export class DenominationAssetNotRegisteredError extends ValidationError {
   public readonly name = 'DenominationAssetNotRegisteredError';
@@ -120,7 +121,7 @@ export class FundFactory extends Contract {
 
   public async getManagersToRoutes(manager: Address, block?: number): Promise<HubRoutes> {
     const result = await this.makeCall<HubRoutes>('managersToRoutes', [manager], block);
-    const addresses = R.pick(
+    const addresses = pick(
       [
         'accounting',
         'engine',
@@ -161,17 +162,17 @@ export class FundFactory extends Contract {
     return this.makeCall<Settings>('managersToSettings', [manager], block);
   }
 
-  public beginSetup(from: Address, args: Settings) {
+  public beginSetup(from: Address, settings: Settings) {
     const method = 'beginSetup';
-    const methodArgs = [
-      stringToBytes(args.name, 32),
-      args.fees,
-      args.feeRates.map(rate => rate.toString()),
-      args.feePeriods.map(period => period.toString()),
-      args.exchanges,
-      args.adapters,
-      args.denominationAsset,
-      args.defaultAssets,
+    const args = [
+      stringToBytes(settings.name, 32),
+      settings.fees,
+      settings.feeRates.map(rate => rate.toString()),
+      settings.feePeriods.map(period => period.toString()),
+      settings.exchanges,
+      settings.adapters,
+      settings.denominationAsset,
+      settings.defaultAssets,
     ];
 
     const validate = async () => {
@@ -182,15 +183,16 @@ export class FundFactory extends Contract {
 
       const registryAddress = await this.getRegistry();
       const registry = new Registry(this.environment, registryAddress);
-      if (!(await registry.isAssetRegistered(args.denominationAsset))) {
+      if (!(await registry.isAssetRegistered(settings.denominationAsset))) {
         throw new DenominationAssetNotRegisteredError();
       }
     };
 
-    return this.createTransaction({ from, method, methodArgs, validate });
+    return this.createTransaction({ from, method, args, validate });
   }
 
   public createAccounting(from: Address) {
+    const amgu = (gas: number) => this.calculateAmgu(gas);
     const validate = async () => {
       this.validateFundSetupStarted(await this.getManagersToHubs(from));
 
@@ -198,10 +200,11 @@ export class FundFactory extends Contract {
       this.validateRouteAlreadyCreated(routes, 'accounting');
     };
 
-    return this.createTransaction({ from, method: 'createAccounting', validate });
+    return this.createTransaction({ from, method: 'createAccounting', validate, amgu });
   }
 
   public createFeeManager(from: Address) {
+    const amgu = (gas: number) => this.calculateAmgu(gas);
     const validate = async () => {
       this.validateFundSetupStarted(await this.getManagersToHubs(from));
 
@@ -209,10 +212,11 @@ export class FundFactory extends Contract {
       this.validateRouteAlreadyCreated(routes, 'feeManager');
     };
 
-    return this.createTransaction({ from, method: 'createFeeManager', validate });
+    return this.createTransaction({ from, method: 'createFeeManager', validate, amgu });
   }
 
   public createParticipation(from: Address) {
+    const amgu = (gas: number) => this.calculateAmgu(gas);
     const validate = async () => {
       this.validateFundSetupStarted(await this.getManagersToHubs(from));
 
@@ -220,10 +224,11 @@ export class FundFactory extends Contract {
       this.validateRouteAlreadyCreated(routes, 'participation');
     };
 
-    return this.createTransaction({ from, method: 'createParticipation', validate });
+    return this.createTransaction({ from, method: 'createParticipation', validate, amgu });
   }
 
   public createPolicyManager(from: Address) {
+    const amgu = (gas: number) => this.calculateAmgu(gas);
     const validate = async () => {
       this.validateFundSetupStarted(await this.getManagersToHubs(from));
 
@@ -231,10 +236,11 @@ export class FundFactory extends Contract {
       this.validateRouteAlreadyCreated(routes, 'policyManager');
     };
 
-    return this.createTransaction({ from, method: 'createPolicyManager', validate });
+    return this.createTransaction({ from, method: 'createPolicyManager', validate, amgu });
   }
 
   public createShares(from: Address) {
+    const amgu = (gas: number) => this.calculateAmgu(gas);
     const validate = async () => {
       this.validateFundSetupStarted(await this.getManagersToHubs(from));
 
@@ -242,10 +248,11 @@ export class FundFactory extends Contract {
       this.validateRouteAlreadyCreated(routes, 'shares');
     };
 
-    return this.createTransaction({ from, method: 'createShares', validate });
+    return this.createTransaction({ from, method: 'createShares', validate, amgu });
   }
 
   public createTrading(from: Address) {
+    const amgu = (gas: number) => this.calculateAmgu(gas);
     const validate = async () => {
       this.validateFundSetupStarted(await this.getManagersToHubs(from));
 
@@ -253,10 +260,11 @@ export class FundFactory extends Contract {
       this.validateRouteAlreadyCreated(routes, 'trading');
     };
 
-    return this.createTransaction({ from, method: 'createTrading', validate });
+    return this.createTransaction({ from, method: 'createTrading', validate, amgu });
   }
 
   public createVault(from: Address) {
+    const amgu = (gas: number) => this.calculateAmgu(gas);
     const validate = async () => {
       this.validateFundSetupStarted(await this.getManagersToHubs(from));
 
@@ -264,10 +272,11 @@ export class FundFactory extends Contract {
       this.validateRouteAlreadyCreated(routes, 'vault');
     };
 
-    return this.createTransaction({ from, method: 'createVault', validate });
+    return this.createTransaction({ from, method: 'createVault', validate, amgu });
   }
 
   public completeSetup(from: Address) {
+    const amgu = (gas: number) => this.calculateAmgu(gas);
     const validate = async () => {
       const hub = await this.getManagersToHubs(from);
       if (await this.isInstance(hub)) {
@@ -285,7 +294,7 @@ export class FundFactory extends Contract {
       });
     };
 
-    return this.createTransaction({ from, method: 'completeSetup', validate });
+    return this.createTransaction({ from, method: 'completeSetup', validate, amgu });
   }
 
   /**
@@ -358,5 +367,5 @@ export class FundFactory extends Contract {
   }
 }
 
-export interface FundFactory extends Factory {}
-applyMixins(FundFactory, [Factory]);
+export interface FundFactory extends Factory, AmguConsumer {}
+applyMixins(FundFactory, [Factory, AmguConsumer]);

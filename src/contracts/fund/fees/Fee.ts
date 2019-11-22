@@ -66,14 +66,14 @@ export class Fee extends Contract {
    */
   public initializeForUser(from: Address, fee: FeeInitializationArguments) {
     const method = 'initializeForUser';
-    const methodArgs = [fee.feeRate.toString(), fee.feePeriod, fee.denominationAsset];
+    const args = [fee.feeRate.toString(), fee.feePeriod, fee.denominationAsset];
 
     const validate = async () => {
       const lastPayoutTime = await this.getLastPayoutTime(from);
       if (!lastPayoutTime.isZero()) throw new FeeAlreadyInitializedError();
     };
 
-    return this.createTransaction({ from, method, methodArgs, validate });
+    return this.createTransaction({ from, method, args, validate });
   }
 
   /**

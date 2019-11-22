@@ -59,7 +59,7 @@ export class StandardToken extends Contract {
    */
   public transfer(from: Address, to: Address, amount: BigNumber) {
     const method = 'transfer';
-    const methodArgs = [to, amount.toString()];
+    const args = [to, amount.toString()];
 
     const validate = async () => {
       const balance = await this.getBalanceOf(from);
@@ -69,7 +69,7 @@ export class StandardToken extends Contract {
       if (isZeroAddress(to)) throw new ZeroAddressError();
     };
 
-    return this.createTransaction({ from, method, methodArgs, validate });
+    return this.createTransaction({ from, method, args, validate });
   }
 
   /**
@@ -80,8 +80,8 @@ export class StandardToken extends Contract {
    * @param amount The amount to transfer
    */
   public approve(owner: Address, spender: Address, amount: BigNumber) {
-    const methodArgs = [spender, amount.toString()];
-    return this.createTransaction({ from: owner, method: 'approve', methodArgs });
+    const args = [spender, amount.toString()];
+    return this.createTransaction({ from: owner, method: 'approve', args });
   }
 
   /**
@@ -93,8 +93,8 @@ export class StandardToken extends Contract {
    */
   public increaseApproval(owner: Address, spender: Address, amount: BigNumber) {
     const method = 'increaseApproval';
-    const methodArgs = [spender, amount.toString()];
-    return this.createTransaction({ from: owner, method, methodArgs });
+    const args = [spender, amount.toString()];
+    return this.createTransaction({ from: owner, method, args });
   }
 
   /**
@@ -106,8 +106,8 @@ export class StandardToken extends Contract {
    */
   public decreaseApproval(owner: Address, spender: Address, amount: BigNumber) {
     const method = 'decreaseApproval';
-    const methodArgs = [spender, amount.toString()];
-    return this.createTransaction({ from: owner, method, methodArgs });
+    const args = [spender, amount.toString()];
+    return this.createTransaction({ from: owner, method, args });
   }
 }
 

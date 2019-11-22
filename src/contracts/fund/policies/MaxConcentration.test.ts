@@ -12,7 +12,7 @@ describe('MaxConcentration', () => {
     environment = await createTestEnvironment();
 
     const deploy = MaxConcentration.deploy(environment, MaxConcentrationBytecode, environment.accounts[0], max);
-    maxConcentration = await deploy.send(await deploy.estimateGas());
+    maxConcentration = await deploy.send(await deploy.prepare());
   });
 
   it('should return the price tolerance', async () => {
