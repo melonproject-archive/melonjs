@@ -142,7 +142,7 @@ export class Participation extends Contract {
     investmentAmount: BigNumber,
     investmentAsset: Address,
   ) {
-    const amgu = this.calculateAmgu;
+    const amgu = this.calculateAmgu.bind(this);
     const validate = async () => {
       const initialized = await this.isInitialized();
       if (!initialized) {

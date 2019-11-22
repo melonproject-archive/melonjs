@@ -175,7 +175,7 @@ export class Accounting extends Contract {
    * @param from The address of the sender.
    */
   public triggerRewardAllFees(from: Address) {
-    const amgu = this.calculateAmgu;
+    const amgu = this.calculateAmgu.bind(this);
     return this.createTransaction({ from, method: 'triggerRewardAllFees', amgu });
   }
 }

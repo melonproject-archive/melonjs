@@ -192,7 +192,7 @@ export class FundFactory extends Contract {
   }
 
   public createAccounting(from: Address) {
-    const amgu = this.calculateAmgu;
+    const amgu = this.calculateAmgu.bind(this);
     const validate = async () => {
       this.validateFundSetupStarted(await this.getManagersToHubs(from));
 
@@ -204,7 +204,7 @@ export class FundFactory extends Contract {
   }
 
   public createFeeManager(from: Address) {
-    const amgu = this.calculateAmgu;
+    const amgu = this.calculateAmgu.bind(this);
     const validate = async () => {
       this.validateFundSetupStarted(await this.getManagersToHubs(from));
 
@@ -216,7 +216,7 @@ export class FundFactory extends Contract {
   }
 
   public createParticipation(from: Address) {
-    const amgu = this.calculateAmgu;
+    const amgu = this.calculateAmgu.bind(this);
     const validate = async () => {
       this.validateFundSetupStarted(await this.getManagersToHubs(from));
 
@@ -228,7 +228,7 @@ export class FundFactory extends Contract {
   }
 
   public createPolicyManager(from: Address) {
-    const amgu = this.calculateAmgu;
+    const amgu = this.calculateAmgu.bind(this);
     const validate = async () => {
       this.validateFundSetupStarted(await this.getManagersToHubs(from));
 
@@ -240,7 +240,7 @@ export class FundFactory extends Contract {
   }
 
   public createShares(from: Address) {
-    const amgu = this.calculateAmgu;
+    const amgu = this.calculateAmgu.bind(this);
     const validate = async () => {
       this.validateFundSetupStarted(await this.getManagersToHubs(from));
 
@@ -252,7 +252,7 @@ export class FundFactory extends Contract {
   }
 
   public createTrading(from: Address) {
-    const amgu = this.calculateAmgu;
+    const amgu = this.calculateAmgu.bind(this);
     const validate = async () => {
       this.validateFundSetupStarted(await this.getManagersToHubs(from));
 
@@ -264,7 +264,7 @@ export class FundFactory extends Contract {
   }
 
   public createVault(from: Address) {
-    const amgu = this.calculateAmgu;
+    const amgu = this.calculateAmgu.bind(this);
     const validate = async () => {
       this.validateFundSetupStarted(await this.getManagersToHubs(from));
 
@@ -276,7 +276,7 @@ export class FundFactory extends Contract {
   }
 
   public completeSetup(from: Address) {
-    const amgu = this.calculateAmgu;
+    const amgu = this.calculateAmgu.bind(this);
     const validate = async () => {
       const hub = await this.getManagersToHubs(from);
       if (await this.isInstance(hub)) {

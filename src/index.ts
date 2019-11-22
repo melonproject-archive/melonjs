@@ -1,7 +1,7 @@
 export { Contract } from './Contract';
 export { Environment, EnvironmentOptions, CacheHandler } from './Environment';
 export { Address } from './Address';
-export { Transaction, Deployment } from './Transaction';
+export { Transaction, Deployment, SendOptions, EstimateGasOptions } from './Transaction';
 
 export { ValidationError } from './errors/ValidationError';
 export { OutOfBalanceError } from './errors/OutOfBalanceError';

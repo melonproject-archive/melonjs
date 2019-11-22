@@ -64,18 +64,13 @@ export class AmguConsumer extends Contract {
       prices.getPrice(amguTokenAddress, block),
     ]);
 
-    // TODO: Calculate the AMGU.
-    console.log(amguDecimals, mlnPerAmgu, ethPerMln, gasEstimation);
+    const result = new BigNumber(1)
+      .multipliedBy(mlnPerAmgu)
+      .multipliedBy(ethPerMln.price)
+      .multipliedBy(gasEstimation)
+      .dividedBy(new BigNumber(10).exponentiatedBy(amguDecimals))
+      .decimalPlaces(0, BigNumber.ROUND_CEIL);
 
-    // return createQuantity(
-    //   'ETH',
-    //   multiply(
-    //     new BigInteger(toAtomic(ethPerMln[0])),
-    //     new BigInteger(mlnPerAmgu.quantity),
-    //     new BigInteger(gasEstimation),
-    //   ).slice(0, -18),
-    // );
-
-    return new BigNumber(0);
+    return result;
   }
 }
