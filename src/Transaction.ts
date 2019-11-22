@@ -22,6 +22,7 @@ export interface EstimateGasOptions extends Omit<EthEstimateGasOptions, 'value'>
 export class Transaction<T = TransactionReceipt> {
   constructor(
     public readonly transaction: any,
+    public readonly environment: Environment,
     public readonly from: Address,
     public readonly value?: BigNumber,
     public readonly validate: () => Promise<void> = () => Promise.resolve(),
@@ -64,7 +65,7 @@ export class Transaction<T = TransactionReceipt> {
     }
 
     const opts: EthSendOptions = {
-      ...(value && { value: value.toString() }),
+      ...(value && { value: value.toFixed() }),
       ...(from && { from }),
       ...(gas && { gas }),
       ...(options && options.gasPrice && { gasPrice: options.gasPrice }),
@@ -88,18 +89,30 @@ export class Transaction<T = TransactionReceipt> {
     return opts;
   }
 
-  public estimateGas(options?: EstimateGasOptions): Promise<number> {
-    const from: Address = (options && options.from) || this.from;
-    const value: BigNumber = (options && options.value) || this.value;
+  public async estimateGas(options?: EstimateGasOptions): Promise<number> {
     const gas = options && options.gas;
+    const from: Address = (options && options.from) || this.from;
+    let value: BigNumber = (options && options.value) || this.value;
+
+    if (this.amgu) {
+      // We don't know the amgu price at this stage yet, so we just send all
+      // available ETH for the gasEstimation. This should throw if amgu price
+      // in ETH is bigger than the available balance.
+      value = (value || new BigNumber(0)).plus(await this.environment.client.getBalance(from));
+    }
 
     const opts: EthEstimateGasOptions = {
-      ...(value && { value: value.toString() }),
+      ...(value && { value: value.toFixed() }),
       ...(from && { from }),
       ...(gas && { gas }),
     };
 
-    return this.transaction.estimateGas(opts);
+    const [estimation, block] = await Promise.all([
+      this.transaction.estimateGas(opts),
+      this.environment.client.getBlock('latest'),
+    ]);
+
+    return Math.ceil(Math.min(estimation * 1.1, block.gasLimit));
   }
 
   public calculateAmgu(gas: number) {
@@ -126,7 +139,7 @@ export class Deployment<T extends Contract> extends Transaction<T> {
     public readonly transaction: any,
     public readonly from: Address,
   ) {
-    super(transaction, from);
+    super(environment, transaction, from);
   }
 
   public send(gas?: number): PromiEvent<T>;

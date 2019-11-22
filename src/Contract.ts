@@ -44,7 +44,16 @@ export class Contract {
 
   protected createTransaction<TArgs extends any[] = any[]>(args: CreateTransactionArgs<TArgs>) {
     const fn = this.contract.methods[args.method];
-    return new Transaction(fn(...(args.args || [])), args.from, args.value, args.validate, args.amgu, args.incentive);
+
+    return new Transaction(
+      fn(...(args.args || [])),
+      this.environment,
+      args.from,
+      args.value,
+      args.validate,
+      args.amgu,
+      args.incentive,
+    );
   }
 
   protected async makeCall<TReturn = any, TArgs extends any[] = any[]>(

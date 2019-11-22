@@ -24,7 +24,7 @@ export class FeeManagerFactory extends Contract {
       deployArgs.hub,
       deployArgs.denominationAsset,
       deployArgs.fees,
-      deployArgs.rates.map(fee => fee.toString()),
+      deployArgs.rates.map(fee => fee.toFixed()),
       deployArgs.periods,
       deployArgs.registry,
     ];

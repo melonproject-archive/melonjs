@@ -168,7 +168,7 @@ export class Accounting extends Contract {
    * @param block The block number to execute the call on.
    */
   public async getShareCostInAsset(numShares: BigNumber, asset: Address, block?: number) {
-    const result = await this.makeCall<string>('getShareCostInAsset', [numShares.toString(), asset], block);
+    const result = await this.makeCall<string>('getShareCostInAsset', [numShares.toFixed(), asset], block);
     return toBigNumber(result);
   }
 
@@ -178,7 +178,7 @@ export class Accounting extends Contract {
    * @param from The address of the sender.
    */
   public triggerRewardAllFees(from: Address) {
-    const amgu = this.calculateAmgu;
+    const amgu = this.calculateAmgu.bind(this);
     return this.createTransaction({ from, method: 'triggerRewardAllFees', amgu });
   }
 }
