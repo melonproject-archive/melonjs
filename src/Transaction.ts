@@ -40,19 +40,19 @@ export class Transaction<T = TransactionReceipt> {
     const from: Address = (options && options.from) || this.from;
     let value: BigNumber = (options && options.value) || this.value;
 
-    if (this.amguFn) {
-      if (!options.amgu) {
-        throw new Error('Missing AMGU value for transaction.');
-      }
+    if (this.amguPayable && !options.amgu) {
+      throw new Error('Missing amgu for transaction.');
+    }
 
+    if (this.incentivePayable && !options.incentive) {
+      throw new Error('Missing incentive for transaction.');
+    }
+
+    if (options.amgu) {
       value = (value || new BigNumber(0)).plus(options.amgu);
     }
 
-    if (this.incentiveFn && !options.incentive) {
-      if (!options.incentive) {
-        throw new Error('Missing incentive value for transaction.');
-      }
-
+    if (options.incentive) {
       value = (value || new BigNumber(0)).plus(options.incentive);
     }
 
@@ -67,8 +67,11 @@ export class Transaction<T = TransactionReceipt> {
   }
 
   public async prepare(options?: EstimateGasOptions) {
-    const gas = (options && options.gas) || (await this.estimateGas(options));
-    const [amgu, incentive] = await Promise.all([this.calculateAmgu(gas), this.calculateIncentive(gas)]);
+    const gas = (options && options.gas) || (await this.estimate(options));
+    const [amgu, incentive] = await Promise.all([
+      this.amguPayable && this.amguFn && this.amguFn(gas),
+      this.incentivePayable && this.incentiveFn && this.incentiveFn(gas),
+    ]);
 
     const opts: SendOptions = {
       gas,
@@ -81,7 +84,7 @@ export class Transaction<T = TransactionReceipt> {
     return opts;
   }
 
-  protected async estimateGas(options?: EstimateGasOptions): Promise<number> {
+  protected async estimate(options?: EstimateGasOptions): Promise<number> {
     const gas = options && options.gas;
     const from: Address = (options && options.from) || this.from;
     let value: BigNumber = (options && options.value) || this.value;
@@ -105,14 +108,6 @@ export class Transaction<T = TransactionReceipt> {
     ]);
 
     return Math.ceil(Math.min(estimation * 1.1, block.gasLimit));
-  }
-
-  protected calculateAmgu(gas: number) {
-    return this.amguFn && this.amguFn(gas);
-  }
-
-  protected calculateIncentive(gas: number) {
-    return this.incentiveFn && this.incentiveFn(gas);
   }
 }
 
