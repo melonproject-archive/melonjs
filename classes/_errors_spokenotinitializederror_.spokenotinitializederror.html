@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Request | @melonproject/melonjs</title>
+	<title>SpokeNotInitializedError | @melonproject/melonjs</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -52,13 +52,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_contracts_fund_participation_participation_.html">&quot;contracts/fund/participation/Participation&quot;</a>
+					<a href="../modules/_errors_spokenotinitializederror_.html">&quot;errors/SpokeNotInitializedError&quot;</a>
 				</li>
 				<li>
-					<a href="_contracts_fund_participation_participation_.request.html">Request</a>
+					<a href="_errors_spokenotinitializederror_.spokenotinitializederror.html">SpokeNotInitializedError</a>
 				</li>
 			</ul>
-			<h1>Interface Request</h1>
+			<h1>Class SpokeNotInitializedError</h1>
 		</div>
 	</div>
 </header>
@@ -69,7 +69,12 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">Request</span>
+						<a href="_errors_validationerror_.validationerror.html" class="tsd-signature-type">ValidationError</a>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">SpokeNotInitializedError</span>
+							</li>
+						</ul>
 					</li>
 				</ul>
 			</section>
@@ -78,56 +83,96 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
+							<h3>Constructors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite"><a href="_errors_spokenotinitializederror_.spokenotinitializederror.html#constructor" class="tsd-kind-icon">constructor</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_fund_participation_participation_.request.html#investmentamount" class="tsd-kind-icon">investment<wbr>Amount</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_fund_participation_participation_.request.html#investmentasset" class="tsd-kind-icon">investment<wbr>Asset</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_fund_participation_participation_.request.html#requestedshares" class="tsd-kind-icon">requested<wbr>Shares</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_fund_participation_participation_.request.html#timestamp" class="tsd-kind-icon">timestamp</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_errors_spokenotinitializederror_.spokenotinitializederror.html#message" class="tsd-kind-icon">message</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite"><a href="_errors_spokenotinitializederror_.spokenotinitializederror.html#name" class="tsd-kind-icon">name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_errors_spokenotinitializederror_.spokenotinitializederror.html#spoke" class="tsd-kind-icon">spoke</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited"><a href="_errors_spokenotinitializederror_.spokenotinitializederror.html#stack" class="tsd-kind-icon">stack</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Constructors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
+					<a name="constructor" class="tsd-anchor"></a>
+					<h3>constructor</h3>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Spoke<wbr>Not<wbr>Initialized<wbr>Error<span class="tsd-signature-symbol">(</span>spoke<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a>, message<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_errors_spokenotinitializederror_.spokenotinitializederror.html" class="tsd-signature-type">SpokeNotInitializedError</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overrides <a href="_errors_validationerror_.validationerror.html">ValidationError</a>.<a href="_errors_validationerror_.validationerror.html#constructor">constructor</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/errors/SpokeNotInitializedError.ts#L5">errors/SpokeNotInitializedError.ts:5</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>spoke: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> message: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;The spoke is not initialized.&quot;</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_errors_spokenotinitializederror_.spokenotinitializederror.html" class="tsd-signature-type">SpokeNotInitializedError</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="investmentamount" class="tsd-anchor"></a>
-					<h3>investment<wbr>Amount</h3>
-					<div class="tsd-signature tsd-kind-icon">investment<wbr>Amount<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">BigNumber</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="message" class="tsd-anchor"></a>
+					<h3>message</h3>
+					<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from Error.message</p>
 						<ul>
-							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/participation/Participation.ts#L18">contracts/fund/participation/Participation.ts:18</a></li>
+							<li>Defined in /home/fubhy/Projects/New/avantgarde/melonjs/node_modules/typedoc/node_modules/typescript/lib/lib.es5.d.ts:974</li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="investmentasset" class="tsd-anchor"></a>
-					<h3>investment<wbr>Asset</h3>
-					<div class="tsd-signature tsd-kind-icon">investment<wbr>Asset<span class="tsd-signature-symbol">:</span> <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-overwrite">
+					<a name="name" class="tsd-anchor"></a>
+					<h3>name</h3>
+					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;SpokeNotInitializedError&quot;</span></div>
 					<aside class="tsd-sources">
+						<p>Overrides <a href="_errors_validationerror_.validationerror.html">ValidationError</a>.<a href="_errors_validationerror_.validationerror.html#name">name</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/participation/Participation.ts#L17">contracts/fund/participation/Participation.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/errors/SpokeNotInitializedError.ts#L5">errors/SpokeNotInitializedError.ts:5</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="requestedshares" class="tsd-anchor"></a>
-					<h3>requested<wbr>Shares</h3>
-					<div class="tsd-signature tsd-kind-icon">requested<wbr>Shares<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">BigNumber</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="spoke" class="tsd-anchor"></a>
+					<h3>spoke</h3>
+					<div class="tsd-signature tsd-kind-icon">spoke<span class="tsd-signature-symbol">:</span> <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/participation/Participation.ts#L19">contracts/fund/participation/Participation.ts:19</a></li>
+							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/errors/SpokeNotInitializedError.ts#L7">errors/SpokeNotInitializedError.ts:7</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="timestamp" class="tsd-anchor"></a>
-					<h3>timestamp</h3>
-					<div class="tsd-signature tsd-kind-icon">timestamp<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Date</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited">
+					<a name="stack" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> stack</h3>
+					<div class="tsd-signature tsd-kind-icon">stack<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from Error.stack</p>
+						<p>Overrides Error.stack</p>
 						<ul>
-							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/participation/Participation.ts#L20">contracts/fund/participation/Participation.ts:20</a></li>
+							<li>Defined in /home/fubhy/Projects/New/avantgarde/melonjs/node_modules/typedoc/node_modules/typescript/lib/lib.es5.d.ts:975</li>
 						</ul>
 					</aside>
 				</section>
@@ -140,40 +185,31 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="../modules/_contracts_fund_participation_participation_.html">"contracts/fund/participation/<wbr>Participation"</a>
+						<a href="../modules/_errors_spokenotinitializederror_.html">"errors/<wbr>Spoke<wbr>Not<wbr>Initialized<wbr>Error"</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/_contracts_fund_participation_participation_.investmentassetnotallowederror.html" class="tsd-kind-icon">Investment<wbr>Asset<wbr>Not<wbr>Allowed<wbr>Error</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/_contracts_fund_participation_participation_.investmentrequestexistserror.html" class="tsd-kind-icon">Investment<wbr>Request<wbr>Exists<wbr>Error</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/_contracts_fund_participation_participation_.participation.html" class="tsd-kind-icon">Participation</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_contracts_fund_participation_participation_.participationdeployarguments.html" class="tsd-kind-icon">Participation<wbr>Deploy<wbr>Arguments</a>
-					</li>
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_contracts_fund_participation_participation_.request.html" class="tsd-kind-icon">Request</a>
+					<li class="current tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_errors_spokenotinitializederror_.spokenotinitializederror.html" class="tsd-kind-icon">Spoke<wbr>Not<wbr>Initialized<wbr>Error</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_contracts_fund_participation_participation_.request.html#investmentamount" class="tsd-kind-icon">investment<wbr>Amount</a>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
+								<a href="_errors_spokenotinitializederror_.spokenotinitializederror.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_contracts_fund_participation_participation_.request.html#investmentasset" class="tsd-kind-icon">investment<wbr>Asset</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="_errors_spokenotinitializederror_.spokenotinitializederror.html#message" class="tsd-kind-icon">message</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_contracts_fund_participation_participation_.request.html#requestedshares" class="tsd-kind-icon">requested<wbr>Shares</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite">
+								<a href="_errors_spokenotinitializederror_.spokenotinitializederror.html#name" class="tsd-kind-icon">name</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_contracts_fund_participation_participation_.request.html#timestamp" class="tsd-kind-icon">timestamp</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_errors_spokenotinitializederror_.spokenotinitializederror.html#spoke" class="tsd-kind-icon">spoke</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited">
+								<a href="_errors_spokenotinitializederror_.spokenotinitializederror.html#stack" class="tsd-kind-icon">stack</a>
 							</li>
 						</ul>
 					</li>

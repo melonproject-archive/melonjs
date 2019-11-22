@@ -75,7 +75,13 @@
 								<span class="target">AmguConsumer</span>
 								<ul class="tsd-hierarchy">
 									<li>
+										<a href="_contracts_factory_fundfactory_.fundfactory.html" class="tsd-signature-type">FundFactory</a>
+									</li>
+									<li>
 										<a href="_contracts_fund_accounting_accounting_.accounting.html" class="tsd-signature-type">Accounting</a>
+									</li>
+									<li>
+										<a href="_contracts_fund_participation_participation_.participation.html" class="tsd-signature-type">Participation</a>
 									</li>
 								</ul>
 							</li>
@@ -104,6 +110,7 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="_contracts_engine_amguconsumer_.amguconsumer.html#calculateamgu" class="tsd-kind-icon">calculate<wbr>Amgu</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-protected"><a href="_contracts_engine_amguconsumer_.amguconsumer.html#createtransaction" class="tsd-kind-icon">create<wbr>Transaction</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_engine_amguconsumer_.amguconsumer.html#getamgutoken" class="tsd-kind-icon">get<wbr>Amgu<wbr>Token</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_engine_amguconsumer_.amguconsumer.html#getengine" class="tsd-kind-icon">get<wbr>Engine</a></li>
@@ -131,7 +138,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_contract_.contract.html">Contract</a>.<a href="_contract_.contract.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Contract.ts#L17">Contract.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Contract.ts#L20">Contract.ts:20</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -149,7 +156,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_contract_.contract.html">Contract</a>.<a href="_contract_.contract.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Contract.ts#L19">Contract.ts:19</a></li>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Contract.ts#L22">Contract.ts:22</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -167,7 +174,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_contract_.contract.html">Contract</a>.<a href="_contract_.contract.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Contract.ts#L20">Contract.ts:20</a></li>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Contract.ts#L23">Contract.ts:23</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -193,7 +200,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_contract_.contract.html">Contract</a>.<a href="_contract_.contract.html#contract">contract</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Contract.ts#L17">Contract.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Contract.ts#L20">Contract.ts:20</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -204,7 +211,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_contract_.contract.html">Contract</a>.<a href="_contract_.contract.html#environment">environment</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Contract.ts#L22">Contract.ts:22</a></li>
+							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Contract.ts#L25">Contract.ts:25</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -215,13 +222,39 @@
 					<aside class="tsd-sources">
 						<p>Overrides <a href="_contract_.contract.html">Contract</a>.<a href="_contract_.contract.html#abi">abi</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/engine/AmguConsumer.ts#L6">contracts/engine/AmguConsumer.ts:6</a></li>
+							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/engine/AmguConsumer.ts#L10">contracts/engine/AmguConsumer.ts:10</a></li>
 						</ul>
 					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+					<a name="calculateamgu" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> calculate<wbr>Amgu</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">calculate<wbr>Amgu<span class="tsd-signature-symbol">(</span>gasEstimation<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, block<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/engine/AmguConsumer.ts#L48">contracts/engine/AmguConsumer.ts:48</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>gasEstimation: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> block: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-protected">
 					<a name="createtransaction" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagProtected">Protected</span> create<wbr>Transaction</h3>
@@ -233,7 +266,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_contract_.contract.html">Contract</a>.<a href="_contract_.contract.html#createtransaction">createTransaction</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Contract.ts#L42">Contract.ts:42</a></li>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Contract.ts#L45">Contract.ts:45</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -262,7 +295,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/engine/AmguConsumer.ts#L13">contracts/engine/AmguConsumer.ts:13</a></li>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/engine/AmguConsumer.ts#L17">contracts/engine/AmguConsumer.ts:17</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -293,7 +326,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/engine/AmguConsumer.ts#L22">contracts/engine/AmguConsumer.ts:22</a></li>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/engine/AmguConsumer.ts#L26">contracts/engine/AmguConsumer.ts:26</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -324,7 +357,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/engine/AmguConsumer.ts#L31">contracts/engine/AmguConsumer.ts:31</a></li>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/engine/AmguConsumer.ts#L35">contracts/engine/AmguConsumer.ts:35</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -355,7 +388,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/engine/AmguConsumer.ts#L40">contracts/engine/AmguConsumer.ts:40</a></li>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/engine/AmguConsumer.ts#L44">contracts/engine/AmguConsumer.ts:44</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -387,7 +420,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_contract_.contract.html">Contract</a>.<a href="_contract_.contract.html#makecall">makeCall</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Contract.ts#L48">Contract.ts:48</a></li>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Contract.ts#L59">Contract.ts:59</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -426,7 +459,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_contract_.contract.html">Contract</a>.<a href="_contract_.contract.html#createdeployment">createDeployment</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Contract.ts#L27">Contract.ts:27</a></li>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Contract.ts#L30">Contract.ts:30</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -488,6 +521,9 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-static">
 								<a href="_contracts_engine_amguconsumer_.amguconsumer.html#abi" class="tsd-kind-icon">abi</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
+								<a href="_contracts_engine_amguconsumer_.amguconsumer.html#calculateamgu" class="tsd-kind-icon">calculate<wbr>Amgu</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-protected">
 								<a href="_contracts_engine_amguconsumer_.amguconsumer.html#createtransaction" class="tsd-kind-icon">create<wbr>Transaction</a>
