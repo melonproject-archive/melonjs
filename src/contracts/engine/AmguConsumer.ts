@@ -45,6 +45,12 @@ export class AmguConsumer extends Contract {
     return this.makeCall<Address>('version', undefined, block);
   }
 
+  /**
+   * Calculates the required AMGU value for a transaction.
+   *
+   * @param gasEstimation The gas estimation value.
+   * @param block The block number to execute the call on.
+   */
   protected async calculateAmgu(gasEstimation: number, block?: number) {
     const [amguTokenAddress, engineAddress, priceSourceAddress] = await Promise.all([
       this.getAmguToken(block),

@@ -20,35 +20,27 @@ export interface EstimateGasOptions extends Omit<EthEstimateGasOptions, 'value'>
 }
 
 export class Transaction<T = TransactionReceipt> {
+  public readonly amguPayable: boolean = false;
+  public readonly incentivePayable: boolean = false;
+
   constructor(
     public readonly transaction: any,
     public readonly environment: Environment,
     public readonly from: Address,
     public readonly value?: BigNumber,
     public readonly validate: () => Promise<void> = () => Promise.resolve(),
-    protected readonly amgu?: (gas: number) => Promise<BigNumber>,
-    protected readonly incentive?: (gas: number) => Promise<BigNumber>,
-  ) {}
+    protected readonly amguFn?: (gas: number) => Promise<BigNumber>,
+    protected readonly incentiveFn?: (gas: number) => Promise<BigNumber>,
+  ) {
+    this.amguPayable = !!amguFn;
+    this.incentivePayable = !!incentiveFn;
+  }
 
-  public send(gas?: number): PromiEvent<T>;
-  public send(options?: SendOptions): PromiEvent<T>;
-  public send(options?: any) {
-    const gas: number = (() => {
-      if (typeof options === 'object' && options.gas) {
-        return options.gas;
-      }
-
-      if (!isNaN(options) && isFinite(options)) {
-        return options;
-      }
-
-      return undefined;
-    })();
-
+  public send(options?: SendOptions): PromiEvent<T> {
     const from: Address = (options && options.from) || this.from;
     let value: BigNumber = (options && options.value) || this.value;
 
-    if (this.amgu) {
+    if (this.amguFn) {
       if (!options.amgu) {
         throw new Error('Missing AMGU value for transaction.');
       }
@@ -56,7 +48,7 @@ export class Transaction<T = TransactionReceipt> {
       value = (value || new BigNumber(0)).plus(options.amgu);
     }
 
-    if (this.incentive && !options.incentive) {
+    if (this.incentiveFn && !options.incentive) {
       if (!options.incentive) {
         throw new Error('Missing incentive value for transaction.');
       }
@@ -67,7 +59,7 @@ export class Transaction<T = TransactionReceipt> {
     const opts: EthSendOptions = {
       ...(value && { value: value.toFixed() }),
       ...(from && { from }),
-      ...(gas && { gas }),
+      ...(options && options.gas && { gas: options.gas }),
       ...(options && options.gasPrice && { gasPrice: options.gasPrice }),
     };
 
@@ -75,7 +67,7 @@ export class Transaction<T = TransactionReceipt> {
   }
 
   public async prepare(options?: EstimateGasOptions) {
-    const gas = await this.estimateGas(options);
+    const gas = (options && options.gas) || (await this.estimateGas(options));
     const [amgu, incentive] = await Promise.all([this.calculateAmgu(gas), this.calculateIncentive(gas)]);
 
     const opts: SendOptions = {
@@ -94,7 +86,7 @@ export class Transaction<T = TransactionReceipt> {
     const from: Address = (options && options.from) || this.from;
     let value: BigNumber = (options && options.value) || this.value;
 
-    if (this.amgu) {
+    if (this.amguFn) {
       // We don't know the amgu price at this stage yet, so we just send all
       // available ETH for the gasEstimation. This should throw if amgu price
       // in ETH is bigger than the available balance.
@@ -116,11 +108,11 @@ export class Transaction<T = TransactionReceipt> {
   }
 
   protected calculateAmgu(gas: number) {
-    return this.amgu && this.amgu(gas);
+    return this.amguFn && this.amguFn(gas);
   }
 
   protected calculateIncentive(gas: number) {
-    return this.incentive && this.incentive(gas);
+    return this.incentiveFn && this.incentiveFn(gas);
   }
 }
 
