@@ -80,8 +80,8 @@ export class Transaction<T = TransactionReceipt> {
 
     const opts: SendOptions = {
       gas,
-      amgu,
-      incentive,
+      ...(amgu && { amgu }),
+      ...(incentive && { incentive }),
       ...(options && options.value && { value: options.value }),
       ...(options && options.from && { from: options.from }),
     };
@@ -89,7 +89,7 @@ export class Transaction<T = TransactionReceipt> {
     return opts;
   }
 
-  public async estimateGas(options?: EstimateGasOptions): Promise<number> {
+  protected async estimateGas(options?: EstimateGasOptions): Promise<number> {
     const gas = options && options.gas;
     const from: Address = (options && options.from) || this.from;
     let value: BigNumber = (options && options.value) || this.value;
@@ -98,7 +98,7 @@ export class Transaction<T = TransactionReceipt> {
       // We don't know the amgu price at this stage yet, so we just send all
       // available ETH for the gasEstimation. This should throw if amgu price
       // in ETH is bigger than the available balance.
-      value = (value || new BigNumber(0)).plus(await this.environment.client.getBalance(from));
+      value = new BigNumber(await this.environment.client.getBalance(from));
     }
 
     const opts: EthEstimateGasOptions = {
@@ -115,20 +115,12 @@ export class Transaction<T = TransactionReceipt> {
     return Math.ceil(Math.min(estimation * 1.1, block.gasLimit));
   }
 
-  public calculateAmgu(gas: number) {
-    if (!this.amgu) {
-      return Promise.resolve(new BigNumber(0));
-    }
-
-    return this.amgu(gas);
+  protected calculateAmgu(gas: number) {
+    return this.amgu && this.amgu(gas);
   }
 
-  public calculateIncentive(gas: number) {
-    if (!this.incentive) {
-      return Promise.resolve(new BigNumber(0));
-    }
-
-    return this.incentive(gas);
+  protected calculateIncentive(gas: number) {
+    return this.incentive && this.incentive(gas);
   }
 }
 

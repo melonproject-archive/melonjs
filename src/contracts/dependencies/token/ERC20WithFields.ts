@@ -50,7 +50,7 @@ export class ERC20WithFields extends Contract {
    * @param block The block number to execute the call on.
    */
   public getName(block?: number) {
-    return this.makeCall('name', undefined, block);
+    return this.makeCall<string>('name', undefined, block);
   }
 
   /**
@@ -59,7 +59,7 @@ export class ERC20WithFields extends Contract {
    * @param block The block number to execute the call on.
    */
   public getSymbol(block?: number) {
-    return this.makeCall('symbol', undefined, block);
+    return this.makeCall<string>('symbol', undefined, block);
   }
 
   /**
@@ -68,6 +68,6 @@ export class ERC20WithFields extends Contract {
    * @param block The block number to execute the call on.
    */
   public getDecimals(block?: number) {
-    return this.makeCall('decimals', undefined, block);
+    return this.makeCall<number>('decimals', undefined, block);
   }
 }
