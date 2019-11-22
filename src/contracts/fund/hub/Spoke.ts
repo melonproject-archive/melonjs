@@ -57,12 +57,21 @@ export class Spoke extends Contract {
   }
 
   /**
-   * Gets the address of the hub
+   * Gets the address of the hub.
    *
    * @param block The block number to execute the call on.
    */
   public getHub(block?: number) {
     return this.makeCall<string>('hub', undefined, block);
+  }
+
+  /**
+   * Checks if the contract is initialized.
+   *
+   * @param block The block number to execute the call on.
+   */
+  public isInitialized(block?: number) {
+    return this.makeCall<string>('initialized', undefined, block);
   }
 
   /**

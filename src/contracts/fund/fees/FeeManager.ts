@@ -119,9 +119,7 @@ export class FeeManager extends Contract {
    * @param from The address of the sender
    */
   public rewardManagementFee(from: Address) {
-    const validate = async () => {};
-
-    return this.createTransaction({ from, method: 'rewardManagementFee', validate });
+    return this.createTransaction({ from, method: 'rewardManagementFee' });
   }
 }
 

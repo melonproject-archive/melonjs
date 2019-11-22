@@ -94,7 +94,7 @@ export interface ExchangeInformation {
   sigs: string[];
 }
 
-interface RegisterExchangeAdapterArgs extends Omit<ExchangeInformation, 'exists'> {
+export interface RegisterExchangeAdapterArgs extends Omit<ExchangeInformation, 'exists'> {
   adapterAddress: Address;
 }
 

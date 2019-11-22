@@ -64,7 +64,7 @@ export class Transaction<T = TransactionReceipt> {
     }
 
     const opts: EthSendOptions = {
-      ...(value && { value: value.valueOf() }),
+      ...(value && { value: value.toString() }),
       ...(from && { from }),
       ...(gas && { gas }),
       ...(options && options.gasPrice && { gasPrice: options.gasPrice }),
@@ -94,7 +94,7 @@ export class Transaction<T = TransactionReceipt> {
     const gas = options && options.gas;
 
     const opts: EthEstimateGasOptions = {
-      ...(value && { value: value.valueOf() }),
+      ...(value && { value: value.toString() }),
       ...(from && { from }),
       ...(gas && { gas }),
     };

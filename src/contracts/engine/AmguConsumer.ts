@@ -56,16 +56,16 @@ export class AmguConsumer extends Contract {
     // on the interface for cases like this?
     const prices = new CanonicalPriceFeed(this.environment, priceSourceAddress);
     const engine = new Engine(this.environment, engineAddress);
-    const token = new ERC20WithFields(this.environment, amguTokenAddress);
+    const amgu = new ERC20WithFields(this.environment, amguTokenAddress);
 
-    const [mlnPerAmgu, ethPerMln, decimals] = await Promise.all([
+    const [amguDecimals, mlnPerAmgu, ethPerMln] = await Promise.all([
+      amgu.getDecimals(block),
       engine.getAmguPrice(block),
       prices.getPrice(amguTokenAddress, block),
-      token.getDecimals(),
     ]);
 
     // TODO: Calculate the AMGU.
-    console.log(mlnPerAmgu, ethPerMln, decimals, gasEstimation);
+    console.log(amguDecimals, mlnPerAmgu, ethPerMln, gasEstimation);
 
     // return createQuantity(
     //   'ETH',
