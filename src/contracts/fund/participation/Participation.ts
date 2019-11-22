@@ -164,7 +164,7 @@ export class Participation extends Contract {
       }
     };
 
-    const args = [sharesAmount.toString(), investmentAmount.toString(), investmentAsset];
+    const args = [sharesAmount.toFixed(), investmentAmount.toFixed(), investmentAsset];
     return this.createTransaction({ from, method: 'requestInvestment', args, validate, amgu });
   }
 }

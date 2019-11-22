@@ -59,7 +59,7 @@ export class StandardToken extends Contract {
    */
   public transfer(from: Address, to: Address, amount: BigNumber) {
     const method = 'transfer';
-    const args = [to, amount.toString()];
+    const args = [to, amount.toFixed()];
 
     const validate = async () => {
       const balance = await this.getBalanceOf(from);
@@ -80,7 +80,7 @@ export class StandardToken extends Contract {
    * @param amount The amount to transfer
    */
   public approve(owner: Address, spender: Address, amount: BigNumber) {
-    const args = [spender, amount.toString()];
+    const args = [spender, amount.toFixed()];
     return this.createTransaction({ from: owner, method: 'approve', args });
   }
 
@@ -93,7 +93,7 @@ export class StandardToken extends Contract {
    */
   public increaseApproval(owner: Address, spender: Address, amount: BigNumber) {
     const method = 'increaseApproval';
-    const args = [spender, amount.toString()];
+    const args = [spender, amount.toFixed()];
     return this.createTransaction({ from: owner, method, args });
   }
 
@@ -106,7 +106,7 @@ export class StandardToken extends Contract {
    */
   public decreaseApproval(owner: Address, spender: Address, amount: BigNumber) {
     const method = 'decreaseApproval';
-    const args = [spender, amount.toString()];
+    const args = [spender, amount.toFixed()];
     return this.createTransaction({ from: owner, method, args });
   }
 }

@@ -167,8 +167,8 @@ export class FundFactory extends Contract {
     const args = [
       stringToBytes(settings.name, 32),
       settings.fees,
-      settings.feeRates.map(rate => rate.toString()),
-      settings.feePeriods.map(period => period.toString()),
+      settings.feeRates.map(rate => rate.toFixed()),
+      settings.feePeriods.map(period => period.toFixed()),
       settings.exchanges,
       settings.adapters,
       settings.denominationAsset,

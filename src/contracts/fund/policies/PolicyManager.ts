@@ -110,7 +110,7 @@ export class PolicyManager extends Contract {
     );
 
     const policyAddresses = retrievedPolicies.map(policy => {
-      return [...policy.pre, ...policy.post].map(address => address.toString());
+      return [...policy.pre, ...policy.post];
     });
 
     const uniquePolicyAddresses = policyAddresses.reduce((carry, current) => {
