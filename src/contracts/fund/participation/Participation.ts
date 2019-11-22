@@ -143,6 +143,8 @@ export class Participation extends Contract {
     investmentAsset: Address,
   ) {
     const amgu = this.calculateAmgu.bind(this);
+    const incentive = () => Promise.resolve(new BigNumber(10).exponentiatedBy(16));
+
     const validate = async () => {
       const initialized = await this.isInitialized();
       if (!initialized) {
@@ -165,7 +167,7 @@ export class Participation extends Contract {
     };
 
     const args = [sharesAmount.toFixed(), investmentAmount.toFixed(), investmentAsset];
-    return this.createTransaction({ from, method: 'requestInvestment', args, validate, amgu });
+    return this.createTransaction({ from, method: 'requestInvestment', args, validate, amgu, incentive });
   }
 }
 

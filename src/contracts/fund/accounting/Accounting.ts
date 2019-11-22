@@ -18,8 +18,9 @@ export interface FundCalculations {
   gavPerShareNetManagementFee: BigNumber;
 }
 
-export type FundHoldings = {
-  [key: string]: BigNumber;
+export type FundHolding = {
+  address: Address;
+  amount: BigNumber;
 };
 
 export interface AccountingDeployArguments {
@@ -94,9 +95,9 @@ export class Accounting extends Contract {
     }>('getFundHoldings', undefined, block);
 
     const output = assets.reduce((carry, key, index) => {
-      const quantity = toBigNumber(quantities[index]);
-      return { ...carry, [key]: quantity };
-    }, {}) as FundHoldings;
+      const amount = toBigNumber(quantities[index]);
+      return [...carry, { address: key, amount }];
+    }, []) as FundHolding[];
 
     return output;
   }
