@@ -100,16 +100,24 @@ describe('Accounting', () => {
   });
 
   it('should return an array of fund asset holding', async () => {
-    jest.spyOn(accounting, 'getFundHoldings').mockResolvedValue([{ address: '0x1', amount: new BigNumber('11') }]);
+    jest.spyOn(accounting, 'getFundHoldings').mockResolvedValue([
+      {
+        address: '0x0',
+        amount: new BigNumber('10'),
+      },
+      {
+        address: '0x1',
+        amount: new BigNumber('11'),
+      },
+    ]);
 
     const result = await accounting.getFundHoldings();
-
     expect(result.length).toBeGreaterThan(0);
 
-    result.forEach(holding => {
-      expect(holding.address.startsWith('0x')).toBe(true);
-      expect(holding.amount).toBeInstanceOf(BigNumber);
-      expect(holding.amount.isGreaterThanOrEqualTo(0));
+    result.forEach(item => {
+      expect(item.address.startsWith('0x')).toBe(true);
+      expect(item.amount).toBeInstanceOf(BigNumber);
+      expect(item.amount.isGreaterThanOrEqualTo(0)).toBe(true);
     });
   });
 });

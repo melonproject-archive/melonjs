@@ -94,12 +94,10 @@ export class Accounting extends Contract {
       '1': string[];
     }>('getFundHoldings', undefined, block);
 
-    const output = assets.map((asset, index) => {
-      return {
-        address: asset,
-        amount: toBigNumber(quantities[index]),
-      };
-    });
+    const output = assets.reduce((carry, key, index) => {
+      const amount = toBigNumber(quantities[index]);
+      return [...carry, { address: key, amount }];
+    }, []) as FundHolding[];
 
     return output;
   }

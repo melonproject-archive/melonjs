@@ -3,6 +3,7 @@ export { Environment, EnvironmentOptions, CacheHandler } from './Environment';
 export { Address } from './Address';
 export { Transaction, Deployment, SendOptions, EstimateGasOptions } from './Transaction';
 
+export { CallError } from './errors/CallError';
 export { ValidationError } from './errors/ValidationError';
 export { OutOfBalanceError } from './errors/OutOfBalanceError';
 export { ZeroAddressError } from './errors/ZeroAddressError';
@@ -14,7 +15,7 @@ export { AccountingFactory } from './contracts/fund/accounting/AccountingFactory
 export { AddressList } from './contracts/fund/policies/AddressList';
 export { AssetBlacklist } from './contracts/fund/policies/AssetBlacklist';
 export { AssetWhitelist } from './contracts/fund/policies/AssetWhitelist';
-export { CanonicalPriceFeed, PricesInfo } from './contracts/prices/CanonicalPriceFeed';
+export { CanonicalPriceFeed, PricesInfo, InvalidPriceError } from './contracts/prices/CanonicalPriceFeed';
 export { Engine, EngineDeployArguments } from './contracts/engine/Engine';
 export { ERC20WithFields } from './contracts/dependencies/token/ERC20WithFields';
 export { Factory } from './contracts/factory/Factory';
