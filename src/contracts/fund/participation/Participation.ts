@@ -135,6 +135,9 @@ export class Participation extends Contract {
    * Request investment.
    *
    * @param from The address of the sender.
+   * @param sharesAmount The number of shares requested
+   * @param investmentAmount The amount to be invested
+   * @param investmentAsset The address of the investment asset
    */
   public requestInvestment(
     from: Address,
@@ -168,6 +171,28 @@ export class Participation extends Contract {
 
     const args = [sharesAmount.toFixed(), investmentAmount.toFixed(), investmentAsset];
     return this.createTransaction({ from, method: 'requestInvestment', args, validate, amgu, incentive });
+  }
+
+  /**
+   * Execute investment request for
+   *
+   * @param from The address of the sender.
+   * @param forWhom The address of the investor
+   */
+  public executeRequestFor(from: Address, forWhom: Address) {
+    const amgu = this.calculateAmgu.bind(this);
+    const incentive = () => Promise.resolve(new BigNumber(10).exponentiatedBy(16));
+
+    const validate = async () => {};
+
+    return this.createTransaction({
+      from,
+      method: 'executeRequestFor',
+      args: [forWhom],
+      validate,
+      amgu,
+      incentive,
+    });
   }
 }
 
