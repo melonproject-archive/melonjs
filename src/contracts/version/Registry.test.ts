@@ -216,4 +216,9 @@ describe('Registry', () => {
     const result = await registry.getMlnToken();
     expect(sameAddress(result, mlnAddress)).toBe(true);
   });
+
+  it('should get the incentive amount', async () => {
+    const result = await registry.getIncentive();
+    expect(result.isEqualTo(new BigNumber('1e16'))).toBe(true);
+  });
 });

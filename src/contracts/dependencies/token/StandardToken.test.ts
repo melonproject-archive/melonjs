@@ -45,4 +45,13 @@ describe('StandardToken', () => {
 
     await expect(tx.validate()).rejects.toThrowError(ZeroAddressError);
   });
+
+  it('should increase the approval for an account', async () => {
+    const amount = new BigNumber(1);
+    const spender = randomAddress();
+
+    const tx = standardToken.increaseApproval(environment.accounts[0], spender, amount);
+    const result = await tx.send(await tx.prepare());
+    expect(result.status).toBe(true);
+  });
 });
