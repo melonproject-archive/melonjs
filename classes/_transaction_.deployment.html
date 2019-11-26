@@ -114,9 +114,7 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_transaction_.deployment.html#calculateamgu" class="tsd-kind-icon">calculate<wbr>Amgu</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_transaction_.deployment.html#calculateincentive" class="tsd-kind-icon">calculate<wbr>Incentive</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_transaction_.deployment.html#estimategas" class="tsd-kind-icon">estimate<wbr>Gas</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_transaction_.deployment.html#estimate" class="tsd-kind-icon">estimate</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_transaction_.deployment.html#prepare" class="tsd-kind-icon">prepare</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="_transaction_.deployment.html#send" class="tsd-kind-icon">send</a></li>
 							</ul>
@@ -137,7 +135,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_transaction_.transaction.html">Transaction</a>.<a href="_transaction_.transaction.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Transaction.ts#L119">Transaction.ts:119</a></li>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Transaction.ts#L114">Transaction.ts:114</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -211,7 +209,7 @@
 					<div class="tsd-signature tsd-kind-icon">clazz<span class="tsd-signature-symbol">:</span> <a href="_contract_.contract.html" class="tsd-signature-type">Contract</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Transaction.ts#L121">Transaction.ts:121</a></li>
+							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Transaction.ts#L116">Transaction.ts:116</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -222,7 +220,7 @@
 					<aside class="tsd-sources">
 						<p>Overrides <a href="_transaction_.transaction.html">Transaction</a>.<a href="_transaction_.transaction.html#environment">environment</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Transaction.ts#L122">Transaction.ts:122</a></li>
+							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Transaction.ts#L117">Transaction.ts:117</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -233,7 +231,7 @@
 					<aside class="tsd-sources">
 						<p>Overrides <a href="_transaction_.transaction.html">Transaction</a>.<a href="_transaction_.transaction.html#from">from</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Transaction.ts#L124">Transaction.ts:124</a></li>
+							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Transaction.ts#L119">Transaction.ts:119</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -287,7 +285,7 @@
 					<aside class="tsd-sources">
 						<p>Overrides <a href="_transaction_.transaction.html">Transaction</a>.<a href="_transaction_.transaction.html#transaction">transaction</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Transaction.ts#L123">Transaction.ts:123</a></li>
+							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Transaction.ts#L118">Transaction.ts:118</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -332,65 +330,17 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
-					<a name="calculateamgu" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagProtected">Protected</span> calculate<wbr>Amgu</h3>
+					<a name="estimate" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> estimate</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
-						<li class="tsd-signature tsd-kind-icon">calculate<wbr>Amgu<span class="tsd-signature-symbol">(</span>gas<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">estimate<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_transaction_.estimategasoptions.html" class="tsd-signature-type">EstimateGasOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="_transaction_.transaction.html">Transaction</a>.<a href="_transaction_.transaction.html#calculateamgu">calculateAmgu</a></p>
+								<p>Inherited from <a href="_transaction_.transaction.html">Transaction</a>.<a href="_transaction_.transaction.html#estimate">estimate</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Transaction.ts#L110">Transaction.ts:110</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>gas: <span class="tsd-signature-type">number</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
-					<a name="calculateincentive" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagProtected">Protected</span> calculate<wbr>Incentive</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
-						<li class="tsd-signature tsd-kind-icon">calculate<wbr>Incentive<span class="tsd-signature-symbol">(</span>gas<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<p>Inherited from <a href="_transaction_.transaction.html">Transaction</a>.<a href="_transaction_.transaction.html#calculateincentive">calculateIncentive</a></p>
-								<ul>
-									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Transaction.ts#L114">Transaction.ts:114</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>gas: <span class="tsd-signature-type">number</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
-					<a name="estimategas" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagProtected">Protected</span> estimate<wbr>Gas</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
-						<li class="tsd-signature tsd-kind-icon">estimate<wbr>Gas<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_transaction_.estimategasoptions.html" class="tsd-signature-type">EstimateGasOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<p>Inherited from <a href="_transaction_.transaction.html">Transaction</a>.<a href="_transaction_.transaction.html#estimategas">estimateGas</a></p>
-								<ul>
-									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Transaction.ts#L84">Transaction.ts:84</a></li>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Transaction.ts#L87">Transaction.ts:87</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -439,7 +389,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_transaction_.transaction.html">Transaction</a>.<a href="_transaction_.transaction.html#send">send</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Transaction.ts#L129">Transaction.ts:129</a></li>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Transaction.ts#L124">Transaction.ts:124</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -454,7 +404,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_transaction_.transaction.html">Transaction</a>.<a href="_transaction_.transaction.html#send">send</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Transaction.ts#L130">Transaction.ts:130</a></li>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/Transaction.ts#L125">Transaction.ts:125</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -521,13 +471,7 @@
 								<a href="_transaction_.deployment.html#value" class="tsd-kind-icon">value</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
-								<a href="_transaction_.deployment.html#calculateamgu" class="tsd-kind-icon">calculate<wbr>Amgu</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
-								<a href="_transaction_.deployment.html#calculateincentive" class="tsd-kind-icon">calculate<wbr>Incentive</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
-								<a href="_transaction_.deployment.html#estimategas" class="tsd-kind-icon">estimate<wbr>Gas</a>
+								<a href="_transaction_.deployment.html#estimate" class="tsd-kind-icon">estimate</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 								<a href="_transaction_.deployment.html#prepare" class="tsd-kind-icon">prepare</a>
