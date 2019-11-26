@@ -181,7 +181,6 @@ export class Participation extends Contract {
    */
   public executeRequestFor(from: Address, forWhom: Address) {
     const amgu = this.calculateAmgu.bind(this);
-    const incentive = () => Promise.resolve(new BigNumber(10).exponentiatedBy(16));
 
     const validate = async () => {};
 
@@ -191,7 +190,25 @@ export class Participation extends Contract {
       args: [forWhom],
       validate,
       amgu,
-      incentive,
+    });
+  }
+
+  /**
+   * Cancel investment request
+   *
+   * @param from The address of the sender.
+   */
+  public cancelRequest(from: Address) {
+    const amgu = this.calculateAmgu.bind(this);
+
+    const validate = async () => {};
+
+    return this.createTransaction({
+      from,
+      method: 'cancelRequest',
+      args: undefined,
+      validate,
+      amgu,
     });
   }
 }
