@@ -12,6 +12,8 @@ import { ValidationError } from '../../../errors/ValidationError';
 import { Hub } from '../hub/Hub';
 import { HubIsShutdownError } from '../../../errors/HubIsShutdownError';
 import { SpokeNotInitializedError } from '../../../errors/SpokeNotInitializedError';
+import { PriceSourceInterface } from '../../prices/PriceSourceInterface';
+import { Accounting } from '../accounting/Accounting';
 
 export interface Request {
   investmentAsset: Address;
@@ -42,6 +44,41 @@ export class InvestmentRequestExistsError extends ValidationError {
   }
 }
 
+export class NoInvestmentRequestError extends ValidationError {
+  public readonly name = 'NoInvestmentRequestError';
+
+  constructor(public readonly from: Address, message: string = 'No investment request found.') {
+    super(message);
+  }
+}
+
+export class CancelConditionsNotMetError extends ValidationError {
+  public readonly name = 'CancelConditionsNotMetError';
+
+  constructor(public readonly from: Address, message: string = 'No cancellation condition was met.') {
+    super(message);
+  }
+}
+
+export class PriceNotValidError extends ValidationError {
+  public readonly name = 'PriceNotValidError';
+
+  constructor(public readonly asset: Address, message: string = 'Price not valid.') {
+    super(message);
+  }
+}
+
+export class InvestmentAmountTooLowError extends ValidationError {
+  public readonly name = 'InvestmentAmountTooLowError';
+
+  constructor(
+    public readonly amount: BigNumber,
+    message: string = 'Investment amount too low for the requested number of shares.',
+  ) {
+    super(message);
+  }
+}
+
 export class Participation extends Contract {
   public static readonly abi = ParticipationAbi;
 
@@ -63,8 +100,9 @@ export class Participation extends Contract {
   }
 
   /**
-   * Gets a list of all historical investors.
+   * Gets the details of a request.
    *
+   * @param investor The address of the investor
    * @param block The block number to execute the call on.
    */
   public async getRequest(investor: Address, block?: number) {
@@ -181,9 +219,27 @@ export class Participation extends Contract {
    */
   public executeRequestFor(from: Address, forWhom: Address) {
     const amgu = this.calculateAmgu.bind(this);
-    const incentive = () => Promise.resolve(new BigNumber(10).exponentiatedBy(16));
 
-    const validate = async () => {};
+    const validate = async () => {
+      if (!(await this.hasRequest(from))) {
+        throw new NoInvestmentRequestError(from);
+      }
+
+      const request = await this.getRequest(from);
+      const priceSource = new PriceSourceInterface(this.environment, await this.getPriceSource());
+      if (!(await priceSource.hasValidPrice(request.investmentAsset))) {
+        throw new PriceNotValidError(request.investmentAsset);
+      }
+
+      const accounting = new Accounting(this.environment, (await this.getRoutes()).accounting);
+      const totalShareCostInInvestmentAsset = await accounting.getShareCostInAsset(
+        request.requestedShares,
+        request.investmentAsset,
+      );
+      if (totalShareCostInInvestmentAsset.isGreaterThan(request.investmentAmount)) {
+        throw new InvestmentAmountTooLowError(request.investmentAmount);
+      }
+    };
 
     return this.createTransaction({
       from,
@@ -191,7 +247,42 @@ export class Participation extends Contract {
       args: [forWhom],
       validate,
       amgu,
-      incentive,
+    });
+  }
+
+  /**
+   * Cancel investment request
+   *
+   * @param from The address of the sender.
+   */
+  public cancelRequest(from: Address) {
+    const amgu = this.calculateAmgu.bind(this);
+
+    const validate = async () => {
+      if (!(await this.hasRequest(from))) {
+        throw new NoInvestmentRequestError(from);
+      }
+
+      const request = await this.getRequest(from);
+      const hub = new Hub(this.environment, await this.getHub());
+      const priceSource = new PriceSourceInterface(this.environment, await this.getPriceSource());
+      if (
+        !(
+          !(await priceSource.hasValidPrice(request.investmentAsset)) ||
+          (await this.hasExpiredRequest(from)) ||
+          (await hub.isShutDown())
+        )
+      ) {
+        throw new CancelConditionsNotMetError(from);
+      }
+    };
+
+    return this.createTransaction({
+      from,
+      method: 'cancelRequest',
+      args: undefined,
+      validate,
+      amgu,
     });
   }
 }

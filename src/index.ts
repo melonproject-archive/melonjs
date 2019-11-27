@@ -15,7 +15,8 @@ export { AccountingFactory } from './contracts/fund/accounting/AccountingFactory
 export { AddressList } from './contracts/fund/policies/AddressList';
 export { AssetBlacklist } from './contracts/fund/policies/AssetBlacklist';
 export { AssetWhitelist } from './contracts/fund/policies/AssetWhitelist';
-export { CanonicalPriceFeed, PricesInfo, InvalidPriceError } from './contracts/prices/CanonicalPriceFeed';
+export { CanonicalPriceFeed } from './contracts/prices/CanonicalPriceFeed';
+export { PriceSourceInterface, PricesInfo, InvalidPriceError } from './contracts/prices/PriceSourceInterface';
 export { Engine, EngineDeployArguments } from './contracts/engine/Engine';
 export { ERC20WithFields } from './contracts/dependencies/token/ERC20WithFields';
 export { Factory } from './contracts/factory/Factory';
