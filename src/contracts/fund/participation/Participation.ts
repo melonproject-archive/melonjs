@@ -63,8 +63,9 @@ export class Participation extends Contract {
   }
 
   /**
-   * Gets a list of all historical investors.
+   * Gets the details of a request.
    *
+   * @param investor The address of the investor
    * @param block The block number to execute the call on.
    */
   public async getRequest(investor: Address, block?: number) {
