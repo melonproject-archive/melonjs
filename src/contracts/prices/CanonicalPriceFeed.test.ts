@@ -30,7 +30,7 @@ describe('CanonicalPriceFeed', () => {
   });
 
   it('should return the quote token', async () => {
-    const result = await source.getQuoteToken();
+    const result = await source.getQuoteAsset();
     const weth = '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2';
 
     expect(sameAddress(weth, result)).toBe(true);
