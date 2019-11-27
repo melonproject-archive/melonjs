@@ -227,7 +227,7 @@ export class Participation extends Contract {
 
       const request = await this.getRequest(from);
       const priceSource = new PriceSourceInterface(this.environment, await this.getPriceSource());
-      if (!priceSource.hasValidPrice(request.investmentAsset)) {
+      if (!(await priceSource.hasValidPrice(request.investmentAsset))) {
         throw new PriceNotValidError(request.investmentAsset);
       }
 
@@ -268,7 +268,7 @@ export class Participation extends Contract {
       const priceSource = new PriceSourceInterface(this.environment, await this.getPriceSource());
       if (
         !(
-          !priceSource.hasValidPrice(request.investmentAsset) ||
+          !(await priceSource.hasValidPrice(request.investmentAsset)) ||
           (await this.hasExpiredRequest(from)) ||
           (await hub.isShutDown())
         )
