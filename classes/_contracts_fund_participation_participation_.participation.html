@@ -106,6 +106,7 @@
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_contracts_fund_participation_participation_.participation.html#calculateamgu" class="tsd-kind-icon">calculate<wbr>Amgu</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_fund_participation_participation_.participation.html#cancancelrequest" class="tsd-kind-icon">can<wbr>Cancel<wbr>Request</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_fund_participation_participation_.participation.html#caninvestwithasset" class="tsd-kind-icon">can<wbr>Invest<wbr>With<wbr>Asset</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_fund_participation_participation_.participation.html#cancelrequest" class="tsd-kind-icon">cancel<wbr>Request</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite tsd-is-inherited tsd-is-protected"><a href="_contracts_fund_participation_participation_.participation.html#createtransaction" class="tsd-kind-icon">create<wbr>Transaction</a></li>
@@ -286,6 +287,40 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="cancancelrequest" class="tsd-anchor"></a>
+					<h3>can<wbr>Cancel<wbr>Request</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">can<wbr>Cancel<wbr>Request<span class="tsd-signature-symbol">(</span>from<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a>, block<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/participation/Participation.ts#L278">contracts/fund/participation/Participation.ts:278</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Check if a request can be cancelled</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>from: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The address of the sender.</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> block: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="caninvestwithasset" class="tsd-anchor"></a>
 					<h3>can<wbr>Invest<wbr>With<wbr>Asset</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -329,7 +364,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/participation/Participation.ts#L278">contracts/fund/participation/Participation.ts:278</a></li>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/participation/Participation.ts#L292">contracts/fund/participation/Participation.ts:292</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -975,7 +1010,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/participation/Participation.ts#L314">contracts/fund/participation/Participation.ts:314</a></li>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/participation/Participation.ts#L311">contracts/fund/participation/Participation.ts:311</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1006,7 +1041,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/participation/Participation.ts#L337">contracts/fund/participation/Participation.ts:337</a></li>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/participation/Participation.ts#L334">contracts/fund/participation/Participation.ts:334</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1213,6 +1248,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
 								<a href="_contracts_fund_participation_participation_.participation.html#calculateamgu" class="tsd-kind-icon">calculate<wbr>Amgu</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_contracts_fund_participation_participation_.participation.html#cancancelrequest" class="tsd-kind-icon">can<wbr>Cancel<wbr>Request</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_contracts_fund_participation_participation_.participation.html#caninvestwithasset" class="tsd-kind-icon">can<wbr>Invest<wbr>With<wbr>Asset</a>
