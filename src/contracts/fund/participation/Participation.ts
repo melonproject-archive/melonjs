@@ -251,38 +251,39 @@ export class Participation extends Contract {
   }
 
   /**
-   * Cancel investment request
+   * Redeem all shares
    *
    * @param from The address of the sender.
    */
-  public cancelRequest(from: Address) {
-    const amgu = this.calculateAmgu.bind(this);
-
+  public redeem(from: Address) {
     const validate = async () => {
-      if (!(await this.hasRequest(from))) {
-        throw new NoInvestmentRequestError(from);
-      }
-
-      const request = await this.getRequest(from);
-      const hub = new Hub(this.environment, await this.getHub());
-      const priceSource = new PriceSourceInterface(this.environment, await this.getPriceSource());
-      if (
-        !(
-          !(await priceSource.hasValidPrice(request.investmentAsset)) ||
-          (await this.hasExpiredRequest(from)) ||
-          (await hub.isShutDown())
-        )
-      ) {
-        throw new CancelConditionsNotMetError(from);
-      }
+      // TODO: check if they own any shares at all
     };
 
     return this.createTransaction({
       from,
-      method: 'cancelRequest',
+      method: 'redeem',
       args: undefined,
       validate,
-      amgu,
+    });
+  }
+
+  /**
+   * Redeem a quantity of shares
+   *
+   * @param from The address of the sender.
+   */
+  public redeemQuantity(from: Address, sharesQuantity: BigNumber) {
+    const validate = async () => {
+      // TODO
+      // check if enough shares
+    };
+
+    return this.createTransaction({
+      from,
+      method: 'redeemQuantity',
+      args: [sharesQuantity.toString()],
+      validate,
     });
   }
 }
