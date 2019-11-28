@@ -83,7 +83,7 @@ export class InvestmentAmountTooLowError extends ValidationError {
 export class NoSharesToRedeemError extends ValidationError {
   public readonly name = 'NoSharesToRedeemError';
 
-  constructor(public readonly from: Address, message: string = 'No shares to redeem.') {
+  constructor(message: string = 'No shares to redeem.') {
     super(message);
   }
 }
@@ -91,7 +91,10 @@ export class NoSharesToRedeemError extends ValidationError {
 export class NotEnoughSharesToRedeemError extends ValidationError {
   public readonly name = 'NotEnoughSharesToRedeemError';
 
-  constructor(public readonly from: Address, message: string = 'Not enough shares to redeem requested amount.') {
+  constructor(
+    public readonly availableShares: BigNumber,
+    message: string = 'Not enough shares to redeem requested amount.',
+  ) {
     super(message);
   }
 }
@@ -313,7 +316,7 @@ export class Participation extends Contract {
       const shares = new Shares(this.environment, (await this.getRoutes()).shares);
       const ownedShares = await shares.getBalanceOf(from);
       if (ownedShares.isZero()) {
-        throw new NoSharesToRedeemError(from);
+        throw new NoSharesToRedeemError();
       }
     };
 
@@ -340,7 +343,7 @@ export class Participation extends Contract {
       }
 
       if (ownedShares.isLessThan(shareQuantity)) {
-        throw new NotEnoughSharesToRedeemError(from);
+        throw new NotEnoughSharesToRedeemError(ownedShares);
       }
     };
 
