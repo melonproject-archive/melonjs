@@ -271,6 +271,20 @@ export class Participation extends Contract {
   }
 
   /**
+   * Check if a request can be cancelled
+   *
+   * @param from The address of the sender.
+   */
+  public async canCancelRequest(from: Address, block?: number) {
+    try {
+      await this.validateCancelRequest(from, block);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  /**
    * Cancel investment request
    *
    * @param from The address of the sender.
@@ -278,24 +292,7 @@ export class Participation extends Contract {
   public cancelRequest(from: Address) {
     const amgu = this.calculateAmgu.bind(this);
 
-    const validate = async () => {
-      if (!(await this.hasRequest(from))) {
-        throw new NoInvestmentRequestError(from);
-      }
-
-      const request = await this.getRequest(from);
-      const hub = new Hub(this.environment, await this.getHub());
-      const priceSource = new PriceSourceInterface(this.environment, await this.getPriceSource());
-      if (
-        !(
-          !(await priceSource.hasValidPrice(request.investmentAsset)) ||
-          (await this.hasExpiredRequest(from)) ||
-          (await hub.isShutDown())
-        )
-      ) {
-        throw new CancelConditionsNotMetError(from);
-      }
-    };
+    const validate = () => this.validateCancelRequest(from);
 
     return this.createTransaction({
       from,
@@ -354,6 +351,30 @@ export class Participation extends Contract {
       validate,
     });
   }
+
+  /**
+   * Validate if a request can be cancelled
+   *
+   * @param from The address of the sender.
+   */
+  private validateCancelRequest = async (from: Address, block?: number) => {
+    if (!(await this.hasRequest(from, block))) {
+      throw new NoInvestmentRequestError(from);
+    }
+
+    const request = await this.getRequest(from, block);
+    const hub = new Hub(this.environment, await this.getHub(block));
+    const priceSource = new PriceSourceInterface(this.environment, await this.getPriceSource(block));
+    if (
+      !(
+        !(await priceSource.hasValidPrice(request.investmentAsset, block)) ||
+        (await this.hasExpiredRequest(from, block)) ||
+        (await hub.isShutDown(block))
+      )
+    ) {
+      throw new CancelConditionsNotMetError(from);
+    }
+  };
 }
 
 export interface Participation extends Spoke, AmguConsumer {}
