@@ -12,7 +12,7 @@ This library is published as an [npm package][npm]. You can install it through n
 
 ```
 # Using yarn
-yarn install @melonproject/melonjs
+yarn add @melonproject/melonjs
 
 # Using npm
 npm install @melonproject/melonjs
