@@ -14,6 +14,7 @@ import { HubIsShutdownError } from '../../../errors/HubIsShutdownError';
 import { SpokeNotInitializedError } from '../../../errors/SpokeNotInitializedError';
 import { PriceSourceInterface } from '../../prices/PriceSourceInterface';
 import { Accounting } from '../accounting/Accounting';
+import { Shares } from '../shares/Shares';
 
 export interface Request {
   investmentAsset: Address;
@@ -75,6 +76,22 @@ export class InvestmentAmountTooLowError extends ValidationError {
     public readonly amount: BigNumber,
     message: string = 'Investment amount too low for the requested number of shares.',
   ) {
+    super(message);
+  }
+}
+
+export class NoSharesToRedeemError extends ValidationError {
+  public readonly name = 'NoSharesToRedeemError';
+
+  constructor(public readonly from: Address, message: string = 'No shares to redeem.') {
+    super(message);
+  }
+}
+
+export class NotEnoughSharesToRedeemError extends ValidationError {
+  public readonly name = 'NotEnoughSharesToRedeemError';
+
+  constructor(public readonly from: Address, message: string = 'Not enough shares to redeem requested amount.') {
     super(message);
   }
 }
@@ -292,35 +309,46 @@ export class Participation extends Contract {
    * @param from The address of the sender.
    */
   public redeem(from: Address) {
-    const amgu = this.calculateAmgu.bind(this);
-
-    const validate = async () => {};
+    const validate = async () => {
+      const shares = new Shares(this.environment, (await this.getRoutes()).shares);
+      const ownedShares = await shares.getBalanceOf(from);
+      if (ownedShares.isZero()) {
+        throw new NoSharesToRedeemError(from);
+      }
+    };
 
     return this.createTransaction({
       from,
       method: 'redeem',
       args: undefined,
       validate,
-      amgu,
     });
   }
 
   /**
-   * Redeem all shares
+   * Redeem a quantity of shares
    *
    * @param from The address of the sender.
+   * @param shareQuantity The quantity of shares to redeem
    */
   public redeemQuantity(from: Address, shareQuantity: BigNumber) {
-    const amgu = this.calculateAmgu.bind(this);
+    const validate = async () => {
+      const shares = new Shares(this.environment, (await this.getRoutes()).shares);
+      const ownedShares = await shares.getBalanceOf(from);
+      if (ownedShares.isZero()) {
+        throw new NoSharesToRedeemError(from);
+      }
 
-    const validate = async () => {};
+      if (ownedShares.isLessThan(shareQuantity)) {
+        throw new NotEnoughSharesToRedeemError(from);
+      }
+    };
 
     return this.createTransaction({
       from,
       method: 'redeemQuantity',
       args: [shareQuantity.toString()],
       validate,
-      amgu,
     });
   }
 }
