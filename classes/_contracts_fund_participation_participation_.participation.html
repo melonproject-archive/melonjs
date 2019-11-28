@@ -107,6 +107,7 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_contracts_fund_participation_participation_.participation.html#calculateamgu" class="tsd-kind-icon">calculate<wbr>Amgu</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_fund_participation_participation_.participation.html#caninvestwithasset" class="tsd-kind-icon">can<wbr>Invest<wbr>With<wbr>Asset</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_fund_participation_participation_.participation.html#cancelrequest" class="tsd-kind-icon">cancel<wbr>Request</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite tsd-is-inherited tsd-is-protected"><a href="_contracts_fund_participation_participation_.participation.html#createtransaction" class="tsd-kind-icon">create<wbr>Transaction</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_fund_participation_participation_.participation.html#executerequestfor" class="tsd-kind-icon">execute<wbr>Request<wbr>For</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_contracts_fund_participation_participation_.participation.html#getamgutoken" class="tsd-kind-icon">get<wbr>Amgu<wbr>Token</a></li>
@@ -125,6 +126,8 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_fund_participation_participation_.participation.html#hasvalidrequest" class="tsd-kind-icon">has<wbr>Valid<wbr>Request</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_contracts_fund_participation_participation_.participation.html#isinitialized" class="tsd-kind-icon">is<wbr>Initialized</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite tsd-is-inherited tsd-is-protected"><a href="_contracts_fund_participation_participation_.participation.html#makecall" class="tsd-kind-icon">make<wbr>Call</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_fund_participation_participation_.participation.html#redeem" class="tsd-kind-icon">redeem</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_fund_participation_participation_.participation.html#redeemquantity" class="tsd-kind-icon">redeem<wbr>Quantity</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_fund_participation_participation_.participation.html#requestinvestment" class="tsd-kind-icon">request<wbr>Investment</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite tsd-is-inherited tsd-is-static"><a href="_contracts_fund_participation_participation_.participation.html#createdeployment" class="tsd-kind-icon">create<wbr>Deployment</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-static"><a href="_contracts_fund_participation_participation_.participation.html#deploy" class="tsd-kind-icon">deploy</a></li>
@@ -237,7 +240,7 @@
 					<aside class="tsd-sources">
 						<p>Overrides <a href="_contract_.contract.html">Contract</a>.<a href="_contract_.contract.html#abi">abi</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/participation/Participation.ts#L46">contracts/fund/participation/Participation.ts:46</a></li>
+							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/participation/Participation.ts#L103">contracts/fund/participation/Participation.ts:103</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -292,7 +295,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/participation/Participation.ts#L130">contracts/fund/participation/Participation.ts:130</a></li>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/participation/Participation.ts#L188">contracts/fund/participation/Participation.ts:188</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -313,6 +316,37 @@
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="cancelrequest" class="tsd-anchor"></a>
+					<h3>cancel<wbr>Request</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">cancel<wbr>Request<span class="tsd-signature-symbol">(</span>from<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_transaction_.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionReceipt</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/participation/Participation.ts#L278">contracts/fund/participation/Participation.ts:278</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Cancel investment request</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>from: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The address of the sender.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_transaction_.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionReceipt</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -357,7 +391,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/participation/Participation.ts#L182">contracts/fund/participation/Participation.ts:182</a></li>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/participation/Participation.ts#L240">contracts/fund/participation/Participation.ts:240</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -459,7 +493,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/participation/Participation.ts#L61">contracts/fund/participation/Participation.ts:61</a></li>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/participation/Participation.ts#L118">contracts/fund/participation/Participation.ts:118</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -619,18 +653,21 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/participation/Participation.ts#L70">contracts/fund/participation/Participation.ts:70</a></li>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/participation/Participation.ts#L128">contracts/fund/participation/Participation.ts:128</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Gets a list of all historical investors.</p>
+									<p>Gets the details of a request.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>investor: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The address of the investor</p>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> block: <span class="tsd-signature-type">number</span></h5>
@@ -718,7 +755,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/participation/Participation.ts#L110">contracts/fund/participation/Participation.ts:110</a></li>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/participation/Participation.ts#L168">contracts/fund/participation/Participation.ts:168</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -755,7 +792,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/participation/Participation.ts#L120">contracts/fund/participation/Participation.ts:120</a></li>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/participation/Participation.ts#L178">contracts/fund/participation/Participation.ts:178</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -792,7 +829,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/participation/Participation.ts#L90">contracts/fund/participation/Participation.ts:90</a></li>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/participation/Participation.ts#L148">contracts/fund/participation/Participation.ts:148</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -829,7 +866,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/participation/Participation.ts#L100">contracts/fund/participation/Participation.ts:100</a></li>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/participation/Participation.ts#L158">contracts/fund/participation/Participation.ts:158</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -929,6 +966,74 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="redeem" class="tsd-anchor"></a>
+					<h3>redeem</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">redeem<span class="tsd-signature-symbol">(</span>from<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_transaction_.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionReceipt</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/participation/Participation.ts#L314">contracts/fund/participation/Participation.ts:314</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Redeem all shares</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>from: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The address of the sender.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_transaction_.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionReceipt</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="redeemquantity" class="tsd-anchor"></a>
+					<h3>redeem<wbr>Quantity</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">redeem<wbr>Quantity<span class="tsd-signature-symbol">(</span>from<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a>, shareQuantity<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_transaction_.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionReceipt</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/participation/Participation.ts#L337">contracts/fund/participation/Participation.ts:337</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Redeem a quantity of shares</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>from: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The address of the sender.</p>
+									</div>
+								</li>
+								<li>
+									<h5>shareQuantity: <span class="tsd-signature-type">BigNumber</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The quantity of shares to redeem</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_transaction_.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionReceipt</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="requestinvestment" class="tsd-anchor"></a>
 					<h3>request<wbr>Investment</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -938,7 +1043,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/participation/Participation.ts#L142">contracts/fund/participation/Participation.ts:142</a></li>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/participation/Participation.ts#L200">contracts/fund/participation/Participation.ts:200</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1031,7 +1136,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_contracts_fund_hub_spoke_.spoke.html">Spoke</a>.<a href="_contracts_fund_hub_spoke_.spoke.html#deploy">deploy</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/participation/Participation.ts#L48">contracts/fund/participation/Participation.ts:48</a></li>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/participation/Participation.ts#L105">contracts/fund/participation/Participation.ts:105</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1069,10 +1174,25 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_contracts_fund_participation_participation_.cancelconditionsnotmeterror.html" class="tsd-kind-icon">Cancel<wbr>Conditions<wbr>Not<wbr>Met<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_contracts_fund_participation_participation_.investmentamounttoolowerror.html" class="tsd-kind-icon">Investment<wbr>Amount<wbr>Too<wbr>Low<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
 						<a href="_contracts_fund_participation_participation_.investmentassetnotallowederror.html" class="tsd-kind-icon">Investment<wbr>Asset<wbr>Not<wbr>Allowed<wbr>Error</a>
 					</li>
 					<li class=" tsd-kind-class tsd-parent-kind-external-module">
 						<a href="_contracts_fund_participation_participation_.investmentrequestexistserror.html" class="tsd-kind-icon">Investment<wbr>Request<wbr>Exists<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_contracts_fund_participation_participation_.noinvestmentrequesterror.html" class="tsd-kind-icon">No<wbr>Investment<wbr>Request<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_contracts_fund_participation_participation_.nosharestoredeemerror.html" class="tsd-kind-icon">No<wbr>Shares<wbr>ToRedeem<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_contracts_fund_participation_participation_.notenoughsharestoredeemerror.html" class="tsd-kind-icon">Not<wbr>Enough<wbr>Shares<wbr>ToRedeem<wbr>Error</a>
 					</li>
 				</ul>
 				<ul class="current">
@@ -1096,6 +1216,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_contracts_fund_participation_participation_.participation.html#caninvestwithasset" class="tsd-kind-icon">can<wbr>Invest<wbr>With<wbr>Asset</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_contracts_fund_participation_participation_.participation.html#cancelrequest" class="tsd-kind-icon">cancel<wbr>Request</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite tsd-is-inherited tsd-is-protected">
 								<a href="_contracts_fund_participation_participation_.participation.html#createtransaction" class="tsd-kind-icon">create<wbr>Transaction</a>
@@ -1152,6 +1275,12 @@
 								<a href="_contracts_fund_participation_participation_.participation.html#makecall" class="tsd-kind-icon">make<wbr>Call</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_contracts_fund_participation_participation_.participation.html#redeem" class="tsd-kind-icon">redeem</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_contracts_fund_participation_participation_.participation.html#redeemquantity" class="tsd-kind-icon">redeem<wbr>Quantity</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_contracts_fund_participation_participation_.participation.html#requestinvestment" class="tsd-kind-icon">request<wbr>Investment</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite tsd-is-inherited tsd-is-static">
@@ -1164,6 +1293,9 @@
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_contracts_fund_participation_participation_.pricenotvaliderror.html" class="tsd-kind-icon">Price<wbr>Not<wbr>Valid<wbr>Error</a>
+					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="../interfaces/_contracts_fund_participation_participation_.participationdeployarguments.html" class="tsd-kind-icon">Participation<wbr>Deploy<wbr>Arguments</a>
 					</li>

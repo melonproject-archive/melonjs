@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>InvalidPriceError | @melonproject/melonjs</title>
+	<title>NotEnoughSharesToRedeemError | @melonproject/melonjs</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -52,13 +52,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_contracts_prices_canonicalpricefeed_.html">&quot;contracts/prices/CanonicalPriceFeed&quot;</a>
+					<a href="../modules/_contracts_fund_participation_participation_.html">&quot;contracts/fund/participation/Participation&quot;</a>
 				</li>
 				<li>
-					<a href="_contracts_prices_canonicalpricefeed_.invalidpriceerror.html">InvalidPriceError</a>
+					<a href="_contracts_fund_participation_participation_.notenoughsharestoredeemerror.html">NotEnoughSharesToRedeemError</a>
 				</li>
 			</ul>
-			<h1>Class InvalidPriceError</h1>
+			<h1>Class NotEnoughSharesToRedeemError</h1>
 		</div>
 	</div>
 </header>
@@ -69,10 +69,10 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<a href="_errors_callerror_.callerror.html" class="tsd-signature-type">CallError</a>
+						<a href="_errors_validationerror_.validationerror.html" class="tsd-signature-type">ValidationError</a>
 						<ul class="tsd-hierarchy">
 							<li>
-								<span class="target">InvalidPriceError</span>
+								<span class="target">NotEnoughSharesToRedeemError</span>
 							</li>
 						</ul>
 					</li>
@@ -85,16 +85,16 @@
 						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite"><a href="_contracts_prices_canonicalpricefeed_.invalidpriceerror.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite"><a href="_contracts_fund_participation_participation_.notenoughsharestoredeemerror.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_contracts_prices_canonicalpricefeed_.invalidpriceerror.html#message" class="tsd-kind-icon">message</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite"><a href="_contracts_prices_canonicalpricefeed_.invalidpriceerror.html#name" class="tsd-kind-icon">name</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited"><a href="_contracts_prices_canonicalpricefeed_.invalidpriceerror.html#stack" class="tsd-kind-icon">stack</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_contracts_prices_canonicalpricefeed_.invalidpriceerror.html#token" class="tsd-kind-icon">token</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_contracts_fund_participation_participation_.notenoughsharestoredeemerror.html#availableshares" class="tsd-kind-icon">available<wbr>Shares</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_contracts_fund_participation_participation_.notenoughsharestoredeemerror.html#message" class="tsd-kind-icon">message</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite"><a href="_contracts_fund_participation_participation_.notenoughsharestoredeemerror.html#name" class="tsd-kind-icon">name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited"><a href="_contracts_fund_participation_participation_.notenoughsharestoredeemerror.html#stack" class="tsd-kind-icon">stack</a></li>
 							</ul>
 						</section>
 					</div>
@@ -106,32 +106,42 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Invalid<wbr>Price<wbr>Error<span class="tsd-signature-symbol">(</span>token<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a>, message<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_contracts_prices_canonicalpricefeed_.invalidpriceerror.html" class="tsd-signature-type">InvalidPriceError</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Not<wbr>Enough<wbr>Shares<wbr>ToRedeem<wbr>Error<span class="tsd-signature-symbol">(</span>availableShares<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigNumber</span>, message<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_contracts_fund_participation_participation_.notenoughsharestoredeemerror.html" class="tsd-signature-type">NotEnoughSharesToRedeemError</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Overrides <a href="_errors_callerror_.callerror.html">CallError</a>.<a href="_errors_callerror_.callerror.html#constructor">constructor</a></p>
+								<p>Overrides <a href="_errors_validationerror_.validationerror.html">ValidationError</a>.<a href="_errors_validationerror_.validationerror.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/prices/CanonicalPriceFeed.ts#L23">contracts/prices/CanonicalPriceFeed.ts:23</a></li>
+									<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/participation/Participation.ts#L92">contracts/fund/participation/Participation.ts:92</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>token: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
+									<h5>availableShares: <span class="tsd-signature-type">BigNumber</span></h5>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> message: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;Invalid price.&quot;</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> message: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;Not enough shares to redeem requested amount.&quot;</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_contracts_prices_canonicalpricefeed_.invalidpriceerror.html" class="tsd-signature-type">InvalidPriceError</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_contracts_fund_participation_participation_.notenoughsharestoredeemerror.html" class="tsd-signature-type">NotEnoughSharesToRedeemError</a></h4>
 						</li>
 					</ul>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="availableshares" class="tsd-anchor"></a>
+					<h3>available<wbr>Shares</h3>
+					<div class="tsd-signature tsd-kind-icon">available<wbr>Shares<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">BigNumber</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/participation/Participation.ts#L95">contracts/fund/participation/Participation.ts:95</a></li>
+						</ul>
+					</aside>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 					<a name="message" class="tsd-anchor"></a>
 					<h3>message</h3>
@@ -146,11 +156,11 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-overwrite">
 					<a name="name" class="tsd-anchor"></a>
 					<h3>name</h3>
-					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;InvalidPriceError&quot;</span></div>
+					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"NotEnoughSharesToRedeemError"</span><span class="tsd-signature-symbol"> =&nbsp;&quot;NotEnoughSharesToRedeemError&quot;</span></div>
 					<aside class="tsd-sources">
-						<p>Overrides <a href="_errors_callerror_.callerror.html">CallError</a>.<a href="_errors_callerror_.callerror.html#name">name</a></p>
+						<p>Overrides <a href="_errors_validationerror_.validationerror.html">ValidationError</a>.<a href="_errors_validationerror_.validationerror.html#name">name</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/prices/CanonicalPriceFeed.ts#L23">contracts/prices/CanonicalPriceFeed.ts:23</a></li>
+							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/fund/participation/Participation.ts#L92">contracts/fund/participation/Participation.ts:92</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -166,16 +176,6 @@
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="token" class="tsd-anchor"></a>
-					<h3>token</h3>
-					<div class="tsd-signature tsd-kind-icon">token<span class="tsd-signature-symbol">:</span> <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/Avantgarde-Finance/melonjs/blob/master/src/contracts/prices/CanonicalPriceFeed.ts#L25">contracts/prices/CanonicalPriceFeed.ts:25</a></li>
-						</ul>
-					</aside>
-				</section>
 			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -185,44 +185,65 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="../modules/_contracts_prices_canonicalpricefeed_.html">"contracts/prices/<wbr>Canonical<wbr>Price<wbr>Feed"</a>
+						<a href="../modules/_contracts_fund_participation_participation_.html">"contracts/fund/participation/<wbr>Participation"</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="_contracts_prices_canonicalpricefeed_.canonicalpricefeed.html" class="tsd-kind-icon">Canonical<wbr>Price<wbr>Feed</a>
+						<a href="_contracts_fund_participation_participation_.cancelconditionsnotmeterror.html" class="tsd-kind-icon">Cancel<wbr>Conditions<wbr>Not<wbr>Met<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_contracts_fund_participation_participation_.investmentamounttoolowerror.html" class="tsd-kind-icon">Investment<wbr>Amount<wbr>Too<wbr>Low<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_contracts_fund_participation_participation_.investmentassetnotallowederror.html" class="tsd-kind-icon">Investment<wbr>Asset<wbr>Not<wbr>Allowed<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_contracts_fund_participation_participation_.investmentrequestexistserror.html" class="tsd-kind-icon">Investment<wbr>Request<wbr>Exists<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_contracts_fund_participation_participation_.noinvestmentrequesterror.html" class="tsd-kind-icon">No<wbr>Investment<wbr>Request<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_contracts_fund_participation_participation_.nosharestoredeemerror.html" class="tsd-kind-icon">No<wbr>Shares<wbr>ToRedeem<wbr>Error</a>
 					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class tsd-parent-kind-external-module">
-						<a href="_contracts_prices_canonicalpricefeed_.invalidpriceerror.html" class="tsd-kind-icon">Invalid<wbr>Price<wbr>Error</a>
+						<a href="_contracts_fund_participation_participation_.notenoughsharestoredeemerror.html" class="tsd-kind-icon">Not<wbr>Enough<wbr>Shares<wbr>ToRedeem<wbr>Error</a>
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
-								<a href="_contracts_prices_canonicalpricefeed_.invalidpriceerror.html#constructor" class="tsd-kind-icon">constructor</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_contracts_prices_canonicalpricefeed_.invalidpriceerror.html#message" class="tsd-kind-icon">message</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite">
-								<a href="_contracts_prices_canonicalpricefeed_.invalidpriceerror.html#name" class="tsd-kind-icon">name</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited">
-								<a href="_contracts_prices_canonicalpricefeed_.invalidpriceerror.html#stack" class="tsd-kind-icon">stack</a>
+								<a href="_contracts_fund_participation_participation_.notenoughsharestoredeemerror.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_contracts_prices_canonicalpricefeed_.invalidpriceerror.html#token" class="tsd-kind-icon">token</a>
+								<a href="_contracts_fund_participation_participation_.notenoughsharestoredeemerror.html#availableshares" class="tsd-kind-icon">available<wbr>Shares</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="_contracts_fund_participation_participation_.notenoughsharestoredeemerror.html#message" class="tsd-kind-icon">message</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite">
+								<a href="_contracts_fund_participation_participation_.notenoughsharestoredeemerror.html#name" class="tsd-kind-icon">name</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited">
+								<a href="_contracts_fund_participation_participation_.notenoughsharestoredeemerror.html#stack" class="tsd-kind-icon">stack</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/_contracts_prices_canonicalpricefeed_.priceinfo.html" class="tsd-kind-icon">Price<wbr>Info</a>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_contracts_fund_participation_participation_.participation.html" class="tsd-kind-icon">Participation</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_contracts_fund_participation_participation_.pricenotvaliderror.html" class="tsd-kind-icon">Price<wbr>Not<wbr>Valid<wbr>Error</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/_contracts_prices_canonicalpricefeed_.pricesinfo.html" class="tsd-kind-icon">Prices<wbr>Info</a>
+						<a href="../interfaces/_contracts_fund_participation_participation_.participationdeployarguments.html" class="tsd-kind-icon">Participation<wbr>Deploy<wbr>Arguments</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/_contracts_fund_participation_participation_.request.html" class="tsd-kind-icon">Request</a>
 					</li>
 				</ul>
 			</nav>
