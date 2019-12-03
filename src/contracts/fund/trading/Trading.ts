@@ -172,6 +172,20 @@ export class Trading extends Contract {
     const result = await this.makeCall<string>('ORDER_LIFESPAN', undefined, block);
     return toBigNumber(result);
   }
+
+  /**
+   * Remove an open make order.
+   *
+   * @param from The address of the sender
+   * @param exchange The address of the exchange
+   * @param sellAsset The address of the sell asset
+f   */
+  public async removeOpenMakeOrder(from: Address, exchange: Address, sellAsset: Address) {
+    const validate = async () => {};
+
+    const args = [exchange, sellAsset];
+    return this.createTransaction({ from, method: 'removeOpenMakeOrder', args, validate });
+  }
 }
 
 export interface Trading extends Spoke {}
