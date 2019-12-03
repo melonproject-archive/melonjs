@@ -1,3 +1,4 @@
+import * as R from 'ramda';
 import { Contract } from '../../../Contract';
 import { Environment } from '../../../Environment';
 import { Address } from '../../../Address';
@@ -6,6 +7,8 @@ import { Spoke } from '../hub/Spoke';
 import { applyMixins } from '../../../utils/applyMixins';
 import { toBigNumber } from '../../../utils/toBigNumber';
 import BigNumber from 'bignumber.js';
+import { Registry } from '../../version/Registry';
+import { isZeroAddress } from '../../../utils/isZeroAddress';
 
 export interface ExchangeInfo {
   exchange: Address;
@@ -18,9 +21,9 @@ export type ExchangeInfoMap = {
 };
 
 export interface OpenMakeOrder {
-  id: number;
+  id: BigNumber;
   expiresAt: Date;
-  orderIndex: number;
+  orderIndex: BigNumber;
   buyAsset: Address;
 }
 
@@ -97,7 +100,7 @@ export class Trading extends Contract {
     const result = await this.makeCall<OpenMakeOrder>('exchangesToOpenMakeOrders', [exchange, asset], block);
 
     return {
-      id: parseInt(`${result.id}`, 10),
+      id: toBigNumber(result.id),
       expiresAt: new Date(parseInt(`${result.expiresAt}`, 10) * 1000),
       orderIndex: parseInt(`${result.orderIndex}`, 10),
       buyAsset: result.buyAsset,
@@ -105,25 +108,46 @@ export class Trading extends Contract {
   }
 
   /**
-   * Get the details of an order.
+   * Get all open make orders.
    *
-   * @param exchange The address of the exchange
-   * @param asset The address of the asset
    * @param block The block number to execute the call on.
    */
-  public async getOrder(id: number, block?: number) {
-    const result = await this.makeCall<Order>('orders', [id], block);
+  public async getOpenMakeOrders(block?: number) {
+    const exchanges = await this.getExchangeInfo(block);
+
+    const registry = new Registry(this.environment, await this.getRegistry(block));
+    const assets = await registry.getRegisteredAssets(block);
+
+    const exchangesXtokens = R.xprod(Object.keys(exchanges), assets);
+
+    const openOrders = await Promise.all(
+      exchangesXtokens.map(async ([exchange, asset]: [string, string]) =>
+        this.getOpenMakeOrder(exchange, asset, block),
+      ),
+    );
+
+    return openOrders.filter(o => !isZeroAddress(o.buyAsset));
+  }
+
+  /**
+   * Get the details of an order.
+   *
+   * @param id The id of the order
+   * @param block The block number to execute the call on.
+   */
+  public async getOrderDetails(id: BigNumber, block?: number) {
+    const { '0': makerAsset, '1': takerAsset, '2': makerQuantity, '3': takerQuantity } = await this.makeCall<{
+      0: string;
+      1: string;
+      2: string;
+      3: string;
+    }>('getOrderDetails', [id.toFixed(0)], block);
 
     return {
-      exchangeAddress: result.exchangeAddress,
-      orderId: parseInt(`${result.orderId}`, 10),
-      updateType: result.updateType,
-      makerAsset: result.makerAsset,
-      takerAsset: result.takerAsset,
-      makerQuantity: toBigNumber(result.makerQuantity),
-      takerQuantity: toBigNumber(result.takerQuantity),
-      timestamp: new Date(parseInt(`${result.timestamp}`, 10) * 1000),
-      fillTakerQuantity: toBigNumber(result.fillTakerQuantity),
+      makerAsset: makerAsset,
+      takerAsset: takerAsset,
+      makerQuantity: toBigNumber(makerQuantity),
+      takerQuantity: toBigNumber(takerQuantity),
     };
   }
 
