@@ -180,7 +180,7 @@ export class Trading extends Contract {
    * @param exchange The address of the exchange
    * @param sellAsset The address of the sell asset
 f   */
-  public async removeOpenMakeOrder(from: Address, exchange: Address, sellAsset: Address) {
+  public removeOpenMakeOrder(from: Address, exchange: Address, sellAsset: Address) {
     const validate = async () => {};
 
     const args = [exchange, sellAsset];
