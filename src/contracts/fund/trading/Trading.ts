@@ -102,7 +102,7 @@ export class Trading extends Contract {
     return {
       id: toBigNumber(result.id),
       expiresAt: new Date(parseInt(`${result.expiresAt}`, 10) * 1000),
-      orderIndex: parseInt(`${result.orderIndex}`, 10),
+      orderIndex: toBigNumber(result.orderIndex),
       buyAsset: result.buyAsset,
     };
   }
@@ -121,9 +121,10 @@ export class Trading extends Contract {
     const exchangesXtokens = R.xprod(Object.keys(exchanges), assets);
 
     const openOrders = await Promise.all(
-      exchangesXtokens.map(async ([exchange, asset]: [string, string]) =>
-        this.getOpenMakeOrder(exchange, asset, block),
-      ),
+      exchangesXtokens.map(async ([exchange, asset]: [string, string]) => {
+        const order = await this.getOpenMakeOrder(exchange, asset, block);
+        return { ...order, exchange };
+      }),
     );
 
     return openOrders.filter(o => !isZeroAddress(o.buyAsset));
