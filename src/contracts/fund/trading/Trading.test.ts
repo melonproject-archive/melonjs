@@ -6,6 +6,7 @@ import { deployRegistry } from '../../../utils/tests/deployRegistry';
 import { randomAddress } from '../../../utils/tests/randomAddress';
 import { Weth } from '../../dependencies/token/Weth';
 import { deployWeth } from '../../../utils/tests/deployWeth';
+import BigNumber from 'bignumber.js';
 
 describe('Trading', () => {
   const exchangeAddress = randomAddress();
@@ -65,5 +66,10 @@ describe('Trading', () => {
   it('should check if an order is expired', async () => {
     const result = await trading.isOrderExpired(exchangeAddress, weth.contract.address);
     expect(result === true || result === false).toBe(true);
+  });
+
+  it('should get the order lifespan', async () => {
+    const result = await trading.getOrderLifespan();
+    expect(result.isEqualTo(new BigNumber(86400))).toBe(true);
   });
 });

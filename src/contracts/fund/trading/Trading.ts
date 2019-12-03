@@ -4,6 +4,8 @@ import { Address } from '../../../Address';
 import { TradingAbi } from '../../../abis/Trading.abi';
 import { Spoke } from '../hub/Spoke';
 import { applyMixins } from '../../../utils/applyMixins';
+import { toBigNumber } from '../../../utils/toBigNumber';
+import BigNumber from 'bignumber.js';
 
 export interface ExchangeInfo {
   exchange: Address;
@@ -20,6 +22,24 @@ export interface OpenMakeOrder {
   expiresAt: Date;
   orderIndex: number;
   buyAsset: Address;
+}
+
+export enum OrderUpdateType {
+  make,
+  take,
+  cancel,
+}
+
+export interface Order {
+  exchangeAddress: Address;
+  orderId: number;
+  updateType: OrderUpdateType;
+  makerAsset: Address;
+  takerAsset: Address;
+  makerQuantity: BigNumber;
+  takerQuantity: BigNumber;
+  timestamp: Date;
+  fillTakerQuantity: BigNumber;
 }
 
 export interface TradingDeployArguments {
@@ -67,7 +87,7 @@ export class Trading extends Contract {
   }
 
   /**
-   * Checks if an order is expired.
+   * Get the details of an open make order.
    *
    * @param exchange The address of the exchange
    * @param asset The address of the asset
@@ -85,6 +105,29 @@ export class Trading extends Contract {
   }
 
   /**
+   * Get the details of an order.
+   *
+   * @param exchange The address of the exchange
+   * @param asset The address of the asset
+   * @param block The block number to execute the call on.
+   */
+  public async getOrder(id: number, block?: number) {
+    const result = await this.makeCall<Order>('orders', [id], block);
+
+    return {
+      exchangeAddress: result.exchangeAddress,
+      orderId: parseInt(`${result.orderId}`, 10),
+      updateType: result.updateType,
+      makerAsset: result.makerAsset,
+      takerAsset: result.takerAsset,
+      makerQuantity: toBigNumber(result.makerQuantity),
+      takerQuantity: toBigNumber(result.takerQuantity),
+      timestamp: new Date(parseInt(`${result.timestamp}`, 10) * 1000),
+      fillTakerQuantity: toBigNumber(result.fillTakerQuantity),
+    };
+  }
+
+  /**
    * Checks if an order is expired.
    *
    * @param exchange The address of the exchange
@@ -93,6 +136,16 @@ export class Trading extends Contract {
    */
   public isOrderExpired(exchange: Address, asset: Address, block?: number) {
     return this.makeCall<boolean>('isOrderExpired', [exchange, asset], block);
+  }
+
+  /**
+   * Gets the order lifespan.
+   *
+   * @param block The block number to execute the call on.
+   */
+  public async getOrderLifespan(block?: number) {
+    const result = await this.makeCall<string>('ORDER_LIFESPAN', undefined, block);
+    return toBigNumber(result);
   }
 }
 
