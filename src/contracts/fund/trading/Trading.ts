@@ -9,6 +9,8 @@ import { toBigNumber } from '../../../utils/toBigNumber';
 import BigNumber from 'bignumber.js';
 import { Registry } from '../../version/Registry';
 import { isZeroAddress } from '../../../utils/isZeroAddress';
+import { stringToBytes } from '../../../utils/tests/stringToBytes';
+import { hexToBytes } from 'web3-utils';
 
 export interface ExchangeInfo {
   exchange: Address;
@@ -50,6 +52,17 @@ export interface TradingDeployArguments {
   exchanges: Address[];
   adapters: Address[];
   registry: Address;
+}
+
+export interface CallOnExchangeArgs {
+  exchangeIndex: BigNumber;
+  methodSignature: string;
+  orderAddresses: [Address, Address, Address, Address, Address, Address]; // 6
+  orderValues: [BigNumber, BigNumber, BigNumber, BigNumber, BigNumber, BigNumber, BigNumber, BigNumber]; //8
+  identifier: string; //bytes32
+  makerAssetData: string; // bytes
+  takerAssetData: string; // bytes
+  signature: string; // bytes
 }
 
 export class Trading extends Contract {
@@ -174,17 +187,28 @@ export class Trading extends Contract {
   }
 
   /**
-   * Remove an open make order.
+   * Call on exchange (the main).
    *
    * @param from The address of the sender
-   * @param exchange The address of the exchange
-   * @param sellAsset The address of the sell asset
-f   */
-  public removeOpenMakeOrder(from: Address, exchange: Address, sellAsset: Address) {
-    const validate = async () => {};
+   * @param args The arguments as [[CallOnExchangeArgs]]
+   */
+  public callOnExchange(from: Address, args: CallOnExchangeArgs) {
+    const methodArgs = [
+      args.exchangeIndex.toString(),
+      args.methodSignature,
+      args.orderAddresses,
+      args.orderValues.map(orderValue => orderValue.toString()),
+      stringToBytes(args.identifier, 32),
+      hexToBytes(args.makerAssetData),
+      hexToBytes(args.takerAssetData),
+      hexToBytes(args.signature),
+    ];
 
-    const args = [exchange, sellAsset];
-    return this.createTransaction({ from, method: 'removeOpenMakeOrder', args, validate });
+    const validate = async () => {
+      // TODO
+    };
+
+    return this.createTransaction({ from, method: 'callOnExchange', args: methodArgs, validate });
   }
 }
 
