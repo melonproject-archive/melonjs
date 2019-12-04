@@ -187,7 +187,7 @@ export class Trading extends Contract {
   }
 
   /**
-   * Call on exchange (the main).
+   * Call on exchange (all trading transactions go through this).
    *
    * @param from The address of the sender
    * @param args The arguments as [[CallOnExchangeArgs]]
