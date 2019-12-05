@@ -59,8 +59,8 @@ export interface CallOnExchangeArgs {
   exchangeIndex: number;
   methodSignature: string;
   orderAddresses: Address[]; // 6
-  orderValues: BigNumber[]; //8
-  identifier: string; //bytes32
+  orderValues: BigNumber[]; // 8
+  identifier: string; // bytes32
   makerAssetData: string; // bytes
   takerAssetData: string; // bytes
   signature: string; // bytes
@@ -204,8 +204,8 @@ export class Trading extends Contract {
     }>('getOrderDetails', [id.toFixed(0)], block);
 
     return {
-      makerAsset: makerAsset,
-      takerAsset: takerAsset,
+      makerAsset,
+      takerAsset,
       makerQuantity: toBigNumber(makerQuantity),
       takerQuantity: toBigNumber(takerQuantity),
     };
