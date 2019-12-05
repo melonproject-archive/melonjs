@@ -36,14 +36,14 @@ describe('CanonicalPriceFeed', () => {
     expect(sameAddress(weth, result)).toBe(true);
   });
 
-  it('should return the price of a token pair', async () => {
+  xit('should return the price of a token pair', async () => {
     const zrx = '0xe41d2489571d322189246dafa5ebde1f4699f498';
 
     const result = await source.getPrice(zrx);
     expect(result.price.isGreaterThanOrEqualTo(0)).toBe(true);
   });
 
-  it('should return the prices of token pairs', async () => {
+  xit('should return the prices of token pairs', async () => {
     const zrx = '0xe41d2489571d322189246dafa5ebde1f4699f498';
     const mln = '0xec67005c4e498ec7f55e092bd1d35cbc47c91892';
 
