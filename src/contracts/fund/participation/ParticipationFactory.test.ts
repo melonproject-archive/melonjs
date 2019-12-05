@@ -41,7 +41,7 @@ describe('ParticipationFactory', () => {
       url: 'https://tat.tat/',
       reserveMin: new BigNumber(100000),
       standards: [1, 2, 3],
-      sigs: ['0000'],
+      sigs: ['0x30303030'],
     });
     await txRegisterAsset.send(await txRegisterAsset.prepare());
 

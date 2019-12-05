@@ -57,7 +57,7 @@ describe('Registry', () => {
       url: 'https://tat.tat/',
       reserveMin: new BigNumber(100000),
       standards: [1, 2, 3],
-      sigs: ['0000'],
+      sigs: ['0x79705be7'],
     });
 
     await tx.send(await tx.prepare());
@@ -74,7 +74,7 @@ describe('Registry', () => {
       exchangeAddress,
       adapterAddress,
       takesCustody: true,
-      sigs: ['0000'],
+      sigs: ['0x79705be7'],
     });
 
     await tx.send(await tx.prepare());

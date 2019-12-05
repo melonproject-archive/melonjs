@@ -3,10 +3,10 @@ import { Contract } from '../../Contract';
 import { Address } from '../../Address';
 import { RegistryAbi } from '../../abis/Registry.abi';
 import { Environment } from '../../Environment';
-import { utf8ToHex, hexToBytes } from 'web3-utils';
+import { hexToBytes } from 'web3-utils';
 import { ValidationError } from '../../errors/ValidationError';
 import { toBigNumber } from '../../utils/toBigNumber';
-import { stringToBytes } from '../../utils/tests/stringToBytes';
+import { stringToBytes } from '../../utils/stringToBytes';
 
 export class ExchangeAdapterAlreadyRegisteredError extends ValidationError {
   public name = 'ExchangeAdapterAlreadyRegisteredError';
@@ -60,6 +60,14 @@ export class AssetsRegisteredOutOfBoundsError extends ValidationError {
     public readonly maxRegisteredAssets: number,
     message: string = 'Number of registered assets exceeds the maximum.',
   ) {
+    super(message);
+  }
+}
+
+export class AssetNotRegisteredError extends ValidationError {
+  public name = 'AssetNotRegisteredError';
+
+  constructor(public readonly asset: Address, message: string = 'Asset is not registered.') {
     super(message);
   }
 }
@@ -160,7 +168,7 @@ export class Registry extends Contract {
       registerArgs.exchangeAddress,
       registerArgs.adapterAddress,
       registerArgs.takesCustody,
-      registerArgs.sigs.map(sig => hexToBytes(utf8ToHex(sig))),
+      registerArgs.sigs,
     ];
 
     const validate = async () => {
@@ -230,7 +238,7 @@ export class Registry extends Contract {
       registerArgs.url,
       registerArgs.reserveMin.toFixed(),
       registerArgs.standards,
-      registerArgs.sigs.map(sig => hexToBytes(utf8ToHex(sig))),
+      registerArgs.sigs.map(sig => hexToBytes(sig)),
     ];
 
     const validate = async () => {
@@ -293,5 +301,16 @@ export class Registry extends Contract {
   public async getIncentive(block?: number) {
     const result = await this.makeCall<string>('incentive', undefined, block);
     return toBigNumber(result);
+  }
+
+  /**
+   * Checks if an exchange adapter method is allowed
+   *
+   * @param adapter The address of the adapter
+   * @param signature The signature of the method
+   * @param block The block number to execute the call on.
+   */
+  public isAdapterMethodAllowed(adapter: Address, signature: string, block?: number) {
+    return this.makeCall<boolean>('adapterMethodIsAllowed', [adapter, hexToBytes(signature)], block);
   }
 }

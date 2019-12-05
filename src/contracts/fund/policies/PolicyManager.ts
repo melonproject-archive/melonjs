@@ -6,7 +6,6 @@ import { Spoke } from '../hub/Spoke';
 import { applyMixins } from '../../../utils/applyMixins';
 import { Policy } from './Policy';
 import { ValidationError } from '../../../errors/ValidationError';
-import { hexToBytes } from 'web3-utils';
 import { DSAuthority } from '../../dependencies/authorization/DSAuthority';
 import { encodeFunctionSignature } from '../../../utils/encodeFunctionSignature';
 import { ExchangeAdapterAbi } from '../../../abis/ExchangeAdapter.abi';
@@ -69,7 +68,7 @@ export class PolicyManager extends Contract {
     return this.createTransaction({
       from,
       method: 'register',
-      args: [hexToBytes(signature), policyAddress],
+      args: [signature, policyAddress],
       validate,
     });
   }

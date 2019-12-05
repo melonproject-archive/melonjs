@@ -55,7 +55,7 @@ export { Shares } from './contracts/fund/shares/Shares';
 export { SharesFactory } from './contracts/fund/shares/SharesFactory';
 export { Spoke } from './contracts/fund/hub/Spoke';
 export { StandardToken } from './contracts/dependencies/token/StandardToken';
-export { Trading, TradingDeployArguments } from './contracts/fund/trading/Trading';
+export { Order, OpenMakeOrder, Trading, TradingDeployArguments } from './contracts/fund/trading/Trading';
 export { UserWhitelist } from './contracts/fund/policies/UserWhitelist';
 export { Vault } from './contracts/fund/vault/Vault';
 export { VaultFactory } from './contracts/fund/vault/VaultFactory';

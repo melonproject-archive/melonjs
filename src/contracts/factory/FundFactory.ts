@@ -10,7 +10,7 @@ import { Registry } from '../version/Registry';
 import { isZeroAddress } from '../../utils/isZeroAddress';
 import { ValidationError } from '../../errors/ValidationError';
 import { HubRoutes } from '../fund/hub/Hub';
-import { stringToBytes } from '../../utils/tests/stringToBytes';
+import { stringToBytes } from '../../utils/stringToBytes';
 import { AmguConsumer } from '../engine/AmguConsumer';
 
 export class DenominationAssetNotRegisteredError extends ValidationError {

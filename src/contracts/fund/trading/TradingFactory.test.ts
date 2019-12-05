@@ -36,7 +36,7 @@ describe('TradingFactory', () => {
       exchangeAddress,
       adapterAddress,
       takesCustody: true,
-      sigs: ['0000'],
+      sigs: ['0x30303030'],
     });
 
     await txExchangeAdapter.send(await txExchangeAdapter.prepare());
