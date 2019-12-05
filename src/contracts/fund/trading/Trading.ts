@@ -7,11 +7,13 @@ import { Spoke } from '../hub/Spoke';
 import { applyMixins } from '../../../utils/applyMixins';
 import { toBigNumber } from '../../../utils/toBigNumber';
 import BigNumber from 'bignumber.js';
-import { Registry } from '../../version/Registry';
+import { Registry, AssetNotRegisteredError } from '../../version/Registry';
 import { isZeroAddress } from '../../../utils/isZeroAddress';
 import { stringToBytes } from '../../../utils/tests/stringToBytes';
-import { hexToBytes, utf8ToHex } from 'web3-utils';
+import { hexToBytes } from 'web3-utils';
 import { ValidationError } from '../../../errors/ValidationError';
+import { encodeFunctionSignature } from '../../../utils/encodeFunctionSignature';
+import { ExchangeAdapterAbi } from '../../../abis/ExchangeAdapter.abi';
 
 export interface ExchangeInfo {
   exchange: Address;
@@ -218,7 +220,7 @@ export class Trading extends Contract {
   public callOnExchange(from: Address, args: CallOnExchangeArgs) {
     const methodArgs = [
       args.exchangeIndex.toString(),
-      hexToBytes(utf8ToHex(args.methodSignature)),
+      hexToBytes(args.methodSignature),
       args.orderAddresses,
       args.orderValues.map(orderValue => orderValue.toString()),
       stringToBytes(args.identifier, 32),
@@ -234,6 +236,21 @@ export class Trading extends Contract {
       const adapterMethodIsAllowed = await registry.isAdapterMethodAllowed(exchange.adapter, args.methodSignature);
       if (!adapterMethodIsAllowed) {
         throw new AdapterMethodNotAllowedError(exchange.adapter, args.methodSignature);
+      }
+
+      const makeOrderSignature = encodeFunctionSignature(ExchangeAdapterAbi, 'makeOrder');
+      const takeOrderSignature = encodeFunctionSignature(ExchangeAdapterAbi, 'takeOrder');
+
+      if (args.methodSignature === makeOrderSignature || args.methodSignature === takeOrderSignature) {
+        const makerAssetIsRegistered = await registry.isAssetRegistered(args.orderAddresses[2]);
+        if (!makerAssetIsRegistered) {
+          throw new AssetNotRegisteredError(args.orderAddresses[2]);
+        }
+
+        const takerAssetIsRegistered = await registry.isAssetRegistered(args.orderAddresses[3]);
+        if (!takerAssetIsRegistered) {
+          throw new AssetNotRegisteredError(args.orderAddresses[3]);
+        }
       }
     };
 

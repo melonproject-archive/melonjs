@@ -8,12 +8,14 @@ import { Weth } from '../../dependencies/token/Weth';
 import { deployWeth } from '../../../utils/tests/deployWeth';
 import BigNumber from 'bignumber.js';
 import { zeroAddress } from '../../../utils/zeroAddress';
+import { Registry } from '../../version/Registry';
 
 describe('Trading', () => {
   const exchangeAddress = randomAddress();
   let environment: TestEnvironment;
   let trading: Trading;
   let weth: Weth;
+  let registry: Registry;
 
   beforeAll(async () => {
     environment = await createTestEnvironment();
@@ -25,15 +27,17 @@ describe('Trading', () => {
 
     weth = await deployWeth(environment, environment.accounts[0]);
     const adapterAddress = randomAddress();
-    const registry = await deployRegistry(environment, environment.accounts[0], environment.accounts[0]);
-    const tx = registry.registerExchangeAdapter(environment.accounts[0], {
-      exchangeAddress,
-      adapterAddress,
-      takesCustody: true,
-      sigs: ['0000'],
-    });
+    registry = await deployRegistry(environment, environment.accounts[0], environment.accounts[0]);
+    {
+      const tx = registry.registerExchangeAdapter(environment.accounts[0], {
+        exchangeAddress,
+        adapterAddress,
+        takesCustody: true,
+        sigs: ['0x79705be7'],
+      });
 
-    await tx.send(await tx.prepare());
+      await tx.send(await tx.prepare());
+    }
 
     trading = await deployTrading(environment, environment.accounts[0], {
       hub: hub.contract.address,
@@ -84,8 +88,15 @@ describe('Trading', () => {
   it('should pass the validation tests for callOnExchange', async () => {
     const callArgs = {
       exchangeIndex: 0,
-      methodSignature: '0000',
-      orderAddresses: [zeroAddress, zeroAddress, zeroAddress, zeroAddress, zeroAddress, zeroAddress],
+      methodSignature: '0x79705be7',
+      orderAddresses: [
+        zeroAddress,
+        zeroAddress,
+        weth.contract.address,
+        weth.contract.address,
+        zeroAddress,
+        zeroAddress,
+      ],
       orderValues: [
         new BigNumber(0),
         new BigNumber(0),
@@ -102,7 +113,21 @@ describe('Trading', () => {
       signature: '0x0',
     };
 
+    {
+      const tx = await registry.registerAsset(environment.accounts[0], {
+        address: weth.contract.address,
+        name: 'Test Asset',
+        symbol: 'TAT',
+        url: 'https://tat.tat/',
+        reserveMin: new BigNumber(100000),
+        standards: [1, 2, 3],
+        sigs: ['0x79705be7', '0xe51be6e8'],
+      });
+      await tx.send(await tx.prepare());
+    }
+
     const tx = trading.callOnExchange(environment.accounts[0], callArgs);
+    await tx.validate();
     expect(tx.validate).not.toThrow();
   });
 });
