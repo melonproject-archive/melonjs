@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>PolicyRule | @melonproject/melonjs</title>
+	<title>CallOnExchangeArgs | @melonproject/melonjs</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -52,13 +52,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_contracts_fund_policies_policy_.html">&quot;contracts/fund/policies/Policy&quot;</a>
+					<a href="../modules/_contracts_fund_trading_trading_.html">&quot;contracts/fund/trading/Trading&quot;</a>
 				</li>
 				<li>
-					<a href="_contracts_fund_policies_policy_.policyrule.html">PolicyRule</a>
+					<a href="_contracts_fund_trading_trading_.callonexchangeargs.html">CallOnExchangeArgs</a>
 				</li>
 			</ul>
-			<h1>Interface PolicyRule</h1>
+			<h1>Interface CallOnExchangeArgs</h1>
 		</div>
 	</div>
 </header>
@@ -69,7 +69,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">PolicyRule</span>
+						<span class="target">CallOnExchangeArgs</span>
 					</li>
 				</ul>
 			</section>
@@ -80,10 +80,14 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_fund_policies_policy_.policyrule.html#addresses" class="tsd-kind-icon">addresses</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_fund_policies_policy_.policyrule.html#identifier" class="tsd-kind-icon">identifier</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_fund_policies_policy_.policyrule.html#sig" class="tsd-kind-icon">sig</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_fund_policies_policy_.policyrule.html#values" class="tsd-kind-icon">values</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_fund_trading_trading_.callonexchangeargs.html#exchangeindex" class="tsd-kind-icon">exchange<wbr>Index</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_fund_trading_trading_.callonexchangeargs.html#identifier" class="tsd-kind-icon">identifier</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_fund_trading_trading_.callonexchangeargs.html#makerassetdata" class="tsd-kind-icon">maker<wbr>Asset<wbr>Data</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_fund_trading_trading_.callonexchangeargs.html#methodsignature" class="tsd-kind-icon">method<wbr>Signature</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_fund_trading_trading_.callonexchangeargs.html#orderaddresses" class="tsd-kind-icon">order<wbr>Addresses</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_fund_trading_trading_.callonexchangeargs.html#ordervalues" class="tsd-kind-icon">order<wbr>Values</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_fund_trading_trading_.callonexchangeargs.html#signature" class="tsd-kind-icon">signature</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_fund_trading_trading_.callonexchangeargs.html#takerassetdata" class="tsd-kind-icon">taker<wbr>Asset<wbr>Data</a></li>
 							</ul>
 						</section>
 					</div>
@@ -92,12 +96,12 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="addresses" class="tsd-anchor"></a>
-					<h3>addresses</h3>
-					<div class="tsd-signature tsd-kind-icon">addresses<span class="tsd-signature-symbol">:</span> <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a><span class="tsd-signature-symbol">[]</span></div>
+					<a name="exchangeindex" class="tsd-anchor"></a>
+					<h3>exchange<wbr>Index</h3>
+					<div class="tsd-signature tsd-kind-icon">exchange<wbr>Index<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/master/src/contracts/fund/policies/Policy.ts#L8">contracts/fund/policies/Policy.ts:8</a></li>
+							<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/master/src/contracts/fund/trading/Trading.ts#L59">contracts/fund/trading/Trading.ts:59</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -107,27 +111,67 @@
 					<div class="tsd-signature tsd-kind-icon">identifier<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/master/src/contracts/fund/policies/Policy.ts#L10">contracts/fund/policies/Policy.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/master/src/contracts/fund/trading/Trading.ts#L63">contracts/fund/trading/Trading.ts:63</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="sig" class="tsd-anchor"></a>
-					<h3>sig</h3>
-					<div class="tsd-signature tsd-kind-icon">sig<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="makerassetdata" class="tsd-anchor"></a>
+					<h3>maker<wbr>Asset<wbr>Data</h3>
+					<div class="tsd-signature tsd-kind-icon">maker<wbr>Asset<wbr>Data<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/master/src/contracts/fund/policies/Policy.ts#L7">contracts/fund/policies/Policy.ts:7</a></li>
+							<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/master/src/contracts/fund/trading/Trading.ts#L64">contracts/fund/trading/Trading.ts:64</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="values" class="tsd-anchor"></a>
-					<h3>values</h3>
-					<div class="tsd-signature tsd-kind-icon">values<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">[]</span></div>
+					<a name="methodsignature" class="tsd-anchor"></a>
+					<h3>method<wbr>Signature</h3>
+					<div class="tsd-signature tsd-kind-icon">method<wbr>Signature<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/master/src/contracts/fund/policies/Policy.ts#L9">contracts/fund/policies/Policy.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/master/src/contracts/fund/trading/Trading.ts#L60">contracts/fund/trading/Trading.ts:60</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="orderaddresses" class="tsd-anchor"></a>
+					<h3>order<wbr>Addresses</h3>
+					<div class="tsd-signature tsd-kind-icon">order<wbr>Addresses<span class="tsd-signature-symbol">:</span> <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/master/src/contracts/fund/trading/Trading.ts#L61">contracts/fund/trading/Trading.ts:61</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="ordervalues" class="tsd-anchor"></a>
+					<h3>order<wbr>Values</h3>
+					<div class="tsd-signature tsd-kind-icon">order<wbr>Values<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/master/src/contracts/fund/trading/Trading.ts#L62">contracts/fund/trading/Trading.ts:62</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="signature" class="tsd-anchor"></a>
+					<h3>signature</h3>
+					<div class="tsd-signature tsd-kind-icon">signature<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/master/src/contracts/fund/trading/Trading.ts#L66">contracts/fund/trading/Trading.ts:66</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="takerassetdata" class="tsd-anchor"></a>
+					<h3>taker<wbr>Asset<wbr>Data</h3>
+					<div class="tsd-signature tsd-kind-icon">taker<wbr>Asset<wbr>Data<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/master/src/contracts/fund/trading/Trading.ts#L65">contracts/fund/trading/Trading.ts:65</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -140,36 +184,72 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="../modules/_contracts_fund_policies_policy_.html">"contracts/fund/policies/<wbr>Policy"</a>
+						<a href="../modules/_contracts_fund_trading_trading_.html">"contracts/fund/trading/<wbr>Trading"</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-enum tsd-parent-kind-external-module">
+						<a href="../enums/_contracts_fund_trading_trading_.orderupdatetype.html" class="tsd-kind-icon">Order<wbr>Update<wbr>Type</a>
+					</li>
 					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/_contracts_fund_policies_policy_.policy.html" class="tsd-kind-icon">Policy</a>
+						<a href="../classes/_contracts_fund_trading_trading_.adaptermethodnotallowederror.html" class="tsd-kind-icon">Adapter<wbr>Method<wbr>Not<wbr>Allowed<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="../classes/_contracts_fund_trading_trading_.kybernotregisteredwithfunderror.html" class="tsd-kind-icon">Kyber<wbr>Not<wbr>Registered<wbr>With<wbr>Fund<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="../classes/_contracts_fund_trading_trading_.trading.html" class="tsd-kind-icon">Trading</a>
 					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_contracts_fund_policies_policy_.policyrule.html" class="tsd-kind-icon">Policy<wbr>Rule</a>
+						<a href="_contracts_fund_trading_trading_.callonexchangeargs.html" class="tsd-kind-icon">Call<wbr>OnExchange<wbr>Args</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_contracts_fund_policies_policy_.policyrule.html#addresses" class="tsd-kind-icon">addresses</a>
+								<a href="_contracts_fund_trading_trading_.callonexchangeargs.html#exchangeindex" class="tsd-kind-icon">exchange<wbr>Index</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_contracts_fund_policies_policy_.policyrule.html#identifier" class="tsd-kind-icon">identifier</a>
+								<a href="_contracts_fund_trading_trading_.callonexchangeargs.html#identifier" class="tsd-kind-icon">identifier</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_contracts_fund_policies_policy_.policyrule.html#sig" class="tsd-kind-icon">sig</a>
+								<a href="_contracts_fund_trading_trading_.callonexchangeargs.html#makerassetdata" class="tsd-kind-icon">maker<wbr>Asset<wbr>Data</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_contracts_fund_policies_policy_.policyrule.html#values" class="tsd-kind-icon">values</a>
+								<a href="_contracts_fund_trading_trading_.callonexchangeargs.html#methodsignature" class="tsd-kind-icon">method<wbr>Signature</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_contracts_fund_trading_trading_.callonexchangeargs.html#orderaddresses" class="tsd-kind-icon">order<wbr>Addresses</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_contracts_fund_trading_trading_.callonexchangeargs.html#ordervalues" class="tsd-kind-icon">order<wbr>Values</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_contracts_fund_trading_trading_.callonexchangeargs.html#signature" class="tsd-kind-icon">signature</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_contracts_fund_trading_trading_.callonexchangeargs.html#takerassetdata" class="tsd-kind-icon">taker<wbr>Asset<wbr>Data</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_contracts_fund_trading_trading_.exchangeinfo.html" class="tsd-kind-icon">Exchange<wbr>Info</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_contracts_fund_trading_trading_.openmakeorder.html" class="tsd-kind-icon">Open<wbr>Make<wbr>Order</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_contracts_fund_trading_trading_.order.html" class="tsd-kind-icon">Order</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_contracts_fund_trading_trading_.takeorderkyber.html" class="tsd-kind-icon">Take<wbr>Order<wbr>Kyber</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_contracts_fund_trading_trading_.tradingdeployarguments.html" class="tsd-kind-icon">Trading<wbr>Deploy<wbr>Arguments</a>
+					</li>
 				</ul>
 			</nav>
 		</div>
