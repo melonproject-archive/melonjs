@@ -56,9 +56,9 @@ describe('Trading', () => {
   it('should return on open make order object', async () => {
     const result = await trading.getOpenMakeOrder(exchangeAddress, weth.contract.address);
     expect(result).toMatchObject({
-      id: expect.any(Number),
+      id: expect.any(BigNumber),
       expiresAt: expect.any(Date),
-      orderIndex: expect.any(Number),
+      orderIndex: expect.any(BigNumber),
       buyAsset: expect.any(String),
     });
   });
