@@ -7,6 +7,7 @@ import { randomAddress } from '../../../utils/tests/randomAddress';
 import { Weth } from '../../dependencies/token/Weth';
 import { deployWeth } from '../../../utils/tests/deployWeth';
 import BigNumber from 'bignumber.js';
+import { zeroAddress } from '../../../utils/zeroAddress';
 
 describe('Trading', () => {
   const exchangeAddress = randomAddress();
@@ -42,15 +43,22 @@ describe('Trading', () => {
     });
   });
 
-  it('should return the correct exchange info map', async () => {
+  it('should return the correct exchange info for all exchanges', async () => {
     const result = await trading.getExchangeInfo();
-    const list = Object.values(result);
 
-    list.forEach(item => {
+    result.forEach(item => {
       expect(typeof item.takesCustody).toBe('boolean');
       expect(item.exchange.startsWith('0x')).toBe(true);
       expect(item.adapter.startsWith('0x')).toBe(true);
     });
+  });
+
+  it('should return the correct exchange for a single exchange', async () => {
+    const result = await trading.getExchange(0);
+
+    expect(typeof result.takesCustody).toBe('boolean');
+    expect(result.exchange.startsWith('0x')).toBe(true);
+    expect(result.adapter.startsWith('0x')).toBe(true);
   });
 
   it('should return on open make order object', async () => {
@@ -71,5 +79,30 @@ describe('Trading', () => {
   it('should get the order lifespan', async () => {
     const result = await trading.getOrderLifespan();
     expect(result.isEqualTo(new BigNumber(86400))).toBe(true);
+  });
+
+  it('should pass the validation tests for callOnExchange', async () => {
+    const callArgs = {
+      exchangeIndex: 0,
+      methodSignature: '0000',
+      orderAddresses: [zeroAddress, zeroAddress, zeroAddress, zeroAddress, zeroAddress, zeroAddress],
+      orderValues: [
+        new BigNumber(0),
+        new BigNumber(0),
+        new BigNumber(0),
+        new BigNumber(0),
+        new BigNumber(0),
+        new BigNumber(0),
+        new BigNumber(0),
+        new BigNumber(0),
+      ],
+      identifier: 'anything',
+      makerAssetData: '0x0',
+      takerAssetData: '0x0',
+      signature: '0x0',
+    };
+
+    const tx = trading.callOnExchange(environment.accounts[0], callArgs);
+    expect(tx.validate).not.toThrow();
   });
 });

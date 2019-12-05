@@ -10,17 +10,14 @@ import BigNumber from 'bignumber.js';
 import { Registry } from '../../version/Registry';
 import { isZeroAddress } from '../../../utils/isZeroAddress';
 import { stringToBytes } from '../../../utils/tests/stringToBytes';
-import { hexToBytes } from 'web3-utils';
+import { hexToBytes, utf8ToHex } from 'web3-utils';
+import { ValidationError } from '../../../errors/ValidationError';
 
 export interface ExchangeInfo {
   exchange: Address;
   adapter: Address;
   takesCustody: boolean;
 }
-
-export type ExchangeInfoMap = {
-  [key: string]: ExchangeInfo;
-};
 
 export interface OpenMakeOrder {
   id: BigNumber;
@@ -55,14 +52,26 @@ export interface TradingDeployArguments {
 }
 
 export interface CallOnExchangeArgs {
-  exchangeIndex: BigNumber;
+  exchangeIndex: number;
   methodSignature: string;
-  orderAddresses: [Address, Address, Address, Address, Address, Address]; // 6
-  orderValues: [BigNumber, BigNumber, BigNumber, BigNumber, BigNumber, BigNumber, BigNumber, BigNumber]; //8
+  orderAddresses: Address[]; // 6
+  orderValues: BigNumber[]; //8
   identifier: string; //bytes32
   makerAssetData: string; // bytes
   takerAssetData: string; // bytes
   signature: string; // bytes
+}
+
+export class AdapterMethodNotAllowedError extends ValidationError {
+  public readonly name = 'AdapterMethodNotAllowedError';
+
+  constructor(
+    public readonly adapter: Address,
+    public readonly signature: string,
+    message: string = 'Adapter Method is not allowed.',
+  ) {
+    super(message);
+  }
 }
 
 export class Trading extends Contract {
@@ -86,20 +95,34 @@ export class Trading extends Contract {
     const { '0': ofExchanges, '1': ofAdapters, '2': takesCustody } = await this.makeCall<{
       '0': string[];
       '1': string[];
-      '2': string[];
+      '2': boolean[];
     }>('getExchangeInfo', undefined, block);
 
-    const output = ofExchanges.reduce((carry, ofExchange, index) => {
-      const item = {
-        exchange: ofExchange,
+    const output = ofExchanges.map((_, index) => {
+      return {
+        exchange: ofExchanges[index],
         adapter: ofAdapters[index],
         takesCustody: takesCustody[index],
       };
+    });
 
-      return { ...carry, [ofExchange]: item };
-    }, {}) as ExchangeInfoMap;
+    return output as ExchangeInfo[];
+  }
 
-    return output;
+  /**
+   * Gets information a single
+   *
+   * @param index The index of the exchange
+   * @param block The block number to execute the call on.
+   */
+  public async getExchange(index: number, block?: number) {
+    const { '0': exchange, '1': adapter, '2': takesCustody } = await this.makeCall<{
+      '0': string;
+      '1': string;
+      '2': boolean;
+    }>('exchanges', [index], block);
+
+    return { exchange, adapter, takesCustody } as ExchangeInfo;
   }
 
   /**
@@ -195,7 +218,7 @@ export class Trading extends Contract {
   public callOnExchange(from: Address, args: CallOnExchangeArgs) {
     const methodArgs = [
       args.exchangeIndex.toString(),
-      args.methodSignature,
+      hexToBytes(utf8ToHex(args.methodSignature)),
       args.orderAddresses,
       args.orderValues.map(orderValue => orderValue.toString()),
       stringToBytes(args.identifier, 32),
@@ -205,7 +228,13 @@ export class Trading extends Contract {
     ];
 
     const validate = async () => {
-      // TODO
+      const registry = new Registry(this.environment, await this.getRegistry());
+      const exchange = await this.getExchange(args.exchangeIndex);
+
+      const adapterMethodIsAllowed = await registry.isAdapterMethodAllowed(exchange.adapter, args.methodSignature);
+      if (!adapterMethodIsAllowed) {
+        throw new AdapterMethodNotAllowedError(exchange.adapter, args.methodSignature);
+      }
     };
 
     return this.createTransaction({ from, method: 'callOnExchange', args: methodArgs, validate });
