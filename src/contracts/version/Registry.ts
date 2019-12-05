@@ -6,7 +6,7 @@ import { Environment } from '../../Environment';
 import { hexToBytes } from 'web3-utils';
 import { ValidationError } from '../../errors/ValidationError';
 import { toBigNumber } from '../../utils/toBigNumber';
-import { stringToBytes } from '../../utils/tests/stringToBytes';
+import { stringToBytes } from '../../utils/stringToBytes';
 
 export class ExchangeAdapterAlreadyRegisteredError extends ValidationError {
   public name = 'ExchangeAdapterAlreadyRegisteredError';

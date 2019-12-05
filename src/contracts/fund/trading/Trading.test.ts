@@ -7,8 +7,8 @@ import { randomAddress } from '../../../utils/tests/randomAddress';
 import { Weth } from '../../dependencies/token/Weth';
 import { deployWeth } from '../../../utils/tests/deployWeth';
 import BigNumber from 'bignumber.js';
-import { zeroAddress } from '../../../utils/zeroAddress';
 import { Registry } from '../../version/Registry';
+import { zeroAddress } from '../../../utils/zeroAddress';
 
 describe('Trading', () => {
   const exchangeAddress = randomAddress();
@@ -33,9 +33,22 @@ describe('Trading', () => {
         exchangeAddress,
         adapterAddress,
         takesCustody: true,
-        sigs: ['0x79705be7'],
+        sigs: ['0x79705be7', '0xe51be6e8'],
       });
 
+      await tx.send(await tx.prepare());
+    }
+
+    {
+      const tx = await registry.registerAsset(environment.accounts[0], {
+        address: weth.contract.address,
+        name: 'Test Asset',
+        symbol: 'TAT',
+        url: 'https://tat.tat/',
+        reserveMin: new BigNumber(100000),
+        standards: [1, 2, 3],
+        sigs: ['0x79705be7', '0xe51be6e8'],
+      });
       await tx.send(await tx.prepare());
     }
 
@@ -113,21 +126,21 @@ describe('Trading', () => {
       signature: '0x0',
     };
 
-    {
-      const tx = await registry.registerAsset(environment.accounts[0], {
-        address: weth.contract.address,
-        name: 'Test Asset',
-        symbol: 'TAT',
-        url: 'https://tat.tat/',
-        reserveMin: new BigNumber(100000),
-        standards: [1, 2, 3],
-        sigs: ['0x79705be7', '0xe51be6e8'],
-      });
-      await tx.send(await tx.prepare());
-    }
-
     const tx = trading.callOnExchange(environment.accounts[0], callArgs);
     await tx.validate();
     expect(tx.validate).not.toThrow();
+  });
+
+  it('should call takeOrder on Kyber', async () => {
+    const callArgs = {
+      kyberAddress: exchangeAddress,
+      makerAsset: weth.contract.address,
+      takerAsset: weth.contract.address,
+      makerQuantity: new BigNumber('1e18'),
+      takerQuantity: new BigNumber('1e18'),
+    };
+
+    const tx = await trading.takeOrderKyber(environment.accounts[0], callArgs);
+    await tx.validate();
   });
 });

@@ -9,11 +9,13 @@ import { toBigNumber } from '../../../utils/toBigNumber';
 import BigNumber from 'bignumber.js';
 import { Registry, AssetNotRegisteredError } from '../../version/Registry';
 import { isZeroAddress } from '../../../utils/isZeroAddress';
-import { stringToBytes } from '../../../utils/tests/stringToBytes';
+import { stringToBytes } from '../../../utils/stringToBytes';
 import { hexToBytes } from 'web3-utils';
 import { ValidationError } from '../../../errors/ValidationError';
 import { encodeFunctionSignature } from '../../../utils/encodeFunctionSignature';
 import { ExchangeAdapterAbi } from '../../../abis/ExchangeAdapter.abi';
+import { zeroAddress } from '../../../utils/zeroAddress';
+import { sameAddress } from '../../../utils/sameAddress';
 
 export interface ExchangeInfo {
   exchange: Address;
@@ -62,6 +64,14 @@ export interface CallOnExchangeArgs {
   makerAssetData: string; // bytes
   takerAssetData: string; // bytes
   signature: string; // bytes
+}
+
+export interface TakeOrderKyber {
+  kyberAddress: Address;
+  makerAsset: Address;
+  takerAsset: Address;
+  makerQuantity: BigNumber;
+  takerQuantity: BigNumber;
 }
 
 export class AdapterMethodNotAllowedError extends ValidationError {
@@ -220,7 +230,7 @@ export class Trading extends Contract {
   public callOnExchange(from: Address, args: CallOnExchangeArgs) {
     const methodArgs = [
       args.exchangeIndex.toString(),
-      hexToBytes(args.methodSignature),
+      args.methodSignature,
       args.orderAddresses,
       args.orderValues.map(orderValue => orderValue.toString()),
       stringToBytes(args.identifier, 32),
@@ -232,6 +242,8 @@ export class Trading extends Contract {
     const validate = async () => {
       const registry = new Registry(this.environment, await this.getRegistry());
       const exchange = await this.getExchange(args.exchangeIndex);
+
+      console.log(exchange);
 
       const adapterMethodIsAllowed = await registry.isAdapterMethodAllowed(exchange.adapter, args.methodSignature);
       if (!adapterMethodIsAllowed) {
@@ -255,6 +267,39 @@ export class Trading extends Contract {
     };
 
     return this.createTransaction({ from, method: 'callOnExchange', args: methodArgs, validate });
+  }
+
+  /**
+   * Take order on Kyber
+   *
+   * @param from The address of the sender
+   * @param args The arguments as [[TakeOrderKyber]]
+   */
+  public async takeOrderKyber(from: Address, args: TakeOrderKyber) {
+    const exchangeInfo = await this.getExchangeInfo();
+    const exchangeIndex = exchangeInfo.findIndex(exchange => sameAddress(exchange.exchange, args.kyberAddress));
+
+    const methodArgs = {
+      exchangeIndex,
+      methodSignature: encodeFunctionSignature(ExchangeAdapterAbi, 'takeOrder'),
+      orderAddresses: [zeroAddress, zeroAddress, args.makerAsset, args.takerAsset, zeroAddress, zeroAddress],
+      orderValues: [
+        args.makerQuantity,
+        args.takerQuantity,
+        new BigNumber(0),
+        new BigNumber(0),
+        new BigNumber(0),
+        new BigNumber(0),
+        args.takerQuantity,
+        new BigNumber(0),
+      ],
+      identifier: '0x0',
+      makerAssetData: '0x0',
+      takerAssetData: '0x0',
+      signature: '0x0',
+    };
+
+    return this.callOnExchange(from, methodArgs);
   }
 }
 
