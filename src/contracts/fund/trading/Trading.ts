@@ -86,6 +86,17 @@ export class AdapterMethodNotAllowedError extends ValidationError {
   }
 }
 
+export class KyberNotRegisteredWithFundError extends ValidationError {
+  public readonly name = 'KyberNotRegisteredWithFundError';
+
+  constructor(
+    public readonly kyberAddress: Address,
+    message: string = 'Kyber Exchange is not registered for this fund.',
+  ) {
+    super(message);
+  }
+}
+
 export class Trading extends Contract {
   public static readonly abi = TradingAbi;
 
@@ -243,8 +254,6 @@ export class Trading extends Contract {
       const registry = new Registry(this.environment, await this.getRegistry());
       const exchange = await this.getExchange(args.exchangeIndex);
 
-      console.log(exchange);
-
       const adapterMethodIsAllowed = await registry.isAdapterMethodAllowed(exchange.adapter, args.methodSignature);
       if (!adapterMethodIsAllowed) {
         throw new AdapterMethodNotAllowedError(exchange.adapter, args.methodSignature);
@@ -278,6 +287,10 @@ export class Trading extends Contract {
   public async takeOrderKyber(from: Address, args: TakeOrderKyber) {
     const exchangeInfo = await this.getExchangeInfo();
     const exchangeIndex = exchangeInfo.findIndex(exchange => sameAddress(exchange.exchange, args.kyberAddress));
+
+    if (exchangeIndex === -1) {
+      throw new KyberNotRegisteredWithFundError(args.kyberAddress);
+    }
 
     const methodArgs = {
       exchangeIndex,

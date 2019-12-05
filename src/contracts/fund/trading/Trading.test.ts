@@ -1,4 +1,4 @@
-import { Trading } from './Trading';
+import { Trading, KyberNotRegisteredWithFundError } from './Trading';
 import { createTestEnvironment, TestEnvironment } from '../../../utils/tests/createTestEnvironment';
 import { deployHub } from '../../../utils/tests/deployHub';
 import { deployTrading } from '../../../utils/tests/deployTrading';
@@ -142,5 +142,19 @@ describe('Trading', () => {
 
     const tx = await trading.takeOrderKyber(environment.accounts[0], callArgs);
     await tx.validate();
+  });
+
+  it('should throw when passing a wrong address for Kyber', async () => {
+    const callArgs = {
+      kyberAddress: randomAddress(),
+      makerAsset: weth.contract.address,
+      takerAsset: weth.contract.address,
+      makerQuantity: new BigNumber('1e18'),
+      takerQuantity: new BigNumber('1e18'),
+    };
+
+    await expect(trading.takeOrderKyber(environment.accounts[0], callArgs)).rejects.toEqual(
+      new KyberNotRegisteredWithFundError(callArgs.kyberAddress),
+    );
   });
 });
