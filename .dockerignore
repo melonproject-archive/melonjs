@@ -1,0 +1,8 @@
+*
+
+!src
+!scripts
+!package.json
+!yarn.lock
+!tsconfig.json
+!.protocol

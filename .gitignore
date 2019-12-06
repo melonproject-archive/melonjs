@@ -20,6 +20,7 @@ src/abis/
 !.gitignore
 !.prettierrc
 !.prettierignore
+!.dockerignore
 !.travis.yml
 !.editorconfig
 !.protocol
