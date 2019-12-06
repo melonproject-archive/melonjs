@@ -9,7 +9,7 @@ import { deployWeth } from '../../../utils/tests/deployWeth';
 import BigNumber from 'bignumber.js';
 import { Registry } from '../../version/Registry';
 import { zeroAddress } from '../../../utils/zeroAddress';
-import { KyberNotRegisteredWithFundError } from './exchanges/Kyber';
+import { KyberNotRegisteredWithFundError } from './Trading.errors';
 
 describe('Trading', () => {
   const exchangeAddress = randomAddress();
@@ -134,7 +134,7 @@ describe('Trading', () => {
 
   it('should call takeOrder on Kyber', async () => {
     const callArgs = {
-      kyberAddress: exchangeAddress,
+      exchangeAddress,
       makerAsset: weth.contract.address,
       takerAsset: weth.contract.address,
       makerQuantity: new BigNumber('1e18'),
@@ -149,7 +149,7 @@ describe('Trading', () => {
 
   it('should throw when passing a wrong address for Kyber', async () => {
     const callArgs = {
-      kyberAddress: randomAddress(),
+      exchangeAddress: randomAddress(),
       makerAsset: weth.contract.address,
       takerAsset: weth.contract.address,
       makerQuantity: new BigNumber('1e18'),
@@ -159,7 +159,7 @@ describe('Trading', () => {
     const kyber = trading.kyber();
 
     await expect(kyber.takeOrder(environment.accounts[0], callArgs)).rejects.toEqual(
-      new KyberNotRegisteredWithFundError(callArgs.kyberAddress),
+      new KyberNotRegisteredWithFundError(callArgs.exchangeAddress),
     );
   });
 });

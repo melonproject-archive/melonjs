@@ -5,11 +5,9 @@ import { Trading } from '../Trading';
 import { encodeFunctionSignature } from '../../../../utils/encodeFunctionSignature';
 import { ExchangeAdapterAbi } from '../../../../abis/ExchangeAdapter.abi';
 import { zeroAddress } from '../../../../utils/zeroAddress';
-import { Hub } from '../../hub/Hub';
-import { KyberNotRegisteredWithFundError, FundIsShutDownError, InsufficientBalanceError } from '../Trading.errors';
-import { PreminedToken } from '../../../dependencies/token/PreminedToken';
+import { MelonEngineNotRegisteredWithFundError } from '../Trading.errors';
 
-export interface TakeOrderKyber {
+export interface TakeOrderMelonEngine {
   exchangeAddress: Address;
   makerAsset: Address;
   takerAsset: Address;
@@ -17,21 +15,21 @@ export interface TakeOrderKyber {
   takerQuantity: BigNumber;
 }
 
-export class Kyber {
+export class MelonEngine {
   constructor(public readonly trading: Trading) {}
 
   /**
-   * Take order on Kyber
+   * Take order on the Melon Engine
    *
    * @param from The address of the sender
-   * @param args The arguments as [[TakeOrderKyber]]
+   * @param args The arguments as [[TakeOrderMelonEngine]]
    */
-  public async takeOrder(from: Address, args: TakeOrderKyber) {
+  public async takeOrder(from: Address, args: TakeOrderMelonEngine) {
     const exchangeInfo = await this.trading.getExchangeInfo();
     const exchangeIndex = exchangeInfo.findIndex(exchange => sameAddress(exchange.exchange, args.exchangeAddress));
 
     if (exchangeIndex === -1) {
-      throw new KyberNotRegisteredWithFundError(args.exchangeAddress);
+      throw new MelonEngineNotRegisteredWithFundError(args.exchangeAddress);
     }
 
     const methodArgs = {
@@ -54,21 +52,6 @@ export class Kyber {
       signature: '0x0',
     };
 
-    const validate = async () => {
-      const vaultAddress = (await this.trading.getRoutes()).vault;
-      const token = new PreminedToken(this.trading.environment, args.takerAsset);
-      const vaultTokenBalance = await token.getBalanceOf(vaultAddress);
-      if (vaultTokenBalance.isLessThan(args.takerQuantity)) {
-        throw new InsufficientBalanceError(args.takerQuantity, vaultTokenBalance);
-      }
-
-      const hub = new Hub(this.trading.environment, await this.trading.getHub());
-      const isShutDown = await hub.isShutDown();
-      if (isShutDown) {
-        throw new FundIsShutDownError(hub.contract.address);
-      }
-    };
-
-    return this.trading.callOnExchange(from, methodArgs, validate);
+    return this.trading.callOnExchange(from, methodArgs);
   }
 }

@@ -11,10 +11,10 @@ import { Registry, AssetNotRegisteredError } from '../../version/Registry';
 import { isZeroAddress } from '../../../utils/isZeroAddress';
 import { stringToBytes } from '../../../utils/stringToBytes';
 import { hexToBytes } from 'web3-utils';
-import { ValidationError } from '../../../errors/ValidationError';
 import { encodeFunctionSignature } from '../../../utils/encodeFunctionSignature';
 import { ExchangeAdapterAbi } from '../../../abis/ExchangeAdapter.abi';
 import { Kyber } from './exchanges/Kyber';
+import { AdapterMethodNotAllowedError } from './Trading.errors';
 
 export interface ExchangeInfo {
   exchange: Address;
@@ -63,18 +63,6 @@ export interface CallOnExchangeArgs {
   makerAssetData: string; // bytes
   takerAssetData: string; // bytes
   signature: string; // bytes
-}
-
-export class AdapterMethodNotAllowedError extends ValidationError {
-  public readonly name = 'AdapterMethodNotAllowedError';
-
-  constructor(
-    public readonly adapter: Address,
-    public readonly signature: string,
-    message: string = 'Adapter Method is not allowed.',
-  ) {
-    super(message);
-  }
 }
 
 export class Trading extends Contract {
