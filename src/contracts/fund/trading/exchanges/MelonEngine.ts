@@ -6,9 +6,10 @@ import { encodeFunctionSignature } from '../../../../utils/encodeFunctionSignatu
 import { ExchangeAdapterAbi } from '../../../../abis/ExchangeAdapter.abi';
 import { zeroAddress } from '../../../../utils/zeroAddress';
 import { MelonEngineNotRegisteredWithFundError } from '../Trading.errors';
+import { checkSufficientBalance } from '../utils/checkSufficientBalance';
+import { checkFundIsNotShutdown } from '../utils/checkFundIsNotShutdown';
 
 export interface TakeOrderMelonEngine {
-  exchangeAddress: Address;
   makerAsset: Address;
   takerAsset: Address;
   makerQuantity: BigNumber;
@@ -16,7 +17,23 @@ export interface TakeOrderMelonEngine {
 }
 
 export class MelonEngine {
-  constructor(public readonly trading: Trading) {}
+  constructor(public readonly trading: Trading, public readonly exchangeIndex: number) {}
+
+  public static async create(trading: Trading, address: Address) {
+    const exchangeIndex = await this.index(trading, address);
+    if (exchangeIndex === null) {
+      throw new MelonEngineNotRegisteredWithFundError(address);
+    }
+
+    return new this(trading, exchangeIndex);
+  }
+
+  public static async index(trading: Trading, address: Address) {
+    const exchangeInfo = await trading.getExchangeInfo();
+    const exchangeIndex = exchangeInfo.findIndex(exchange => sameAddress(exchange.exchange, address));
+
+    return exchangeIndex === -1 ? null : exchangeIndex;
+  }
 
   /**
    * Take order on the Melon Engine
@@ -24,16 +41,9 @@ export class MelonEngine {
    * @param from The address of the sender
    * @param args The arguments as [[TakeOrderMelonEngine]]
    */
-  public async takeOrder(from: Address, args: TakeOrderMelonEngine) {
-    const exchangeInfo = await this.trading.getExchangeInfo();
-    const exchangeIndex = exchangeInfo.findIndex(exchange => sameAddress(exchange.exchange, args.exchangeAddress));
-
-    if (exchangeIndex === -1) {
-      throw new MelonEngineNotRegisteredWithFundError(args.exchangeAddress);
-    }
-
+  public takeOrder(from: Address, args: TakeOrderMelonEngine) {
     const methodArgs = {
-      exchangeIndex,
+      exchangeIndex: this.exchangeIndex,
       methodSignature: encodeFunctionSignature(ExchangeAdapterAbi, 'takeOrder'),
       orderAddresses: [zeroAddress, zeroAddress, args.makerAsset, args.takerAsset, zeroAddress, zeroAddress],
       orderValues: [
@@ -52,6 +62,14 @@ export class MelonEngine {
       signature: '0x0',
     };
 
-    return this.trading.callOnExchange(from, methodArgs);
+    const validate = async () => {
+      const vaultAddress = (await this.trading.getRoutes()).vault;
+      const hubAddress = await this.trading.getHub();
+
+      await checkSufficientBalance(this.trading.environment, args.takerAsset, args.takerQuantity, vaultAddress);
+      await checkFundIsNotShutdown(this.trading.environment, hubAddress);
+    };
+
+    return this.trading.callOnExchange(from, methodArgs, validate);
   }
 }

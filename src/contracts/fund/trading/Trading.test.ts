@@ -9,7 +9,8 @@ import { deployWeth } from '../../../utils/tests/deployWeth';
 import BigNumber from 'bignumber.js';
 import { Registry } from '../../version/Registry';
 import { zeroAddress } from '../../../utils/zeroAddress';
-import { KyberNotRegisteredWithFundError } from './Trading.errors';
+import { KyberNotRegisteredWithFundError, InsufficientBalanceError } from './Trading.errors';
+import { Kyber } from './exchanges/Kyber';
 
 describe('Trading', () => {
   const exchangeAddress = randomAddress();
@@ -132,34 +133,21 @@ describe('Trading', () => {
     expect(tx.validate).not.toThrow();
   });
 
-  it('should call takeOrder on Kyber', async () => {
+  it('should throw an insufficient balance error with Kyber', async () => {
     const callArgs = {
-      exchangeAddress,
       makerAsset: weth.contract.address,
       takerAsset: weth.contract.address,
       makerQuantity: new BigNumber('1e18'),
       takerQuantity: new BigNumber('1e18'),
     };
 
-    const kyber = trading.kyber();
+    const kyber = await Kyber.create(trading, exchangeAddress);
 
     const tx = await kyber.takeOrder(environment.accounts[0], callArgs);
-    await tx.validate();
+    await expect(tx.validate()).rejects.toThrowError(InsufficientBalanceError);
   });
 
   it('should throw when passing a wrong address for Kyber', async () => {
-    const callArgs = {
-      exchangeAddress: randomAddress(),
-      makerAsset: weth.contract.address,
-      takerAsset: weth.contract.address,
-      makerQuantity: new BigNumber('1e18'),
-      takerQuantity: new BigNumber('1e18'),
-    };
-
-    const kyber = trading.kyber();
-
-    await expect(kyber.takeOrder(environment.accounts[0], callArgs)).rejects.toEqual(
-      new KyberNotRegisteredWithFundError(callArgs.exchangeAddress),
-    );
+    await expect(Kyber.create(trading, randomAddress())).rejects.toThrowError(KyberNotRegisteredWithFundError);
   });
 });

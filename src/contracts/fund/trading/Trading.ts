@@ -13,7 +13,6 @@ import { stringToBytes } from '../../../utils/stringToBytes';
 import { hexToBytes } from 'web3-utils';
 import { encodeFunctionSignature } from '../../../utils/encodeFunctionSignature';
 import { ExchangeAdapterAbi } from '../../../abis/ExchangeAdapter.abi';
-import { Kyber } from './exchanges/Kyber';
 import { AdapterMethodNotAllowedError } from './Trading.errors';
 
 export interface ExchangeInfo {
@@ -252,10 +251,6 @@ export class Trading extends Contract {
     };
 
     return this.createTransaction({ from, method: 'callOnExchange', args: methodArgs, validate });
-  }
-
-  public kyber() {
-    return new Kyber(this);
   }
 }
 
