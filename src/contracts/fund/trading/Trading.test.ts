@@ -9,7 +9,7 @@ import { deployWeth } from '../../../utils/tests/deployWeth';
 import BigNumber from 'bignumber.js';
 import { Registry } from '../../version/Registry';
 import { zeroAddress } from '../../../utils/zeroAddress';
-import { KyberNotRegisteredWithFundError, InsufficientBalanceError } from './Trading.errors';
+import { ExchangeNotRegisteredWithFundError, InsufficientBalanceError } from './Trading.errors';
 import { Kyber } from './exchanges/Kyber';
 
 describe('Trading', () => {
@@ -148,6 +148,6 @@ describe('Trading', () => {
   });
 
   it('should throw when passing a wrong address for Kyber', async () => {
-    await expect(Kyber.create(trading, randomAddress())).rejects.toThrowError(KyberNotRegisteredWithFundError);
+    await expect(Kyber.create(trading, randomAddress())).rejects.toThrowError(ExchangeNotRegisteredWithFundError);
   });
 });

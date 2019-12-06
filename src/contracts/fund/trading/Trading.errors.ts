@@ -2,23 +2,9 @@ import { Address } from '../../../Address';
 import { ValidationError } from '../../../errors/ValidationError';
 import BigNumber from 'bignumber.js';
 
-export class KyberNotRegisteredWithFundError extends ValidationError {
-  public readonly name = 'KyberNotRegisteredWithFundError';
-  constructor(
-    public readonly kyberAddress: Address,
-    message: string = 'Kyber Exchange is not registered for this fund.',
-  ) {
-    super(message);
-  }
-}
-
-export class MelonEngineNotRegisteredWithFundError extends ValidationError {
-  public readonly name = 'KyberNotRegisteredWithFundError';
-
-  constructor(
-    public readonly kyberAddress: Address,
-    message: string = 'Kyber Exchange is not registered for this fund.',
-  ) {
+export class ExchangeNotRegisteredWithFundError extends ValidationError {
+  public readonly name = 'ExchangeNotRegisteredWithFundError';
+  constructor(public readonly kyberAddress: Address, message: string = 'Exchange is not registered for this fund.') {
     super(message);
   }
 }

@@ -1,13 +1,11 @@
 import BigNumber from 'bignumber.js';
 import { Address } from '../../../../Address';
-import { sameAddress } from '../../../../utils/sameAddress';
-import { Trading } from '../Trading';
 import { encodeFunctionSignature } from '../../../../utils/encodeFunctionSignature';
 import { ExchangeAdapterAbi } from '../../../../abis/ExchangeAdapter.abi';
 import { zeroAddress } from '../../../../utils/zeroAddress';
-import { MelonEngineNotRegisteredWithFundError } from '../Trading.errors';
 import { checkSufficientBalance } from '../utils/checkSufficientBalance';
 import { checkFundIsNotShutdown } from '../utils/checkFundIsNotShutdown';
+import { BaseExchange } from './BaseExchange';
 
 export interface TakeOrderMelonEngine {
   makerAsset: Address;
@@ -16,25 +14,7 @@ export interface TakeOrderMelonEngine {
   takerQuantity: BigNumber;
 }
 
-export class MelonEngine {
-  constructor(public readonly trading: Trading, public readonly exchangeIndex: number) {}
-
-  public static async create(trading: Trading, address: Address) {
-    const exchangeIndex = await this.index(trading, address);
-    if (exchangeIndex === null) {
-      throw new MelonEngineNotRegisteredWithFundError(address);
-    }
-
-    return new this(trading, exchangeIndex);
-  }
-
-  public static async index(trading: Trading, address: Address) {
-    const exchangeInfo = await trading.getExchangeInfo();
-    const exchangeIndex = exchangeInfo.findIndex(exchange => sameAddress(exchange.exchange, address));
-
-    return exchangeIndex === -1 ? null : exchangeIndex;
-  }
-
+export class MelonEngine extends BaseExchange {
   /**
    * Take order on the Melon Engine
    *
