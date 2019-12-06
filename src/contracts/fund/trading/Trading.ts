@@ -14,8 +14,7 @@ import { hexToBytes } from 'web3-utils';
 import { ValidationError } from '../../../errors/ValidationError';
 import { encodeFunctionSignature } from '../../../utils/encodeFunctionSignature';
 import { ExchangeAdapterAbi } from '../../../abis/ExchangeAdapter.abi';
-import { zeroAddress } from '../../../utils/zeroAddress';
-import { sameAddress } from '../../../utils/sameAddress';
+import { Kyber } from './exchanges/Kyber';
 
 export interface ExchangeInfo {
   exchange: Address;
@@ -66,14 +65,6 @@ export interface CallOnExchangeArgs {
   signature: string; // bytes
 }
 
-export interface TakeOrderKyber {
-  kyberAddress: Address;
-  makerAsset: Address;
-  takerAsset: Address;
-  makerQuantity: BigNumber;
-  takerQuantity: BigNumber;
-}
-
 export class AdapterMethodNotAllowedError extends ValidationError {
   public readonly name = 'AdapterMethodNotAllowedError';
 
@@ -81,17 +72,6 @@ export class AdapterMethodNotAllowedError extends ValidationError {
     public readonly adapter: Address,
     public readonly signature: string,
     message: string = 'Adapter Method is not allowed.',
-  ) {
-    super(message);
-  }
-}
-
-export class KyberNotRegisteredWithFundError extends ValidationError {
-  public readonly name = 'KyberNotRegisteredWithFundError';
-
-  constructor(
-    public readonly kyberAddress: Address,
-    message: string = 'Kyber Exchange is not registered for this fund.',
   ) {
     super(message);
   }
@@ -286,41 +266,8 @@ export class Trading extends Contract {
     return this.createTransaction({ from, method: 'callOnExchange', args: methodArgs, validate });
   }
 
-  /**
-   * Take order on Kyber
-   *
-   * @param from The address of the sender
-   * @param args The arguments as [[TakeOrderKyber]]
-   */
-  public async takeOrderKyber(from: Address, args: TakeOrderKyber) {
-    const exchangeInfo = await this.getExchangeInfo();
-    const exchangeIndex = exchangeInfo.findIndex(exchange => sameAddress(exchange.exchange, args.kyberAddress));
-
-    if (exchangeIndex === -1) {
-      throw new KyberNotRegisteredWithFundError(args.kyberAddress);
-    }
-
-    const methodArgs = {
-      exchangeIndex,
-      methodSignature: encodeFunctionSignature(ExchangeAdapterAbi, 'takeOrder'),
-      orderAddresses: [zeroAddress, zeroAddress, args.makerAsset, args.takerAsset, zeroAddress, zeroAddress],
-      orderValues: [
-        args.makerQuantity,
-        args.takerQuantity,
-        new BigNumber(0),
-        new BigNumber(0),
-        new BigNumber(0),
-        new BigNumber(0),
-        args.takerQuantity,
-        new BigNumber(0),
-      ],
-      identifier: '0x0',
-      makerAssetData: '0x0',
-      takerAssetData: '0x0',
-      signature: '0x0',
-    };
-
-    return this.callOnExchange(from, methodArgs);
+  public kyber() {
+    return new Kyber(this);
   }
 }
 

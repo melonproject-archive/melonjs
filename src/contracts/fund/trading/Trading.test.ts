@@ -1,4 +1,4 @@
-import { Trading, KyberNotRegisteredWithFundError } from './Trading';
+import { Trading } from './Trading';
 import { createTestEnvironment, TestEnvironment } from '../../../utils/tests/createTestEnvironment';
 import { deployHub } from '../../../utils/tests/deployHub';
 import { deployTrading } from '../../../utils/tests/deployTrading';
@@ -9,6 +9,7 @@ import { deployWeth } from '../../../utils/tests/deployWeth';
 import BigNumber from 'bignumber.js';
 import { Registry } from '../../version/Registry';
 import { zeroAddress } from '../../../utils/zeroAddress';
+import { KyberNotRegisteredWithFundError } from './exchanges/Kyber';
 
 describe('Trading', () => {
   const exchangeAddress = randomAddress();
@@ -140,7 +141,9 @@ describe('Trading', () => {
       takerQuantity: new BigNumber('1e18'),
     };
 
-    const tx = await trading.takeOrderKyber(environment.accounts[0], callArgs);
+    const kyber = trading.kyber();
+
+    const tx = await kyber.takeOrder(environment.accounts[0], callArgs);
     await tx.validate();
   });
 
@@ -153,7 +156,9 @@ describe('Trading', () => {
       takerQuantity: new BigNumber('1e18'),
     };
 
-    await expect(trading.takeOrderKyber(environment.accounts[0], callArgs)).rejects.toEqual(
+    const kyber = trading.kyber();
+
+    await expect(kyber.takeOrder(environment.accounts[0], callArgs)).rejects.toEqual(
       new KyberNotRegisteredWithFundError(callArgs.kyberAddress),
     );
   });
