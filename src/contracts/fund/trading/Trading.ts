@@ -133,7 +133,7 @@ export class Trading extends Contract {
   }
 
   /**
-   * Gets information a single
+   * Gets information for a single exchange
    *
    * @param index The index of the exchange
    * @param block The block number to execute the call on.
@@ -232,13 +232,39 @@ export class Trading extends Contract {
     return toBigNumber(result);
   }
 
+  private async validateCallOnExchange(args: CallOnExchangeArgs) {
+    const registry = new Registry(this.environment, await this.getRegistry());
+    const exchange = await this.getExchange(args.exchangeIndex);
+
+    const adapterMethodIsAllowed = await registry.isAdapterMethodAllowed(exchange.adapter, args.methodSignature);
+    if (!adapterMethodIsAllowed) {
+      throw new AdapterMethodNotAllowedError(exchange.adapter, args.methodSignature);
+    }
+
+    const makeOrderSignature = encodeFunctionSignature(ExchangeAdapterAbi, 'makeOrder');
+    const takeOrderSignature = encodeFunctionSignature(ExchangeAdapterAbi, 'takeOrder');
+
+    if (args.methodSignature === makeOrderSignature || args.methodSignature === takeOrderSignature) {
+      const makerAssetIsRegistered = await registry.isAssetRegistered(args.orderAddresses[2]);
+      if (!makerAssetIsRegistered) {
+        throw new AssetNotRegisteredError(args.orderAddresses[2]);
+      }
+
+      const takerAssetIsRegistered = await registry.isAssetRegistered(args.orderAddresses[3]);
+      if (!takerAssetIsRegistered) {
+        throw new AssetNotRegisteredError(args.orderAddresses[3]);
+      }
+    }
+  }
+
   /**
    * Call on exchange (all trading transactions go through this).
    *
    * @param from The address of the sender
    * @param args The arguments as [[CallOnExchangeArgs]]
+   * @param validation An additional async validation function
    */
-  public callOnExchange(from: Address, args: CallOnExchangeArgs) {
+  public callOnExchange(from: Address, args: CallOnExchangeArgs, validationFunction?: () => Promise<void>) {
     const methodArgs = [
       args.exchangeIndex.toString(),
       args.methodSignature,
@@ -251,27 +277,9 @@ export class Trading extends Contract {
     ];
 
     const validate = async () => {
-      const registry = new Registry(this.environment, await this.getRegistry());
-      const exchange = await this.getExchange(args.exchangeIndex);
-
-      const adapterMethodIsAllowed = await registry.isAdapterMethodAllowed(exchange.adapter, args.methodSignature);
-      if (!adapterMethodIsAllowed) {
-        throw new AdapterMethodNotAllowedError(exchange.adapter, args.methodSignature);
-      }
-
-      const makeOrderSignature = encodeFunctionSignature(ExchangeAdapterAbi, 'makeOrder');
-      const takeOrderSignature = encodeFunctionSignature(ExchangeAdapterAbi, 'takeOrder');
-
-      if (args.methodSignature === makeOrderSignature || args.methodSignature === takeOrderSignature) {
-        const makerAssetIsRegistered = await registry.isAssetRegistered(args.orderAddresses[2]);
-        if (!makerAssetIsRegistered) {
-          throw new AssetNotRegisteredError(args.orderAddresses[2]);
-        }
-
-        const takerAssetIsRegistered = await registry.isAssetRegistered(args.orderAddresses[3]);
-        if (!takerAssetIsRegistered) {
-          throw new AssetNotRegisteredError(args.orderAddresses[3]);
-        }
+      await this.validateCallOnExchange(args);
+      if (typeof validationFunction === 'function') {
+        await validationFunction();
       }
     };
 
