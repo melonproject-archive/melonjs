@@ -124,7 +124,6 @@ export class Trading extends Contract {
    */
   public async getOpenMakeOrder(exchange: Address, asset: Address, block?: number) {
     const result = await this.makeCall<OpenMakeOrder>('exchangesToOpenMakeOrders', [exchange, asset], block);
-
     return {
       id: toBigNumber(result.id),
       expiresAt: new Date(parseInt(`${result.expiresAt}`, 10) * 1000),
@@ -139,15 +138,14 @@ export class Trading extends Contract {
    * @param block The block number to execute the call on.
    */
   public async getOpenMakeOrders(block?: number) {
-    const exchanges = await this.getExchangeInfo(block);
-
-    const registry = new Registry(this.environment, await this.getRegistry(block));
+    const [exchangeInfo, registryAddress] = await Promise.all([this.getExchangeInfo(block), this.getRegistry(block)]);
+    const registry = new Registry(this.environment, registryAddress);
     const assets = await registry.getRegisteredAssets(block);
+    const exchanges = exchangeInfo.map(exchange => exchange.exchange);
 
-    const exchangesXtokens = R.xprod(Object.keys(exchanges), assets);
-
+    const possibilities = R.xprod(exchanges, assets);
     const openOrders = await Promise.all(
-      exchangesXtokens.map(async ([exchange, asset]: [string, string]) => {
+      possibilities.map(async ([exchange, asset]: [string, string]) => {
         const order = await this.getOpenMakeOrder(exchange, asset, block);
         return { ...order, exchange };
       }),
