@@ -1,6 +1,6 @@
 import { Address } from '../Address';
-import { toBigNumber } from './toBigNumber';
+import { sameAddress } from './sameAddress';
 
 export function isZeroAddress(address: Address) {
-  return toBigNumber(address).isEqualTo(0);
+  return sameAddress(address, '0x0000000000000000000000000000000000000000');
 }
