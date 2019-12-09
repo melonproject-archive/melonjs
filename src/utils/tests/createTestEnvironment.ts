@@ -20,7 +20,7 @@ export class TestEnvironment extends Environment {
 }
 
 export async function createTestEnvironment(options?: EnvironmentOptions) {
-  const port = process.env.GANACHE_PORT || 8545;
+  const port = process.env.GANACHE_PORT || 8555;
   const client = new Web3(new HttpProvider(`http://localhost:${port}`), undefined, {
     transactionConfirmationBlocks: 1,
   });
