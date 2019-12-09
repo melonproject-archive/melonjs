@@ -13,7 +13,7 @@ export interface CancelOrderOasisDex {
   takerAsset: Address;
 }
 
-export class Oasisdex extends BaseExchange {
+export class OasisDex extends BaseExchange {
   /**
    * Cancel make order on Oasisdex
    *
