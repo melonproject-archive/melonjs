@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>KyberNotRegisteredWithFundError | @melonproject/melonjs</title>
+	<title>InsufficientBalanceError | @melonproject/melonjs</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -52,13 +52,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_contracts_fund_trading_trading_.html">&quot;contracts/fund/trading/Trading&quot;</a>
+					<a href="../modules/_contracts_fund_trading_trading_errors_.html">&quot;contracts/fund/trading/Trading.errors&quot;</a>
 				</li>
 				<li>
-					<a href="_contracts_fund_trading_trading_.kybernotregisteredwithfunderror.html">KyberNotRegisteredWithFundError</a>
+					<a href="_contracts_fund_trading_trading_errors_.insufficientbalanceerror.html">InsufficientBalanceError</a>
 				</li>
 			</ul>
-			<h1>Class KyberNotRegisteredWithFundError</h1>
+			<h1>Class InsufficientBalanceError</h1>
 		</div>
 	</div>
 </header>
@@ -72,7 +72,7 @@
 						<a href="_errors_validationerror_.validationerror.html" class="tsd-signature-type">ValidationError</a>
 						<ul class="tsd-hierarchy">
 							<li>
-								<span class="target">KyberNotRegisteredWithFundError</span>
+								<span class="target">InsufficientBalanceError</span>
 							</li>
 						</ul>
 					</li>
@@ -85,16 +85,17 @@
 						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite"><a href="_contracts_fund_trading_trading_.kybernotregisteredwithfunderror.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite"><a href="_contracts_fund_trading_trading_errors_.insufficientbalanceerror.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_contracts_fund_trading_trading_.kybernotregisteredwithfunderror.html#kyberaddress" class="tsd-kind-icon">kyber<wbr>Address</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_contracts_fund_trading_trading_.kybernotregisteredwithfunderror.html#message" class="tsd-kind-icon">message</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite"><a href="_contracts_fund_trading_trading_.kybernotregisteredwithfunderror.html#name" class="tsd-kind-icon">name</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited"><a href="_contracts_fund_trading_trading_.kybernotregisteredwithfunderror.html#stack" class="tsd-kind-icon">stack</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_contracts_fund_trading_trading_errors_.insufficientbalanceerror.html#actual" class="tsd-kind-icon">actual</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_contracts_fund_trading_trading_errors_.insufficientbalanceerror.html#message" class="tsd-kind-icon">message</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite"><a href="_contracts_fund_trading_trading_errors_.insufficientbalanceerror.html#name" class="tsd-kind-icon">name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_contracts_fund_trading_trading_errors_.insufficientbalanceerror.html#requested" class="tsd-kind-icon">requested</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited"><a href="_contracts_fund_trading_trading_errors_.insufficientbalanceerror.html#stack" class="tsd-kind-icon">stack</a></li>
 							</ul>
 						</section>
 					</div>
@@ -106,26 +107,29 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Kyber<wbr>Not<wbr>Registered<wbr>With<wbr>Fund<wbr>Error<span class="tsd-signature-symbol">(</span>kyberAddress<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a>, message<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_contracts_fund_trading_trading_.kybernotregisteredwithfunderror.html" class="tsd-signature-type">KyberNotRegisteredWithFundError</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Insufficient<wbr>Balance<wbr>Error<span class="tsd-signature-symbol">(</span>requested<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigNumber</span>, actual<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigNumber</span>, message<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_contracts_fund_trading_trading_errors_.insufficientbalanceerror.html" class="tsd-signature-type">InsufficientBalanceError</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_errors_validationerror_.validationerror.html">ValidationError</a>.<a href="_errors_validationerror_.validationerror.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/master/src/contracts/fund/trading/Trading.ts#L90">contracts/fund/trading/Trading.ts:90</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/Trading.errors.ts#L32">contracts/fund/trading/Trading.errors.ts:32</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>kyberAddress: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
+									<h5>requested: <span class="tsd-signature-type">BigNumber</span></h5>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> message: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;Kyber Exchange is not registered for this fund.&quot;</span></h5>
+									<h5>actual: <span class="tsd-signature-type">BigNumber</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> message: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;Insufficient funds for this trade.&quot;</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_contracts_fund_trading_trading_.kybernotregisteredwithfunderror.html" class="tsd-signature-type">KyberNotRegisteredWithFundError</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_contracts_fund_trading_trading_errors_.insufficientbalanceerror.html" class="tsd-signature-type">InsufficientBalanceError</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -133,12 +137,12 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="kyberaddress" class="tsd-anchor"></a>
-					<h3>kyber<wbr>Address</h3>
-					<div class="tsd-signature tsd-kind-icon">kyber<wbr>Address<span class="tsd-signature-symbol">:</span> <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></div>
+					<a name="actual" class="tsd-anchor"></a>
+					<h3>actual</h3>
+					<div class="tsd-signature tsd-kind-icon">actual<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">BigNumber</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/master/src/contracts/fund/trading/Trading.ts#L93">contracts/fund/trading/Trading.ts:93</a></li>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/Trading.errors.ts#L36">contracts/fund/trading/Trading.errors.ts:36</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -149,18 +153,28 @@
 					<aside class="tsd-sources">
 						<p>Inherited from Error.message</p>
 						<ul>
-							<li>Defined in /home/fubhy/Projects/avantgarde/melonjs/node_modules/typedoc/node_modules/typescript/lib/lib.es5.d.ts:974</li>
+							<li>Defined in /home/fubhy/Projects/New/avantgarde/box/modules/melon-js/node_modules/typedoc/node_modules/typescript/lib/lib.es5.d.ts:974</li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-overwrite">
 					<a name="name" class="tsd-anchor"></a>
 					<h3>name</h3>
-					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"KyberNotRegisteredWithFundError"</span><span class="tsd-signature-symbol"> =&nbsp;&quot;KyberNotRegisteredWithFundError&quot;</span></div>
+					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"InsufficientBalanceError"</span><span class="tsd-signature-symbol"> =&nbsp;&quot;InsufficientBalanceError&quot;</span></div>
 					<aside class="tsd-sources">
 						<p>Overrides <a href="_errors_validationerror_.validationerror.html">ValidationError</a>.<a href="_errors_validationerror_.validationerror.html#name">name</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/avantgarde-finance/melonjs/blob/master/src/contracts/fund/trading/Trading.ts#L90">contracts/fund/trading/Trading.ts:90</a></li>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/Trading.errors.ts#L32">contracts/fund/trading/Trading.errors.ts:32</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="requested" class="tsd-anchor"></a>
+					<h3>requested</h3>
+					<div class="tsd-signature tsd-kind-icon">requested<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">BigNumber</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/Trading.errors.ts#L35">contracts/fund/trading/Trading.errors.ts:35</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -172,7 +186,7 @@
 						<p>Inherited from Error.stack</p>
 						<p>Overrides Error.stack</p>
 						<ul>
-							<li>Defined in /home/fubhy/Projects/avantgarde/melonjs/node_modules/typedoc/node_modules/typescript/lib/lib.es5.d.ts:975</li>
+							<li>Defined in /home/fubhy/Projects/New/avantgarde/box/modules/melon-js/node_modules/typedoc/node_modules/typescript/lib/lib.es5.d.ts:975</li>
 						</ul>
 					</aside>
 				</section>
@@ -185,63 +199,48 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="../modules/_contracts_fund_trading_trading_.html">"contracts/fund/trading/<wbr>Trading"</a>
+						<a href="../modules/_contracts_fund_trading_trading_errors_.html">"contracts/fund/trading/<wbr>Trading.errors"</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-enum tsd-parent-kind-external-module">
-						<a href="../enums/_contracts_fund_trading_trading_.orderupdatetype.html" class="tsd-kind-icon">Order<wbr>Update<wbr>Type</a>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_contracts_fund_trading_trading_errors_.adaptermethodnotallowederror.html" class="tsd-kind-icon">Adapter<wbr>Method<wbr>Not<wbr>Allowed<wbr>Error</a>
 					</li>
 					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="_contracts_fund_trading_trading_.adaptermethodnotallowederror.html" class="tsd-kind-icon">Adapter<wbr>Method<wbr>Not<wbr>Allowed<wbr>Error</a>
+						<a href="_contracts_fund_trading_trading_errors_.exchangenotregisteredwithfunderror.html" class="tsd-kind-icon">Exchange<wbr>Not<wbr>Registered<wbr>With<wbr>Fund<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_contracts_fund_trading_trading_errors_.fundisshutdownerror.html" class="tsd-kind-icon">Fund<wbr>IsShut<wbr>Down<wbr>Error</a>
 					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class tsd-parent-kind-external-module">
-						<a href="_contracts_fund_trading_trading_.kybernotregisteredwithfunderror.html" class="tsd-kind-icon">Kyber<wbr>Not<wbr>Registered<wbr>With<wbr>Fund<wbr>Error</a>
+						<a href="_contracts_fund_trading_trading_errors_.insufficientbalanceerror.html" class="tsd-kind-icon">Insufficient<wbr>Balance<wbr>Error</a>
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
-								<a href="_contracts_fund_trading_trading_.kybernotregisteredwithfunderror.html#constructor" class="tsd-kind-icon">constructor</a>
+								<a href="_contracts_fund_trading_trading_errors_.insufficientbalanceerror.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_contracts_fund_trading_trading_.kybernotregisteredwithfunderror.html#kyberaddress" class="tsd-kind-icon">kyber<wbr>Address</a>
+								<a href="_contracts_fund_trading_trading_errors_.insufficientbalanceerror.html#actual" class="tsd-kind-icon">actual</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_contracts_fund_trading_trading_.kybernotregisteredwithfunderror.html#message" class="tsd-kind-icon">message</a>
+								<a href="_contracts_fund_trading_trading_errors_.insufficientbalanceerror.html#message" class="tsd-kind-icon">message</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite">
-								<a href="_contracts_fund_trading_trading_.kybernotregisteredwithfunderror.html#name" class="tsd-kind-icon">name</a>
+								<a href="_contracts_fund_trading_trading_errors_.insufficientbalanceerror.html#name" class="tsd-kind-icon">name</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_contracts_fund_trading_trading_errors_.insufficientbalanceerror.html#requested" class="tsd-kind-icon">requested</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited">
-								<a href="_contracts_fund_trading_trading_.kybernotregisteredwithfunderror.html#stack" class="tsd-kind-icon">stack</a>
+								<a href="_contracts_fund_trading_trading_errors_.insufficientbalanceerror.html#stack" class="tsd-kind-icon">stack</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="_contracts_fund_trading_trading_.trading.html" class="tsd-kind-icon">Trading</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/_contracts_fund_trading_trading_.callonexchangeargs.html" class="tsd-kind-icon">Call<wbr>OnExchange<wbr>Args</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/_contracts_fund_trading_trading_.exchangeinfo.html" class="tsd-kind-icon">Exchange<wbr>Info</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/_contracts_fund_trading_trading_.openmakeorder.html" class="tsd-kind-icon">Open<wbr>Make<wbr>Order</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/_contracts_fund_trading_trading_.order.html" class="tsd-kind-icon">Order</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/_contracts_fund_trading_trading_.takeorderkyber.html" class="tsd-kind-icon">Take<wbr>Order<wbr>Kyber</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/_contracts_fund_trading_trading_.tradingdeployarguments.html" class="tsd-kind-icon">Trading<wbr>Deploy<wbr>Arguments</a>
-					</li>
 				</ul>
 			</nav>
 		</div>
