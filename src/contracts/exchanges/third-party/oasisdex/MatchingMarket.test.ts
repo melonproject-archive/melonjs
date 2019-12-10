@@ -1,7 +1,8 @@
 import { createTestEnvironment, TestEnvironment } from '../../../../utils/tests/createTestEnvironment';
+import BigNumber from 'bignumber.js';
 
 import { MatchingMarket } from './MatchingMarket';
-import { SimpleMarketBytecode } from '../../../../abis/SimpleMarket.bin';
+import { MatchingMarketBytecode } from '../../../../abis/MatchingMarket.bin';
 
 describe('MatchingMarket', () => {
   let environment: TestEnvironment;
@@ -10,7 +11,12 @@ describe('MatchingMarket', () => {
   beforeAll(async () => {
     environment = await createTestEnvironment();
 
-    const deploy = MatchingMarket.deploy(environment, SimpleMarketBytecode, environment.accounts[0]);
+    const deploy = MatchingMarket.deploy(
+      environment,
+      MatchingMarketBytecode,
+      environment.accounts[0],
+      new BigNumber('999999999999'),
+    );
     matchingMarket = await deploy.send(await deploy.prepare());
   });
 
@@ -20,7 +26,14 @@ describe('MatchingMarket', () => {
   });
 
   fit('should get an order', async () => {
-    const result = await matchingMarket.getOffer('0');
-    console.log(result);
+    const result = await matchingMarket.getOffer(new BigNumber(0));
+    expect(result).toMatchObject({
+      makerQuantity: expect.any(BigNumber),
+      makerAsset: expect.any(String),
+      takerQuantity: expect.any(BigNumber),
+      takerAsset: expect.any(String),
+      owner: expect.any(String),
+      timestamp: expect.any(Date),
+    });
   });
 });

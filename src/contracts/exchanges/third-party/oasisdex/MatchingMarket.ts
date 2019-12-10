@@ -1,15 +1,16 @@
 import { Contract } from '../../../../Contract';
 import { Environment } from '../../../../Environment';
 import { Address } from '../../../../Address';
-import { SimpleMarketAbi } from '../../../../abis/SimpleMarket.abi';
 import { toBigNumber } from '../../../../utils/toBigNumber';
 import { toDate } from '../../../../utils/toDate';
+import BigNumber from 'bignumber.js';
+import { MatchingMarketAbi } from '../../../../abis/MatchingMarket.abi';
 
 export class MatchingMarket extends Contract {
-  public static readonly abi = SimpleMarketAbi;
+  public static readonly abi = MatchingMarketAbi;
 
-  public static deploy(environment: Environment, bytecode: string, from: Address) {
-    return super.createDeployment<MatchingMarket>(environment, bytecode, from);
+  public static deploy(environment: Environment, bytecode: string, from: Address, closetime: BigNumber) {
+    return super.createDeployment<MatchingMarket>(environment, bytecode, from, [closetime.toString()]);
   }
 
   /**
@@ -19,7 +20,7 @@ export class MatchingMarket extends Contract {
    * @param asset The requested asset.
    * @param block The block number to execute the call on.
    */
-  public async getOffer(id: string, block?: number) {
+  public async getOffer(id: BigNumber, block?: number) {
     const {
       '0': makerQuantity,
       '1': makerAsset,
@@ -34,7 +35,7 @@ export class MatchingMarket extends Contract {
       '3': string;
       '4': string;
       '5': string;
-    }>('offers', [id], block);
+    }>('offers', [id.toString()], block);
 
     return {
       makerQuantity: toBigNumber(makerQuantity),
@@ -44,5 +45,24 @@ export class MatchingMarket extends Contract {
       owner,
       timestamp: toDate(timestamp),
     };
+  }
+
+  /**
+   * Checks whether an offer is active
+   *
+   * @param block The block number to execute the call on.
+   */
+  public async isActive(id: BigNumber, block?: number) {
+    return this.makeCall<boolean>('isActive', [id.toString()], block);
+  }
+
+  /**
+   * Gets the owner of an offer
+   *
+   * @param id The id of the offer
+   * @param block The block number to execute the call on.
+   */
+  public async getOwner(id: BigNumber, block?: number) {
+    return this.makeCall<Address>('getOwner', [id.toString()], block);
   }
 }

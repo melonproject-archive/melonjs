@@ -9,7 +9,6 @@ import { toBigNumber } from '../../../utils/toBigNumber';
 import BigNumber from 'bignumber.js';
 import { Registry, AssetNotRegisteredError } from '../../version/Registry';
 import { isZeroAddress } from '../../../utils/isZeroAddress';
-import { stringToBytes } from '../../../utils/stringToBytes';
 import { hexToBytes } from 'web3-utils';
 import { encodeFunctionSignature } from '../../../utils/encodeFunctionSignature';
 import { ExchangeAdapterAbi } from '../../../abis/ExchangeAdapter.abi';
@@ -235,11 +234,13 @@ export class Trading extends Contract {
       args.methodSignature,
       args.orderAddresses,
       args.orderValues.map(orderValue => orderValue.toString()),
-      stringToBytes(args.identifier, 32),
+      args.identifier,
       hexToBytes(args.makerAssetData),
       hexToBytes(args.takerAssetData),
       hexToBytes(args.signature),
     ];
+
+    console.log(methodArgs);
 
     const validate = async () => {
       await this.validateCallOnExchange(args);

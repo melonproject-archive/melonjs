@@ -21,6 +21,7 @@ export class OasisDexTrading extends BaseTrading {
    * @param args The arguments as [[CancelOrderOasisDex]]
    */
   public cancelOrder(from: Address, args: CancelOrderOasisDex) {
+    console.log(args);
     const methodArgs = {
       exchangeIndex: this.exchangeIndex,
       methodSignature: encodeFunctionSignature(ExchangeAdapterAbi, 'cancelOrder'),
@@ -42,6 +43,8 @@ export class OasisDexTrading extends BaseTrading {
       takerAssetData: padLeft('0x0', 64),
       signature: padLeft('0x0', 64),
     };
+
+    console.log(methodArgs);
 
     const validate = async () => {};
 
