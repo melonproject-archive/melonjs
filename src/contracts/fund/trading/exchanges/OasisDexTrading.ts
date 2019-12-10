@@ -3,8 +3,8 @@ import { Address } from '../../../../Address';
 import { encodeFunctionSignature } from '../../../../utils/encodeFunctionSignature';
 import { ExchangeAdapterAbi } from '../../../../abis/ExchangeAdapter.abi';
 import { zeroAddress } from '../../../../utils/zeroAddress';
-import BigNumber from 'bignumber.js';
 import { padLeft } from 'web3-utils';
+import { zeroBigNumber } from '../../../../utils/zeroBigNumber';
 
 export interface CancelOrderOasisDex {
   id: string;
@@ -21,20 +21,19 @@ export class OasisDexTrading extends BaseTrading {
    * @param args The arguments as [[CancelOrderOasisDex]]
    */
   public cancelOrder(from: Address, args: CancelOrderOasisDex) {
-    console.log(args);
     const methodArgs = {
       exchangeIndex: this.exchangeIndex,
       methodSignature: encodeFunctionSignature(ExchangeAdapterAbi, 'cancelOrder'),
       orderAddresses: [args.maker, zeroAddress, args.makerAsset, args.takerAsset, zeroAddress, zeroAddress],
       orderValues: [
-        new BigNumber(0),
-        new BigNumber(0),
-        new BigNumber(0),
-        new BigNumber(0),
-        new BigNumber(0),
-        new BigNumber(0),
-        new BigNumber(0),
-        new BigNumber(0),
+        zeroBigNumber,
+        zeroBigNumber,
+        zeroBigNumber,
+        zeroBigNumber,
+        zeroBigNumber,
+        zeroBigNumber,
+        zeroBigNumber,
+        zeroBigNumber,
       ],
       identifier: `0x${Number(args.id)
         .toString(16)
@@ -43,8 +42,6 @@ export class OasisDexTrading extends BaseTrading {
       takerAssetData: padLeft('0x0', 64),
       signature: padLeft('0x0', 64),
     };
-
-    console.log(methodArgs);
 
     const validate = async () => {};
 
