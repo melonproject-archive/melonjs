@@ -50,6 +50,7 @@ export class MatchingMarket extends Contract {
   /**
    * Checks whether an offer is active
    *
+   * @param id The id of the offer
    * @param block The block number to execute the call on.
    */
   public async isActive(id: BigNumber, block?: number) {
@@ -64,5 +65,14 @@ export class MatchingMarket extends Contract {
    */
   public async getOwner(id: BigNumber, block?: number) {
     return this.makeCall<Address>('getOwner', [id.toString()], block);
+  }
+
+  /**
+   * Checks whether an offer is closed
+   *
+   * @param block The block number to execute the call on.
+   */
+  public async isClosed(block?: number) {
+    return this.makeCall<boolean>('isClosed', undefined, block);
   }
 }

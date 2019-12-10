@@ -1,4 +1,4 @@
-import { BaseTrading } from './BaseTrading';
+import { BaseTradingAdapter } from './BaseTradingAdapter';
 import { Address } from '../../../../Address';
 import { encodeFunctionSignature } from '../../../../utils/encodeFunctionSignature';
 import { ExchangeAdapterAbi } from '../../../../abis/ExchangeAdapter.abi';
@@ -13,7 +13,7 @@ export interface CancelOrderOasisDex {
   takerAsset: Address;
 }
 
-export class OasisDexTrading extends BaseTrading {
+export class OasisDexTradingAdapter extends BaseTradingAdapter {
   /**
    * Cancel make order on Oasisdex
    *

@@ -1,4 +1,4 @@
-import { BaseTrading } from './BaseTrading';
+import { BaseTradingAdapter } from './BaseTradingAdapter';
 import { SignedOrder } from '@0x/types';
 import { orderHashUtils } from '@0x/order-utils';
 import { Address } from '../../../../Address';
@@ -12,7 +12,7 @@ interface CancelOrderZeroEx {
   orderHashHex?: string;
 }
 
-export class ZeroExTrading extends BaseTrading {
+export class ZeroExTradingAdapter extends BaseTradingAdapter {
   /**
    * Cancel make order on 0x
    *

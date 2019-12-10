@@ -240,8 +240,6 @@ export class Trading extends Contract {
       hexToBytes(args.signature),
     ];
 
-    console.log(methodArgs);
-
     const validate = async () => {
       await this.validateCallOnExchange(args);
       if (typeof validationFunction === 'function') {
