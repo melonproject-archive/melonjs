@@ -1,31 +1,30 @@
-import { BaseExchange } from './BaseExchange';
-import { SignedOrder } from '@0x/types';
-import { orderHashUtils } from '@0x/order-utils';
+import { BaseTrading } from './BaseTrading';
 import { Address } from '../../../../Address';
 import { encodeFunctionSignature } from '../../../../utils/encodeFunctionSignature';
 import { ExchangeAdapterAbi } from '../../../../abis/ExchangeAdapter.abi';
-import BigNumber from 'bignumber.js';
 import { zeroAddress } from '../../../../utils/zeroAddress';
+import BigNumber from 'bignumber.js';
+import { padLeft } from 'web3-utils';
 
-interface CancelOrderZeroEx {
-  signedOrder?: SignedOrder;
-  orderHashHex?: string;
+export interface CancelOrderOasisDex {
+  id: string;
+  maker: Address;
+  makerAsset: Address;
+  takerAsset: Address;
 }
 
-export class ZeroEx extends BaseExchange {
+export class OasisDexTrading extends BaseTrading {
   /**
-   * Cancel make order on 0x
+   * Cancel make order on Oasisdex
    *
    * @param from The address of the sender
-   * @param args The arguments as [[CancelOrderZeroEx]]
+   * @param args The arguments as [[CancelOrderOasisDex]]
    */
-  public async cancelOrder(from: Address, args: CancelOrderZeroEx) {
-    const orderHashHex = args.orderHashHex || (await orderHashUtils.getOrderHashAsync(args.signedOrder));
-
+  public cancelOrder(from: Address, args: CancelOrderOasisDex) {
     const methodArgs = {
       exchangeIndex: this.exchangeIndex,
       methodSignature: encodeFunctionSignature(ExchangeAdapterAbi, 'cancelOrder'),
-      orderAddresses: [zeroAddress, zeroAddress, zeroAddress, zeroAddress, zeroAddress, zeroAddress],
+      orderAddresses: [args.maker, zeroAddress, args.makerAsset, args.takerAsset, zeroAddress, zeroAddress],
       orderValues: [
         new BigNumber(0),
         new BigNumber(0),
@@ -36,10 +35,12 @@ export class ZeroEx extends BaseExchange {
         new BigNumber(0),
         new BigNumber(0),
       ],
-      identifier: orderHashHex,
-      makerAssetData: '0x0',
-      takerAssetData: '0x0',
-      signature: '0x0',
+      identifier: `0x${Number(args.id)
+        .toString(16)
+        .padStart(64, '0')}`,
+      makerAssetData: padLeft('0x0', 64),
+      takerAssetData: padLeft('0x0', 64),
+      signature: padLeft('0x0', 64),
     };
 
     const validate = async () => {};

@@ -5,7 +5,7 @@ import { ExchangeAdapterAbi } from '../../../../abis/ExchangeAdapter.abi';
 import { zeroAddress } from '../../../../utils/zeroAddress';
 import { checkSufficientBalance } from '../utils/checkSufficientBalance';
 import { checkFundIsNotShutdown } from '../utils/checkFundIsNotShutdown';
-import { BaseExchange } from './BaseExchange';
+import { BaseTrading } from './BaseTrading';
 
 export interface TakeOrderMelonEngine {
   makerAsset: Address;
@@ -14,7 +14,7 @@ export interface TakeOrderMelonEngine {
   takerQuantity: BigNumber;
 }
 
-export class MelonEngine extends BaseExchange {
+export class MelonEngineTrading extends BaseTrading {
   /**
    * Take order on the Melon Engine
    *

@@ -10,7 +10,7 @@ import BigNumber from 'bignumber.js';
 import { Registry } from '../../version/Registry';
 import { zeroAddress } from '../../../utils/zeroAddress';
 import { ExchangeNotRegisteredWithFundError, InsufficientBalanceError } from './Trading.errors';
-import { Kyber } from './exchanges/Kyber';
+import { KyberTrading } from './exchanges/KyberTrading';
 
 describe('Trading', () => {
   const exchangeAddress = randomAddress();
@@ -141,13 +141,19 @@ describe('Trading', () => {
       takerQuantity: new BigNumber('1e18'),
     };
 
-    const kyber = await Kyber.create(trading, exchangeAddress);
+    const kyber = await KyberTrading.create(trading, exchangeAddress);
 
     const tx = await kyber.takeOrder(environment.accounts[0], callArgs);
     await expect(tx.validate()).rejects.toThrowError(InsufficientBalanceError);
   });
 
   it('should throw when passing a wrong address for Kyber', async () => {
-    await expect(Kyber.create(trading, randomAddress())).rejects.toThrowError(ExchangeNotRegisteredWithFundError);
+    await expect(KyberTrading.create(trading, randomAddress())).rejects.toThrowError(
+      ExchangeNotRegisteredWithFundError,
+    );
   });
+
+  // it('should create an OasisDexTrading object', async () => {
+  //   const oasisDexTrading = await OasisDexTrading.create(trading, exchangeAddress);
+  // });
 });
