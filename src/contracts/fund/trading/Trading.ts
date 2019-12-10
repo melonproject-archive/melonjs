@@ -13,7 +13,7 @@ import { stringToBytes } from '../../../utils/stringToBytes';
 import { hexToBytes } from 'web3-utils';
 import { encodeFunctionSignature } from '../../../utils/encodeFunctionSignature';
 import { ExchangeAdapterAbi } from '../../../abis/ExchangeAdapter.abi';
-import { AdapterMethodNotAllowedError } from './Trading.errors';
+import { AdapterMethodNotAllowedError, InvalidExchangeIndexError } from './Trading.errors';
 
 export interface ExchangeInfo {
   exchange: Address;
@@ -26,6 +26,10 @@ export interface OpenMakeOrder {
   expiresAt: Date;
   orderIndex: BigNumber;
   buyAsset: Address;
+}
+
+export interface OpenMakeOrderWithExchange extends OpenMakeOrder {
+  exchange: Address;
 }
 
 export enum OrderUpdateType {
@@ -124,12 +128,13 @@ export class Trading extends Contract {
    */
   public async getOpenMakeOrder(exchange: Address, asset: Address, block?: number) {
     const result = await this.makeCall<OpenMakeOrder>('exchangesToOpenMakeOrders', [exchange, asset], block);
+
     return {
       id: toBigNumber(result.id),
       expiresAt: new Date(parseInt(`${result.expiresAt}`, 10) * 1000),
       orderIndex: toBigNumber(result.orderIndex),
       buyAsset: result.buyAsset,
-    };
+    } as OpenMakeOrder;
   }
 
   /**
@@ -200,6 +205,9 @@ export class Trading extends Contract {
   private async validateCallOnExchange(args: CallOnExchangeArgs) {
     const registry = new Registry(this.environment, await this.getRegistry());
     const exchange = await this.getExchange(args.exchangeIndex);
+    if (!exchange) {
+      throw new InvalidExchangeIndexError(args.exchangeIndex);
+    }
 
     const adapterMethodIsAllowed = await registry.isAdapterMethodAllowed(exchange.adapter, args.methodSignature);
     if (!adapterMethodIsAllowed) {
