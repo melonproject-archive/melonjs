@@ -56,6 +56,10 @@ export { SharesFactory } from './contracts/fund/shares/SharesFactory';
 export { Spoke } from './contracts/fund/hub/Spoke';
 export { StandardToken } from './contracts/dependencies/token/StandardToken';
 export { Order, OpenMakeOrder, Trading, TradingDeployArguments } from './contracts/fund/trading/Trading';
+export { BaseTradingAdapter } from './contracts/fund/trading/exchanges/BaseTradingAdapter';
+export { KyberTradingAdapter } from './contracts/fund/trading/exchanges/KyberTradingAdapter';
+export { OasisDexTradingAdapter } from './contracts/fund/trading/exchanges/OasisDexTradingAdapter';
+export { ZeroExTradingAdapter } from './contracts/fund/trading/exchanges/ZeroExTradingAdapter';
 export {
   InvalidExchangeIndexError,
   AdapterMethodNotAllowedError,
@@ -80,3 +84,4 @@ export {
   ExchangeAdaptersRegisteredOutOfBoundsError,
 } from './contracts/version/Registry';
 export { Weth } from './contracts/dependencies/token/Weth';
+export { MatchingMarket } from './contracts/exchanges/third-party/oasisdex/MatchingMarket';

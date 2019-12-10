@@ -3,15 +3,14 @@ import { sameAddress } from '../../../../utils/sameAddress';
 import { Trading } from '../Trading';
 import { ExchangeNotRegisteredWithFundError } from '../Trading.errors';
 
-export class BaseExchange {
+export class BaseTradingAdapter {
   constructor(public readonly trading: Trading, public readonly exchangeIndex: number) {}
 
-  public static async create<T extends typeof BaseExchange>(this: T, trading: Trading, address: Address) {
+  public static async create<T extends typeof BaseTradingAdapter>(this: T, trading: Trading, address: Address) {
     const exchangeIndex = await this.index(trading, address);
     if (exchangeIndex === null) {
       throw new ExchangeNotRegisteredWithFundError(address);
     }
-
     return new this(trading, exchangeIndex) as InstanceType<T>;
   }
 

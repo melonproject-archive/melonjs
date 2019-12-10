@@ -1,10 +1,10 @@
-import { BaseExchange } from './BaseExchange';
+import { BaseTradingAdapter } from './BaseTradingAdapter';
 import { Address } from '../../../../Address';
 import { encodeFunctionSignature } from '../../../../utils/encodeFunctionSignature';
 import { ExchangeAdapterAbi } from '../../../../abis/ExchangeAdapter.abi';
 import { zeroAddress } from '../../../../utils/zeroAddress';
-import BigNumber from 'bignumber.js';
 import { padLeft } from 'web3-utils';
+import { zeroBigNumber } from '../../../../utils/zeroBigNumber';
 
 export interface CancelOrderOasisDex {
   id: string;
@@ -13,7 +13,7 @@ export interface CancelOrderOasisDex {
   takerAsset: Address;
 }
 
-export class OasisDex extends BaseExchange {
+export class OasisDexTradingAdapter extends BaseTradingAdapter {
   /**
    * Cancel make order on Oasisdex
    *
@@ -26,14 +26,14 @@ export class OasisDex extends BaseExchange {
       methodSignature: encodeFunctionSignature(ExchangeAdapterAbi, 'cancelOrder'),
       orderAddresses: [args.maker, zeroAddress, args.makerAsset, args.takerAsset, zeroAddress, zeroAddress],
       orderValues: [
-        new BigNumber(0),
-        new BigNumber(0),
-        new BigNumber(0),
-        new BigNumber(0),
-        new BigNumber(0),
-        new BigNumber(0),
-        new BigNumber(0),
-        new BigNumber(0),
+        zeroBigNumber,
+        zeroBigNumber,
+        zeroBigNumber,
+        zeroBigNumber,
+        zeroBigNumber,
+        zeroBigNumber,
+        zeroBigNumber,
+        zeroBigNumber,
       ],
       identifier: `0x${Number(args.id)
         .toString(16)

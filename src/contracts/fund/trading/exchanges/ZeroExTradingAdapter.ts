@@ -1,18 +1,18 @@
-import { BaseExchange } from './BaseExchange';
+import { BaseTradingAdapter } from './BaseTradingAdapter';
 import { SignedOrder } from '@0x/types';
 import { orderHashUtils } from '@0x/order-utils';
 import { Address } from '../../../../Address';
 import { encodeFunctionSignature } from '../../../../utils/encodeFunctionSignature';
 import { ExchangeAdapterAbi } from '../../../../abis/ExchangeAdapter.abi';
-import BigNumber from 'bignumber.js';
 import { zeroAddress } from '../../../../utils/zeroAddress';
+import { zeroBigNumber } from '../../../../utils/zeroBigNumber';
 
 interface CancelOrderZeroEx {
   signedOrder?: SignedOrder;
   orderHashHex?: string;
 }
 
-export class ZeroEx extends BaseExchange {
+export class ZeroExTradingAdapter extends BaseTradingAdapter {
   /**
    * Cancel make order on 0x
    *
@@ -27,14 +27,14 @@ export class ZeroEx extends BaseExchange {
       methodSignature: encodeFunctionSignature(ExchangeAdapterAbi, 'cancelOrder'),
       orderAddresses: [zeroAddress, zeroAddress, zeroAddress, zeroAddress, zeroAddress, zeroAddress],
       orderValues: [
-        new BigNumber(0),
-        new BigNumber(0),
-        new BigNumber(0),
-        new BigNumber(0),
-        new BigNumber(0),
-        new BigNumber(0),
-        new BigNumber(0),
-        new BigNumber(0),
+        zeroBigNumber,
+        zeroBigNumber,
+        zeroBigNumber,
+        zeroBigNumber,
+        zeroBigNumber,
+        zeroBigNumber,
+        zeroBigNumber,
+        zeroBigNumber,
       ],
       identifier: orderHashHex,
       makerAssetData: '0x0',

@@ -5,7 +5,7 @@ import { ExchangeAdapterAbi } from '../../../../abis/ExchangeAdapter.abi';
 import { zeroAddress } from '../../../../utils/zeroAddress';
 import { checkSufficientBalance } from '../utils/checkSufficientBalance';
 import { checkFundIsNotShutdown } from '../utils/checkFundIsNotShutdown';
-import { BaseExchange } from './BaseExchange';
+import { BaseTradingAdapter } from './BaseTradingAdapter';
 
 export interface TakeOrderKyber {
   makerAsset: Address;
@@ -14,7 +14,7 @@ export interface TakeOrderKyber {
   takerQuantity: BigNumber;
 }
 
-export class Kyber extends BaseExchange {
+export class KyberTradingAdapter extends BaseTradingAdapter {
   /**
    * Take order on Kyber
    *
