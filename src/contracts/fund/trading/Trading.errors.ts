@@ -39,3 +39,11 @@ export class InsufficientBalanceError extends ValidationError {
     super(message);
   }
 }
+
+export class InvalidExchangeIndexError extends ValidationError {
+  public readonly name = 'InvalidExchangeIndexError';
+
+  constructor(public readonly index: number, message: string = 'Invalid exchange index.') {
+    super(message);
+  }
+}

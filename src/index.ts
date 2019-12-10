@@ -60,6 +60,13 @@ export { BaseTradingAdapter } from './contracts/fund/trading/exchanges/BaseTradi
 export { KyberTradingAdapter } from './contracts/fund/trading/exchanges/KyberTradingAdapter';
 export { OasisDexTradingAdapter } from './contracts/fund/trading/exchanges/OasisDexTradingAdapter';
 export { ZeroExTradingAdapter } from './contracts/fund/trading/exchanges/ZeroExTradingAdapter';
+export {
+  InvalidExchangeIndexError,
+  AdapterMethodNotAllowedError,
+  ExchangeNotRegisteredWithFundError,
+  FundIsShutDownError,
+  InsufficientBalanceError,
+} from './contracts/fund/trading/Trading.errors';
 export { UserWhitelist } from './contracts/fund/policies/UserWhitelist';
 export { Vault } from './contracts/fund/vault/Vault';
 export { VaultFactory } from './contracts/fund/vault/VaultFactory';
