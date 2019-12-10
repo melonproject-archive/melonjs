@@ -249,6 +249,28 @@ export class Trading extends Contract {
 
     return this.createTransaction({ from, method: 'callOnExchange', args: methodArgs, validate });
   }
+
+  /**
+   * Update and get quantity being traded
+   *
+   * @param asset The address of the asset
+   * @param block The block number to execute the call on.
+   */
+  public async updateAndGetQuantityBeingTraded(asset: Address, block?: number) {
+    const result = await this.makeCall<string>('updateAndGetQuantityBeingTraded', [asset], block);
+    return toBigNumber(result);
+  }
+
+  /**
+   * Update and get quantity held in exchanges
+   *
+   * @param asset The address of the asset
+   * @param block The block number to execute the call on.
+   */
+  public async updateAndGetQuantityHeldInExchange(asset: Address, block?: number) {
+    const result = await this.makeCall<string>('updateAndGetQuantityHeldInExchange', [asset], block);
+    return toBigNumber(result);
+  }
 }
 
 export interface Trading extends Spoke {}
