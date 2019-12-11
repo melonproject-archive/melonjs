@@ -161,17 +161,22 @@ export class Trading extends Contract {
   /**
    * Get the details of an order.
    *
-   * @param id The id of the order
+   * @param index The index of the order
    * @param block The block number to execute the call on.
    */
-  public async getOrderDetails(id: BigNumber, block?: number) {
-    const { '0': makerAsset, '1': takerAsset, '2': makerQuantity, '3': takerQuantity } = await this.makeCall<{
+  public async getOrderDetails(index: BigNumber, block?: number) {
+    const details = await this.makeCall<{
       0: string;
       1: string;
       2: string;
       3: string;
-    }>('getOrderDetails', [id.toFixed(0)], block);
+    }>('getOrderDetails', [index.toFixed(0)], block);
 
+    if (!details) {
+      return null;
+    }
+
+    const { '0': makerAsset, '1': takerAsset, '2': makerQuantity, '3': takerQuantity } = details;
     return {
       makerAsset,
       takerAsset,

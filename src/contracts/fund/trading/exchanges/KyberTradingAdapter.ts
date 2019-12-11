@@ -5,6 +5,7 @@ import { ExchangeAdapterAbi } from '../../../../abis/ExchangeAdapter.abi';
 import { zeroAddress } from '../../../../utils/zeroAddress';
 import { checkSufficientBalance } from '../utils/checkSufficientBalance';
 import { checkFundIsNotShutdown } from '../utils/checkFundIsNotShutdown';
+import { zeroBigNumber } from '../../../../utils/zeroBigNumber';
 import { BaseTradingAdapter } from './BaseTradingAdapter';
 
 export interface KyberTakeOrderArgs {
@@ -29,12 +30,12 @@ export class KyberTradingAdapter extends BaseTradingAdapter {
       orderValues: [
         args.makerQuantity,
         args.takerQuantity,
-        new BigNumber(0),
-        new BigNumber(0),
-        new BigNumber(0),
-        new BigNumber(0),
+        zeroBigNumber,
+        zeroBigNumber,
+        zeroBigNumber,
+        zeroBigNumber,
         args.takerQuantity,
-        new BigNumber(0),
+        zeroBigNumber,
       ],
       identifier: '0x0',
       makerAssetData: '0x0',

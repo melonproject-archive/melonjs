@@ -1,14 +1,13 @@
+import { padLeft } from 'web3-utils';
 import { BaseTradingAdapter } from './BaseTradingAdapter';
 import { Address } from '../../../../Address';
 import { encodeFunctionSignature } from '../../../../utils/encodeFunctionSignature';
 import { ExchangeAdapterAbi } from '../../../../abis/ExchangeAdapter.abi';
 import { zeroAddress } from '../../../../utils/zeroAddress';
-import { padLeft } from 'web3-utils';
 import { zeroBigNumber } from '../../../../utils/zeroBigNumber';
 
 export interface OasisDexCancelOrderArgs {
   id: string;
-  maker: Address;
   makerAsset: Address;
   takerAsset: Address;
 }
@@ -24,7 +23,14 @@ export class OasisDexTradingAdapter extends BaseTradingAdapter {
     const methodArgs = {
       exchangeIndex: this.exchangeIndex,
       methodSignature: encodeFunctionSignature(ExchangeAdapterAbi, 'cancelOrder'),
-      orderAddresses: [args.maker, zeroAddress, args.makerAsset, args.takerAsset, zeroAddress, zeroAddress],
+      orderAddresses: [
+        this.trading.contract.address,
+        zeroAddress,
+        args.makerAsset,
+        args.takerAsset,
+        zeroAddress,
+        zeroAddress,
+      ],
       orderValues: [
         zeroBigNumber,
         zeroBigNumber,

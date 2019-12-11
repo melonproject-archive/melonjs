@@ -1,4 +1,3 @@
-import { BaseTradingAdapter } from './BaseTradingAdapter';
 import { SignedOrder } from '@0x/types';
 import { orderHashUtils } from '@0x/order-utils';
 import { Address } from '../../../../Address';
@@ -6,10 +5,20 @@ import { encodeFunctionSignature } from '../../../../utils/encodeFunctionSignatu
 import { ExchangeAdapterAbi } from '../../../../abis/ExchangeAdapter.abi';
 import { zeroAddress } from '../../../../utils/zeroAddress';
 import { zeroBigNumber } from '../../../../utils/zeroBigNumber';
+import { BaseTradingAdapter } from './BaseTradingAdapter';
+import { ValidationError } from '../../../../errors/ValidationError';
 
 interface CancelOrderZeroEx {
   signedOrder?: SignedOrder;
   orderHashHex?: string;
+}
+
+export class MissingZeroExOrderHashHex extends ValidationError {
+  public readonly name = 'MissingZeroExOrderHashHex';
+
+  constructor(message: string = 'Missing order hash hex.') {
+    super(message);
+  }
 }
 
 export class ZeroExTradingAdapter extends BaseTradingAdapter {
@@ -20,7 +29,8 @@ export class ZeroExTradingAdapter extends BaseTradingAdapter {
    * @param args The arguments as [[CancelOrderZeroEx]]
    */
   public async cancelOrder(from: Address, args: CancelOrderZeroEx) {
-    const orderHashHex = args.orderHashHex || (await orderHashUtils.getOrderHashAsync(args.signedOrder));
+    const orderHashHex =
+      args.orderHashHex || (args.signedOrder && (await orderHashUtils.getOrderHashAsync(args.signedOrder)));
 
     const methodArgs = {
       exchangeIndex: this.exchangeIndex,
@@ -42,7 +52,11 @@ export class ZeroExTradingAdapter extends BaseTradingAdapter {
       signature: '0x0',
     };
 
-    const validate = async () => {};
+    const validate = async () => {
+      if (!orderHashHex) {
+        throw new MissingZeroExOrderHashHex();
+      }
+    };
 
     return this.trading.callOnExchange(from, methodArgs, validate);
   }

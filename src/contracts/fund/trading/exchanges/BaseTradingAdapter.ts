@@ -11,13 +11,13 @@ export class BaseTradingAdapter {
     if (exchangeIndex === null) {
       throw new ExchangeNotRegisteredWithFundError(address);
     }
+
     return new this(trading, exchangeIndex) as InstanceType<T>;
   }
 
   public static async index(trading: Trading, address: Address) {
     const exchangeInfo = await trading.getExchangeInfo();
     const exchangeIndex = exchangeInfo.findIndex(exchange => sameAddress(exchange.exchange, address));
-
     return exchangeIndex === -1 ? null : exchangeIndex;
   }
 }
