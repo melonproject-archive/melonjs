@@ -6,7 +6,7 @@ import { zeroAddress } from '../../../../utils/zeroAddress';
 import { padLeft } from 'web3-utils';
 import { zeroBigNumber } from '../../../../utils/zeroBigNumber';
 
-export interface CancelOrderOasisDex {
+export interface OasisDexCancelOrderArgs {
   id: string;
   maker: Address;
   makerAsset: Address;
@@ -18,9 +18,9 @@ export class OasisDexTradingAdapter extends BaseTradingAdapter {
    * Cancel make order on Oasisdex
    *
    * @param from The address of the sender
-   * @param args The arguments as [[CancelOrderOasisDex]]
+   * @param args The arguments as [[OasisDexCancelOrderArgs]]
    */
-  public cancelOrder(from: Address, args: CancelOrderOasisDex) {
+  public cancelOrder(from: Address, args: OasisDexCancelOrderArgs) {
     const methodArgs = {
       exchangeIndex: this.exchangeIndex,
       methodSignature: encodeFunctionSignature(ExchangeAdapterAbi, 'cancelOrder'),

@@ -48,17 +48,33 @@ export {
 export { ParticipationFactory } from './contracts/fund/participation/ParticipationFactory';
 export { PerformanceFee } from './contracts/fund/fees/PerformanceFee';
 export { Policy, PolicyRule } from './contracts/fund/policies/Policy';
-export { PolicyManager } from './contracts/fund/policies/PolicyManager';
+export {
+  PolicyManager,
+  NotAuthorizedError,
+  Policies,
+  PolicyPositionNotPreOrPostError,
+} from './contracts/fund/policies/PolicyManager';
 export { PolicyManagerFactory } from './contracts/fund/policies/PolicyManagerFactory';
 export { PriceTolerance } from './contracts/fund/policies/PriceTolerance';
 export { Shares } from './contracts/fund/shares/Shares';
 export { SharesFactory } from './contracts/fund/shares/SharesFactory';
 export { Spoke } from './contracts/fund/hub/Spoke';
 export { StandardToken } from './contracts/dependencies/token/StandardToken';
-export { Order, OpenMakeOrder, Trading, TradingDeployArguments } from './contracts/fund/trading/Trading';
+export {
+  Order,
+  OpenMakeOrder,
+  Trading,
+  TradingDeployArguments,
+  OpenMakeOrderWithExchange,
+  CallOnExchangeArgs,
+  ExchangeInfo,
+} from './contracts/fund/trading/Trading';
 export { BaseTradingAdapter } from './contracts/fund/trading/exchanges/BaseTradingAdapter';
-export { KyberTradingAdapter } from './contracts/fund/trading/exchanges/KyberTradingAdapter';
-export { OasisDexTradingAdapter } from './contracts/fund/trading/exchanges/OasisDexTradingAdapter';
+export { KyberTradingAdapter, KyberTakeOrderArgs } from './contracts/fund/trading/exchanges/KyberTradingAdapter';
+export {
+  OasisDexTradingAdapter,
+  OasisDexCancelOrderArgs,
+} from './contracts/fund/trading/exchanges/OasisDexTradingAdapter';
 export { ZeroExTradingAdapter } from './contracts/fund/trading/exchanges/ZeroExTradingAdapter';
 export {
   InvalidExchangeIndexError,
@@ -70,18 +86,22 @@ export {
 export { UserWhitelist } from './contracts/fund/policies/UserWhitelist';
 export { Vault } from './contracts/fund/vault/Vault';
 export { VaultFactory } from './contracts/fund/vault/VaultFactory';
-export { Version } from './contracts/version/Version';
+export { Version, OnlyManagerCanShutDownFundError, VersionDeployArguments } from './contracts/version/Version';
 export {
   Registry,
   AssetBaseInformation,
   AssetCreation,
   AssetInformation,
   ExchangeInformation,
+  VersionInformation,
   RegisterExchangeAdapterArgs,
   AssetAlreadyRegisteredError,
   AssetsRegisteredOutOfBoundsError,
   ExchangeAdapterAlreadyRegisteredError,
   ExchangeAdaptersRegisteredOutOfBoundsError,
+  AssetNotRegisteredError,
+  VersionAlreadyRegisteredError,
+  VersionNameAlreadyExistsError,
 } from './contracts/version/Registry';
 export { Weth } from './contracts/dependencies/token/Weth';
 export { MatchingMarket } from './contracts/exchanges/third-party/oasisdex/MatchingMarket';

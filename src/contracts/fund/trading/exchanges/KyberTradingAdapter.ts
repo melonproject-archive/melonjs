@@ -7,7 +7,7 @@ import { checkSufficientBalance } from '../utils/checkSufficientBalance';
 import { checkFundIsNotShutdown } from '../utils/checkFundIsNotShutdown';
 import { BaseTradingAdapter } from './BaseTradingAdapter';
 
-export interface TakeOrderKyber {
+export interface KyberTakeOrderArgs {
   makerAsset: Address;
   takerAsset: Address;
   makerQuantity: BigNumber;
@@ -19,9 +19,9 @@ export class KyberTradingAdapter extends BaseTradingAdapter {
    * Take order on Kyber
    *
    * @param from The address of the sender
-   * @param args The arguments as [[TakeOrderKyber]]
+   * @param args The arguments as [[KyberTakeOrderArgs]]
    */
-  public takeOrder(from: Address, args: TakeOrderKyber) {
+  public takeOrder(from: Address, args: KyberTakeOrderArgs) {
     const methodArgs = {
       exchangeIndex: this.exchangeIndex,
       methodSignature: encodeFunctionSignature(ExchangeAdapterAbi, 'takeOrder'),
