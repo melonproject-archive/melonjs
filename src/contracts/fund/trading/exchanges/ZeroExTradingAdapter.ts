@@ -7,10 +7,13 @@ import { zeroAddress } from '../../../../utils/zeroAddress';
 import { zeroBigNumber } from '../../../../utils/zeroBigNumber';
 import { BaseTradingAdapter } from './BaseTradingAdapter';
 import { ValidationError } from '../../../../errors/ValidationError';
+import { numberToHex } from 'web3-utils';
+import { BigNumber } from '@0x/utils';
 
 interface CancelOrderZeroEx {
   signedOrder?: SignedOrder;
   orderHashHex?: string;
+  orderId?: BigNumber;
 }
 
 export class MissingZeroExOrderHashHex extends ValidationError {
@@ -30,7 +33,9 @@ export class ZeroExTradingAdapter extends BaseTradingAdapter {
    */
   public async cancelOrder(from: Address, args: CancelOrderZeroEx) {
     const orderHashHex =
-      args.orderHashHex || (args.signedOrder && (await orderHashUtils.getOrderHashAsync(args.signedOrder)));
+      args.orderHashHex ||
+      (args.orderId && numberToHex(args.orderId.toString())) ||
+      (args.signedOrder && (await orderHashUtils.getOrderHashAsync(args.signedOrder)));
 
     const methodArgs = {
       exchangeIndex: this.exchangeIndex,
