@@ -9,7 +9,7 @@ import { toBigNumber } from '../../../utils/toBigNumber';
 import BigNumber from 'bignumber.js';
 import { Registry, AssetNotRegisteredError } from '../../version/Registry';
 import { isZeroAddress } from '../../../utils/isZeroAddress';
-import { hexToBytes } from 'web3-utils';
+import { hexToBytes, numberToHex } from 'web3-utils';
 import { encodeFunctionSignature } from '../../../utils/encodeFunctionSignature';
 import { ExchangeAdapterAbi } from '../../../abis/ExchangeAdapter.abi';
 import { AdapterMethodNotAllowedError, InvalidExchangeIndexError } from './Trading.errors';
@@ -275,6 +275,16 @@ export class Trading extends Contract {
   }
 
   /**
+   * Update and get quantity being traded
+   *
+   * @param asset The address of the asset
+   * @param block The block number to execute the call on.
+   */
+  public sendUpdateAndGetQuantityBeingTraded(from: Address, asset: Address, block?: number) {
+    return this.createTransaction({ from, method: 'updateAndGetQuantityBeingTraded', args: [asset] });
+  }
+
+  /**
    * Update and get quantity held in exchanges
    *
    * @param asset The address of the asset
@@ -283,6 +293,16 @@ export class Trading extends Contract {
   public async updateAndGetQuantityHeldInExchange(asset: Address, block?: number) {
     const result = await this.makeCall<string>('updateAndGetQuantityHeldInExchange', [asset], block);
     return toBigNumber(result);
+  }
+
+  /**
+   * Update and get quantity held in exchanges
+   *
+   * @param asset The address of the asset
+   * @param block The block number to execute the call on.
+   */
+  public getZeroExOrderDetails(identifier: string, block?: number) {
+    return this.makeCall<string>('getZeroExOrderDetails', [numberToHex(identifier)], block);
   }
 }
 
