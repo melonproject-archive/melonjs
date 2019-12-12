@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>TakeOrderMelonEngine | @melonproject/melonjs</title>
+	<title>OpenMakeOrderWithExchange | @melonproject/melonjs</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -52,13 +52,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_contracts_fund_trading_exchanges_melonengine_.html">&quot;contracts/fund/trading/exchanges/MelonEngine&quot;</a>
+					<a href="../modules/_contracts_fund_trading_trading_.html">&quot;contracts/fund/trading/Trading&quot;</a>
 				</li>
 				<li>
-					<a href="_contracts_fund_trading_exchanges_melonengine_.takeordermelonengine.html">TakeOrderMelonEngine</a>
+					<a href="_contracts_fund_trading_trading_.openmakeorderwithexchange.html">OpenMakeOrderWithExchange</a>
 				</li>
 			</ul>
-			<h1>Interface TakeOrderMelonEngine</h1>
+			<h1>Interface OpenMakeOrderWithExchange</h1>
 		</div>
 	</div>
 </header>
@@ -69,7 +69,12 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">TakeOrderMelonEngine</span>
+						<a href="_contracts_fund_trading_trading_.openmakeorder.html" class="tsd-signature-type">OpenMakeOrder</a>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">OpenMakeOrderWithExchange</span>
+							</li>
+						</ul>
 					</li>
 				</ul>
 			</section>
@@ -80,10 +85,11 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_fund_trading_exchanges_melonengine_.takeordermelonengine.html#makerasset" class="tsd-kind-icon">maker<wbr>Asset</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_fund_trading_exchanges_melonengine_.takeordermelonengine.html#makerquantity" class="tsd-kind-icon">maker<wbr>Quantity</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_fund_trading_exchanges_melonengine_.takeordermelonengine.html#takerasset" class="tsd-kind-icon">taker<wbr>Asset</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_fund_trading_exchanges_melonengine_.takeordermelonengine.html#takerquantity" class="tsd-kind-icon">taker<wbr>Quantity</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_contracts_fund_trading_trading_.openmakeorderwithexchange.html#buyasset" class="tsd-kind-icon">buy<wbr>Asset</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_fund_trading_trading_.openmakeorderwithexchange.html#exchange" class="tsd-kind-icon">exchange</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_contracts_fund_trading_trading_.openmakeorderwithexchange.html#expiresat" class="tsd-kind-icon">expires<wbr>At</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_contracts_fund_trading_trading_.openmakeorderwithexchange.html#id" class="tsd-kind-icon">id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_contracts_fund_trading_trading_.openmakeorderwithexchange.html#orderindex" class="tsd-kind-icon">order<wbr>Index</a></li>
 							</ul>
 						</section>
 					</div>
@@ -91,43 +97,57 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="makerasset" class="tsd-anchor"></a>
-					<h3>maker<wbr>Asset</h3>
-					<div class="tsd-signature tsd-kind-icon">maker<wbr>Asset<span class="tsd-signature-symbol">:</span> <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="buyasset" class="tsd-anchor"></a>
+					<h3>buy<wbr>Asset</h3>
+					<div class="tsd-signature tsd-kind-icon">buy<wbr>Asset<span class="tsd-signature-symbol">:</span> <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="_contracts_fund_trading_trading_.openmakeorder.html">OpenMakeOrder</a>.<a href="_contracts_fund_trading_trading_.openmakeorder.html#buyasset">buyAsset</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/exchanges/MelonEngine.ts#L11">contracts/fund/trading/exchanges/MelonEngine.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/Trading.ts#L27">contracts/fund/trading/Trading.ts:27</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="makerquantity" class="tsd-anchor"></a>
-					<h3>maker<wbr>Quantity</h3>
-					<div class="tsd-signature tsd-kind-icon">maker<wbr>Quantity<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">BigNumber</span></div>
+					<a name="exchange" class="tsd-anchor"></a>
+					<h3>exchange</h3>
+					<div class="tsd-signature tsd-kind-icon">exchange<span class="tsd-signature-symbol">:</span> <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/exchanges/MelonEngine.ts#L13">contracts/fund/trading/exchanges/MelonEngine.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/Trading.ts#L31">contracts/fund/trading/Trading.ts:31</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="takerasset" class="tsd-anchor"></a>
-					<h3>taker<wbr>Asset</h3>
-					<div class="tsd-signature tsd-kind-icon">taker<wbr>Asset<span class="tsd-signature-symbol">:</span> <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="expiresat" class="tsd-anchor"></a>
+					<h3>expires<wbr>At</h3>
+					<div class="tsd-signature tsd-kind-icon">expires<wbr>At<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Date</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="_contracts_fund_trading_trading_.openmakeorder.html">OpenMakeOrder</a>.<a href="_contracts_fund_trading_trading_.openmakeorder.html#expiresat">expiresAt</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/exchanges/MelonEngine.ts#L12">contracts/fund/trading/exchanges/MelonEngine.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/Trading.ts#L25">contracts/fund/trading/Trading.ts:25</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="takerquantity" class="tsd-anchor"></a>
-					<h3>taker<wbr>Quantity</h3>
-					<div class="tsd-signature tsd-kind-icon">taker<wbr>Quantity<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">BigNumber</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="id" class="tsd-anchor"></a>
+					<h3>id</h3>
+					<div class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">BigNumber</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="_contracts_fund_trading_trading_.openmakeorder.html">OpenMakeOrder</a>.<a href="_contracts_fund_trading_trading_.openmakeorder.html#id">id</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/exchanges/MelonEngine.ts#L14">contracts/fund/trading/exchanges/MelonEngine.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/Trading.ts#L24">contracts/fund/trading/Trading.ts:24</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="orderindex" class="tsd-anchor"></a>
+					<h3>order<wbr>Index</h3>
+					<div class="tsd-signature tsd-kind-icon">order<wbr>Index<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">BigNumber</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_contracts_fund_trading_trading_.openmakeorder.html">OpenMakeOrder</a>.<a href="_contracts_fund_trading_trading_.openmakeorder.html#orderindex">orderIndex</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/Trading.ts#L26">contracts/fund/trading/Trading.ts:26</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -140,36 +160,57 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="../modules/_contracts_fund_trading_exchanges_melonengine_.html">"contracts/fund/trading/exchanges/<wbr>Melon<wbr>Engine"</a>
+						<a href="../modules/_contracts_fund_trading_trading_.html">"contracts/fund/trading/<wbr>Trading"</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-enum tsd-parent-kind-external-module">
+						<a href="../enums/_contracts_fund_trading_trading_.orderupdatetype.html" class="tsd-kind-icon">Order<wbr>Update<wbr>Type</a>
+					</li>
 					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/_contracts_fund_trading_exchanges_melonengine_.melonengine.html" class="tsd-kind-icon">Melon<wbr>Engine</a>
+						<a href="../classes/_contracts_fund_trading_trading_.trading.html" class="tsd-kind-icon">Trading</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_contracts_fund_trading_trading_.callonexchangeargs.html" class="tsd-kind-icon">Call<wbr>OnExchange<wbr>Args</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_contracts_fund_trading_trading_.exchangeinfo.html" class="tsd-kind-icon">Exchange<wbr>Info</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_contracts_fund_trading_trading_.openmakeorder.html" class="tsd-kind-icon">Open<wbr>Make<wbr>Order</a>
 					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_contracts_fund_trading_exchanges_melonengine_.takeordermelonengine.html" class="tsd-kind-icon">Take<wbr>Order<wbr>Melon<wbr>Engine</a>
+						<a href="_contracts_fund_trading_trading_.openmakeorderwithexchange.html" class="tsd-kind-icon">Open<wbr>Make<wbr>Order<wbr>With<wbr>Exchange</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_contracts_fund_trading_exchanges_melonengine_.takeordermelonengine.html#makerasset" class="tsd-kind-icon">maker<wbr>Asset</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_contracts_fund_trading_trading_.openmakeorderwithexchange.html#buyasset" class="tsd-kind-icon">buy<wbr>Asset</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_contracts_fund_trading_exchanges_melonengine_.takeordermelonengine.html#makerquantity" class="tsd-kind-icon">maker<wbr>Quantity</a>
+								<a href="_contracts_fund_trading_trading_.openmakeorderwithexchange.html#exchange" class="tsd-kind-icon">exchange</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_contracts_fund_trading_exchanges_melonengine_.takeordermelonengine.html#takerasset" class="tsd-kind-icon">taker<wbr>Asset</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_contracts_fund_trading_trading_.openmakeorderwithexchange.html#expiresat" class="tsd-kind-icon">expires<wbr>At</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_contracts_fund_trading_exchanges_melonengine_.takeordermelonengine.html#takerquantity" class="tsd-kind-icon">taker<wbr>Quantity</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_contracts_fund_trading_trading_.openmakeorderwithexchange.html#id" class="tsd-kind-icon">id</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_contracts_fund_trading_trading_.openmakeorderwithexchange.html#orderindex" class="tsd-kind-icon">order<wbr>Index</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_contracts_fund_trading_trading_.order.html" class="tsd-kind-icon">Order</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_contracts_fund_trading_trading_.tradingdeployarguments.html" class="tsd-kind-icon">Trading<wbr>Deploy<wbr>Arguments</a>
+					</li>
 				</ul>
 			</nav>
 		</div>

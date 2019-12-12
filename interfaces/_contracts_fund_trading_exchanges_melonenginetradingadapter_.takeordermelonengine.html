@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>&quot;contracts/fund/trading/exchanges/Kyber&quot; | @melonproject/melonjs</title>
+	<title>TakeOrderMelonEngine | @melonproject/melonjs</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -52,33 +52,84 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="_contracts_fund_trading_exchanges_kyber_.html">&quot;contracts/fund/trading/exchanges/Kyber&quot;</a>
+					<a href="../modules/_contracts_fund_trading_exchanges_melonenginetradingadapter_.html">&quot;contracts/fund/trading/exchanges/MelonEngineTradingAdapter&quot;</a>
+				</li>
+				<li>
+					<a href="_contracts_fund_trading_exchanges_melonenginetradingadapter_.takeordermelonengine.html">TakeOrderMelonEngine</a>
 				</li>
 			</ul>
-			<h1>External module &quot;contracts/fund/trading/exchanges/Kyber&quot;</h1>
+			<h1>Interface TakeOrderMelonEngine</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">TakeOrderMelonEngine</span>
+					</li>
+				</ul>
+			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Classes</h3>
+							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-class tsd-parent-kind-external-module"><a href="../classes/_contracts_fund_trading_exchanges_kyber_.kyber.html" class="tsd-kind-icon">Kyber</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section ">
-							<h3>Interfaces</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/_contracts_fund_trading_exchanges_kyber_.takeorderkyber.html" class="tsd-kind-icon">Take<wbr>Order<wbr>Kyber</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_fund_trading_exchanges_melonenginetradingadapter_.takeordermelonengine.html#makerasset" class="tsd-kind-icon">maker<wbr>Asset</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_fund_trading_exchanges_melonenginetradingadapter_.takeordermelonengine.html#makerquantity" class="tsd-kind-icon">maker<wbr>Quantity</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_fund_trading_exchanges_melonenginetradingadapter_.takeordermelonengine.html#takerasset" class="tsd-kind-icon">taker<wbr>Asset</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_fund_trading_exchanges_melonenginetradingadapter_.takeordermelonengine.html#takerquantity" class="tsd-kind-icon">taker<wbr>Quantity</a></li>
 							</ul>
 						</section>
 					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="makerasset" class="tsd-anchor"></a>
+					<h3>maker<wbr>Asset</h3>
+					<div class="tsd-signature tsd-kind-icon">maker<wbr>Asset<span class="tsd-signature-symbol">:</span> <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/exchanges/MelonEngineTradingAdapter.ts#L12">contracts/fund/trading/exchanges/MelonEngineTradingAdapter.ts:12</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="makerquantity" class="tsd-anchor"></a>
+					<h3>maker<wbr>Quantity</h3>
+					<div class="tsd-signature tsd-kind-icon">maker<wbr>Quantity<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">BigNumber</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/exchanges/MelonEngineTradingAdapter.ts#L14">contracts/fund/trading/exchanges/MelonEngineTradingAdapter.ts:14</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="takerasset" class="tsd-anchor"></a>
+					<h3>taker<wbr>Asset</h3>
+					<div class="tsd-signature tsd-kind-icon">taker<wbr>Asset<span class="tsd-signature-symbol">:</span> <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/exchanges/MelonEngineTradingAdapter.ts#L13">contracts/fund/trading/exchanges/MelonEngineTradingAdapter.ts:13</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="takerquantity" class="tsd-anchor"></a>
+					<h3>taker<wbr>Quantity</h3>
+					<div class="tsd-signature tsd-kind-icon">taker<wbr>Quantity<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">BigNumber</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/exchanges/MelonEngineTradingAdapter.ts#L15">contracts/fund/trading/exchanges/MelonEngineTradingAdapter.ts:15</a></li>
+						</ul>
+					</aside>
 				</section>
 			</section>
 		</div>
@@ -89,18 +140,36 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="_contracts_fund_trading_exchanges_kyber_.html">"contracts/fund/trading/exchanges/<wbr>Kyber"</a>
+						<a href="../modules/_contracts_fund_trading_exchanges_melonenginetradingadapter_.html">"contracts/fund/trading/exchanges/<wbr>Melon<wbr>Engine<wbr>Trading<wbr>Adapter"</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/_contracts_fund_trading_exchanges_kyber_.kyber.html" class="tsd-kind-icon">Kyber</a>
+						<a href="../classes/_contracts_fund_trading_exchanges_melonenginetradingadapter_.melonenginetradingadapter.html" class="tsd-kind-icon">Melon<wbr>Engine<wbr>Trading<wbr>Adapter</a>
 					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/_contracts_fund_trading_exchanges_kyber_.takeorderkyber.html" class="tsd-kind-icon">Take<wbr>Order<wbr>Kyber</a>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_contracts_fund_trading_exchanges_melonenginetradingadapter_.takeordermelonengine.html" class="tsd-kind-icon">Take<wbr>Order<wbr>Melon<wbr>Engine</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_contracts_fund_trading_exchanges_melonenginetradingadapter_.takeordermelonengine.html#makerasset" class="tsd-kind-icon">maker<wbr>Asset</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_contracts_fund_trading_exchanges_melonenginetradingadapter_.takeordermelonengine.html#makerquantity" class="tsd-kind-icon">maker<wbr>Quantity</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_contracts_fund_trading_exchanges_melonenginetradingadapter_.takeordermelonengine.html#takerasset" class="tsd-kind-icon">taker<wbr>Asset</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_contracts_fund_trading_exchanges_melonenginetradingadapter_.takeordermelonengine.html#takerquantity" class="tsd-kind-icon">taker<wbr>Quantity</a>
+							</li>
+						</ul>
 					</li>
+				</ul>
+				<ul class="after-current">
 				</ul>
 			</nav>
 		</div>
