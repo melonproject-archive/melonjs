@@ -11,6 +11,8 @@ import { Registry } from '../../version/Registry';
 import { zeroAddress } from '../../../utils/zeroAddress';
 import { ExchangeNotRegisteredWithFundError, InsufficientBalanceError } from './Trading.errors';
 import { KyberTradingAdapter } from './exchanges/KyberTradingAdapter';
+import { functionSignature } from '../../../utils/functionSignature';
+import { ExchangeAdapterAbi } from '../../../abis/ExchangeAdapter.abi';
 
 describe('Trading', () => {
   const exchangeAddress = randomAddress();
@@ -103,7 +105,7 @@ describe('Trading', () => {
   it('should pass the validation tests for callOnExchange', async () => {
     const callArgs = {
       exchangeIndex: 0,
-      methodSignature: '0x79705be7',
+      methodSignature: functionSignature(ExchangeAdapterAbi, 'makeOrder'),
       orderAddresses: [
         zeroAddress,
         zeroAddress,
