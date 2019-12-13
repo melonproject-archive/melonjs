@@ -307,7 +307,7 @@ export class Registry extends Contract {
    * Checks if an exchange adapter method is allowed
    *
    * @param adapter The address of the adapter
-   * @param signature The signature of the method
+   * @param signature The encoded signature of the method
    * @param block The block number to execute the call on.
    */
   public isAdapterMethodAllowed(adapter: Address, signature: string, block?: number) {

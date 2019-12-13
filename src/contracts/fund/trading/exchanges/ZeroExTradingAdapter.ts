@@ -1,7 +1,7 @@
 import { SignedOrder } from '@0x/types';
 import { orderHashUtils } from '@0x/order-utils';
 import { Address } from '../../../../Address';
-import { encodeFunctionSignature } from '../../../../utils/encodeFunctionSignature';
+import { functionSignature } from '../../../../utils/functionSignature';
 import { ExchangeAdapterAbi } from '../../../../abis/ExchangeAdapter.abi';
 import { zeroAddress } from '../../../../utils/zeroAddress';
 import { zeroBigNumber } from '../../../../utils/zeroBigNumber';
@@ -39,7 +39,7 @@ export class ZeroExTradingAdapter extends BaseTradingAdapter {
 
     const methodArgs = {
       exchangeIndex: this.exchangeIndex,
-      methodSignature: encodeFunctionSignature(ExchangeAdapterAbi, 'cancelOrder'),
+      methodSignature: functionSignature(ExchangeAdapterAbi, 'cancelOrder'),
       orderAddresses: [zeroAddress, zeroAddress, zeroAddress, zeroAddress, zeroAddress, zeroAddress],
       orderValues: [
         zeroBigNumber,

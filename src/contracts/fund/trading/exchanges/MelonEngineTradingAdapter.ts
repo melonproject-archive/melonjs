@@ -1,6 +1,6 @@
 import BigNumber from 'bignumber.js';
 import { Address } from '../../../../Address';
-import { encodeFunctionSignature } from '../../../../utils/encodeFunctionSignature';
+import { functionSignature } from '../../../../utils/functionSignature';
 import { ExchangeAdapterAbi } from '../../../../abis/ExchangeAdapter.abi';
 import { zeroAddress } from '../../../../utils/zeroAddress';
 import { checkSufficientBalance } from '../utils/checkSufficientBalance';
@@ -25,7 +25,7 @@ export class MelonEngineTradingAdapter extends BaseTradingAdapter {
   public takeOrder(from: Address, args: TakeOrderMelonEngine) {
     const methodArgs = {
       exchangeIndex: this.exchangeIndex,
-      methodSignature: encodeFunctionSignature(ExchangeAdapterAbi, 'takeOrder'),
+      methodSignature: functionSignature(ExchangeAdapterAbi, 'takeOrder'),
       orderAddresses: [zeroAddress, zeroAddress, args.makerAsset, args.takerAsset, zeroAddress, zeroAddress],
       orderValues: [
         args.makerQuantity,
