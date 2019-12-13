@@ -301,8 +301,8 @@ export class Trading extends Contract {
    * @param asset The address of the asset
    * @param block The block number to execute the call on.
    */
-  public getZeroExOrderDetails(identifier: string, block?: number) {
-    return this.makeCall<string>('getZeroExOrderDetails', [numberToHex(identifier)], block);
+  public getZeroExOrderDetails(identifier: BigNumber, block?: number) {
+    return this.makeCall('getZeroExOrderDetails', [numberToHex(identifier.toString())], block);
   }
 }
 
