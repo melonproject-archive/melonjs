@@ -79,6 +79,14 @@ export class Trading extends Contract {
     ]);
   }
 
+  public returnBatchToVault(from: Address, assets: Address[]) {
+    const validate = async () => {
+      // TODO: Add validation.
+    };
+
+    return this.createTransaction({ from, method: 'callOnExchange', args: [assets], validate });
+  }
+
   /**
    * Gets information on all exchanges.
    *
@@ -91,13 +99,11 @@ export class Trading extends Contract {
       '2': boolean[];
     }>('getExchangeInfo', undefined, block);
 
-    const output = ofExchanges.map((_, index) => {
-      return {
-        exchange: ofExchanges[index],
-        adapter: ofAdapters[index],
-        takesCustody: takesCustody[index],
-      };
-    });
+    const output = ofExchanges.map((_, index) => ({
+      exchange: ofExchanges[index],
+      adapter: ofAdapters[index],
+      takesCustody: takesCustody[index],
+    }));
 
     return output as ExchangeInfo[];
   }
