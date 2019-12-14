@@ -1,13 +1,14 @@
-import { padLeft } from 'web3-utils';
+import { padLeft, numberToHex } from 'web3-utils';
 import { BaseTradingAdapter } from './BaseTradingAdapter';
 import { Address } from '../../../../Address';
-import { encodeFunctionSignature } from '../../../../utils/encodeFunctionSignature';
+import { functionSignature } from '../../../../utils/functionSignature';
 import { ExchangeAdapterAbi } from '../../../../abis/ExchangeAdapter.abi';
 import { zeroAddress } from '../../../../utils/zeroAddress';
 import { zeroBigNumber } from '../../../../utils/zeroBigNumber';
+import BigNumber from 'bignumber.js';
 
 export interface OasisDexCancelOrderArgs {
-  id: string;
+  id: BigNumber;
   makerAsset: Address;
   takerAsset: Address;
 }
@@ -22,7 +23,7 @@ export class OasisDexTradingAdapter extends BaseTradingAdapter {
   public cancelOrder(from: Address, args: OasisDexCancelOrderArgs) {
     const methodArgs = {
       exchangeIndex: this.exchangeIndex,
-      methodSignature: encodeFunctionSignature(ExchangeAdapterAbi, 'cancelOrder'),
+      methodSignature: functionSignature(ExchangeAdapterAbi, 'cancelOrder'),
       orderAddresses: [
         this.trading.contract.address,
         zeroAddress,
@@ -41,9 +42,7 @@ export class OasisDexTradingAdapter extends BaseTradingAdapter {
         zeroBigNumber,
         zeroBigNumber,
       ],
-      identifier: `0x${Number(args.id)
-        .toString(16)
-        .padStart(64, '0')}`,
+      identifier: padLeft(numberToHex(args.id.toString()), 64),
       makerAssetData: padLeft('0x0', 64),
       takerAssetData: padLeft('0x0', 64),
       signature: padLeft('0x0', 64),

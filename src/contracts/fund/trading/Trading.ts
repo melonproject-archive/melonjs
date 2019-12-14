@@ -9,8 +9,8 @@ import { toBigNumber } from '../../../utils/toBigNumber';
 import BigNumber from 'bignumber.js';
 import { Registry, AssetNotRegisteredError } from '../../version/Registry';
 import { isZeroAddress } from '../../../utils/isZeroAddress';
-import { hexToBytes, numberToHex } from 'web3-utils';
-import { encodeFunctionSignature } from '../../../utils/encodeFunctionSignature';
+import { hexToBytes, numberToHex, keccak256 } from 'web3-utils';
+import { functionSignature } from '../../../utils/functionSignature';
 import { ExchangeAdapterAbi } from '../../../abis/ExchangeAdapter.abi';
 import { AdapterMethodNotAllowedError, InvalidExchangeIndexError } from './Trading.errors';
 
@@ -213,13 +213,14 @@ export class Trading extends Contract {
       throw new InvalidExchangeIndexError(args.exchangeIndex);
     }
 
-    const adapterMethodIsAllowed = await registry.isAdapterMethodAllowed(exchange.adapter, args.methodSignature);
+    const encodedSignature = keccak256(args.methodSignature).substr(0, 10);
+    const adapterMethodIsAllowed = await registry.isAdapterMethodAllowed(exchange.adapter, encodedSignature);
     if (!adapterMethodIsAllowed) {
-      throw new AdapterMethodNotAllowedError(exchange.adapter, args.methodSignature);
+      throw new AdapterMethodNotAllowedError(exchange.adapter, encodedSignature);
     }
 
-    const makeOrderSignature = encodeFunctionSignature(ExchangeAdapterAbi, 'makeOrder');
-    const takeOrderSignature = encodeFunctionSignature(ExchangeAdapterAbi, 'takeOrder');
+    const makeOrderSignature = functionSignature(ExchangeAdapterAbi, 'makeOrder');
+    const takeOrderSignature = functionSignature(ExchangeAdapterAbi, 'takeOrder');
 
     if (args.methodSignature === makeOrderSignature || args.methodSignature === takeOrderSignature) {
       const makerAssetIsRegistered = await registry.isAssetRegistered(args.orderAddresses[2]);
