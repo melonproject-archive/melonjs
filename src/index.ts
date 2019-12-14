@@ -105,3 +105,9 @@ export {
 } from './contracts/version/Registry';
 export { Weth } from './contracts/dependencies/token/Weth';
 export { MatchingMarket } from './contracts/exchanges/third-party/oasisdex/MatchingMarket';
+export {
+  ZeroEx,
+  ZeroExOrder,
+  ZeroExOrderInfo,
+  ZeroExOrderStatus,
+} from './contracts/exchanges/third-party/zeroex/ZeroEx';
