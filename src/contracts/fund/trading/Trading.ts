@@ -84,7 +84,7 @@ export class Trading extends Contract {
       // TODO: Add validation.
     };
 
-    return this.createTransaction({ from, method: 'callOnExchange', args: [assets], validate });
+    return this.createTransaction({ from, method: 'returnBatchToVault', args: [assets], validate });
   }
 
   /**
