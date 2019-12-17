@@ -150,8 +150,8 @@ export class Deployment<T extends Contract> extends Transaction<T> {
           return promise.catch.bind(promise);
         }
 
-        if (target.eventEmitter[name]) {
-          return target.eventEmitter[name];
+        if (target[name]) {
+          return target[name];
         }
       },
     }) as any) as PromiEvent<T>;
