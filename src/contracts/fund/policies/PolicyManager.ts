@@ -33,6 +33,18 @@ export class PolicyPositionNotPreOrPostError extends ValidationError {
   }
 }
 
+export class ArrayLenghtsUnequalError extends ValidationError {
+  public name = 'ArrayLenghtsUnequalError';
+
+  constructor(
+    public readonly signatures: string[],
+    public readonly policyAddresses: Address[],
+    message: string = 'Arrays do not have the same lengths',
+  ) {
+    super(message);
+  }
+}
+
 export class PolicyManager extends Contract {
   public static readonly abi = PolicyManagerAbi;
 
@@ -69,6 +81,28 @@ export class PolicyManager extends Contract {
       from,
       method: 'register',
       args: [signature, policyAddress],
+      validate,
+    });
+  }
+
+  /**
+   * Batch registers policies
+   *
+   * @param from The address of the sender
+   * @param signatures The signatures of the policies
+   * @param policyAddresss The addresses of the policies
+   */
+  public batchRegisterPolicies(from: Address, signatures: string[], policyAddresses: Address[]) {
+    const validate = async () => {
+      if (signatures.length !== policyAddresses.length) {
+        throw new ArrayLenghtsUnequalError(signatures, policyAddresses);
+      }
+    };
+
+    return this.createTransaction({
+      from,
+      method: 'batchRegister',
+      args: [signatures, policyAddresses],
       validate,
     });
   }

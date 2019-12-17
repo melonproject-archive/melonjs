@@ -5,6 +5,9 @@ import { MaxPositionsBytecode } from '../../../abis/MaxPositions.bin';
 import { MaxPositions } from './MaxPositions';
 import { PermissiveAuthority } from '../../dependencies/authorization/PermissiveAuthority';
 import { PermissiveAuthorityBytecode } from '../../../abis/PermissiveAuthority.bin';
+import { MaxConcentration } from './MaxConcentration';
+import { MaxConcentrationBytecode } from '../../../abis/MaxConcentration.bin';
+import BigNumber from 'bignumber.js';
 
 describe('PolicyManager', () => {
   let environment: TestEnvironment;
@@ -46,5 +49,26 @@ describe('PolicyManager', () => {
       pre: expect.any(Array),
       post: expect.any(Array),
     });
+  });
+
+  it('should batch register several policies', async () => {
+    const deployMaxPositions = MaxPositions.deploy(environment, MaxPositionsBytecode, environment.accounts[0], 10);
+    const maxPositions = await deployMaxPositions.send(await deployMaxPositions.prepare());
+
+    const deployMaxConcentration = MaxConcentration.deploy(
+      environment,
+      MaxConcentrationBytecode,
+      environment.accounts[0],
+      new BigNumber('100000000000000000'),
+    );
+    const maxConcentration = await deployMaxConcentration.send(await deployMaxConcentration.prepare());
+
+    const tx = policyManager.batchRegisterPolicies(
+      environment.accounts[0],
+      ['0x61346679', '0x61346679'],
+      [maxPositions.contract.address, maxConcentration.contract.address],
+    );
+    const txResult = await tx.send(await tx.prepare());
+    expect(txResult.gasUsed).toBeGreaterThanOrEqual(0);
   });
 });
