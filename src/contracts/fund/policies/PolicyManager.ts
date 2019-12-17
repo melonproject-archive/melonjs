@@ -33,8 +33,8 @@ export class PolicyPositionNotPreOrPostError extends ValidationError {
   }
 }
 
-export class ArrayLenghtsUnequalError extends ValidationError {
-  public name = 'ArrayLenghtsUnequalError';
+export class ArrayLenghtsNotEqualError extends ValidationError {
+  public name = 'ArrayLenghtsNotEqualError';
 
   constructor(
     public readonly signatures: string[],
@@ -95,7 +95,7 @@ export class PolicyManager extends Contract {
   public batchRegisterPolicies(from: Address, signatures: string[], policyAddresses: Address[]) {
     const validate = async () => {
       if (signatures.length !== policyAddresses.length) {
-        throw new ArrayLenghtsUnequalError(signatures, policyAddresses);
+        throw new ArrayLenghtsNotEqualError(signatures, policyAddresses);
       }
     };
 
