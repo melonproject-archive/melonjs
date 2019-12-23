@@ -1,4 +1,4 @@
-import { Trading } from './Trading';
+import { Trading, CallOnExchangeArgs } from './Trading';
 import { createTestEnvironment, TestEnvironment } from '../../../utils/tests/createTestEnvironment';
 import { deployHub } from '../../../utils/tests/deployHub';
 import { deployTrading } from '../../../utils/tests/deployTrading';
@@ -130,7 +130,7 @@ describe('Trading', () => {
       signature: '0x0',
     };
 
-    const tx = trading.callOnExchange(environment.accounts[0], callArgs);
+    const tx = trading.callOnExchange(environment.accounts[0], callArgs as CallOnExchangeArgs);
     await tx.validate();
     expect(tx.validate).not.toThrow();
   });

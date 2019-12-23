@@ -7,6 +7,7 @@ import { checkSufficientBalance } from '../utils/checkSufficientBalance';
 import { checkFundIsNotShutdown } from '../utils/checkFundIsNotShutdown';
 import { zeroBigNumber } from '../../../../utils/zeroBigNumber';
 import { BaseTradingAdapter } from './BaseTradingAdapter';
+import { CallOnExchangeArgs } from '../Trading';
 
 export interface TakeOrderMelonEngine {
   makerAsset: Address;
@@ -51,6 +52,6 @@ export class MelonEngineTradingAdapter extends BaseTradingAdapter {
       await checkFundIsNotShutdown(this.trading.environment, hubAddress);
     };
 
-    return this.trading.callOnExchange(from, methodArgs, validate);
+    return this.trading.callOnExchange(from, methodArgs as CallOnExchangeArgs, validate);
   }
 }

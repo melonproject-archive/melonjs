@@ -74,8 +74,13 @@ export { KyberTradingAdapter, KyberTakeOrderArgs } from './contracts/fund/tradin
 export {
   OasisDexTradingAdapter,
   OasisDexCancelOrderArgs,
+  OasisDexMakeOrderArgs,
 } from './contracts/fund/trading/exchanges/OasisDexTradingAdapter';
-export { ZeroExTradingAdapter } from './contracts/fund/trading/exchanges/ZeroExTradingAdapter';
+export {
+  ZeroExTradingAdapter,
+  CancelOrderZeroExArgs,
+  MissingZeroExOrderHashHex,
+} from './contracts/fund/trading/exchanges/ZeroExTradingAdapter';
 export {
   InvalidExchangeIndexError,
   AdapterMethodNotAllowedError,

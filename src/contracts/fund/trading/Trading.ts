@@ -59,12 +59,12 @@ export interface TradingDeployArguments {
 export interface CallOnExchangeArgs {
   exchangeIndex: number;
   methodSignature: string;
-  orderAddresses: Address[]; // 6
-  orderValues: BigNumber[]; // 8
-  identifier: string; // bytes32
-  makerAssetData: string; // bytes
-  takerAssetData: string; // bytes
-  signature: string; // bytes
+  orderAddresses: [Address, Address, Address, Address, Address, Address];
+  orderValues: [BigNumber, BigNumber, BigNumber, BigNumber, BigNumber, BigNumber, BigNumber, BigNumber];
+  identifier: string;
+  makerAssetData: string;
+  takerAssetData: string;
+  signature: string;
 }
 
 export class Trading extends Contract {
