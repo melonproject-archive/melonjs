@@ -99,6 +99,8 @@
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.zeroextradingadapter.html#cancelorder" class="tsd-kind-icon">cancel<wbr>Order</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.zeroextradingadapter.html#getorderhash" class="tsd-kind-icon">get<wbr>Order<wbr>Hash</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.zeroextradingadapter.html#makeorder" class="tsd-kind-icon">make<wbr>Order</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-static"><a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.zeroextradingadapter.html#create" class="tsd-kind-icon">create</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.zeroextradingadapter.html#index" class="tsd-kind-icon">index</a></li>
 							</ul>
@@ -167,18 +169,18 @@
 					<a name="cancelorder" class="tsd-anchor"></a>
 					<h3>cancel<wbr>Order</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">cancel<wbr>Order<span class="tsd-signature-symbol">(</span>from<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a>, args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">CancelOrderZeroEx</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_transaction_.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionReceipt</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">cancel<wbr>Order<span class="tsd-signature-symbol">(</span>from<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a>, args<span class="tsd-signature-symbol">: </span><a href="../interfaces/_contracts_fund_trading_exchanges_zeroextradingadapter_.cancelorderzeroexargs.html" class="tsd-signature-type">CancelOrderZeroExArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_transaction_.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionReceipt</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/exchanges/ZeroExTradingAdapter.ts#L34">contracts/fund/trading/exchanges/ZeroExTradingAdapter.ts:34</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/exchanges/ZeroExTradingAdapter.ts#L38">contracts/fund/trading/exchanges/ZeroExTradingAdapter.ts:38</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Cancel make order on 0x</p>
+									<p>Cancel a make order on 0x.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -186,17 +188,74 @@
 								<li>
 									<h5>from: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>The address of the sender</p>
+										<p>The address of the sender.</p>
 									</div>
 								</li>
 								<li>
-									<h5>args: <span class="tsd-signature-type">CancelOrderZeroEx</span></h5>
+									<h5>args: <a href="../interfaces/_contracts_fund_trading_exchanges_zeroextradingadapter_.cancelorderzeroexargs.html" class="tsd-signature-type">CancelOrderZeroExArgs</a></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>The arguments as [[CancelOrderZeroEx]]</p>
+										<p>The arguments.</p>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_transaction_.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionReceipt</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_transaction_.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionReceipt</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getorderhash" class="tsd-anchor"></a>
+					<h3>get<wbr>Order<wbr>Hash</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Order<wbr>Hash<span class="tsd-signature-symbol">(</span>order<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SignedOrder</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/exchanges/ZeroExTradingAdapter.ts#L28">contracts/fund/trading/exchanges/ZeroExTradingAdapter.ts:28</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>order: <span class="tsd-signature-type">SignedOrder</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="makeorder" class="tsd-anchor"></a>
+					<h3>make<wbr>Order</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">make<wbr>Order<span class="tsd-signature-symbol">(</span>from<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a>, order<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SignedOrder</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_transaction_.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionReceipt</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/exchanges/ZeroExTradingAdapter.ts#L77">contracts/fund/trading/exchanges/ZeroExTradingAdapter.ts:77</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Create a make order on 0x.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>from: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The address of the sender.</p>
+									</div>
+								</li>
+								<li>
+									<h5>order: <span class="tsd-signature-type">SignedOrder</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_transaction_.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionReceipt</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -298,6 +357,12 @@
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.zeroextradingadapter.html#cancelorder" class="tsd-kind-icon">cancel<wbr>Order</a>
 							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.zeroextradingadapter.html#getorderhash" class="tsd-kind-icon">get<wbr>Order<wbr>Hash</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.zeroextradingadapter.html#makeorder" class="tsd-kind-icon">make<wbr>Order</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-static">
 								<a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.zeroextradingadapter.html#create" class="tsd-kind-icon">create</a>
 							</li>
@@ -308,6 +373,9 @@
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/_contracts_fund_trading_exchanges_zeroextradingadapter_.cancelorderzeroexargs.html" class="tsd-kind-icon">Cancel<wbr>Order<wbr>Zero<wbr>ExArgs</a>
+					</li>
 				</ul>
 			</nav>
 		</div>

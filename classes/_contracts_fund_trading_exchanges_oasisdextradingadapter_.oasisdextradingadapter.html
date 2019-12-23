@@ -99,6 +99,7 @@
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_fund_trading_exchanges_oasisdextradingadapter_.oasisdextradingadapter.html#cancelorder" class="tsd-kind-icon">cancel<wbr>Order</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_fund_trading_exchanges_oasisdextradingadapter_.oasisdextradingadapter.html#makeorder" class="tsd-kind-icon">make<wbr>Order</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-static"><a href="_contracts_fund_trading_exchanges_oasisdextradingadapter_.oasisdextradingadapter.html#create" class="tsd-kind-icon">create</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="_contracts_fund_trading_exchanges_oasisdextradingadapter_.oasisdextradingadapter.html#index" class="tsd-kind-icon">index</a></li>
 							</ul>
@@ -173,12 +174,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/exchanges/OasisDexTradingAdapter.ts#L23">contracts/fund/trading/exchanges/OasisDexTradingAdapter.ts:23</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/exchanges/OasisDexTradingAdapter.ts#L31">contracts/fund/trading/exchanges/OasisDexTradingAdapter.ts:31</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Cancel make order on Oasisdex</p>
+									<p>Cancel a make order on OasisDex</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -193,6 +194,43 @@
 									<h5>args: <a href="../interfaces/_contracts_fund_trading_exchanges_oasisdextradingadapter_.oasisdexcancelorderargs.html" class="tsd-signature-type">OasisDexCancelOrderArgs</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>The arguments as <a href="../interfaces/_contracts_fund_trading_exchanges_oasisdextradingadapter_.oasisdexcancelorderargs.html">OasisDexCancelOrderArgs</a></p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_transaction_.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionReceipt</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="makeorder" class="tsd-anchor"></a>
+					<h3>make<wbr>Order</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">make<wbr>Order<span class="tsd-signature-symbol">(</span>from<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a>, args<span class="tsd-signature-symbol">: </span><a href="../interfaces/_contracts_fund_trading_exchanges_oasisdextradingadapter_.oasisdexmakeorderargs.html" class="tsd-signature-type">OasisDexMakeOrderArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_transaction_.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionReceipt</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/exchanges/OasisDexTradingAdapter.ts#L72">contracts/fund/trading/exchanges/OasisDexTradingAdapter.ts:72</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Create a make order on 0x.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>from: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The address of the sender.</p>
+									</div>
+								</li>
+								<li>
+									<h5>args: <a href="../interfaces/_contracts_fund_trading_exchanges_oasisdextradingadapter_.oasisdexmakeorderargs.html" class="tsd-signature-type">OasisDexMakeOrderArgs</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The arguments.</p>
 									</div>
 								</li>
 							</ul>
@@ -295,6 +333,9 @@
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_contracts_fund_trading_exchanges_oasisdextradingadapter_.oasisdextradingadapter.html#cancelorder" class="tsd-kind-icon">cancel<wbr>Order</a>
 							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_contracts_fund_trading_exchanges_oasisdextradingadapter_.oasisdextradingadapter.html#makeorder" class="tsd-kind-icon">make<wbr>Order</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-static">
 								<a href="_contracts_fund_trading_exchanges_oasisdextradingadapter_.oasisdextradingadapter.html#create" class="tsd-kind-icon">create</a>
 							</li>
@@ -307,6 +348,9 @@
 				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="../interfaces/_contracts_fund_trading_exchanges_oasisdextradingadapter_.oasisdexcancelorderargs.html" class="tsd-kind-icon">Oasis<wbr>Dex<wbr>Cancel<wbr>Order<wbr>Args</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/_contracts_fund_trading_exchanges_oasisdextradingadapter_.oasisdexmakeorderargs.html" class="tsd-kind-icon">Oasis<wbr>Dex<wbr>Make<wbr>Order<wbr>Args</a>
 					</li>
 				</ul>
 			</nav>

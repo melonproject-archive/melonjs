@@ -102,6 +102,7 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_fund_policies_policymanager_.policymanager.html#batchregisterpolicies" class="tsd-kind-icon">batch<wbr>Register<wbr>Policies</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite tsd-is-inherited tsd-is-protected"><a href="_contracts_fund_policies_policymanager_.policymanager.html#createtransaction" class="tsd-kind-icon">create<wbr>Transaction</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_contracts_fund_policies_policymanager_.policymanager.html#getengine" class="tsd-kind-icon">get<wbr>Engine</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_contracts_fund_policies_policymanager_.policymanager.html#gethub" class="tsd-kind-icon">get<wbr>Hub</a></li>
@@ -226,13 +227,53 @@
 					<aside class="tsd-sources">
 						<p>Overrides <a href="_contract_.contract.html">Contract</a>.<a href="_contract_.contract.html#abi">abi</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/policies/PolicyManager.ts#L37">contracts/fund/policies/PolicyManager.ts:37</a></li>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/policies/PolicyManager.ts#L49">contracts/fund/policies/PolicyManager.ts:49</a></li>
 						</ul>
 					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="batchregisterpolicies" class="tsd-anchor"></a>
+					<h3>batch<wbr>Register<wbr>Policies</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">batch<wbr>Register<wbr>Policies<span class="tsd-signature-symbol">(</span>from<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a>, signatures<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>, policyAddresses<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_transaction_.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionReceipt</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/policies/PolicyManager.ts#L95">contracts/fund/policies/PolicyManager.ts:95</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Batch registers policies</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>from: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The address of the sender</p>
+									</div>
+								</li>
+								<li>
+									<h5>signatures: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The signatures of the policies</p>
+									</div>
+								</li>
+								<li>
+									<h5>policyAddresses: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_transaction_.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionReceipt</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite tsd-is-inherited tsd-is-protected">
 					<a name="createtransaction" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagProtected">Protected</span> create<wbr>Transaction</h3>
@@ -370,7 +411,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/policies/PolicyManager.ts#L96">contracts/fund/policies/PolicyManager.ts:96</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/policies/PolicyManager.ts#L130">contracts/fund/policies/PolicyManager.ts:130</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -401,7 +442,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/policies/PolicyManager.ts#L82">contracts/fund/policies/PolicyManager.ts:82</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/policies/PolicyManager.ts#L116">contracts/fund/policies/PolicyManager.ts:116</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -638,7 +679,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/policies/PolicyManager.ts#L50">contracts/fund/policies/PolicyManager.ts:50</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/policies/PolicyManager.ts#L62">contracts/fund/policies/PolicyManager.ts:62</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -725,7 +766,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_contracts_fund_hub_spoke_.spoke.html">Spoke</a>.<a href="_contracts_fund_hub_spoke_.spoke.html#deploy">deploy</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/policies/PolicyManager.ts#L39">contracts/fund/policies/PolicyManager.ts:39</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/policies/PolicyManager.ts#L51">contracts/fund/policies/PolicyManager.ts:51</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -763,6 +804,9 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_contracts_fund_policies_policymanager_.arraylenghtsnotequalerror.html" class="tsd-kind-icon">Array<wbr>Lenghts<wbr>Not<wbr>Equal<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
 						<a href="_contracts_fund_policies_policymanager_.notauthorizederror.html" class="tsd-kind-icon">Not<wbr>Authorized<wbr>Error</a>
 					</li>
 				</ul>
@@ -781,6 +825,9 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-static">
 								<a href="_contracts_fund_policies_policymanager_.policymanager.html#abi" class="tsd-kind-icon">abi</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_contracts_fund_policies_policymanager_.policymanager.html#batchregisterpolicies" class="tsd-kind-icon">batch<wbr>Register<wbr>Policies</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite tsd-is-inherited tsd-is-protected">
 								<a href="_contracts_fund_policies_policymanager_.policymanager.html#createtransaction" class="tsd-kind-icon">create<wbr>Transaction</a>
