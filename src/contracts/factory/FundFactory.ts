@@ -1,4 +1,3 @@
-import { pick } from 'ramda';
 import { Contract } from '../../Contract';
 import { Environment } from '../../Environment';
 import { Address } from '../../Address';
@@ -121,35 +120,29 @@ export class FundFactory extends Contract {
 
   public async getManagersToRoutes(manager: Address, block?: number): Promise<HubRoutes> {
     const result = await this.makeCall<HubRoutes>('managersToRoutes', [manager], block);
-    const addresses = pick(
-      [
-        'accounting',
-        'engine',
-        'feeManager',
-        'mlnToken',
-        'participation',
-        'policyManager',
-        'priceSource',
-        'registry',
-        'shares',
-        'trading',
-        'vault',
-        'version',
-      ],
-      result,
-    ) as HubRoutes;
+    const keys = [
+      'accounting',
+      'engine',
+      'feeManager',
+      'mlnToken',
+      'participation',
+      'policyManager',
+      'priceSource',
+      'registry',
+      'shares',
+      'trading',
+      'vault',
+      'version',
+    ];
 
-    return Object.keys(addresses).reduce(
-      (carry, key: keyof typeof addresses) => {
-        const address = addresses[key];
-        if (isZeroAddress(address)) {
-          return carry;
-        }
+    return keys.reduce<HubRoutes>((carry, key: keyof HubRoutes) => {
+      const address = result[key];
+      if (isZeroAddress(address)) {
+        return carry;
+      }
 
-        return { ...carry, [key]: address };
-      },
-      {} as HubRoutes,
-    );
+      return { ...carry, [key]: address };
+    }, {});
   }
 
   /**

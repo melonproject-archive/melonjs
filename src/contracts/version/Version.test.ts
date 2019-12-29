@@ -1,4 +1,3 @@
-import * as R from 'ramda';
 import BigNumber from 'bignumber.js';
 import { TestEnvironment, createTestEnvironment } from '../../utils/tests/createTestEnvironment';
 import { randomAddress } from '../../utils/tests/randomAddress';
@@ -9,6 +8,7 @@ import { Weth } from '../dependencies/token/Weth';
 import { deployWeth } from '../../utils/tests/deployWeth';
 import { deployRegistry } from '../../utils/tests/deployRegistry';
 import { Registry } from './Registry';
+import { range } from '../../utils/range';
 
 describe('Version', () => {
   let environment: TestEnvironment;
@@ -39,8 +39,8 @@ describe('Version', () => {
       fees: [randomAddress(), randomAddress()],
       feeRates: [new BigNumber(2).multipliedBy('1e16'), new BigNumber(20).multipliedBy('1e16')],
       feePeriods: [new BigNumber(0), new BigNumber(90).multipliedBy(60 * 60 * 24)],
-      exchanges: R.range(0, 5).map(() => randomAddress()),
-      adapters: R.range(0, 5).map(() => randomAddress()),
+      exchanges: range(5).map(() => randomAddress()),
+      adapters: range(5).map(() => randomAddress()),
       denominationAsset: weth.contract.address,
       defaultAssets: [weth.contract.address],
     });

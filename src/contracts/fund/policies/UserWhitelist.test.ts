@@ -1,13 +1,13 @@
-import * as R from 'ramda';
 import { UserWhitelist } from './UserWhitelist';
 import { TestEnvironment, createTestEnvironment } from '../../../utils/tests/createTestEnvironment';
 import { randomAddress } from '../../../utils/tests/randomAddress';
 import { UserWhitelistBytecode } from '../../../abis/UserWhitelist.bin';
+import { range } from '../../../utils/range';
 
 describe('UserWhitelist', () => {
   let environment: TestEnvironment;
   let userWhiteList: UserWhitelist;
-  const addresses = R.range(0, 5).map(() => randomAddress());
+  const addresses = range(5).map(() => randomAddress());
 
   beforeAll(async () => {
     environment = await createTestEnvironment();

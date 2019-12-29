@@ -1,5 +1,4 @@
 import BigNumber from 'bignumber.js';
-import { range } from 'ramda';
 import { AccountingAbi } from '../../../abis/Accounting.abi';
 import { Contract } from '../../../Contract';
 import { Environment } from '../../../Environment';
@@ -8,6 +7,7 @@ import { Spoke } from '../hub/Spoke';
 import { applyMixins } from '../../../utils/applyMixins';
 import { toBigNumber } from '../../../utils/toBigNumber';
 import { AmguConsumer } from '../../engine/AmguConsumer';
+import { range } from '../../../utils/range';
 
 export interface FundCalculations {
   sharePrice: BigNumber;
@@ -69,7 +69,7 @@ export class Accounting extends Contract {
    */
   public async getOwnedAssets(block?: number) {
     const length = await this.getOwnedAssetsLength(block);
-    return Promise.all(range(0, length).map(index => this.getOwnedAsset(index, block)));
+    return Promise.all(range(length).map((_, index) => this.getOwnedAsset(index, block)));
   }
 
   /**

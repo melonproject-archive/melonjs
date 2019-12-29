@@ -1,14 +1,14 @@
-import * as R from 'ramda';
 import { AddressList } from './AddressList';
 import { TestEnvironment, createTestEnvironment } from '../../../utils/tests/createTestEnvironment';
 import { AddressListBytecode } from '../../../abis/AddressList.bin';
 import { randomAddress } from '../../../utils/tests/randomAddress';
 import { sameAddress } from '../../../utils/sameAddress';
+import { range } from '../../../utils/range';
 
 describe('AddressList', () => {
   let environment: TestEnvironment;
   let addressList: AddressList;
-  const addresses = R.range(0, 5).map(address => randomAddress());
+  const addresses = range(5).map(() => randomAddress());
 
   beforeAll(async () => {
     environment = await createTestEnvironment();

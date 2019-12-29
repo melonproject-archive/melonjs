@@ -1,4 +1,4 @@
-import * as R from 'ramda';
+import BigNumber from 'bignumber.js';
 import { Contract } from '../../../Contract';
 import { Environment } from '../../../Environment';
 import { Address } from '../../../Address';
@@ -6,7 +6,6 @@ import { TradingAbi } from '../../../abis/Trading.abi';
 import { Spoke } from '../hub/Spoke';
 import { applyMixins } from '../../../utils/applyMixins';
 import { toBigNumber } from '../../../utils/toBigNumber';
-import BigNumber from 'bignumber.js';
 import { Registry, AssetNotRegisteredError } from '../../version/Registry';
 import { isZeroAddress } from '../../../utils/isZeroAddress';
 import { hexToBytes, numberToHex, keccak256 } from 'web3-utils';
@@ -152,10 +151,13 @@ export class Trading extends Contract {
     const registry = new Registry(this.environment, registryAddress);
     const assets = await registry.getRegisteredAssets(block);
     const exchanges = exchangeInfo.map(exchange => exchange.exchange);
+    const possibilities = [].concat.apply(exchanges.map(exchange => assets.map(asset => [exchange, asset]))) as [
+      string,
+      string,
+    ][];
 
-    const possibilities = R.xprod(exchanges, assets);
     const openOrders = await Promise.all(
-      possibilities.map(async ([exchange, asset]: [string, string]) => {
+      possibilities.map(async ([exchange, asset]) => {
         const order = await this.getOpenMakeOrder(exchange, asset, block);
         return { ...order, exchange };
       }),

@@ -1,4 +1,3 @@
-import * as R from 'ramda';
 import {
   Hub,
   HubRoutes,
@@ -13,8 +12,9 @@ import { SpokeBytecode } from '../../../abis/Spoke.bin';
 import { sameAddress } from '../../../utils/sameAddress';
 import { createTestEnvironment, TestEnvironment } from '../../../utils/tests/createTestEnvironment';
 import { randomAddress } from '../../../utils/tests/randomAddress';
-import { Spoke } from './Spoke';
 import { deployHub } from '../../../utils/tests/deployHub';
+import { range } from '../../../utils/range';
+import { Spoke } from './Spoke';
 
 describe('Hub', () => {
   let hub: Hub;
@@ -46,7 +46,7 @@ describe('Hub', () => {
 
   it('should manage the hub routes properly', async () => {
     const spokes = await Promise.all(
-      R.range(0, 7).map(async () => {
+      range(7).map(async () => {
         const deploy = Spoke.deploy(environment, SpokeBytecode, environment.accounts[0], hub.contract.address);
         const spoke = await deploy.send(await deploy.prepare());
         return spoke.contract.address;
