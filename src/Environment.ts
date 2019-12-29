@@ -1,4 +1,5 @@
 import { Eth } from 'web3-eth';
+import { DeploymentOutput } from './Deployment';
 
 export interface CacheHandler {
   has: (key: string) => boolean;
@@ -16,5 +17,16 @@ export class Environment {
 
   constructor(public readonly client: Eth, options?: EnvironmentOptions) {
     this.cache = options && options.cache;
+  }
+}
+
+export class DeployedEnvironment extends Environment {
+  constructor(
+    eth: Eth,
+    public readonly network: number,
+    public readonly deployment: DeploymentOutput,
+    options?: EnvironmentOptions,
+  ) {
+    super(eth, options);
   }
 }
