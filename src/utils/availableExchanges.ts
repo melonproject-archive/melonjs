@@ -21,12 +21,12 @@ export function availableExchanges(deployment: DeploymentOutput): ExchangeDefini
     deployment.oasis && {
       name: 'OasisDex',
       adapter: deployment.melon.addr.MatchingMarketAdapter,
-      exchange: deployment.oasis.addr.MatchingMarket,
+      exchange: deployment.oasis.addr.OasisDexExchange,
     },
     deployment.zeroex && {
       name: 'ZeroEx',
       adapter: deployment.melon.addr.ZeroExV2Adapter,
-      exchange: deployment.zeroex.addr.Exchange,
+      exchange: deployment.zeroex.addr.ZeroExV2Exchange,
     },
   ];
 

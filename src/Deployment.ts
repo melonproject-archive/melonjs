@@ -82,7 +82,7 @@ export interface DeploymentKyberAddresses {
 export interface DeploymentKyberConfig {}
 
 export interface DeploymentOasisDexAddresses {
-  MatchingMarket: string;
+  OasisDexExchange: string;
 }
 
 export interface DeploymentOasisDexConfig {
@@ -100,7 +100,7 @@ export interface DeploymentEthfinexAddresses {
 export interface DeploymentEthfinexConfig {}
 
 export interface DeploymentZeroExAddresses {
-  Exchange: string;
+  ZeroExV2Exchange: string;
   ERC20Proxy: string;
 }
 
