@@ -136,8 +136,8 @@ export class FundFactory extends Contract {
     ];
 
     return keys.reduce<HubRoutes>((carry, key: keyof HubRoutes) => {
-      const address = result[key];
-      if (isZeroAddress(address)) {
+      const address = result && result[key];
+      if (!address || isZeroAddress(address)) {
         return carry;
       }
 
