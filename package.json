@@ -51,7 +51,7 @@
     "postrelease": "git push && gh-pages -d docs"
   },
   "dependencies": {
-    "@0x/order-utils": "^9.0.0",
+    "@0x/order-utils": "^8.4.0",
     "bignumber.js": "^9.0.0",
     "web3": "^2.0.0-alpha.1",
     "web3-core": "^2.0.0-alpha.1",
@@ -62,7 +62,7 @@
     "web3-utils": "^2.0.0-alpha.1"
   },
   "devDependencies": {
-    "@0x/types": "^3.0.0",
+    "@0x/types": "^2.4.3",
     "@types/jest": "^24.0.19",
     "@types/lru-cache": "^5.1.0",
     "@types/ramda": "^0.26.33",
@@ -87,6 +87,9 @@
     "tslint-config-prettier": "^1.15.0",
     "typedoc": "^0.15.0",
     "typescript": "^3.6.2"
+  },
+  "resolutions": {
+    "bignumber.js": "^9.0.0"
   },
   "husky": {
     "hooks": {

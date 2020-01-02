@@ -26,7 +26,7 @@ export class MissingZeroExOrderHashHex extends ValidationError {
 
 export class ZeroExTradingAdapter extends BaseTradingAdapter {
   public getOrderHash(order: SignedOrder) {
-    return orderHashUtils.getOrderHashAsync(order);
+    return orderHashUtils.getOrderHashHex(order);
   }
 
   /**
@@ -36,7 +36,7 @@ export class ZeroExTradingAdapter extends BaseTradingAdapter {
    * @param args The arguments.
    */
   public cancelOrder(from: Address, args: CancelOrderZeroExArgs) {
-    const orderHashHex = args.orderHashHex || (args.orderId && numberToHex(args.orderId.toString()));
+    const orderHashHex = args.orderHashHex || (args.orderId && padLeft(numberToHex(args.orderId.toString()), 64));
     const methodArgs: CallOnExchangeArgs = {
       exchangeIndex: this.exchangeIndex,
       methodSignature: functionSignature(ExchangeAdapterAbi, 'cancelOrder'),
@@ -52,9 +52,9 @@ export class ZeroExTradingAdapter extends BaseTradingAdapter {
         zeroBigNumber,
       ],
       identifier: orderHashHex,
-      makerAssetData: '0x0',
-      takerAssetData: '0x0',
-      signature: '0x0',
+      makerAssetData: padLeft('0x0', 64),
+      takerAssetData: padLeft('0x0', 64),
+      signature: padLeft('0x0', 64),
     };
 
     const validate = async () => {
