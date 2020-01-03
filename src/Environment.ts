@@ -1,5 +1,10 @@
 import { Eth } from 'web3-eth';
 import { DeploymentOutput } from './Deployment';
+import { availableTokens, TokenDefinition } from './utils/availableTokens';
+import { ExchangeDefinition, availableExchanges } from './utils/availableExchanges';
+import { availablePolicies, PolicyDefinition } from './utils/availablePolicies';
+import { Address } from './Address';
+import { sameAddress } from './utils/sameAddress';
 
 export interface CacheHandler {
   has: (key: string) => boolean;
@@ -21,6 +26,10 @@ export class Environment {
 }
 
 export class DeployedEnvironment extends Environment {
+  public readonly tokens: TokenDefinition[];
+  public readonly exchanges: ExchangeDefinition[];
+  public readonly policies: PolicyDefinition[];
+
   constructor(
     eth: Eth,
     public readonly network: number,
@@ -28,5 +37,47 @@ export class DeployedEnvironment extends Environment {
     options?: EnvironmentOptions,
   ) {
     super(eth, options);
+
+    this.policies = availablePolicies;
+    this.tokens = availableTokens(deployment);
+    this.exchanges = availableExchanges(deployment);
+  }
+
+  public getToken(symbol: string): TokenDefinition;
+  public getToken(address: Address): TokenDefinition;
+  public getToken(which: string | Address): TokenDefinition {
+    const address = which.startsWith('0x');
+    const token = this.tokens.find(token => {
+      if (address && sameAddress(which, token.address)) {
+        return true;
+      }
+
+      if (token.symbol === which) {
+        return true;
+      }
+
+      return false;
+    });
+
+    return token;
+  }
+
+  public getExchange(name: string): ExchangeDefinition;
+  public getExchange(address: Address): ExchangeDefinition;
+  public getExchange(which: string | Address): ExchangeDefinition {
+    const address = which.startsWith('0x');
+    const exchange = this.exchanges.find(item => {
+      if (address && sameAddress(which, item.exchange)) {
+        return true;
+      }
+
+      if (which === item.name) {
+        return true;
+      }
+
+      return false;
+    });
+
+    return exchange;
   }
 }

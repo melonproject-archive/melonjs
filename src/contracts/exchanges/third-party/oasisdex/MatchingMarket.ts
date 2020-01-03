@@ -6,6 +6,15 @@ import { toDate } from '../../../../utils/toDate';
 import BigNumber from 'bignumber.js';
 import { MatchingMarketAbi } from '../../../../abis/MatchingMarket.abi';
 
+export interface MatchingMarketOffer {
+  makerQuantity: BigNumber;
+  makerAsset: Address;
+  takerQuantity: BigNumber;
+  takerAsset: Address;
+  owner: Address;
+  timestamp: Date;
+}
+
 export class MatchingMarket extends Contract {
   public static readonly abi = MatchingMarketAbi;
 
@@ -16,11 +25,10 @@ export class MatchingMarket extends Contract {
   /**
    * Gets the details of an offer
    *
-   * @param numShares The number of shares.
-   * @param asset The requested asset.
+   * @param id The id of the offer
    * @param block The block number to execute the call on.
    */
-  public async getOffer(id: BigNumber, block?: number) {
+  public async getOffer(id: BigNumber, block?: number): Promise<MatchingMarketOffer> {
     const {
       '0': makerQuantity,
       '1': makerAsset,
