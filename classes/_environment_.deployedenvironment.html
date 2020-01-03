@@ -94,7 +94,17 @@
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_environment_.deployedenvironment.html#cache" class="tsd-kind-icon">cache</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_environment_.deployedenvironment.html#client" class="tsd-kind-icon">client</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_environment_.deployedenvironment.html#deployment" class="tsd-kind-icon">deployment</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_environment_.deployedenvironment.html#exchanges" class="tsd-kind-icon">exchanges</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_environment_.deployedenvironment.html#network" class="tsd-kind-icon">network</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_environment_.deployedenvironment.html#policies" class="tsd-kind-icon">policies</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_environment_.deployedenvironment.html#tokens" class="tsd-kind-icon">tokens</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_environment_.deployedenvironment.html#getexchange" class="tsd-kind-icon">get<wbr>Exchange</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_environment_.deployedenvironment.html#gettoken" class="tsd-kind-icon">get<wbr>Token</a></li>
 							</ul>
 						</section>
 					</div>
@@ -113,7 +123,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_environment_.environment.html">Environment</a>.<a href="_environment_.environment.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/Environment.ts#L23">Environment.ts:23</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/Environment.ts#L31">Environment.ts:31</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -145,7 +155,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_environment_.environment.html">Environment</a>.<a href="_environment_.environment.html#cache">cache</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/Environment.ts#L16">Environment.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/Environment.ts#L21">Environment.ts:21</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -156,7 +166,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_environment_.environment.html">Environment</a>.<a href="_environment_.environment.html#client">client</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/Environment.ts#L18">Environment.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/Environment.ts#L23">Environment.ts:23</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -166,7 +176,17 @@
 					<div class="tsd-signature tsd-kind-icon">deployment<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_deployment_.deploymentoutput.html" class="tsd-signature-type">DeploymentOutput</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/Environment.ts#L27">Environment.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/Environment.ts#L36">Environment.ts:36</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="exchanges" class="tsd-anchor"></a>
+					<h3>exchanges</h3>
+					<div class="tsd-signature tsd-kind-icon">exchanges<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ExchangeDefinition</span><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/Environment.ts#L30">Environment.ts:30</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -176,9 +196,108 @@
 					<div class="tsd-signature tsd-kind-icon">network<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/Environment.ts#L26">Environment.ts:26</a></li>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/Environment.ts#L35">Environment.ts:35</a></li>
 						</ul>
 					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="policies" class="tsd-anchor"></a>
+					<h3>policies</h3>
+					<div class="tsd-signature tsd-kind-icon">policies<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">PolicyDefinition</span><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/Environment.ts#L31">Environment.ts:31</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="tokens" class="tsd-anchor"></a>
+					<h3>tokens</h3>
+					<div class="tsd-signature tsd-kind-icon">tokens<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">TokenDefinition</span><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/Environment.ts#L29">Environment.ts:29</a></li>
+						</ul>
+					</aside>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getexchange" class="tsd-anchor"></a>
+					<h3>get<wbr>Exchange</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Exchange<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ExchangeDefinition</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Exchange<span class="tsd-signature-symbol">(</span>address<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ExchangeDefinition</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/Environment.ts#L65">Environment.ts:65</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>name: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">ExchangeDefinition</span></h4>
+						</li>
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/Environment.ts#L66">Environment.ts:66</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>address: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">ExchangeDefinition</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="gettoken" class="tsd-anchor"></a>
+					<h3>get<wbr>Token</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Token<span class="tsd-signature-symbol">(</span>symbol<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TokenDefinition</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Token<span class="tsd-signature-symbol">(</span>address<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TokenDefinition</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/Environment.ts#L46">Environment.ts:46</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>symbol: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">TokenDefinition</span></h4>
+						</li>
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/Environment.ts#L47">Environment.ts:47</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>address: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">TokenDefinition</span></h4>
+						</li>
+					</ul>
 				</section>
 			</section>
 		</div>
@@ -213,7 +332,22 @@
 								<a href="_environment_.deployedenvironment.html#deployment" class="tsd-kind-icon">deployment</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_environment_.deployedenvironment.html#exchanges" class="tsd-kind-icon">exchanges</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="_environment_.deployedenvironment.html#network" class="tsd-kind-icon">network</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_environment_.deployedenvironment.html#policies" class="tsd-kind-icon">policies</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_environment_.deployedenvironment.html#tokens" class="tsd-kind-icon">tokens</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_environment_.deployedenvironment.html#getexchange" class="tsd-kind-icon">get<wbr>Exchange</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_environment_.deployedenvironment.html#gettoken" class="tsd-kind-icon">get<wbr>Token</a>
 							</li>
 						</ul>
 					</li>

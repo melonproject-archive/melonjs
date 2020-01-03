@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>EnvironmentOptions | @melonproject/melonjs</title>
+	<title>MatchingMarketOffer | @melonproject/melonjs</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -52,13 +52,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_environment_.html">&quot;Environment&quot;</a>
+					<a href="../modules/_contracts_exchanges_third_party_oasisdex_matchingmarket_.html">&quot;contracts/exchanges/third-party/oasisdex/MatchingMarket&quot;</a>
 				</li>
 				<li>
-					<a href="_environment_.environmentoptions.html">EnvironmentOptions</a>
+					<a href="_contracts_exchanges_third_party_oasisdex_matchingmarket_.matchingmarketoffer.html">MatchingMarketOffer</a>
 				</li>
 			</ul>
-			<h1>Interface EnvironmentOptions</h1>
+			<h1>Interface MatchingMarketOffer</h1>
 		</div>
 	</div>
 </header>
@@ -69,7 +69,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">EnvironmentOptions</span>
+						<span class="target">MatchingMarketOffer</span>
 					</li>
 				</ul>
 			</section>
@@ -80,7 +80,12 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_environment_.environmentoptions.html#cache" class="tsd-kind-icon">cache</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_exchanges_third_party_oasisdex_matchingmarket_.matchingmarketoffer.html#makerasset" class="tsd-kind-icon">maker<wbr>Asset</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_exchanges_third_party_oasisdex_matchingmarket_.matchingmarketoffer.html#makerquantity" class="tsd-kind-icon">maker<wbr>Quantity</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_exchanges_third_party_oasisdex_matchingmarket_.matchingmarketoffer.html#owner" class="tsd-kind-icon">owner</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_exchanges_third_party_oasisdex_matchingmarket_.matchingmarketoffer.html#takerasset" class="tsd-kind-icon">taker<wbr>Asset</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_exchanges_third_party_oasisdex_matchingmarket_.matchingmarketoffer.html#takerquantity" class="tsd-kind-icon">taker<wbr>Quantity</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_exchanges_third_party_oasisdex_matchingmarket_.matchingmarketoffer.html#timestamp" class="tsd-kind-icon">timestamp</a></li>
 							</ul>
 						</section>
 					</div>
@@ -89,12 +94,62 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="cache" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> cache</h3>
-					<div class="tsd-signature tsd-kind-icon">cache<span class="tsd-signature-symbol">:</span> <a href="_environment_.cachehandler.html" class="tsd-signature-type">CacheHandler</a></div>
+					<a name="makerasset" class="tsd-anchor"></a>
+					<h3>maker<wbr>Asset</h3>
+					<div class="tsd-signature tsd-kind-icon">maker<wbr>Asset<span class="tsd-signature-symbol">:</span> <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/Environment.ts#L17">Environment.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/exchanges/third-party/oasisdex/MatchingMarket.ts#L11">contracts/exchanges/third-party/oasisdex/MatchingMarket.ts:11</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="makerquantity" class="tsd-anchor"></a>
+					<h3>maker<wbr>Quantity</h3>
+					<div class="tsd-signature tsd-kind-icon">maker<wbr>Quantity<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">BigNumber</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/exchanges/third-party/oasisdex/MatchingMarket.ts#L10">contracts/exchanges/third-party/oasisdex/MatchingMarket.ts:10</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="owner" class="tsd-anchor"></a>
+					<h3>owner</h3>
+					<div class="tsd-signature tsd-kind-icon">owner<span class="tsd-signature-symbol">:</span> <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/exchanges/third-party/oasisdex/MatchingMarket.ts#L14">contracts/exchanges/third-party/oasisdex/MatchingMarket.ts:14</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="takerasset" class="tsd-anchor"></a>
+					<h3>taker<wbr>Asset</h3>
+					<div class="tsd-signature tsd-kind-icon">taker<wbr>Asset<span class="tsd-signature-symbol">:</span> <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/exchanges/third-party/oasisdex/MatchingMarket.ts#L13">contracts/exchanges/third-party/oasisdex/MatchingMarket.ts:13</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="takerquantity" class="tsd-anchor"></a>
+					<h3>taker<wbr>Quantity</h3>
+					<div class="tsd-signature tsd-kind-icon">taker<wbr>Quantity<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">BigNumber</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/exchanges/third-party/oasisdex/MatchingMarket.ts#L12">contracts/exchanges/third-party/oasisdex/MatchingMarket.ts:12</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="timestamp" class="tsd-anchor"></a>
+					<h3>timestamp</h3>
+					<div class="tsd-signature tsd-kind-icon">timestamp<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Date</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/exchanges/third-party/oasisdex/MatchingMarket.ts#L15">contracts/exchanges/third-party/oasisdex/MatchingMarket.ts:15</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -107,28 +162,37 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="../modules/_environment_.html">"<wbr>Environment"</a>
+						<a href="../modules/_contracts_exchanges_third_party_oasisdex_matchingmarket_.html">"contracts/exchanges/third-<wbr>party/oasisdex/<wbr>Matching<wbr>Market"</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/_environment_.deployedenvironment.html" class="tsd-kind-icon">Deployed<wbr>Environment</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/_environment_.environment.html" class="tsd-kind-icon">Environment</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_environment_.cachehandler.html" class="tsd-kind-icon">Cache<wbr>Handler</a>
+						<a href="../classes/_contracts_exchanges_third_party_oasisdex_matchingmarket_.matchingmarket.html" class="tsd-kind-icon">Matching<wbr>Market</a>
 					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_environment_.environmentoptions.html" class="tsd-kind-icon">Environment<wbr>Options</a>
+						<a href="_contracts_exchanges_third_party_oasisdex_matchingmarket_.matchingmarketoffer.html" class="tsd-kind-icon">Matching<wbr>Market<wbr>Offer</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_environment_.environmentoptions.html#cache" class="tsd-kind-icon">cache</a>
+								<a href="_contracts_exchanges_third_party_oasisdex_matchingmarket_.matchingmarketoffer.html#makerasset" class="tsd-kind-icon">maker<wbr>Asset</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_contracts_exchanges_third_party_oasisdex_matchingmarket_.matchingmarketoffer.html#makerquantity" class="tsd-kind-icon">maker<wbr>Quantity</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_contracts_exchanges_third_party_oasisdex_matchingmarket_.matchingmarketoffer.html#owner" class="tsd-kind-icon">owner</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_contracts_exchanges_third_party_oasisdex_matchingmarket_.matchingmarketoffer.html#takerasset" class="tsd-kind-icon">taker<wbr>Asset</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_contracts_exchanges_third_party_oasisdex_matchingmarket_.matchingmarketoffer.html#takerquantity" class="tsd-kind-icon">taker<wbr>Quantity</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_contracts_exchanges_third_party_oasisdex_matchingmarket_.matchingmarketoffer.html#timestamp" class="tsd-kind-icon">timestamp</a>
 							</li>
 						</ul>
 					</li>
