@@ -89,6 +89,7 @@
     "typescript": "^3.6.2"
   },
   "resolutions": {
+    "ethereumjs-vm": "^4.0.0",
     "bignumber.js": "^9.0.0"
   },
   "husky": {
