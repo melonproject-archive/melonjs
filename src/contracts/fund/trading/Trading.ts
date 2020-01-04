@@ -151,10 +151,10 @@ export class Trading extends Contract {
     const registry = new Registry(this.environment, registryAddress);
     const assets = await registry.getRegisteredAssets(block);
     const exchanges = exchangeInfo.map(exchange => exchange.exchange);
-    const possibilities = [].concat.apply([], exchanges.map(exchange => assets.map(asset => [exchange, asset]))) as [
-      string,
-      string,
-    ][];
+    const possibilities = [].concat.apply(
+      [],
+      exchanges.map(exchange => assets.map(asset => [exchange, asset])),
+    ) as [string, string][];
 
     const openOrders = await Promise.all(
       possibilities.map(async ([exchange, asset]) => {
