@@ -88,9 +88,6 @@
     "typedoc": "^0.15.0",
     "typescript": "^3.6.2"
   },
-  "resolutions": {
-    "bignumber.js": "^9.0.0"
-  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
