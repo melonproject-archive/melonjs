@@ -5,14 +5,9 @@ import { functionSignature } from '../../../../utils/functionSignature';
 import { ExchangeAdapterAbi } from '../../../../abis/ExchangeAdapter.abi';
 import { zeroAddress } from '../../../../utils/zeroAddress';
 import { zeroBigNumber } from '../../../../utils/zeroBigNumber';
+import { MatchingMarketOffer } from '../../../exchanges/third-party/oasisdex/MatchingMarket';
 import { CallOnExchangeArgs } from '../Trading';
 import { BaseTradingAdapter } from './BaseTradingAdapter';
-
-export interface OasisDexCancelOrderArgs {
-  id: BigNumber;
-  makerAsset: Address;
-  takerAsset: Address;
-}
 
 export interface OasisDexMakeOrderArgs {
   makerAsset: Address;
@@ -21,22 +16,33 @@ export interface OasisDexMakeOrderArgs {
   takerQuantity: BigNumber;
 }
 
+export interface OasisDexTakeOrderArgs {
+  id: BigNumber;
+  makerAddress: Address;
+  makerAsset: Address;
+  takerAsset: Address;
+  makerQuantity: BigNumber;
+  takerQuantity: BigNumber;
+  fillTakerQuantity: BigNumber;
+}
+
 export class OasisDexTradingAdapter extends BaseTradingAdapter {
   /**
    * Cancel a make order on OasisDex
    *
-   * @param from The address of the sender
-   * @param args The arguments as [[OasisDexCancelOrderArgs]]
+   * @param from The address of the sender.
+   * @param id The id of the order.
+   * @param offer The order to cancel.
    */
-  public cancelOrder(from: Address, args: OasisDexCancelOrderArgs) {
+  public cancelOrder(from: Address, id: BigNumber, offer: MatchingMarketOffer) {
     const methodArgs: CallOnExchangeArgs = {
-      exchangeIndex: this.exchangeIndex,
+      exchangeIndex: this.index,
       methodSignature: functionSignature(ExchangeAdapterAbi, 'cancelOrder'),
       orderAddresses: [
         this.trading.contract.address,
         zeroAddress,
-        args.makerAsset,
-        args.takerAsset,
+        offer.makerAsset,
+        offer.takerAsset,
         zeroAddress,
         zeroAddress,
       ],
@@ -50,7 +56,7 @@ export class OasisDexTradingAdapter extends BaseTradingAdapter {
         zeroBigNumber,
         zeroBigNumber,
       ],
-      identifier: padLeft(numberToHex(args.id.toString()), 64),
+      identifier: padLeft(numberToHex(id.toString()), 64),
       makerAssetData: padLeft('0x0', 64),
       takerAssetData: padLeft('0x0', 64),
       signature: padLeft('0x0', 64),
@@ -71,7 +77,7 @@ export class OasisDexTradingAdapter extends BaseTradingAdapter {
    */
   public makeOrder(from: Address, args: OasisDexMakeOrderArgs) {
     const methodArgs: CallOnExchangeArgs = {
-      exchangeIndex: this.exchangeIndex,
+      exchangeIndex: this.index,
       methodSignature: functionSignature(ExchangeAdapterAbi, 'makeOrder'),
       orderAddresses: [
         this.trading.contract.address,
@@ -106,6 +112,48 @@ export class OasisDexTradingAdapter extends BaseTradingAdapter {
       // TODO: Ensure there are no other open orders for the asset.
       // IF MATCHINGMARKET:
       // TODO: Ensure selling quantity is not too low.
+    };
+
+    return this.trading.callOnExchange(from, methodArgs, validate);
+  }
+
+  /**
+   * Create a make order on 0x.
+   *
+   * @param from The address of the sender.
+   * @param id The id of the offer.
+   * @param offer The order to take.
+   */
+  public takeOrder(from: Address, id: BigNumber, offer: MatchingMarketOffer, fillTakerQuantity?: BigNumber) {
+    const methodArgs: CallOnExchangeArgs = {
+      exchangeIndex: this.index,
+      methodSignature: functionSignature(ExchangeAdapterAbi, 'takeOrder'),
+      orderAddresses: [
+        offer.owner,
+        this.trading.contract.address,
+        offer.makerAsset,
+        offer.takerAsset,
+        zeroAddress,
+        zeroAddress,
+      ],
+      orderValues: [
+        offer.makerQuantity,
+        offer.takerQuantity,
+        zeroBigNumber,
+        zeroBigNumber,
+        zeroBigNumber,
+        zeroBigNumber,
+        fillTakerQuantity || offer.takerQuantity,
+        zeroBigNumber,
+      ],
+      identifier: padLeft(numberToHex(id.toString()), 64),
+      makerAssetData: padLeft('0x0', 64),
+      takerAssetData: padLeft('0x0', 64),
+      signature: padLeft('0x0', 64),
+    };
+
+    const validate = async () => {
+      // TODO: Implement.
     };
 
     return this.trading.callOnExchange(from, methodArgs, validate);

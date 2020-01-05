@@ -8,6 +8,7 @@ import { checkFundIsNotShutdown } from '../utils/checkFundIsNotShutdown';
 import { zeroBigNumber } from '../../../../utils/zeroBigNumber';
 import { BaseTradingAdapter } from './BaseTradingAdapter';
 import { CallOnExchangeArgs } from '../Trading';
+import { padLeft } from 'web3-utils';
 
 export interface KyberTakeOrderArgs {
   makerAsset: Address;
@@ -25,7 +26,7 @@ export class KyberTradingAdapter extends BaseTradingAdapter {
    */
   public takeOrder(from: Address, args: KyberTakeOrderArgs) {
     const methodArgs = {
-      exchangeIndex: this.exchangeIndex,
+      exchangeIndex: this.index,
       methodSignature: functionSignature(ExchangeAdapterAbi, 'takeOrder'),
       orderAddresses: [zeroAddress, zeroAddress, args.makerAsset, args.takerAsset, zeroAddress, zeroAddress],
       orderValues: [
@@ -38,10 +39,10 @@ export class KyberTradingAdapter extends BaseTradingAdapter {
         args.takerQuantity,
         zeroBigNumber,
       ],
-      identifier: '0x0',
-      makerAssetData: '0x0',
-      takerAssetData: '0x0',
-      signature: '0x0',
+      identifier: padLeft('0x0', 64),
+      makerAssetData: padLeft('0x0', 64),
+      takerAssetData: padLeft('0x0', 64),
+      signature: padLeft('0x0', 64),
     };
 
     const validate = async () => {

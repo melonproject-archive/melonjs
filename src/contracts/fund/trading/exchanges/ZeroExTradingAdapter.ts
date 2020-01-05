@@ -1,6 +1,6 @@
 import BigNumber from 'bignumber.js';
 import { SignedOrder } from '@0x/types';
-import { orderHashUtils, assetDataUtils } from '@0x/order-utils';
+import { orderHashUtils, generatePseudoRandomSalt, signatureUtils, assetDataUtils } from '@0x/order-utils';
 import { numberToHex, padLeft } from 'web3-utils';
 import { Address } from '../../../../Address';
 import { functionSignature } from '../../../../utils/functionSignature';
@@ -10,10 +10,22 @@ import { zeroBigNumber } from '../../../../utils/zeroBigNumber';
 import { ValidationError } from '../../../../errors/ValidationError';
 import { CallOnExchangeArgs } from '../Trading';
 import { BaseTradingAdapter } from './BaseTradingAdapter';
+import { ZeroExOrder } from '../../../exchanges/third-party/zeroex/ZeroEx';
+import { JSONRPCRequestPayload, JSONRPCErrorCallback } from '@0x/subproviders';
 
 export interface CancelOrderZeroExArgs {
   orderHashHex?: string;
   orderId?: BigNumber;
+}
+
+export interface CreateUnsignedOrderZeroExArgs {
+  makerTokenAddress: Address;
+  takerTokenAddress: Address;
+  makerAssetAmount: BigNumber;
+  takerAssetAmount: BigNumber;
+  takerFee?: BigNumber;
+  feeRecipientAddress?: Address;
+  duration?: number;
 }
 
 export class MissingZeroExOrderHashHex extends ValidationError {
@@ -38,7 +50,7 @@ export class ZeroExTradingAdapter extends BaseTradingAdapter {
   public cancelOrder(from: Address, args: CancelOrderZeroExArgs) {
     const orderHashHex = args.orderHashHex || (args.orderId && padLeft(numberToHex(args.orderId.toString()), 64));
     const methodArgs: CallOnExchangeArgs = {
-      exchangeIndex: this.exchangeIndex,
+      exchangeIndex: this.index,
       methodSignature: functionSignature(ExchangeAdapterAbi, 'cancelOrder'),
       orderAddresses: [zeroAddress, zeroAddress, zeroAddress, zeroAddress, zeroAddress, zeroAddress],
       orderValues: [
@@ -79,7 +91,7 @@ export class ZeroExTradingAdapter extends BaseTradingAdapter {
     const takerTokenAddress = assetDataUtils.decodeERC20AssetData(order.takerAssetData).tokenAddress;
 
     const methodArgs: CallOnExchangeArgs = {
-      exchangeIndex: this.exchangeIndex,
+      exchangeIndex: this.index,
       methodSignature: functionSignature(ExchangeAdapterAbi, 'makeOrder'),
       orderAddresses: [
         this.trading.contract.address,
@@ -110,5 +122,58 @@ export class ZeroExTradingAdapter extends BaseTradingAdapter {
     };
 
     return this.trading.callOnExchange(from, methodArgs, validate);
+  }
+
+  public async createUnsignedOrder(values: CreateUnsignedOrderZeroExArgs) {
+    const duration = values.duration == null ? 24 * 60 * 60 : values.duration;
+    const block = await this.trading.environment.client.getBlock('latest');
+
+    const order: ZeroExOrder = {
+      exchangeAddress: this.info.exchange.toLowerCase(),
+      makerAddress: this.trading.contract.address.toLowerCase(),
+      takerAddress: zeroAddress,
+      senderAddress: zeroAddress,
+      feeRecipientAddress: (values.feeRecipientAddress && values.feeRecipientAddress.toLowerCase()) || zeroAddress,
+      expirationTimeSeconds: new BigNumber(block.timestamp).plus(duration),
+      salt: generatePseudoRandomSalt(),
+      makerAssetAmount: values.makerAssetAmount,
+      takerAssetAmount: values.takerAssetAmount,
+      makerAssetData: assetDataUtils.encodeERC20AssetData(values.makerTokenAddress),
+      takerAssetData: assetDataUtils.encodeERC20AssetData(values.takerTokenAddress),
+      makerFee: new BigNumber(0),
+      takerFee: values.takerFee || new BigNumber(0),
+    };
+
+    return order;
+  }
+
+  public async signOrder(order: ZeroExOrder, signer: Address) {
+    const eth = this.trading.environment.client;
+    const provider = {
+      // TODO: Apparently web3 v2 is not compatible with the @0x packages so this shit is necesary.
+      sendAsync: async (payload: JSONRPCRequestPayload, callback: JSONRPCErrorCallback) => {
+        const method = payload.method;
+        const params = payload.params;
+        const output = (result: any) => ({
+          result,
+          id: payload.id,
+          jsonrpc: payload.jsonrpc,
+        });
+
+        try {
+          if (method === 'eth_accounts') {
+            callback(null, output(await eth.getAccounts()));
+          } else if (method === 'eth_signTypedData') {
+            callback(null, output(await eth.sign(payload.params[1], payload.params[0])));
+          } else {
+            callback(null, await eth.currentProvider.send(method, params));
+          }
+        } catch (error) {
+          callback(error);
+        }
+      },
+    };
+
+    return signatureUtils.ecSignOrderAsync(provider, order, signer.toLowerCase());
   }
 }

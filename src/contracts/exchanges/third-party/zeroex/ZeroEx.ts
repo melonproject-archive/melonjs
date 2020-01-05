@@ -3,21 +3,9 @@ import { Contract } from '../../../../Contract';
 import { Environment } from '../../../../Environment';
 import { Address } from '../../../../Address';
 import { ExchangeAbi } from '../../../../abis/Exchange.abi';
+import { Order } from '@0x/types';
 
-export interface ZeroExOrder {
-  makerAddress: Address;
-  takerAddress: Address;
-  feeRecipientAddress: Address;
-  senderAddress: Address;
-  makerAssetAmount: string;
-  takerAssetAmount: string;
-  makerFee: string;
-  takerFee: string;
-  expirationTimeSeconds: string;
-  salt: string;
-  makerAssetData: string;
-  takerAssetData: string;
-}
+export interface ZeroExOrder extends Order {}
 
 export enum ZeroExOrderStatus {
   INVALID,

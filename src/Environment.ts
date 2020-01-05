@@ -62,7 +62,7 @@ export class DeployedEnvironment extends Environment {
     return token;
   }
 
-  public getExchange(name: string): ExchangeDefinition;
+  public getExchange(id: string): ExchangeDefinition;
   public getExchange(address: Address): ExchangeDefinition;
   public getExchange(which: string | Address): ExchangeDefinition {
     const address = which.startsWith('0x');
@@ -71,7 +71,7 @@ export class DeployedEnvironment extends Environment {
         return true;
       }
 
-      if (which === item.name) {
+      if (which === item.id) {
         return true;
       }
 
