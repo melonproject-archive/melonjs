@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>FundFactoryDeployArguments | @melonproject/melonjs - v0.0.59</title>
+	<title>CreateUnsignedOrderZeroExArgs | @melonproject/melonjs - v0.0.59</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -52,13 +52,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_contracts_factory_fundfactory_.html">&quot;contracts/factory/FundFactory&quot;</a>
+					<a href="../modules/_contracts_fund_trading_exchanges_zeroextradingadapter_.html">&quot;contracts/fund/trading/exchanges/ZeroExTradingAdapter&quot;</a>
 				</li>
 				<li>
-					<a href="_contracts_factory_fundfactory_.fundfactorydeployarguments.html">FundFactoryDeployArguments</a>
+					<a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.createunsignedorderzeroexargs.html">CreateUnsignedOrderZeroExArgs</a>
 				</li>
 			</ul>
-			<h1>Interface FundFactoryDeployArguments</h1>
+			<h1>Interface CreateUnsignedOrderZeroExArgs</h1>
 		</div>
 	</div>
 </header>
@@ -69,7 +69,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">FundFactoryDeployArguments</span>
+						<span class="target">CreateUnsignedOrderZeroExArgs</span>
 					</li>
 				</ul>
 			</section>
@@ -80,14 +80,13 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_factory_fundfactory_.fundfactorydeployarguments.html#accountingfactory" class="tsd-kind-icon">accounting<wbr>Factory</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_factory_fundfactory_.fundfactorydeployarguments.html#feemanagerfactory" class="tsd-kind-icon">fee<wbr>Manager<wbr>Factory</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_factory_fundfactory_.fundfactorydeployarguments.html#participationfactory" class="tsd-kind-icon">participation<wbr>Factory</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_factory_fundfactory_.fundfactorydeployarguments.html#policymanagerfactory" class="tsd-kind-icon">policy<wbr>Manager<wbr>Factory</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_factory_fundfactory_.fundfactorydeployarguments.html#sharesfactory" class="tsd-kind-icon">shares<wbr>Factory</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_factory_fundfactory_.fundfactorydeployarguments.html#tradingfactory" class="tsd-kind-icon">trading<wbr>Factory</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_factory_fundfactory_.fundfactorydeployarguments.html#vaultfactory" class="tsd-kind-icon">vault<wbr>Factory</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_factory_fundfactory_.fundfactorydeployarguments.html#version" class="tsd-kind-icon">version</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.createunsignedorderzeroexargs.html#duration" class="tsd-kind-icon">duration</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.createunsignedorderzeroexargs.html#feerecipientaddress" class="tsd-kind-icon">fee<wbr>Recipient<wbr>Address</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.createunsignedorderzeroexargs.html#makerassetamount" class="tsd-kind-icon">maker<wbr>Asset<wbr>Amount</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.createunsignedorderzeroexargs.html#makertokenaddress" class="tsd-kind-icon">maker<wbr>Token<wbr>Address</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.createunsignedorderzeroexargs.html#takerassetamount" class="tsd-kind-icon">taker<wbr>Asset<wbr>Amount</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.createunsignedorderzeroexargs.html#takerfee" class="tsd-kind-icon">taker<wbr>Fee</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.createunsignedorderzeroexargs.html#takertokenaddress" class="tsd-kind-icon">taker<wbr>Token<wbr>Address</a></li>
 							</ul>
 						</section>
 					</div>
@@ -96,82 +95,72 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="accountingfactory" class="tsd-anchor"></a>
-					<h3>accounting<wbr>Factory</h3>
-					<div class="tsd-signature tsd-kind-icon">accounting<wbr>Factory<span class="tsd-signature-symbol">:</span> <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></div>
+					<a name="duration" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> duration</h3>
+					<div class="tsd-signature tsd-kind-icon">duration<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L60">src/contracts/factory/FundFactory.ts:60</a></li>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/exchanges/ZeroExTradingAdapter.ts#L28">src/contracts/fund/trading/exchanges/ZeroExTradingAdapter.ts:28</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="feemanagerfactory" class="tsd-anchor"></a>
-					<h3>fee<wbr>Manager<wbr>Factory</h3>
-					<div class="tsd-signature tsd-kind-icon">fee<wbr>Manager<wbr>Factory<span class="tsd-signature-symbol">:</span> <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></div>
+					<a name="feerecipientaddress" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> fee<wbr>Recipient<wbr>Address</h3>
+					<div class="tsd-signature tsd-kind-icon">fee<wbr>Recipient<wbr>Address<span class="tsd-signature-symbol">:</span> <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L61">src/contracts/factory/FundFactory.ts:61</a></li>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/exchanges/ZeroExTradingAdapter.ts#L27">src/contracts/fund/trading/exchanges/ZeroExTradingAdapter.ts:27</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="participationfactory" class="tsd-anchor"></a>
-					<h3>participation<wbr>Factory</h3>
-					<div class="tsd-signature tsd-kind-icon">participation<wbr>Factory<span class="tsd-signature-symbol">:</span> <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></div>
+					<a name="makerassetamount" class="tsd-anchor"></a>
+					<h3>maker<wbr>Asset<wbr>Amount</h3>
+					<div class="tsd-signature tsd-kind-icon">maker<wbr>Asset<wbr>Amount<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">BigNumber</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L62">src/contracts/factory/FundFactory.ts:62</a></li>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/exchanges/ZeroExTradingAdapter.ts#L24">src/contracts/fund/trading/exchanges/ZeroExTradingAdapter.ts:24</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="policymanagerfactory" class="tsd-anchor"></a>
-					<h3>policy<wbr>Manager<wbr>Factory</h3>
-					<div class="tsd-signature tsd-kind-icon">policy<wbr>Manager<wbr>Factory<span class="tsd-signature-symbol">:</span> <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></div>
+					<a name="makertokenaddress" class="tsd-anchor"></a>
+					<h3>maker<wbr>Token<wbr>Address</h3>
+					<div class="tsd-signature tsd-kind-icon">maker<wbr>Token<wbr>Address<span class="tsd-signature-symbol">:</span> <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L66">src/contracts/factory/FundFactory.ts:66</a></li>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/exchanges/ZeroExTradingAdapter.ts#L22">src/contracts/fund/trading/exchanges/ZeroExTradingAdapter.ts:22</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="sharesfactory" class="tsd-anchor"></a>
-					<h3>shares<wbr>Factory</h3>
-					<div class="tsd-signature tsd-kind-icon">shares<wbr>Factory<span class="tsd-signature-symbol">:</span> <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></div>
+					<a name="takerassetamount" class="tsd-anchor"></a>
+					<h3>taker<wbr>Asset<wbr>Amount</h3>
+					<div class="tsd-signature tsd-kind-icon">taker<wbr>Asset<wbr>Amount<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">BigNumber</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L63">src/contracts/factory/FundFactory.ts:63</a></li>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/exchanges/ZeroExTradingAdapter.ts#L25">src/contracts/fund/trading/exchanges/ZeroExTradingAdapter.ts:25</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="tradingfactory" class="tsd-anchor"></a>
-					<h3>trading<wbr>Factory</h3>
-					<div class="tsd-signature tsd-kind-icon">trading<wbr>Factory<span class="tsd-signature-symbol">:</span> <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></div>
+					<a name="takerfee" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> taker<wbr>Fee</h3>
+					<div class="tsd-signature tsd-kind-icon">taker<wbr>Fee<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">BigNumber</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L64">src/contracts/factory/FundFactory.ts:64</a></li>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/exchanges/ZeroExTradingAdapter.ts#L26">src/contracts/fund/trading/exchanges/ZeroExTradingAdapter.ts:26</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="vaultfactory" class="tsd-anchor"></a>
-					<h3>vault<wbr>Factory</h3>
-					<div class="tsd-signature tsd-kind-icon">vault<wbr>Factory<span class="tsd-signature-symbol">:</span> <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></div>
+					<a name="takertokenaddress" class="tsd-anchor"></a>
+					<h3>taker<wbr>Token<wbr>Address</h3>
+					<div class="tsd-signature tsd-kind-icon">taker<wbr>Token<wbr>Address<span class="tsd-signature-symbol">:</span> <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L65">src/contracts/factory/FundFactory.ts:65</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="version" class="tsd-anchor"></a>
-					<h3>version</h3>
-					<div class="tsd-signature tsd-kind-icon">version<span class="tsd-signature-symbol">:</span> <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L67">src/contracts/factory/FundFactory.ts:67</a></li>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/exchanges/ZeroExTradingAdapter.ts#L23">src/contracts/fund/trading/exchanges/ZeroExTradingAdapter.ts:23</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -184,69 +173,51 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="../modules/_contracts_factory_fundfactory_.html">&quot;contracts/factory/<wbr>Fund<wbr>Factory&quot;</a>
+						<a href="../modules/_contracts_fund_trading_exchanges_zeroextradingadapter_.html">&quot;contracts/fund/trading/exchanges/<wbr>Zero<wbr>ExTrading<wbr>Adapter&quot;</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/_contracts_factory_fundfactory_.denominationassetnotregisterederror.html" class="tsd-kind-icon">Denomination<wbr>Asset<wbr>Not<wbr>Registered<wbr>Error</a>
+						<a href="../classes/_contracts_fund_trading_exchanges_zeroextradingadapter_.missingzeroexorderhashhex.html" class="tsd-kind-icon">Missing<wbr>Zero<wbr>ExOrder<wbr>Hash<wbr>Hex</a>
 					</li>
 					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/_contracts_factory_fundfactory_.fundfactory.html" class="tsd-kind-icon">Fund<wbr>Factory</a>
+						<a href="../classes/_contracts_fund_trading_exchanges_zeroextradingadapter_.zeroextradingadapter.html" class="tsd-kind-icon">Zero<wbr>ExTrading<wbr>Adapter</a>
 					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/_contracts_factory_fundfactory_.fundsetupalreadycompleteerror.html" class="tsd-kind-icon">Fund<wbr>Setup<wbr>Already<wbr>Complete<wbr>Error</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/_contracts_factory_fundfactory_.fundsetupalreadystartederror.html" class="tsd-kind-icon">Fund<wbr>Setup<wbr>Already<wbr>Started<wbr>Error</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/_contracts_factory_fundfactory_.fundsetupnotstartederror.html" class="tsd-kind-icon">Fund<wbr>Setup<wbr>Not<wbr>Started<wbr>Error</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/_contracts_factory_fundfactory_.routealreadycreatederror.html" class="tsd-kind-icon">Route<wbr>Already<wbr>Created<wbr>Error</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/_contracts_factory_fundfactory_.routenotcreatederror.html" class="tsd-kind-icon">Route<wbr>Not<wbr>Created<wbr>Error</a>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.cancelorderzeroexargs.html" class="tsd-kind-icon">Cancel<wbr>Order<wbr>Zero<wbr>ExArgs</a>
 					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_contracts_factory_fundfactory_.fundfactorydeployarguments.html" class="tsd-kind-icon">Fund<wbr>Factory<wbr>Deploy<wbr>Arguments</a>
+						<a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.createunsignedorderzeroexargs.html" class="tsd-kind-icon">Create<wbr>Unsigned<wbr>Order<wbr>Zero<wbr>ExArgs</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_contracts_factory_fundfactory_.fundfactorydeployarguments.html#accountingfactory" class="tsd-kind-icon">accounting<wbr>Factory</a>
+								<a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.createunsignedorderzeroexargs.html#duration" class="tsd-kind-icon">duration</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_contracts_factory_fundfactory_.fundfactorydeployarguments.html#feemanagerfactory" class="tsd-kind-icon">fee<wbr>Manager<wbr>Factory</a>
+								<a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.createunsignedorderzeroexargs.html#feerecipientaddress" class="tsd-kind-icon">fee<wbr>Recipient<wbr>Address</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_contracts_factory_fundfactory_.fundfactorydeployarguments.html#participationfactory" class="tsd-kind-icon">participation<wbr>Factory</a>
+								<a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.createunsignedorderzeroexargs.html#makerassetamount" class="tsd-kind-icon">maker<wbr>Asset<wbr>Amount</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_contracts_factory_fundfactory_.fundfactorydeployarguments.html#policymanagerfactory" class="tsd-kind-icon">policy<wbr>Manager<wbr>Factory</a>
+								<a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.createunsignedorderzeroexargs.html#makertokenaddress" class="tsd-kind-icon">maker<wbr>Token<wbr>Address</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_contracts_factory_fundfactory_.fundfactorydeployarguments.html#sharesfactory" class="tsd-kind-icon">shares<wbr>Factory</a>
+								<a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.createunsignedorderzeroexargs.html#takerassetamount" class="tsd-kind-icon">taker<wbr>Asset<wbr>Amount</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_contracts_factory_fundfactory_.fundfactorydeployarguments.html#tradingfactory" class="tsd-kind-icon">trading<wbr>Factory</a>
+								<a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.createunsignedorderzeroexargs.html#takerfee" class="tsd-kind-icon">taker<wbr>Fee</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_contracts_factory_fundfactory_.fundfactorydeployarguments.html#vaultfactory" class="tsd-kind-icon">vault<wbr>Factory</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_contracts_factory_fundfactory_.fundfactorydeployarguments.html#version" class="tsd-kind-icon">version</a>
+								<a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.createunsignedorderzeroexargs.html#takertokenaddress" class="tsd-kind-icon">taker<wbr>Token<wbr>Address</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_contracts_factory_fundfactory_.settings.html" class="tsd-kind-icon">Settings</a>
-					</li>
 				</ul>
 			</nav>
 		</div>

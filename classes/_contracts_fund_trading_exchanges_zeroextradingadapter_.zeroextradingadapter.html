@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ZeroExTradingAdapter | @melonproject/melonjs - v0.0.58</title>
+	<title>ZeroExTradingAdapter | @melonproject/melonjs - v0.0.59</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">@melonproject/melonjs - v0.0.58</a>
+					<a href="../index.html" class="title">@melonproject/melonjs - v0.0.59</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -91,7 +91,8 @@
 						<section class="tsd-index-section tsd-is-inherited">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.zeroextradingadapter.html#exchangeindex" class="tsd-kind-icon">exchange<wbr>Index</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.zeroextradingadapter.html#index" class="tsd-kind-icon">index</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.zeroextradingadapter.html#info" class="tsd-kind-icon">info</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.zeroextradingadapter.html#trading" class="tsd-kind-icon">trading</a></li>
 							</ul>
 						</section>
@@ -99,10 +100,11 @@
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.zeroextradingadapter.html#cancelorder" class="tsd-kind-icon">cancel<wbr>Order</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.zeroextradingadapter.html#createunsignedorder" class="tsd-kind-icon">create<wbr>Unsigned<wbr>Order</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.zeroextradingadapter.html#getorderhash" class="tsd-kind-icon">get<wbr>Order<wbr>Hash</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.zeroextradingadapter.html#makeorder" class="tsd-kind-icon">make<wbr>Order</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.zeroextradingadapter.html#signorder" class="tsd-kind-icon">sign<wbr>Order</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-static"><a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.zeroextradingadapter.html#create" class="tsd-kind-icon">create</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.zeroextradingadapter.html#index" class="tsd-kind-icon">index</a></li>
 							</ul>
 						</section>
 					</div>
@@ -114,7 +116,7 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Zero<wbr>ExTrading<wbr>Adapter<span class="tsd-signature-symbol">(</span>trading<span class="tsd-signature-symbol">: </span><a href="_contracts_fund_trading_trading_.trading.html" class="tsd-signature-type">Trading</a>, exchangeIndex<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.zeroextradingadapter.html" class="tsd-signature-type">ZeroExTradingAdapter</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Zero<wbr>ExTrading<wbr>Adapter<span class="tsd-signature-symbol">(</span>trading<span class="tsd-signature-symbol">: </span><a href="_contracts_fund_trading_trading_.trading.html" class="tsd-signature-type">Trading</a>, info<span class="tsd-signature-symbol">: </span><a href="../interfaces/_contracts_fund_trading_trading_.exchangeinfo.html" class="tsd-signature-type">ExchangeInfo</a>, index<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.zeroextradingadapter.html" class="tsd-signature-type">ZeroExTradingAdapter</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
@@ -130,7 +132,10 @@
 									<h5>trading: <a href="_contracts_fund_trading_trading_.trading.html" class="tsd-signature-type">Trading</a></h5>
 								</li>
 								<li>
-									<h5>exchangeIndex: <span class="tsd-signature-type">number</span></h5>
+									<h5>info: <a href="../interfaces/_contracts_fund_trading_trading_.exchangeinfo.html" class="tsd-signature-type">ExchangeInfo</a></h5>
+								</li>
+								<li>
+									<h5>index: <span class="tsd-signature-type">number</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.zeroextradingadapter.html" class="tsd-signature-type">ZeroExTradingAdapter</a></h4>
@@ -141,11 +146,22 @@
 			<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-					<a name="exchangeindex" class="tsd-anchor"></a>
-					<h3>exchange<wbr>Index</h3>
-					<div class="tsd-signature tsd-kind-icon">exchange<wbr>Index<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<a name="index" class="tsd-anchor"></a>
+					<h3>index</h3>
+					<div class="tsd-signature tsd-kind-icon">index<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="_contracts_fund_trading_exchanges_basetradingadapter_.basetradingadapter.html">BaseTradingAdapter</a>.<a href="_contracts_fund_trading_exchanges_basetradingadapter_.basetradingadapter.html#exchangeindex">exchangeIndex</a></p>
+						<p>Inherited from <a href="_contracts_fund_trading_exchanges_basetradingadapter_.basetradingadapter.html">BaseTradingAdapter</a>.<a href="_contracts_fund_trading_exchanges_basetradingadapter_.basetradingadapter.html#index">index</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/exchanges/BaseTradingAdapter.ts#L7">src/contracts/fund/trading/exchanges/BaseTradingAdapter.ts:7</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="info" class="tsd-anchor"></a>
+					<h3>info</h3>
+					<div class="tsd-signature tsd-kind-icon">info<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_contracts_fund_trading_trading_.exchangeinfo.html" class="tsd-signature-type">ExchangeInfo</a></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_contracts_fund_trading_exchanges_basetradingadapter_.basetradingadapter.html">BaseTradingAdapter</a>.<a href="_contracts_fund_trading_exchanges_basetradingadapter_.basetradingadapter.html#info">info</a></p>
 						<ul>
 							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/exchanges/BaseTradingAdapter.ts#L7">src/contracts/fund/trading/exchanges/BaseTradingAdapter.ts:7</a></li>
 						</ul>
@@ -175,7 +191,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/exchanges/ZeroExTradingAdapter.ts#L38">src/contracts/fund/trading/exchanges/ZeroExTradingAdapter.ts:38</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/exchanges/ZeroExTradingAdapter.ts#L50">src/contracts/fund/trading/exchanges/ZeroExTradingAdapter.ts:50</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -203,6 +219,29 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="createunsignedorder" class="tsd-anchor"></a>
+					<h3>create<wbr>Unsigned<wbr>Order</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">create<wbr>Unsigned<wbr>Order<span class="tsd-signature-symbol">(</span>values<span class="tsd-signature-symbol">: </span><a href="../interfaces/_contracts_fund_trading_exchanges_zeroextradingadapter_.createunsignedorderzeroexargs.html" class="tsd-signature-type">CreateUnsignedOrderZeroExArgs</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_contracts_exchanges_third_party_zeroex_zeroex_.zeroexorder.html" class="tsd-signature-type">ZeroExOrder</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/exchanges/ZeroExTradingAdapter.ts#L127">src/contracts/fund/trading/exchanges/ZeroExTradingAdapter.ts:127</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>values: <a href="../interfaces/_contracts_fund_trading_exchanges_zeroextradingadapter_.createunsignedorderzeroexargs.html" class="tsd-signature-type">CreateUnsignedOrderZeroExArgs</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_contracts_exchanges_third_party_zeroex_zeroex_.zeroexorder.html" class="tsd-signature-type">ZeroExOrder</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="getorderhash" class="tsd-anchor"></a>
 					<h3>get<wbr>Order<wbr>Hash</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -212,7 +251,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/exchanges/ZeroExTradingAdapter.ts#L28">src/contracts/fund/trading/exchanges/ZeroExTradingAdapter.ts:28</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/exchanges/ZeroExTradingAdapter.ts#L40">src/contracts/fund/trading/exchanges/ZeroExTradingAdapter.ts:40</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -235,7 +274,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/exchanges/ZeroExTradingAdapter.ts#L77">src/contracts/fund/trading/exchanges/ZeroExTradingAdapter.ts:77</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/exchanges/ZeroExTradingAdapter.ts#L89">src/contracts/fund/trading/exchanges/ZeroExTradingAdapter.ts:89</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -256,6 +295,32 @@
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_transaction_.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionReceipt</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="signorder" class="tsd-anchor"></a>
+					<h3>sign<wbr>Order</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">sign<wbr>Order<span class="tsd-signature-symbol">(</span>order<span class="tsd-signature-symbol">: </span><a href="../interfaces/_contracts_exchanges_third_party_zeroex_zeroex_.zeroexorder.html" class="tsd-signature-type">ZeroExOrder</a>, signer<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">SignedOrder</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/exchanges/ZeroExTradingAdapter.ts#L150">src/contracts/fund/trading/exchanges/ZeroExTradingAdapter.ts:150</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>order: <a href="../interfaces/_contracts_exchanges_third_party_zeroex_zeroex_.zeroexorder.html" class="tsd-signature-type">ZeroExOrder</a></h5>
+								</li>
+								<li>
+									<h5>signer: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">SignedOrder</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -295,33 +360,6 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
-					<a name="index" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> index</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">index<span class="tsd-signature-symbol">(</span>trading<span class="tsd-signature-symbol">: </span><a href="_contracts_fund_trading_trading_.trading.html" class="tsd-signature-type">Trading</a>, address<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<p>Inherited from <a href="_contracts_fund_trading_exchanges_basetradingadapter_.basetradingadapter.html">BaseTradingAdapter</a>.<a href="_contracts_fund_trading_exchanges_basetradingadapter_.basetradingadapter.html#index">index</a></p>
-								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/exchanges/BaseTradingAdapter.ts#L18">src/contracts/fund/trading/exchanges/BaseTradingAdapter.ts:18</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>trading: <a href="_contracts_fund_trading_trading_.trading.html" class="tsd-signature-type">Trading</a></h5>
-								</li>
-								<li>
-									<h5>address: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
 			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -349,7 +387,10 @@
 								<a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.zeroextradingadapter.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.zeroextradingadapter.html#exchangeindex" class="tsd-kind-icon">exchange<wbr>Index</a>
+								<a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.zeroextradingadapter.html#index" class="tsd-kind-icon">index</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.zeroextradingadapter.html#info" class="tsd-kind-icon">info</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 								<a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.zeroextradingadapter.html#trading" class="tsd-kind-icon">trading</a>
@@ -358,16 +399,19 @@
 								<a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.zeroextradingadapter.html#cancelorder" class="tsd-kind-icon">cancel<wbr>Order</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.zeroextradingadapter.html#createunsignedorder" class="tsd-kind-icon">create<wbr>Unsigned<wbr>Order</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.zeroextradingadapter.html#getorderhash" class="tsd-kind-icon">get<wbr>Order<wbr>Hash</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.zeroextradingadapter.html#makeorder" class="tsd-kind-icon">make<wbr>Order</a>
 							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.zeroextradingadapter.html#signorder" class="tsd-kind-icon">sign<wbr>Order</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-static">
 								<a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.zeroextradingadapter.html#create" class="tsd-kind-icon">create</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
-								<a href="_contracts_fund_trading_exchanges_zeroextradingadapter_.zeroextradingadapter.html#index" class="tsd-kind-icon">index</a>
 							</li>
 						</ul>
 					</li>
@@ -375,6 +419,9 @@
 				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="../interfaces/_contracts_fund_trading_exchanges_zeroextradingadapter_.cancelorderzeroexargs.html" class="tsd-kind-icon">Cancel<wbr>Order<wbr>Zero<wbr>ExArgs</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/_contracts_fund_trading_exchanges_zeroextradingadapter_.createunsignedorderzeroexargs.html" class="tsd-kind-icon">Create<wbr>Unsigned<wbr>Order<wbr>Zero<wbr>ExArgs</a>
 					</li>
 				</ul>
 			</nav>
