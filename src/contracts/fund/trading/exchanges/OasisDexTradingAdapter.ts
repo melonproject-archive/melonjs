@@ -11,7 +11,7 @@ import { BaseTradingAdapter } from './BaseTradingAdapter';
 import { checkSufficientBalance } from '../utils/checkSufficientBalance';
 import { checkFundIsNotShutdown } from '../utils/checkFundIsNotShutdown';
 import { checkSenderIsFundManager } from '../utils/checkSenderIsFundManager';
-import { checkOpenMakeOrder } from '../utils/checkOpenMakeOrder';
+import { checkExistingOpenMakeOrder } from '../utils/checkExistingOpenMakeOrder';
 
 export interface OasisDexMakeOrderArgs {
   makerAsset: Address;
@@ -116,7 +116,7 @@ export class OasisDexTradingAdapter extends BaseTradingAdapter {
         checkSufficientBalance(this.trading.environment, args.takerAsset, args.takerQuantity, vaultAddress),
         checkFundIsNotShutdown(this.trading.environment, hubAddress),
         checkSenderIsFundManager(this.trading.environment, from, hubAddress),
-        checkOpenMakeOrder(this.trading, args.makerAsset),
+        checkExistingOpenMakeOrder(this.trading, args.makerAsset),
       ]);
 
       // DONE (here): Ensure fund not shut down.

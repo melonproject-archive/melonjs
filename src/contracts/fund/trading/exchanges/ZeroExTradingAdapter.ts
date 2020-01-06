@@ -12,6 +12,7 @@ import { CallOnExchangeArgs } from '../Trading';
 import { BaseTradingAdapter } from './BaseTradingAdapter';
 import { ZeroExOrder } from '../../../exchanges/third-party/zeroex/ZeroEx';
 import { JSONRPCRequestPayload, JSONRPCErrorCallback } from '@0x/subproviders';
+import { checkSenderIsFundManager } from '../utils/checkSenderIsFundManager';
 
 export interface CancelOrderZeroExArgs {
   orderHashHex?: string;
@@ -70,7 +71,8 @@ export class ZeroExTradingAdapter extends BaseTradingAdapter {
     };
 
     const validate = async () => {
-      // TODO: Add validation.
+      const hubAddress = await this.trading.getHub();
+      await checkSenderIsFundManager(this.trading.environment, from, hubAddress);
 
       if (!orderHashHex) {
         throw new MissingZeroExOrderHashHex();
@@ -118,7 +120,8 @@ export class ZeroExTradingAdapter extends BaseTradingAdapter {
     };
 
     const validate = async () => {
-      // TODO: Add validation.
+      const hubAddress = await this.trading.getHub();
+      await checkSenderIsFundManager(this.trading.environment, from, hubAddress);
     };
 
     return this.trading.callOnExchange(from, methodArgs, validate);
