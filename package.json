@@ -87,7 +87,7 @@
     "tslint-config-airbnb": "^5.11.0",
     "tslint-config-prettier": "^1.15.0",
     "typedoc": "^0.15.0",
-    "typescript": "^3.6.2"
+    "typescript": "^3.7.4"
   },
   "resolutions": {
     "bignumber.js": "^9.0.0"
