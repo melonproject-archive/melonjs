@@ -233,7 +233,7 @@ export class Trading extends Contract {
     const exchangeAddress = (await this.getExchange(args.exchangeIndex)).exchange;
 
     await policyManager.preValidate({
-      signature: args.methodSignature,
+      signature: encodedSignature,
       addresses: [
         args.orderAddresses[0],
         args.orderAddresses[1],

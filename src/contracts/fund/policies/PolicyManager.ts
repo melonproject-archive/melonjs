@@ -12,6 +12,7 @@ import { ExchangeAdapterAbi } from '../../../abis/ExchangeAdapter.abi';
 import { EthfinexAdapterAbi } from '../../../abis/EthfinexAdapter.abi';
 import { ParticipationAbi } from '../../../abis/Participation.abi';
 import BigNumber from 'bignumber.js';
+import { hexToBytes } from 'web3-utils';
 
 export type Policies = {
   pre: Address[];
@@ -181,7 +182,12 @@ export class PolicyManager extends Contract {
   public async preValidate(args: PolicyValidationArgs, block?: number) {
     await this.makeCall<void>(
       'preValidate',
-      [args.signature, args.addresses, args.values.map(value => value.toString()), args.identifier],
+      [
+        hexToBytes(args.signature),
+        args.addresses,
+        args.values.map(value => value.toString()),
+        hexToBytes(args.identifier),
+      ],
       block,
     );
   }
