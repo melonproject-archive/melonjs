@@ -47,3 +47,11 @@ export class InvalidExchangeIndexError extends ValidationError {
     super(message);
   }
 }
+
+export class SenderIsNotFundManagerError extends ValidationError {
+  public readonly name = 'SenderIsNotFundManagerError';
+
+  constructor(public readonly sender: Address, message: string = 'Only the manager can call this function.') {
+    super(message);
+  }
+}
