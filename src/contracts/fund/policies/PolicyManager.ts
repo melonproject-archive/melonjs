@@ -11,11 +11,19 @@ import { encodeFunctionSignature } from '../../../utils/encodeFunctionSignature'
 import { ExchangeAdapterAbi } from '../../../abis/ExchangeAdapter.abi';
 import { EthfinexAdapterAbi } from '../../../abis/EthfinexAdapter.abi';
 import { ParticipationAbi } from '../../../abis/Participation.abi';
+import BigNumber from 'bignumber.js';
 
 export type Policies = {
   pre: Address[];
   post: Address[];
 };
+
+export interface PolicyValidationArgs {
+  signature: string;
+  addresses: [Address, Address, Address, Address, Address];
+  values: [BigNumber, BigNumber, BigNumber];
+  identifier: string;
+}
 
 export class NotAuthorizedError extends ValidationError {
   public name = 'NotAuthorizedError';
@@ -162,6 +170,34 @@ export class PolicyManager extends Contract {
     });
 
     return Promise.all(policyObjects);
+  }
+
+  /**
+   * Pre-validate policies (before trading)
+   *
+   * @param args The arguments of the policy validation function as [[PolicyValidationArgs]]
+   * @param block The block number to execute the call on.
+   */
+  public async preValidate(args: PolicyValidationArgs, block?: number) {
+    await this.makeCall<void>(
+      'preValidate',
+      [args.signature, args.addresses, args.values.map(value => value.toString()), args.identifier],
+      block,
+    );
+  }
+
+  /**
+   * Post-validate policies (before trading)
+   *
+   * @param args The arguments of the policy validation function as [[PolicyValidationArgs]]
+   * @param block The block number to execute the call on.
+   */
+  public async postValidate(args: PolicyValidationArgs, block?: number) {
+    await this.makeCall<void>(
+      'postValidate',
+      [args.signature, args.addresses, args.values.map(value => value.toString()), args.identifier],
+      block,
+    );
   }
 }
 

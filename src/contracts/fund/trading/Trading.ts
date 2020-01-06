@@ -12,6 +12,7 @@ import { hexToBytes, numberToHex, keccak256 } from 'web3-utils';
 import { functionSignature } from '../../../utils/functionSignature';
 import { ExchangeAdapterAbi } from '../../../abis/ExchangeAdapter.abi';
 import { AdapterMethodNotAllowedError, InvalidExchangeIndexError } from './Trading.errors';
+import { PolicyManager } from '../policies/PolicyManager';
 
 export interface ExchangeInfo {
   exchange: Address;
@@ -226,6 +227,23 @@ export class Trading extends Contract {
     if (!adapterMethodIsAllowed) {
       throw new AdapterMethodNotAllowedError(exchange.adapter, encodedSignature);
     }
+
+    const policyManagerAddress = (await this.getRoutes()).policyManager;
+    const policyManager = new PolicyManager(this.environment, policyManagerAddress);
+    const exchangeAddress = (await this.getExchange(args.exchangeIndex)).exchange;
+
+    await policyManager.preValidate({
+      signature: args.methodSignature,
+      addresses: [
+        args.orderAddresses[0],
+        args.orderAddresses[1],
+        args.orderAddresses[2],
+        args.orderAddresses[3],
+        exchangeAddress,
+      ],
+      values: [args.orderValues[0], args.orderValues[1], args.orderValues[6]],
+      identifier: args.identifier,
+    });
 
     const makeOrderSignature = functionSignature(ExchangeAdapterAbi, 'makeOrder');
     const takeOrderSignature = functionSignature(ExchangeAdapterAbi, 'takeOrder');
