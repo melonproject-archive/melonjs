@@ -14,6 +14,8 @@ import { ZeroExOrder } from '../../../exchanges/third-party/zeroex/ZeroEx';
 import { JSONRPCRequestPayload, JSONRPCErrorCallback } from '@0x/subproviders';
 import { checkSenderIsFundManager } from '../utils/checkSenderIsFundManager';
 import { checkSufficientBalance } from '../utils/checkSufficientBalance';
+import { checkExistingOpenMakeOrder } from '../utils/checkExistingOpenMakeOrder';
+import { checkCooldownReached } from '../utils/checkCooldownReached';
 
 export interface CancelOrderZeroExArgs {
   orderHashHex?: string;
@@ -122,7 +124,11 @@ export class ZeroExTradingAdapter extends BaseTradingAdapter {
 
     const validate = async () => {
       const hubAddress = await this.trading.getHub();
-      await checkSenderIsFundManager(this.trading.environment, from, hubAddress);
+      await Promise.all([
+        checkSenderIsFundManager(this.trading.environment, from, hubAddress),
+        checkExistingOpenMakeOrder(this.trading, makerTokenAddress),
+        checkCooldownReached(this.trading, makerTokenAddress),
+      ]);
     };
 
     return this.trading.callOnExchange(from, methodArgs, validate);
