@@ -18,6 +18,7 @@ import {
 } from './Trading.errors';
 import { PolicyManager } from '../policies/PolicyManager';
 import { Policy } from '../policies/Policy';
+import { toDate } from '../../../utils/toDate';
 
 export interface ExchangeInfo {
   exchange: Address;
@@ -355,6 +356,17 @@ export class Trading extends Contract {
    */
   public checkOpenMakeOrder(asset: Address, block?: number) {
     return this.makeCall<boolean>('isInOpenMakeOrder', [asset], block);
+  }
+
+  /**
+   * Get maker asset cooldown time
+   *
+   * @param asset The address of the asset
+   * @param block The block number to execute the call on.
+   */
+  public async getMakerAssetCooldown(asset: Address, block?: number) {
+    const result = await this.makeCall<string>('makerAssetCooldown', [asset], block);
+    return toDate(result);
   }
 }
 

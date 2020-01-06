@@ -74,3 +74,11 @@ export class AssetAlreadyHasOpenMakeOrderError extends ValidationError {
     super(message);
   }
 }
+
+export class CooldownForMakerAssetNotReachedError extends ValidationError {
+  public readonly name = 'CooldownForMakerAssetNotReachedError';
+
+  constructor(public readonly asset: Address, message: string = 'Cooldown for the maker asset not reached yet.') {
+    super(message);
+  }
+}
