@@ -340,11 +340,21 @@ export class Trading extends Contract {
   /**
    * Update and get quantity held in exchanges
    *
-   * @param asset The address of the asset
+   * @param identifier The identifier of the order
    * @param block The block number to execute the call on.
    */
   public getZeroExOrderDetails(identifier: BigNumber, block?: number) {
     return this.makeCall('getZeroExOrderDetails', [numberToHex(identifier.toString())], block);
+  }
+
+  /**
+   * Check if there is an open make order for a certain asset
+   *
+   * @param asset The address of the asset
+   * @param block The block number to execute the call on.
+   */
+  public checkOpenMakeOrder(asset: Address, block?: number) {
+    return this.makeCall<boolean>('isInOpenMakeOrder', [asset], block);
   }
 }
 

@@ -9,6 +9,7 @@ import { zeroBigNumber } from '../../../../utils/zeroBigNumber';
 import { BaseTradingAdapter } from './BaseTradingAdapter';
 import { CallOnExchangeArgs } from '../Trading';
 import { padLeft } from 'web3-utils';
+import { checkSenderIsFundManager } from '../utils/checkSenderIsFundManager';
 
 export interface TakeOrderMelonEngine {
   makerAsset: Address;
@@ -49,8 +50,11 @@ export class MelonEngineTradingAdapter extends BaseTradingAdapter {
       const vaultAddress = (await this.trading.getRoutes()).vault;
       const hubAddress = await this.trading.getHub();
 
-      await checkSufficientBalance(this.trading.environment, args.takerAsset, args.takerQuantity, vaultAddress);
-      await checkFundIsNotShutdown(this.trading.environment, hubAddress);
+      await Promise.all([
+        checkSufficientBalance(this.trading.environment, args.takerAsset, args.takerQuantity, vaultAddress),
+        checkFundIsNotShutdown(this.trading.environment, hubAddress),
+        checkSenderIsFundManager(this.trading.environment, from, hubAddress),
+      ]);
     };
 
     return this.trading.callOnExchange(from, methodArgs as CallOnExchangeArgs, validate);

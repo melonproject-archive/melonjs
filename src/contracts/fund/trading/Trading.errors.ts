@@ -66,3 +66,11 @@ export class PreTradePolicyValidationError extends ValidationError {
     super(message);
   }
 }
+
+export class AssetAlreadyHasOpenMakeOrderError extends ValidationError {
+  public readonly name = 'AssetAlreadyHasOpenMakeOrderError';
+
+  constructor(public readonly asset: Address, message: string = 'There is already an open make order for this asset.') {
+    super(message);
+  }
+}
