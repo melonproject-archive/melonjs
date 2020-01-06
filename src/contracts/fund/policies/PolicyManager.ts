@@ -4,27 +4,19 @@ import { Address } from '../../../Address';
 import { PolicyManagerAbi } from '../../../abis/PolicyManager.abi';
 import { Spoke } from '../hub/Spoke';
 import { applyMixins } from '../../../utils/applyMixins';
-import { Policy } from './Policy';
+import { Policy, PolicyArgs } from './Policy';
 import { ValidationError } from '../../../errors/ValidationError';
 import { DSAuthority } from '../../dependencies/authorization/DSAuthority';
 import { encodeFunctionSignature } from '../../../utils/encodeFunctionSignature';
 import { ExchangeAdapterAbi } from '../../../abis/ExchangeAdapter.abi';
 import { EthfinexAdapterAbi } from '../../../abis/EthfinexAdapter.abi';
 import { ParticipationAbi } from '../../../abis/Participation.abi';
-import BigNumber from 'bignumber.js';
 import { hexToBytes } from 'web3-utils';
 
 export type Policies = {
   pre: Address[];
   post: Address[];
 };
-
-export interface PolicyValidationArgs {
-  signature: string;
-  addresses: [Address, Address, Address, Address, Address];
-  values: [BigNumber, BigNumber, BigNumber];
-  identifier: string;
-}
 
 export class NotAuthorizedError extends ValidationError {
   public name = 'NotAuthorizedError';
@@ -125,8 +117,8 @@ export class PolicyManager extends Contract {
   public async getPoliciesBySignature(signature: string, block?: number) {
     const result = await this.makeCall<{ '0': string[]; '1': string[] }>('getPoliciesBySig', [signature], block);
     const policies = {
-      pre: result['0'],
-      post: result['1'],
+      pre: result ? result['0'] : [],
+      post: result ? result['1'] : [],
     };
     return policies as Policies;
   }
@@ -179,7 +171,7 @@ export class PolicyManager extends Contract {
    * @param args The arguments of the policy validation function as [[PolicyValidationArgs]]
    * @param block The block number to execute the call on.
    */
-  public async preValidate(args: PolicyValidationArgs, block?: number) {
+  public async preValidate(args: PolicyArgs, block?: number) {
     await this.makeCall<void>(
       'preValidate',
       [
@@ -198,7 +190,7 @@ export class PolicyManager extends Contract {
    * @param args The arguments of the policy validation function as [[PolicyValidationArgs]]
    * @param block The block number to execute the call on.
    */
-  public async postValidate(args: PolicyValidationArgs, block?: number) {
+  public async postValidate(args: PolicyArgs, block?: number) {
     await this.makeCall<void>(
       'postValidate',
       [

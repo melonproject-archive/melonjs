@@ -55,3 +55,14 @@ export class SenderIsNotFundManagerError extends ValidationError {
     super(message);
   }
 }
+
+export class PreTradePolicyValidationError extends ValidationError {
+  public readonly name = 'PreTradePolicyValidationError';
+
+  constructor(
+    public readonly signature: string,
+    message: string = 'Trade cannot be executed because risk management policies or compliance policies would be violated.',
+  ) {
+    super(message);
+  }
+}

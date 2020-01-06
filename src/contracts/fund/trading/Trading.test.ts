@@ -132,7 +132,7 @@ describe('Trading', () => {
     };
 
     const tx = trading.callOnExchange(environment.accounts[0], callArgs as CallOnExchangeArgs);
-    // await tx.validate();
+    await tx.validate();
     await expect(tx.validate()).resolves.not.toThrow();
   });
 

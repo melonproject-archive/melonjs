@@ -11,8 +11,13 @@ import { isZeroAddress } from '../../../utils/isZeroAddress';
 import { hexToBytes, numberToHex, keccak256 } from 'web3-utils';
 import { functionSignature } from '../../../utils/functionSignature';
 import { ExchangeAdapterAbi } from '../../../abis/ExchangeAdapter.abi';
-import { AdapterMethodNotAllowedError, InvalidExchangeIndexError } from './Trading.errors';
+import {
+  AdapterMethodNotAllowedError,
+  InvalidExchangeIndexError,
+  PreTradePolicyValidationError,
+} from './Trading.errors';
 import { PolicyManager } from '../policies/PolicyManager';
+import { Policy } from '../policies/Policy';
 
 export interface ExchangeInfo {
   exchange: Address;
@@ -232,19 +237,29 @@ export class Trading extends Contract {
     const policyManager = new PolicyManager(this.environment, policyManagerAddress);
     const exchangeAddress = (await this.getExchange(args.exchangeIndex)).exchange;
 
-    await policyManager.preValidate({
-      signature: encodedSignature,
-      addresses: [
-        args.orderAddresses[0],
-        args.orderAddresses[1],
-        args.orderAddresses[2],
-        args.orderAddresses[3],
-        exchangeAddress,
-      ],
-      values: [args.orderValues[0], args.orderValues[1], args.orderValues[6]],
-      identifier: args.identifier,
-    });
+    const policies = await policyManager.getPoliciesBySignature(encodedSignature);
+    const prePolicies = policies.pre;
 
+    const rulesRespected = await Promise.all(
+      prePolicies.map(policyAddress => {
+        const policy = new Policy(this.environment, policyAddress);
+        return policy.rule({
+          signature: encodedSignature,
+          addresses: [
+            args.orderAddresses[0],
+            args.orderAddresses[1],
+            args.orderAddresses[2],
+            args.orderAddresses[3],
+            exchangeAddress,
+          ],
+          values: [args.orderValues[0], args.orderValues[1], args.orderValues[6]],
+          identifier: args.identifier,
+        });
+      }),
+    );
+    if (rulesRespected.some(respected => respected === false)) {
+      throw new PreTradePolicyValidationError(encodedSignature);
+    }
     const makeOrderSignature = functionSignature(ExchangeAdapterAbi, 'makeOrder');
     const takeOrderSignature = functionSignature(ExchangeAdapterAbi, 'takeOrder');
 
