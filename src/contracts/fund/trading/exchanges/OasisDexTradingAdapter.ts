@@ -119,10 +119,6 @@ export class OasisDexTradingAdapter extends BaseTradingAdapter {
         checkExistingOpenMakeOrder(this.trading, args.makerAsset),
       ]);
 
-      // DONE (here): Ensure fund not shut down.
-      // DONE (in callOnExchange): Ensure exchange method is allowed.
-      // DONE (here): Ensure there are no other open orders for the asset.
-
       // TODO: Ensure not buying/selling of own fund token.
       // TODO: Ensure price provided on this asset pair.
       // TODO: Ensure price feed data is not outdated.
