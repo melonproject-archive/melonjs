@@ -201,7 +201,12 @@ export class PolicyManager extends Contract {
   public async postValidate(args: PolicyValidationArgs, block?: number) {
     await this.makeCall<void>(
       'postValidate',
-      [args.signature, args.addresses, args.values.map(value => value.toString()), args.identifier],
+      [
+        hexToBytes(args.signature),
+        args.addresses,
+        args.values.map(value => value.toString()),
+        hexToBytes(args.identifier),
+      ],
       block,
     );
   }
