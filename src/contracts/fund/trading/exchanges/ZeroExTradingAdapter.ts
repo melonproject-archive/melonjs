@@ -13,6 +13,7 @@ import { BaseTradingAdapter } from './BaseTradingAdapter';
 import { ZeroExOrder } from '../../../exchanges/third-party/zeroex/ZeroEx';
 import { JSONRPCRequestPayload, JSONRPCErrorCallback } from '@0x/subproviders';
 import { checkSenderIsFundManager } from '../utils/checkSenderIsFundManager';
+import { checkSufficientBalance } from '../utils/checkSufficientBalance';
 
 export interface CancelOrderZeroExArgs {
   orderHashHex?: string;
@@ -122,6 +123,59 @@ export class ZeroExTradingAdapter extends BaseTradingAdapter {
     const validate = async () => {
       const hubAddress = await this.trading.getHub();
       await checkSenderIsFundManager(this.trading.environment, from, hubAddress);
+    };
+
+    return this.trading.callOnExchange(from, methodArgs, validate);
+  }
+
+  /**
+   * Take an order on 0x.
+   *
+   * @param from The address of the sender.
+   * @param order The arguments.
+   * @param takerAmount: The amount (overriding the takeAssetAmount of the order)
+   */
+  public takeOrder(from: Address, order: SignedOrder, takerAmount?: BigNumber) {
+    const makerTokenAddress = assetDataUtils.decodeERC20AssetData(order.makerAssetData).tokenAddress;
+    const takerTokenAddress = assetDataUtils.decodeERC20AssetData(order.takerAssetData).tokenAddress;
+
+    const amount = takerAmount || order.takerAssetAmount;
+
+    const methodArgs: CallOnExchangeArgs = {
+      exchangeIndex: this.index,
+      methodSignature: functionSignature(ExchangeAdapterAbi, 'takeOrder'),
+      orderAddresses: [
+        order.makerAddress,
+        zeroAddress,
+        makerTokenAddress,
+        takerTokenAddress,
+        order.feeRecipientAddress,
+        zeroAddress,
+      ],
+      orderValues: [
+        order.makerAssetAmount,
+        order.takerAssetAmount,
+        order.makerFee,
+        order.takerFee,
+        order.expirationTimeSeconds,
+        order.salt,
+        amount,
+        zeroBigNumber,
+      ],
+      identifier: padLeft('0x0', 64),
+      makerAssetData: order.makerAssetData,
+      takerAssetData: order.takerAssetData,
+      signature: order.signature,
+    };
+
+    const validate = async () => {
+      const hubAddress = await this.trading.getHub();
+      const vaultAddress = (await this.trading.getRoutes()).vault;
+
+      await Promise.all([
+        checkSenderIsFundManager(this.trading.environment, from, hubAddress),
+        checkSufficientBalance(this.trading.environment, takerTokenAddress, amount, vaultAddress),
+      ]);
     };
 
     return this.trading.callOnExchange(from, methodArgs, validate);
