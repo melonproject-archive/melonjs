@@ -8,6 +8,10 @@ import { zeroBigNumber } from '../../../../utils/zeroBigNumber';
 import { MatchingMarketOffer } from '../../../exchanges/third-party/oasisdex/MatchingMarket';
 import { CallOnExchangeArgs } from '../Trading';
 import { BaseTradingAdapter } from './BaseTradingAdapter';
+import { checkSufficientBalance } from '../utils/checkSufficientBalance';
+import { checkFundIsNotShutdown } from '../utils/checkFundIsNotShutdown';
+import { checkSenderIsFundManager } from '../utils/checkSenderIsFundManager';
+import { checkExistingOpenMakeOrder } from '../utils/checkExistingOpenMakeOrder';
 
 export interface OasisDexMakeOrderArgs {
   makerAsset: Address;
@@ -63,7 +67,8 @@ export class OasisDexTradingAdapter extends BaseTradingAdapter {
     };
 
     const validate = async () => {
-      // TODO: Add validation.
+      const hubAddress = await this.trading.getHub();
+      await checkSenderIsFundManager(this.trading.environment, from, hubAddress);
     };
 
     return this.trading.callOnExchange(from, methodArgs, validate);
@@ -104,12 +109,19 @@ export class OasisDexTradingAdapter extends BaseTradingAdapter {
     };
 
     const validate = async () => {
-      // TODO: Ensure fund not shut down.
-      // TODO: Ensure exchange method is allowed.
+      const vaultAddress = (await this.trading.getRoutes()).vault;
+      const hubAddress = await this.trading.getHub();
+
+      await Promise.all([
+        checkSufficientBalance(this.trading.environment, args.takerAsset, args.takerQuantity, vaultAddress),
+        checkFundIsNotShutdown(this.trading.environment, hubAddress),
+        checkSenderIsFundManager(this.trading.environment, from, hubAddress),
+        checkExistingOpenMakeOrder(this.trading, args.makerAsset),
+      ]);
+
       // TODO: Ensure not buying/selling of own fund token.
       // TODO: Ensure price provided on this asset pair.
       // TODO: Ensure price feed data is not outdated.
-      // TODO: Ensure there are no other open orders for the asset.
       // IF MATCHINGMARKET:
       // TODO: Ensure selling quantity is not too low.
     };
@@ -153,7 +165,14 @@ export class OasisDexTradingAdapter extends BaseTradingAdapter {
     };
 
     const validate = async () => {
-      // TODO: Implement.
+      const vaultAddress = (await this.trading.getRoutes()).vault;
+      const hubAddress = await this.trading.getHub();
+
+      await Promise.all([
+        checkSufficientBalance(this.trading.environment, offer.takerAsset, offer.takerQuantity, vaultAddress),
+        checkFundIsNotShutdown(this.trading.environment, hubAddress),
+        checkSenderIsFundManager(this.trading.environment, from, hubAddress),
+      ]);
     };
 
     return this.trading.callOnExchange(from, methodArgs, validate);

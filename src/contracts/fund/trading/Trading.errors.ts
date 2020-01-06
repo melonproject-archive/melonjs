@@ -47,3 +47,30 @@ export class InvalidExchangeIndexError extends ValidationError {
     super(message);
   }
 }
+
+export class SenderIsNotFundManagerError extends ValidationError {
+  public readonly name = 'SenderIsNotFundManagerError';
+
+  constructor(public readonly sender: Address, message: string = 'Only the manager can call this function.') {
+    super(message);
+  }
+}
+
+export class PreTradePolicyValidationError extends ValidationError {
+  public readonly name = 'PreTradePolicyValidationError';
+
+  constructor(
+    public readonly signature: string,
+    message: string = 'Trade cannot be executed because risk management policies or compliance policies would be violated.',
+  ) {
+    super(message);
+  }
+}
+
+export class AssetAlreadyHasOpenMakeOrderError extends ValidationError {
+  public readonly name = 'AssetAlreadyHasOpenMakeOrderError';
+
+  constructor(public readonly asset: Address, message: string = 'There is already an open make order for this asset.') {
+    super(message);
+  }
+}

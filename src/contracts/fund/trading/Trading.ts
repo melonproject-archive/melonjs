@@ -11,7 +11,13 @@ import { isZeroAddress } from '../../../utils/isZeroAddress';
 import { hexToBytes, numberToHex, keccak256 } from 'web3-utils';
 import { functionSignature } from '../../../utils/functionSignature';
 import { ExchangeAdapterAbi } from '../../../abis/ExchangeAdapter.abi';
-import { AdapterMethodNotAllowedError, InvalidExchangeIndexError } from './Trading.errors';
+import {
+  AdapterMethodNotAllowedError,
+  InvalidExchangeIndexError,
+  PreTradePolicyValidationError,
+} from './Trading.errors';
+import { PolicyManager } from '../policies/PolicyManager';
+import { Policy } from '../policies/Policy';
 
 export interface ExchangeInfo {
   exchange: Address;
@@ -227,6 +233,33 @@ export class Trading extends Contract {
       throw new AdapterMethodNotAllowedError(exchange.adapter, encodedSignature);
     }
 
+    const policyManagerAddress = (await this.getRoutes()).policyManager;
+    const policyManager = new PolicyManager(this.environment, policyManagerAddress);
+    const exchangeAddress = (await this.getExchange(args.exchangeIndex)).exchange;
+
+    const policies = await policyManager.getPoliciesBySignature(encodedSignature);
+    const prePolicies = policies.pre;
+
+    const rulesRespected = await Promise.all(
+      prePolicies.map(policyAddress => {
+        const policy = new Policy(this.environment, policyAddress);
+        return policy.rule({
+          signature: encodedSignature,
+          addresses: [
+            args.orderAddresses[0],
+            args.orderAddresses[1],
+            args.orderAddresses[2],
+            args.orderAddresses[3],
+            exchangeAddress,
+          ],
+          values: [args.orderValues[0], args.orderValues[1], args.orderValues[6]],
+          identifier: args.identifier,
+        });
+      }),
+    );
+    if (rulesRespected.some(respected => respected === false)) {
+      throw new PreTradePolicyValidationError(encodedSignature);
+    }
     const makeOrderSignature = functionSignature(ExchangeAdapterAbi, 'makeOrder');
     const takeOrderSignature = functionSignature(ExchangeAdapterAbi, 'takeOrder');
 
@@ -307,11 +340,21 @@ export class Trading extends Contract {
   /**
    * Update and get quantity held in exchanges
    *
-   * @param asset The address of the asset
+   * @param identifier The identifier of the order
    * @param block The block number to execute the call on.
    */
   public getZeroExOrderDetails(identifier: BigNumber, block?: number) {
     return this.makeCall('getZeroExOrderDetails', [numberToHex(identifier.toString())], block);
+  }
+
+  /**
+   * Check if there is an open make order for a certain asset
+   *
+   * @param asset The address of the asset
+   * @param block The block number to execute the call on.
+   */
+  public checkOpenMakeOrder(asset: Address, block?: number) {
+    return this.makeCall<boolean>('isInOpenMakeOrder', [asset], block);
   }
 }
 

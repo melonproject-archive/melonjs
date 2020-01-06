@@ -13,6 +13,7 @@ import { ExchangeNotRegisteredWithFundError, InsufficientBalanceError } from './
 import { KyberTradingAdapter } from './exchanges/KyberTradingAdapter';
 import { functionSignature } from '../../../utils/functionSignature';
 import { ExchangeAdapterAbi } from '../../../abis/ExchangeAdapter.abi';
+import { padLeft } from 'web3-utils';
 
 describe('Trading', () => {
   const exchangeAddress = randomAddress();
@@ -124,15 +125,14 @@ describe('Trading', () => {
         new BigNumber(0),
         new BigNumber(0),
       ],
-      identifier: 'anything',
+      identifier: padLeft('0x79705be7', 64),
       makerAssetData: '0x0',
       takerAssetData: '0x0',
       signature: '0x0',
     };
 
     const tx = trading.callOnExchange(environment.accounts[0], callArgs as CallOnExchangeArgs);
-    await tx.validate();
-    expect(tx.validate).not.toThrow();
+    await expect(tx.validate()).resolves.not.toThrow();
   });
 
   it('should throw an insufficient balance error with Kyber', async () => {

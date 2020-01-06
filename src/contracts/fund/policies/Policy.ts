@@ -1,12 +1,13 @@
 import { Contract } from '../../../Contract';
 import { PolicyAbi } from '../../../abis/Policy.abi';
+import BigNumber from 'bignumber.js';
 import { Address } from '../../../Address';
-import { BigNumber } from 'bignumber.js';
+import { hexToBytes } from 'web3-utils';
 
-export interface PolicyRule {
-  sig: string;
-  addresses: Address[];
-  values: BigNumber[];
+export interface PolicyArgs {
+  signature: string;
+  addresses: [Address, Address, Address, Address, Address];
+  values: [BigNumber, BigNumber, BigNumber];
   identifier: string;
 }
 
@@ -34,10 +35,19 @@ export class Policy extends Contract {
   /**
    * Checks wheter a rule is true or false
    *
-   * @param input The input for the rule
+   * @param args The arguments for the rule
    * @param block The block number to execute the call on.
    */
-  public rule(input: PolicyRule, block?: number) {
-    return this.makeCall<boolean>('position', [input], block);
+  public rule(args: PolicyArgs, block?: number) {
+    return this.makeCall<boolean>(
+      'rule',
+      [
+        hexToBytes(args.signature),
+        args.addresses,
+        args.values.map(value => value.toString()),
+        hexToBytes(args.identifier),
+      ],
+      block,
+    );
   }
 }
