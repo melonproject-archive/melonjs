@@ -23,6 +23,7 @@ import { checkSufficientBalance } from '../utils/checkSufficientBalance';
 import { checkExistingOpenMakeOrder } from '../utils/checkExistingOpenMakeOrder';
 import { checkCooldownReached } from '../utils/checkCooldownReached';
 import { sameAddress } from '../../../../utils/sameAddress';
+import { checkFundIsNotShutdown } from '../utils/checkFundIsNotShutdown';
 
 export interface CancelOrderZeroExArgs {
   orderHashHex?: string;
@@ -195,6 +196,7 @@ export class ZeroExTradingAdapter extends BaseTradingAdapter {
 
       await Promise.all([
         checkSufficientBalance(this.trading.environment, makerTokenAddress, order.makerAssetAmount, vaultAddress),
+        checkFundIsNotShutdown(this.trading.environment, hubAddress),
         checkSenderIsFundManager(this.trading.environment, from, hubAddress),
         checkExistingOpenMakeOrder(this.trading, makerTokenAddress),
         checkCooldownReached(this.trading, makerTokenAddress),

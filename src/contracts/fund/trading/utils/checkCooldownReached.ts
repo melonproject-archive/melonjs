@@ -13,7 +13,7 @@ export const checkCooldownReached = async (trading: Trading, asset: Address, blo
     return;
   }
 
-  const currentBlockTime = new BigNumber(blockObject.timestamp).multipliedBy(1000);
+  const currentBlockTime = new BigNumber(blockObject.timestamp);
   if (currentBlockTime.isLessThan(makerAssetCooldown!.getTime())) {
     throw new CooldownForMakerAssetNotReachedError(asset);
   }
