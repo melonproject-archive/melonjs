@@ -1,4 +1,4 @@
-import { toUtf8, toHex } from 'web3-utils';
+import { toHex, toUtf8, isHexStrict } from 'web3-utils';
 import { HubAbi } from '../../../abis/Hub.abi';
 import { Contract } from '../../../Contract';
 import { Environment } from '../../../Environment';
@@ -130,7 +130,11 @@ export class Hub extends Contract {
    */
   public async getName(block?: number) {
     const result = await this.makeCall<string>('name', undefined, block);
-    return result && toUtf8(result);
+    if (result && isHexStrict(result)) {
+      return toUtf8(result);
+    }
+
+    return result;
   }
 
   /**
