@@ -56,6 +56,7 @@ export * from './contracts/prices/UpdateablePriceFeedInterface';
 export * from './contracts/exchanges/third-party/oasisdex/MatchingMarket';
 export * from './contracts/exchanges/third-party/oasisdex/MatchingMarketAccessor';
 export * from './contracts/exchanges/third-party/zeroex/ZeroEx';
+export * from './contracts/exchanges/third-party/kyber/KyberNetworkProxy';
 export * from './utils/availableExchanges';
 export * from './utils/availablePolicies';
 export * from './utils/availableTokens';
