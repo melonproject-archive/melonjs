@@ -364,8 +364,12 @@ export class Trading extends Contract {
    * @param asset The address of the asset
    * @param block The block number to execute the call on.
    */
-  public async getMakerAssetCooldown(asset: Address, block?: number) {
+  public async getMakerAssetCooldown(asset: Address, block?: number): Promise<Date | void> {
     const result = await this.makeCall<string>('makerAssetCooldown', [asset], block);
+    if (toBigNumber(result).isZero()) {
+      return;
+    }
+
     return toDate(result);
   }
 }

@@ -12,6 +12,7 @@ import { checkSufficientBalance } from '../utils/checkSufficientBalance';
 import { checkFundIsNotShutdown } from '../utils/checkFundIsNotShutdown';
 import { checkSenderIsFundManager } from '../utils/checkSenderIsFundManager';
 import { checkExistingOpenMakeOrder } from '../utils/checkExistingOpenMakeOrder';
+import { checkCooldownReached } from '../utils/checkCooldownReached';
 
 export interface OasisDexMakeOrderArgs {
   makerAsset: Address;
@@ -113,17 +114,12 @@ export class OasisDexTradingAdapter extends BaseTradingAdapter {
       const hubAddress = await this.trading.getHub();
 
       await Promise.all([
-        checkSufficientBalance(this.trading.environment, args.takerAsset, args.takerQuantity, vaultAddress),
+        checkSufficientBalance(this.trading.environment, args.makerAsset, args.makerQuantity, vaultAddress),
         checkFundIsNotShutdown(this.trading.environment, hubAddress),
         checkSenderIsFundManager(this.trading.environment, from, hubAddress),
         checkExistingOpenMakeOrder(this.trading, args.makerAsset),
+        checkCooldownReached(this.trading, args.makerAsset),
       ]);
-
-      // TODO: Ensure not buying/selling of own fund token.
-      // TODO: Ensure price provided on this asset pair.
-      // TODO: Ensure price feed data is not outdated.
-      // IF MATCHINGMARKET:
-      // TODO: Ensure selling quantity is not too low.
     };
 
     return this.trading.callOnExchange(from, methodArgs, validate);
@@ -169,7 +165,7 @@ export class OasisDexTradingAdapter extends BaseTradingAdapter {
       const hubAddress = await this.trading.getHub();
 
       await Promise.all([
-        checkSufficientBalance(this.trading.environment, offer.takerAsset, offer.takerQuantity, vaultAddress),
+        checkSufficientBalance(this.trading.environment, offer.makerAsset, offer.makerQuantity, vaultAddress),
         checkFundIsNotShutdown(this.trading.environment, hubAddress),
         checkSenderIsFundManager(this.trading.environment, from, hubAddress),
       ]);
