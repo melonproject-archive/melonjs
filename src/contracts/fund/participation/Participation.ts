@@ -15,6 +15,8 @@ import { SpokeNotInitializedError } from '../../../errors/SpokeNotInitializedErr
 import { PriceSourceInterface } from '../../prices/PriceSourceInterface';
 import { Accounting } from '../accounting/Accounting';
 import { Shares } from '../shares/Shares';
+import { Registry } from '../../version/Registry';
+import { sameAddress } from '../../../utils/sameAddress';
 
 export interface Request {
   investmentAsset: Address;
@@ -33,6 +35,14 @@ export class InvestmentAssetNotAllowedError extends ValidationError {
   public readonly name = 'InvestmentAssetNotAllowedError';
 
   constructor(public readonly asset: Address, message: string = 'Investment not allowed in this asset.') {
+    super(message);
+  }
+}
+
+export class AssetIsNotRegisteredError extends ValidationError {
+  public readonly name = 'AssetIsNotRegisteredError';
+
+  constructor(public readonly asset: Address, message: string = 'This asset is not registered with the registry.') {
     super(message);
   }
 }
@@ -117,6 +127,40 @@ export class Participation extends Contract {
    */
   public getHistoricalInvestors(block?: number) {
     return this.makeCall<Address[]>('getHistoricalInvestors', undefined, block);
+  }
+
+  /**
+   * Enable investment for a list of assets
+   *
+   * @param from The address of the sender.
+   * @param assets The addresses of the assets
+   */
+  public enableInvestment(from: Address, assets: Address[]) {
+    const validate = async () => {
+      const registry = new Registry(this.environment, await this.getRegistry());
+      const registeredAssets = await registry.getRegisteredAssets();
+
+      assets.map(asset => {
+        const assetIsRegistered = registeredAssets.some(registered => sameAddress(registered, asset));
+        if (!assetIsRegistered) {
+          throw new AssetIsNotRegisteredError(asset);
+        }
+      });
+    };
+
+    return this.createTransaction({ from, method: 'enableInvestment', args: [assets], validate });
+  }
+
+  /**
+   * Disable investment for a list of assets
+   *
+   * @param from The address of the sender.
+   * @param assets The addresses of the assets
+   */
+  public disableInvestment(from: Address, assets: Address[]) {
+    const validate = async () => {};
+
+    return this.createTransaction({ from, method: 'disableInvestment', args: [assets], validate });
   }
 
   /**
