@@ -17,6 +17,12 @@ import { Accounting } from '../accounting/Accounting';
 import { Shares } from '../shares/Shares';
 import { Registry } from '../../version/Registry';
 import { sameAddress } from '../../../utils/sameAddress';
+import { keccak256, padLeft } from 'web3-utils';
+import { functionSignature } from '../../../utils/functionSignature';
+import { PolicyManager } from '../policies/PolicyManager';
+import { Policy } from '../policies/Policy';
+import { zeroAddress } from '../../../utils/zeroAddress';
+import { zeroBigNumber } from '../../../utils/zeroBigNumber';
 
 export interface Request {
   investmentAsset: Address;
@@ -104,6 +110,17 @@ export class NotEnoughSharesToRedeemError extends ValidationError {
   constructor(
     public readonly availableShares: BigNumber,
     message: string = 'Not enough shares to redeem requested amount.',
+  ) {
+    super(message);
+  }
+}
+
+export class PreInvestmentPolicyValidationError extends ValidationError {
+  public readonly name = 'PreInvestmentPolicyValidationError';
+
+  constructor(
+    public readonly signature: string,
+    message: string = 'Investment cannot be executed because risk management policies or compliance policies would be violated.',
   ) {
     super(message);
   }
@@ -268,6 +285,27 @@ export class Participation extends Contract {
       const request = await this.getRequest(from);
       if (typeof request !== 'undefined') {
         throw new InvestmentRequestExistsError(request);
+      }
+
+      const encodedSignature = keccak256(functionSignature(ParticipationAbi, 'requestInvestment')).substr(0, 10);
+      const policyManagerAddress = (await this.getRoutes()).policyManager;
+      const policyManager = new PolicyManager(this.environment, policyManagerAddress);
+      const policies = await policyManager.getPoliciesBySignature(encodedSignature);
+      const prePolicies = policies.pre;
+
+      const rulesRespected = await Promise.all(
+        prePolicies.map(policyAddress => {
+          const policy = new Policy(this.environment, policyAddress);
+          return policy.rule({
+            signature: encodedSignature,
+            addresses: [from, zeroAddress, zeroAddress, investmentAsset, zeroAddress],
+            values: [zeroBigNumber, zeroBigNumber, zeroBigNumber],
+            identifier: padLeft('0x0', 64),
+          });
+        }),
+      );
+      if (rulesRespected.some(respected => respected === false)) {
+        throw new PreInvestmentPolicyValidationError(encodedSignature);
       }
     };
 
