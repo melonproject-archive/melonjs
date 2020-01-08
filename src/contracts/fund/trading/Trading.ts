@@ -286,10 +286,10 @@ export class Trading extends Contract {
    */
   public callOnExchange(from: Address, args: CallOnExchangeArgs, validationFunction?: () => Promise<void>) {
     const methodArgs = [
-      args.exchangeIndex.toString(),
+      args.exchangeIndex.toFixed(0),
       args.methodSignature,
       args.orderAddresses,
-      args.orderValues.map(orderValue => orderValue.toString()),
+      args.orderValues.map(orderValue => orderValue.toFixed(0)),
       args.identifier,
       hexToBytes(args.makerAssetData),
       hexToBytes(args.takerAssetData),
@@ -345,7 +345,7 @@ export class Trading extends Contract {
    * @param block The block number to execute the call on.
    */
   public getZeroExOrderDetails(identifier: BigNumber, block?: number) {
-    return this.makeCall('getZeroExOrderDetails', [numberToHex(identifier.toString())], block);
+    return this.makeCall('getZeroExOrderDetails', [numberToHex(identifier.toFixed(0))], block);
   }
 
   /**

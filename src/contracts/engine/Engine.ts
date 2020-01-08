@@ -14,7 +14,7 @@ export class Engine extends Contract {
   public static readonly abi = EngineAbi;
 
   public static deploy(environment: Environment, bytecode: string, from: Address, args: EngineDeployArguments) {
-    return super.createDeployment<Engine>(environment, bytecode, from, [args.delay.toFixed(), args.registry]);
+    return super.createDeployment<Engine>(environment, bytecode, from, [args.delay.toFixed(0), args.registry]);
   }
 
   /**

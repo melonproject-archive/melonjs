@@ -177,7 +177,7 @@ export class PolicyManager extends Contract {
       [
         hexToBytes(args.signature),
         args.addresses,
-        args.values.map(value => value.toString()),
+        args.values.map(value => value.toFixed(0)),
         hexToBytes(args.identifier),
       ],
       block,
@@ -196,7 +196,7 @@ export class PolicyManager extends Contract {
       [
         hexToBytes(args.signature),
         args.addresses,
-        args.values.map(value => value.toString()),
+        args.values.map(value => value.toFixed(0)),
         hexToBytes(args.identifier),
       ],
       block,

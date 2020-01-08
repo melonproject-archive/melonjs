@@ -68,7 +68,7 @@ export class ZeroExTradingAdapter extends BaseTradingAdapter {
    * @param args The arguments.
    */
   public cancelOrder(from: Address, args: CancelOrderZeroExArgs) {
-    const orderHashHex = args.orderHashHex || (args.orderId && padLeft(numberToHex(args.orderId.toString()), 64));
+    const orderHashHex = args.orderHashHex || (args.orderId && padLeft(numberToHex(args.orderId.toFixed(0)), 64));
     const methodArgs: CallOnExchangeArgs = {
       exchangeIndex: this.index,
       methodSignature: functionSignature(ExchangeAdapterAbi, 'cancelOrder'),

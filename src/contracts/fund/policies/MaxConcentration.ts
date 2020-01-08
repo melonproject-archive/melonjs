@@ -11,7 +11,7 @@ export class MaxConcentration extends Contract {
   public static readonly abi = MaxConcentrationAbi;
 
   public static deploy(environment: Environment, bytecode: string, from: Address, maxConcentration: BigNumber) {
-    return super.createDeployment<MaxConcentration>(environment, bytecode, from, [maxConcentration.toFixed()]);
+    return super.createDeployment<MaxConcentration>(environment, bytecode, from, [maxConcentration.toFixed(0)]);
   }
 
   /**
