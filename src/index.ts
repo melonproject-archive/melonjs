@@ -36,6 +36,7 @@ export * from './contracts/fund/trading/exchanges/BaseTradingAdapter';
 export * from './contracts/fund/trading/exchanges/KyberTradingAdapter';
 export * from './contracts/fund/trading/exchanges/OasisDexTradingAdapter';
 export * from './contracts/fund/trading/exchanges/ZeroExTradingAdapter';
+export * from './contracts/fund/trading/exchanges/MelonEngineTradingAdapter';
 export * from './contracts/fund/trading/Trading.errors';
 export * from './contracts/fund/policies/UserWhitelist';
 export * from './contracts/fund/vault/Vault';
