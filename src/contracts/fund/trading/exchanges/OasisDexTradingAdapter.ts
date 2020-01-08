@@ -133,6 +133,7 @@ export class OasisDexTradingAdapter extends BaseTradingAdapter {
    * @param offer The order to take.
    */
   public takeOrder(from: Address, id: BigNumber, offer: MatchingMarketOffer, fillTakerQuantity?: BigNumber) {
+    const amount = fillTakerQuantity || offer.takerQuantity;
     const methodArgs: CallOnExchangeArgs = {
       exchangeIndex: this.index,
       methodSignature: functionSignature(ExchangeAdapterAbi, 'takeOrder'),
@@ -151,7 +152,7 @@ export class OasisDexTradingAdapter extends BaseTradingAdapter {
         zeroBigNumber,
         zeroBigNumber,
         zeroBigNumber,
-        fillTakerQuantity || offer.takerQuantity,
+        amount,
         zeroBigNumber,
       ],
       identifier: padLeft(numberToHex(id.toFixed(0)), 64),
@@ -165,7 +166,7 @@ export class OasisDexTradingAdapter extends BaseTradingAdapter {
       const hubAddress = await this.trading.getHub();
 
       await Promise.all([
-        checkSufficientBalance(this.trading.environment, offer.makerAsset, offer.makerQuantity, vaultAddress),
+        checkSufficientBalance(this.trading.environment, offer.takerAsset, amount, vaultAddress),
         checkFundIsNotShutdown(this.trading.environment, hubAddress),
         checkSenderIsFundManager(this.trading.environment, from, hubAddress),
       ]);

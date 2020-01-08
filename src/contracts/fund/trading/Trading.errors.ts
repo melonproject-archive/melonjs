@@ -34,7 +34,7 @@ export class InsufficientBalanceError extends ValidationError {
   constructor(
     public readonly requested: BigNumber,
     public readonly actual: BigNumber,
-    message: string = 'Insufficient funds for this trade.',
+    message: string = 'Insufficient balance.',
   ) {
     super(message);
   }
