@@ -3,7 +3,6 @@ import { Contract } from '../../../../Contract';
 import { Environment } from '../../../../Environment';
 import { Address } from '../../../../Address';
 import { KyberNetworkProxyAbi } from '../../../../abis/KyberNetworkProxy.abi';
-import { toWei, fromWei } from 'web3-utils';
 
 export interface KyberExpectedRate {
   expectedRate: BigNumber;
@@ -34,11 +33,11 @@ export class KyberNetworkProxy extends Contract {
     const { '0': expectedRate, '1': slippageRate } = await this.makeCall<{
       '0': string;
       '1': string;
-    }>('getExpectedRate', [srcToken, destToken, toWei(srcQty.toFixed(18))], block);
+    }>('getExpectedRate', [srcToken, destToken, srcQty.toString()], block);
 
     return {
-      expectedRate: new BigNumber(fromWei(expectedRate.toString())),
-      slippageRate: new BigNumber(fromWei(slippageRate.toString())),
+      expectedRate: new BigNumber(expectedRate.toString()),
+      slippageRate: new BigNumber(slippageRate.toString()),
     } as KyberExpectedRate;
   }
 }
