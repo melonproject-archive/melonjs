@@ -44,7 +44,7 @@ export class Policy extends Contract {
       [
         hexToBytes(args.signature),
         args.addresses,
-        args.values.map(value => value.toFixed(0)),
+        args.values.map(value => value.toString()),
         hexToBytes(args.identifier),
       ],
       block,

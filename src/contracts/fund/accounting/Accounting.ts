@@ -166,7 +166,7 @@ export class Accounting extends Contract {
    * @param block The block number to execute the call on.
    */
   public async getShareCostInAsset(numShares: BigNumber, asset: Address, block?: number) {
-    const result = await this.makeCall<string>('getShareCostInAsset', [numShares.toFixed(0), asset], block);
+    const result = await this.makeCall<string>('getShareCostInAsset', [numShares.toFixed(), asset], block);
     return toBigNumber(result);
   }
 

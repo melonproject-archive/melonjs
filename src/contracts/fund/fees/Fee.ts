@@ -66,7 +66,7 @@ export class Fee extends Contract {
    */
   public initializeForUser(from: Address, fee: FeeInitializationArguments) {
     const method = 'initializeForUser';
-    const args = [fee.feeRate.toFixed(0), fee.feePeriod, fee.denominationAsset];
+    const args = [fee.feeRate.toFixed(), fee.feePeriod, fee.denominationAsset];
 
     const validate = async () => {
       const lastPayoutTime = await this.getLastPayoutTime(from);

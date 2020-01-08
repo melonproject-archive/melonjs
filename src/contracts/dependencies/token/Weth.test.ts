@@ -19,7 +19,7 @@ describe('Weth', () => {
 
   it('should allow deposit and withdrawal', async () => {
     const before = await weth.getBalanceOf(environment.accounts[1]);
-    expect(fromWei(before.toFixed(0))).toBe('0');
+    expect(fromWei(before.toFixed())).toBe('0');
 
     {
       const tx = weth.deposit(toBigNumber(toWei('1')), environment.accounts[1]);
@@ -27,7 +27,7 @@ describe('Weth', () => {
     }
 
     const after = await weth.getBalanceOf(environment.accounts[1]);
-    expect(fromWei(after.toFixed(0))).toBe('1');
+    expect(fromWei(after.toFixed())).toBe('1');
 
     {
       const tx = weth.withdraw(toBigNumber(toWei('1')), environment.accounts[1]);
@@ -35,12 +35,12 @@ describe('Weth', () => {
     }
 
     const final = await weth.getBalanceOf(environment.accounts[1]);
-    expect(fromWei(final.toFixed(0))).toBe('0');
+    expect(fromWei(final.toFixed())).toBe('0');
   });
 
   it('should return the total supply of the token', async () => {
     const result = await weth.getTotalSupply();
-    expect(fromWei(result.toFixed(0))).toBe('0');
+    expect(fromWei(result.toFixed())).toBe('0');
   });
 
   it('should throw OutOfBalanceError', async () => {

@@ -35,7 +35,7 @@ export class FeeManager extends Contract {
       args.hub,
       args.denominationAsset,
       args.fees,
-      args.rates.map(fee => fee.toFixed(0)),
+      args.rates.map(fee => fee.toFixed()),
       args.periods,
       args.registry,
     ]);

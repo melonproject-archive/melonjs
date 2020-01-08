@@ -27,7 +27,7 @@ export class ZeroEx extends Contract {
   public static readonly abi = ExchangeAbi;
 
   public static deploy(environment: Environment, bytecode: string, from: Address, closetime: BigNumber) {
-    return super.createDeployment<ZeroEx>(environment, bytecode, from, [closetime.toFixed(0)]);
+    return super.createDeployment<ZeroEx>(environment, bytecode, from, [closetime.toString()]);
   }
 
   /**

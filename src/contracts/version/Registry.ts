@@ -236,7 +236,7 @@ export class Registry extends Contract {
       registerArgs.name,
       registerArgs.symbol,
       registerArgs.url,
-      registerArgs.reserveMin.toFixed(0),
+      registerArgs.reserveMin.toFixed(),
       registerArgs.standards,
       registerArgs.sigs.map(sig => hexToBytes(sig)),
     ];

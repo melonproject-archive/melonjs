@@ -33,11 +33,11 @@ export class KyberNetworkProxy extends Contract {
     const { '0': expectedRate, '1': slippageRate } = await this.makeCall<{
       '0': string;
       '1': string;
-    }>('getExpectedRate', [srcToken, destToken, srcQty.toFixed(0)], block);
+    }>('getExpectedRate', [srcToken, destToken, srcQty.toString()], block);
 
     return {
-      expectedRate: new BigNumber(expectedRate),
-      slippageRate: new BigNumber(slippageRate),
+      expectedRate: new BigNumber(expectedRate.toString()),
+      slippageRate: new BigNumber(slippageRate.toString()),
     } as KyberExpectedRate;
   }
 }

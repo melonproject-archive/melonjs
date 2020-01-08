@@ -21,7 +21,7 @@ export class Weth extends Contract {
 
   public withdraw(amount: BigNumber, from: Address) {
     const method = 'withdraw';
-    const args = [amount.toFixed(0)];
+    const args = [amount.toFixed()];
     const validate = async () => {
       const balance = await this.getBalanceOf(from);
       if (!amount.isLessThanOrEqualTo(balance)) {
