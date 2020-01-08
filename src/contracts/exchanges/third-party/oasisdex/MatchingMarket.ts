@@ -19,7 +19,7 @@ export class MatchingMarket extends Contract {
   public static readonly abi = MatchingMarketAbi;
 
   public static deploy(environment: Environment, bytecode: string, from: Address, closetime: BigNumber) {
-    return super.createDeployment<MatchingMarket>(environment, bytecode, from, [closetime.toString()]);
+    return super.createDeployment<MatchingMarket>(environment, bytecode, from, [closetime.toFixed(0)]);
   }
 
   /**
@@ -43,7 +43,7 @@ export class MatchingMarket extends Contract {
       '3': string;
       '4': string;
       '5': string;
-    }>('offers', [id.toString()], block);
+    }>('offers', [id.toFixed(0)], block);
 
     return {
       makerQuantity: toBigNumber(makerQuantity),
@@ -62,7 +62,7 @@ export class MatchingMarket extends Contract {
    * @param block The block number to execute the call on.
    */
   public async isActive(id: BigNumber, block?: number) {
-    return this.makeCall<boolean>('isActive', [id.toString()], block);
+    return this.makeCall<boolean>('isActive', [id.toFixed(0)], block);
   }
 
   /**
@@ -72,7 +72,7 @@ export class MatchingMarket extends Contract {
    * @param block The block number to execute the call on.
    */
   public async getOwner(id: BigNumber, block?: number) {
-    return this.makeCall<Address>('getOwner', [id.toString()], block);
+    return this.makeCall<Address>('getOwner', [id.toFixed(0)], block);
   }
 
   /**

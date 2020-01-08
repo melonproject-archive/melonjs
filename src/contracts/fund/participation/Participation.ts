@@ -271,7 +271,7 @@ export class Participation extends Contract {
       }
     };
 
-    const args = [sharesAmount.toFixed(), investmentAmount.toFixed(), investmentAsset];
+    const args = [sharesAmount.toFixed(0), investmentAmount.toFixed(0), investmentAsset];
     return this.createTransaction({ from, method: 'requestInvestment', args, validate, amgu, incentive });
   }
 
@@ -391,7 +391,7 @@ export class Participation extends Contract {
     return this.createTransaction({
       from,
       method: 'redeemQuantity',
-      args: [shareQuantity.toString()],
+      args: [shareQuantity.toFixed(0)],
       validate,
     });
   }

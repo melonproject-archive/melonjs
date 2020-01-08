@@ -18,7 +18,7 @@ export class UpdatablePriceFeedInterface extends Contract {
    */
   public update(from: Address, updates: PriceUpdate[]) {
     // TODO: Add validation.
-    const prices = updates.map(item => item.price.toString());
+    const prices = updates.map(item => item.price.toFixed(0));
     const assets = updates.map(item => item.asset);
     return this.createTransaction({ from, method: 'update', args: [assets, prices] });
   }
