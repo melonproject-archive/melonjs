@@ -17,7 +17,7 @@ const investmentSignatures = [encodeFunctionSignature(ParticipationAbi, 'request
 
 const priceTolerance: PolicyDefinition = {
   id: 'priceTolerance',
-  name: 'Price Tolerance',
+  name: 'Price tolerance',
   signatures: [...tradingSignatures],
 };
 
