@@ -69,3 +69,4 @@ export * from './utils/isZeroAddress';
 export * from './utils/sameAddress';
 export * from './utils/tradingSignatureName';
 export * from './utils/zeroAddress';
+export * from './utils/hexToString';

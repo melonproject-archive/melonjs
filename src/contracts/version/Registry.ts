@@ -7,6 +7,7 @@ import { hexToBytes } from 'web3-utils';
 import { ValidationError } from '../../errors/ValidationError';
 import { toBigNumber } from '../../utils/toBigNumber';
 import { stringToBytes } from '../../utils/stringToBytes';
+import { hexToString } from '../../utils/hexToString';
 
 export class ExchangeAdapterAlreadyRegisteredError extends ValidationError {
   public name = 'ExchangeAdapterAlreadyRegisteredError';
@@ -265,8 +266,12 @@ export class Registry extends Contract {
     return this.makeCall<ExchangeInformation>('exchangeInformation', [adapterAddress], block);
   }
 
-  public getVersionInformation(versionAddress: Address, block?: number) {
-    return this.makeCall<VersionInformation>('versionInformation', [versionAddress], block);
+  public async getVersionInformation(versionAddress: Address, block?: number) {
+    const info = await this.makeCall<VersionInformation>('versionInformation', [versionAddress], block);
+    return {
+      name: hexToString(info.name),
+      exists: info.exists,
+    } as VersionInformation;
   }
 
   /**
