@@ -64,3 +64,10 @@ export class AssetNotRegisteredError extends ValidationError {
     super(message);
   }
 }
+
+export class FeeNotRegisteredError extends ValidationError {
+  public name = 'FeeNotRegisteredError';
+  constructor(message: string = 'Fees is not registered.') {
+    super(message);
+  }
+}

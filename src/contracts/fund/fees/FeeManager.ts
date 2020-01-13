@@ -8,6 +8,21 @@ import { applyMixins } from '../../../utils/applyMixins';
 import { toBigNumber } from '../../../utils/toBigNumber';
 import { ManagementFee } from './ManagementFee';
 import { PerformanceFee } from './PerformanceFee';
+import { ValidationError } from '../../../errors/ValidationError';
+
+export class ManagementFeeMustBeAtIndexZeroError extends ValidationError {
+  public readonly name = 'ManagementFeeMustBeAtIndexZeroError';
+  constructor(public readonly address: Address, message: string = 'Management fee must be at index 0.') {
+    super(message);
+  }
+}
+
+export class PerformanceFeeMustBeAtIndexOneError extends ValidationError {
+  public readonly name = 'PerformanceFeeMustBeAtIndexOneError';
+  constructor(public readonly address: Address, message: string = 'Performance fee must be at index 1.') {
+    super(message);
+  }
+}
 
 export type ManagementFeeInformation = {
   rate: BigNumber;
