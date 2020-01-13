@@ -228,15 +228,25 @@ export class Registry extends Contract {
   }
 
   public registerFees(from: Address, feeAddresses: Address[]) {
-    const method = 'registerFees';
-    const args = [feeAddresses];
-    return this.createTransaction({ from, method, args });
+    return this.createTransaction({ from, method: 'registerFees', args: [feeAddresses] });
   }
 
+  /**
+   * Checks if a fee is already registered
+   *
+   * @param feeAddress The address of the fee contract
+   * @param block The block number to execute the call on.
+   */
   public isFeeRegistered(feeAddress: Address, block?: number) {
     return this.makeCall<boolean>('isFeeRegistered', [feeAddress], block);
   }
 
+  /**
+   * Checks if an asset is already registered
+   *
+   * @param asset The address of the asset
+   * @param block The block number to execute the call on.
+   */
   public isAssetRegistered(asset: Address, block?: number) {
     return this.makeCall<boolean>('assetIsRegistered', [asset], block);
   }

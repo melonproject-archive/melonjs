@@ -16,7 +16,9 @@ import {
   FundSetupAlreadyCompleteError,
   ComponentAlreadySetError,
 } from './FundFactory.error';
-import { CannotUseFundNameError } from '../version/Registry.error';
+import { CannotUseFundNameError, FeeNotRegisteredError } from '../version/Registry.error';
+import { Fee } from '../fund/fees/Fee';
+import { ManagementFeeMustBeAtIndexZeroError, PerformanceFeeMustBeAtIndexOneError } from '../fund/fees/FeeManager';
 
 export interface FundFactoryDeployArguments {
   accountingFactory: Address;
@@ -153,9 +155,7 @@ export class FundFactory extends Contract {
 
       this.validateComponentSet(hub);
 
-      const registryAddress = await this.getRegistry();
-      const registry = new Registry(this.environment, registryAddress);
-
+      const registry = new Registry(this.environment, await this.getRegistry());
       const canUseFundName = registry.canUseFundName(from, settings.name);
       if (!canUseFundName) {
         throw new CannotUseFundNameError(settings.name);
@@ -196,6 +196,30 @@ export class FundFactory extends Contract {
     const validate = async () => {
       this.validateComponentSet(await this.getManagersToHubs(from));
       this.validateComponentNotSet(from, 'feeManager');
+
+      const registry = new Registry(this.environment, await this.getRegistry());
+      const settings = await this.getManagersToSettings(from);
+
+      const feesRegistered = await Promise.all(settings.fees.map(fee => registry.isFeeRegistered(fee)));
+      if (feesRegistered.some(registered => !registered)) {
+        throw new FeeNotRegisteredError();
+      }
+
+      if (settings.fees.length > 0) {
+        const fee = new Fee(this.environment, settings.fees[0]);
+        const identifier = await fee.identifier();
+        if (identifier !== 0) {
+          throw new ManagementFeeMustBeAtIndexZeroError(settings.fees[0]);
+        }
+      }
+
+      if (settings.fees.length > 0) {
+        const fee = new Fee(this.environment, settings.fees[1]);
+        const identifier = await fee.identifier();
+        if (identifier !== 1) {
+          throw new PerformanceFeeMustBeAtIndexOneError(settings.fees[1]);
+        }
+      }
     };
 
     return this.createTransaction({ from, method: 'createFeeManager', validate, amgu });
