@@ -67,7 +67,7 @@ export class AssetNotRegisteredError extends ValidationError {
 
 export class FeeNotRegisteredError extends ValidationError {
   public name = 'FeeNotRegisteredError';
-  constructor(message: string = 'Fees is not registered.') {
+  constructor(public readonly fee: Address, message: string = 'Fees is not registered.') {
     super(message);
   }
 }
