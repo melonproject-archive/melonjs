@@ -16,7 +16,7 @@ import {
   FundSetupAlreadyCompleteError,
   ComponentAlreadySetError,
 } from './FundFactory.error';
-import { CannotUseFundNameError, FeeNotRegisteredError } from '../version/Registry.error';
+import { CannotUseFundNameError, FeeNotRegisteredError, AssetNotRegisteredError } from '../version/Registry.error';
 import { Fee } from '../fund/fees/Fee';
 import { ManagementFeeMustBeAtIndexZeroError, PerformanceFeeMustBeAtIndexOneError } from '../fund/fees/FeeManager';
 
@@ -200,10 +200,14 @@ export class FundFactory extends Contract {
       const registry = new Registry(this.environment, await this.getRegistry());
       const settings = await this.getManagersToSettings(from);
 
-      const feesRegistered = await Promise.all(settings.fees.map(fee => registry.isFeeRegistered(fee)));
-      if (feesRegistered.some(registered => !registered)) {
-        throw new FeeNotRegisteredError();
-      }
+      await Promise.all(
+        settings.fees.map(async fee => {
+          const isFeeRegistered = await registry.isFeeRegistered(fee);
+          if (!isFeeRegistered) {
+            throw new FeeNotRegisteredError(fee);
+          }
+        }),
+      );
 
       if (settings.fees.length > 0) {
         const fee = new Fee(this.environment, settings.fees[0]);
@@ -236,6 +240,18 @@ export class FundFactory extends Contract {
     const validate = async () => {
       this.validateComponentSet(await this.getManagersToHubs(from));
       this.validateComponentNotSet(from, 'participation');
+
+      const registry = new Registry(this.environment, await this.getRegistry());
+      const settings = await this.getManagersToSettings(from);
+
+      await Promise.all(
+        settings.defaultAssets.map(async asset => {
+          const isAssetRegistered = await registry.isAssetRegistered(asset);
+          if (!isAssetRegistered) {
+            throw new AssetNotRegisteredError(asset);
+          }
+        }),
+      );
     };
 
     return this.createTransaction({ from, method: 'createParticipation', validate, amgu });
