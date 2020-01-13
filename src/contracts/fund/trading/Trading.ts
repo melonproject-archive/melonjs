@@ -6,7 +6,7 @@ import { TradingAbi } from '../../../abis/Trading.abi';
 import { Spoke } from '../hub/Spoke';
 import { applyMixins } from '../../../utils/applyMixins';
 import { toBigNumber } from '../../../utils/toBigNumber';
-import { Registry, AssetNotRegisteredError } from '../../version/Registry';
+import { Registry } from '../../version/Registry';
 import { isZeroAddress } from '../../../utils/isZeroAddress';
 import { hexToBytes, numberToHex, keccak256 } from 'web3-utils';
 import { functionSignature } from '../../../utils/functionSignature';
@@ -19,6 +19,7 @@ import {
 import { PolicyManager } from '../policies/PolicyManager';
 import { Policy } from '../policies/Policy';
 import { toDate } from '../../../utils/toDate';
+import { AssetNotRegisteredError } from '../../version/Registry.error';
 
 export interface ExchangeInfo {
   exchange: Address;
