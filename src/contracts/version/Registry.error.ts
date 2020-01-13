@@ -3,7 +3,14 @@ import { ValidationError } from '../../errors/ValidationError';
 
 export class ExchangeAdapterAlreadyRegisteredError extends ValidationError {
   public name = 'ExchangeAdapterAlreadyRegisteredError';
-  constructor(message: string = 'Exchange adapter is already registered.') {
+  constructor(public readonly adapter: Address, message: string = 'Exchange adapter is already registered.') {
+    super(message);
+  }
+}
+
+export class ExchangeAdapterNotRegisteredError extends ValidationError {
+  public name = 'ExchangeAdapterNotRegisteredError';
+  constructor(public readonly adapter: Address, message: string = 'Exchange adapter is not registered.') {
     super(message);
   }
 }
@@ -13,7 +20,18 @@ export class ExchangeAdaptersRegisteredOutOfBoundsError extends ValidationError 
   constructor(
     public readonly numberOfAdapters: number,
     public readonly maxRegisteredAdapters: number,
-    message: string = 'Number of registered exchange adapters exceeds the maxium.',
+    message: string = 'Number of registered exchange adapters exceeds the maximum.',
+  ) {
+    super(message);
+  }
+}
+
+export class ExchangeAndAdapterDoNotMatchError extends ValidationError {
+  public name = 'ExchangeAndAdapterDoNotMatchError';
+  constructor(
+    public readonly exchange: Address,
+    public readonly adapter: Address,
+    message: string = 'Exchange and adapter do not match.',
   ) {
     super(message);
   }

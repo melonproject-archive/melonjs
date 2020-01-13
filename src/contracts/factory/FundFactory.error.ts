@@ -35,14 +35,9 @@ export class FundSetupAlreadyStartedError extends ValidationError {
   }
 }
 
-export class RouteNotCreatedError extends ValidationError {
-  constructor(public readonly name: string, message: string = 'Route has not been created.') {
-    super(message);
-  }
-}
-
-export class RouteAlreadyCreatedError extends ValidationError {
-  constructor(public readonly name: string, message: string = 'Route has already been created.') {
+export class DifferentNumberOfExchangesAndAdaptersError extends ValidationError {
+  public readonly name = 'DifferentNumberOfExchangesAndAdaptersError';
+  constructor(message: string = 'Route has already been created.') {
     super(message);
   }
 }
