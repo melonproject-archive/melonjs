@@ -15,6 +15,8 @@ import {
   AssetsRegisteredOutOfBoundsError,
   AssetAlreadyRegisteredError,
 } from './Registry.error';
+import { DSAuth } from '../dependencies/authorization/DSAuth';
+import { applyMixins } from '../../utils/applyMixins';
 
 export interface VersionInformation {
   exists: boolean;
@@ -283,3 +285,6 @@ export class Registry extends Contract {
     return this.makeCall<boolean>('adapterMethodIsAllowed', [adapter, hexToBytes(signature)], block);
   }
 }
+
+export interface Registry extends DSAuth {}
+applyMixins(Registry, [DSAuth]);

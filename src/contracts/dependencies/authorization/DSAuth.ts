@@ -9,4 +9,13 @@ export class DSAuth extends Contract {
   public static deploy(environment: Environment, bytecode: string, from: Address) {
     return super.createDeployment<DSAuth>(environment, bytecode, from);
   }
+
+  /**
+   * Gets the address of the owner
+   *
+   * @param block The block number to execute the call on.
+   */
+  public getOwner(block?: number) {
+    return this.makeCall<Address>('owner', [undefined], block);
+  }
 }
