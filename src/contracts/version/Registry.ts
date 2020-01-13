@@ -118,7 +118,7 @@ export class Registry extends Contract {
     const validate = async () => {
       const info = await this.getExchangeInformation(registerArgs.adapterAddress);
       if (info.exists) {
-        throw new ExchangeAdapterAlreadyRegisteredError();
+        throw new ExchangeAdapterAlreadyRegisteredError(registerArgs.adapterAddress);
       }
 
       const [adapters, max] = await Promise.all([

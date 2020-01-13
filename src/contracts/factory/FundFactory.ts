@@ -15,10 +15,18 @@ import {
   DenominationAssetNotRegisteredError,
   FundSetupAlreadyCompleteError,
   ComponentAlreadySetError,
+  DifferentNumberOfExchangesAndAdaptersError,
 } from './FundFactory.error';
-import { CannotUseFundNameError, FeeNotRegisteredError, AssetNotRegisteredError } from '../version/Registry.error';
+import {
+  CannotUseFundNameError,
+  FeeNotRegisteredError,
+  AssetNotRegisteredError,
+  ExchangeAdapterNotRegisteredError,
+  ExchangeAndAdapterDoNotMatchError,
+} from '../version/Registry.error';
 import { Fee } from '../fund/fees/Fee';
 import { ManagementFeeMustBeAtIndexZeroError, PerformanceFeeMustBeAtIndexOneError } from '../fund/fees/FeeManager';
+import { sameAddress } from '../../utils/sameAddress';
 
 export interface FundFactoryDeployArguments {
   accountingFactory: Address;
@@ -300,6 +308,26 @@ export class FundFactory extends Contract {
     const validate = async () => {
       this.validateComponentSet(await this.getManagersToHubs(from));
       this.validateComponentNotSet(from, 'trading');
+
+      const settings = await this.getManagersToSettings(from);
+      if (settings.exchanges.length !== settings.adapters.length) {
+        throw new DifferentNumberOfExchangesAndAdaptersError();
+      }
+
+      const registry = new Registry(this.environment, await this.getRegistry());
+      await Promise.all(
+        settings.adapters.map(async (adapter, index) => {
+          const isExchangeAdapaterRegistered = await registry.isExchangeAdapterRegistered(adapter);
+          if (!isExchangeAdapaterRegistered) {
+            throw new ExchangeAdapterNotRegisteredError(adapter);
+          }
+
+          const exchangeInformation = await registry.getExchangeInformation(adapter);
+          if (!sameAddress(exchangeInformation.exchangeAddress, settings.exchanges[index])) {
+            throw new ExchangeAndAdapterDoNotMatchError(settings.exchanges[index], adapter);
+          }
+        }),
+      );
     };
 
     return this.createTransaction({ from, method: 'createTrading', validate, amgu });
