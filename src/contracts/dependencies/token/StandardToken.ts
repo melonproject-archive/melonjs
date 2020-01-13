@@ -75,39 +75,37 @@ export class StandardToken extends Contract {
   /**
    * Approve the spender address to spend the specified amount of tokens on behalf of the owner address
    *
-   * @param owner The address to transfer from
+   * @param from The address to transfer from
    * @param spender The address to transfer to
    * @param amount The amount to transfer
    */
-  public approve(owner: Address, spender: Address, amount: BigNumber) {
+  public approve(from: Address, spender: Address, amount: BigNumber) {
     const args = [spender, amount.toFixed(0)];
-    return this.createTransaction({ from: owner, method: 'approve', args });
+    return this.createTransaction({ from, method: 'approve', args });
   }
 
   /**
    * Increase the approved amount of tokens that a spender can spend
    *
-   * @param owner The address to transfer from
+   * @param from The address to transfer from
    * @param spender The address to transfer to
    * @param amount The amount to transfer
    */
-  public increaseApproval(owner: Address, spender: Address, amount: BigNumber) {
-    const method = 'increaseApproval';
+  public increaseApproval(from: Address, spender: Address, amount: BigNumber) {
     const args = [spender, amount.toFixed(0)];
-    return this.createTransaction({ from: owner, method, args });
+    return this.createTransaction({ from, method: 'increaseApproval', args });
   }
 
   /**
    * Decrease the approved amount of tokens that a spender can spend
    *
-   * @param owner The address to transfer from
+   * @param from The address to transfer from
    * @param spender The address to transfer to
    * @param amount The amount to transfer
    */
-  public decreaseApproval(owner: Address, spender: Address, amount: BigNumber) {
-    const method = 'decreaseApproval';
+  public decreaseApproval(from: Address, spender: Address, amount: BigNumber) {
     const args = [spender, amount.toFixed(0)];
-    return this.createTransaction({ from: owner, method, args });
+    return this.createTransaction({ from, method: 'decreaseApproval', args });
   }
 }
 
