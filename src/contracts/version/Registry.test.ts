@@ -1,10 +1,10 @@
+import { Registry } from './Registry';
 import {
-  Registry,
   ExchangeAdapterAlreadyRegisteredError,
   ExchangeAdaptersRegisteredOutOfBoundsError,
   AssetAlreadyRegisteredError,
   AssetsRegisteredOutOfBoundsError,
-} from './Registry';
+} from './Registry.error';
 import { TestEnvironment, createTestEnvironment } from '../../utils/tests/createTestEnvironment';
 import { deployRegistry } from '../../utils/tests/deployRegistry';
 import { randomAddress } from '../../utils/tests/randomAddress';
@@ -220,5 +220,10 @@ describe('Registry', () => {
   it('should get the incentive amount', async () => {
     const result = await registry.getIncentive();
     expect(result.isEqualTo(new BigNumber('1e16'))).toBe(true);
+  });
+
+  it('should check whether a user can use a fund name', async () => {
+    const result = await registry.canUseFundName(randomAddress(), 'testfund');
+    expect(result).toBe(true);
   });
 });
