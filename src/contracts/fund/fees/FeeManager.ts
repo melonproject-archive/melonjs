@@ -136,6 +136,10 @@ export class FeeManager extends Contract {
   public rewardManagementFee(from: Address) {
     return this.createTransaction({ from, method: 'rewardManagementFee' });
   }
+
+  public getFee(identifier: number, block?: number) {
+    return this.makeCall('fees', [identifier], block);
+  }
 }
 
 export interface FeeManager extends Spoke {}
