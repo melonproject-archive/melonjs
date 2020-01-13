@@ -91,7 +91,7 @@ function extract(from, to) {
     const content = fs.readFileSync(path.join(tmp, item));
 
     let output = '// tslint:disable-next-line:variable-name\n';
-    output += `export const ${name}Bytecode = '${content}';`;
+    output += `export const ${name}Bytecode = '0x${content}';`;
 
     output = prettier.format(output, { ...config, parser: 'typescript' });
     fs.writeFileSync(path.join(destination, `${name}.bin.ts`), output, 'utf8');
