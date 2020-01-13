@@ -15,11 +15,14 @@ import {
   AdapterMethodNotAllowedError,
   InvalidExchangeIndexError,
   PreTradePolicyValidationError,
+  SenderIsNotManagerOrContractError,
 } from './Trading.errors';
 import { PolicyManager } from '../policies/PolicyManager';
 import { Policy } from '../policies/Policy';
 import { toDate } from '../../../utils/toDate';
 import { AssetNotRegisteredError } from '../../version/Registry.error';
+import { sameAddress } from '../../../utils/sameAddress';
+import { Hub } from '../hub/Hub';
 
 export interface ExchangeInfo {
   exchange: Address;
@@ -88,7 +91,16 @@ export class Trading extends Contract {
 
   public returnBatchToVault(from: Address, assets: Address[]) {
     const validate = async () => {
-      // TODO: Add validation.
+      const hub = new Hub(this.environment, await this.getHub());
+      if (
+        !(
+          sameAddress(from, this.contract.address) ||
+          sameAddress(from, await hub.getManager()) ||
+          (await hub.isShutDown())
+        )
+      ) {
+        throw new SenderIsNotManagerOrContractError(from);
+      }
     };
 
     return this.createTransaction({ from, method: 'returnBatchToVault', args: [assets], validate });

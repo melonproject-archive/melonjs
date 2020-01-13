@@ -177,9 +177,7 @@ export class Participation extends Contract {
    * @param assets The addresses of the assets
    */
   public disableInvestment(from: Address, assets: Address[]) {
-    const validate = async () => {};
-
-    return this.createTransaction({ from, method: 'disableInvestment', args: [assets], validate });
+    return this.createTransaction({ from, method: 'disableInvestment', args: [assets] });
   }
 
   /**
