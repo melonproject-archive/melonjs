@@ -4,74 +4,17 @@ import { Address } from '../../Address';
 import { RegistryAbi } from '../../abis/Registry.abi';
 import { Environment } from '../../Environment';
 import { hexToBytes } from 'web3-utils';
-import { ValidationError } from '../../errors/ValidationError';
 import { toBigNumber } from '../../utils/toBigNumber';
 import { stringToBytes } from '../../utils/stringToBytes';
 import { hexToString } from '../../utils/hexToString';
-
-export class ExchangeAdapterAlreadyRegisteredError extends ValidationError {
-  public name = 'ExchangeAdapterAlreadyRegisteredError';
-
-  constructor(message: string = 'Exchange adapter is already registered.') {
-    super(message);
-  }
-}
-
-export class ExchangeAdaptersRegisteredOutOfBoundsError extends ValidationError {
-  public name = 'ExchangeAdaptersRegisteredOutOfBoundsError';
-
-  constructor(
-    public readonly numberOfAdapters: number,
-    public readonly maxRegisteredAdapters: number,
-    message: string = 'Number of registered exchange adapters exceeds the maxium.',
-  ) {
-    super(message);
-  }
-}
-
-export class VersionAlreadyRegisteredError extends ValidationError {
-  public name = 'VersionAlreadyRegisteredError';
-
-  constructor(message: string = 'Version is already registered.') {
-    super(message);
-  }
-}
-
-export class VersionNameAlreadyExistsError extends ValidationError {
-  public name = 'VersionNameAlreadyExistsError';
-
-  constructor(message: string = 'Version name already exists.') {
-    super(message);
-  }
-}
-
-export class AssetAlreadyRegisteredError extends ValidationError {
-  public name = 'AssetAlreadyRegisteredError';
-
-  constructor(message: string = 'Asset is already registered.') {
-    super(message);
-  }
-}
-
-export class AssetsRegisteredOutOfBoundsError extends ValidationError {
-  public name = 'AssetsRegisteredOutOfBoundsError';
-
-  constructor(
-    public readonly numberOfAsset: number,
-    public readonly maxRegisteredAssets: number,
-    message: string = 'Number of registered assets exceeds the maximum.',
-  ) {
-    super(message);
-  }
-}
-
-export class AssetNotRegisteredError extends ValidationError {
-  public name = 'AssetNotRegisteredError';
-
-  constructor(public readonly asset: Address, message: string = 'Asset is not registered.') {
-    super(message);
-  }
-}
+import {
+  ExchangeAdapterAlreadyRegisteredError,
+  ExchangeAdaptersRegisteredOutOfBoundsError,
+  VersionAlreadyRegisteredError,
+  VersionNameAlreadyExistsError,
+  AssetsRegisteredOutOfBoundsError,
+  AssetAlreadyRegisteredError,
+} from './Registry.error';
 
 export interface VersionInformation {
   exists: boolean;
@@ -306,6 +249,17 @@ export class Registry extends Contract {
   public async getIncentive(block?: number) {
     const result = await this.makeCall<string>('incentive', undefined, block);
     return toBigNumber(result);
+  }
+
+  /**
+   * Checks wether a user can use a certain fund name
+   *
+   * @param user The address of the user
+   * @param name The name of the fund
+   * @param block The block number to execute the call on.
+   */
+  public async canUseFundName(user: Address, name: string, block?: number) {
+    return this.makeCall<boolean>('canUseFundName', [user, name], block);
   }
 
   /**
