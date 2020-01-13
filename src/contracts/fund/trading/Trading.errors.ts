@@ -56,6 +56,14 @@ export class SenderIsNotFundManagerError extends ValidationError {
   }
 }
 
+export class SenderIsNotManagerOrContractError extends ValidationError {
+  public readonly name = 'SenderIsNotManagerOrContractError';
+
+  constructor(public readonly sender: Address, message: string = 'Only the manager can call this function.') {
+    super(message);
+  }
+}
+
 export class PreTradePolicyValidationError extends ValidationError {
   public readonly name = 'PreTradePolicyValidationError';
 
