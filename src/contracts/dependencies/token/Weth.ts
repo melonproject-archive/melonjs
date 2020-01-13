@@ -21,7 +21,7 @@ export class Weth extends Contract {
    * @param amount The amount to deposit
    */
   public deposit(from: Address, amount: BigNumber) {
-    return this.createTransaction({ from, method: 'deposit', args: [amount.toFixed(0)] });
+    return this.createTransaction({ from, method: 'deposit', args: undefined, value: amount });
   }
 
   /**
