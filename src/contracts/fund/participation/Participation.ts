@@ -23,6 +23,8 @@ import { PolicyManager } from '../policies/PolicyManager';
 import { Policy } from '../policies/Policy';
 import { zeroAddress } from '../../../utils/zeroAddress';
 import { zeroBigNumber } from '../../../utils/zeroBigNumber';
+import { PreminedToken } from '../../dependencies/token/PreminedToken';
+import { OutOfBalanceError } from '../../../errors/OutOfBalanceError';
 
 export interface Request {
   investmentAsset: Address;
@@ -285,6 +287,12 @@ export class Participation extends Contract {
       const request = await this.getRequest(from);
       if (typeof request !== 'undefined') {
         throw new InvestmentRequestExistsError(request);
+      }
+
+      const token = new PreminedToken(this.environment, investmentAsset);
+      const balance = await token.getBalanceOf(from);
+      if (investmentAmount.isGreaterThan(balance)) {
+        throw new OutOfBalanceError(investmentAmount.toNumber(), balance.toNumber());
       }
 
       const encodedSignature = keccak256(functionSignature(ParticipationAbi, 'requestInvestment')).substr(0, 10);
