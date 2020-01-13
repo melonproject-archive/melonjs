@@ -1,11 +1,11 @@
-import { toWei, fromWei } from 'web3-utils';
+import { fromWei, toWei } from 'web3-utils';
 import { Weth } from './Weth';
 import { WETHBytecode } from '../../../abis/WETH.bin';
-import { toBigNumber } from '../../../utils/toBigNumber';
 import { createTestEnvironment, TestEnvironment } from '../../../utils/tests/createTestEnvironment';
 import { OutOfBalanceError } from '../../../errors/OutOfBalanceError';
 import { randomAddress } from '../../../utils/tests/randomAddress';
 import BigNumber from 'bignumber.js';
+import { toBigNumber } from '../../../utils/toBigNumber';
 
 describe('Weth', () => {
   let environment: TestEnvironment;
