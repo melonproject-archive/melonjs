@@ -71,7 +71,7 @@ export class Spoke extends Contract {
    * @param block The block number to execute the call on.
    */
   public isInitialized(block?: number) {
-    return this.makeCall<string>('initialized', undefined, block);
+    return this.makeCall<boolean>('initialized', undefined, block);
   }
 
   /**
