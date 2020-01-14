@@ -249,7 +249,7 @@ export class Trading extends Contract {
 
     const policyManagerAddress = (await this.getRoutes()).policyManager;
     const policyManager = new PolicyManager(this.environment, policyManagerAddress);
-    const exchangeAddress = (await this.getExchange(args.exchangeIndex)).exchange;
+    const exchangeAddress = exchange.exchange;
 
     const policies = await policyManager.getPoliciesBySignature(encodedSignature);
     const prePolicies = policies.pre;
