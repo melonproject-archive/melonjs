@@ -155,7 +155,6 @@ export class FundFactory extends Contract {
       const registry = new Registry(this.environment, await this.getRegistry());
 
       // validation for beginSetup
-
       const [isValidFundName, canUseFundName, denominationAssetRegistered] = await Promise.all([
         registry.isValidFundName(settings.name),
         registry.canUseFundName(from, settings.name),
