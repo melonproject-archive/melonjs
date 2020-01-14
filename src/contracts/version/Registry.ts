@@ -269,7 +269,7 @@ export class Registry extends Contract {
    * @param name The name of the fund
    * @param block The block number to execute the call on.
    */
-  public async isValidFundName(name: string, block?: number) {
+  public isValidFundName(name: string, block?: number) {
     return this.makeCall<boolean>('isValidFundName', [name], block);
   }
 
@@ -280,7 +280,7 @@ export class Registry extends Contract {
    * @param name The name of the fund
    * @param block The block number to execute the call on.
    */
-  public async canUseFundName(user: Address, name: string, block?: number) {
+  public canUseFundName(user: Address, name: string, block?: number) {
     return this.makeCall<boolean>('canUseFundName', [user, name], block);
   }
 
