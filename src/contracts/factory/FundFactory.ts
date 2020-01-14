@@ -160,30 +160,33 @@ export class FundFactory extends Contract {
         registry.canUseFundName(from, settings.name),
         registry.isAssetRegistered(settings.denominationAsset),
       ]);
-      if (!isValidFundName) throw new InvalidFundNameError(settings.name);
-      if (!canUseFundName) throw new CannotUseFundNameError(settings.name);
-      if (!denominationAssetRegistered) throw new DenominationAssetNotRegisteredError();
+      if (!isValidFundName) {
+        throw new InvalidFundNameError(settings.name);
+      }
+      if (!canUseFundName) {
+        throw new CannotUseFundNameError(settings.name);
+      }
+      if (!denominationAssetRegistered) {
+        throw new DenominationAssetNotRegisteredError();
+      }
 
       // validation for createFeeManager
       settings.fees.map(async fee => {
-        const isFeeRegistered = await registry.isFeeRegistered(fee);
-        if (!isFeeRegistered) {
+        if (!(await registry.isFeeRegistered(fee))) {
           throw new FeeNotRegisteredError(fee);
         }
       });
 
       if (settings.fees.length > 0) {
         const fee = new Fee(this.environment, settings.fees[0]);
-        const identifier = await fee.identifier();
-        if (identifier !== 0) {
+        if ((await fee.identifier()) !== 0) {
           throw new ManagementFeeMustBeAtIndexZeroError(settings.fees[0]);
         }
       }
 
       if (settings.fees.length > 0) {
         const fee = new Fee(this.environment, settings.fees[1]);
-        const identifier = await fee.identifier();
-        if (identifier !== 1) {
+        if ((await fee.identifier()) !== 1) {
           throw new PerformanceFeeMustBeAtIndexOneError(settings.fees[1]);
         }
       }
@@ -191,8 +194,7 @@ export class FundFactory extends Contract {
       // validation for createParticipation
       await Promise.all(
         settings.defaultAssets.map(async asset => {
-          const isAssetRegistered = await registry.isAssetRegistered(asset);
-          if (!isAssetRegistered) {
+          if (!(await registry.isAssetRegistered(asset))) {
             throw new AssetNotRegisteredError(asset);
           }
         }),
@@ -205,8 +207,7 @@ export class FundFactory extends Contract {
 
       await Promise.all(
         settings.adapters.map(async (adapter, index) => {
-          const isExchangeAdapaterRegistered = await registry.isExchangeAdapterRegistered(adapter);
-          if (!isExchangeAdapaterRegistered) {
+          if (!(await registry.isExchangeAdapterRegistered(adapter))) {
             throw new ExchangeAdapterNotRegisteredError(adapter);
           }
 
