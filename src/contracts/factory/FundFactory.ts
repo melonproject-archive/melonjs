@@ -23,6 +23,7 @@ import {
   AssetNotRegisteredError,
   ExchangeAdapterNotRegisteredError,
   ExchangeAndAdapterDoNotMatchError,
+  InvalidFundNameError,
 } from '../version/Registry.error';
 import { ManagementFeeMustBeAtIndexZeroError, PerformanceFeeMustBeAtIndexOneError } from '../fund/fees/FeeManager';
 import { Fee } from '../fund/fees/Fee';
@@ -154,14 +155,15 @@ export class FundFactory extends Contract {
       const registry = new Registry(this.environment, await this.getRegistry());
 
       // validation for beginSetup
-      const canUseFundName = registry.canUseFundName(from, settings.name);
-      if (!canUseFundName) {
-        throw new CannotUseFundNameError(settings.name);
-      }
 
-      if (!(await registry.isAssetRegistered(settings.denominationAsset))) {
-        throw new DenominationAssetNotRegisteredError();
-      }
+      const [isValidFundName, canUseFundName, denominationAssetRegistered] = await Promise.all([
+        registry.isValidFundName(settings.name),
+        registry.canUseFundName(from, settings.name),
+        registry.isAssetRegistered(settings.denominationAsset),
+      ]);
+      if (!isValidFundName) throw new InvalidFundNameError(settings.name);
+      if (!canUseFundName) throw new CannotUseFundNameError(settings.name);
+      if (!denominationAssetRegistered) throw new DenominationAssetNotRegisteredError();
 
       // validation for createFeeManager
       settings.fees.map(async fee => {

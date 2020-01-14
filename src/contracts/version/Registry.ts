@@ -264,7 +264,17 @@ export class Registry extends Contract {
   }
 
   /**
-   * Checks wether a user can use a certain fund name
+   * Checks whether a fund name is valid
+   *
+   * @param name The name of the fund
+   * @param block The block number to execute the call on.
+   */
+  public async isValidFundName(name: string, block?: number) {
+    return this.makeCall<boolean>('isValidFundName', [name], block);
+  }
+
+  /**
+   * Checks whether a user can use a certain fund name
    *
    * @param user The address of the user
    * @param name The name of the fund

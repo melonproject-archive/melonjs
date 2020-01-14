@@ -37,6 +37,13 @@ export class ExchangeAndAdapterDoNotMatchError extends ValidationError {
   }
 }
 
+export class InvalidFundNameError extends ValidationError {
+  public name = 'InvalidFundNameError';
+  constructor(public readonly fundName: string, message: string = 'Fund name is invalid.') {
+    super(message);
+  }
+}
+
 export class CannotUseFundNameError extends ValidationError {
   public name = 'CannotUseFundNameError';
   constructor(public readonly fundName: string, message: string = 'Fund name cannot be used.') {
