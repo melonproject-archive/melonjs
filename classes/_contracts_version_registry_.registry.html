@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Registry | @melonproject/melonjs - v0.0.70</title>
+	<title>Registry | @melonproject/melonjs - v0.0.71</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">@melonproject/melonjs - v0.0.70</a>
+					<a href="../index.html" class="title">@melonproject/melonjs - v0.0.71</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -70,6 +70,9 @@
 				<ul class="tsd-hierarchy">
 					<li>
 						<a href="_contract_.contract.html" class="tsd-signature-type">Contract</a>
+					</li>
+					<li>
+						<a href="_contracts_dependencies_authorization_dsauth_.dsauth.html" class="tsd-signature-type">DSAuth</a>
 						<ul class="tsd-hierarchy">
 							<li>
 								<span class="target">Registry</span>
@@ -85,21 +88,22 @@
 						<section class="tsd-index-section tsd-is-inherited">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><a href="_contracts_version_registry_.registry.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited"><a href="_contracts_version_registry_.registry.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_contracts_version_registry_.registry.html#contract" class="tsd-kind-icon">contract</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_contracts_version_registry_.registry.html#environment" class="tsd-kind-icon">environment</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited"><a href="_contracts_version_registry_.registry.html#contract" class="tsd-kind-icon">contract</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited"><a href="_contracts_version_registry_.registry.html#environment" class="tsd-kind-icon">environment</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-static"><a href="_contracts_version_registry_.registry.html#abi" class="tsd-kind-icon">abi</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-protected"><a href="_contracts_version_registry_.registry.html#createtransaction" class="tsd-kind-icon">create<wbr>Transaction</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_version_registry_.registry.html#canusefundname" class="tsd-kind-icon">can<wbr>Use<wbr>Fund<wbr>Name</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite tsd-is-inherited tsd-is-protected"><a href="_contracts_version_registry_.registry.html#createtransaction" class="tsd-kind-icon">create<wbr>Transaction</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_version_registry_.registry.html#getassetinformation" class="tsd-kind-icon">get<wbr>Asset<wbr>Information</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_version_registry_.registry.html#getengine" class="tsd-kind-icon">get<wbr>Engine</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_version_registry_.registry.html#getethfinexwrapperregistry" class="tsd-kind-icon">get<wbr>Ethfinex<wbr>Wrapper<wbr>Registry</a></li>
@@ -108,6 +112,7 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_version_registry_.registry.html#getmaxregisteredentities" class="tsd-kind-icon">get<wbr>Max<wbr>Registered<wbr>Entities</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_version_registry_.registry.html#getmlntoken" class="tsd-kind-icon">get<wbr>Mln<wbr>Token</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_version_registry_.registry.html#getnativeasset" class="tsd-kind-icon">get<wbr>Native<wbr>Asset</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_contracts_version_registry_.registry.html#getowner" class="tsd-kind-icon">get<wbr>Owner</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_version_registry_.registry.html#getpricesource" class="tsd-kind-icon">get<wbr>Price<wbr>Source</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_version_registry_.registry.html#getregisteredassets" class="tsd-kind-icon">get<wbr>Registered<wbr>Assets</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_version_registry_.registry.html#getregisteredexchangeadapters" class="tsd-kind-icon">get<wbr>Registered<wbr>Exchange<wbr>Adapters</a></li>
@@ -117,7 +122,8 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_version_registry_.registry.html#isassetregistered" class="tsd-kind-icon">is<wbr>Asset<wbr>Registered</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_version_registry_.registry.html#isexchangeadapterregistered" class="tsd-kind-icon">is<wbr>Exchange<wbr>Adapter<wbr>Registered</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_version_registry_.registry.html#isfeeregistered" class="tsd-kind-icon">is<wbr>Fee<wbr>Registered</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-protected"><a href="_contracts_version_registry_.registry.html#makecall" class="tsd-kind-icon">make<wbr>Call</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_version_registry_.registry.html#isvalidfundname" class="tsd-kind-icon">is<wbr>Valid<wbr>Fund<wbr>Name</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite tsd-is-inherited tsd-is-protected"><a href="_contracts_version_registry_.registry.html#makecall" class="tsd-kind-icon">make<wbr>Call</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_version_registry_.registry.html#registerasset" class="tsd-kind-icon">register<wbr>Asset</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_version_registry_.registry.html#registerexchangeadapter" class="tsd-kind-icon">register<wbr>Exchange<wbr>Adapter</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_version_registry_.registry.html#registerfees" class="tsd-kind-icon">register<wbr>Fees</a></li>
@@ -125,8 +131,8 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_version_registry_.registry.html#setmlntoken" class="tsd-kind-icon">set<wbr>Mln<wbr>Token</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_version_registry_.registry.html#setnativeasset" class="tsd-kind-icon">set<wbr>Native<wbr>Asset</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_version_registry_.registry.html#versionnameexists" class="tsd-kind-icon">version<wbr>Name<wbr>Exists</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-static"><a href="_contracts_version_registry_.registry.html#createdeployment" class="tsd-kind-icon">create<wbr>Deployment</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_contracts_version_registry_.registry.html#deploy" class="tsd-kind-icon">deploy</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite tsd-is-inherited tsd-is-static"><a href="_contracts_version_registry_.registry.html#createdeployment" class="tsd-kind-icon">create<wbr>Deployment</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-static"><a href="_contracts_version_registry_.registry.html#deploy" class="tsd-kind-icon">deploy</a></li>
 							</ul>
 						</section>
 					</div>
@@ -134,10 +140,10 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
 				<h2>Constructors</h2>
-				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited">
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited">
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
-					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited">
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited">
 						<li class="tsd-signature tsd-kind-icon">new <wbr>Registry<span class="tsd-signature-symbol">(</span>environment<span class="tsd-signature-symbol">: </span><a href="_environment_.environment.html" class="tsd-signature-type">Environment</a>, contract<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">EthContract</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_contracts_version_registry_.registry.html" class="tsd-signature-type">Registry</a></li>
 						<li class="tsd-signature tsd-kind-icon">new <wbr>Registry<span class="tsd-signature-symbol">(</span>environment<span class="tsd-signature-symbol">: </span><a href="_environment_.environment.html" class="tsd-signature-type">Environment</a>, address<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_contracts_version_registry_.registry.html" class="tsd-signature-type">Registry</a></li>
 						<li class="tsd-signature tsd-kind-icon">new <wbr>Registry<span class="tsd-signature-symbol">(</span>environment<span class="tsd-signature-symbol">: </span><a href="_environment_.environment.html" class="tsd-signature-type">Environment</a>, address<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_contracts_version_registry_.registry.html" class="tsd-signature-type">Registry</a></li>
@@ -146,6 +152,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_contract_.contract.html">Contract</a>.<a href="_contract_.contract.html#constructor">constructor</a></p>
+								<p>Overrides <a href="_contract_.contract.html">Contract</a>.<a href="_contract_.contract.html#constructor">constructor</a></p>
 								<ul>
 									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/Contract.ts#L20">src/Contract.ts:20</a></li>
 								</ul>
@@ -164,6 +171,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_contract_.contract.html">Contract</a>.<a href="_contract_.contract.html#constructor">constructor</a></p>
+								<p>Overrides <a href="_contract_.contract.html">Contract</a>.<a href="_contract_.contract.html#constructor">constructor</a></p>
 								<ul>
 									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/Contract.ts#L22">src/Contract.ts:22</a></li>
 								</ul>
@@ -182,6 +190,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_contract_.contract.html">Contract</a>.<a href="_contract_.contract.html#constructor">constructor</a></p>
+								<p>Overrides <a href="_contract_.contract.html">Contract</a>.<a href="_contract_.contract.html#constructor">constructor</a></p>
 								<ul>
 									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/Contract.ts#L23">src/Contract.ts:23</a></li>
 								</ul>
@@ -202,23 +211,25 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited">
 					<a name="contract" class="tsd-anchor"></a>
 					<h3>contract</h3>
 					<div class="tsd-signature tsd-kind-icon">contract<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EthContract</span></div>
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_contract_.contract.html">Contract</a>.<a href="_contract_.contract.html#contract">contract</a></p>
+						<p>Overrides <a href="_contract_.contract.html">Contract</a>.<a href="_contract_.contract.html#contract">contract</a></p>
 						<ul>
 							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/Contract.ts#L20">src/Contract.ts:20</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited">
 					<a name="environment" class="tsd-anchor"></a>
 					<h3>environment</h3>
 					<div class="tsd-signature tsd-kind-icon">environment<span class="tsd-signature-symbol">:</span> <a href="_environment_.environment.html" class="tsd-signature-type">Environment</a></div>
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_contract_.contract.html">Contract</a>.<a href="_contract_.contract.html#environment">environment</a></p>
+						<p>Overrides <a href="_contract_.contract.html">Contract</a>.<a href="_contract_.contract.html#environment">environment</a></p>
 						<ul>
 							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/Contract.ts#L25">src/Contract.ts:25</a></li>
 						</ul>
@@ -231,23 +242,67 @@
 					<aside class="tsd-sources">
 						<p>Overrides <a href="_contract_.contract.html">Contract</a>.<a href="_contract_.contract.html#abi">abi</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L111">src/contracts/version/Registry.ts:111</a></li>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L56">src/contracts/version/Registry.ts:56</a></li>
 						</ul>
 					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-protected">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="canusefundname" class="tsd-anchor"></a>
+					<h3>can<wbr>Use<wbr>Fund<wbr>Name</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">can<wbr>Use<wbr>Fund<wbr>Name<span class="tsd-signature-symbol">(</span>user<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a>, name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, block<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L283">src/contracts/version/Registry.ts:283</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Checks whether a user can use a certain fund name</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>user: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The address of the user</p>
+									</div>
+								</li>
+								<li>
+									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The name of the fund</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> block: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The block number to execute the call on.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite tsd-is-inherited tsd-is-protected">
 					<a name="createtransaction" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagProtected">Protected</span> create<wbr>Transaction</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-protected">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite tsd-is-inherited tsd-is-protected">
 						<li class="tsd-signature tsd-kind-icon">create<wbr>Transaction&lt;TArgs&gt;<span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">CreateTransactionArgs</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TArgs</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_transaction_.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionReceipt</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_contract_.contract.html">Contract</a>.<a href="_contract_.contract.html#createtransaction">createTransaction</a></p>
+								<p>Overrides <a href="_contract_.contract.html">Contract</a>.<a href="_contract_.contract.html#createtransaction">createTransaction</a></p>
 								<ul>
 									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/Contract.ts#L45">src/Contract.ts:45</a></li>
 								</ul>
@@ -278,7 +333,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L261">src/contracts/version/Registry.ts:261</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L206">src/contracts/version/Registry.ts:206</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -304,7 +359,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L122">src/contracts/version/Registry.ts:122</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L67">src/contracts/version/Registry.ts:67</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -327,7 +382,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L154">src/contracts/version/Registry.ts:154</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L99">src/contracts/version/Registry.ts:99</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -350,7 +405,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L265">src/contracts/version/Registry.ts:265</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L210">src/contracts/version/Registry.ts:210</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -376,7 +431,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L306">src/contracts/version/Registry.ts:306</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L261">src/contracts/version/Registry.ts:261</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -407,7 +462,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L117">src/contracts/version/Registry.ts:117</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L62">src/contracts/version/Registry.ts:62</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -430,7 +485,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L136">src/contracts/version/Registry.ts:136</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L81">src/contracts/version/Registry.ts:81</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -453,13 +508,45 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L150">src/contracts/version/Registry.ts:150</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L95">src/contracts/version/Registry.ts:95</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> block: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="getowner" class="tsd-anchor"></a>
+					<h3>get<wbr>Owner</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Owner<span class="tsd-signature-symbol">(</span>block<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_contracts_dependencies_authorization_dsauth_.dsauth.html">DSAuth</a>.<a href="_contracts_dependencies_authorization_dsauth_.dsauth.html#getowner">getOwner</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/dependencies/authorization/DSAuth.ts#L18">src/contracts/dependencies/authorization/DSAuth.ts:18</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Gets the address of the owner</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> block: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The block number to execute the call on.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -476,7 +563,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L158">src/contracts/version/Registry.ts:158</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L103">src/contracts/version/Registry.ts:103</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -499,7 +586,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L162">src/contracts/version/Registry.ts:162</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L107">src/contracts/version/Registry.ts:107</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -522,7 +609,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L194">src/contracts/version/Registry.ts:194</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L139">src/contracts/version/Registry.ts:139</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -545,7 +632,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L229">src/contracts/version/Registry.ts:229</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L174">src/contracts/version/Registry.ts:174</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -568,7 +655,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L269">src/contracts/version/Registry.ts:269</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L214">src/contracts/version/Registry.ts:214</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -594,7 +681,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L318">src/contracts/version/Registry.ts:318</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L294">src/contracts/version/Registry.ts:294</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -637,16 +724,27 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L297">src/contracts/version/Registry.ts:297</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L252">src/contracts/version/Registry.ts:252</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Checks if an asset is already registered</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>asset: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The address of the asset</p>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> block: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The block number to execute the call on.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -663,7 +761,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L198">src/contracts/version/Registry.ts:198</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L143">src/contracts/version/Registry.ts:143</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -689,32 +787,81 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L293">src/contracts/version/Registry.ts:293</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L242">src/contracts/version/Registry.ts:242</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Checks if a fee is already registered</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>feeAddress: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The address of the fee contract</p>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> block: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The block number to execute the call on.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-protected">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="isvalidfundname" class="tsd-anchor"></a>
+					<h3>is<wbr>Valid<wbr>Fund<wbr>Name</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Valid<wbr>Fund<wbr>Name<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, block<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L272">src/contracts/version/Registry.ts:272</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Checks whether a fund name is valid</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The name of the fund</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> block: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The block number to execute the call on.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite tsd-is-inherited tsd-is-protected">
 					<a name="makecall" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagProtected">Protected</span> make<wbr>Call</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-protected">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite tsd-is-inherited tsd-is-protected">
 						<li class="tsd-signature tsd-kind-icon">make<wbr>Call&lt;TReturn, TArgs&gt;<span class="tsd-signature-symbol">(</span>method<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, args<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">TArgs</span>, block<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TReturn</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_contract_.contract.html">Contract</a>.<a href="_contract_.contract.html#makecall">makeCall</a></p>
+								<p>Overrides <a href="_contract_.contract.html">Contract</a>.<a href="_contract_.contract.html#makecall">makeCall</a></p>
 								<ul>
 									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/Contract.ts#L59">src/Contract.ts:59</a></li>
 								</ul>
@@ -754,7 +901,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L233">src/contracts/version/Registry.ts:233</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L178">src/contracts/version/Registry.ts:178</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -780,7 +927,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L166">src/contracts/version/Registry.ts:166</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L111">src/contracts/version/Registry.ts:111</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -806,7 +953,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L287">src/contracts/version/Registry.ts:287</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L232">src/contracts/version/Registry.ts:232</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -832,7 +979,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L209">src/contracts/version/Registry.ts:209</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L154">src/contracts/version/Registry.ts:154</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -875,7 +1022,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L132">src/contracts/version/Registry.ts:132</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L77">src/contracts/version/Registry.ts:77</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -909,7 +1056,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L146">src/contracts/version/Registry.ts:146</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L91">src/contracts/version/Registry.ts:91</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -946,7 +1093,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L283">src/contracts/version/Registry.ts:283</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L228">src/contracts/version/Registry.ts:228</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -973,16 +1120,17 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-static">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite tsd-is-inherited tsd-is-static">
 					<a name="createdeployment" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> create<wbr>Deployment</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-static">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite tsd-is-inherited tsd-is-static">
 						<li class="tsd-signature tsd-kind-icon">create<wbr>Deployment&lt;TContract, TArgs&gt;<span class="tsd-signature-symbol">(</span>environment<span class="tsd-signature-symbol">: </span><a href="_environment_.environment.html" class="tsd-signature-type">Environment</a>, bytecode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, from<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a>, args<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">TArgs</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_transaction_.deployment.html" class="tsd-signature-type">Deployment</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TContract</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_contract_.contract.html">Contract</a>.<a href="_contract_.contract.html#createdeployment">createDeployment</a></p>
+								<p>Overrides <a href="_contract_.contract.html">Contract</a>.<a href="_contract_.contract.html#createdeployment">createDeployment</a></p>
 								<ul>
 									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/Contract.ts#L30">src/Contract.ts:30</a></li>
 								</ul>
@@ -1015,17 +1163,18 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-static">
 					<a name="deploy" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> deploy</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-static">
 						<li class="tsd-signature tsd-kind-icon">deploy<span class="tsd-signature-symbol">(</span>environment<span class="tsd-signature-symbol">: </span><a href="_environment_.environment.html" class="tsd-signature-type">Environment</a>, bytecode<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, from<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a>, owner<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_transaction_.deployment.html" class="tsd-signature-type">Deployment</a><span class="tsd-signature-symbol">&lt;</span><a href="_contracts_version_registry_.registry.html" class="tsd-signature-type">Registry</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
+								<p>Overrides <a href="_contracts_dependencies_authorization_dsauth_.dsauth.html">DSAuth</a>.<a href="_contracts_dependencies_authorization_dsauth_.dsauth.html#deploy">deploy</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L113">src/contracts/version/Registry.ts:113</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/version/Registry.ts#L58">src/contracts/version/Registry.ts:58</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1062,39 +1211,27 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="_contracts_version_registry_.assetalreadyregisterederror.html" class="tsd-kind-icon">Asset<wbr>Already<wbr>Registered<wbr>Error</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="_contracts_version_registry_.assetnotregisterederror.html" class="tsd-kind-icon">Asset<wbr>Not<wbr>Registered<wbr>Error</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="_contracts_version_registry_.assetsregisteredoutofboundserror.html" class="tsd-kind-icon">Assets<wbr>Registered<wbr>Out<wbr>OfBounds<wbr>Error</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="_contracts_version_registry_.exchangeadapteralreadyregisterederror.html" class="tsd-kind-icon">Exchange<wbr>Adapter<wbr>Already<wbr>Registered<wbr>Error</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="_contracts_version_registry_.exchangeadaptersregisteredoutofboundserror.html" class="tsd-kind-icon">Exchange<wbr>Adapters<wbr>Registered<wbr>Out<wbr>OfBounds<wbr>Error</a>
-					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class tsd-parent-kind-external-module">
 						<a href="_contracts_version_registry_.registry.html" class="tsd-kind-icon">Registry</a>
 						<ul>
-							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited">
+							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited">
 								<a href="_contracts_version_registry_.registry.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited">
 								<a href="_contracts_version_registry_.registry.html#contract" class="tsd-kind-icon">contract</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited">
 								<a href="_contracts_version_registry_.registry.html#environment" class="tsd-kind-icon">environment</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-static">
 								<a href="_contracts_version_registry_.registry.html#abi" class="tsd-kind-icon">abi</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-protected">
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_contracts_version_registry_.registry.html#canusefundname" class="tsd-kind-icon">can<wbr>Use<wbr>Fund<wbr>Name</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite tsd-is-inherited tsd-is-protected">
 								<a href="_contracts_version_registry_.registry.html#createtransaction" class="tsd-kind-icon">create<wbr>Transaction</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
@@ -1120,6 +1257,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_contracts_version_registry_.registry.html#getnativeasset" class="tsd-kind-icon">get<wbr>Native<wbr>Asset</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_contracts_version_registry_.registry.html#getowner" class="tsd-kind-icon">get<wbr>Owner</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_contracts_version_registry_.registry.html#getpricesource" class="tsd-kind-icon">get<wbr>Price<wbr>Source</a>
@@ -1148,7 +1288,10 @@
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_contracts_version_registry_.registry.html#isfeeregistered" class="tsd-kind-icon">is<wbr>Fee<wbr>Registered</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-protected">
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_contracts_version_registry_.registry.html#isvalidfundname" class="tsd-kind-icon">is<wbr>Valid<wbr>Fund<wbr>Name</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite tsd-is-inherited tsd-is-protected">
 								<a href="_contracts_version_registry_.registry.html#makecall" class="tsd-kind-icon">make<wbr>Call</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
@@ -1172,22 +1315,16 @@
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_contracts_version_registry_.registry.html#versionnameexists" class="tsd-kind-icon">version<wbr>Name<wbr>Exists</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited tsd-is-static">
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite tsd-is-inherited tsd-is-static">
 								<a href="_contracts_version_registry_.registry.html#createdeployment" class="tsd-kind-icon">create<wbr>Deployment</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-static">
 								<a href="_contracts_version_registry_.registry.html#deploy" class="tsd-kind-icon">deploy</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="_contracts_version_registry_.versionalreadyregisterederror.html" class="tsd-kind-icon">Version<wbr>Already<wbr>Registered<wbr>Error</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="_contracts_version_registry_.versionnamealreadyexistserror.html" class="tsd-kind-icon">Version<wbr>Name<wbr>Already<wbr>Exists<wbr>Error</a>
-					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="../interfaces/_contracts_version_registry_.assetbaseinformation.html" class="tsd-kind-icon">Asset<wbr>Base<wbr>Information</a>
 					</li>

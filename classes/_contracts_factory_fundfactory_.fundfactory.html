@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>FundFactory | @melonproject/melonjs - v0.0.70</title>
+	<title>FundFactory | @melonproject/melonjs - v0.0.71</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">@melonproject/melonjs - v0.0.70</a>
+					<a href="../index.html" class="title">@melonproject/melonjs - v0.0.71</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -128,7 +128,6 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_factory_fundfactory_.fundfactory.html#getlastfundid" class="tsd-kind-icon">get<wbr>Last<wbr>Fund<wbr>Id</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_factory_fundfactory_.fundfactory.html#getmanagerstohubs" class="tsd-kind-icon">get<wbr>Managers<wbr>ToHubs</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_factory_fundfactory_.fundfactory.html#getmanagerstoroutes" class="tsd-kind-icon">get<wbr>Managers<wbr>ToRoutes</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_factory_fundfactory_.fundfactory.html#getmanagerstosettings" class="tsd-kind-icon">get<wbr>Managers<wbr>ToSettings</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_factory_fundfactory_.fundfactory.html#getmlntoken" class="tsd-kind-icon">get<wbr>Mln<wbr>Token</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="_contracts_factory_fundfactory_.fundfactory.html#getpricesource" class="tsd-kind-icon">get<wbr>Price<wbr>Source</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_factory_fundfactory_.fundfactory.html#getregistry" class="tsd-kind-icon">get<wbr>Registry</a></li>
@@ -246,7 +245,7 @@
 					<aside class="tsd-sources">
 						<p>Overrides <a href="_contract_.contract.html">Contract</a>.<a href="_contract_.contract.html#abi">abi</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L82">src/contracts/factory/FundFactory.ts:82</a></li>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L55">src/contracts/factory/FundFactory.ts:55</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -263,16 +262,27 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L158">src/contracts/factory/FundFactory.ts:158</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L139">src/contracts/factory/FundFactory.ts:139</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Begin fund setup transaction</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>from: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The address of the sender</p>
+									</div>
 								</li>
 								<li>
 									<h5>settings: <a href="../interfaces/_contracts_factory_fundfactory_.settings.html" class="tsd-signature-type">Settings</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The fund settings</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_transaction_.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionReceipt</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -327,13 +337,21 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L271">src/contracts/factory/FundFactory.ts:271</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L342">src/contracts/factory/FundFactory.ts:342</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Complete the fund setup</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>from: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The address of the sender</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_transaction_.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionReceipt</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -350,13 +368,21 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L187">src/contracts/factory/FundFactory.ts:187</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L230">src/contracts/factory/FundFactory.ts:230</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Create the Accounting contract</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>from: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The address of the sender</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_transaction_.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionReceipt</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -373,13 +399,21 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L199">src/contracts/factory/FundFactory.ts:199</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L246">src/contracts/factory/FundFactory.ts:246</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Create the FeeManager contract</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>from: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The address of the sender</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_transaction_.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionReceipt</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -396,13 +430,21 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L211">src/contracts/factory/FundFactory.ts:211</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L262">src/contracts/factory/FundFactory.ts:262</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Create the Participation contract</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>from: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The address of the sender</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_transaction_.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionReceipt</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -419,13 +461,21 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L223">src/contracts/factory/FundFactory.ts:223</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L278">src/contracts/factory/FundFactory.ts:278</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Create the PolicyManager contract</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>from: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The address of the sender</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_transaction_.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionReceipt</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -442,13 +492,21 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L235">src/contracts/factory/FundFactory.ts:235</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L294">src/contracts/factory/FundFactory.ts:294</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Create the Shares contract</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>from: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The address of the sender</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_transaction_.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionReceipt</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -465,13 +523,21 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L247">src/contracts/factory/FundFactory.ts:247</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L310">src/contracts/factory/FundFactory.ts:310</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Create the Trading contract</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>from: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The address of the sender</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_transaction_.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionReceipt</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -519,13 +585,21 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L259">src/contracts/factory/FundFactory.ts:259</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L326">src/contracts/factory/FundFactory.ts:326</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Create the Vault contract</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>from: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The address of the sender</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_transaction_.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionReceipt</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -542,7 +616,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L358">src/contracts/factory/FundFactory.ts:358</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L427">src/contracts/factory/FundFactory.ts:427</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -598,7 +672,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_contracts_engine_amguconsumer_.amguconsumer.html">AmguConsumer</a>.<a href="_contracts_engine_amguconsumer_.amguconsumer.html#getengine">getEngine</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L327">src/contracts/factory/FundFactory.ts:327</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L396">src/contracts/factory/FundFactory.ts:396</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -629,7 +703,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L299">src/contracts/factory/FundFactory.ts:299</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L368">src/contracts/factory/FundFactory.ts:368</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -666,7 +740,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L308">src/contracts/factory/FundFactory.ts:308</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L377">src/contracts/factory/FundFactory.ts:377</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -697,64 +771,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L117">src/contracts/factory/FundFactory.ts:117</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>manager: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> block: <span class="tsd-signature-type">number</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="getmanagerstoroutes" class="tsd-anchor"></a>
-					<h3>get<wbr>Managers<wbr>ToRoutes</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Managers<wbr>ToRoutes<span class="tsd-signature-symbol">(</span>manager<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a>, block<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_contracts_fund_hub_hub_.hubroutes.html" class="tsd-signature-type">HubRoutes</a><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L121">src/contracts/factory/FundFactory.ts:121</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>manager: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> block: <span class="tsd-signature-type">number</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_contracts_fund_hub_hub_.hubroutes.html" class="tsd-signature-type">HubRoutes</a><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="getmanagerstosettings" class="tsd-anchor"></a>
-					<h3>get<wbr>Managers<wbr>ToSettings</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Managers<wbr>ToSettings<span class="tsd-signature-symbol">(</span>manager<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a>, block<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_contracts_factory_fundfactory_.settings.html" class="tsd-signature-type">Settings</a><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L154">src/contracts/factory/FundFactory.ts:154</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L96">src/contracts/factory/FundFactory.ts:96</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Gets the settings for a manager</p>
+									<p>Get the hub address for manager</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -772,7 +794,44 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_contracts_factory_fundfactory_.settings.html" class="tsd-signature-type">Settings</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getmanagerstoroutes" class="tsd-anchor"></a>
+					<h3>get<wbr>Managers<wbr>ToRoutes</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Managers<wbr>ToRoutes<span class="tsd-signature-symbol">(</span>manager<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a>, block<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_contracts_fund_hub_hub_.hubroutes.html" class="tsd-signature-type">HubRoutes</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L106">src/contracts/factory/FundFactory.ts:106</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Gets the routes for a manager</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>manager: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The address of the manager</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> block: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The block number to execute the call on.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_contracts_fund_hub_hub_.hubroutes.html" class="tsd-signature-type">HubRoutes</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -786,7 +845,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L318">src/contracts/factory/FundFactory.ts:318</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L387">src/contracts/factory/FundFactory.ts:387</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -818,7 +877,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_contracts_engine_amguconsumer_.amguconsumer.html">AmguConsumer</a>.<a href="_contracts_engine_amguconsumer_.amguconsumer.html#getpricesource">getPriceSource</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L336">src/contracts/factory/FundFactory.ts:336</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L405">src/contracts/factory/FundFactory.ts:405</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -849,7 +908,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L354">src/contracts/factory/FundFactory.ts:354</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L423">src/contracts/factory/FundFactory.ts:423</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -881,7 +940,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_contracts_engine_amguconsumer_.amguconsumer.html">AmguConsumer</a>.<a href="_contracts_engine_amguconsumer_.amguconsumer.html#getversion">getVersion</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L345">src/contracts/factory/FundFactory.ts:345</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L414">src/contracts/factory/FundFactory.ts:414</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1034,7 +1093,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_contracts_factory_factory_.factory.html">Factory</a>.<a href="_contracts_factory_factory_.factory.html#deploy">deploy</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L84">src/contracts/factory/FundFactory.ts:84</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/factory/FundFactory.ts#L57">src/contracts/factory/FundFactory.ts:57</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1071,9 +1130,6 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="_contracts_factory_fundfactory_.denominationassetnotregisterederror.html" class="tsd-kind-icon">Denomination<wbr>Asset<wbr>Not<wbr>Registered<wbr>Error</a>
-					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class tsd-parent-kind-external-module">
@@ -1146,9 +1202,6 @@
 								<a href="_contracts_factory_fundfactory_.fundfactory.html#getmanagerstoroutes" class="tsd-kind-icon">get<wbr>Managers<wbr>ToRoutes</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_contracts_factory_fundfactory_.fundfactory.html#getmanagerstosettings" class="tsd-kind-icon">get<wbr>Managers<wbr>ToSettings</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_contracts_factory_fundfactory_.fundfactory.html#getmlntoken" class="tsd-kind-icon">get<wbr>Mln<wbr>Token</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
@@ -1176,21 +1229,6 @@
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="_contracts_factory_fundfactory_.fundsetupalreadycompleteerror.html" class="tsd-kind-icon">Fund<wbr>Setup<wbr>Already<wbr>Complete<wbr>Error</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="_contracts_factory_fundfactory_.fundsetupalreadystartederror.html" class="tsd-kind-icon">Fund<wbr>Setup<wbr>Already<wbr>Started<wbr>Error</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="_contracts_factory_fundfactory_.fundsetupnotstartederror.html" class="tsd-kind-icon">Fund<wbr>Setup<wbr>Not<wbr>Started<wbr>Error</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="_contracts_factory_fundfactory_.routealreadycreatederror.html" class="tsd-kind-icon">Route<wbr>Already<wbr>Created<wbr>Error</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="_contracts_factory_fundfactory_.routenotcreatederror.html" class="tsd-kind-icon">Route<wbr>Not<wbr>Created<wbr>Error</a>
-					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="../interfaces/_contracts_factory_fundfactory_.fundfactorydeployarguments.html" class="tsd-kind-icon">Fund<wbr>Factory<wbr>Deploy<wbr>Arguments</a>
 					</li>

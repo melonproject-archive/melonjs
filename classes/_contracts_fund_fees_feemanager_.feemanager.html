@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>FeeManager | @melonproject/melonjs - v0.0.70</title>
+	<title>FeeManager | @melonproject/melonjs - v0.0.71</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">@melonproject/melonjs - v0.0.70</a>
+					<a href="../index.html" class="title">@melonproject/melonjs - v0.0.71</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -104,6 +104,7 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite tsd-is-inherited tsd-is-protected"><a href="_contracts_fund_fees_feemanager_.feemanager.html#createtransaction" class="tsd-kind-icon">create<wbr>Transaction</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_contracts_fund_fees_feemanager_.feemanager.html#getengine" class="tsd-kind-icon">get<wbr>Engine</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_fund_fees_feemanager_.feemanager.html#getfee" class="tsd-kind-icon">get<wbr>Fee</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_contracts_fund_fees_feemanager_.feemanager.html#gethub" class="tsd-kind-icon">get<wbr>Hub</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_fund_fees_feemanager_.feemanager.html#getmanagementfeeaddress" class="tsd-kind-icon">get<wbr>Management<wbr>Fee<wbr>Address</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_fund_fees_feemanager_.feemanager.html#getmanagementfeeamount" class="tsd-kind-icon">get<wbr>Management<wbr>Fee<wbr>Amount</a></li>
@@ -230,7 +231,7 @@
 					<aside class="tsd-sources">
 						<p>Overrides <a href="_contract_.contract.html">Contract</a>.<a href="_contract_.contract.html#abi">abi</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/fees/FeeManager.ts#L31">src/contracts/fund/fees/FeeManager.ts:31</a></li>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/fees/FeeManager.ts#L46">src/contracts/fund/fees/FeeManager.ts:46</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -300,6 +301,32 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getfee" class="tsd-anchor"></a>
+					<h3>get<wbr>Fee</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Fee<span class="tsd-signature-symbol">(</span>identifier<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, block<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/fees/FeeManager.ts#L140">src/contracts/fund/fees/FeeManager.ts:140</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>identifier: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> block: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a name="gethub" class="tsd-anchor"></a>
 					<h3>get<wbr>Hub</h3>
@@ -342,7 +369,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/fees/FeeManager.ts#L49">src/contracts/fund/fees/FeeManager.ts:49</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/fees/FeeManager.ts#L64">src/contracts/fund/fees/FeeManager.ts:64</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -373,7 +400,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/fees/FeeManager.ts#L72">src/contracts/fund/fees/FeeManager.ts:72</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/fees/FeeManager.ts#L87">src/contracts/fund/fees/FeeManager.ts:87</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -404,7 +431,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/fees/FeeManager.ts#L58">src/contracts/fund/fees/FeeManager.ts:58</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/fees/FeeManager.ts#L73">src/contracts/fund/fees/FeeManager.ts:73</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -467,7 +494,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/fees/FeeManager.ts#L82">src/contracts/fund/fees/FeeManager.ts:82</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/fees/FeeManager.ts#L97">src/contracts/fund/fees/FeeManager.ts:97</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -498,7 +525,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/fees/FeeManager.ts#L111">src/contracts/fund/fees/FeeManager.ts:111</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/fees/FeeManager.ts#L126">src/contracts/fund/fees/FeeManager.ts:126</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -529,7 +556,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/fees/FeeManager.ts#L91">src/contracts/fund/fees/FeeManager.ts:91</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/fees/FeeManager.ts#L106">src/contracts/fund/fees/FeeManager.ts:106</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -760,7 +787,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/fees/FeeManager.ts#L121">src/contracts/fund/fees/FeeManager.ts:121</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/fees/FeeManager.ts#L136">src/contracts/fund/fees/FeeManager.ts:136</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -835,7 +862,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_contracts_fund_hub_spoke_.spoke.html">Spoke</a>.<a href="_contracts_fund_hub_spoke_.spoke.html#deploy">deploy</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/fees/FeeManager.ts#L33">src/contracts/fund/fees/FeeManager.ts:33</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/fees/FeeManager.ts#L48">src/contracts/fund/fees/FeeManager.ts:48</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -895,6 +922,9 @@
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 								<a href="_contracts_fund_fees_feemanager_.feemanager.html#getengine" class="tsd-kind-icon">get<wbr>Engine</a>
 							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_contracts_fund_fees_feemanager_.feemanager.html#getfee" class="tsd-kind-icon">get<wbr>Fee</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 								<a href="_contracts_fund_fees_feemanager_.feemanager.html#gethub" class="tsd-kind-icon">get<wbr>Hub</a>
 							</li>
@@ -950,6 +980,12 @@
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_contracts_fund_fees_feemanager_.managementfeemustbeatindexzeroerror.html" class="tsd-kind-icon">Management<wbr>Fee<wbr>Must<wbr>BeAt<wbr>Index<wbr>Zero<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_contracts_fund_fees_feemanager_.performancefeemustbeatindexoneerror.html" class="tsd-kind-icon">Performance<wbr>Fee<wbr>Must<wbr>BeAt<wbr>Index<wbr>One<wbr>Error</a>
+					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="../interfaces/_contracts_fund_fees_feemanager_.feemanagerdeployarguments.html" class="tsd-kind-icon">Fee<wbr>Manager<wbr>Deploy<wbr>Arguments</a>
 					</li>
