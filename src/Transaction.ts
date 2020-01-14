@@ -59,15 +59,15 @@ export class Transaction<T = TransactionReceipt> {
     const opts: EthSendOptions = {
       ...(value && { value: value.toFixed() }),
       ...(from && { from }),
-      ...(options && options.gas && { gas: options.gas }),
-      ...(options && options.gasPrice && { gasPrice: options.gasPrice }),
+      ...(options?.gas && { gas: options.gas }),
+      ...(options?.gasPrice && { gasPrice: options.gasPrice }),
     };
 
     return this.transaction.send(opts);
   }
 
   public async prepare(options?: EstimateGasOptions) {
-    const gas = (options && options.gas) || (await this.estimate(options));
+    const gas = options?.gas || (await this.estimate(options));
     const [amgu, incentive] = await Promise.all([
       this.amguPayable && this.amguFn && this.amguFn(gas),
       this.incentivePayable && this.incentiveFn && this.incentiveFn(gas),
@@ -77,17 +77,17 @@ export class Transaction<T = TransactionReceipt> {
       gas,
       ...(amgu && { amgu }),
       ...(incentive && { incentive }),
-      ...(options && options.value && { value: options.value }),
-      ...(options && options.from && { from: options.from }),
+      ...(options?.value && { value: options.value }),
+      ...(options?.from && { from: options.from }),
     };
 
     return opts;
   }
 
   protected async estimate(options?: EstimateGasOptions): Promise<number> {
-    const gas = options && options.gas;
-    const from: Address = (options && options.from) || this.from;
-    let value: BigNumber = (options && options.value) || this.value;
+    const from: Address = options?.from || this.from;
+    const gas = options?.gas;
+    let value: BigNumber = options?.value || this.value;
 
     if (this.amguFn) {
       // We don't know the amgu price at this stage yet, so we just send all
