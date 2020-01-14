@@ -6,7 +6,7 @@ import { TradingAbi } from '../../../abis/Trading.abi';
 import { Spoke } from '../hub/Spoke';
 import { applyMixins } from '../../../utils/applyMixins';
 import { toBigNumber } from '../../../utils/toBigNumber';
-import { Registry, AssetNotRegisteredError } from '../../version/Registry';
+import { Registry } from '../../version/Registry';
 import { isZeroAddress } from '../../../utils/isZeroAddress';
 import { hexToBytes, numberToHex, keccak256 } from 'web3-utils';
 import { functionSignature } from '../../../utils/functionSignature';
@@ -15,10 +15,14 @@ import {
   AdapterMethodNotAllowedError,
   InvalidExchangeIndexError,
   PreTradePolicyValidationError,
+  SenderIsNotManagerOrContractError,
 } from './Trading.errors';
 import { PolicyManager } from '../policies/PolicyManager';
 import { Policy } from '../policies/Policy';
 import { toDate } from '../../../utils/toDate';
+import { AssetNotRegisteredError } from '../../version/Registry.error';
+import { sameAddress } from '../../../utils/sameAddress';
+import { Hub } from '../hub/Hub';
 
 export interface ExchangeInfo {
   exchange: Address;
@@ -87,7 +91,16 @@ export class Trading extends Contract {
 
   public returnBatchToVault(from: Address, assets: Address[]) {
     const validate = async () => {
-      // TODO: Add validation.
+      const hub = new Hub(this.environment, await this.getHub());
+      if (
+        !(
+          sameAddress(from, this.contract.address) ||
+          sameAddress(from, await hub.getManager()) ||
+          (await hub.isShutDown())
+        )
+      ) {
+        throw new SenderIsNotManagerOrContractError(from);
+      }
     };
 
     return this.createTransaction({ from, method: 'returnBatchToVault', args: [assets], validate });
@@ -236,7 +249,7 @@ export class Trading extends Contract {
 
     const policyManagerAddress = (await this.getRoutes()).policyManager;
     const policyManager = new PolicyManager(this.environment, policyManagerAddress);
-    const exchangeAddress = (await this.getExchange(args.exchangeIndex)).exchange;
+    const exchangeAddress = exchange.exchange;
 
     const policies = await policyManager.getPoliciesBySignature(encodedSignature);
     const prePolicies = policies.pre;

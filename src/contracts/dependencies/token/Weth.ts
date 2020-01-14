@@ -14,21 +14,33 @@ export class Weth extends Contract {
     return super.createDeployment<Weth>(environment, bytecode, from);
   }
 
-  public deposit(amount: BigNumber, from: Address) {
-    const method = 'deposit';
-    return this.createTransaction({ from, method, value: amount });
+  /**
+   * Deposit WETH in the senders account
+   *
+   * @param from The address of the sender
+   * @param amount The amount to deposit
+   */
+  public deposit(from: Address, amount: BigNumber) {
+    return this.createTransaction({ from, method: 'deposit', args: undefined, value: amount });
   }
 
-  public withdraw(amount: BigNumber, from: Address) {
-    const method = 'withdraw';
+  /**
+   * Withdraw WETH from the senders account
+   *
+   * @param from The address of the sender
+   * @param amount The amount to withdraw
+   */
+  public withdraw(from: Address, amount: BigNumber) {
     const args = [amount.toFixed(0)];
+
     const validate = async () => {
       const balance = await this.getBalanceOf(from);
-      if (!amount.isLessThanOrEqualTo(balance)) {
+      if (!amount.isLessThan(balance)) {
         throw new OutOfBalanceError(amount.toNumber(), balance.toNumber());
       }
     };
-    return this.createTransaction({ from, method, args, validate });
+
+    return this.createTransaction({ from, method: 'withdraw', args, validate });
   }
 }
 

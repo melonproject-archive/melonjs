@@ -1,11 +1,11 @@
-import { toWei, fromWei } from 'web3-utils';
+import { fromWei, toWei } from 'web3-utils';
 import { Weth } from './Weth';
 import { WETHBytecode } from '../../../abis/WETH.bin';
-import { toBigNumber } from '../../../utils/toBigNumber';
 import { createTestEnvironment, TestEnvironment } from '../../../utils/tests/createTestEnvironment';
 import { OutOfBalanceError } from '../../../errors/OutOfBalanceError';
 import { randomAddress } from '../../../utils/tests/randomAddress';
 import BigNumber from 'bignumber.js';
+import { toBigNumber } from '../../../utils/toBigNumber';
 
 describe('Weth', () => {
   let environment: TestEnvironment;
@@ -22,7 +22,7 @@ describe('Weth', () => {
     expect(fromWei(before.toFixed(0))).toBe('0');
 
     {
-      const tx = weth.deposit(toBigNumber(toWei('1')), environment.accounts[1]);
+      const tx = weth.deposit(environment.accounts[1], toBigNumber(toWei('1')));
       await tx.send(await tx.prepare());
     }
 
@@ -30,7 +30,7 @@ describe('Weth', () => {
     expect(fromWei(after.toFixed(0))).toBe('1');
 
     {
-      const tx = weth.withdraw(toBigNumber(toWei('1')), environment.accounts[1]);
+      const tx = weth.withdraw(environment.accounts[1], toBigNumber(toWei('1')));
       await tx.send(await tx.prepare());
     }
 
@@ -44,7 +44,7 @@ describe('Weth', () => {
   });
 
   it('should throw OutOfBalanceError', async () => {
-    const tx = weth.withdraw(new BigNumber(2), randomAddress());
+    const tx = weth.withdraw(randomAddress(), new BigNumber(2));
 
     jest.spyOn(weth, 'getBalanceOf').mockReturnValue(new Promise(resolve => resolve(new BigNumber(1))));
 

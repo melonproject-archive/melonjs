@@ -8,6 +8,16 @@ import { applyMixins } from '../../../utils/applyMixins';
 import { toBigNumber } from '../../../utils/toBigNumber';
 import { AmguConsumer } from '../../engine/AmguConsumer';
 import { range } from '../../../utils/range';
+import { FeeManager } from '../fees/FeeManager';
+import { PerformanceFee } from '../fees/PerformanceFee';
+import { ValidationError } from '../../../errors/ValidationError';
+
+export class PerformanceFeeCannotBePaidError extends ValidationError {
+  public readonly name = 'PerformanceFeeCannotBePaidError';
+  constructor(message: string = 'Performance fee cannot be paid out.') {
+    super(message);
+  }
+}
 
 export interface FundCalculations {
   sharePrice: BigNumber;
@@ -40,6 +50,16 @@ export class Accounting extends Contract {
       args.nativeAsset,
       args.defaultAssets,
     ]);
+  }
+
+  /**
+   * Gets the max number of owned assets.
+   *
+   * @param block The block number to execute the call on.
+   */
+  public async getMaxOwnedAssets(block?: number) {
+    const result = await this.makeCall<string>('MAX_OWNED_ASSETS', undefined, block);
+    return parseInt(result, 10);
   }
 
   /**
@@ -177,7 +197,18 @@ export class Accounting extends Contract {
    */
   public triggerRewardAllFees(from: Address) {
     const amgu = this.calculateAmgu.bind(this);
-    return this.createTransaction({ from, method: 'triggerRewardAllFees', amgu });
+
+    const validate = async () => {
+      const feeManager = new FeeManager(this.environment, (await this.getRoutes()).feeManager);
+      const performanceFee = new PerformanceFee(this.environment, await feeManager.getPerformanceFeeAddress());
+
+      const performanceFeeCanBePaid = await performanceFee.canUpdate(feeManager.contract.address);
+      if (!performanceFeeCanBePaid) {
+        throw new PerformanceFeeCannotBePaidError();
+      }
+    };
+
+    return this.createTransaction({ from, method: 'triggerRewardAllFees', amgu, validate });
   }
 }
 

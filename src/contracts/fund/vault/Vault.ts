@@ -21,9 +21,7 @@ export class Vault extends Contract {
    * @param amount The amount to withdraw
    */
   public withdraw(from: Address, token: Address, amount: BigNumber) {
-    const method = 'withdraw';
-    const args = [token, amount.toFixed(0)];
-    return this.createTransaction({ from, method, args });
+    return this.createTransaction({ from, method: 'withdraw', args: [token, amount.toFixed(0)] });
   }
 }
 
