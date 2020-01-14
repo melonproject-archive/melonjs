@@ -53,6 +53,16 @@ export class Accounting extends Contract {
   }
 
   /**
+   * Gets the max number of owned assets.
+   *
+   * @param block The block number to execute the call on.
+   */
+  public async getMaxOwnedAssets(block?: number) {
+    const result = await this.makeCall<string>('MAX_OWNED_ASSETS', undefined, block);
+    return parseInt(result, 10);
+  }
+
+  /**
    * Gets the length of the owned assets array.
    *
    * @param block The block number to execute the call on.

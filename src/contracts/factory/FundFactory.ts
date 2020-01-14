@@ -15,8 +15,18 @@ import {
   DenominationAssetNotRegisteredError,
   FundSetupAlreadyCompleteError,
   ComponentAlreadySetError,
+  DifferentNumberOfExchangesAndAdaptersError,
 } from './FundFactory.error';
-import { CannotUseFundNameError } from '../version/Registry.error';
+import {
+  CannotUseFundNameError,
+  FeeNotRegisteredError,
+  AssetNotRegisteredError,
+  ExchangeAdapterNotRegisteredError,
+  ExchangeAndAdapterDoNotMatchError,
+} from '../version/Registry.error';
+import { ManagementFeeMustBeAtIndexZeroError, PerformanceFeeMustBeAtIndexOneError } from '../fund/fees/FeeManager';
+import { Fee } from '../fund/fees/Fee';
+import { sameAddress } from '../../utils/sameAddress';
 
 export interface FundFactoryDeployArguments {
   accountingFactory: Address;
@@ -120,16 +130,6 @@ export class FundFactory extends Contract {
   }
 
   /**
-   * Gets the settings for a manager
-   *
-   * @param manager The address of the manager
-   * @param block The block number to execute the call on.
-   */
-  public getManagersToSettings(manager: Address, block?: number) {
-    return this.makeCall<Settings>('managersToSettings', [manager], block);
-  }
-
-  /**
    * Begin fund setup transaction
    *
    * @param from The address of the sender
@@ -152,6 +152,8 @@ export class FundFactory extends Contract {
       this.validateHubNotSet(from);
 
       const registry = new Registry(this.environment, await this.getRegistry());
+
+      // validation for beginSetup
       const canUseFundName = registry.canUseFundName(from, settings.name);
       if (!canUseFundName) {
         throw new CannotUseFundNameError(settings.name);
@@ -160,6 +162,59 @@ export class FundFactory extends Contract {
       if (!(await registry.isAssetRegistered(settings.denominationAsset))) {
         throw new DenominationAssetNotRegisteredError();
       }
+
+      // validation for createFeeManager
+      settings.fees.map(async fee => {
+        const isFeeRegistered = await registry.isFeeRegistered(fee);
+        if (!isFeeRegistered) {
+          throw new FeeNotRegisteredError(fee);
+        }
+      });
+
+      if (settings.fees.length > 0) {
+        const fee = new Fee(this.environment, settings.fees[0]);
+        const identifier = await fee.identifier();
+        if (identifier !== 0) {
+          throw new ManagementFeeMustBeAtIndexZeroError(settings.fees[0]);
+        }
+      }
+
+      if (settings.fees.length > 0) {
+        const fee = new Fee(this.environment, settings.fees[1]);
+        const identifier = await fee.identifier();
+        if (identifier !== 1) {
+          throw new PerformanceFeeMustBeAtIndexOneError(settings.fees[1]);
+        }
+      }
+
+      // validation for createParticipation
+      await Promise.all(
+        settings.defaultAssets.map(async asset => {
+          const isAssetRegistered = await registry.isAssetRegistered(asset);
+          if (!isAssetRegistered) {
+            throw new AssetNotRegisteredError(asset);
+          }
+        }),
+      );
+
+      // validation for createTrading
+      if (settings.exchanges.length !== settings.adapters.length) {
+        throw new DifferentNumberOfExchangesAndAdaptersError();
+      }
+
+      await Promise.all(
+        settings.adapters.map(async (adapter, index) => {
+          const isExchangeAdapaterRegistered = await registry.isExchangeAdapterRegistered(adapter);
+          if (!isExchangeAdapaterRegistered) {
+            throw new ExchangeAdapterNotRegisteredError(adapter);
+          }
+
+          const exchangeInformation = await registry.getExchangeInformation(adapter);
+          if (!sameAddress(exchangeInformation.exchangeAddress, settings.exchanges[index])) {
+            throw new ExchangeAndAdapterDoNotMatchError(settings.exchanges[index], adapter);
+          }
+        }),
+      );
     };
 
     return this.createTransaction({ from, method, args, validate });
@@ -176,9 +231,6 @@ export class FundFactory extends Contract {
     const validate = async () => {
       this.validateComponentSet(await this.getManagersToHubs(from));
       this.validateComponentNotSet(from, 'accounting');
-
-      const settings = await this.getManagersToSettings(from);
-      console.log(settings);
     };
 
     return this.createTransaction({ from, method: 'createAccounting', validate, amgu });
@@ -195,32 +247,6 @@ export class FundFactory extends Contract {
     const validate = async () => {
       this.validateComponentSet(await this.getManagersToHubs(from));
       this.validateComponentNotSet(from, 'feeManager');
-
-      // const registry = new Registry(this.environment, await this.getRegistry());
-      // const settings = await this.getManagersToSettings(from);
-      //
-      // settings.fees.map(async fee => {
-      //   const isFeeRegistered = await registry.isFeeRegistered(fee);
-      //   if (!isFeeRegistered) {
-      //     throw new FeeNotRegisteredError(fee);
-      //   }
-      // });
-      //
-      // if (settings.fees.length > 0) {
-      //   const fee = new Fee(this.environment, settings.fees[0]);
-      //   const identifier = await fee.identifier();
-      //   if (identifier !== 0) {
-      //     throw new ManagementFeeMustBeAtIndexZeroError(settings.fees[0]);
-      //   }
-      // }
-      //
-      // if (settings.fees.length > 0) {
-      //   const fee = new Fee(this.environment, settings.fees[1]);
-      //   const identifier = await fee.identifier();
-      //   if (identifier !== 1) {
-      //     throw new PerformanceFeeMustBeAtIndexOneError(settings.fees[1]);
-      //   }
-      // }
     };
 
     return this.createTransaction({ from, method: 'createFeeManager', validate, amgu });
@@ -237,18 +263,6 @@ export class FundFactory extends Contract {
     const validate = async () => {
       this.validateComponentSet(await this.getManagersToHubs(from));
       this.validateComponentNotSet(from, 'participation');
-
-      // const registry = new Registry(this.environment, await this.getRegistry());
-      // const settings = await this.getManagersToSettings(from);
-      //
-      // await Promise.all(
-      //   settings.defaultAssets.map(async asset => {
-      //     const isAssetRegistered = await registry.isAssetRegistered(asset);
-      //     if (!isAssetRegistered) {
-      //       throw new AssetNotRegisteredError(asset);
-      //     }
-      //   }),
-      // );
     };
 
     return this.createTransaction({ from, method: 'createParticipation', validate, amgu });
@@ -297,26 +311,6 @@ export class FundFactory extends Contract {
     const validate = async () => {
       this.validateComponentSet(await this.getManagersToHubs(from));
       this.validateComponentNotSet(from, 'trading');
-
-      // const settings = await this.getManagersToSettings(from);
-      // if (settings.exchanges.length !== settings.adapters.length) {
-      //   throw new DifferentNumberOfExchangesAndAdaptersError();
-      // }
-
-      // const registry = new Registry(this.environment, await this.getRegistry());
-      // await Promise.all(
-      //   settings.adapters.map(async (adapter, index) => {
-      //     const isExchangeAdapaterRegistered = await registry.isExchangeAdapterRegistered(adapter);
-      //     if (!isExchangeAdapaterRegistered) {
-      //       throw new ExchangeAdapterNotRegisteredError(adapter);
-      //     }
-
-      //     const exchangeInformation = await registry.getExchangeInformation(adapter);
-      //     if (!sameAddress(exchangeInformation.exchangeAddress, settings.exchanges[index])) {
-      //       throw new ExchangeAndAdapterDoNotMatchError(settings.exchanges[index], adapter);
-      //     }
-      //   }),
-      // );
     };
 
     return this.createTransaction({ from, method: 'createTrading', validate, amgu });
