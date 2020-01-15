@@ -30,8 +30,8 @@ describe('StandardToken', () => {
     const rejects = expect(tx.validate()).rejects;
     await rejects.toThrowError(OutOfBalanceError);
     await rejects.toMatchObject({
-      amount: expect.any(Number),
-      balance: expect.any(Number),
+      amount: expect.any(BigNumber),
+      balance: expect.any(BigNumber),
     });
   });
 
