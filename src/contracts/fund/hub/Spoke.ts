@@ -69,9 +69,10 @@ export class Spoke extends Contract {
    * Checks if the contract is initialized.
    *
    * @param block The block number to execute the call on.
+   * @returns A boolean where True indicates the spoke has been initialized.
    */
   public isInitialized(block?: number) {
-    return this.makeCall<string>('initialized', undefined, block);
+    return this.makeCall<boolean>('initialized', undefined, block);
   }
 
   /**
