@@ -35,8 +35,8 @@ export class Weth extends Contract {
 
     const validate = async () => {
       const balance = await this.getBalanceOf(from);
-      if (!amount.isLessThan(balance)) {
-        throw new OutOfBalanceError(amount.toNumber(), balance.toNumber());
+      if (balance.isLessThan(amount)) {
+        throw new OutOfBalanceError(amount, balance);
       }
     };
 

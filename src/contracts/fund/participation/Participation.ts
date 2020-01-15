@@ -289,8 +289,8 @@ export class Participation extends Contract {
 
       const token = new PreminedToken(this.environment, investmentAsset);
       const balance = await token.getBalanceOf(from);
-      if (investmentAmount.isGreaterThan(balance)) {
-        throw new OutOfBalanceError(investmentAmount.toNumber(), balance.toNumber());
+      if (balance.isLessThan(investmentAmount)) {
+        throw new OutOfBalanceError(investmentAmount, balance);
       }
 
       const encodedSignature = keccak256(functionSignature(ParticipationAbi, 'requestInvestment')).substr(0, 10);

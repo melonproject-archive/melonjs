@@ -29,8 +29,8 @@ export class BurnableToken extends Contract {
       if (isZeroAddress(from)) throw new ZeroAddressError();
 
       const balance = await this.getBalanceOf(from);
-      if (!amount.isLessThanOrEqualTo(balance)) {
-        throw new OutOfBalanceError(amount.toNumber(), balance.toNumber());
+      if (balance.isLessThan(amount)) {
+        throw new OutOfBalanceError(amount, balance);
       }
     };
 

@@ -63,10 +63,12 @@ export class StandardToken extends Contract {
 
     const validate = async () => {
       const balance = await this.getBalanceOf(from);
-      if (!amount.isLessThanOrEqualTo(balance)) {
-        throw new OutOfBalanceError(amount.toNumber(), balance.toNumber());
+      if (balance.isLessThan(amount)) {
+        throw new OutOfBalanceError(amount, balance);
       }
-      if (isZeroAddress(to)) throw new ZeroAddressError();
+      if (isZeroAddress(to)) {
+        throw new ZeroAddressError();
+      }
     };
 
     return this.createTransaction({ from, method, args, validate });
