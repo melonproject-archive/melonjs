@@ -17,13 +17,13 @@ export interface ExchangeDefinition {
 export function availableExchanges(deployment: DeploymentOutput): ExchangeDefinition[] {
   const exchanges = [
     deployment.melon && {
-      name: 'MelonEngine',
+      name: 'Melon Engine',
       id: ExchangeIdentifier.MelonEngine,
       exchange: deployment.melon.addr.Engine,
       adapter: deployment.melon.addr.EngineAdapter,
     },
     deployment.kyber && {
-      name: 'KyberNetwork',
+      name: 'Kyber Network',
       id: ExchangeIdentifier.KyberNetwork,
       adapter: deployment.melon.addr.KyberAdapter,
       exchange: deployment.kyber.addr.KyberNetworkProxy,
@@ -35,7 +35,7 @@ export function availableExchanges(deployment: DeploymentOutput): ExchangeDefini
       exchange: deployment.oasis.addr.OasisDexExchange,
     },
     deployment.zeroex && {
-      name: 'ZeroEx',
+      name: '0x Protocol',
       id: ExchangeIdentifier.ZeroEx,
       adapter: deployment.melon.addr.ZeroExV2Adapter,
       exchange: deployment.zeroex.addr.ZeroExV2Exchange,
