@@ -281,7 +281,7 @@ export class Registry extends Contract {
    * @param block The block number to execute the call on.
    */
   public canUseFundName(user: Address, name: string, block?: number) {
-    return this.makeCall<boolean>('canUseFundName', [user, name], block);
+    return this.makeCall<boolean>('canUseFundName', [user, stringToBytes(name, 32)], block);
   }
 
   /**
