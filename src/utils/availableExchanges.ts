@@ -35,7 +35,7 @@ export function availableExchanges(deployment: DeploymentOutput): ExchangeDefini
       exchange: deployment.oasis.addr.OasisDexExchange,
     },
     deployment.zeroex && {
-      name: '0x protocol',
+      name: '0x Protocol',
       id: ExchangeIdentifier.ZeroEx,
       adapter: deployment.melon.addr.ZeroExV2Adapter,
       exchange: deployment.zeroex.addr.ZeroExV2Exchange,
