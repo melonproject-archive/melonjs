@@ -6,56 +6,53 @@ export interface PolicyDefinition {
   id: string;
   name: string;
   signatures: string[];
+  historic?: boolean;
 }
 
-const tradingSignatures = [
-  encodeFunctionSignature(ExchangeAdapterAbi, 'makeOrder'),
-  encodeFunctionSignature(ExchangeAdapterAbi, 'takeOrder'),
-];
+const historicPolicies = [] as PolicyDefinition[];
 
-const investmentSignatures = [encodeFunctionSignature(ParticipationAbi, 'requestInvestment')];
+export function availablePolicies(includeHistoric?: boolean): PolicyDefinition[] {
+  const tradingSignatures = [
+    encodeFunctionSignature(ExchangeAdapterAbi, 'makeOrder'),
+    encodeFunctionSignature(ExchangeAdapterAbi, 'takeOrder'),
+  ];
 
-const priceTolerance: PolicyDefinition = {
-  id: 'priceTolerance',
-  name: 'Price tolerance',
-  signatures: [...tradingSignatures],
-};
+  const investmentSignatures = [encodeFunctionSignature(ParticipationAbi, 'requestInvestment')];
 
-const maxPositions: PolicyDefinition = {
-  id: 'maxPositions',
-  name: 'Maximum number of positions',
-  signatures: [...tradingSignatures, ...investmentSignatures],
-};
+  const policies = [
+    {
+      id: 'priceTolerance',
+      name: 'Price tolerance',
+      signatures: [...tradingSignatures],
+    },
 
-const maxConcentration: PolicyDefinition = {
-  id: 'maxConcentration',
-  name: 'Maximum concentration',
-  signatures: [...tradingSignatures, ...investmentSignatures],
-};
+    {
+      id: 'maxPositions',
+      name: 'Maximum number of positions',
+      signatures: [...tradingSignatures, ...investmentSignatures],
+    },
 
-const userWhitelist: PolicyDefinition = {
-  id: 'userWhitelist',
-  name: 'User whitelist',
-  signatures: [...investmentSignatures],
-};
+    {
+      id: 'maxConcentration',
+      name: 'Maximum concentration',
+      signatures: [...tradingSignatures, ...investmentSignatures],
+    },
+    {
+      id: 'userWhitelist',
+      name: 'Investor whitelist',
+      signatures: [...investmentSignatures],
+    },
+    {
+      id: 'assetWhitelist',
+      name: 'Asset whitelist',
+      signatures: [...tradingSignatures, ...investmentSignatures],
+    },
+    {
+      id: 'assetBlacklist',
+      name: 'Asset blacklist',
+      signatures: [...tradingSignatures, ...investmentSignatures],
+    },
+  ] as PolicyDefinition[];
 
-const assetWhitelist: PolicyDefinition = {
-  id: 'assetWhitelist',
-  name: 'Asset whitelist',
-  signatures: [...tradingSignatures, ...investmentSignatures],
-};
-
-const assetBlacklist: PolicyDefinition = {
-  id: 'assetBlacklist',
-  name: 'Asset blacklist',
-  signatures: [...tradingSignatures, ...investmentSignatures],
-};
-
-export const availablePolicies = [
-  priceTolerance,
-  maxPositions,
-  maxConcentration,
-  userWhitelist,
-  assetWhitelist,
-  assetBlacklist,
-];
+  return [...policies, ...(includeHistoric && historicPolicies)];
+}
