@@ -13,7 +13,7 @@ export interface ExchangeDefinition {
   name: string;
   exchange: string;
   adapter: string;
-  historic?: boolean;
+  historic: boolean;
 }
 
 export function availableExchanges(deployment: DeploymentOutput, includeHistoric?: boolean): ExchangeDefinition[] {
@@ -23,24 +23,28 @@ export function availableExchanges(deployment: DeploymentOutput, includeHistoric
       id: ExchangeIdentifier.MelonEngine,
       exchange: deployment.melon.addr.Engine,
       adapter: deployment.melon.addr.EngineAdapter,
+      historic: false,
     },
     deployment.kyber && {
       name: 'KyberNetwork',
       id: ExchangeIdentifier.KyberNetwork,
       adapter: deployment.melon.addr.KyberAdapter,
       exchange: deployment.kyber.addr.KyberNetworkProxy,
+      historic: false,
     },
     deployment.oasis && {
       name: 'OasisDex',
       id: ExchangeIdentifier.OasisDex,
       adapter: deployment.melon.addr.MatchingMarketAdapter,
       exchange: deployment.oasis.addr.OasisDexExchange,
+      historic: false,
     },
     deployment.zeroex && {
       name: 'ZeroEx',
       id: ExchangeIdentifier.ZeroEx,
       adapter: deployment.melon.addr.ZeroExV2Adapter,
       exchange: deployment.zeroex.addr.ZeroExV2Exchange,
+      historic: false,
     },
   ];
 

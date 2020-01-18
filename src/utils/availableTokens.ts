@@ -5,7 +5,7 @@ export interface TokenDefinition {
   name: string;
   address: string;
   decimals: number;
-  historic?: boolean;
+  historic: boolean;
 }
 
 function replaceProperties(token: TokenDefinition): Partial<TokenDefinition> {
@@ -31,6 +31,7 @@ export function availableTokens(deployment: DeploymentOutput, includeHistoric?: 
       address: deployment.tokens.addr[symbol],
       decimals: deployment.tokens.conf[symbol].decimals,
       name: deployment.tokens.conf[symbol].name,
+      historic: false,
     }))
     .map(token => {
       return { ...token, ...replaceProperties(token) };
