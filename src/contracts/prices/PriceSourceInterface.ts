@@ -196,7 +196,7 @@ export class PriceSourceInterface extends Contract {
   ) {
     const result = await this.makeCall<string>(
       'getOrderPriceInfo',
-      [sellAsset, buyAsset, sellQuantity, buyQuantity],
+      [sellAsset, buyAsset, sellQuantity.toFixed(0), buyQuantity.toFixed(0)],
       block,
     );
     return toBigNumber(result);
@@ -221,7 +221,11 @@ export class PriceSourceInterface extends Contract {
    * @param block The block number to execute the call on.
    */
   public async convertQuantity(fromAssetQuantity: BigNumber, fromAsset: Address, toAsset: Address, block?: number) {
-    const result = await this.makeCall<string>('convertQuantity', [fromAssetQuantity, fromAsset, toAsset], block);
+    const result = await this.makeCall<string>(
+      'convertQuantity',
+      [fromAssetQuantity.toFixed(0), fromAsset, toAsset],
+      block,
+    );
     return toBigNumber(result);
   }
 }
