@@ -9,9 +9,7 @@ export interface PolicyDefinition {
   historic: boolean;
 }
 
-const historicPolicies = [] as PolicyDefinition[];
-
-export function availablePolicies(includeHistoric?: boolean): PolicyDefinition[] {
+export function availablePolicies(): PolicyDefinition[] {
   const tradingSignatures = [
     encodeFunctionSignature(ExchangeAdapterAbi, 'makeOrder'),
     encodeFunctionSignature(ExchangeAdapterAbi, 'takeOrder'),
@@ -60,5 +58,7 @@ export function availablePolicies(includeHistoric?: boolean): PolicyDefinition[]
     },
   ] as PolicyDefinition[];
 
-  return [...policies, ...(includeHistoric ? historicPolicies : [])];
+  const historicPolicies = [] as PolicyDefinition[];
+
+  return [...policies, ...historicPolicies];
 }

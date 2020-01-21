@@ -8,34 +8,17 @@ export interface TokenDefinition {
   historic: boolean;
 }
 
-function replaceProperties(token: TokenDefinition): Partial<TokenDefinition> {
-  switch (token.symbol) {
-    case 'WETH':
-      return { name: 'Wrapped Ether' };
-    case 'ZRX':
-      return { name: '0x protocol token' };
-    case 'MKR':
-      return { name: 'Maker token' };
-    default:
-      return {};
-  }
-}
-
-const historicTokens = [] as TokenDefinition[];
-
-export function availableTokens(deployment: DeploymentOutput, includeHistoric?: boolean): TokenDefinition[] {
+export function availableTokens(deployment: DeploymentOutput): TokenDefinition[] {
   const symbols = Object.keys(deployment.tokens.addr);
-  const tokens = symbols
-    .map(symbol => ({
-      symbol,
-      address: deployment.tokens.addr[symbol],
-      decimals: deployment.tokens.conf[symbol].decimals,
-      name: deployment.tokens.conf[symbol].name,
-      historic: false,
-    }))
-    .map(token => {
-      return { ...token, ...replaceProperties(token) };
-    });
+  const tokens = symbols.map(symbol => ({
+    symbol,
+    address: deployment.tokens.addr[symbol],
+    decimals: deployment.tokens.conf[symbol].decimals,
+    name: deployment.tokens.conf[symbol].name,
+    historic: false,
+  }));
 
-  return [...tokens, ...(includeHistoric ? historicTokens : [])];
+  const historicTokens = [] as TokenDefinition[];
+
+  return [...tokens, ...historicTokens];
 }

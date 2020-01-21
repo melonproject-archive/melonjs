@@ -1,5 +1,4 @@
 import { DeploymentOutput } from '../Deployment';
-import { toChecksumAddress } from 'web3-utils';
 
 export enum ExchangeIdentifier {
   'MelonEngine' = 'MelonEngine',
@@ -16,7 +15,7 @@ export interface ExchangeDefinition {
   historic: boolean;
 }
 
-export function availableExchanges(deployment: DeploymentOutput, includeHistoric?: boolean): ExchangeDefinition[] {
+export function availableExchanges(deployment: DeploymentOutput): ExchangeDefinition[] {
   const exchanges = [
     deployment.melon && {
       name: 'Melon Engine',
@@ -52,13 +51,11 @@ export function availableExchanges(deployment: DeploymentOutput, includeHistoric
     {
       name: 'ZeroEx (v. 2.0)',
       id: 'ZeroExV20',
-      adapter: toChecksumAddress('0x3ecfe6f8414ed517366a5e6f7f7fc74ef21caac9'),
-      exchange: toChecksumAddress('0x080bf510fcbf18b91105470639e9561022937712'),
+      adapter: '0x3ECFe6F8414ED517366a5e6f7F7FC74EF21CAac9',
+      exchange: '0x4F833a24e1f95D70F028921e27040Ca56E09AB0b',
       historic: true,
     },
   ];
 
-  return [...exchanges, ...(includeHistoric ? historicExchanges : [])].filter(
-    value => !!(value && value.exchange && value.adapter),
-  );
+  return [...exchanges, ...historicExchanges].filter(value => !!(value && value.exchange && value.adapter));
 }
