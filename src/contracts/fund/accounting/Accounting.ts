@@ -11,6 +11,10 @@ import { range } from '../../../utils/range';
 import { FeeManager } from '../fees/FeeManager';
 import { PerformanceFee } from '../fees/PerformanceFee';
 import { ValidationError } from '../../../errors/ValidationError';
+import { Shares } from '../shares/Shares';
+import { PriceSourceInterface } from '../../prices/PriceSourceInterface';
+import { sameAddress } from '../../../utils/sameAddress';
+import { Registry } from '../../version/Registry';
 
 export class PerformanceFeeCannotBePaidError extends ValidationError {
   public readonly name = 'PerformanceFeeCannotBePaidError';
@@ -179,6 +183,93 @@ export class Accounting extends Contract {
   }
 
   /**
+   * Manually erforms accounting calculations (GAV, NAV, share price, etc).
+   *
+   * @param block The block number to execute the call on.
+   */
+  public async getManualCalculationResults(block?: number) {
+    const routes = await this.getRoutes(block);
+
+    const feeManager = new FeeManager(this.environment, routes.feeManager);
+    const shares = new Shares(this.environment, routes.shares);
+    const performanceFee = new PerformanceFee(this.environment, await feeManager.getFee(1, block));
+
+    const mgtmFeeAmount = await feeManager.getManagementFeeAmount(block);
+    const gavFromAssets = await this.getGavFromAssets(block);
+    const divisor = new BigNumber('1e18');
+
+    const totalSupply = await shares.getTotalSupply(block);
+
+    const gavPerShare = totalSupply.isZero()
+      ? await this.getDefaultSharePrice(block)
+      : await this.getValuePerShare(gavFromAssets, totalSupply, block);
+
+    const highWaterMark = await performanceFee.getHighWaterMark(routes.feeManager, block);
+    const perfFeeRate = await performanceFee.getPerformanceFeeRate(routes.feeManager, block);
+
+    let perfFeeAmount = new BigNumber(0);
+    if (gavPerShare.isGreaterThan(highWaterMark) && !totalSupply.isZero() && !gavFromAssets.isZero()) {
+      const sharePriceGain = gavPerShare.minus(highWaterMark);
+      const totalGain = sharePriceGain.multipliedBy(totalSupply).dividedBy(divisor);
+      const feeInAsset = totalGain.multipliedBy(perfFeeRate).dividedBy(divisor);
+      const preDilutionFee = totalSupply.multipliedBy(feeInAsset).dividedBy(gavFromAssets);
+      perfFeeAmount = preDilutionFee.multipliedBy(totalSupply).dividedBy(totalSupply.minus(preDilutionFee));
+    }
+    const feesInShares = mgtmFeeAmount.plus(perfFeeAmount);
+
+    const feesInDenominationAsset = totalSupply.isZero()
+      ? new BigNumber(0)
+      : feesInShares.multipliedBy(gavFromAssets).dividedBy(totalSupply.plus(feesInShares));
+
+    const nav = gavFromAssets.minus(feesInDenominationAsset);
+    const totalSupplyAccountingForFees = totalSupply.plus(feesInShares);
+
+    let sharePrice = await this.getDefaultSharePrice(block);
+    let gavPerShareNetManagementFee = await this.getDefaultSharePrice(block);
+    if (!totalSupply.isZero()) {
+      sharePrice = await this.getValuePerShare(gavFromAssets, totalSupplyAccountingForFees, block);
+      gavPerShareNetManagementFee = await this.getValuePerShare(gavFromAssets, totalSupply.plus(mgtmFeeAmount), block);
+    }
+
+    return {
+      sharePrice: sharePrice.integerValue(),
+      gav: gavFromAssets.integerValue(),
+      nav: nav.integerValue(),
+      feesInDenominationAsset: feesInDenominationAsset.integerValue(),
+      feesInShares: feesInShares.integerValue(),
+      gavPerShareNetManagementFee: gavPerShareNetManagementFee.integerValue(),
+    } as FundCalculations;
+  }
+
+  /**
+   * Gets the asset GAV manually.
+   *
+   * @param block The block number to execute the call on.
+   */
+  public async getGavFromAssets(block?: number) {
+    const holdings = await this.getFundHoldings(block);
+
+    const registry = new Registry(this.environment, await this.getRegistry());
+
+    const priceSource = new PriceSourceInterface(this.environment, await registry.getPriceSource(block));
+    const denominationAsset = await this.getDenominationAsset(block);
+
+    const assetGavs = await Promise.all(
+      holdings.map(holding => {
+        return !sameAddress(holding.address, denominationAsset)
+          ? priceSource.convertQuantity(holding.amount, holding.address, denominationAsset, block)
+          : holding.amount;
+      }),
+    );
+
+    const assetGav = assetGavs.reduce((acc, current) => {
+      return acc.plus(current);
+    }, new BigNumber(0));
+
+    return assetGav;
+  }
+
+  /**
    * Gets the share costs in a certain asset.
    *
    * @param numShares The number of shares.
@@ -209,6 +300,28 @@ export class Accounting extends Contract {
     };
 
     return this.createTransaction({ from, method: 'triggerRewardAllFees', amgu, validate });
+  }
+
+  /**
+   * Gets the value per share.
+   *
+   * @param totalValue The total asset value
+   * @param numShares The number of shares.
+   * @param block The block number to execute the call on.
+   */
+  public async getValuePerShare(totalValue: BigNumber, numShares: BigNumber, block?: number) {
+    const result = await this.makeCall<string>('valuePerShare', [totalValue.toFixed(0), numShares.toFixed(0)], block);
+    return toBigNumber(result);
+  }
+
+  /**
+   * Gets the divisor.
+   *
+   * @param block The block number to execute the call on.
+   */
+  public async getDivisor(block?: number) {
+    const result = await this.makeCall<string>('DIVISOR', undefined, block);
+    return toBigNumber(result);
   }
 }
 
