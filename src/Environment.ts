@@ -38,7 +38,7 @@ export class DeployedEnvironment extends Environment {
   ) {
     super(eth, options);
 
-    this.policies = availablePolicies;
+    this.policies = availablePolicies();
     this.tokens = availableTokens(deployment);
     this.exchanges = availableExchanges(deployment);
   }
