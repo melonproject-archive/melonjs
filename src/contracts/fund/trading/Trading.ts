@@ -262,8 +262,6 @@ export class Trading extends Contract {
       }
     }
 
-    // PolicyManager(routes.policyManager).preValidate(methodSelector, [orderAddresses[0], orderAddresses[1], orderAddresses[2], orderAddresses[3], exchanges[exchangeIndex].exchange], [orderValues[0], orderValues[1], orderValues[6]], identifier);
-
     const policyManagerAddress = (await this.getRoutes()).policyManager;
     const policyManager = new PolicyManager(this.environment, policyManagerAddress);
     const exchangeAddress = exchange.exchange;
