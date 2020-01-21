@@ -183,29 +183,32 @@ export class Accounting extends Contract {
   }
 
   /**
-   * Manually erforms accounting calculations (GAV, NAV, share price, etc).
+   * Manually performs accounting calculations (GAV, NAV, share price, etc).
    *
    * @param block The block number to execute the call on.
    */
   public async getManualCalculationResults(block?: number) {
-    const routes = await this.getRoutes(block);
+    const [routes, gavFromAssets] = await Promise.all([this.getRoutes(block), this.getGavFromAssets(block)]);
 
-    const feeManager = new FeeManager(this.environment, routes.feeManager);
     const shares = new Shares(this.environment, routes.shares);
-    const performanceFee = new PerformanceFee(this.environment, await feeManager.getFee(1, block));
+    const feeManager = new FeeManager(this.environment, routes.feeManager);
 
-    const mgtmFeeAmount = await feeManager.getManagementFeeAmount(block);
-    const gavFromAssets = await this.getGavFromAssets(block);
+    const [mgtmFeeAmount, performanceFeeAddress, totalSupply] = await Promise.all([
+      feeManager.getManagementFeeAmount(block),
+      feeManager.getFee(1, block),
+      shares.getTotalSupply(block),
+    ]);
+
+    const performanceFee = new PerformanceFee(this.environment, performanceFeeAddress);
     const divisor = await performanceFee.getDivisor(block);
 
-    const totalSupply = await shares.getTotalSupply(block);
-
-    const gavPerShare = totalSupply.isZero()
-      ? await this.getDefaultSharePrice(block)
-      : await this.getValuePerShare(gavFromAssets, totalSupply, block);
-
-    const highWaterMark = await performanceFee.getHighWaterMark(routes.feeManager, block);
-    const perfFeeRate = await performanceFee.getPerformanceFeeRate(routes.feeManager, block);
+    const [highWaterMark, perfFeeRate, gavPerShare] = await Promise.all([
+      performanceFee.getHighWaterMark(routes.feeManager, block),
+      performanceFee.getPerformanceFeeRate(routes.feeManager, block),
+      totalSupply.isZero()
+        ? this.getDefaultSharePrice(block)
+        : this.getValuePerShare(gavFromAssets, totalSupply, block),
+    ]);
 
     let perfFeeAmount = new BigNumber(0);
     if (gavPerShare.isGreaterThan(highWaterMark) && !totalSupply.isZero() && !gavFromAssets.isZero()) {
@@ -224,12 +227,12 @@ export class Accounting extends Contract {
     const nav = gavFromAssets.minus(feesInDenominationAsset);
     const totalSupplyAccountingForFees = totalSupply.plus(feesInShares);
 
-    let sharePrice = await this.getDefaultSharePrice(block);
-    let gavPerShareNetManagementFee = await this.getDefaultSharePrice(block);
-    if (!totalSupply.isZero()) {
-      sharePrice = await this.getValuePerShare(gavFromAssets, totalSupplyAccountingForFees, block);
-      gavPerShareNetManagementFee = await this.getValuePerShare(gavFromAssets, totalSupply.plus(mgtmFeeAmount), block);
-    }
+    const [sharePrice, gavPerShareNetManagementFee] = totalSupply.isZero()
+      ? await Promise.all([this.getDefaultSharePrice(block), this.getDefaultSharePrice(block)])
+      : await Promise.all([
+          this.getValuePerShare(gavFromAssets, totalSupplyAccountingForFees, block),
+          this.getValuePerShare(gavFromAssets, totalSupply.plus(mgtmFeeAmount), block),
+        ]);
 
     return {
       sharePrice: sharePrice.integerValue(),
@@ -247,12 +250,14 @@ export class Accounting extends Contract {
    * @param block The block number to execute the call on.
    */
   public async getGavFromAssets(block?: number) {
-    const holdings = await this.getFundHoldings(block);
+    const [holdings, denominationAsset, registryAddress] = await Promise.all([
+      this.getFundHoldings(block),
+      this.getDenominationAsset(block),
+      this.getRegistry(),
+    ]);
 
-    const registry = new Registry(this.environment, await this.getRegistry());
-
+    const registry = new Registry(this.environment, registryAddress);
     const priceSource = new PriceSourceInterface(this.environment, await registry.getPriceSource(block));
-    const denominationAsset = await this.getDenominationAsset(block);
 
     const assetGavs = await Promise.all(
       holdings.map(holding => {
