@@ -196,7 +196,7 @@ export class Accounting extends Contract {
 
     const mgtmFeeAmount = await feeManager.getManagementFeeAmount(block);
     const gavFromAssets = await this.getGavFromAssets(block);
-    const divisor = new BigNumber('1e18');
+    const divisor = await performanceFee.getDivisor(block);
 
     const totalSupply = await shares.getTotalSupply(block);
 
@@ -311,16 +311,6 @@ export class Accounting extends Contract {
    */
   public async getValuePerShare(totalValue: BigNumber, numShares: BigNumber, block?: number) {
     const result = await this.makeCall<string>('valuePerShare', [totalValue.toFixed(0), numShares.toFixed(0)], block);
-    return toBigNumber(result);
-  }
-
-  /**
-   * Gets the divisor.
-   *
-   * @param block The block number to execute the call on.
-   */
-  public async getDivisor(block?: number) {
-    const result = await this.makeCall<string>('DIVISOR', undefined, block);
     return toBigNumber(result);
   }
 }

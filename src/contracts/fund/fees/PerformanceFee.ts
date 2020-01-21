@@ -78,6 +78,16 @@ export class PerformanceFee extends Contract {
   public canUpdate(address: Address, block?: number) {
     return this.makeCall<boolean>('canUpdate', [address], block);
   }
+
+  /**
+   * Gets the divisor.
+   *
+   * @param block The block number to execute the call on.
+   */
+  public async getDivisor(block?: number) {
+    const result = await this.makeCall<string>('DIVISOR', undefined, block);
+    return toBigNumber(result);
+  }
 }
 
 export interface PerformanceFee extends Fee {}
