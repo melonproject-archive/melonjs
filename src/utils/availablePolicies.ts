@@ -60,5 +60,5 @@ export function availablePolicies(includeHistoric?: boolean): PolicyDefinition[]
     },
   ] as PolicyDefinition[];
 
-  return [...policies, ...(includeHistoric && historicPolicies)];
+  return [...policies, ...(includeHistoric ? historicPolicies : [])];
 }

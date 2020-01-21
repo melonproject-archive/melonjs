@@ -14,7 +14,7 @@ import { ExchangeAdapterAbi } from '../../../abis/ExchangeAdapter.abi';
 import {
   AdapterMethodNotAllowedError,
   InvalidExchangeIndexError,
-  PreTradePolicyValidationError,
+  TradePolicyValidationError,
   SenderIsNotManagerOrContractError,
 } from './Trading.errors';
 import { PolicyManager } from '../policies/PolicyManager';
@@ -252,10 +252,9 @@ export class Trading extends Contract {
     const exchangeAddress = exchange.exchange;
 
     const policies = await policyManager.getPoliciesBySignature(encodedSignature);
-    const prePolicies = policies.pre;
 
     const rulesRespected = await Promise.all(
-      prePolicies.map(policyAddress => {
+      [...policies.pre, ...policies.post].map(policyAddress => {
         const policy = new Policy(this.environment, policyAddress);
         return policy.rule({
           signature: encodedSignature,
@@ -272,7 +271,7 @@ export class Trading extends Contract {
       }),
     );
     if (rulesRespected.some(respected => respected === false)) {
-      throw new PreTradePolicyValidationError(encodedSignature);
+      throw new TradePolicyValidationError(encodedSignature);
     }
     const makeOrderSignature = functionSignature(ExchangeAdapterAbi, 'makeOrder');
     const takeOrderSignature = functionSignature(ExchangeAdapterAbi, 'takeOrder');

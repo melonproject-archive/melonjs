@@ -58,7 +58,7 @@ export function availableExchanges(deployment: DeploymentOutput, includeHistoric
     },
   ];
 
-  return [...exchanges, ...(includeHistoric && historicExchanges)].filter(
+  return [...exchanges, ...(includeHistoric ? historicExchanges : [])].filter(
     value => !!(value && value.exchange && value.adapter),
   );
 }

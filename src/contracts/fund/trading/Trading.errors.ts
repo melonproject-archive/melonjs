@@ -64,8 +64,8 @@ export class SenderIsNotManagerOrContractError extends ValidationError {
   }
 }
 
-export class PreTradePolicyValidationError extends ValidationError {
-  public readonly name = 'PreTradePolicyValidationError';
+export class TradePolicyValidationError extends ValidationError {
+  public readonly name = 'TradePolicyValidationError';
 
   constructor(
     public readonly signature: string,

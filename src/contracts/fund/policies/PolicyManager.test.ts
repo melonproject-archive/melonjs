@@ -8,6 +8,7 @@ import { PermissiveAuthorityBytecode } from '../../../abis/PermissiveAuthority.b
 import { MaxConcentration } from './MaxConcentration';
 import { MaxConcentrationBytecode } from '../../../abis/MaxConcentration.bin';
 import BigNumber from 'bignumber.js';
+import { availablePolicies } from '../../../utils/availablePolicies';
 
 describe('PolicyManager', () => {
   let environment: TestEnvironment;
@@ -70,5 +71,18 @@ describe('PolicyManager', () => {
     );
     const txResult = await tx.send(await tx.prepare());
     expect(txResult.gasUsed).toBeGreaterThanOrEqual(0);
+  });
+
+  it.only('should load the available policies', async () => {
+    const policies = availablePolicies();
+
+    policies.forEach(policy =>
+      expect(policy).toMatchObject({
+        id: expect.any(String),
+        name: expect.any(String),
+        signatures: expect.any(Array),
+        historic: expect.any(Boolean),
+      }),
+    );
   });
 });

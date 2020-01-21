@@ -37,5 +37,5 @@ export function availableTokens(deployment: DeploymentOutput, includeHistoric?: 
       return { ...token, ...replaceProperties(token) };
     });
 
-  return [...tokens, ...(includeHistoric && historicTokens)];
+  return [...tokens, ...(includeHistoric ? historicTokens : [])];
 }
