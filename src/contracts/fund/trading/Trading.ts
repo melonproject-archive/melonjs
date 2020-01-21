@@ -18,11 +18,11 @@ import {
   SenderIsNotManagerOrContractError,
 } from './Trading.errors';
 import { PolicyManager } from '../policies/PolicyManager';
-import { Policy } from '../policies/Policy';
 import { toDate } from '../../../utils/toDate';
 import { AssetNotRegisteredError } from '../../version/Registry.error';
 import { sameAddress } from '../../../utils/sameAddress';
 import { Hub } from '../hub/Hub';
+import { PolicyArgs } from '../policies/Policy';
 
 export interface ExchangeInfo {
   exchange: Address;
@@ -247,32 +247,6 @@ export class Trading extends Contract {
       throw new AdapterMethodNotAllowedError(exchange.adapter, encodedSignature);
     }
 
-    const policyManagerAddress = (await this.getRoutes()).policyManager;
-    const policyManager = new PolicyManager(this.environment, policyManagerAddress);
-    const exchangeAddress = exchange.exchange;
-
-    const policies = await policyManager.getPoliciesBySignature(encodedSignature);
-
-    const rulesRespected = await Promise.all(
-      [...policies.pre, ...policies.post].map(policyAddress => {
-        const policy = new Policy(this.environment, policyAddress);
-        return policy.rule({
-          signature: encodedSignature,
-          addresses: [
-            args.orderAddresses[0],
-            args.orderAddresses[1],
-            args.orderAddresses[2],
-            args.orderAddresses[3],
-            exchangeAddress,
-          ],
-          values: [args.orderValues[0], args.orderValues[1], args.orderValues[6]],
-          identifier: args.identifier,
-        });
-      }),
-    );
-    if (rulesRespected.some(respected => respected === false)) {
-      throw new TradePolicyValidationError(encodedSignature);
-    }
     const makeOrderSignature = functionSignature(ExchangeAdapterAbi, 'makeOrder');
     const takeOrderSignature = functionSignature(ExchangeAdapterAbi, 'takeOrder');
 
@@ -286,6 +260,31 @@ export class Trading extends Contract {
       if (!takerAssetIsRegistered) {
         throw new AssetNotRegisteredError(args.orderAddresses[3]);
       }
+    }
+
+    // PolicyManager(routes.policyManager).preValidate(methodSelector, [orderAddresses[0], orderAddresses[1], orderAddresses[2], orderAddresses[3], exchanges[exchangeIndex].exchange], [orderValues[0], orderValues[1], orderValues[6]], identifier);
+
+    const policyManagerAddress = (await this.getRoutes()).policyManager;
+    const policyManager = new PolicyManager(this.environment, policyManagerAddress);
+    const exchangeAddress = exchange.exchange;
+
+    const validationArgs: PolicyArgs = {
+      signature: encodedSignature,
+      addresses: [
+        args.orderAddresses[0],
+        args.orderAddresses[1],
+        args.orderAddresses[2],
+        args.orderAddresses[3],
+        exchangeAddress,
+      ],
+      values: [args.orderValues[0], args.orderValues[1], args.orderValues[6]],
+      identifier: args.identifier,
+    };
+
+    try {
+      await Promise.all([policyManager.preValidate(validationArgs), policyManager.postValidate(validationArgs)]);
+    } catch (e) {
+      throw new TradePolicyValidationError(encodedSignature);
     }
   }
 
