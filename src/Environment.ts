@@ -38,9 +38,13 @@ export class DeployedEnvironment extends Environment {
   ) {
     super(eth, options);
 
-    this.policies = availablePolicies();
-    this.tokens = availableTokens(deployment);
-    this.exchanges = availableExchanges(deployment);
+    this.policies = availablePolicies().filter(token => !token.historic || (network === 1 && token.historic));
+    this.tokens = availableTokens(deployment).filter(token => !token.historic || (network === 1 && token.historic));
+    this.exchanges = availableExchanges(deployment).filter(
+      token => !token.historic || (network === 1 && token.historic),
+    );
+
+    console.log(this.tokens);
   }
 
   public getToken(symbol: string): TokenDefinition;
