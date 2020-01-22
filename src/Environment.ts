@@ -43,8 +43,6 @@ export class DeployedEnvironment extends Environment {
     this.exchanges = availableExchanges(deployment).filter(
       token => !token.historic || (network === 1 && token.historic),
     );
-
-    console.log(this.tokens);
   }
 
   public getToken(symbol: string): TokenDefinition;
