@@ -15,9 +15,17 @@ export interface DeploymentOutput {
     addr: DeploymentOasisDexAddresses;
     conf: DeploymentOasisDexConfig;
   };
-  zeroex: {
-    addr: DeploymentZeroExAddresses;
-    conf: DeploymentZeroExConfig;
+  uniswap: {
+    add: DeploymentUniswapAddresses;
+    conf: DeploymentUniswapConfig;
+  };
+  zeroExV2: {
+    addr: DeploymentZeroExV2Addresses;
+    conf: DeploymentZeroExV2Config;
+  };
+  zeroExV3: {
+    addr: DeploymentZeroExV3Addresses;
+    conf: DeploymentZeroExV3Config;
   };
   tokens: {
     addr: DeploymentTokenAddresses;
@@ -31,6 +39,8 @@ export interface DeploymentMelonAddresses {
   OasisDexAdapter: string;
   OasisDexAccessor: string;
   ZeroExV2Adapter: string;
+  ZeroExV3Adapter: string;
+  UniswapAdapter: string;
   EngineAdapter: string;
   PriceTolerance: string;
   UserWhitelist: string;
@@ -62,9 +72,11 @@ export interface DeploymentMelonConfig {
   exchangeTakesCustody: {
     oasis: boolean;
     kyber: boolean;
-    zeroex: boolean;
+    zeroExV2: boolean;
+    zeroExV3: boolean;
     ethfinex: boolean;
     engine: boolean;
+    uniswap: boolean;
   };
 }
 
@@ -99,12 +111,31 @@ export interface DeploymentEthfinexAddresses {
 
 export interface DeploymentEthfinexConfig {}
 
-export interface DeploymentZeroExAddresses {
+export interface DeploymentZeroExV2Addresses {
   ZeroExV2Exchange: string;
-  ERC20Proxy: string;
+  ZeroExV2ERC20Proxy: string;
 }
 
-export interface DeploymentZeroExConfig {}
+export interface DeploymentZeroExV2Config {}
+
+export interface DeploymentZeroExV3Addresses {
+  ZeroExV3Exchange: string;
+  ZeroExV3ERC20Proxy: string;
+  ZeroExV3Staking: string;
+  ZeroExV3StakingProxy: string;
+  ZeroExV3ZrxVault: string;
+}
+
+export interface DeploymentZeroExV3Config {
+  protocolFeeMultiplier: number;
+}
+
+export interface DeploymentUniswapAddresses {
+  UniswapExchange: string;
+  UniswapFactory: string;
+}
+
+export interface DeploymentUniswapConfig {}
 
 export interface DeploymentTokenAddresses {
   [key: string]: string;

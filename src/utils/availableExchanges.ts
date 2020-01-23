@@ -4,7 +4,8 @@ export enum ExchangeIdentifier {
   'MelonEngine' = 'MelonEngine',
   'KyberNetwork' = 'KyberNetwork',
   'OasisDex' = 'OasisDex',
-  'ZeroEx' = 'ZeroEx',
+  'ZeroExV2' = 'ZeroExV2',
+  'ZeroExV3' = 'ZeroExV3',
 }
 
 export interface ExchangeDefinition {
@@ -38,11 +39,18 @@ export function availableExchanges(deployment: DeploymentOutput): ExchangeDefini
       exchange: deployment.oasis.addr.OasisDexExchange,
       historic: false,
     },
-    deployment.zeroex && {
-      name: '0x Protocol',
-      id: ExchangeIdentifier.ZeroEx,
+    deployment.zeroExV2 && {
+      name: '0x Protocol (v. 2.1)',
+      id: ExchangeIdentifier.ZeroExV2,
       adapter: deployment.melon.addr.ZeroExV2Adapter,
-      exchange: deployment.zeroex.addr.ZeroExV2Exchange,
+      exchange: deployment.zeroExV2.addr.ZeroExV2Exchange,
+      historic: false,
+    },
+    deployment.zeroExV3 && {
+      name: '0x Protocol (v. 3.0)',
+      id: ExchangeIdentifier.ZeroExV3,
+      adapter: deployment.melon.addr.ZeroExV3Adapter,
+      exchange: deployment.zeroExV3.addr.ZeroExV3Exchange,
       historic: false,
     },
   ];
