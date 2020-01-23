@@ -106,13 +106,13 @@ export class FundFactory extends Contract {
   public async getManagersToRoutes(manager: Address, block?: number): Promise<HubRoutes> {
     const routes = await this.makeCall<HubRoutes>('managersToRoutes', [manager], block);
     const output: HubRoutes = {
-      ...(routes.accounting && { accounting: routes.accounting }),
-      ...(routes.participation && { participation: routes.participation }),
-      ...(routes.shares && { shares: routes.shares }),
-      ...(routes.trading && { trading: routes.trading }),
-      ...(routes.vault && { vault: routes.vault }),
-      ...(routes.feeManager && { feeManager: routes.feeManager }),
-      ...(routes.policyManager && { policyManager: routes.policyManager }),
+      ...(routes.accounting && !isZeroAddress(routes.accounting) && { accounting: routes.accounting }),
+      ...(routes.participation && !isZeroAddress(routes.participation) && { participation: routes.participation }),
+      ...(routes.shares && !isZeroAddress(routes.shares) && { shares: routes.shares }),
+      ...(routes.trading && !isZeroAddress(routes.trading) && { trading: routes.trading }),
+      ...(routes.vault && !isZeroAddress(routes.vault) && { vault: routes.vault }),
+      ...(routes.feeManager && !isZeroAddress(routes.feeManager) && { feeManager: routes.feeManager }),
+      ...(routes.policyManager && !isZeroAddress(routes.policyManager) && { policyManager: routes.policyManager }),
     };
 
     return output;
