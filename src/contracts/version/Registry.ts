@@ -213,6 +213,11 @@ export class Registry extends Contract {
 
   public async getVersionInformation(versionAddress: Address, block?: number) {
     const info = await this.makeCall<VersionInformation>('versionInformation', [versionAddress], block);
+
+    if (!info) {
+      return undefined;
+    }
+
     return {
       name: hexToString(info.name),
       exists: info.exists,

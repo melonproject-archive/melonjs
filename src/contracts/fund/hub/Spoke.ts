@@ -72,21 +72,17 @@ export class Spoke extends Contract {
    * @param block The block number to execute the call on.
    */
   public async getRoutes(block?: number) {
-    const result = await this.makeCall<HubRoutes>('routes', undefined, block);
-    const routes: HubRoutes = {
-      accounting: result.accounting,
-      engine: result.engine,
-      feeManager: result.feeManager,
-      mlnToken: result.mlnToken,
-      participation: result.participation,
-      policyManager: result.policyManager,
-      registry: result.registry,
-      shares: result.shares,
-      trading: result.trading,
-      vault: result.vault,
-      version: result.version,
+    const routes = await this.makeCall<HubRoutes>('routes', undefined, block);
+    const output: HubRoutes = {
+      ...(routes.accounting && { accounting: routes.accounting }),
+      ...(routes.participation && { participation: routes.participation }),
+      ...(routes.shares && { shares: routes.shares }),
+      ...(routes.trading && { trading: routes.trading }),
+      ...(routes.vault && { vault: routes.vault }),
+      ...(routes.feeManager && { feeManager: routes.feeManager }),
+      ...(routes.policyManager && { policyManager: routes.policyManager }),
     };
 
-    return routes;
+    return output;
   }
 }

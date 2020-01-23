@@ -4,75 +4,17 @@ import { Contract } from '../../../Contract';
 import { Environment } from '../../../Environment';
 import { Address } from '../../../Address';
 import { toDate } from '../../../utils/toDate';
-import { ValidationError } from '../../../errors/ValidationError';
-import { sameAddress } from '../../../utils/sameAddress';
 import { DSGuard } from '../../dependencies/authorization/DSGuard';
 import { applyMixins } from '../../../utils/applyMixins';
 
-export class OnlyCreatorError extends ValidationError {
-  public name = 'OnlyCreatorError';
-
-  constructor(
-    public readonly sender: Address,
-    public readonly creator: Address,
-    message: string = 'Only creator can do this.',
-  ) {
-    super(message);
-  }
-}
-
-export class SpokesNotSetError extends ValidationError {
-  public name = 'SpokesNotSetError';
-
-  constructor(message: string = 'Spokes must be set.') {
-    super(message);
-  }
-}
-
-export class SpokesAlreadySetError extends ValidationError {
-  public name = 'SpokesAlreadySetError';
-
-  constructor(message: string = 'Spokes are already set.') {
-    super(message);
-  }
-}
-
-export class RoutingNotSetError extends ValidationError {
-  public name = 'RoutingNotSetError';
-
-  constructor(message: string = 'Routing must be set.') {
-    super(message);
-  }
-}
-
-export class RoutingAlreadySetError extends ValidationError {
-  public name = 'RoutingAlreadySetError';
-
-  constructor(message: string = 'Routing is already set.') {
-    super(message);
-  }
-}
-
-export class PermissionsAlreadySetError extends ValidationError {
-  public name = 'PermissionsAlreadySetError';
-
-  constructor(message: string = 'Permissions are already set.') {
-    super(message);
-  }
-}
-
 export interface HubRoutes {
   accounting?: Address;
-  engine?: Address;
-  feeManager?: Address;
-  mlnToken?: Address;
   participation?: Address;
-  policyManager?: Address;
-  registry?: Address;
   shares?: Address;
   trading?: Address;
   vault?: Address;
-  version?: Address;
+  feeManager?: Address;
+  policyManager?: Address;
 }
 
 export interface HubDeployArguments {
@@ -85,13 +27,6 @@ export class Hub extends Contract {
 
   public static deploy(environment: Environment, bytecode: string, from: Address, args: HubDeployArguments) {
     return super.createDeployment<Hub>(environment, bytecode, from, [args.manager, toHex(args.name)]);
-  }
-
-  private async validateCreator(from: Address) {
-    const creator = await this.getCreator();
-    if (!sameAddress(from, creator)) {
-      throw new OnlyCreatorError(from, creator);
-    }
   }
 
   /**
@@ -142,22 +77,18 @@ export class Hub extends Contract {
    * @param block The block number to execute the call on.
    */
   public async getRoutes(block?: number) {
-    const result = await this.makeCall<HubRoutes>('routes', undefined, block);
-    const routes: HubRoutes = {
-      accounting: result.accounting,
-      engine: result.engine,
-      feeManager: result.feeManager,
-      mlnToken: result.mlnToken,
-      participation: result.participation,
-      policyManager: result.policyManager,
-      registry: result.registry,
-      shares: result.shares,
-      trading: result.trading,
-      vault: result.vault,
-      version: result.version,
+    const routes = await this.makeCall<HubRoutes>('routes', undefined, block);
+    const output: HubRoutes = {
+      ...(routes.accounting && { accounting: routes.accounting }),
+      ...(routes.participation && { participation: routes.participation }),
+      ...(routes.shares && { shares: routes.shares }),
+      ...(routes.trading && { trading: routes.trading }),
+      ...(routes.vault && { vault: routes.vault }),
+      ...(routes.feeManager && { feeManager: routes.feeManager }),
+      ...(routes.policyManager && { policyManager: routes.policyManager }),
     };
 
-    return routes;
+    return output;
   }
 
   /**
@@ -174,116 +105,40 @@ export class Hub extends Contract {
    *
    * @param block The block number to execute the call on.
    */
-  public getFundVersion(block?: number) {
+  public getVersion(block?: number) {
     return this.makeCall<Address>('version', undefined, block);
   }
 
-  /**
-   * Checks if the spokes are set
-   *
-   * @param block The block number to execute the call on.
-   */
-  public isSpokesSet(block?: number) {
-    return this.makeCall<boolean>('spokesSet', undefined, block);
+  public getRegistry(block?: number) {
+    return this.makeCall<Address>('registry', undefined, block);
   }
 
-  /**
-   * Sets the spokes on the hub.
-   *
-   * @param from The sender address.
-   * @param spokes The hub routes.
-   */
-  public setSpokes(from: Address, spokes: HubRoutes) {
-    const method = 'setSpokes';
-    const args = [
-      [
-        spokes.accounting,
-        spokes.feeManager,
-        spokes.participation,
-        spokes.policyManager,
-        spokes.shares,
-        spokes.trading,
-        spokes.vault,
-        spokes.registry,
-        spokes.version,
-        spokes.engine,
-        spokes.mlnToken,
-      ],
-    ];
-
-    const validate = async () => {
-      await this.validateCreator(from);
-
-      if (await this.isSpokesSet()) {
-        throw new SpokesAlreadySetError();
-      }
-    };
-
-    return this.createTransaction({ from, method, args, validate });
+  public getVault(block?: number) {
+    return this.makeCall<Address>('vault', undefined, block);
   }
 
-  /**
-   * Checks if the routing is set
-   *
-   * @param block The block number to execute the call on.
-   */
-  public isRoutingSet(block?: number) {
-    return this.makeCall<boolean>('routingSet', undefined, block);
+  public getAccounting(block?: number) {
+    return this.makeCall<Address>('accounting', undefined, block);
   }
 
-  /**
-   * Sets the routing on the hub.
-   *
-   * @param from The sender address.
-   */
-  public setRouting(from: Address) {
-    const validate = async () => {
-      await this.validateCreator(from);
-
-      if (!(await this.isSpokesSet())) {
-        throw new SpokesNotSetError();
-      }
-
-      if (await this.isRoutingSet()) {
-        throw new RoutingAlreadySetError();
-      }
-    };
-
-    return this.createTransaction({ from, method: 'setRouting', validate });
+  public getPriceSource(block?: number) {
+    return this.makeCall<Address>('priceSource', undefined, block);
   }
 
-  /**
-   * Sets the permissions on the hub.
-   *
-   * @param from The sender address.
-   */
-  public setPermissions(from: Address) {
-    const validate = async () => {
-      await this.validateCreator(from);
-
-      if (!(await this.isSpokesSet())) {
-        throw new SpokesNotSetError();
-      }
-
-      if (!(await this.isRoutingSet())) {
-        throw new RoutingNotSetError();
-      }
-
-      if (await this.isPermissionsSet()) {
-        throw new PermissionsAlreadySetError();
-      }
-    };
-
-    return this.createTransaction({ from, method: 'setPermissions', validate });
+  public getParticipation(block?: number) {
+    return this.makeCall<Address>('participation', undefined, block);
   }
 
-  /**
-   * Checks if the permissions are set
-   *
-   * @param block The block number to execute the call on.
-   */
-  public isPermissionsSet(block?: number) {
-    return this.makeCall<boolean>('permissionsSet', undefined, block);
+  public getTrading(block?: number) {
+    return this.makeCall<Address>('trading', undefined, block);
+  }
+
+  public getShares(block?: number) {
+    return this.makeCall<Address>('shares', undefined, block);
+  }
+
+  public getPolicyManager(block?: number) {
+    return this.makeCall<Address>('policyManager', undefined, block);
   }
 }
 

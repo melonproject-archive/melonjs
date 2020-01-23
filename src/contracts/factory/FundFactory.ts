@@ -104,30 +104,18 @@ export class FundFactory extends Contract {
    * @param block The block number to execute the call on.
    */
   public async getManagersToRoutes(manager: Address, block?: number): Promise<HubRoutes> {
-    const result = await this.makeCall<HubRoutes>('managersToRoutes', [manager], block);
-    const keys = [
-      'accounting',
-      'engine',
-      'feeManager',
-      'mlnToken',
-      'participation',
-      'policyManager',
-      'priceSource',
-      'registry',
-      'shares',
-      'trading',
-      'vault',
-      'version',
-    ];
+    const routes = await this.makeCall<HubRoutes>('managersToRoutes', [manager], block);
+    const output: HubRoutes = {
+      ...(routes.accounting && { accounting: routes.accounting }),
+      ...(routes.participation && { participation: routes.participation }),
+      ...(routes.shares && { shares: routes.shares }),
+      ...(routes.trading && { trading: routes.trading }),
+      ...(routes.vault && { vault: routes.vault }),
+      ...(routes.feeManager && { feeManager: routes.feeManager }),
+      ...(routes.policyManager && { policyManager: routes.policyManager }),
+    };
 
-    return keys.reduce<HubRoutes>((carry, key: keyof HubRoutes) => {
-      const address = result && result[key];
-      if (!address || isZeroAddress(address)) {
-        return carry;
-      }
-
-      return { ...carry, [key]: address };
-    }, {});
+    return output;
   }
 
   /**
@@ -160,12 +148,15 @@ export class FundFactory extends Contract {
         registry.canUseFundName(from, settings.name),
         registry.isAssetRegistered(settings.denominationAsset),
       ]);
+
       if (!isValidFundName) {
         throw new InvalidFundNameError(settings.name);
       }
+
       if (!canUseFundName) {
         throw new CannotUseFundNameError(settings.name);
       }
+
       if (!denominationAssetRegistered) {
         throw new DenominationAssetNotRegisteredError();
       }
@@ -422,10 +413,6 @@ export class FundFactory extends Contract {
    */
   public getRegistry(block?: number) {
     return this.makeCall<Address>('registry', undefined, block);
-  }
-
-  public getAccountingFactory(block?: number) {
-    return this.makeCall<any>('accountingFactory', undefined, block);
   }
 }
 
