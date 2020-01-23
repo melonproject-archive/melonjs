@@ -3,7 +3,7 @@ import { Contract } from '../../../../Contract';
 import { Environment } from '../../../../Environment';
 import { Address } from '../../../../Address';
 import { ZeroExV2ExchangeAbi } from '../../../../abis/ZeroExV2Exchange.abi';
-import { Order } from '@0x/types-v2';
+import { Order } from '@0x/order-utils-v2';
 
 export interface ZeroExV2Order extends Order {}
 

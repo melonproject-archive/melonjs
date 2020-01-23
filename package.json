@@ -65,7 +65,6 @@
   },
   "devDependencies": {
     "@0x/types": "^2.5.0-beta.3",
-    "@0x/types-v2": "npm:@0x/types@2.4.3",
     "@types/jest": "^24.0.19",
     "@types/lru-cache": "^5.1.0",
     "@types/ramda": "^0.26.33",
