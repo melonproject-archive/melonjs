@@ -1,5 +1,4 @@
 import { createTestEnvironment, TestEnvironment } from '../../utils/tests/createTestEnvironment';
-
 import { randomAddress } from '../../utils/tests/randomAddress';
 import { Factory } from './Factory';
 import { FactoryBytecode } from '../../abis/Factory.bin';

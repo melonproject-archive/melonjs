@@ -1,6 +1,6 @@
 import { Contract } from '../../../Contract';
 import { applyMixins } from '../../../utils/applyMixins';
-import { Policy } from './Policy';
+import { IPolicy } from './IPolicy';
 import { AddressList } from './AddressList';
 import { AssetWhitelistAbi } from '../../../abis/AssetWhitelist.abi';
 import { Environment } from '../../../Environment';
@@ -25,5 +25,5 @@ export class AssetWhitelist extends Contract {
   }
 }
 
-export interface AssetWhitelist extends Policy, AddressList {}
-applyMixins(AssetWhitelist, [Policy, AddressList]);
+export interface AssetWhitelist extends IPolicy, AddressList {}
+applyMixins(AssetWhitelist, [IPolicy, AddressList]);

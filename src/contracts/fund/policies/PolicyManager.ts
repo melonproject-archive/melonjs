@@ -4,7 +4,7 @@ import { Address } from '../../../Address';
 import { PolicyManagerAbi } from '../../../abis/PolicyManager.abi';
 import { Spoke } from '../hub/Spoke';
 import { applyMixins } from '../../../utils/applyMixins';
-import { Policy, PolicyArgs } from './Policy';
+import { IPolicy, PolicyArgs } from './IPolicy';
 import { ValidationError } from '../../../errors/ValidationError';
 import { DSAuthority } from '../../dependencies/authorization/DSAuthority';
 import { encodeFunctionSignature } from '../../../utils/encodeFunctionSignature';
@@ -71,7 +71,7 @@ export class PolicyManager extends Contract {
         throw new NotAuthorizedError();
       }
 
-      const policy = new Policy(this.environment, policyAddress);
+      const policy = new IPolicy(this.environment, policyAddress);
       const position = await policy.getPosition();
       if (position !== 0 && position !== 1) {
         throw new PolicyPositionNotPreOrPostError();
@@ -153,7 +153,7 @@ export class PolicyManager extends Contract {
     }, []);
 
     const policyObjects = uniquePolicyAddresses.map(async address => {
-      const policy = new Policy(this.environment, address);
+      const policy = new IPolicy(this.environment, address);
       const identifier = await policy.getIdentifier(block);
 
       return {

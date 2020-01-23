@@ -2,11 +2,11 @@ import BigNumber from 'bignumber.js';
 import { TestEnvironment, createTestEnvironment } from '../../../utils/tests/createTestEnvironment';
 import { deployManagementFee } from '../../../utils/tests/deployManagementFee';
 import { randomAddress } from '../../../utils/tests/randomAddress';
-import { Fee, FeeAlreadyInitializedError } from './Fee';
+import { IFee, FeeAlreadyInitializedError } from './IFee';
 
 describe('FeeManager', () => {
   let environment: TestEnvironment;
-  let fee: Fee;
+  let fee: IFee;
 
   beforeAll(async () => {
     environment = await createTestEnvironment();

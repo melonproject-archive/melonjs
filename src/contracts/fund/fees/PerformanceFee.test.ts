@@ -1,5 +1,5 @@
 import { PerformanceFee } from './PerformanceFee';
-import { FeeAlreadyInitializedError } from './Fee';
+import { FeeAlreadyInitializedError } from './IFee';
 import { createTestEnvironment, TestEnvironment } from '../../../utils/tests/createTestEnvironment';
 import { deployPerformanceFee } from '../../../utils/tests/deployPerformanceFee';
 import { BigNumber } from 'bignumber.js';

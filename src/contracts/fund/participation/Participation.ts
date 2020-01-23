@@ -12,7 +12,7 @@ import { ValidationError } from '../../../errors/ValidationError';
 import { Hub } from '../hub/Hub';
 import { HubIsShutdownError } from '../../../errors/HubIsShutdownError';
 import { SpokeNotInitializedError } from '../../../errors/SpokeNotInitializedError';
-import { PriceSourceInterface } from '../../prices/PriceSourceInterface';
+import { IPriceSource } from '../../prices/IPriceSource';
 import { Accounting } from '../accounting/Accounting';
 import { Shares } from '../shares/Shares';
 import { Registry } from '../../version/Registry';
@@ -20,7 +20,7 @@ import { sameAddress } from '../../../utils/sameAddress';
 import { keccak256, padLeft } from 'web3-utils';
 import { functionSignature } from '../../../utils/functionSignature';
 import { PolicyManager } from '../policies/PolicyManager';
-import { Policy } from '../policies/Policy';
+import { IPolicy } from '../policies/IPolicy';
 import { zeroAddress } from '../../../utils/zeroAddress';
 import { zeroBigNumber } from '../../../utils/zeroBigNumber';
 import { PreminedToken } from '../../dependencies/token/PreminedToken';
@@ -301,7 +301,7 @@ export class Participation extends Contract {
 
       const rulesRespected = await Promise.all(
         prePolicies.map(policyAddress => {
-          const policy = new Policy(this.environment, policyAddress);
+          const policy = new IPolicy(this.environment, policyAddress);
           return policy.rule({
             signature: encodedSignature,
             addresses: [from, zeroAddress, zeroAddress, investmentAsset, zeroAddress],
@@ -334,7 +334,7 @@ export class Participation extends Contract {
       }
 
       const request = await this.getRequest(from);
-      const priceSource = new PriceSourceInterface(this.environment, await this.getPriceSource());
+      const priceSource = new IPriceSource(this.environment, await this.getPriceSource());
       if (!(await priceSource.hasValidPrice(request.investmentAsset))) {
         throw new PriceNotValidError(request.investmentAsset);
       }
@@ -452,7 +452,7 @@ export class Participation extends Contract {
 
     const request = await this.getRequest(from, block);
     const hub = new Hub(this.environment, await this.getHub(block));
-    const priceSource = new PriceSourceInterface(this.environment, await this.getPriceSource(block));
+    const priceSource = new IPriceSource(this.environment, await this.getPriceSource(block));
     if (
       !(
         !(await priceSource.hasValidPrice(request.investmentAsset, block)) ||

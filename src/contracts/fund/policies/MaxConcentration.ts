@@ -1,13 +1,11 @@
-import { Contract } from '../../../Contract';
 import { MaxConcentrationAbi } from '../../../abis/MaxConcentration.abi';
-import { applyMixins } from '../../../utils/applyMixins';
-import { Policy } from './Policy';
+import { IPolicy } from './IPolicy';
 import { toBigNumber } from '../../../utils/toBigNumber';
 import { Environment } from '../../../Environment';
 import { Address } from '../../../Address';
 import BigNumber from 'bignumber.js';
 
-export class MaxConcentration extends Contract {
+export class MaxConcentration extends IPolicy {
   public static readonly abi = MaxConcentrationAbi;
 
   public static deploy(environment: Environment, bytecode: string, from: Address, maxConcentration: BigNumber) {
@@ -24,6 +22,3 @@ export class MaxConcentration extends Contract {
     return toBigNumber(result);
   }
 }
-
-export interface MaxConcentration extends Policy {}
-applyMixins(MaxConcentration, [Policy]);

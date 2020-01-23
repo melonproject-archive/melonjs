@@ -28,8 +28,8 @@ export interface DeploymentOutput {
 export interface DeploymentMelonAddresses {
   EthfinexAdapter: string;
   KyberAdapter: string;
-  MatchingMarketAdapter: string;
-  MatchingMarketAccessor: string;
+  OasisDexAdapter: string;
+  OasisDexAccessor: string;
   ZeroExV2Adapter: string;
   EngineAdapter: string;
   PriceTolerance: string;

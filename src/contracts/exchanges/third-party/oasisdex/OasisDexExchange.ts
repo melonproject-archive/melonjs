@@ -3,10 +3,10 @@ import { Environment } from '../../../../Environment';
 import { Address } from '../../../../Address';
 import { toBigNumber } from '../../../../utils/toBigNumber';
 import { toDate } from '../../../../utils/toDate';
+import { OasisDexExchangeAbi } from '../../../../abis/OasisDexExchange.abi';
 import BigNumber from 'bignumber.js';
-import { MatchingMarketAbi } from '../../../../abis/MatchingMarket.abi';
 
-export interface MatchingMarketOffer {
+export interface OasisDexOffer {
   makerQuantity: BigNumber;
   makerAsset: Address;
   takerQuantity: BigNumber;
@@ -15,11 +15,11 @@ export interface MatchingMarketOffer {
   timestamp: Date;
 }
 
-export class MatchingMarket extends Contract {
-  public static readonly abi = MatchingMarketAbi;
+export class OasisDexExchange extends Contract {
+  public static readonly abi = OasisDexExchangeAbi;
 
   public static deploy(environment: Environment, bytecode: string, from: Address, closetime: BigNumber) {
-    return super.createDeployment<MatchingMarket>(environment, bytecode, from, [closetime.toFixed(0)]);
+    return super.createDeployment<OasisDexExchange>(environment, bytecode, from, [closetime.toFixed(0)]);
   }
 
   /**
@@ -28,7 +28,7 @@ export class MatchingMarket extends Contract {
    * @param id The id of the offer
    * @param block The block number to execute the call on.
    */
-  public async getOffer(id: BigNumber, block?: number): Promise<MatchingMarketOffer> {
+  public async getOffer(id: BigNumber, block?: number): Promise<OasisDexOffer> {
     const {
       '0': makerQuantity,
       '1': makerAsset,

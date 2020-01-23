@@ -22,7 +22,7 @@ import { toDate } from '../../../utils/toDate';
 import { AssetNotRegisteredError } from '../../version/Registry.error';
 import { sameAddress } from '../../../utils/sameAddress';
 import { Hub } from '../hub/Hub';
-import { PolicyArgs } from '../policies/Policy';
+import { PolicyArgs } from '../policies/IPolicy';
 
 export interface ExchangeInfo {
   exchange: Address;

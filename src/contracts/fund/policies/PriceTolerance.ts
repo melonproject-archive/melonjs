@@ -1,12 +1,10 @@
-import { Contract } from '../../../Contract';
 import { PriceToleranceAbi } from '../../../abis/PriceTolerance.abi';
-import { applyMixins } from '../../../utils/applyMixins';
 import { toBigNumber } from '../../../utils/toBigNumber';
-import { Policy } from './Policy';
+import { IPolicy } from './IPolicy';
 import { Environment } from '../../../Environment';
 import { Address } from '../../../Address';
 
-export class PriceTolerance extends Contract {
+export class PriceTolerance extends IPolicy {
   public static readonly abi = PriceToleranceAbi;
 
   public static deploy(environment: Environment, bytecode: string, from: Address, tolerance: number) {
@@ -23,6 +21,3 @@ export class PriceTolerance extends Contract {
     return toBigNumber(result);
   }
 }
-
-export interface PriceTolerance extends Policy {}
-applyMixins(PriceTolerance, [Policy]);

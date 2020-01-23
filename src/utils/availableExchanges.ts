@@ -34,7 +34,7 @@ export function availableExchanges(deployment: DeploymentOutput): ExchangeDefini
     deployment.oasis && {
       name: 'OasisDex',
       id: ExchangeIdentifier.OasisDex,
-      adapter: deployment.melon.addr.MatchingMarketAdapter,
+      adapter: deployment.melon.addr.OasisDexAdapter,
       exchange: deployment.oasis.addr.OasisDexExchange,
       historic: false,
     },

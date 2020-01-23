@@ -1,12 +1,10 @@
-import { Fee } from './Fee';
-import { applyMixins } from '../../../utils/applyMixins';
+import { IFee } from './IFee';
 import { Environment } from '../../../Environment';
 import { Address } from '../../../Address';
 import { ManagementFeeAbi } from '../../../abis/ManagementFee.abi';
-import { Contract } from '../../../Contract';
 import { toBigNumber } from '../../../utils/toBigNumber';
 
-export class ManagementFee extends Contract {
+export class ManagementFee extends IFee {
   public static readonly abi = ManagementFeeAbi;
 
   public static deploy(environment: Environment, bytecode: string, from: Address) {
@@ -24,6 +22,3 @@ export class ManagementFee extends Contract {
     return toBigNumber(result);
   }
 }
-
-export interface ManagementFee extends Fee {}
-applyMixins(ManagementFee, [Fee]);

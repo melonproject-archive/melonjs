@@ -5,7 +5,7 @@ import { functionSignature } from '../../../../utils/functionSignature';
 import { ExchangeAdapterAbi } from '../../../../abis/ExchangeAdapter.abi';
 import { zeroAddress } from '../../../../utils/zeroAddress';
 import { zeroBigNumber } from '../../../../utils/zeroBigNumber';
-import { MatchingMarketOffer } from '../../../exchanges/third-party/oasisdex/MatchingMarket';
+import { OasisDexOffer } from '../../../exchanges/third-party/oasisdex/OasisDexExchange';
 import { CallOnExchangeArgs } from '../Trading';
 import { BaseTradingAdapter } from './BaseTradingAdapter';
 import { checkSufficientBalance } from '../utils/checkSufficientBalance';
@@ -39,7 +39,7 @@ export class OasisDexTradingAdapter extends BaseTradingAdapter {
    * @param id The id of the order.
    * @param offer The order to cancel.
    */
-  public cancelOrder(from: Address, id: BigNumber, offer: MatchingMarketOffer) {
+  public cancelOrder(from: Address, id: BigNumber, offer: OasisDexOffer) {
     const methodArgs: CallOnExchangeArgs = {
       exchangeIndex: this.index,
       methodSignature: functionSignature(ExchangeAdapterAbi, 'cancelOrder'),
@@ -132,7 +132,7 @@ export class OasisDexTradingAdapter extends BaseTradingAdapter {
    * @param id The id of the offer.
    * @param offer The order to take.
    */
-  public takeOrder(from: Address, id: BigNumber, offer: MatchingMarketOffer, fillTakerQuantity?: BigNumber) {
+  public takeOrder(from: Address, id: BigNumber, offer: OasisDexOffer, fillTakerQuantity?: BigNumber) {
     const amount = fillTakerQuantity || offer.takerQuantity;
     const methodArgs: CallOnExchangeArgs = {
       exchangeIndex: this.index,

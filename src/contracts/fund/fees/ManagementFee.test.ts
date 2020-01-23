@@ -1,6 +1,6 @@
 import BigNumber from 'bignumber.js';
 import { ManagementFee } from './ManagementFee';
-import { FeeAlreadyInitializedError } from './Fee';
+import { FeeAlreadyInitializedError } from './IFee';
 import { TestEnvironment, createTestEnvironment } from '../../../utils/tests/createTestEnvironment';
 import { deployManagementFee } from '../../../utils/tests/deployManagementFee';
 import { randomAddress } from '../../../utils/tests/randomAddress';

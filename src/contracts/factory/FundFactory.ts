@@ -26,7 +26,7 @@ import {
   InvalidFundNameError,
 } from '../version/Registry.error';
 import { ManagementFeeMustBeAtIndexZeroError, PerformanceFeeMustBeAtIndexOneError } from '../fund/fees/FeeManager';
-import { Fee } from '../fund/fees/Fee';
+import { IFee } from '../fund/fees/IFee';
 import { sameAddress } from '../../utils/sameAddress';
 
 export interface FundFactoryDeployArguments {
@@ -178,14 +178,14 @@ export class FundFactory extends Contract {
       });
 
       if (settings.fees.length > 0) {
-        const fee = new Fee(this.environment, settings.fees[0]);
+        const fee = new IFee(this.environment, settings.fees[0]);
         if ((await fee.identifier()) !== 0) {
           throw new ManagementFeeMustBeAtIndexZeroError(settings.fees[0]);
         }
       }
 
       if (settings.fees.length > 0) {
-        const fee = new Fee(this.environment, settings.fees[1]);
+        const fee = new IFee(this.environment, settings.fees[1]);
         if ((await fee.identifier()) !== 1) {
           throw new PerformanceFeeMustBeAtIndexOneError(settings.fees[1]);
         }

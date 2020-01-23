@@ -1,6 +1,6 @@
 import { Contract } from '../../../Contract';
 import { applyMixins } from '../../../utils/applyMixins';
-import { Policy } from './Policy';
+import { IPolicy } from './IPolicy';
 import { AddressList } from './AddressList';
 import { AssetBlacklistAbi } from '../../../abis/AssetBlacklist.abi';
 import { Environment } from '../../../Environment';
@@ -14,5 +14,5 @@ export class AssetBlacklist extends Contract {
   }
 }
 
-export interface AssetBlacklist extends Policy, AddressList {}
-applyMixins(AssetBlacklist, [Policy, AddressList]);
+export interface AssetBlacklist extends IPolicy, AddressList {}
+applyMixins(AssetBlacklist, [IPolicy, AddressList]);

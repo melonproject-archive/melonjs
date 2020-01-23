@@ -1,21 +1,21 @@
 import { Contract } from '../../../../Contract';
 import { Environment } from '../../../../Environment';
 import { Address } from '../../../../Address';
-import { MatchingMarketAccessorAbi } from '../../../../abis/MatchingMarketAccessor.abi';
+import { OasisDexAccessorAbi } from '../../../../abis/OasisDexAccessor.abi';
 import { toBigNumber } from '../../../../utils/toBigNumber';
 import BigNumber from 'bignumber.js';
 
-export interface MatchingMarketOrder {
+export interface OasisDexOrder {
   id: BigNumber;
   sellQuantity: BigNumber;
   buyQuantity: BigNumber;
 }
 
-export class MatchingMarketAccessor extends Contract {
-  public static readonly abi = MatchingMarketAccessorAbi;
+export class OasisDexAccessor extends Contract {
+  public static readonly abi = OasisDexAccessorAbi;
 
   public static deploy(environment: Environment, bytecode: string, from: Address) {
-    return super.createDeployment<MatchingMarketAccessor>(environment, bytecode, from);
+    return super.createDeployment<OasisDexAccessor>(environment, bytecode, from);
   }
 
   /**
@@ -31,14 +31,14 @@ export class MatchingMarketAccessor extends Contract {
     sellAsset: Address,
     buyAsset: Address,
     block?: number,
-  ): Promise<MatchingMarketOrder[]> {
+  ): Promise<OasisDexOrder[]> {
     const { '0': ids, '1': sellQtys, '2': buyQtys } = await this.makeCall<{
       '0': string[];
       '1': string[];
       '2': string[];
     }>('getOrders', [targetExchange, sellAsset, buyAsset], block);
 
-    return (ids || []).map<MatchingMarketOrder>((id, index) => ({
+    return (ids || []).map<OasisDexOrder>((id, index) => ({
       id: toBigNumber(id),
       sellQuantity: toBigNumber(sellQtys[index]),
       buyQuantity: toBigNumber(buyQtys[index]),

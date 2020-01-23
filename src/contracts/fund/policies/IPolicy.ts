@@ -1,5 +1,5 @@
 import { Contract } from '../../../Contract';
-import { PolicyAbi } from '../../../abis/Policy.abi';
+import { IPolicyAbi } from '../../../abis/IPolicy.abi';
 import BigNumber from 'bignumber.js';
 import { Address } from '../../../Address';
 import { hexToBytes } from 'web3-utils';
@@ -11,8 +11,8 @@ export interface PolicyArgs {
   identifier: string;
 }
 
-export class Policy extends Contract {
-  public static readonly abi = PolicyAbi;
+export class IPolicy extends Contract {
+  public static readonly abi = IPolicyAbi;
 
   /**
    * Gets the identifier of a policy.

@@ -16,7 +16,12 @@ const organization = 'melonproject';
 const project = 'protocol';
 const release = `https://github.com/${organization}/${project}/releases/download/${version}/${filename}.tar.gz`;
 
-function download(from, to) {
+function download(from) {
+  const file = path.join(__dirname, '..', path.basename(release));
+  if (fs.existsSync(file)) {
+    return Promise.resolve(file);
+  }
+
   return new Promise((resolve, reject) => {
     https.get(from, response => {
       if (response.statusCode >= 400) {
@@ -25,17 +30,16 @@ function download(from, to) {
 
       if (response.statusCode > 300 && response.statusCode < 400 && response.headers.location) {
         if (url.parse(response.headers.location).hostname) {
-          return download(response.headers.location, to)
+          return download(response.headers.location)
             .then(resolve)
             .catch(reject);
         }
 
-        return download(url.resolve(url.parse(from).hostname, response.headers.location), to)
+        return download(url.resolve(url.parse(from).hostname, response.headers.location))
           .then(resolve)
           .catch(reject);
       }
 
-      const file = path.join(to, path.basename(release));
       response
         .pipe(fs.createWriteStream(file))
         .on('error', reject)
@@ -66,19 +70,19 @@ function extract(from, to) {
     fs.mkdirSync(destination);
   }
 
+  const downloaded = await download(release);
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'melon-protocol-'));
-  const downloaded = await download(release, tmp);
   await extract(downloaded, tmp);
 
   // Create typescript exports for all .abi files.
   const abis = glob.sync('*.abi', { cwd: tmp });
   abis.forEach(item => {
     const name = path.basename(item).split('.', 1)[0];
-    const content = fs.readFileSync(path.join(tmp, item));
+    const content = fs.readFileSync(path.join(tmp, item)).toString('utf8');
 
     let output = "import { AbiItem } from 'web3-utils';\n\n";
     output += '// tslint:disable-next-line:variable-name\n';
-    output += `export const ${name}Abi = ${content} as AbiItem[];`;
+    output += `export const ${name}Abi = ${content.trim()} as any as AbiItem[];`;
 
     output = prettier.format(output, { ...config, parser: 'typescript' });
     fs.writeFileSync(path.join(destination, `${name}.abi.ts`), output, 'utf8');
@@ -88,10 +92,10 @@ function extract(from, to) {
   const bins = glob.sync('*.bin', { cwd: tmp });
   bins.forEach(item => {
     const name = path.basename(item).split('.', 1)[0];
-    const content = fs.readFileSync(path.join(tmp, item));
+    const content = fs.readFileSync(path.join(tmp, item)).toString('utf8');
 
     let output = '// tslint:disable-next-line:variable-name\n';
-    output += `export const ${name}Bytecode = '0x${content}';`;
+    output += `export const ${name}Bytecode = '0x${content.trim()}';`;
 
     output = prettier.format(output, { ...config, parser: 'typescript' });
     fs.writeFileSync(path.join(destination, `${name}.bin.ts`), output, 'utf8');

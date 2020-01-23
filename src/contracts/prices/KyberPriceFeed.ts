@@ -1,7 +1,7 @@
 import { Contract } from '../../Contract';
 import { KyberPriceFeedAbi } from '../../abis/KyberPriceFeed.abi';
 import { applyMixins } from '../../utils/applyMixins';
-import { PriceSourceInterface } from './PriceSourceInterface';
+import { IPriceSource } from './IPriceSource';
 import { Address } from '../../Address';
 import { Registry } from '../version/Registry';
 import { sameAddress } from '../../utils/sameAddress';
@@ -54,5 +54,5 @@ export class KyberPriceFeed extends Contract {
   }
 }
 
-export interface KyberPriceFeed extends PriceSourceInterface {}
-applyMixins(KyberPriceFeed, [PriceSourceInterface]);
+export interface KyberPriceFeed extends IPriceSource {}
+applyMixins(KyberPriceFeed, [IPriceSource]);

@@ -1,11 +1,9 @@
-import { Contract } from '../../../Contract';
 import { Environment } from '../../../Environment';
 import { Address } from '../../../Address';
 import { UserWhitelistAbi } from '../../../abis/UserWhitelist.abi';
-import { applyMixins } from '../../../utils/applyMixins';
-import { Policy } from './Policy';
+import { IPolicy } from './IPolicy';
 
-export class UserWhitelist extends Contract {
+export class UserWhitelist extends IPolicy {
   public static readonly abi = UserWhitelistAbi;
 
   public static deploy(environment: Environment, bytecode: string, from: Address, approved: Address[]) {
@@ -22,6 +20,3 @@ export class UserWhitelist extends Contract {
     return await this.makeCall<boolean>('whitelisted', [address], block);
   }
 }
-
-export interface UserWhitelist extends Policy {}
-applyMixins(UserWhitelist, [Policy]);

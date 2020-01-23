@@ -12,7 +12,7 @@ import { FeeManager } from '../fees/FeeManager';
 import { PerformanceFee } from '../fees/PerformanceFee';
 import { ValidationError } from '../../../errors/ValidationError';
 import { Shares } from '../shares/Shares';
-import { PriceSourceInterface } from '../../prices/PriceSourceInterface';
+import { IPriceSource } from '../../prices/IPriceSource';
 import { sameAddress } from '../../../utils/sameAddress';
 import { Registry } from '../../version/Registry';
 
@@ -257,7 +257,7 @@ export class Accounting extends Contract {
     ]);
 
     const registry = new Registry(this.environment, registryAddress);
-    const priceSource = new PriceSourceInterface(this.environment, await registry.getPriceSource(block));
+    const priceSource = new IPriceSource(this.environment, await registry.getPriceSource(block));
 
     const assetGavs = await Promise.all(
       holdings.map(holding => {

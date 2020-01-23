@@ -3,7 +3,7 @@ import { Eth } from 'web3-eth';
 import { HttpProvider } from 'web3-providers';
 import { Contract } from './Contract';
 import { Environment, CacheHandler } from './Environment';
-import { CanonicalPriceFeed } from './contracts/prices/CanonicalPriceFeed';
+import { IPriceSource } from './contracts/prices/IPriceSource';
 import { Hub } from './contracts/fund/hub/Hub';
 import { ERC20WithFields } from './contracts/dependencies/token/ERC20WithFields';
 import { toBigNumber } from './utils/toBigNumber';
@@ -29,7 +29,7 @@ describe('CacheHandler', () => {
       cache,
     });
 
-    const source = new CanonicalPriceFeed(environment, '0x0');
+    const source = new IPriceSource(environment, '0x0');
     // @ts-ignore
     const spy = jest.spyOn(source, 'doMakeCall').mockReturnValue(Date.now());
 
@@ -40,7 +40,7 @@ describe('CacheHandler', () => {
 
   it('calls should not be cached when not using a cache handler', async () => {
     const environment = new Environment(client);
-    const source = new CanonicalPriceFeed(environment, '0x0');
+    const source = new IPriceSource(environment, '0x0');
     // @ts-ignore
     const spy = jest.spyOn(source, 'doMakeCall').mockReturnValue(Date.now());
 
@@ -54,7 +54,7 @@ describe('CacheHandler', () => {
       cache,
     });
 
-    const source = new CanonicalPriceFeed(environment, '0x0');
+    const source = new IPriceSource(environment, '0x0');
     // @ts-ignore
     const spy = jest.spyOn(source, 'doMakeCall').mockReturnValue(Date.now());
 

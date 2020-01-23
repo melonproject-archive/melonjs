@@ -2,9 +2,9 @@ import { Contract } from '../../Contract';
 import { Address } from '../../Address';
 import { AmguConsumerAbi } from '../../abis/AmguConsumer.abi';
 import { Engine } from './Engine';
-import { CanonicalPriceFeed } from '../prices/CanonicalPriceFeed';
-import BigNumber from 'bignumber.js';
+import { IPriceSource } from '../prices/IPriceSource';
 import { ERC20WithFields } from '../dependencies/token/ERC20WithFields';
+import BigNumber from 'bignumber.js';
 
 export class AmguConsumer extends Contract {
   public static readonly abi = AmguConsumerAbi;
@@ -60,7 +60,7 @@ export class AmguConsumer extends Contract {
 
     // TODO: Can we derive the price feed type somehow or create a lightweight, common denominator just based
     // on the interface for cases like this?
-    const prices = new CanonicalPriceFeed(this.environment, priceSourceAddress);
+    const prices = new IPriceSource(this.environment, priceSourceAddress);
     const engine = new Engine(this.environment, engineAddress);
     const amgu = new ERC20WithFields(this.environment, amguTokenAddress);
 

@@ -17,7 +17,7 @@ import { zeroBigNumber } from '../../../../utils/zeroBigNumber';
 import { ValidationError } from '../../../../errors/ValidationError';
 import { CallOnExchangeArgs } from '../Trading';
 import { BaseTradingAdapter } from './BaseTradingAdapter';
-import { ZeroExOrder } from '../../../exchanges/third-party/zeroex/ZeroEx';
+import { ZeroExV2Order } from '../../../exchanges/third-party/zeroex/ZeroExV2Exchange';
 import { checkSenderIsFundManager } from '../utils/checkSenderIsFundManager';
 import { checkSufficientBalance } from '../utils/checkSufficientBalance';
 import { checkExistingOpenMakeOrder } from '../utils/checkExistingOpenMakeOrder';
@@ -25,12 +25,12 @@ import { checkCooldownReached } from '../utils/checkCooldownReached';
 import { sameAddress } from '../../../../utils/sameAddress';
 import { checkFundIsNotShutdown } from '../utils/checkFundIsNotShutdown';
 
-export interface CancelOrderZeroExArgs {
+export interface CancelOrderZeroExV2Args {
   orderHashHex?: string;
   orderId?: BigNumber;
 }
 
-export interface CreateUnsignedOrderZeroExArgs {
+export interface CreateUnsignedOrderZeroExV2Args {
   makerTokenAddress: Address;
   takerTokenAddress: Address;
   makerAssetAmount: BigNumber;
@@ -56,7 +56,7 @@ export class InvalidOrderSignatureError extends ValidationError {
   }
 }
 
-export class ZeroExTradingAdapter extends BaseTradingAdapter {
+export class ZeroExV2TradingAdapter extends BaseTradingAdapter {
   public getOrderHash(order: SignedOrder) {
     return orderHashUtils.getOrderHashHex(order);
   }
@@ -67,7 +67,7 @@ export class ZeroExTradingAdapter extends BaseTradingAdapter {
    * @param from The address of the sender.
    * @param args The arguments.
    */
-  public cancelOrder(from: Address, args: CancelOrderZeroExArgs) {
+  public cancelOrder(from: Address, args: CancelOrderZeroExV2Args) {
     const orderHashHex = args.orderHashHex || (args.orderId && padLeft(numberToHex(args.orderId.toFixed(0)), 64));
     const methodArgs: CallOnExchangeArgs = {
       exchangeIndex: this.index,
@@ -206,11 +206,11 @@ export class ZeroExTradingAdapter extends BaseTradingAdapter {
     return this.trading.callOnExchange(from, methodArgs, validate);
   }
 
-  public async createUnsignedOrder(values: CreateUnsignedOrderZeroExArgs) {
+  public async createUnsignedOrder(values: CreateUnsignedOrderZeroExV2Args) {
     const duration = values.duration == null ? 24 * 60 * 60 : values.duration;
     const block = await this.trading.environment.client.getBlock('latest');
 
-    const order: ZeroExOrder = {
+    const order: ZeroExV2Order = {
       exchangeAddress: this.info.exchange,
       makerAddress: this.trading.contract.address,
       takerAddress: zeroAddress,
@@ -229,7 +229,7 @@ export class ZeroExTradingAdapter extends BaseTradingAdapter {
     return order;
   }
 
-  public async signOrder(order: ZeroExOrder, signer: Address) {
+  public async signOrder(order: ZeroExV2Order, signer: Address) {
     const provider = this.getSubprovier();
     const signed = await signatureUtils.ecSignOrderAsync(provider, order, signer);
     if (sameAddress(signed.makerAddress, signer)) {

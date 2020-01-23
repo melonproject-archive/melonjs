@@ -1,12 +1,10 @@
-import { Contract } from '../../../Contract';
 import { MaxPositionsAbi } from '../../../abis/MaxPositions.abi';
-import { applyMixins } from '../../../utils/applyMixins';
-import { Policy } from './Policy';
+import { IPolicy } from './IPolicy';
 import { Environment } from '../../../Environment';
 import { Address } from '../../../Address';
 import { hexToNumber } from 'web3-utils';
 
-export class MaxPositions extends Contract {
+export class MaxPositions extends IPolicy {
   public static readonly abi = MaxPositionsAbi;
 
   public static deploy(environment: Environment, bytecode: string, from: Address, maxPositions: number) {
@@ -23,6 +21,3 @@ export class MaxPositions extends Contract {
     return hexToNumber(result);
   }
 }
-
-export interface MaxPositions extends Policy {}
-applyMixins(MaxPositions, [Policy]);

@@ -1,13 +1,11 @@
-import { Contract } from '../../../Contract';
 import { Environment } from '../../../Environment';
 import { Address } from '../../../Address';
 import { PerformanceFeeAbi } from '../../../abis/PerformanceFee.abi';
 import { toBigNumber } from '../../../utils/toBigNumber';
-import { Fee } from './Fee';
-import { applyMixins } from '../../../utils/applyMixins';
+import { IFee } from './IFee';
 import { toDate } from '../../../utils/toDate';
 
-export class PerformanceFee extends Contract {
+export class PerformanceFee extends IFee {
   public static readonly abi = PerformanceFeeAbi;
 
   public static deploy(environment: Environment, bytecode: string, from: Address) {
@@ -89,6 +87,3 @@ export class PerformanceFee extends Contract {
     return toBigNumber(result);
   }
 }
-
-export interface PerformanceFee extends Fee {}
-applyMixins(PerformanceFee, [Fee]);

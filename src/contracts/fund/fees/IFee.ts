@@ -2,7 +2,7 @@ import { Contract } from '../../../Contract';
 import { Environment } from '../../../Environment';
 import { Address } from '../../../Address';
 import { toBigNumber } from '../../../utils/toBigNumber';
-import { FeeAbi } from '../../../abis/Fee.abi';
+import { IFeeAbi } from '../../../abis/IFee.abi';
 import BigNumber from 'bignumber.js';
 import { ValidationError } from '../../../errors/ValidationError';
 
@@ -20,11 +20,11 @@ export class FeeAlreadyInitializedError extends ValidationError {
   }
 }
 
-export class Fee extends Contract {
-  public static readonly abi = FeeAbi;
+export class IFee extends Contract {
+  public static readonly abi = IFeeAbi;
 
   public static deploy(environment: Environment, bytecode: string, from: Address) {
-    return super.createDeployment<Fee>(environment, bytecode, from);
+    return super.createDeployment<IFee>(environment, bytecode, from);
   }
 
   /**

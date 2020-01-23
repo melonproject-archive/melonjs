@@ -1,5 +1,4 @@
 import { createTestEnvironment, TestEnvironment } from '../../../utils/tests/createTestEnvironment';
-
 import { randomAddress } from '../../../utils/tests/randomAddress';
 import { deployHub } from '../../../utils/tests/deployHub';
 import { PolicyManagerFactory } from './PolicyManagerFactory';

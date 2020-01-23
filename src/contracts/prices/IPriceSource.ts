@@ -4,7 +4,7 @@ import { Address } from '../../Address';
 import { toDate } from '../../utils/toDate';
 import { toBigNumber } from '../../utils/toBigNumber';
 import { CallError } from '../../errors/CallError';
-import { PriceSourceInterfaceAbi } from '../../abis/PriceSourceInterface.abi';
+import { IPriceSourceAbi } from '../../abis/IPriceSource.abi';
 
 export interface PriceInfo {
   price: BigNumber;
@@ -27,8 +27,8 @@ export class InvalidPriceError extends CallError {
   }
 }
 
-export class PriceSourceInterface extends Contract {
-  public static readonly abi = PriceSourceInterfaceAbi;
+export class IPriceSource extends Contract {
+  public static readonly abi = IPriceSourceAbi;
 
   /**
    * Gets the quote asset of the price feed.
