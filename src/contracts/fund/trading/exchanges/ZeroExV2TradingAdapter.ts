@@ -1,5 +1,5 @@
 import BigNumber from 'bignumber.js';
-import { SignedOrder, SignatureType } from '@0x/types';
+import { SignedOrder, SignatureType } from '@0x/types-v2';
 import {
   orderHashUtils,
   generatePseudoRandomSalt,
@@ -7,7 +7,7 @@ import {
   assetDataUtils,
   JSONRPCRequestPayload,
   JSONRPCErrorCallback,
-} from '@0x/order-utils';
+} from '@0x/order-utils-v2';
 import { numberToHex, padLeft, randomHex } from 'web3-utils';
 import { Address } from '../../../../Address';
 import { functionSignature } from '../../../../utils/functionSignature';
