@@ -18,15 +18,5 @@ export function availableTokens(deployment: DeploymentOutput): TokenDefinition[]
     historic: false,
   }));
 
-  const historicTokens = [
-    {
-      symbol: 'DGX',
-      address: '0x4f3afec4e5a3f2a6a1a411def7d7dfe50ee057bf',
-      decimals: 9,
-      name: 'Digix Gold Token',
-      historic: true,
-    },
-  ] as TokenDefinition[];
-
-  return [...tokens, ...historicTokens];
+  return tokens;
 }

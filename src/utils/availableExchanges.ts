@@ -55,15 +55,5 @@ export function availableExchanges(deployment: DeploymentOutput): ExchangeDefini
     },
   ];
 
-  const historicExchanges = [
-    {
-      name: 'ZeroEx (v. 2.0)',
-      id: 'ZeroExV20',
-      adapter: '0x3ECFe6F8414ED517366a5e6f7F7FC74EF21CAac9',
-      exchange: '0x4F833a24e1f95D70F028921e27040Ca56E09AB0b',
-      historic: true,
-    },
-  ];
-
-  return [...exchanges, ...historicExchanges].filter(value => !!(value && value.exchange && value.adapter));
+  return [...exchanges].filter(value => !!(value && value.exchange && value.adapter));
 }

@@ -58,7 +58,5 @@ export function availablePolicies(): PolicyDefinition[] {
     },
   ] as PolicyDefinition[];
 
-  const historicPolicies = [] as PolicyDefinition[];
-
-  return [...policies, ...historicPolicies];
+  return policies;
 }

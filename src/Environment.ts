@@ -15,6 +15,9 @@ export interface CacheHandler {
 
 export interface EnvironmentOptions {
   cache?: CacheHandler;
+  exchanges?: ExchangeDefinition[];
+  tokens?: TokenDefinition[];
+  policies?: PolicyDefinition[];
 }
 
 export class Environment {
@@ -38,11 +41,9 @@ export class DeployedEnvironment extends Environment {
   ) {
     super(eth, options);
 
-    this.policies = availablePolicies().filter(token => !token.historic || (network === 1 && token.historic));
-    this.tokens = availableTokens(deployment).filter(token => !token.historic || (network === 1 && token.historic));
-    this.exchanges = availableExchanges(deployment).filter(
-      token => !token.historic || (network === 1 && token.historic),
-    );
+    this.policies = availablePolicies().concat(options.policies ?? []);
+    this.tokens = availableTokens(deployment).concat(options.tokens ?? []);
+    this.exchanges = availableExchanges(deployment).concat(options.exchanges ?? []);
   }
 
   public getToken(symbol: string): TokenDefinition;
