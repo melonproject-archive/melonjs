@@ -40,9 +40,4 @@ describe('Hub', () => {
     const result = await hub.isShutDown();
     expect(result === true || result === false).toBe(true);
   });
-
-  it('should return the fund version', async () => {
-    const result = await hub.getVersion();
-    expect(sameAddress(result, environment.accounts[0])).toBe(true);
-  });
 });

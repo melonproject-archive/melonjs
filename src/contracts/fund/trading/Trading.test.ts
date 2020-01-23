@@ -1,4 +1,5 @@
-import { Trading, CallOnExchangeArgs } from './Trading';
+import BigNumber from 'bignumber.js';
+import { Trading } from './Trading';
 import { createTestEnvironment, TestEnvironment } from '../../../utils/tests/createTestEnvironment';
 import { deployHub } from '../../../utils/tests/deployHub';
 import { deployTrading } from '../../../utils/tests/deployTrading';
@@ -6,14 +7,10 @@ import { deployRegistry } from '../../../utils/tests/deployRegistry';
 import { randomAddress } from '../../../utils/tests/randomAddress';
 import { Weth } from '../../dependencies/token/Weth';
 import { deployWeth } from '../../../utils/tests/deployWeth';
-import BigNumber from 'bignumber.js';
 import { Registry } from '../../version/Registry';
-import { zeroAddress } from '../../../utils/zeroAddress';
-import { ExchangeNotRegisteredWithFundError, InsufficientBalanceError } from './Trading.errors';
+import { ExchangeNotRegisteredWithFundError } from './Trading.errors';
 import { KyberTradingAdapter } from './exchanges/KyberTradingAdapter';
-import { functionSignature } from '../../../utils/functionSignature';
 import { ExchangeAdapterAbi } from '../../../abis/ExchangeAdapter.abi';
-import { padLeft } from 'web3-utils';
 import { encodeFunctionSignature } from '../../../utils/encodeFunctionSignature';
 
 describe('Trading', () => {
@@ -110,61 +107,9 @@ describe('Trading', () => {
     expect(result.isEqualTo(new BigNumber(86400))).toBe(true);
   });
 
-  it('should pass the validation tests for callOnExchange', async () => {
-    console.log(functionSignature(ExchangeAdapterAbi, 'makeOrder'));
-    const callArgs: CallOnExchangeArgs = {
-      exchangeIndex: 0,
-      methodSignature: functionSignature(ExchangeAdapterAbi, 'makeOrder'),
-      orderAddresses: [
-        zeroAddress,
-        zeroAddress,
-        weth.contract.address,
-        weth.contract.address,
-        zeroAddress,
-        zeroAddress,
-        zeroAddress,
-        zeroAddress,
-      ],
-      orderValues: [
-        new BigNumber(0),
-        new BigNumber(0),
-        new BigNumber(0),
-        new BigNumber(0),
-        new BigNumber(0),
-        new BigNumber(0),
-        new BigNumber(0),
-        new BigNumber(0),
-      ],
-      orderData: ['0x0', '0x0', '0x0', '0x0'],
-      identifier: padLeft('0x79705be7', 64),
-      signature: '0x0',
-    };
-
-    const tx = trading.callOnExchange(environment.accounts[0], callArgs);
-    await expect(tx.validate()).resolves.not.toThrow();
-  });
-
-  it('should throw an insufficient balance error with Kyber', async () => {
-    const callArgs = {
-      makerAsset: weth.contract.address,
-      takerAsset: weth.contract.address,
-      makerQuantity: new BigNumber('1e18'),
-      takerQuantity: new BigNumber('1e18'),
-    };
-
-    const kyber = await KyberTradingAdapter.create(trading, exchangeAddress);
-
-    const tx = await kyber.takeOrder(environment.accounts[0], callArgs);
-    await expect(tx.validate()).rejects.toThrowError(InsufficientBalanceError);
-  });
-
   it('should throw when passing a wrong address for Kyber', async () => {
     await expect(KyberTradingAdapter.create(trading, randomAddress())).rejects.toThrowError(
       ExchangeNotRegisteredWithFundError,
     );
   });
-
-  // it('should create an OasisDexTrading object', async () => {
-  //   const oasisDexTrading = await OasisDexTrading.create(trading, exchangeAddress);
-  // });
 });
