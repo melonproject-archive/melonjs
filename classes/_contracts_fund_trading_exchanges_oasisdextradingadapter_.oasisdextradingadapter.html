@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>OasisDexTradingAdapter | @melonproject/melonjs - v0.0.84</title>
+	<title>OasisDexTradingAdapter | @melonproject/melonjs - v0.0.86</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">@melonproject/melonjs - v0.0.84</a>
+					<a href="../index.html" class="title">@melonproject/melonjs - v0.0.86</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -183,7 +183,7 @@
 					<a name="cancelorder" class="tsd-anchor"></a>
 					<h3>cancel<wbr>Order</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">cancel<wbr>Order<span class="tsd-signature-symbol">(</span>from<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a>, id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigNumber</span>, offer<span class="tsd-signature-symbol">: </span><a href="../interfaces/_contracts_exchanges_third_party_oasisdex_matchingmarket_.matchingmarketoffer.html" class="tsd-signature-type">MatchingMarketOffer</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_transaction_.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionReceipt</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">cancel<wbr>Order<span class="tsd-signature-symbol">(</span>from<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a>, id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigNumber</span>, offer<span class="tsd-signature-symbol">: </span><a href="../interfaces/_contracts_exchanges_third_party_oasisdex_oasisdexexchange_.oasisdexoffer.html" class="tsd-signature-type">OasisDexOffer</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_transaction_.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionReceipt</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
@@ -212,7 +212,7 @@
 									</div>
 								</li>
 								<li>
-									<h5>offer: <a href="../interfaces/_contracts_exchanges_third_party_oasisdex_matchingmarket_.matchingmarketoffer.html" class="tsd-signature-type">MatchingMarketOffer</a></h5>
+									<h5>offer: <a href="../interfaces/_contracts_exchanges_third_party_oasisdex_oasisdexexchange_.oasisdexoffer.html" class="tsd-signature-type">OasisDexOffer</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>The order to cancel.</p>
 									</div>
@@ -232,7 +232,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/exchanges/OasisDexTradingAdapter.ts#L84">src/contracts/fund/trading/exchanges/OasisDexTradingAdapter.ts:84</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/exchanges/OasisDexTradingAdapter.ts#L86">src/contracts/fund/trading/exchanges/OasisDexTradingAdapter.ts:86</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -263,13 +263,13 @@
 					<a name="takeorder" class="tsd-anchor"></a>
 					<h3>take<wbr>Order</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">take<wbr>Order<span class="tsd-signature-symbol">(</span>from<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a>, id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigNumber</span>, offer<span class="tsd-signature-symbol">: </span><a href="../interfaces/_contracts_exchanges_third_party_oasisdex_matchingmarket_.matchingmarketoffer.html" class="tsd-signature-type">MatchingMarketOffer</a>, fillTakerQuantity<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_transaction_.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionReceipt</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">take<wbr>Order<span class="tsd-signature-symbol">(</span>from<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a>, id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigNumber</span>, offer<span class="tsd-signature-symbol">: </span><a href="../interfaces/_contracts_exchanges_third_party_oasisdex_oasisdexexchange_.oasisdexoffer.html" class="tsd-signature-type">OasisDexOffer</a>, fillTakerQuantity<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_transaction_.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionReceipt</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/exchanges/OasisDexTradingAdapter.ts#L135">src/contracts/fund/trading/exchanges/OasisDexTradingAdapter.ts:135</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/exchanges/OasisDexTradingAdapter.ts#L139">src/contracts/fund/trading/exchanges/OasisDexTradingAdapter.ts:139</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -292,7 +292,7 @@
 									</div>
 								</li>
 								<li>
-									<h5>offer: <a href="../interfaces/_contracts_exchanges_third_party_oasisdex_matchingmarket_.matchingmarketoffer.html" class="tsd-signature-type">MatchingMarketOffer</a></h5>
+									<h5>offer: <a href="../interfaces/_contracts_exchanges_third_party_oasisdex_oasisdexexchange_.oasisdexoffer.html" class="tsd-signature-type">OasisDexOffer</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>The order to take.</p>
 									</div>

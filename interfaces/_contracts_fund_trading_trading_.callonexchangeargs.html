@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>CallOnExchangeArgs | @melonproject/melonjs - v0.0.84</title>
+	<title>CallOnExchangeArgs | @melonproject/melonjs - v0.0.86</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">@melonproject/melonjs - v0.0.84</a>
+					<a href="../index.html" class="title">@melonproject/melonjs - v0.0.86</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -82,12 +82,11 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_fund_trading_trading_.callonexchangeargs.html#exchangeindex" class="tsd-kind-icon">exchange<wbr>Index</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_fund_trading_trading_.callonexchangeargs.html#identifier" class="tsd-kind-icon">identifier</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_fund_trading_trading_.callonexchangeargs.html#makerassetdata" class="tsd-kind-icon">maker<wbr>Asset<wbr>Data</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_fund_trading_trading_.callonexchangeargs.html#methodsignature" class="tsd-kind-icon">method<wbr>Signature</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_fund_trading_trading_.callonexchangeargs.html#orderaddresses" class="tsd-kind-icon">order<wbr>Addresses</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_fund_trading_trading_.callonexchangeargs.html#orderdata" class="tsd-kind-icon">order<wbr>Data</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_fund_trading_trading_.callonexchangeargs.html#ordervalues" class="tsd-kind-icon">order<wbr>Values</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_fund_trading_trading_.callonexchangeargs.html#signature" class="tsd-kind-icon">signature</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_contracts_fund_trading_trading_.callonexchangeargs.html#takerassetdata" class="tsd-kind-icon">taker<wbr>Asset<wbr>Data</a></li>
 							</ul>
 						</section>
 					</div>
@@ -111,16 +110,6 @@
 					<div class="tsd-signature tsd-kind-icon">identifier<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/Trading.ts#L74">src/contracts/fund/trading/Trading.ts:74</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="makerassetdata" class="tsd-anchor"></a>
-					<h3>maker<wbr>Asset<wbr>Data</h3>
-					<div class="tsd-signature tsd-kind-icon">maker<wbr>Asset<wbr>Data<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
 							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/Trading.ts#L75">src/contracts/fund/trading/Trading.ts:75</a></li>
 						</ul>
 					</aside>
@@ -138,10 +127,20 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="orderaddresses" class="tsd-anchor"></a>
 					<h3>order<wbr>Addresses</h3>
-					<div class="tsd-signature tsd-kind-icon">order<wbr>Addresses<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">[</span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a><span class="tsd-signature-symbol">, </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a><span class="tsd-signature-symbol">, </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a><span class="tsd-signature-symbol">, </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a><span class="tsd-signature-symbol">, </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a><span class="tsd-signature-symbol">, </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a><span class="tsd-signature-symbol">]</span></div>
+					<div class="tsd-signature tsd-kind-icon">order<wbr>Addresses<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">[</span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a><span class="tsd-signature-symbol">, </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a><span class="tsd-signature-symbol">, </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a><span class="tsd-signature-symbol">, </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a><span class="tsd-signature-symbol">, </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a><span class="tsd-signature-symbol">, </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a><span class="tsd-signature-symbol">, </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a><span class="tsd-signature-symbol">, </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a><span class="tsd-signature-symbol">]</span></div>
 					<aside class="tsd-sources">
 						<ul>
 							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/Trading.ts#L72">src/contracts/fund/trading/Trading.ts:72</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="orderdata" class="tsd-anchor"></a>
+					<h3>order<wbr>Data</h3>
+					<div class="tsd-signature tsd-kind-icon">order<wbr>Data<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/Trading.ts#L74">src/contracts/fund/trading/Trading.ts:74</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -159,16 +158,6 @@
 					<a name="signature" class="tsd-anchor"></a>
 					<h3>signature</h3>
 					<div class="tsd-signature tsd-kind-icon">signature<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/Trading.ts#L77">src/contracts/fund/trading/Trading.ts:77</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="takerassetdata" class="tsd-anchor"></a>
-					<h3>taker<wbr>Asset<wbr>Data</h3>
-					<div class="tsd-signature tsd-kind-icon">taker<wbr>Asset<wbr>Data<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
 							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/trading/Trading.ts#L76">src/contracts/fund/trading/Trading.ts:76</a></li>
@@ -208,22 +197,19 @@
 								<a href="_contracts_fund_trading_trading_.callonexchangeargs.html#identifier" class="tsd-kind-icon">identifier</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_contracts_fund_trading_trading_.callonexchangeargs.html#makerassetdata" class="tsd-kind-icon">maker<wbr>Asset<wbr>Data</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="_contracts_fund_trading_trading_.callonexchangeargs.html#methodsignature" class="tsd-kind-icon">method<wbr>Signature</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="_contracts_fund_trading_trading_.callonexchangeargs.html#orderaddresses" class="tsd-kind-icon">order<wbr>Addresses</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_contracts_fund_trading_trading_.callonexchangeargs.html#orderdata" class="tsd-kind-icon">order<wbr>Data</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="_contracts_fund_trading_trading_.callonexchangeargs.html#ordervalues" class="tsd-kind-icon">order<wbr>Values</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="_contracts_fund_trading_trading_.callonexchangeargs.html#signature" class="tsd-kind-icon">signature</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_contracts_fund_trading_trading_.callonexchangeargs.html#takerassetdata" class="tsd-kind-icon">taker<wbr>Asset<wbr>Data</a>
 							</li>
 						</ul>
 					</li>
