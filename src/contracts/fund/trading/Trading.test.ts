@@ -14,6 +14,7 @@ import { KyberTradingAdapter } from './exchanges/KyberTradingAdapter';
 import { functionSignature } from '../../../utils/functionSignature';
 import { ExchangeAdapterAbi } from '../../../abis/ExchangeAdapter.abi';
 import { padLeft } from 'web3-utils';
+import { encodeFunctionSignature } from '../../../utils/encodeFunctionSignature';
 
 describe('Trading', () => {
   const exchangeAddress = randomAddress();
@@ -38,7 +39,10 @@ describe('Trading', () => {
         exchangeAddress,
         adapterAddress,
         takesCustody: true,
-        sigs: ['0x79705be7', '0xe51be6e8'],
+        sigs: [
+          encodeFunctionSignature(ExchangeAdapterAbi, 'makeOrder'),
+          encodeFunctionSignature(ExchangeAdapterAbi, 'takeOrder'),
+        ],
       });
 
       await tx.send(await tx.prepare());
@@ -52,7 +56,10 @@ describe('Trading', () => {
         url: 'https://tat.tat/',
         reserveMin: new BigNumber(100000),
         standards: [1, 2, 3],
-        sigs: ['0x79705be7', '0xe51be6e8'],
+        sigs: [
+          encodeFunctionSignature(ExchangeAdapterAbi, 'makeOrder'),
+          encodeFunctionSignature(ExchangeAdapterAbi, 'takeOrder'),
+        ],
       });
       await tx.send(await tx.prepare());
     }
@@ -104,7 +111,8 @@ describe('Trading', () => {
   });
 
   it('should pass the validation tests for callOnExchange', async () => {
-    const callArgs = {
+    console.log(functionSignature(ExchangeAdapterAbi, 'makeOrder'));
+    const callArgs: CallOnExchangeArgs = {
       exchangeIndex: 0,
       methodSignature: functionSignature(ExchangeAdapterAbi, 'makeOrder'),
       orderAddresses: [
@@ -112,6 +120,8 @@ describe('Trading', () => {
         zeroAddress,
         weth.contract.address,
         weth.contract.address,
+        zeroAddress,
+        zeroAddress,
         zeroAddress,
         zeroAddress,
       ],
@@ -125,13 +135,12 @@ describe('Trading', () => {
         new BigNumber(0),
         new BigNumber(0),
       ],
+      orderData: ['0x0', '0x0', '0x0', '0x0'],
       identifier: padLeft('0x79705be7', 64),
-      makerAssetData: '0x0',
-      takerAssetData: '0x0',
       signature: '0x0',
     };
 
-    const tx = trading.callOnExchange(environment.accounts[0], callArgs as CallOnExchangeArgs);
+    const tx = trading.callOnExchange(environment.accounts[0], callArgs);
     await expect(tx.validate()).resolves.not.toThrow();
   });
 

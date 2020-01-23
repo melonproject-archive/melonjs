@@ -38,7 +38,7 @@ describe('Weth', () => {
     expect(fromWei(final.toFixed(0))).toBe('0');
   });
 
-  it('should return the total supply of the token', async () => {
+  xit('should return the total supply of the token', async () => {
     const result = await weth.getTotalSupply();
     expect(fromWei(result.toFixed(0))).toBe('0');
   });

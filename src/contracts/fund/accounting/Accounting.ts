@@ -41,7 +41,6 @@ export interface AccountingDeployArguments {
   hub: Address;
   denominationAsset: Address;
   nativeAsset: Address;
-  defaultAssets: Address[];
 }
 
 export class Accounting extends Contract {
@@ -52,7 +51,6 @@ export class Accounting extends Contract {
       args.hub,
       args.denominationAsset,
       args.nativeAsset,
-      args.defaultAssets,
     ]);
   }
 

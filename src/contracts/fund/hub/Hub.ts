@@ -68,7 +68,6 @@ export interface HubRoutes {
   mlnToken?: Address;
   participation?: Address;
   policyManager?: Address;
-  priceSource?: Address;
   registry?: Address;
   shares?: Address;
   trading?: Address;
@@ -151,7 +150,6 @@ export class Hub extends Contract {
       mlnToken: result.mlnToken,
       participation: result.participation,
       policyManager: result.policyManager,
-      priceSource: result.priceSource,
       registry: result.registry,
       shares: result.shares,
       trading: result.trading,
@@ -206,7 +204,6 @@ export class Hub extends Contract {
         spokes.shares,
         spokes.trading,
         spokes.vault,
-        spokes.priceSource,
         spokes.registry,
         spokes.version,
         spokes.engine,

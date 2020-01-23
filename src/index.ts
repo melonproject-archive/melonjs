@@ -59,7 +59,6 @@ export * from './contracts/exchanges/third-party/kyber/KyberNetworkProxy';
 export * from './utils/availableExchanges';
 export * from './utils/availablePolicies';
 export * from './utils/availableTokens';
-export * from './utils/decodeFunctionSignature';
 export * from './utils/encodeFunctionSignature';
 export * from './utils/functionSignature';
 export * from './utils/includesAddress';

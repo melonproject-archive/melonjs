@@ -23,6 +23,6 @@ describe('AssetBlacklist', () => {
 
   it('should return the correct identifier', async () => {
     const result = await assetBlacklist.getIdentifier();
-    expect(result).toBe('Asset blacklist');
+    expect(result).toBe('AssetBlacklist');
   });
 });

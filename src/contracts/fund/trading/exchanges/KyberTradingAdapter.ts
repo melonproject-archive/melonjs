@@ -26,10 +26,20 @@ export class KyberTradingAdapter extends BaseTradingAdapter {
    * @param args The arguments as [[KyberTakeOrderArgs]]
    */
   public takeOrder(from: Address, args: KyberTakeOrderArgs) {
-    const methodArgs = {
+    const paddedZeros = padLeft('0x0', 64);
+    const methodArgs: CallOnExchangeArgs = {
       exchangeIndex: this.index,
       methodSignature: functionSignature(ExchangeAdapterAbi, 'takeOrder'),
-      orderAddresses: [zeroAddress, zeroAddress, args.makerAsset, args.takerAsset, zeroAddress, zeroAddress],
+      orderAddresses: [
+        zeroAddress,
+        zeroAddress,
+        args.makerAsset,
+        args.takerAsset,
+        zeroAddress,
+        zeroAddress,
+        zeroAddress,
+        zeroAddress,
+      ],
       orderValues: [
         args.makerQuantity,
         args.takerQuantity,
@@ -40,10 +50,9 @@ export class KyberTradingAdapter extends BaseTradingAdapter {
         args.takerQuantity,
         zeroBigNumber,
       ],
-      identifier: padLeft('0x0', 64),
-      makerAssetData: padLeft('0x0', 64),
-      takerAssetData: padLeft('0x0', 64),
-      signature: padLeft('0x0', 64),
+      orderData: [paddedZeros, paddedZeros, paddedZeros, paddedZeros],
+      identifier: paddedZeros,
+      signature: paddedZeros,
     };
 
     const validate = async () => {
@@ -57,6 +66,6 @@ export class KyberTradingAdapter extends BaseTradingAdapter {
       ]);
     };
 
-    return this.trading.callOnExchange(from, methodArgs as CallOnExchangeArgs, validate);
+    return this.trading.callOnExchange(from, methodArgs, validate);
   }
 }

@@ -17,7 +17,7 @@ describe('Policy', () => {
 
   it('should return the identifier of a policy', async () => {
     const result = await maxPositions.getIdentifier();
-    expect(result).toBe('Max positions');
+    expect(result).toBe('MaxPositions');
   });
 
   it('should return the position of a policy', async () => {

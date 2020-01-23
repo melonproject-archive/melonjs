@@ -23,6 +23,6 @@ describe('AssetWhitelist', () => {
 
   it('should return the correct identifier', async () => {
     const result = await assetWhitelist.getIdentifier();
-    expect(result).toBe('Asset whitelist');
+    expect(result).toBe('AssetWhitelist');
   });
 });

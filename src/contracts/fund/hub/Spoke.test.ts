@@ -29,11 +29,6 @@ describe('Spoke', () => {
     expect(result.startsWith('0x')).toBe(true);
   });
 
-  it('should return the address of the price source', async () => {
-    const result = await spoke.getPriceSource();
-    expect(result.startsWith('0x')).toBe(true);
-  });
-
   it('should return the address of the version', async () => {
     const result = await spoke.getVersion();
     expect(result.startsWith('0x')).toBe(true);

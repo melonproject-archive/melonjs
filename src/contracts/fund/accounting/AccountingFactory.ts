@@ -20,7 +20,7 @@ export class AccountingFactory extends Contract {
    * @param args The accounting deploy arguments as [[AccountingDeployArguments]].
    */
   public createInstance(from: Address, deployArgs: AccountingDeployArguments) {
-    const args = [deployArgs.hub, deployArgs.denominationAsset, deployArgs.nativeAsset, deployArgs.defaultAssets];
+    const args = [deployArgs.hub, deployArgs.denominationAsset, deployArgs.nativeAsset];
     return this.createTransaction({ from, method: 'createInstance', args });
   }
 }

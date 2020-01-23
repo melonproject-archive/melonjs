@@ -34,7 +34,6 @@ describe('AccountingFactory', () => {
       hub: hub.contract.address,
       denominationAsset: weth.contract.address,
       nativeAsset: weth.contract.address,
-      defaultAssets: [weth.contract.address],
     });
 
     const txResult = await tx.send(await tx.prepare());

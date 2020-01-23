@@ -21,6 +21,6 @@ describe('MaxPositions', () => {
 
   it('should return the correct identifier', async () => {
     const result = await maxPositions.getIdentifier();
-    expect(result).toBe('Max positions');
+    expect(result).toBe('MaxPositions');
   });
 });

@@ -40,6 +40,7 @@ export class OasisDexTradingAdapter extends BaseTradingAdapter {
    * @param offer The order to cancel.
    */
   public cancelOrder(from: Address, id: BigNumber, offer: OasisDexOffer) {
+    const paddedZeros = padLeft('0x0', 64);
     const methodArgs: CallOnExchangeArgs = {
       exchangeIndex: this.index,
       methodSignature: functionSignature(ExchangeAdapterAbi, 'cancelOrder'),
@@ -48,6 +49,8 @@ export class OasisDexTradingAdapter extends BaseTradingAdapter {
         zeroAddress,
         offer.makerAsset,
         offer.takerAsset,
+        zeroAddress,
+        zeroAddress,
         zeroAddress,
         zeroAddress,
       ],
@@ -61,10 +64,9 @@ export class OasisDexTradingAdapter extends BaseTradingAdapter {
         zeroBigNumber,
         zeroBigNumber,
       ],
+      orderData: [paddedZeros, paddedZeros, paddedZeros, paddedZeros],
       identifier: padLeft(numberToHex(id.toFixed(0)), 64),
-      makerAssetData: padLeft('0x0', 64),
-      takerAssetData: padLeft('0x0', 64),
-      signature: padLeft('0x0', 64),
+      signature: paddedZeros,
     };
 
     const validate = async () => {
@@ -82,6 +84,7 @@ export class OasisDexTradingAdapter extends BaseTradingAdapter {
    * @param args The arguments.
    */
   public makeOrder(from: Address, args: OasisDexMakeOrderArgs) {
+    const paddedZeros = padLeft('0x0', 64);
     const methodArgs: CallOnExchangeArgs = {
       exchangeIndex: this.index,
       methodSignature: functionSignature(ExchangeAdapterAbi, 'makeOrder'),
@@ -90,6 +93,8 @@ export class OasisDexTradingAdapter extends BaseTradingAdapter {
         zeroAddress,
         args.makerAsset,
         args.takerAsset,
+        zeroAddress,
+        zeroAddress,
         zeroAddress,
         zeroAddress,
       ],
@@ -103,10 +108,9 @@ export class OasisDexTradingAdapter extends BaseTradingAdapter {
         zeroBigNumber,
         zeroBigNumber,
       ],
-      identifier: padLeft('0x0', 64),
-      makerAssetData: padLeft('0x0', 64),
-      takerAssetData: padLeft('0x0', 64),
-      signature: padLeft('0x0', 64),
+      orderData: [paddedZeros, paddedZeros, paddedZeros, paddedZeros],
+      identifier: paddedZeros,
+      signature: paddedZeros,
     };
 
     const validate = async () => {
@@ -134,6 +138,7 @@ export class OasisDexTradingAdapter extends BaseTradingAdapter {
    */
   public takeOrder(from: Address, id: BigNumber, offer: OasisDexOffer, fillTakerQuantity?: BigNumber) {
     const amount = fillTakerQuantity || offer.takerQuantity;
+    const paddedZeros = padLeft('0x0', 64);
     const methodArgs: CallOnExchangeArgs = {
       exchangeIndex: this.index,
       methodSignature: functionSignature(ExchangeAdapterAbi, 'takeOrder'),
@@ -142,6 +147,8 @@ export class OasisDexTradingAdapter extends BaseTradingAdapter {
         this.trading.contract.address,
         offer.makerAsset,
         offer.takerAsset,
+        zeroAddress,
+        zeroAddress,
         zeroAddress,
         zeroAddress,
       ],
@@ -155,9 +162,8 @@ export class OasisDexTradingAdapter extends BaseTradingAdapter {
         amount,
         zeroBigNumber,
       ],
+      orderData: [paddedZeros, paddedZeros, paddedZeros, paddedZeros],
       identifier: padLeft(numberToHex(id.toFixed(0)), 64),
-      makerAssetData: padLeft('0x0', 64),
-      takerAssetData: padLeft('0x0', 64),
       signature: padLeft('0x0', 64),
     };
 

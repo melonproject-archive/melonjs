@@ -22,6 +22,6 @@ describe('MaxConcentration', () => {
 
   it('should return the correct identifier', async () => {
     const result = await maxConcentration.getIdentifier();
-    expect(result).toBe('Max concentration');
+    expect(result).toBe('MaxConcentration');
   });
 });

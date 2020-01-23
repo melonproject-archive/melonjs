@@ -69,11 +69,10 @@ export interface TradingDeployArguments {
 export interface CallOnExchangeArgs {
   exchangeIndex: number;
   methodSignature: string;
-  orderAddresses: [Address, Address, Address, Address, Address, Address];
+  orderAddresses: [Address, Address, Address, Address, Address, Address, Address, Address];
   orderValues: [BigNumber, BigNumber, BigNumber, BigNumber, BigNumber, BigNumber, BigNumber, BigNumber];
+  orderData: [string, string, string, string];
   identifier: string;
-  makerAssetData: string;
-  takerAssetData: string;
   signature: string;
 }
 
@@ -299,9 +298,8 @@ export class Trading extends Contract {
       args.methodSignature,
       args.orderAddresses,
       args.orderValues.map(orderValue => orderValue.toFixed(0)),
+      args.orderData,
       args.identifier,
-      hexToBytes(args.makerAssetData),
-      hexToBytes(args.takerAssetData),
       hexToBytes(args.signature),
     ];
 

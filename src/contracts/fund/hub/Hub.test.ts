@@ -65,7 +65,6 @@ describe('Hub', () => {
       engine: randomAddress(),
       registry: randomAddress(),
       mlnToken: randomAddress(),
-      priceSource: randomAddress(),
     };
 
     {
@@ -89,7 +88,6 @@ describe('Hub', () => {
     expect(sameAddress(routes.mlnToken, output.mlnToken)).toBe(true);
     expect(sameAddress(routes.participation, output.participation)).toBe(true);
     expect(sameAddress(routes.policyManager, output.policyManager)).toBe(true);
-    expect(sameAddress(routes.priceSource, output.priceSource)).toBe(true);
     expect(sameAddress(routes.registry, output.registry)).toBe(true);
     expect(sameAddress(routes.shares, output.shares)).toBe(true);
     expect(sameAddress(routes.trading, output.trading)).toBe(true);

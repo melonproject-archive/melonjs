@@ -30,15 +30,6 @@ export class Spoke extends Contract {
   }
 
   /**
-   * Gets the address of the price source contract.
-   *
-   * @param block The block number to execute the call on.
-   */
-  public getPriceSource(block?: number) {
-    return this.makeCall<string>('priceSource', undefined, block);
-  }
-
-  /**
    * Gets the address of the version contract.
    *
    * @param block The block number to execute the call on.
@@ -89,7 +80,6 @@ export class Spoke extends Contract {
       mlnToken: result.mlnToken,
       participation: result.participation,
       policyManager: result.policyManager,
-      priceSource: result.priceSource,
       registry: result.registry,
       shares: result.shares,
       trading: result.trading,

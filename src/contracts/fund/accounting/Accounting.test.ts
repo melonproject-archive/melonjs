@@ -23,13 +23,12 @@ describe('Accounting', () => {
       hub: hub.contract.address,
       denominationAsset: weth.contract.address,
       nativeAsset: weth.contract.address,
-      defaultAssets: [weth.contract.address],
     });
   });
 
-  it('should return an array of fund assets', async () => {
+  it('should return an empty array of fund assets', async () => {
     const result = await accounting.getOwnedAssets();
-    expect(result.length).toBeGreaterThanOrEqual(1);
+    expect(result.length).toEqual(0);
   });
 
   it('should return the default share price', async () => {

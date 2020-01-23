@@ -69,10 +69,20 @@ export class ZeroExV2TradingAdapter extends BaseTradingAdapter {
    */
   public cancelOrder(from: Address, args: CancelOrderZeroExV2Args) {
     const orderHashHex = args.orderHashHex || (args.orderId && padLeft(numberToHex(args.orderId.toFixed(0)), 64));
+    const paddedZeros = padLeft('0x0', 64);
     const methodArgs: CallOnExchangeArgs = {
       exchangeIndex: this.index,
       methodSignature: functionSignature(ExchangeAdapterAbi, 'cancelOrder'),
-      orderAddresses: [zeroAddress, zeroAddress, zeroAddress, zeroAddress, zeroAddress, zeroAddress],
+      orderAddresses: [
+        zeroAddress,
+        zeroAddress,
+        zeroAddress,
+        zeroAddress,
+        zeroAddress,
+        zeroAddress,
+        zeroAddress,
+        zeroAddress,
+      ],
       orderValues: [
         zeroBigNumber,
         zeroBigNumber,
@@ -83,10 +93,9 @@ export class ZeroExV2TradingAdapter extends BaseTradingAdapter {
         zeroBigNumber,
         zeroBigNumber,
       ],
+      orderData: [paddedZeros, paddedZeros, paddedZeros, paddedZeros],
       identifier: orderHashHex,
-      makerAssetData: padLeft('0x0', 64),
-      takerAssetData: padLeft('0x0', 64),
-      signature: padLeft('0x0', 64),
+      signature: paddedZeros,
     };
 
     const validate = async () => {
@@ -113,6 +122,7 @@ export class ZeroExV2TradingAdapter extends BaseTradingAdapter {
     const takerTokenAddress = assetDataUtils.decodeERC20AssetData(order.takerAssetData).tokenAddress;
     const amount = takerAmount || order.takerAssetAmount;
 
+    const paddedZeros = padLeft('0x0', 64);
     const methodArgs: CallOnExchangeArgs = {
       exchangeIndex: this.index,
       methodSignature: functionSignature(ExchangeAdapterAbi, 'takeOrder'),
@@ -122,6 +132,8 @@ export class ZeroExV2TradingAdapter extends BaseTradingAdapter {
         makerTokenAddress,
         takerTokenAddress,
         order.feeRecipientAddress,
+        zeroAddress,
+        zeroAddress,
         zeroAddress,
       ],
       orderValues: [
@@ -134,9 +146,8 @@ export class ZeroExV2TradingAdapter extends BaseTradingAdapter {
         amount,
         zeroBigNumber,
       ],
-      identifier: padLeft('0x0', 64),
-      makerAssetData: order.makerAssetData,
-      takerAssetData: order.takerAssetData,
+      orderData: [order.makerAssetData, order.takerAssetData, paddedZeros, paddedZeros],
+      identifier: paddedZeros,
       signature: order.signature,
     };
 
@@ -163,6 +174,7 @@ export class ZeroExV2TradingAdapter extends BaseTradingAdapter {
     const makerTokenAddress = assetDataUtils.decodeERC20AssetData(order.makerAssetData).tokenAddress;
     const takerTokenAddress = assetDataUtils.decodeERC20AssetData(order.takerAssetData).tokenAddress;
 
+    const paddedZeros = padLeft('0x0', 64);
     const methodArgs: CallOnExchangeArgs = {
       exchangeIndex: this.index,
       methodSignature: functionSignature(ExchangeAdapterAbi, 'makeOrder'),
@@ -172,6 +184,8 @@ export class ZeroExV2TradingAdapter extends BaseTradingAdapter {
         makerTokenAddress,
         takerTokenAddress,
         order.feeRecipientAddress,
+        zeroAddress,
+        zeroAddress,
         zeroAddress,
       ],
       orderValues: [
@@ -184,9 +198,8 @@ export class ZeroExV2TradingAdapter extends BaseTradingAdapter {
         zeroBigNumber,
         zeroBigNumber,
       ],
+      orderData: [order.makerAssetData, order.takerAssetData, paddedZeros, paddedZeros],
       identifier: randomHex(32),
-      makerAssetData: order.makerAssetData,
-      takerAssetData: order.takerAssetData,
       signature: order.signature,
     };
 
