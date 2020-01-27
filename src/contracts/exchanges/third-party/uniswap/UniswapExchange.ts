@@ -1,22 +1,36 @@
 import { Contract } from '../../../../Contract';
 import { Environment } from '../../../../Environment';
 import { Address } from '../../../../Address';
-import { UniswapFactoryAbi } from '../../../../abis/UniswapFactory.abi';
+import { UniswapExchangeAbi } from '../../../../abis/UniswapExchange.abi';
+import BigNumber from 'bignumber.js';
+import { toBigNumber } from '../../../../utils/toBigNumber';
 
-export class UniswapFactory extends Contract {
-  public static readonly abi = UniswapFactoryAbi;
+export class UniswapExchange extends Contract {
+  public static readonly abi = UniswapExchangeAbi;
 
   public static deploy(environment: Environment, bytecode: string, from: Address) {
-    return super.createDeployment<UniswapFactory>(environment, bytecode, from);
+    return super.createDeployment<UniswapExchange>(environment, bytecode, from);
   }
 
   /**
-   * Gets the exchange address
+   * Gets the input price for a swap from ETH to token
    *
-   * @param token The maker asset address.
+   * @param ethSold The amount of ETH sold (in wei)
    * @param block The block number to execute the call on.
    */
-  public getExchange(token: Address, block?: number) {
-    return this.makeCall<Address>('getExchange', [token], block);
+  public async getEthToTokenInputPrice(ethSold: BigNumber, block?: number) {
+    const result = await this.makeCall<string>('getEthToTokenInputPrice', [ethSold.toFixed(0)], block);
+    return toBigNumber(result);
+  }
+
+  /**
+   * Gets the input price for a swap from token to ETH
+   *
+   * @param tokensBought The amount of token sold (in base unit)
+   * @param block The block number to execute the call on.
+   */
+  public async getTokenToEthInputPrice(tokensBought: BigNumber, block?: number) {
+    const result = await this.makeCall<string>('getTokenToEthInputPrice', [tokensBought.toFixed(0)], block);
+    return toBigNumber(result);
   }
 }

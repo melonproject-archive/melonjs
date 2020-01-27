@@ -16,7 +16,7 @@ export interface DeploymentOutput {
     conf: DeploymentOasisDexConfig;
   };
   uniswap: {
-    add: DeploymentUniswapAddresses;
+    addr: DeploymentUniswapAddresses;
     conf: DeploymentUniswapConfig;
   };
   zeroExV2: {

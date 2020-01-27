@@ -3,6 +3,7 @@ import { DeploymentOutput } from '../Deployment';
 export enum ExchangeIdentifier {
   'MelonEngine' = 'MelonEngine',
   'KyberNetwork' = 'KyberNetwork',
+  'Uniswap' = 'Uniswap',
   'OasisDex' = 'OasisDex',
   'ZeroExV2' = 'ZeroExV2',
   'ZeroExV3' = 'ZeroExV3',
@@ -30,6 +31,13 @@ export function availableExchanges(deployment: DeploymentOutput): ExchangeDefini
       id: ExchangeIdentifier.KyberNetwork,
       adapter: deployment.melon.addr.KyberAdapter,
       exchange: deployment.kyber.addr.KyberNetworkProxy,
+      historic: false,
+    },
+    deployment.uniswap && {
+      name: 'Uniswap',
+      id: ExchangeIdentifier.Uniswap,
+      adapter: deployment.melon.addr.UniswapAdapter,
+      exchange: deployment.uniswap.addr.UniswapFactory,
       historic: false,
     },
     deployment.oasis && {
