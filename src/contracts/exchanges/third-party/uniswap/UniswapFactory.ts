@@ -1,10 +1,10 @@
 import { Contract } from '../../../../Contract';
 import { Environment } from '../../../../Environment';
 import { Address } from '../../../../Address';
-import { IUniswapFactoryAbi } from '../../../../abis/IUniswapFactory.abi';
+import { UniswapFactoryAbi } from '../../../../abis/UniswapFactory.abi';
 
 export class UniswapFactory extends Contract {
-  public static readonly abi = IUniswapFactoryAbi;
+  public static readonly abi = UniswapFactoryAbi;
 
   public static deploy(environment: Environment, bytecode: string, from: Address) {
     return super.createDeployment<UniswapFactory>(environment, bytecode, from);
