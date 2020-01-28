@@ -4,6 +4,7 @@ import { Contract as EthContract } from 'web3-eth-contract';
 import { Environment } from './Environment';
 import { Transaction, Deployment } from './Transaction';
 import { Address } from './Address';
+import { toBigNumber } from './utils/toBigNumber';
 
 interface CreateTransactionArgs<TArgs> {
   method: string;
@@ -86,5 +87,10 @@ export class Contract {
   ): Promise<TReturn> {
     const fn = this.contract.methods[method];
     return fn(...(args || [])).call(undefined, block);
+  }
+
+  public async getEthBalance(block?: number) {
+    const result = await this.environment.client.getBalance(this.contract.address, block);
+    return toBigNumber(result);
   }
 }
