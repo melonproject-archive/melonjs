@@ -16,6 +16,14 @@ export class FundIsShutDownError extends ValidationError {
   }
 }
 
+export class AdapterIsAlreadyAddedError extends ValidationError {
+  public readonly name = 'AdapterIsAlreadyAddedError';
+
+  constructor(public readonly adapter: Address, message: string = 'Adapter is already added.') {
+    super(message);
+  }
+}
+
 export class AdapterMethodNotAllowedError extends ValidationError {
   public readonly name = 'AdapterMethodNotAllowedError';
 

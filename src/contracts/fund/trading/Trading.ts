@@ -16,10 +16,15 @@ import {
   InvalidExchangeIndexError,
   TradePolicyValidationError,
   SenderIsNotManagerOrContractError,
+  AdapterIsAlreadyAddedError,
 } from './Trading.errors';
 import { PolicyManager } from '../policies/PolicyManager';
 import { toDate } from '../../../utils/toDate';
-import { AssetNotRegisteredError } from '../../version/Registry.error';
+import {
+  AssetNotRegisteredError,
+  ExchangeAdapterNotRegisteredError,
+  ExchangeAndAdapterDoNotMatchError,
+} from '../../version/Registry.error';
 import { sameAddress } from '../../../utils/sameAddress';
 import { Hub } from '../hub/Hub';
 import { PolicyArgs } from '../policies/IPolicy';
@@ -88,6 +93,49 @@ export class Trading extends Contract {
     ]);
   }
 
+  /**
+   * Checks if an adapter is already added
+   *
+   * @param adapter The address of the adapter
+   * @param block: The block number
+   */
+  public adapterIsAdded(adapter: Address, block?: number) {
+    return this.makeCall<boolean>('adapterIsAdded', [adapter], block);
+  }
+
+  /**
+   * Add an exchange for a fund
+   *
+   * @param from The address of the sender.
+   * @param exchange The address of the exchange
+   * @param adapter The address of the adapter
+   */
+  public addExchange(from: Address, exchange: Address, adapter: Address) {
+    const validate = async () => {
+      if (await this.adapterIsAdded(adapter)) {
+        throw new AdapterIsAlreadyAddedError(adapter);
+      }
+
+      const registry = new Registry(this.environment, await this.getRegistry());
+      if (!(await registry.isExchangeAdapterRegistered(adapter))) {
+        throw new ExchangeAdapterNotRegisteredError(adapter);
+      }
+
+      const exchangeInfo = registry.getExchangeInformation(adapter);
+      if (!sameAddress((await exchangeInfo).exchangeAddress, exchange)) {
+        throw new ExchangeAndAdapterDoNotMatchError(exchange, adapter);
+      }
+    };
+
+    return this.createTransaction({ from, method: 'addExchange', args: [exchange, adapter], validate });
+  }
+
+  /**
+   * Returns assets from trading to vaut.
+   *
+   * @param from The address of the sender.
+   * @param assets The addresses of the assets to return to vault.
+   */
   public returnBatchToVault(from: Address, assets: Address[]) {
     const validate = async () => {
       const hub = new Hub(this.environment, await this.getHub());
