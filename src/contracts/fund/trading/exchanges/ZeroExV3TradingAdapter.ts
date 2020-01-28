@@ -8,7 +8,7 @@ import {
   JSONRPCErrorCallback,
   SignatureType,
   SignedOrder,
-} from '@0x/order-utils-v2';
+} from '@0x/order-utils';
 import { numberToHex, padLeft, randomHex } from 'web3-utils';
 import { Address } from '../../../../Address';
 import { functionSignature } from '../../../../utils/functionSignature';
@@ -18,7 +18,7 @@ import { zeroBigNumber } from '../../../../utils/zeroBigNumber';
 import { ValidationError } from '../../../../errors/ValidationError';
 import { CallOnExchangeArgs } from '../Trading';
 import { BaseTradingAdapter } from './BaseTradingAdapter';
-import { ZeroExV2Order } from '../../../exchanges/third-party/zeroex/ZeroExV2Exchange';
+import { ZeroExV3Order } from '../../../exchanges/third-party/zeroex/ZeroExV3Exchange';
 import { checkSenderIsFundManager } from '../utils/checkSenderIsFundManager';
 import { checkSufficientBalance } from '../utils/checkSufficientBalance';
 import { checkExistingOpenMakeOrder } from '../utils/checkExistingOpenMakeOrder';
@@ -57,9 +57,9 @@ export class InvalidOrderSignatureError extends ValidationError {
   }
 }
 
-export class ZeroExV2TradingAdapter extends BaseTradingAdapter {
+export class ZeroExV3TradingAdapter extends BaseTradingAdapter {
   public getOrderHash(order: SignedOrder) {
-    return orderHashUtils.getOrderHashHex(order);
+    return orderHashUtils.getOrderHashAsync(order);
   }
 
   /**
@@ -224,7 +224,7 @@ export class ZeroExV2TradingAdapter extends BaseTradingAdapter {
     const duration = values.duration == null ? 24 * 60 * 60 : values.duration;
     const block = await this.trading.environment.client.getBlock('latest');
 
-    const order: ZeroExV2Order = {
+    const order: ZeroExV3Order = {
       exchangeAddress: this.info.exchange,
       makerAddress: this.trading.contract.address,
       takerAddress: zeroAddress,
@@ -243,7 +243,7 @@ export class ZeroExV2TradingAdapter extends BaseTradingAdapter {
     return order;
   }
 
-  public async signOrder(order: ZeroExV2Order, signer: Address) {
+  public async signOrder(order: ZeroExV3Order, signer: Address) {
     const provider = this.getSubprovider();
     const signed = await signatureUtils.ecSignOrderAsync(provider, order, signer);
     if (sameAddress(signed.makerAddress, signer)) {
