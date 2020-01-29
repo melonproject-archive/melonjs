@@ -8,58 +8,45 @@ import {
   JSONRPCErrorCallback,
   SignatureType,
   SignedOrder,
-} from '@0x/order-utils-v2';
+} from '@0x/order-utils';
 import { numberToHex, padLeft, randomHex } from 'web3-utils';
 import { Address } from '../../../../Address';
 import { functionSignature } from '../../../../utils/functionSignature';
 import { ExchangeAdapterAbi } from '../../../../abis/ExchangeAdapter.abi';
 import { zeroAddress } from '../../../../utils/zeroAddress';
 import { zeroBigNumber } from '../../../../utils/zeroBigNumber';
-import { ValidationError } from '../../../../errors/ValidationError';
 import { CallOnExchangeArgs } from '../Trading';
 import { BaseTradingAdapter } from './BaseTradingAdapter';
-import { ZeroExV2Order } from '../../../exchanges/third-party/zeroex/ZeroExV2Exchange';
+import { ZeroExV3Order } from '../../../exchanges/third-party/zeroex/ZeroExV3Exchange';
 import { checkSenderIsFundManager } from '../utils/checkSenderIsFundManager';
 import { checkSufficientBalance } from '../utils/checkSufficientBalance';
 import { checkExistingOpenMakeOrder } from '../utils/checkExistingOpenMakeOrder';
 import { checkCooldownReached } from '../utils/checkCooldownReached';
 import { sameAddress } from '../../../../utils/sameAddress';
 import { checkFundIsNotShutdown } from '../utils/checkFundIsNotShutdown';
+import { MissingZeroExOrderHashHex } from './ZeroExV2TradingAdapter';
 
-export interface CancelOrderZeroExV2Args {
+export interface CancelOrderZeroExV3Args {
   orderHashHex?: string;
   orderId?: BigNumber;
 }
 
-export interface CreateUnsignedOrderZeroExV2Args {
+export interface CreateUnsignedOrderZeroExV3Args {
   makerTokenAddress: Address;
   takerTokenAddress: Address;
   makerAssetAmount: BigNumber;
   takerAssetAmount: BigNumber;
-  takerFee?: BigNumber;
   feeRecipientAddress?: Address;
   duration?: number;
+  makerFee?: BigNumber;
+  makerFeeTokenAddress?: Address;
+  takerFee?: BigNumber;
+  takerFeeTokenAddress?: Address;
 }
 
-export class MissingZeroExOrderHashHex extends ValidationError {
-  public readonly name = 'MissingZeroExOrderHashHex';
-
-  constructor(message: string = 'Missing order hash hex.') {
-    super(message);
-  }
-}
-
-export class InvalidOrderSignatureError extends ValidationError {
-  public readonly name = 'InvalidOrderSignatureError';
-
-  constructor(message: string = 'Invalid order signature.') {
-    super(message);
-  }
-}
-
-export class ZeroExV2TradingAdapter extends BaseTradingAdapter {
+export class ZeroExV3TradingAdapter extends BaseTradingAdapter {
   public getOrderHash(order: SignedOrder) {
-    return orderHashUtils.getOrderHashHex(order);
+    return orderHashUtils.getOrderHashAsync(order);
   }
 
   /**
@@ -177,7 +164,7 @@ export class ZeroExV2TradingAdapter extends BaseTradingAdapter {
    * @param from The address of the sender.
    * @param args The arguments.
    */
-  public cancelOrder(from: Address, args: CancelOrderZeroExV2Args) {
+  public cancelOrder(from: Address, args: CancelOrderZeroExV3Args) {
     const orderHashHex = args.orderHashHex || (args.orderId && padLeft(numberToHex(args.orderId.toFixed(0)), 64));
     const paddedZeros = padLeft('0x0', 64);
     const methodArgs: CallOnExchangeArgs = {
@@ -220,12 +207,20 @@ export class ZeroExV2TradingAdapter extends BaseTradingAdapter {
     return this.trading.callOnExchange(from, methodArgs, validate);
   }
 
-  public async createUnsignedOrder(values: CreateUnsignedOrderZeroExV2Args) {
+  public async createUnsignedOrder(values: CreateUnsignedOrderZeroExV3Args) {
     const duration = values.duration == null ? 24 * 60 * 60 : values.duration;
     const block = await this.trading.environment.client.getBlock('latest');
 
-    const order: ZeroExV2Order = {
+    const makerFeeAssetData = values.makerFeeTokenAddress
+      ? assetDataUtils.encodeERC20AssetData(values.makerFeeTokenAddress)
+      : zeroAddress;
+    const takerFeeAssetData = values.takerFeeTokenAddress
+      ? assetDataUtils.encodeERC20AssetData(values.takerFeeTokenAddress)
+      : zeroAddress;
+
+    const order: ZeroExV3Order = {
       exchangeAddress: this.info.exchange,
+      chainId: await this.environment.client.net.getId(),
       makerAddress: this.trading.contract.address,
       takerAddress: zeroAddress,
       senderAddress: zeroAddress,
@@ -236,14 +231,16 @@ export class ZeroExV2TradingAdapter extends BaseTradingAdapter {
       takerAssetAmount: values.takerAssetAmount,
       makerAssetData: assetDataUtils.encodeERC20AssetData(values.makerTokenAddress),
       takerAssetData: assetDataUtils.encodeERC20AssetData(values.takerTokenAddress),
-      makerFee: zeroBigNumber,
+      makerFee: values.takerFee || zeroBigNumber,
       takerFee: values.takerFee || zeroBigNumber,
+      makerFeeAssetData,
+      takerFeeAssetData,
     };
 
     return order;
   }
 
-  public async signOrder(order: ZeroExV2Order, signer: Address) {
+  public async signOrder(order: ZeroExV3Order, signer: Address) {
     const provider = this.getSubprovider();
     const signed = await signatureUtils.ecSignOrderAsync(provider, order, signer);
     if (sameAddress(signed.makerAddress, signer)) {

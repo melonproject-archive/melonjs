@@ -108,7 +108,7 @@ describe('Trading', () => {
   });
 
   it('should throw when passing a wrong address for Kyber', async () => {
-    await expect(KyberTradingAdapter.create(trading, randomAddress())).rejects.toThrowError(
+    await expect(KyberTradingAdapter.create(environment, randomAddress(), trading)).rejects.toThrowError(
       ExchangeNotRegisteredWithFundError,
     );
   });
