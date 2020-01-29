@@ -2,8 +2,8 @@ import BigNumber from 'bignumber.js';
 import { Contract } from '../../../../Contract';
 import { Environment } from '../../../../Environment';
 import { Address } from '../../../../Address';
-import { ZeroExV2ExchangeAbi } from '../../../../abis/ZeroExV2Exchange.abi';
-import { Order } from '@0x/order-utils-v2';
+import { Order } from '@0x/order-utils';
+import { ZeroExV3ExchangeAbi } from '../../../../abis/ZeroExV3Exchange.abi';
 
 export interface ZeroExV3Order extends Order {}
 
@@ -24,7 +24,7 @@ export interface ZeroExV3OrderInfo {
 }
 
 export class ZeroExV3Exchange extends Contract {
-  public static readonly abi = ZeroExV2ExchangeAbi;
+  public static readonly abi = ZeroExV3ExchangeAbi;
 
   public static deploy(environment: Environment, bytecode: string, from: Address, closetime: BigNumber) {
     return super.createDeployment<ZeroExV3Exchange>(environment, bytecode, from, [closetime.toFixed(0)]);
