@@ -24,8 +24,8 @@ import { PolicyArgs } from '../policies/IPolicy';
 import { zeroAddress } from '../../../utils/zeroAddress';
 import { zeroBigNumber } from '../../../utils/zeroBigNumber';
 import { OutOfBalanceError } from '../../../errors/OutOfBalanceError';
-import { StandardToken } from '../../dependencies/token/StandardToken';
 import { InsufficientAllowanceError } from '../../../errors/InsufficientAllowanceError';
+import { ERC20WithFields } from '../../dependencies/token/ERC20WithFields';
 
 export interface Request {
   investmentAsset: Address;
@@ -305,7 +305,7 @@ export class Participation extends Contract {
         throw new InvestmentRequestExistsError(request);
       }
 
-      const token = new StandardToken(this.environment, investmentAsset);
+      const token = new ERC20WithFields(this.environment, investmentAsset);
       const balance = await token.getBalanceOf(from);
       if (balance.isLessThan(investmentAmount)) {
         throw new OutOfBalanceError(investmentAmount, balance);
