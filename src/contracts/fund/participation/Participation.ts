@@ -20,11 +20,12 @@ import { sameAddress } from '../../../utils/sameAddress';
 import { keccak256, padLeft } from 'web3-utils';
 import { functionSignature } from '../../../utils/functionSignature';
 import { PolicyManager } from '../policies/PolicyManager';
-import { IPolicy } from '../policies/IPolicy';
+import { PolicyArgs } from '../policies/IPolicy';
 import { zeroAddress } from '../../../utils/zeroAddress';
 import { zeroBigNumber } from '../../../utils/zeroBigNumber';
-import { PreminedToken } from '../../dependencies/token/PreminedToken';
 import { OutOfBalanceError } from '../../../errors/OutOfBalanceError';
+import { StandardToken } from '../../dependencies/token/StandardToken';
+import { InsufficientAllowanceError } from '../../../errors/InsufficientAllowanceError';
 
 export interface Request {
   investmentAsset: Address;
@@ -117,8 +118,8 @@ export class NotEnoughSharesToRedeemError extends ValidationError {
   }
 }
 
-export class PreInvestmentPolicyValidationError extends ValidationError {
-  public readonly name = 'PreInvestmentPolicyValidationError';
+export class InvestmentPolicyValidationError extends ValidationError {
+  public readonly name = 'InvestmentPolicyValidationError';
 
   constructor(
     public readonly signature: string,
@@ -278,6 +279,23 @@ export class Participation extends Contract {
         throw new HubIsShutdownError(hub.contract.address);
       }
 
+      const encodedSignature = keccak256(functionSignature(ParticipationAbi, 'requestInvestment')).substr(0, 10);
+      const policyManagerAddress = (await this.getRoutes()).policyManager;
+      const policyManager = new PolicyManager(this.environment, policyManagerAddress);
+
+      const validationArgs: PolicyArgs = {
+        signature: encodedSignature,
+        addresses: [from, zeroAddress, zeroAddress, investmentAsset, zeroAddress],
+        values: [zeroBigNumber, zeroBigNumber, zeroBigNumber],
+        identifier: padLeft('0x0', 64),
+      };
+
+      try {
+        await Promise.all([policyManager.preValidate(validationArgs), policyManager.postValidate(validationArgs)]);
+      } catch (e) {
+        throw new InvestmentPolicyValidationError(encodedSignature);
+      }
+
       if (!(await this.canInvestWithAsset(investmentAsset))) {
         throw new InvestmentAssetNotAllowedError(investmentAsset);
       }
@@ -287,31 +305,15 @@ export class Participation extends Contract {
         throw new InvestmentRequestExistsError(request);
       }
 
-      const token = new PreminedToken(this.environment, investmentAsset);
+      const token = new StandardToken(this.environment, investmentAsset);
       const balance = await token.getBalanceOf(from);
       if (balance.isLessThan(investmentAmount)) {
         throw new OutOfBalanceError(investmentAmount, balance);
       }
 
-      const encodedSignature = keccak256(functionSignature(ParticipationAbi, 'requestInvestment')).substr(0, 10);
-      const policyManagerAddress = (await this.getRoutes()).policyManager;
-      const policyManager = new PolicyManager(this.environment, policyManagerAddress);
-      const policies = await policyManager.getPoliciesBySignature(encodedSignature);
-      const prePolicies = policies.pre;
-
-      const rulesRespected = await Promise.all(
-        prePolicies.map(policyAddress => {
-          const policy = new IPolicy(this.environment, policyAddress);
-          return policy.rule({
-            signature: encodedSignature,
-            addresses: [from, zeroAddress, zeroAddress, investmentAsset, zeroAddress],
-            values: [zeroBigNumber, zeroBigNumber, zeroBigNumber],
-            identifier: padLeft('0x0', 64),
-          });
-        }),
-      );
-      if (rulesRespected.some(respected => respected === false)) {
-        throw new PreInvestmentPolicyValidationError(encodedSignature);
+      const allowance = await token.getAllowance(from, this.contract.address);
+      if (allowance.isLessThan(investmentAmount)) {
+        throw new InsufficientAllowanceError(investmentAmount, allowance);
       }
     };
 
