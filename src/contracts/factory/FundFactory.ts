@@ -214,19 +214,46 @@ export class FundFactory extends Contract {
   }
 
   /**
+   * Create the Accounting contract for someone else
+   *
+   * @param from The address of the sender
+   * @param manager The address of the manager
+   */
+  public createAccountingFor(from: Address, manager: Address) {
+    const amgu = this.calculateAmgu.bind(this);
+
+    const validate = async () => {
+      this.validateComponentSet(await this.getManagersToHubs(manager));
+      this.validateComponentNotSet(manager, 'accounting');
+    };
+
+    return this.createTransaction({ from, args: [manager], method: 'createAccountingFor', validate, amgu });
+  }
+
+  /**
    * Create the Accounting contract
    *
    * @param from The address of the sender
    */
   public createAccounting(from: Address) {
+    return this.createAccountingFor(from, from);
+  }
+
+  /**
+   * Create the FeeManager contract for someone else
+   *
+   * @param from The address of the sender
+   * @param manager The address of the manager
+   */
+  public createFeeManagerFor(from: Address, manager: Address) {
     const amgu = this.calculateAmgu.bind(this);
 
     const validate = async () => {
-      this.validateComponentSet(await this.getManagersToHubs(from));
-      this.validateComponentNotSet(from, 'accounting');
+      this.validateComponentSet(await this.getManagersToHubs(manager));
+      this.validateComponentNotSet(manager, 'feeManager');
     };
 
-    return this.createTransaction({ from, method: 'createAccounting', validate, amgu });
+    return this.createTransaction({ from, args: [manager], method: 'createFeeManagerFor', validate, amgu });
   }
 
   /**
@@ -235,14 +262,24 @@ export class FundFactory extends Contract {
    * @param from The address of the sender
    */
   public createFeeManager(from: Address) {
+    return this.createFeeManagerFor(from, from);
+  }
+
+  /**
+   * Create the Participation contract for someone else
+   *
+   * @param from The address of the sender
+   * @param manager The address of the manager
+   */
+  public createParticipationFor(from: Address, manager: Address) {
     const amgu = this.calculateAmgu.bind(this);
 
     const validate = async () => {
-      this.validateComponentSet(await this.getManagersToHubs(from));
-      this.validateComponentNotSet(from, 'feeManager');
+      this.validateComponentSet(await this.getManagersToHubs(manager));
+      this.validateComponentNotSet(manager, 'participation');
     };
 
-    return this.createTransaction({ from, method: 'createFeeManager', validate, amgu });
+    return this.createTransaction({ from, args: [manager], method: 'createParticipationFor', validate, amgu });
   }
 
   /**
@@ -251,14 +288,24 @@ export class FundFactory extends Contract {
    * @param from The address of the sender
    */
   public createParticipation(from: Address) {
+    return this.createParticipationFor(from, from);
+  }
+
+  /**
+   * Create the PolicyManager contract for someone else
+   *
+   * @param from The address of the sender
+   * @param manager The address of the manager
+   */
+  public createPolicyManagerFor(from: Address, manager: Address) {
     const amgu = this.calculateAmgu.bind(this);
 
     const validate = async () => {
-      this.validateComponentSet(await this.getManagersToHubs(from));
-      this.validateComponentNotSet(from, 'participation');
+      this.validateComponentSet(await this.getManagersToHubs(manager));
+      this.validateComponentNotSet(manager, 'policyManager');
     };
 
-    return this.createTransaction({ from, method: 'createParticipation', validate, amgu });
+    return this.createTransaction({ from, args: [manager], method: 'createPolicyManagerFor', validate, amgu });
   }
 
   /**
@@ -267,14 +314,24 @@ export class FundFactory extends Contract {
    * @param from The address of the sender
    */
   public createPolicyManager(from: Address) {
+    return this.createPolicyManagerFor(from, from);
+  }
+
+  /**
+   * Create the Shares contract for someone else
+   *
+   * @param from The address of the sender
+   * @param manager The address of the manager
+   */
+  public createSharesFor(from: Address, manager: Address) {
     const amgu = this.calculateAmgu.bind(this);
 
     const validate = async () => {
-      this.validateComponentSet(await this.getManagersToHubs(from));
-      this.validateComponentNotSet(from, 'policyManager');
+      this.validateComponentSet(await this.getManagersToHubs(manager));
+      this.validateComponentNotSet(manager, 'shares');
     };
 
-    return this.createTransaction({ from, method: 'createPolicyManager', validate, amgu });
+    return this.createTransaction({ from, args: [manager], method: 'createSharesFor', validate, amgu });
   }
 
   /**
@@ -283,14 +340,24 @@ export class FundFactory extends Contract {
    * @param from The address of the sender
    */
   public createShares(from: Address) {
+    return this.createSharesFor(from, from);
+  }
+
+  /**
+   * Create the Trading contract for someone else
+   *
+   * @param from The address of the sender
+   * @param manager The address of the manager
+   */
+  public createTradingFor(from: Address, manager: Address) {
     const amgu = this.calculateAmgu.bind(this);
 
     const validate = async () => {
-      this.validateComponentSet(await this.getManagersToHubs(from));
-      this.validateComponentNotSet(from, 'shares');
+      this.validateComponentSet(await this.getManagersToHubs(manager));
+      this.validateComponentNotSet(manager, 'trading');
     };
 
-    return this.createTransaction({ from, method: 'createShares', validate, amgu });
+    return this.createTransaction({ from, args: [manager], method: 'createTradingFor', validate, amgu });
   }
 
   /**
@@ -299,14 +366,24 @@ export class FundFactory extends Contract {
    * @param from The address of the sender
    */
   public createTrading(from: Address) {
+    return this.createTradingFor(from, from);
+  }
+
+  /**
+   * Create the Vault contract for someone else
+   *
+   * @param from The address of the sender
+   * @param manager The address of the manager
+   */
+  public createVaultFor(from: Address, manager: Address) {
     const amgu = this.calculateAmgu.bind(this);
 
     const validate = async () => {
-      this.validateComponentSet(await this.getManagersToHubs(from));
-      this.validateComponentNotSet(from, 'trading');
+      this.validateComponentSet(await this.getManagersToHubs(manager));
+      this.validateComponentNotSet(manager, 'vault');
     };
 
-    return this.createTransaction({ from, method: 'createTrading', validate, amgu });
+    return this.createTransaction({ from, args: [manager], method: 'createVaultFor', validate, amgu });
   }
 
   /**
@@ -315,14 +392,33 @@ export class FundFactory extends Contract {
    * @param from The address of the sender
    */
   public createVault(from: Address) {
+    return this.createVaultFor(from, from);
+  }
+
+  /**
+   * Complete the fund setup for someone else
+   *
+   * @param from The address of the sender
+   * @param manager The address of the manager
+   */
+  public completeSetupFor(from: Address, manager: Address) {
     const amgu = this.calculateAmgu.bind(this);
 
     const validate = async () => {
-      this.validateComponentSet(await this.getManagersToHubs(from));
-      this.validateComponentNotSet(from, 'vault');
+      const hub = await this.getManagersToHubs(manager);
+      if (await this.isInstance(hub)) {
+        throw new FundSetupAlreadyCompleteError();
+      }
+
+      this.validateComponentSet(await this.getManagersToHubs(manager));
+
+      const routes = await this.getManagersToRoutes(manager);
+      Object.keys(routes).forEach((route: keyof HubRoutes) => {
+        this.validateComponentSet(routes[route]);
+      });
     };
 
-    return this.createTransaction({ from, method: 'createVault', validate, amgu });
+    return this.createTransaction({ from, args: [manager], method: 'completeSetup', validate, amgu });
   }
 
   /**
@@ -331,23 +427,7 @@ export class FundFactory extends Contract {
    * @param from The address of the sender
    */
   public completeSetup(from: Address) {
-    const amgu = this.calculateAmgu.bind(this);
-
-    const validate = async () => {
-      const hub = await this.getManagersToHubs(from);
-      if (await this.isInstance(hub)) {
-        throw new FundSetupAlreadyCompleteError();
-      }
-
-      this.validateComponentSet(await this.getManagersToHubs(from));
-
-      const routes = await this.getManagersToRoutes(from);
-      Object.keys(routes).forEach((route: keyof HubRoutes) => {
-        this.validateComponentSet(routes[route]);
-      });
-    };
-
-    return this.createTransaction({ from, method: 'completeSetup', validate, amgu });
+    return this.completeSetupFor(from, from);
   }
 
   /**
