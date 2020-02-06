@@ -80,13 +80,13 @@ export class Hub extends Contract {
   public async getRoutes(block?: number) {
     const routes = await this.makeCall<HubRoutes>('routes', undefined, block);
     const output: HubRoutes = {
-      ...(routes.accounting && !isZeroAddress(routes.accounting) && { accounting: routes.accounting }),
-      ...(routes.participation && !isZeroAddress(routes.participation) && { participation: routes.participation }),
-      ...(routes.shares && !isZeroAddress(routes.shares) && { shares: routes.shares }),
-      ...(routes.trading && !isZeroAddress(routes.trading) && { trading: routes.trading }),
-      ...(routes.vault && !isZeroAddress(routes.vault) && { vault: routes.vault }),
-      ...(routes.feeManager && !isZeroAddress(routes.feeManager) && { feeManager: routes.feeManager }),
-      ...(routes.policyManager && !isZeroAddress(routes.policyManager) && { policyManager: routes.policyManager }),
+      ...(routes?.accounting && !isZeroAddress(routes.accounting) && { accounting: routes.accounting }),
+      ...(routes?.participation && !isZeroAddress(routes.participation) && { participation: routes.participation }),
+      ...(routes?.shares && !isZeroAddress(routes.shares) && { shares: routes.shares }),
+      ...(routes?.trading && !isZeroAddress(routes.trading) && { trading: routes.trading }),
+      ...(routes?.vault && !isZeroAddress(routes.vault) && { vault: routes.vault }),
+      ...(routes?.feeManager && !isZeroAddress(routes.feeManager) && { feeManager: routes.feeManager }),
+      ...(routes?.policyManager && !isZeroAddress(routes.policyManager) && { policyManager: routes.policyManager }),
     };
 
     return output;
