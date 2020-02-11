@@ -122,7 +122,7 @@ export class ZeroExV3TradingAdapter extends BaseTradingAdapter {
       methodSignature: functionSignature(ExchangeAdapterAbi, 'takeOrder'),
       orderAddresses: [
         order.makerAddress,
-        zeroAddress,
+        order.takerAddress,
         makerTokenAddress,
         takerTokenAddress,
         order.feeRecipientAddress,
