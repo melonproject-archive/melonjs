@@ -9,14 +9,16 @@ import { Address } from './Address';
 import { Contract } from './Contract';
 import { Environment } from './Environment';
 
-export interface SendOptions extends Omit<Partial<EthSendOptions>, 'value'> {
+export interface SendOptions extends Omit<Omit<Partial<EthSendOptions>, 'value'>, 'gasPrice'> {
   value?: BigNumber;
   amgu?: BigNumber;
   incentive?: BigNumber;
+  gasPrice?: string | number;
 }
 
 export interface EstimateGasOptions extends Omit<EthEstimateGasOptions, 'value'> {
   value?: BigNumber;
+  gasPrice?: string | number;
 }
 
 export class Transaction<T = TransactionReceipt> {
@@ -56,7 +58,7 @@ export class Transaction<T = TransactionReceipt> {
       value = (value || new BigNumber(0)).plus(options.incentive);
     }
 
-    const opts: EthSendOptions = {
+    const opts = {
       ...(value && { value: value.toFixed() }),
       ...(from && { from }),
       ...(options?.gas && { gas: options.gas }),
@@ -79,6 +81,7 @@ export class Transaction<T = TransactionReceipt> {
       ...(incentive && { incentive }),
       ...(options?.value && { value: options.value }),
       ...(options?.from && { from: options.from }),
+      ...(options?.gasPrice && { gasPrice: options.gasPrice }),
     };
 
     return opts;
