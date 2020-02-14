@@ -10,7 +10,7 @@ export class ComponentNotSetError extends ValidationError {
 
 export class ComponentAlreadySetError extends ValidationError {
   public readonly name = 'ComponentAlreadySetError';
-  constructor(public readonly address: Address, message: string = 'Component has already been set yet.') {
+  constructor(public readonly address: Address, message: string = 'Component has already been set.') {
     super(message);
   }
 }

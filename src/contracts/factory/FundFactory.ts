@@ -138,7 +138,7 @@ export class FundFactory extends Contract {
     ];
 
     const validate = async () => {
-      this.validateHubNotSet(from);
+      await this.validateHubNotSet(from);
 
       const registry = new Registry(this.environment, await this.getRegistry());
 
