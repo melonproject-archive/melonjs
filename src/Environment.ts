@@ -24,7 +24,7 @@ export class Environment {
   public readonly cache?: CacheHandler;
 
   constructor(public readonly client: Eth, options?: EnvironmentOptions) {
-    this.cache = options && options.cache;
+    this.cache = options?.cache;
   }
 }
 
@@ -41,9 +41,9 @@ export class DeployedEnvironment extends Environment {
   ) {
     super(eth, options);
 
-    this.policies = availablePolicies().concat(options.policies ?? []);
-    this.tokens = availableTokens(deployment).concat(options.tokens ?? []);
-    this.exchanges = availableExchanges(deployment).concat(options.exchanges ?? []);
+    this.policies = availablePolicies().concat(options?.policies ?? []);
+    this.tokens = availableTokens(deployment).concat(options?.tokens ?? []);
+    this.exchanges = availableExchanges(deployment).concat(options?.exchanges ?? []);
   }
 
   public getToken(symbol: string): TokenDefinition;
