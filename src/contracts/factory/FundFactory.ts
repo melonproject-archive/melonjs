@@ -418,7 +418,7 @@ export class FundFactory extends Contract {
       });
     };
 
-    return this.createTransaction({ from, args: [manager], method: 'completeSetup', validate, amgu });
+    return this.createTransaction({ from, args: [manager], method: 'completeSetupFor', validate, amgu });
   }
 
   /**
