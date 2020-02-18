@@ -1,4 +1,5 @@
-import { Participation, AssetIsNotRegisteredError } from './Participation';
+import { Participation } from './Participation';
+import { AssetIsNotRegisteredError } from './Participation.errors';
 import BigNumber from 'bignumber.js';
 import { createTestEnvironment, TestEnvironment } from '../../../utils/tests/createTestEnvironment';
 import { deployWeth } from '../../../utils/tests/deployWeth';
