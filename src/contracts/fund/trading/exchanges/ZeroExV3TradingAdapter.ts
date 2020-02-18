@@ -114,8 +114,18 @@ export class ZeroExV3TradingAdapter extends BaseTradingAdapter {
   public takeOrder(from: Address, order: SignedOrder, takerAmount?: BigNumber) {
     const makerTokenAddress = assetDataUtils.decodeERC20AssetData(order.makerAssetData).tokenAddress;
     const takerTokenAddress = assetDataUtils.decodeERC20AssetData(order.takerAssetData).tokenAddress;
-    const amount = takerAmount || order.takerAssetAmount;
 
+    const makerFeeAsset =
+      order.makerFeeAssetData === '0x'
+        ? zeroAddress
+        : assetDataUtils.decodeERC20AssetData(order.makerFeeAssetData).tokenAddress;
+
+    const takerFeeAsset =
+      order.takerFeeAssetData === '0x'
+        ? zeroAddress
+        : assetDataUtils.decodeERC20AssetData(order.takerFeeAssetData).tokenAddress;
+
+    const amount = takerAmount || order.takerAssetAmount;
     const paddedZeros = padLeft('0x0', 64);
     const methodArgs: CallOnExchangeArgs = {
       exchangeIndex: this.index,
@@ -127,8 +137,8 @@ export class ZeroExV3TradingAdapter extends BaseTradingAdapter {
         takerTokenAddress,
         order.feeRecipientAddress,
         zeroAddress,
-        zeroAddress,
-        zeroAddress,
+        makerFeeAsset,
+        takerFeeAsset,
       ],
       orderValues: [
         order.makerAssetAmount,
@@ -140,7 +150,7 @@ export class ZeroExV3TradingAdapter extends BaseTradingAdapter {
         amount,
         zeroBigNumber,
       ],
-      orderData: [order.makerAssetData, order.takerAssetData, paddedZeros, paddedZeros],
+      orderData: [order.makerAssetData, order.takerAssetData, order.makerFeeAssetData, order.takerFeeAssetData],
       identifier: paddedZeros,
       signature: order.signature,
     };
