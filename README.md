@@ -8,13 +8,16 @@
 
 ## Summary
 
-MelonJS allows you to call functions on the following contracts:
+MelonJS allows you to create instances of and call functions on the following Melon contracts:
 
-- Guarantee that all values are from the same block
-- Use watchers to poll for multiple blockchain state variables/functions
-- Get updates when a watcher detects state has changed
-- Results from out of sync nodes are automatically ignored
-- Get new block updates
+- Accounting
+- Fee Manager
+- Participation
+- Policy Manager
+- Shares
+- Trading
+- Vault
+- CompleteSetup
 
 ## Installation and Development
 
@@ -44,52 +47,103 @@ You are now ready to start development. Check out the package.json scripts for u
 
 ## Usage
 
-MelonJS can be used with web3 utilities to create a Melon fund. Note that there are a couple of config json files referenced here. Examples of those files are contained in an `/examples` directory in this repo. 
+All MelonJS functions require the definition of an `environment` to contextualize where they are being called and the `version` of the Melon protocol within that environment. This example uses Web3 utilities, an Infura node endpoint, and a json config file to create an environment.
 
 ```javascript
-
 const BigNumber = require('bignumber.js');
 const { Eth } = require('web3-eth');
 const { HttpProvider } = require('web3-providers');
-const { DeployedEnvironment, Version } = require('@melonproject/melonjs');
-const { openFile } = require('./utils');
+const { DeployedEnvironment } = require('@melonproject/melonjs');
 
 // Instantiate the environment and version where you'll create your fund
-const eth = new Eth(new HttpProvider('http://localhost:8545', {
+const eth = new Eth(new HttpProvider('https://mainnet.infura.io/v3/9136e09ace01493b86fed528cb6a87a5', {
   confirmTransactionBlocks: 1,
 }}));
 const deployment = fs.readFileSync('./deployment.json');
 const environment = new DeployedEnvironment(eth, deployment);
-const version = new Version(environment, environment.deployment.melon.addr.Version);
 
-// define variables to pass to fund setup
-const denominationAssetAddress = environment.deployment.tokens.addr[config.QuoteToken];
-const accounts = await environment.client.getAccounts();
-const sender = accounts[0];
-const gasPrice = 5000000000 // denominated in WEI
+```
 
-// call the beginSetup function to 
-const tx = version.beginSetup(sender, {
-  name: FundName, // a string
-  fees: [environment.deployment.melon.addr.ManagementFee, environment.deployment.melon.addr.PerformanceFee],
-  feeRates: [managementFeeRate, performanceFeeRate], // both BigNumbers denominated in WEI
-  feePeriods: [new BigNumber(0), new BigNumber(90 * 60 * 60 * 24)],
-  exchanges: exchanges, // an array of exchange addresses
-  adapters: adapters, // an array of exchange adapter addresses
-  denominationAsset: denominationAssetAddress, // a token address (WETH)
-  defaultAssets: defaultAssets, // an array of token addresses 
-});
+Once you've got an environment and version defined, you can use them to set up a Melon fund.
 
-await tx.validate();
+```javascript
+const BigNumber = require('bignumber.js');
 
-const receipt = await tx.send(await tx.prepare({
-  gasPrice,  
-}));
+async function beginSetup(environment, config, sender, gasPrice) {
+  // instantiate the current version (per your environment) of the Melon protocol
+  const version = new Version(environment, environment.deployment.melon.addr.Version);
 
-// At this point, you'll need to call the setupSpokeContract methods individually, and in order
-const accountingTx = version.createAccounting(account)
+  // define the variables for your fund. See the fundCofig file in the example directory in this repo for guidance here.
+  const denominationAssetAddress = environment.deployment.tokens.addr[config.QuoteToken];
+  const defaultAssets = config.AllowedTokens.map(t => environment.deployment.tokens.addr[t]);
+  const managementFeeRate = new BigNumber(config.ManagementFee).times('1000000000000000000');
+  const performanceFeeRate = new BigNumber(config.PerformanceFee).times('1000000000000000000');
+
+  let exchanges = [];
+  let adapters = [];
+
+  // do this however you like, but the goal is to have two arrays of addresses, one for your exchanges, and the other for the corresponding adapter that the protocol uses to interact with them.
+
+  if (config.Exchanges.includes('OasisDex')) {
+    exchanges.push(environment.deployment.oasis.addr.OasisDexExchange);
+    adapters.push(environment.deployment.melon.addr.OasisDexAdapter);
+  }
+
+  if (config.Exchanges.includes('KyberNetwork')) {
+    exchanges.push(environment.deployment.kyber.addr.KyberNetworkProxy);
+    adapters.push(environment.deployment.melon.addr.KyberAdapter);
+  }
+
+  if (config.Exchanges.includes('ZeroExV2')) {
+    exchanges.push(environment.deployment.zeroExV2.addr.ZeroExV2Exchange);
+    adapters.push(environment.deployment.melon.addr.ZeroExV2Adapter);
+  }
+
+  if (config.Exchanges.includes('ZeroExV3')) {
+    exchanges.push(environment.deployment.zeroExV3.addr.ZeroExV3Exchange);
+    adapters.push(environment.deployment.melon.addr.ZeroExV3Adapter);
+  }
+
+  if (config.Exchanges.includes('MelonEngine')) {
+    exchanges.push(environment.deployment.melon.addr.Engine);
+    adapters.push(environment.deployment.melon.addr.EngineAdapter);
+  }
+  if (config.Exchanges.includes('Uniswap')) {
+    exchanges.push(environment.deployment.uniswap.addr.Engine);
+    adapters.push(environment.deployment.uniswap.addr.EngineAdapter);
+  }
+
+  // pass your newly-defined variables to the `beginSetup` function and you're on your way.
+
+  const tx = version.beginSetup(sender, {
+    name: config.FundName,
+    fees: [environment.deployment.melon.addr.ManagementFee, environment.deployment.melon.addr.PerformanceFee],
+    feeRates: [managementFeeRate, performanceFeeRate],
+    feePeriods: [new BigNumber(0), new BigNumber(90 * 60 * 60 * 24)],
+    exchanges: exchanges,
+    adapters: adapters,
+    denominationAsset: denominationAssetAddress,
+    defaultAssets: defaultAssets,
+  });
+
+  await tx.validate();
+
+  const receipt = await tx.send(
+    await tx.prepare({
+      gasPrice,
+    })
+  );
+
+  return receipt
+}
+
+
+// At this point, you'll need to call the setupSpokeContract methods individually, and in order:
+const accountingTx = version.createAccounting(sender);
 const accountingReceipt = await accountingTx.send(await accountingTx.prepare());
-console.log(accountingReceipt)
+console.log(accountingReceipt);
+
+// and so on, for createFeeManager, createParticipation, createPolicyManager, createShares, createTrading, createVault and finally completeSetup
 
 ```
 
@@ -99,7 +153,7 @@ The tests contained in this repository use an in-memory ganache test chain.
 
 In order to execute the tests, simply run:
 
-```
+```bash
 yarn test
 ```
 
@@ -113,167 +167,3 @@ Please note that all repositories hosted under this organization follow our [Cod
 [node]: https://nodejs.org
 [npm]: https://www.npmjs.com/package/@melonproject/melonjs
 [coc]: https://github.com/melonproject/melonjs/blob/master/CODE_OF_CONDUCT.md
-
-## Installation
-
-```bash
-yarn add @makerdao/multicall
-```
-
-## Usage
-
-```javascript
-import { createWatcher } from '@makerdao/multicall';
-
-// Contract addresses used in this example
-const MKR_TOKEN = '0xaaf64bfcc32d0f15873a02163e7e500671a4ffcd';
-const MKR_WHALE = '0xdb33dfd3d61308c33c63209845dad3e6bfb2c674';
-const MKR_FISH = '0x2dfcedcb401557354d0cf174876ab17bfd6f4efd';
-
-// Preset can be 'mainnet', 'kovan', 'rinkeby', 'goerli' or 'xdai'
-const config = { preset: 'kovan' };
-
-// Create watcher
-const watcher = createWatcher(
-  [
-    {
-      target: MKR_TOKEN,
-      call: ['balanceOf(address)(uint256)', MKR_WHALE],
-      returns: [['BALANCE_OF_MKR_WHALE', val => val / 10 ** 18]],
-    },
-  ],
-  config
-);
-
-// Subscribe to state updates
-watcher.subscribe(update => {
-  console.log(`Update: ${update.type} = ${update.value}`);
-});
-
-// Subscribe to batched state updates
-watcher.batch().subscribe(updates => {
-  // Handle batched updates here
-  // Updates are returned as { type, value } objects, e.g:
-  // { type: 'BALANCE_OF_MKR_WHALE', value: 70000 }
-});
-
-// Subscribe to new block number updates
-watcher.onNewBlock(blockNumber => {
-  console.log('New block:', blockNumber);
-});
-
-// Start the watcher polling
-watcher.start();
-```
-
-```javascript
-// The JSON RPC URL and multicall contract address can also be specified in the config:
-const config = {
-  rpcUrl: 'https://kovan.infura.io',
-  multicallAddress: '0xc49ab4d7de648a97592ed3d18720e00356b4a806',
-};
-```
-
-```javascript
-// Update the watcher calls using tap()
-const fetchWaiter = watcher.tap(calls => [
-  // Pass back existing calls...
-  ...calls,
-  // ...plus new calls
-  {
-    target: MKR_TOKEN,
-    call: ['balanceOf(address)(uint256)', MKR_FISH],
-    returns: [['BALANCE_OF_MKR_FISH', val => val / 10 ** 18]],
-  },
-]);
-// This promise resolves when the first fetch completes
-fetchWaiter.then(() => {
-  console.log('Initial fetch completed');
-});
-```
-
-```javascript
-// Recreate the watcher with new calls and config (allowing the network to be changed)
-const config = { preset: 'mainnet' };
-watcher.recreate(
-  [
-    {
-      target: MKR_TOKEN,
-      call: ['balanceOf(address)(uint256)', MKR_WHALE],
-      returns: [['BALANCE_OF_MKR_WHALE', val => val / 10 ** 18]],
-    },
-  ],
-  config
-);
-```
-
-## Helper Functions
-
-Special variables and functions (e.g. `addr.balance`, `block.blockhash`, `block.timestamp`) can be accessed by calling their corresponding helper function.
-To call these helper functions simply omit the `target` property (and it will default to multicall's contract address).
-
-```javascript
-const watcher = createWatcher(
-  [
-    {
-      call: ['getEthBalance(address)(uint256)', '0x72776bb917751225d24c07d0663b3780b2ada67c'],
-      returns: [['ETH_BALANCE', val => val / 10 ** 18]],
-    },
-    {
-      call: ['getBlockHash(uint256)(bytes32)', 11482494],
-      returns: [['SPECIFIC_BLOCK_HASH_0xFF4DB']],
-    },
-    {
-      call: ['getLastBlockHash()(bytes32)'],
-      returns: [['LAST_BLOCK_HASH']],
-    },
-    {
-      call: ['getCurrentBlockTimestamp()(uint256)'],
-      returns: [['CURRENT_BLOCK_TIMESTAMP']],
-    },
-    {
-      call: ['getCurrentBlockDifficulty()(uint256)'],
-      returns: [['CURRENT_BLOCK_DIFFICULTY']],
-    },
-    {
-      call: ['getCurrentBlockGasLimit()(uint256)'],
-      returns: [['CURRENT_BLOCK_GASLIMIT']],
-    },
-    {
-      call: ['getCurrentBlockCoinbase()(address)'],
-      returns: [['CURRENT_BLOCK_COINBASE']],
-    },
-  ],
-  { preset: 'kovan' }
-);
-```
-
-## Examples
-
-Check out this [CodePen example](https://codepen.io/michaelelliot/pen/MxEpNX?editors=0010) for a working front-end example.
-
-To run the example in the project, first clone this repo:
-
-```bash
-git clone https://github.com/makerdao/multicall.js
-```
-
-Then install the dependencies:
-
-```bash
-yarn
-```
-
-Finally run the example script (`examples/es-example.js`):
-
-```bash
-yarn example
-```
-
-## Test
-
-To run tests use:
-
-```bash
-yarn test
-```
