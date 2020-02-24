@@ -46,8 +46,44 @@ yarn codegen
 You are now ready to start development. Check out the package.json scripts for useful commands for testing, test coverage, building and watch mode.
 
 ## Usage
+It's worth defining some primitives that will be used frequently when interacting with both the ethereum blockchain in general and the Melon Protocol in particular.
 
-All MelonJS functions require the definition of an `environment` to contextualize where they are being called and the `version` of the Melon protocol within that environment. This example uses Web3 utilities, an Infura node endpoint, and a json config file to create an environment.
+#### Environment
+
+This class contextualizes where you're doing the work. Its constructor function requires the network on which you're working (this will be a testnet of some sort or the Ethereum mainnet if you're cooking with gas) and a deployment `config` file that specifies the addresses of the current Melon Protocol contracts, the ERC-20 tokens that are tradeable on Melon, and the exchanges upon which they're traded. A copy of one of these files can be found in the `/examples` directory in this repo.
+
+```javascript
+const { Eth } = require('web3-eth');
+const { HttpProvider } = require('web3-providers');
+const { DeployedEnvironment } = require('@melonproject/melonjs');
+
+// Instantiate the environment where you'll create your fund
+const eth = new Eth(new HttpProvider('https://mainnet.infura.io/v3/9136e09ace01493b86fed528cb6a87a5', {
+  confirmTransactionBlocks: 1,
+}}));
+const deployment = fs.readFileSync('./deployment.json');
+const environment = new DeployedEnvironment(eth, deployment);
+```
+
+#### Contract
+The `contract` class is MelonJS' base unit for all interactions with the blockchain. Though every Melon Protocol contract has various layers of abstraction, `contract` gives each some base functionality:
+ - creating a deployment
+ - creating a transaction
+
+ `Transaction` is a class all its own, and can be thought of as having three steps. 
+ - instantiation. A contract must create a new transaction
+ - preparation. `transaction.prepare()` is an asyncronous function that checks the eth gastation for projected fees, and checks whether the contract that's calling the function requires and `amgu` or `incentive` fees, which are part of the Melon Protocol's tokenomics.
+ - completion. Pass the resolution of `.prepare()` to `transaction.send()` to send the transaction to the blockchain.  
+
+
+
+
+#### Tokens
+
+
+### Setting Up a Melon Fund
+
+ All MelonJS functions require the definition of an `environment` to contextualize where they are being called and the `version` of the Melon protocol within that environment. This example uses Web3 utilities, an Infura node endpoint, and a json config file to create an environment.
 
 ```javascript
 const BigNumber = require('bignumber.js');
@@ -55,7 +91,7 @@ const { Eth } = require('web3-eth');
 const { HttpProvider } = require('web3-providers');
 const { DeployedEnvironment } = require('@melonproject/melonjs');
 
-// Instantiate the environment and version where you'll create your fund
+// Instantiate the environment where you'll create your fund
 const eth = new Eth(new HttpProvider('https://mainnet.infura.io/v3/9136e09ace01493b86fed528cb6a87a5', {
   confirmTransactionBlocks: 1,
 }}));
@@ -68,12 +104,12 @@ Once you've got an environment and version defined, you can use them to set up a
 
 ```javascript
 const BigNumber = require('bignumber.js');
-
+// sender is the current user's wallet address
 async function beginSetup(environment, config, sender, gasPrice) {
   // instantiate the current version (per your environment) of the Melon protocol
   const version = new Version(environment, environment.deployment.melon.addr.Version);
 
-  // define the variables for your fund. See the fundCofig file in the example directory in this repo for guidance here.
+  // define the variables for your fund. See the fundConfig file in the example directory in this repo for guidance here.
   const denominationAssetAddress = environment.deployment.tokens.addr[config.QuoteToken];
   const defaultAssets = config.AllowedTokens.map(t => environment.deployment.tokens.addr[t]);
   const managementFeeRate = new BigNumber(config.ManagementFee).times('1000000000000000000');
@@ -143,7 +179,24 @@ const accountingTx = version.createAccounting(sender);
 const accountingReceipt = await accountingTx.send(await accountingTx.prepare());
 console.log(accountingReceipt);
 
-// and so on, for createFeeManager, createParticipation, createPolicyManager, createShares, createTrading, createVault and finally completeSetup
+```
+And so on, for:
+- createFeeManager
+- createParticipation
+- createPolicyManager
+- createShares
+- createTrading
+- createVault
+- completeSetup
+ 
+#### Trading
+
+The Melon Protocol is directly integrated with the smart contracts of various trading venues. MelonJS provides an avenue to interact with those exchanges to buy and sell tokens. The connections are maintained using `xyzTradingAdapter` classes, which require a few arguments to instantiate.
+
+```javascript
+const trading = new Trading(environment, tradingContract) // environment's been instantiated above, and tradingContract is the string address of the trading contract belonging to the fund in question. This will define a Trading class specific to the fund.
+const adapter = await KyberTradingAdapter.create(environment, exchange, trading)
+
 
 ```
 
