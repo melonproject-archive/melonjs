@@ -21,7 +21,7 @@ export class AssetBlacklist extends Contract {
    */
   public addToBlacklist(from: Address, asset: Address) {
     const validate = async () => {
-      if (this.isMember(asset)) {
+      if (await this.isMember(asset)) {
         throw new IsAlreadyMemberError(asset);
       }
     };

@@ -21,7 +21,7 @@ export class AssetWhitelist extends Contract {
    */
   public removeFromWhitelist(from: Address, asset: Address) {
     const validate = async () => {
-      if (!this.isMember(asset)) {
+      if (!(await this.isMember(asset))) {
         throw new IsNotMemberError(asset);
       }
     };
