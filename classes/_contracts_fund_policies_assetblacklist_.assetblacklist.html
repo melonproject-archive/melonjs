@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>AssetBlacklist | @melonproject/melonjs - v0.0.102</title>
+	<title>AssetBlacklist | @melonproject/melonjs - v0.0.103</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">@melonproject/melonjs - v0.0.102</a>
+					<a href="../index.html" class="title">@melonproject/melonjs - v0.0.103</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -105,6 +105,7 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_contracts_fund_policies_assetblacklist_.assetblacklist.html#addtoblacklist" class="tsd-kind-icon">add<wbr>ToBlacklist</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite tsd-is-inherited tsd-is-protected"><a href="_contracts_fund_policies_assetblacklist_.assetblacklist.html#createtransaction" class="tsd-kind-icon">create<wbr>Transaction</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited"><a href="_contracts_fund_policies_assetblacklist_.assetblacklist.html#getethbalance" class="tsd-kind-icon">get<wbr>Eth<wbr>Balance</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_contracts_fund_policies_assetblacklist_.assetblacklist.html#getidentifier" class="tsd-kind-icon">get<wbr>Identifier</a></li>
@@ -232,6 +233,43 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="addtoblacklist" class="tsd-anchor"></a>
+					<h3>add<wbr>ToBlacklist</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">add<wbr>ToBlacklist<span class="tsd-signature-symbol">(</span>from<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a>, asset<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_transaction_.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionReceipt</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/policies/AssetBlacklist.ts#L22">src/contracts/fund/policies/AssetBlacklist.ts:22</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Adds a list of assets to an AssetBlacklist.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>from: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The address of the sender</p>
+									</div>
+								</li>
+								<li>
+									<h5>asset: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The address of the asset to be added to the AssetBlacklist</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_transaction_.transaction.html" class="tsd-signature-type">Transaction</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionReceipt</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite tsd-is-inherited tsd-is-protected">
 					<a name="createtransaction" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagProtected">Protected</span> create<wbr>Transaction</h3>
@@ -331,7 +369,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_contracts_fund_policies_addresslist_.addresslist.html">AddressList</a>.<a href="_contracts_fund_policies_addresslist_.addresslist.html#getmembercount">getMemberCount</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/policies/AddressList.ts#L30">src/contracts/fund/policies/AddressList.ts:30</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/policies/AddressList.ts#L47">src/contracts/fund/policies/AddressList.ts:47</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -363,7 +401,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_contracts_fund_policies_addresslist_.addresslist.html">AddressList</a>.<a href="_contracts_fund_policies_addresslist_.addresslist.html#getmembers">getMembers</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/policies/AddressList.ts#L41">src/contracts/fund/policies/AddressList.ts:41</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/policies/AddressList.ts#L58">src/contracts/fund/policies/AddressList.ts:58</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -427,7 +465,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_contracts_fund_policies_addresslist_.addresslist.html">AddressList</a>.<a href="_contracts_fund_policies_addresslist_.addresslist.html#ismember">isMember</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/policies/AddressList.ts#L20">src/contracts/fund/policies/AddressList.ts:20</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/fund/policies/AddressList.ts#L37">src/contracts/fund/policies/AddressList.ts:37</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -639,6 +677,9 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-static">
 								<a href="_contracts_fund_policies_assetblacklist_.assetblacklist.html#abi" class="tsd-kind-icon">abi</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_contracts_fund_policies_assetblacklist_.assetblacklist.html#addtoblacklist" class="tsd-kind-icon">add<wbr>ToBlacklist</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-overwrite tsd-is-inherited tsd-is-protected">
 								<a href="_contracts_fund_policies_assetblacklist_.assetblacklist.html#createtransaction" class="tsd-kind-icon">create<wbr>Transaction</a>
