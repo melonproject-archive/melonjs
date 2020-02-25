@@ -1,7 +1,7 @@
 import { Contract } from '../../../Contract';
 import { applyMixins } from '../../../utils/applyMixins';
 import { IPolicy } from './IPolicy';
-import { AddressList } from './AddressList';
+import { AddressList, IsNotMemberError } from './AddressList';
 import { AssetWhitelistAbi } from '../../../abis/AssetWhitelist.abi';
 import { Environment } from '../../../Environment';
 import { Address } from '../../../Address';
@@ -14,7 +14,23 @@ export class AssetWhitelist extends Contract {
   }
 
   /**
-   * Gets the maximum number of positions.
+   * Removes an asset from an AssetWhitelist.
+   *
+   * @param from The address of the sender
+   * @param asset The asset address to be removed from the AssetWhitelist
+   */
+  public removeFromWhitelist(from: Address, asset: Address) {
+    const validate = async () => {
+      if (!this.isMember(asset)) {
+        throw new IsNotMemberError(asset);
+      }
+    };
+
+    return this.createTransaction({ from, method: 'removeFromWhitelist', args: [asset], validate });
+  }
+
+  /**
+   * Gets the index of an asset.
    *
    * @param asset The address of the asset
    * @param block The block number to execute the call on.

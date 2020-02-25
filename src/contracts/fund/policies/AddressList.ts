@@ -3,6 +3,23 @@ import { Address } from '../../../Address';
 import { AddressListAbi } from '../../../abis/AddressList.abi';
 import { Environment } from '../../../Environment';
 import { toBigNumber } from '../../../utils/toBigNumber';
+import { ValidationError } from '../../../errors/ValidationError';
+
+export class IsNotMemberError extends ValidationError {
+  public readonly name = 'IsNotMemberError';
+
+  constructor(public readonly address: Address, message: string = 'Address is not member of AddressList') {
+    super(message);
+  }
+}
+
+export class IsAlreadyMemberError extends ValidationError {
+  public readonly name = 'IsAlreadyMemberError';
+
+  constructor(public readonly address: Address, message: string = 'Address is already member of AddressList') {
+    super(message);
+  }
+}
 
 export class AddressList extends Contract {
   public static readonly abi = AddressListAbi;
