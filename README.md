@@ -77,7 +77,7 @@ The `contract` class is MelonJS' base unit for all interactions with the blockch
 
 `Transaction` is a class all its own, and can be thought of as having four steps.
 
-**Instantiation** - A contract must create a new transaction of a given type
+**Instantiation** - A contract must create a new transaction of a given type.
 
 **Validation** - this step is optional, though it provides named error messages which can be helpful for debugging or to show on any sort of front end application.
 
@@ -100,15 +100,17 @@ If no arguments are passed to `.prepare()`, it will check theP ethGasStation for
 to `.prepare()` with a number you believe will guarantee transaction success.
 
 
-**Completion** - Pass the resolution of `.prepare()` to `transaction.send()`, which returns a Web3 `Promievent`. Check their docs for details, but these are promises with multiple stages of asyncronicity, each of which can be listend for to trigger UI interactions.
+**Completion** - Pass the resolution of `.prepare()` to `transaction.send()`, which returns a Web3 `Promievent`. Check [their docs](https://web3js.readthedocs.io/en/v1.2.6/callbacks-promises-events.html) for details, but these are promises with multiple stages of asyncronicity, each of which can be listend for to trigger UI interactions.
 
 These steps can be chained together into something like this:
 
 ```javascript
+const transaction = SomeContract.create(environment, args)
 
+// the TransactionReceipt type is imported from Web3
 const receipt = await new Promise<TransactionReceipt>( (resolve, reject) => {
   transaction.validate()
-    .then(() => transaction.prepare({ gasPrice: GAS_PRICE }))
+    .then(() => transaction.prepare({ gasPrice: GAS_PRICE })) // of your choosing, or omit this
     .then((options) => {
       const tx = transaction.send(options);
 
@@ -119,13 +121,12 @@ const receipt = await new Promise<TransactionReceipt>( (resolve, reject) => {
     .catch(error) => reject(error));
     });
 
+console.log(`Success: ${receipt.transactionHash}`);
 
 ```
 
-#### Tokens and Exchanges are metadata
 
-
-### Setting Up a Melon Fund
+**### Setting Up a Melon Fund**
 
 All MelonJS functions require the definition of an `environment` to contextualize where they are being called and the `version` of the Melon protocol within that environment. This example uses Web3 utilities, an Infura node endpoint, and a json config file to create an environment.
 
@@ -195,6 +196,90 @@ And so on, for:
 - createVault
 - completeSetup
 
+### Investing in a Melon Fund
+
+Investing in a Melon is a three step process. The first two steps are handled by the party requesting the investment. The third step is handled by either that party, the fund manager, or an interested third party. More discussion of the game theory concerns and potential attack vectors of the investment process can be found [here](https://medium.com/melonprotocol/protecting-participants-ee55a752287).
+
+| Step | Contract | User |
+| --- | --- | --- |
+| approve | ERC20 | investor |
+| request | `Participation` | investor |
+| execute | `Particiaption` | various |
+
+The first step is to approve the transfer of a specific amount tokens from the investor's address.
+
+```javascript
+const { StandardToken } = require('@melonproject/melonjs')
+const tokenAddress = string // address here is that of the ERC-20 that the user is trying to invest in the fund.
+const contract = new StandardToken(environment, tokenAddress) 
+const accountAddress = string // the address of the user trying to make the investment
+const destinationAddress = string // the address of your fund's participation contract
+const approvalAmount = bigNumber // a number equal to the amount of the ERC-20 that the user is trying to invest, with the correct number of decimals for that given token. On our front end, we use a helper function called toTokenBaseUnit to generate these bigNumbers
+const tx = contract.approve(accountAddress, destinationAddress, approvalAmount)
+
+// At this point, we can pass the transaction through the flow we described above.
+const receipt = await new Promise<TransactionReceipt>( (resolve, reject) => {
+  tx.validate()
+    .then(() => tx.prepare({ gasPrice: GAS_PRICE })) // of your choosing, or omit this
+    .then((options) => {
+      const tx = tx.send(options);
+
+      tx.once('transactionHash', hash => console.log(`Pending: ${hash}`));
+      tx.once('receipt', receipt => resolve(receipt));
+      tx.once('error', error => reject(error));
+    })
+    .catch(error) => reject(error));
+    });
+
+console.log(`Success: ${receipt.transactionHash}`);
+```
+Next, we have to request the shares from the `Participation` contract.
+
+```javascript
+const { Participation } = require('@melonproject/melonjs');
+
+const participationAddress = string; // the address of the fund's participation contract
+const tokenAddress = string; // the address of the token with which the user is asking to invest
+const userAddress = string; // the address of the user making the investment request
+
+const contract = new Participation(environment, participationAddress);
+const investmentAmount = BigNumber; // the amount of ERC-20 token the user is offering to invest, with the appropriate number of decimals for that token
+const sharesAmount = BigNumber; // the computed number of shares the user is requesting given the amount of the investment token, with the correct number of decimals (18)
+const tx = contract.requestInvestment(userAddress, sharesAmount, investmentAmount, tokenAddress);
+
+// At this point, we can pass the transaction through the flow we described above.
+const receipt = await new Promise<TransactionReceipt>( (resolve, reject) => {
+  tx.validate()
+    .then(() => tx.prepare({ gasPrice: GAS_PRICE })) // of your choosing, or omit this
+    .then((options) => {
+      const tx = tx.send(options);
+
+      tx.once('transactionHash', hash => console.log(`Pending: ${hash}`));
+      tx.once('receipt', receipt => resolve(receipt));
+      tx.once('error', error => reject(error));
+    })
+    .catch(error) => reject(error));
+    });
+
+console.log(`Success: ${receipt.transactionHash}`);
+
+```
+Finally, we execute the investment request. With the exception of the first investment in a fund, this will require waiting until after the next price feed update, and the function can be called by anybody (see the blog post linked above). In the case below, we'll assume that the fund manager is calling the function.
+
+```javascript
+const { Participation } = require('@melonproject/melonjs');
+const participationAddress = string; // the address of the fund's participation contract
+const userAddress = string; // the address of the user making the investment request
+const fundManagerAddress = string; // the address of the fund manager
+
+const contract = new Participation(environment, participationAddress);
+const tx = contract.executeRequestFor(fundManagerAddress, userAddress);
+
+const receipt = ...etc 
+
+```
+
+
 #### Trading
 
 The Melon Protocol is directly integrated with the smart contracts of various trading venues. MelonJS provides an avenue to interact with those exchanges to query prices and trade tokens. Generally, these two concerns are handled by separate classes.
@@ -208,29 +293,33 @@ const expectedRate = await priceChecking.getExpectedRate(srcToken, destToken, sr
 
 ```javascript
 const trading = new Trading(environment, tradingContract); // tradingContract is the string address of the trading contract belonging to the fund in question. This will define a Trading class specific to the fund.
+
 const orderArgs =  {
   makerAsset: Address;
   takerAsset: Address;
   makerQuantity: BigNumber;
   takerQuantity: BigNumber;
 }
+
 const adapter = await KyberTradingAdapter.create(environment, exchange, trading);
-const tx = adapter.takeOrder(from, orderArgs) // from being the wallet address that's initiating the transaction, and kyberTakeOrderArgs
-await tx.validate() // validation is optional, gives you named error messages if you wanted to render thme in some sort of front end
-const options = await tx.prepare() // user should always pass gas price to ensure transactions are successful. pass {gas: number, gasPrice: number} to function optionally, they'll be automatically computed if you omit. gasPrice should always be passed if you want to guarantee the tx will go through, we use gasLimit: transaction.estimateGas() * 1.1 if omited
-await tx.send(await tx.prepare()) // check useTransaction where we use tx.send() to see how we resolve this - it's a promievent object - multi-stage promise resolution - when `await` is resolved, receipt returned
 
+const tx = adapter.takeOrder(from, orderArgs) // The from argument is the wallet address that's initiating the transaction, and kyberTakeOrderArgs an object in the shape noted above. takeOrder() returns a Transaction, which you can pass through the flow we described in the Transaction primitive section above.
 
-// from seb - TransactionReceipt from web3core
-      const receipt = await new Promise<TransactionReceipt>((resolve, reject) => {
-         const tx = transaction.send(await transaction.prepare({
-           gasPrice: GAS_PRICE,
-        });
+const receipt = await new Promise<TransactionReceipt>( (resolve, reject) => {
+  tx.validate()
+    .then(() => tx.prepare({ gasPrice: GAS_PRICE })) // of your choosing, or omit this
+    .then((options) => {
+      const tx = tx.send(options);
 
-        tx.once('transactionHash', hash => console.log(hash));
-        tx.once('receipt', receipt => resolve(receipt));
-        tx.once('error', error => reject(error));
-      });
+      tx.once('transactionHash', hash => console.log(`Pending: ${hash}`));
+      tx.once('receipt', receipt => resolve(receipt));
+      tx.once('error', error => reject(error));
+    })
+    .catch(error) => reject(error));
+    });
+
+console.log(`Success: ${receipt.transactionHash}`);
+
 
 ```
 
