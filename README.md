@@ -47,11 +47,12 @@ You are now ready to start development. Check out the package.json scripts for u
 
 ## Usage
 
-It's worth defining some primitives that will be used frequently when interacting with both the ethereum blockchain in general and the Melon Protocol in particular.
+It's worth defining some primitives that will be used frequently when interacting with both the Ethereum blockchain in general and the Melon Protocol in particular.
 
 #### Environment
 
 This class contextualizes where you're doing the work. Its constructor function requires the network on which you're working (this will be a testnet of some sort or the Ethereum mainnet if you're cooking with gas) and a deployment `config` file that specifies the addresses of the current Melon Protocol contracts, the ERC-20 tokens that are tradeable on Melon, and the exchanges upon which they're traded. A copy of one of these files can be found in the `/examples` directory in this repo.
+
 
 ```javascript
 const { Eth } = require('web3-eth');
@@ -70,17 +71,59 @@ const environment = new DeployedEnvironment(eth, deployment);
 
 The `contract` class is MelonJS' base unit for all interactions with the blockchain. Though every Melon Protocol contract has various layers of abstraction, `contract` gives each some base functionality:
 
-- creating a deployment
+- creating a `deployment` of the contract
 - querying the blockchain
-- creating a transaction
+- creating a `transaction`
 
-`Transaction` is a class all its own, and can be thought of as having three steps.
+`Transaction` is a class all its own, and can be thought of as having four steps.
 
-- instantiation. A contract must create a new transaction
-- preparation. `transaction.prepare()` is an asyncronous function that checks the eth gastation for projected fees, and checks whether the contract that's calling the function requires and `amgu` or `incentive` fees, which are part of the Melon Protocol's tokenomics.
-- completion. Pass the resolution of `.prepare()` to `transaction.send()` to send the transaction to the blockchain.
+**Instantiation** - A contract must create a new transaction of a given type
 
-#### Tokens
+**Validation** - this step is optional, though it provides named error messages which can be helpful for debugging or to show on any sort of front end application.
+
+**Preparation** - `transaction.prepare()` is an asyncronous function that returns an object denoting the fees a transaction is projected to require shaped like this:
+```
+{
+  gas: number,
+  gasPrice?: number,
+  amgu?: number,
+  incentive?: number,
+  value?: number,
+  from?: string,
+}
+```
+
+If no arguments are passed to `.prepare()`, it will check theP ethGasStation for estimated network gas prices, and the Melon Protocol for any applicable AMGU or incentive fees. However, we recommend passing 
+```
+{ gasPrice: number }
+```
+to `.prepare()` with a number you believe will guarantee transaction success.
+
+
+**Completion** - Pass the resolution of `.prepare()` to `transaction.send()`, which returns a Web3 `Promievent`. Check their docs for details, but these are promises with multiple stages of asyncronicity, each of which can be listend for to trigger UI interactions.
+
+These steps can be chained together into something like this:
+
+```javascript
+
+const receipt = await new Promise<TransactionReceipt>( (resolve, reject) => {
+  transaction.validate()
+    .then(() => transaction.prepare({ gasPrice: GAS_PRICE }))
+    .then((options) => {
+      const tx = transaction.send(options);
+
+      tx.once('transactionHash', hash => console.log(`Pending: ${hash}`));
+      tx.once('receipt', receipt => resolve(receipt));
+      tx.once('error', error => reject(error));
+    })
+    .catch(error) => reject(error));
+    });
+
+
+```
+
+#### Tokens and Exchanges are metadata
+
 
 ### Setting Up a Melon Fund
 
@@ -165,8 +208,30 @@ const expectedRate = await priceChecking.getExpectedRate(srcToken, destToken, sr
 
 ```javascript
 const trading = new Trading(environment, tradingContract); // tradingContract is the string address of the trading contract belonging to the fund in question. This will define a Trading class specific to the fund.
+const orderArgs =  {
+  makerAsset: Address;
+  takerAsset: Address;
+  makerQuantity: BigNumber;
+  takerQuantity: BigNumber;
+}
 const adapter = await KyberTradingAdapter.create(environment, exchange, trading);
-adapter.takeOrder(from, kyberTakeOrderArgs) // from being the wallet address that's initiating the transaction, and kyberTakeOrderArgs
+const tx = adapter.takeOrder(from, orderArgs) // from being the wallet address that's initiating the transaction, and kyberTakeOrderArgs
+await tx.validate() // validation is optional, gives you named error messages if you wanted to render thme in some sort of front end
+const options = await tx.prepare() // user should always pass gas price to ensure transactions are successful. pass {gas: number, gasPrice: number} to function optionally, they'll be automatically computed if you omit. gasPrice should always be passed if you want to guarantee the tx will go through, we use gasLimit: transaction.estimateGas() * 1.1 if omited
+await tx.send(await tx.prepare()) // check useTransaction where we use tx.send() to see how we resolve this - it's a promievent object - multi-stage promise resolution - when `await` is resolved, receipt returned
+
+
+// from seb - TransactionReceipt from web3core
+      const receipt = await new Promise<TransactionReceipt>((resolve, reject) => {
+         const tx = transaction.send(await transaction.prepare({
+           gasPrice: GAS_PRICE,
+        });
+
+        tx.once('transactionHash', hash => console.log(hash));
+        tx.once('receipt', receipt => resolve(receipt));
+        tx.once('error', error => reject(error));
+      });
+
 ```
 
 ## Testing
