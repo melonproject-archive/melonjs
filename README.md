@@ -75,7 +75,7 @@ The `contract` class is MelonJS' base unit for all interactions with the blockch
 - querying the blockchain
 - creating a `transaction`
 
-`Transaction` is a class all its own, and can be thought of as having four steps.
+`Transaction` is a class all its own. From start to finish, executing a transaction has four steps.
 
 **Instantiation** - A contract must create a new transaction of a given type.
 
@@ -93,14 +93,14 @@ The `contract` class is MelonJS' base unit for all interactions with the blockch
 }
 ```
 
-If no arguments are passed to `.prepare()`, it will check theP ethGasStation for estimated network gas prices, and the Melon Protocol for any applicable AMGU or incentive fees. However, we recommend passing 
+If no arguments are passed to `.prepare()`, it will check the ethGasStation for estimated network gas prices, and the Melon Protocol for any applicable AMGU or incentive fees. However, we recommend passing 
 ```
 { gasPrice: number }
 ```
 to `.prepare()` with a number you believe will guarantee transaction success.
 
 
-**Completion** - Pass the resolution of `.prepare()` to `transaction.send()`, which returns a Web3 `Promievent`. Check [their docs](https://web3js.readthedocs.io/en/v1.2.6/callbacks-promises-events.html) for details, but these are promises with multiple stages of asyncronicity, each of which can be listend for to trigger UI interactions.
+**Completion** - Pass the resolution of `.prepare()` to `transaction.send()`, which returns a Web3 `Promievent`. Check [their docs](https://web3js.readthedocs.io/en/v1.2.6/callbacks-promises-events.html) for details, but these are promises with multiple stages of asyncronicity, each of which can be listened for to trigger UI interactions.
 
 These steps can be chained together into something like this:
 
@@ -196,9 +196,9 @@ And so on, for:
 - createVault
 - completeSetup
 
-### Investing in a Melon Fund
+### Investing in and redeeming from a Melon Fund
 
-Investing in a Melon is a three step process. The first two steps are handled by the party requesting the investment. The third step is handled by either that party, the fund manager, or an interested third party. More discussion of the game theory concerns and potential attack vectors of the investment process can be found [here](https://medium.com/melonprotocol/protecting-participants-ee55a752287).
+Investing in a Melon is a three step process. The first two steps are handled by the party requesting the investment. The third step is handled by either that party, the fund manager, or an interested third party. More discussion of the game theory dynamics and potential attack vectors of the investment process can be found [here](https://medium.com/melonprotocol/protecting-participants-ee55a752287).
 
 | Step | Contract | User |
 | --- | --- | --- |
@@ -206,16 +206,16 @@ Investing in a Melon is a three step process. The first two steps are handled by
 | request | `Participation` | investor |
 | execute | `Particiaption` | various |
 
-The first step is to approve the transfer of a specific amount tokens from the investor's address.
+The first step is to approve the fund's participation contract to transfer of a specific amount tokens from the investor's address.
 
 ```javascript
 const { StandardToken } = require('@melonproject/melonjs')
 const tokenAddress = string // address here is that of the ERC-20 that the user is trying to invest in the fund.
 const contract = new StandardToken(environment, tokenAddress) 
 const accountAddress = string // the address of the user trying to make the investment
-const destinationAddress = string // the address of your fund's participation contract
+const participationAddress = string // the address of your fund's participation contract
 const approvalAmount = bigNumber // a number equal to the amount of the ERC-20 that the user is trying to invest, with the correct number of decimals for that given token. On our front end, we use a helper function called toTokenBaseUnit to generate these bigNumbers
-const tx = contract.approve(accountAddress, destinationAddress, approvalAmount)
+const tx = contract.approve(accountAddress, participationAddress, approvalAmount)
 
 // At this point, we can pass the transaction through the flow we described above.
 const receipt = await new Promise<TransactionReceipt>( (resolve, reject) => {
@@ -275,7 +275,22 @@ const fundManagerAddress = string; // the address of the fund manager
 const contract = new Participation(environment, participationAddress);
 const tx = contract.executeRequestFor(fundManagerAddress, userAddress);
 
-const receipt = ...etc 
+const receipt = ...etc // as above
+
+```
+Redeeming one's shares from a Melon fund is fairly simple and requires only one step.
+```javascript
+const { Participation } = require('@melonproject/melonjs');
+
+const participationAddress = string; // the address of the fund's participation contract
+const userAddress = string; // the address of the user making the redemption request
+
+const constract = new Participation(environment, participationAddress)
+
+// the redemption transaction will either be .redeem(), hwich redeems all shares, or .redeemQuantity, which redeems a partial balance of the user's shares. Note that the shareQuantity must be a BigNumber with an appropriate number of decimal places. 
+const tx = contract.redeem(userAddress) || contract.redeemQuantity(userAddress, shareQuantity)
+
+const receipt = etc ... // the usual transaction confirmation flow detailed in the first section of this usage guide. 
 
 ```
 
@@ -286,19 +301,22 @@ The Melon Protocol is directly integrated with the smart contracts of various tr
 
 ```javascript
 const { KyberNetworkProxy, KyberTradingAdapter } = require('@melonproject/melonjs');
-
+const makerToken = string // address of the token you own
+const takerToken = string // address of the token you want to own
+const makerQty = BigNumber // amount of the makerToken that you'd like to swap for the destToken with the appropriate number of decimal places
 const priceChecking = new KyberNetworkProxy(environment, environment.deployment.kyber.addr.KyberNetworkProxy);
-const expectedRate = await priceChecking.getExpectedRate(srcToken, destToken, srcQty) // where the first two arguments are the string addresses of the tokens to trade, and the third is the number amount of the source token
+const expectedRate = await priceChecking.getExpectedRate(makerToken, takerToken, makerQty) 
 ```
 
 ```javascript
-const trading = new Trading(environment, tradingContract); // tradingContract is the string address of the trading contract belonging to the fund in question. This will define a Trading class specific to the fund.
+const tradingAddress = string // address of the fund's trading contract
+const trading = new Trading(environment, tradingAddress); // tradingContract is the string address of the trading contract belonging to the fund in question. This will define a Trading class specific to the fund.
 
 const orderArgs =  {
-  makerAsset: Address;
-  takerAsset: Address;
-  makerQuantity: BigNumber;
-  takerQuantity: BigNumber;
+  makerAsset: Address; // address of the makerToken
+  takerAsset: Address; // address of the takerToken
+  makerQuantity: BigNumber; // amount of the makerToken with the appropriate number of decimal places
+  takerQuantity: BigNumber; // amount of the takerToken with the appropriate number of decimal places
 }
 
 const adapter = await KyberTradingAdapter.create(environment, exchange, trading);
