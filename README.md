@@ -47,12 +47,13 @@ You are now ready to start development. Check out the package.json scripts for u
 
 ## Usage
 
+Throughout these examples, we'll be using `address` variables to refer to the deployed versions of various Melon Protocol contracts specific an active fund. Though these are accessible via the blockchain and the `Hub` contract, they're also indexed on IPFS and accessible freely through the MelonGQL pacakge.  
+
 It's worth defining some primitives that will be used frequently when interacting with both the Ethereum blockchain in general and the Melon Protocol in particular.
 
 #### Environment
 
 This class contextualizes where you're doing the work. Its constructor function requires the network on which you're working (this will be a testnet of some sort or the Ethereum mainnet if you're cooking with gas) and a deployment `config` file that specifies the addresses of the current Melon Protocol contracts, the ERC-20 tokens that are tradeable on Melon, and the exchanges upon which they're traded. A copy of one of these files can be found in the `/examples` directory in this repo.
-
 
 ```javascript
 const { Eth } = require('web3-eth');
@@ -82,6 +83,7 @@ The `contract` class is MelonJS' base unit for all interactions with the blockch
 **Validation** - this step is optional, though it provides named error messages which can be helpful for debugging or to show on any sort of front end application.
 
 **Preparation** - `transaction.prepare()` is an asyncronous function that returns an object denoting the fees a transaction is projected to require shaped like this:
+
 ```
 {
   gas: number,
@@ -93,12 +95,13 @@ The `contract` class is MelonJS' base unit for all interactions with the blockch
 }
 ```
 
-If no arguments are passed to `.prepare()`, it will check the ethGasStation for estimated network gas prices, and the Melon Protocol for any applicable AMGU or incentive fees. However, we recommend passing 
+If no arguments are passed to `.prepare()`, it will check the ethGasStation for estimated network gas prices, and the Melon Protocol for any applicable AMGU or incentive fees. However, we recommend passing
+
 ```
 { gasPrice: number }
 ```
-to `.prepare()` with a number you believe will guarantee transaction success.
 
+to `.prepare()` with a number you believe will guarantee transaction success.
 
 **Completion** - Pass the resolution of `.prepare()` to `transaction.send()`, which returns a Web3 `Promievent`. Check [their docs](https://web3js.readthedocs.io/en/v1.2.6/callbacks-promises-events.html) for details, but these are promises with multiple stages of asyncronicity, each of which can be listened for to trigger UI interactions.
 
@@ -125,8 +128,7 @@ console.log(`Success: ${receipt.transactionHash}`);
 
 ```
 
-
-**### Setting Up a Melon Fund**
+### Setting Up a Melon Fund
 
 All MelonJS functions require the definition of an `environment` to contextualize where they are being called and the `version` of the Melon protocol within that environment. This example uses Web3 utilities, an Infura node endpoint, and a json config file to create an environment.
 
@@ -200,18 +202,18 @@ And so on, for:
 
 Investing in a Melon is a three step process. The first two steps are handled by the party requesting the investment. The third step is handled by either that party, the fund manager, or an interested third party. More discussion of the game theory dynamics and potential attack vectors of the investment process can be found [here](https://medium.com/melonprotocol/protecting-participants-ee55a752287).
 
-| Step | Contract | User |
-| --- | --- | --- |
-| approve | ERC20 | investor |
+| Step    | Contract        | User     |
+| ------- | --------------- | -------- |
+| approve | ERC20           | investor |
 | request | `Participation` | investor |
-| execute | `Particiaption` | various |
+| execute | `Particiaption` | various  |
 
 The first step is to approve the fund's participation contract to transfer of a specific amount tokens from the investor's address.
 
 ```javascript
 const { StandardToken } = require('@melonproject/melonjs')
 const tokenAddress = string // address here is that of the ERC-20 that the user is trying to invest in the fund.
-const contract = new StandardToken(environment, tokenAddress) 
+const contract = new StandardToken(environment, tokenAddress)
 const accountAddress = string // the address of the user trying to make the investment
 const participationAddress = string // the address of your fund's participation contract
 const approvalAmount = bigNumber // a number equal to the amount of the ERC-20 that the user is trying to invest, with the correct number of decimals for that given token. On our front end, we use a helper function called toTokenBaseUnit to generate these bigNumbers
@@ -233,6 +235,7 @@ const receipt = await new Promise<TransactionReceipt>( (resolve, reject) => {
 
 console.log(`Success: ${receipt.transactionHash}`);
 ```
+
 Next, we have to request the shares from the `Participation` contract.
 
 ```javascript
@@ -264,6 +267,7 @@ const receipt = await new Promise<TransactionReceipt>( (resolve, reject) => {
 console.log(`Success: ${receipt.transactionHash}`);
 
 ```
+
 Finally, we execute the investment request. With the exception of the first investment in a fund, this will require waiting until after the next price feed update, and the function can be called by anybody (see the blog post linked above). In the case below, we'll assume that the fund manager is calling the function.
 
 ```javascript
@@ -278,7 +282,9 @@ const tx = contract.executeRequestFor(fundManagerAddress, userAddress);
 const receipt = ...etc // as above
 
 ```
+
 Redeeming one's shares from a Melon fund is fairly simple and requires only one step.
+
 ```javascript
 const { Participation } = require('@melonproject/melonjs');
 
@@ -287,35 +293,45 @@ const userAddress = string; // the address of the user making the redemption req
 
 const constract = new Participation(environment, participationAddress)
 
-// the redemption transaction will either be .redeem(), hwich redeems all shares, or .redeemQuantity, which redeems a partial balance of the user's shares. Note that the shareQuantity must be a BigNumber with an appropriate number of decimal places. 
+// the redemption transaction will either be .redeem(), hwich redeems all shares, or .redeemQuantity, which redeems a partial balance of the user's shares. Note that the shareQuantity must be a BigNumber with an appropriate number of decimal places.
 const tx = contract.redeem(userAddress) || contract.redeemQuantity(userAddress, shareQuantity)
 
-const receipt = etc ... // the usual transaction confirmation flow detailed in the first section of this usage guide. 
+const receipt = etc ... // the usual transaction confirmation flow detailed in the first section of this usage guide.
 
 ```
 
+### Trading
 
-#### Trading
-
-The Melon Protocol is directly integrated with the smart contracts of various trading venues. MelonJS provides an avenue to interact with those exchanges to query prices and trade tokens. Generally, these two concerns are handled by separate classes.
+The Melon Protocol is directly integrated with the smart contracts of various trading venues. MelonJS provides an avenue to interact with those exchanges to query prices and trade tokens. These two concerns are handled by separate classes.
 
 ```javascript
-const { KyberNetworkProxy, KyberTradingAdapter } = require('@melonproject/melonjs');
-const makerToken = string // address of the token you own
-const takerToken = string // address of the token you want to own
-const makerQty = BigNumber // amount of the makerToken that you'd like to swap for the destToken with the appropriate number of decimal places
+const { KyberNetworkProxy } = require('@melonproject/melonjs');
+const makerToken = string; // address of the token you own
+const takerToken = string; // address of the token you want to own
+const makerQty = BigNumber; // amount of the makerToken that you'd like to swap for the destToken with the appropriate number of decimal places
 const priceChecking = new KyberNetworkProxy(environment, environment.deployment.kyber.addr.KyberNetworkProxy);
-const expectedRate = await priceChecking.getExpectedRate(makerToken, takerToken, makerQty) 
+const expectedRate = await priceChecking.getExpectedRate(makerToken, takerToken, makerQty);
 ```
 
+expectedRate is an object shaped like so:
+
+```
+{
+  expectedRate: new BigNumber(expectedRate),
+  slippageRate: new BigNumber(slippageRate),
+}
+```
+Once you've got that rate, you can move on to the fun part.
+
 ```javascript
-const tradingAddress = string // address of the fund's trading contract
+const { Trading, KyberTradingAdapter } = require('@melonproject/melonjs');
+const tradingAddress = string; // address of the fund's trading contract
 const trading = new Trading(environment, tradingAddress); // tradingContract is the string address of the trading contract belonging to the fund in question. This will define a Trading class specific to the fund.
 
 const orderArgs =  {
   makerAsset: Address; // address of the makerToken
   takerAsset: Address; // address of the takerToken
-  makerQuantity: BigNumber; // amount of the makerToken with the appropriate number of decimal places
+  makerQuantity: BigNumber; // amount of the makerToken with the appropriate number of decimal places ***Note that if you're calling these functions sequentially, makerQuantity shoudld be equal to the user -specified takerQuantity multiplied by the expectedRate that was fetched from the KyberNetworkProxy
   takerQuantity: BigNumber; // amount of the takerToken with the appropriate number of decimal places
 }
 
@@ -323,23 +339,21 @@ const adapter = await KyberTradingAdapter.create(environment, exchange, trading)
 
 const tx = adapter.takeOrder(from, orderArgs) // The from argument is the wallet address that's initiating the transaction, and kyberTakeOrderArgs an object in the shape noted above. takeOrder() returns a Transaction, which you can pass through the flow we described in the Transaction primitive section above.
 
-const receipt = await new Promise<TransactionReceipt>( (resolve, reject) => {
-  tx.validate()
-    .then(() => tx.prepare({ gasPrice: GAS_PRICE })) // of your choosing, or omit this
-    .then((options) => {
-      const tx = tx.send(options);
+const receipt = etc ... // the usual transaction confirmation flow detailed in the first section of this usage guide.
 
-      tx.once('transactionHash', hash => console.log(`Pending: ${hash}`));
-      tx.once('receipt', receipt => resolve(receipt));
-      tx.once('error', error => reject(error));
-    })
-    .catch(error) => reject(error));
-    });
+```
+### Fees and Accounting
+The Accounting contract keeps track of the fees that a fund manager has earned, and controls their distribution. It also provides queries to check fund asset holdings and amounts.
 
-console.log(`Success: ${receipt.transactionHash}`);
+```javascript
+const { Accounting } = require('@melonproject/melonjs')
+const accountingAddress = string; // address of the fund's trading contract
+
+const accounting = new Accounting(environment, accountingAddress)
 
 
 ```
+
 
 ## Testing
 
