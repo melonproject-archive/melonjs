@@ -343,16 +343,35 @@ const receipt = etc ... // the usual transaction confirmation flow detailed in t
 
 ```
 ### Fees and Accounting
-The Accounting contract keeps track of the fees that a fund manager has earned, and controls their distribution. It also provides queries to check fund asset holdings and amounts.
+The FeeManager and Accounting contracts work in tandem to manage and distribute management and performance fees. The fund's management fee is redeemable at any time, via the FeeManager contract.
 
 ```javascript
-const { Accounting } = require('@melonproject/melonjs')
-const accountingAddress = string; // address of the fund's trading contract
+const { FeeManager } = require('@melonproject/melonjs')
 
-const accounting = new Accounting(environment, accountingAddress)
+const feeManagerAddress = string; // address of the fund's trading contract
+const fundManagerAddress = string; // address of the fund manager
 
+const feeManager = new FeeManager(environment, feeManagerAddress);
 
+const tx = feeManager.rewardManagementFees(fundManagerAddress);
+
+const receipt = etc ... // the usual transaction confirmation flow detailed in the first section of this usage guide.
 ```
+
+To reward both the accrued management and performance fees, call the Accounting contract.
+```javascript
+const { Accounting } = require('@melonproject/melonjs')
+
+const accountingAddress = string; // address of the fund's Accounting contract
+const fundManagerAddress = string; // address of the fund manager
+
+const accounting = new Account(environment, accountingAddress);
+
+const tx = accounting.triggerRewardAllFees(fundManagerAddres)
+
+const receipt = etc ... // the usual transaction confirmation flow detailed in the first section of this usage guide
+``` 
+
 
 
 ## Testing
