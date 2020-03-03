@@ -24,7 +24,6 @@ export function availablePolicies(): PolicyDefinition[] {
       signatures: [...tradingSignatures],
       historic: false,
     },
-
     {
       id: 'maxPositions',
       name: 'Maximum number of positions',
@@ -35,7 +34,7 @@ export function availablePolicies(): PolicyDefinition[] {
     {
       id: 'maxConcentration',
       name: 'Maximum concentration',
-      signatures: [...tradingSignatures, ...investmentSignatures],
+      signatures: [...tradingSignatures],
       historic: false,
     },
     {

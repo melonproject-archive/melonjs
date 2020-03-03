@@ -49,6 +49,15 @@ export class Spoke extends Contract {
   }
 
   /**
+   * Gets the address of the pricesource contract.
+   *
+   * @param block The block number to execute the call on.
+   */
+  public getPriceSource(block?: number) {
+    return this.makeCall<string>('pricesource', undefined, block);
+  }
+
+  /**
    * Gets the address of the hub.
    *
    * @param block The block number to execute the call on.
