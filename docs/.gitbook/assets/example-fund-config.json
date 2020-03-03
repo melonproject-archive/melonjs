@@ -1,0 +1,11 @@
+{
+  "FundName": "THE Fund",
+  "QuoteToken": "WETH",
+  "AllowedTokens": ["WETH", "MLN"],
+  "ManagementFee": "10",
+  "PerformanceFee": "10",
+  "Exchanges": [
+    "OasisDex",
+    "Uniswap"
+  ]
+}
