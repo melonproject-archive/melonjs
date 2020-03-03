@@ -10,12 +10,6 @@
 
 MelonJS allows you to create instances of and call functions on the following Melon contracts:
 
-
-
-
-
-
-
 * Accounting
 * Fee Manager
 * Participation
@@ -48,11 +42,11 @@ yarn install
 yarn codegen
 ```
 
-You are now ready to start development. Check out the package.json scripts for useful commands for testing, test coverage, building and watch mode.
+You are now ready to start development. Check out the `package.json` scripts for useful commands for testing, test coverage, building and watch mode.
 
 ### Testing
 
-The tests contained in this repository use an in-memory ganache test chain.
+The tests contained in this repository use an in-memory Ganache test chain.
 
 In order to execute the tests, simply run:
 
@@ -62,7 +56,7 @@ yarn test
 
 ### Contributing
 
-Third party contributions to this project are welcome and encouraged. If you want to contribute, please open an issue before submtting a pull requests so we can discuss the proposed changes and/or additions.
+Third party contributions to this project are welcome and encouraged. If you want to contribute, please open an issue before submitting a pull requests so we can discuss the proposed changes and/or additions.
 
 Please note that all repositories hosted under this organization follow our [Code of Conduct](https://github.com/melonproject/melonjs/blob/master/CODE_OF_CONDUCT.md), make sure to review and follow it.
 
