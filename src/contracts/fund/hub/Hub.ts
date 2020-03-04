@@ -102,6 +102,15 @@ export class Hub extends Contract {
   }
 
   /**
+   * Checks if a fund is initialized.
+   *
+   * @param block The block number to execute the call on.
+   */
+  public isInitialized(block?: number) {
+    return this.makeCall<boolean>('fundInitialized', undefined, block);
+  }
+
+  /**
    * Get the fund version
    *
    * @param block The block number to execute the call on.
