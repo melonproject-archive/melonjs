@@ -182,21 +182,14 @@ export class IPriceSource extends Contract {
    * Gets the order price information
    *
    * @param sellAsset The address of the sell asset.
-   * @param buyAsset The address of the buy asset
    * @param sellQuantity The quantity of the sell asset
    * @param buyQuantity The quantity of the buy asset
    * @param block The block number to execute the call on.
    */
-  public async getOrderPriceInfo(
-    sellAsset: Address,
-    buyAsset: Address,
-    sellQuantity: BigNumber,
-    buyQuantity: BigNumber,
-    block?: number,
-  ) {
+  public async getOrderPriceInfo(sellAsset: Address, sellQuantity: BigNumber, buyQuantity: BigNumber, block?: number) {
     const result = await this.makeCall<string>(
       'getOrderPriceInfo',
-      [sellAsset, buyAsset, sellQuantity.toFixed(0), buyQuantity.toFixed(0)],
+      [sellAsset, sellQuantity.toFixed(0), buyQuantity.toFixed(0)],
       block,
     );
     return toBigNumber(result);
