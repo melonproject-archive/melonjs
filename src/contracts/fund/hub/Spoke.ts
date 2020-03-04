@@ -54,7 +54,7 @@ export class Spoke extends Contract {
    * @param block The block number to execute the call on.
    */
   public getPriceSource(block?: number) {
-    return this.makeCall<string>('pricesource', undefined, block);
+    return this.makeCall<string>('priceSource', undefined, block);
   }
 
   /**
