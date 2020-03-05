@@ -1,6 +1,6 @@
 # Transaction
 
-A `Transaction` is how a deployed contract interacts with the blockchain, and can be thought of as having four steps from start to finish. 
+A `Transaction` is how a deployed contract interacts with the blockchain, and can be thought of as having four steps from start to finish.
 
 **Instantiation** - A contract must create a new transaction of a given type.
 
@@ -27,15 +27,12 @@ If no arguments are passed to `Transaction.prepare()`, it will check the [ethgas
 
 to `Transaction.prepare()` with a number you believe will guarantee transaction success.
 
-**Completion** - Pass the resolution of `Transaction.prepare()` to `Transaction.send()`, which returns a Web3 `PromiEvent`. Check [their docs](https://web3js.readthedocs.io/en/v1.2.6/callbacks-promises-events.html) for details, but these are promises with multiple stages of asynchronicity, each of which can be listened for to trigger UI interactions.
+**Completion** - Pass the resolution of `Transaction.prepare()` to `Transaction.send()`, which returns a Web3 `PromiEvent`. Check [their docs](https://web3js.readthedocs.io/en/v1.2.6/callbacks-promises-events.html) for details, but these are promises with multiple stages of asyncronicity, each of which can be listened for to trigger UI interactions.
 
-### Example Transaction Function
-
-The steps above can be chained together into something like this:
+These steps can be chained together into something like this:
 
 ```javascript
-// using the Trading contract as an example
-const trading = Trading.create(environment, address);
+const trading = new Trading(environment, address);
 const transaction = trading.addExchange(fromAddress, exchangeAddress, adapterAddress);
 
 function executeTransaction(transaction){

@@ -6,7 +6,5 @@ The `Contract` class is MelonJS' base unit for all interactions with the blockch
 * querying the blockchain
 * creating a `Transaction`
 
-~~\`\`~~
-
 
 

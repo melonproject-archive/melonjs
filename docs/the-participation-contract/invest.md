@@ -10,7 +10,7 @@ Investing in a Melon is a three step process. The first two steps are handled by
 
 The first step is to approve the fund's participation contract to transfer of a specific amount tokens from the investor's address.
 
-**This contract requires an** [**environment**](https://melonjs.melonprotocol.com/building-blocks/environment) **and will be executed using executeTransaction.**
+**This contract requires an** [**environment**](https://melonjs.melonprotocol.com/building-blocks/environment) **and will be executed using** [**executeTransaction**](https://melonjs.melonprotocol.com/building-blocks/transaction) **\(described at the bottom of .**
 
 ```javascript
 const { StandardToken } = require('@melonproject/melonjs')
