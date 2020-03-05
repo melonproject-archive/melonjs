@@ -6,7 +6,7 @@ Investing in a Melon is a three step process. The first two steps are handled by
 | :--- | :--- | :--- |
 | approve | ERC20 | investor |
 | request | `Participation` | investor |
-| execute | `Particiaption` | various |
+| execute | `Participation` | various |
 
 The first step is to approve the fund's participation contract to transfer of a specific amount tokens from the investor's address.
 

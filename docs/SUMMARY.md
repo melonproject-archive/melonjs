@@ -9,6 +9,8 @@
 * [Contract](building-blocks/contract.md)
 * [Mainnet Deployment Configuration JSON](building-blocks/deploy-config.md)
 * [Fund Configuration JSON](building-blocks/fund-configuration-json.md)
+* [Rinkeby Deployment Configuration JSON](building-blocks/rinkeby-deployment-configuration-json.md)
+* [Kovan Deployment Configuration JSON](building-blocks/kovan-deployment-configuration-json.md)
 * [Setting Up a Melon Fund](fund-setup.md)
 
 ## The Participation Contract
