@@ -14,7 +14,7 @@ The first step is to approve the fund's participation contract to transfer of a 
 
 ```javascript
 const { StandardToken } = require('@melonproject/melonjs')
-const tokenAddress = string // address here is that of the ERC-20 that the user is trying to invest in the fund.
+const tokenAddress = '0x0324...' // address here is that of the ERC-20 that the user is trying to invest in the fund.
 const token = new StandardToken(environment, tokenAddress)
 const accountAddress = string // the address of the user trying to make the investment
 const participationAddress = string // the address of your fund's participation contract
@@ -43,14 +43,15 @@ Next, we have to request the shares from the `Participation` contract.
 
 ```javascript
 const { Participation } = require('@melonproject/melonjs');
+const BigNumber = require('BigNumber.js')
 
 const participationAddress = string; // the address of the fund's participation contract
 const tokenAddress = string; // the address of the token with which the user is asking to invest
 const userAddress = string; // the address of the user making the investment request
-
-const participation = new Participation(environment, participationAddress);
 const investmentAmount = BigNumber; // the amount of ERC-20 token the user is offering to invest, with the appropriate number of decimals for that token
 const sharesAmount = BigNumber; // the computed number of shares the user is requesting given the amount of the investment token, with the correct number of decimals (18)
+
+const participation = new Participation(environment, participationAddress);
 const transaction = participation.requestInvestment(userAddress, sharesAmount, investmentAmount, tokenAddress);
 
 // At this point, we can pass the transaction through the flow we described above.
@@ -74,6 +75,7 @@ Finally, we execute the investment request. With the exception of the first inve
 
 ```javascript
 const { Participation } = require('@melonproject/melonjs');
+
 const participationAddress = string; // the address of the fund's participation contract
 const userAddress = string; // the address of the user making the investment request
 const executorAddress = string; // the address of the account calling the function
