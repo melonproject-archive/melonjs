@@ -29,8 +29,9 @@ export class Transaction<T = TransactionReceipt> {
     public readonly transaction: any,
     public readonly environment: Environment,
     public readonly from: Address,
-    public readonly contractAddress?: Address,
-    public readonly methodName?: string,
+    public readonly contract?: EthContract,
+    public readonly method?: string,
+    public readonly args?: any,
     public readonly value?: BigNumber,
     public readonly validate: () => Promise<void> = () => Promise.resolve(),
     protected readonly amguFn?: (gas: number) => Promise<BigNumber>,
@@ -122,8 +123,9 @@ export class Deployment<T extends Contract> extends Transaction<T> {
     public readonly environment: Environment,
     public readonly transaction: any,
     public readonly from: Address,
+    public readonly args?: any,
   ) {
-    super(environment, transaction, from);
+    super(environment, transaction, from, undefined, 'deploy', args);
   }
 
   public send(gas?: number): PromiEvent<T>;
