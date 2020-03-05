@@ -35,7 +35,7 @@ const exchanges = [environment.deployment.oasis.addr.OasisDexExchange,
                 environment.deployment.zeroExV2.addr.ZeroExV2Exchange,
                 environment.deployment.zeroExV3.addr.ZeroExV3Exchange,
                 environment.deployment.melon.addr.Engine,
-                environment.deployment.uniswap.UniswapExchange                
+                environment.deployment.uniswap.addr.UniswapExchange                
                 ]; // an array of decentralized exchange addresses 
 const adapters = [environment.melon.addr.OasisDexAdapter,
                 environemnt.melon.addr.KyberAdapter,
