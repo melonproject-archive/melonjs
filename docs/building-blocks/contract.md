@@ -6,7 +6,9 @@ The `Contract` class is MelonJS' base unit for all interactions with the blockch
 * querying the blockchain
 * creating a `Transaction`
 
-`Transaction` is a class all its own. From start to finish, executing a transaction has four steps.
+~~`Transaction` is a class all its own. From start to finish, executing a transaction has four steps.~~
+
+A `Transaction` is how a deployed contract interacts with the blockchain, and can be thought of as having four steps from start to finish. 
 
 **Instantiation** - A contract must create a new transaction of a given type.
 

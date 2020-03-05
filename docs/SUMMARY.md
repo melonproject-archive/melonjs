@@ -7,6 +7,8 @@
 * [The Basics](building-blocks/the-basics.md)
 * [Environment](building-blocks/environment.md)
 * [Contract](building-blocks/contract.md)
+* [Mainnet Deployment Configuration JSON](building-blocks/deploy-config.md)
+* [Fund Configuration JSON](building-blocks/fund-configuration-json.md)
 * [Setting Up a Melon Fund](fund-setup.md)
 
 ## The Participation Contract
