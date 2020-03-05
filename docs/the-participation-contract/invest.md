@@ -15,7 +15,15 @@ The first step is to approve the fund's participation contract to transfer of a 
 ```javascript
 // import the tools we'll need
 const {BigNumber} = require('bignumber.js')
-const { StandardToken, Participation } = require('@melonproject/melonjs')
+const { StandardToken, Participation, DeployedEnvironment } = require('@melonproject/melonjs')
+const { HttpProvider } = require('web3-providers');
+
+// Instantiate the environment 
+const eth = new Eth(new HttpProvider('https://mainnet.infura.io/v3/9136e09ace01493b86fed528cb6a87a5', {
+  confirmTransactionBlocks: 1,
+}}));
+const deployment = fs.readFileSync('./deployment.json');
+const environment = new DeployedEnvironment(eth, deployment);
 
 // declare the variables necessary for the Approval step
 const tokenAddress = '0x0324...' // address here is that of the ERC-20 that the user is trying to invest in the fund.
@@ -43,20 +51,5 @@ const executorAddress = '0xfejwio23...' // the address of the account calling th
 const executeInvestmentTransaction = participation.executeRequestFor(executorAddress, userAddress)
 await executeTransaction(executeInvestmentTransaction)
 
-```
-
-Finally, we execute the investment request. With the exception of the first investment in a fund, this will require waiting until after the next price feed update, and the function can be called by anybody \(see the blog post linked above\).
-
-```javascript
-const { Participation } = require('@melonproject/melonjs');
-
-const participationAddress = string; // the address of the fund's participation contract
-const userAddress = string; // the address of the user making the investment request
-const executorAddress = string; // the address of the account calling the function
-
-const participation = new Participation(environment, participationAddress);
-const transaction = participation.executeRequestFor(executorAddress, userAddress);
-
-const receipt = ...etc // as above
 ```
 
