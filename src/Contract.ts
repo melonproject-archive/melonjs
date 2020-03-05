@@ -50,6 +50,8 @@ export class Contract {
       fn(...(args.args || [])),
       this.environment,
       args.from,
+      this.contract.address,
+      args.method,
       args.value,
       args.validate,
       args.amgu,

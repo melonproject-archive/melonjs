@@ -29,6 +29,8 @@ export class Transaction<T = TransactionReceipt> {
     public readonly transaction: any,
     public readonly environment: Environment,
     public readonly from: Address,
+    public readonly contractAddress?: Address,
+    public readonly methodName?: string,
     public readonly value?: BigNumber,
     public readonly validate: () => Promise<void> = () => Promise.resolve(),
     protected readonly amguFn?: (gas: number) => Promise<BigNumber>,
