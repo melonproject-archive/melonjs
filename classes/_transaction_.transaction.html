@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Transaction | @melonproject/melonjs - v0.0.107</title>
+	<title>Transaction | @melonproject/melonjs - v0.0.108</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">@melonproject/melonjs - v0.0.107</a>
+					<a href="../index.html" class="title">@melonproject/melonjs - v0.0.108</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -101,12 +101,13 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="_transaction_.transaction.html#amgufn" class="tsd-kind-icon">amgu<wbr>Fn</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_transaction_.transaction.html#amgupayable" class="tsd-kind-icon">amgu<wbr>Payable</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_transaction_.transaction.html#contractaddress" class="tsd-kind-icon">contract<wbr>Address</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_transaction_.transaction.html#args" class="tsd-kind-icon">args</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_transaction_.transaction.html#contract" class="tsd-kind-icon">contract</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_transaction_.transaction.html#environment" class="tsd-kind-icon">environment</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_transaction_.transaction.html#from" class="tsd-kind-icon">from</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="_transaction_.transaction.html#incentivefn" class="tsd-kind-icon">incentive<wbr>Fn</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_transaction_.transaction.html#incentivepayable" class="tsd-kind-icon">incentive<wbr>Payable</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_transaction_.transaction.html#methodname" class="tsd-kind-icon">method<wbr>Name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_transaction_.transaction.html#method" class="tsd-kind-icon">method</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_transaction_.transaction.html#transaction" class="tsd-kind-icon">transaction</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_transaction_.transaction.html#validate" class="tsd-kind-icon">validate</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_transaction_.transaction.html#value" class="tsd-kind-icon">value</a></li>
@@ -129,7 +130,7 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Transaction<span class="tsd-signature-symbol">(</span>transaction<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, environment<span class="tsd-signature-symbol">: </span><a href="_environment_.environment.html" class="tsd-signature-type">Environment</a>, from<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a>, contractAddress<span class="tsd-signature-symbol">?: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a>, methodName<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, value<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">BigNumber</span>, validate<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">function</span>, amguFn<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">function</span>, incentiveFn<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_transaction_.transaction.html" class="tsd-signature-type">Transaction</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Transaction<span class="tsd-signature-symbol">(</span>transaction<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, environment<span class="tsd-signature-symbol">: </span><a href="_environment_.environment.html" class="tsd-signature-type">Environment</a>, from<span class="tsd-signature-symbol">: </span><a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a>, contract<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">EthContract</span>, method<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, args<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span>, value<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">BigNumber</span>, validate<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">function</span>, amguFn<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">function</span>, incentiveFn<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_transaction_.transaction.html" class="tsd-signature-type">Transaction</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
@@ -150,10 +151,13 @@
 									<h5>from: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> contractAddress: <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></h5>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> contract: <span class="tsd-signature-type">EthContract</span></h5>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> methodName: <span class="tsd-signature-type">string</span></h5>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> method: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> args: <span class="tsd-signature-type">any</span></h5>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> value: <span class="tsd-signature-type">BigNumber</span></h5>
@@ -229,7 +233,7 @@
 					<div class="tsd-signature tsd-kind-icon">amgu<wbr>Fn<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/Transaction.ts#L36">src/Transaction.ts:36</a></li>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/Transaction.ts#L37">src/Transaction.ts:37</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -265,9 +269,19 @@
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="contractaddress" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> contract<wbr>Address</h3>
-					<div class="tsd-signature tsd-kind-icon">contract<wbr>Address<span class="tsd-signature-symbol">:</span> <a href="../modules/_address_.html#address" class="tsd-signature-type">Address</a></div>
+					<a name="args" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> args</h3>
+					<div class="tsd-signature tsd-kind-icon">args<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/Transaction.ts#L34">src/Transaction.ts:34</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="contract" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> contract</h3>
+					<div class="tsd-signature tsd-kind-icon">contract<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EthContract</span></div>
 					<aside class="tsd-sources">
 						<ul>
 							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/Transaction.ts#L32">src/Transaction.ts:32</a></li>
@@ -300,7 +314,7 @@
 					<div class="tsd-signature tsd-kind-icon">incentive<wbr>Fn<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/Transaction.ts#L37">src/Transaction.ts:37</a></li>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/Transaction.ts#L38">src/Transaction.ts:38</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -336,9 +350,9 @@
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="methodname" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> method<wbr>Name</h3>
-					<div class="tsd-signature tsd-kind-icon">method<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="method" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> method</h3>
+					<div class="tsd-signature tsd-kind-icon">method<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
 							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/Transaction.ts#L33">src/Transaction.ts:33</a></li>
@@ -361,7 +375,7 @@
 					<div class="tsd-signature tsd-kind-icon">validate<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/Transaction.ts#L35">src/Transaction.ts:35</a></li>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/Transaction.ts#L36">src/Transaction.ts:36</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -386,7 +400,7 @@
 					<div class="tsd-signature tsd-kind-icon">value<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">BigNumber</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/Transaction.ts#L34">src/Transaction.ts:34</a></li>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/Transaction.ts#L35">src/Transaction.ts:35</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -403,7 +417,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/Transaction.ts#L92">src/Transaction.ts:92</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/Transaction.ts#L93">src/Transaction.ts:93</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -426,7 +440,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/Transaction.ts#L73">src/Transaction.ts:73</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/Transaction.ts#L74">src/Transaction.ts:74</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -449,7 +463,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/Transaction.ts#L43">src/Transaction.ts:43</a></li>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/Transaction.ts#L44">src/Transaction.ts:44</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -495,7 +509,10 @@
 								<a href="_transaction_.transaction.html#amgupayable" class="tsd-kind-icon">amgu<wbr>Payable</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_transaction_.transaction.html#contractaddress" class="tsd-kind-icon">contract<wbr>Address</a>
+								<a href="_transaction_.transaction.html#args" class="tsd-kind-icon">args</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_transaction_.transaction.html#contract" class="tsd-kind-icon">contract</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="_transaction_.transaction.html#environment" class="tsd-kind-icon">environment</a>
@@ -510,7 +527,7 @@
 								<a href="_transaction_.transaction.html#incentivepayable" class="tsd-kind-icon">incentive<wbr>Payable</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_transaction_.transaction.html#methodname" class="tsd-kind-icon">method<wbr>Name</a>
+								<a href="_transaction_.transaction.html#method" class="tsd-kind-icon">method</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="_transaction_.transaction.html#transaction" class="tsd-kind-icon">transaction</a>
