@@ -13,62 +13,36 @@ The first step is to approve the fund's participation contract to transfer of a 
 **This contract requires an** [**environment**](https://melonjs.melonprotocol.com/building-blocks/environment) **and will be executed using executeTransaction \(described at the bottom of the** [**Transaction**](https://melonjs.melonprotocol.com/building-blocks/transaction) **section\).**
 
 ```javascript
-const { StandardToken } = require('@melonproject/melonjs')
+// import the tools we'll need
+const {BigNumber} = require('bignumber.js')
+const { StandardToken, Participation } = require('@melonproject/melonjs')
+
+// declare the variables necessary for the Approval step
 const tokenAddress = '0x0324...' // address here is that of the ERC-20 that the user is trying to invest in the fund.
-const token = new StandardToken(environment, tokenAddress)
-const accountAddress = string // the address of the user trying to make the investment
-const participationAddress = string // the address of your fund's participation contract
+const investorAddress = '0x3403vd4Jsd...' // the address of the user trying to make the investment
+const participationAddress = '0x0945dfger90e98r...' // the address of your fund's participation contract
 const approvalAmount = bigNumber // a number equal to the amount of the ERC-20 that the user is trying to invest, with the correct number of decimals for that given token. On our front end, we use a helper function called toTokenBaseUnit to generate these bigNumbers
-const transaction = token.approve(accountAddress, participationAddress, approvalAmount)
 
+// execute the Approval step
+const token = new StandardToken(environment, tokenAddress)
+const approveTransferTransaction = token.approve(accountAddress, participationAddress, approvalAmount)
+await executeTransaction(approveTransferTransaction)
 
-// At this point, we can pass the transaction through the flow we described above.
-const receipt = await new Promise( (resolve, reject) => {
-  transaction.validate()
-    .then(() => tx.prepare({ gasPrice: GAS_PRICE })) // of your choosing, or omit this
-    .then((options) => {
-      const tx = tx.send(options);
-
-      tx.once('transactionHash', hash => console.log(`Pending: ${hash}`));
-      tx.once('receipt', receipt => resolve(receipt));
-      tx.once('error', error => reject(error));
-    })
-    .catch(error) => reject(error));
-    });
-
-console.log(`Success: ${receipt.transactionHash}`);
-```
-
-Next, we have to request the shares from the `Participation` contract.
-
-```javascript
-const { Participation } = require('@melonproject/melonjs');
-const BigNumber = require('BigNumber.js')
-
-const participationAddress = string; // the address of the fund's participation contract
-const tokenAddress = string; // the address of the token with which the user is asking to invest
-const userAddress = string; // the address of the user making the investment request
+// declare the variables necessary for the Request step
+const participationAddress = '0xfew032nf...'; // the address of the fund's participation contract
 const investmentAmount = BigNumber; // the amount of ERC-20 token the user is offering to invest, with the appropriate number of decimals for that token
 const sharesAmount = BigNumber; // the computed number of shares the user is requesting given the amount of the investment token, with the correct number of decimals (18)
 
-const participation = new Participation(environment, participationAddress);
-const transaction = participation.requestInvestment(userAddress, sharesAmount, investmentAmount, tokenAddress);
+// execute the Request step
+const participation = new Participation(environment, participationAddress)
+const requestSharesTransaction = participation.requestInvestment(investorAddress, sharesAmount, InvestmentAmount, tokenAddress)
+await executeTransaction(requestSharesTransaction)
 
-// At this point, we can pass the transaction through the flow we described above.
-const receipt = await new Promise( (resolve, reject) => {
-  transaction.validate()
-    .then(() => tx.prepare({ gasPrice: GAS_PRICE })) // of your choosing, or omit this
-    .then((options) => {
-      const tx = tx.send(options);
+// declare the variables necessary for the ExecuteInvestment step
+const executorAddress = '0xfejwio23...' // the address of the account calling the function
+const executeInvestmentTransaction = participation.executeRequestFor(executorAddress, userAddress)
+await executeTransaction(executeInvestmentTransaction)
 
-      tx.once('transactionHash', hash => console.log(`Pending: ${hash}`));
-      tx.once('receipt', receipt => resolve(receipt));
-      tx.once('error', error => reject(error));
-    })
-    .catch(error) => reject(error));
-    });
-
-console.log(`Success: ${receipt.transactionHash}`);
 ```
 
 Finally, we execute the investment request. With the exception of the first investment in a fund, this will require waiting until after the next price feed update, and the function can be called by anybody \(see the blog post linked above\).

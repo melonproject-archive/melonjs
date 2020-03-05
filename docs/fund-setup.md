@@ -1,6 +1,6 @@
 # Setting Up a Melon Fund
 
-Given an `Environment` and a config file, you can spin up your own Melon fund. The first step is to define a few variables that your fund will depend on. Some of these will come from the `Environment` [you've defined already](https://melonjs.melonprotocol.com/building-blocks/environment). I've defined others by pointing at `config.json` that i've imported from a make believe directory \(there's an example [`here`](https://melonjs.melonprotocol.com/building-blocks/deploy-config)\) . You'll also be executing a few transactions using the`executeTransaction` function found at the bottom of the [Transaction section](https://melonjs.melonprotocol.com/building-blocks/transaction)
+Given an `Environment` and a config file, you can spin up your own Melon fund. The first step is to define a few variables that your fund will depend on. Some of these will come from the `Environment`which I'll define first. I've defined others by pointing at a mainnet deployment config file that i've imported from a make believe directory \(there's an example [`here`](https://melonjs.melonprotocol.com/building-blocks/deploy-config)\) . You'll also be executing a few transactions using the`executeTransaction` function found at the bottom of the [Transaction section](https://melonjs.melonprotocol.com/building-blocks/transaction)
 
 ```javascript
 const { Version, DeployedEnvironment } = require('@melonproject/melonjs')
