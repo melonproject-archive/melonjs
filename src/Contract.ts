@@ -40,7 +40,7 @@ export class Contract {
       data: bytecode,
     });
 
-    return new Deployment<TContract>(this, environment, transaction, from);
+    return new Deployment<TContract>(this, environment, transaction, from, args);
   }
 
   protected createTransaction<TArgs extends any[] = any[]>(args: CreateTransactionArgs<TArgs>) {
@@ -50,8 +50,9 @@ export class Contract {
       fn(...(args.args || [])),
       this.environment,
       args.from,
-      this.contract.address,
+      this.contract,
       args.method,
+      args.args,
       args.value,
       args.validate,
       args.amgu,
