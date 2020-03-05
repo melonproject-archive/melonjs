@@ -5,36 +5,32 @@
 ## Building Blocks
 
 * [The Basics](building-blocks/the-basics.md)
-* [Environment](building-blocks/environment/README.md)
+* [Creating the Environment](building-blocks/environment/README.md)
   * [Mainnet](building-blocks/environment/mainnet.md)
   * [Rinkeby](building-blocks/environment/rinkeby.md)
   * [Kovan](building-blocks/environment/kovan.md)
-* [Interacting with Contracts](building-blocks/contract.md)
-* [Transaction](building-blocks/transaction.md)
-* [Fund Configuration JSON](building-blocks/fund-configuration-json.md)
-* [Setting Up a Melon Fund](fund-setup.md)
+* [Interacting with Contracts](building-blocks/contract/README.md)
+  * [Useful Patterns](building-blocks/contract/useful-patterns.md)
 
-## The Participation Contract
+## Examples
 
-* [Investing in a Fund](the-participation-contract/invest.md)
-* [Redeeming From a Fund](the-participation-contract/redeem.md)
-* [List Investors in a Fund](the-participation-contract/list-investors.md)
-
-## The Policy Manager Contract <a id="the-policy-contract"></a>
-
-* [Overview](the-policy-contract/overview.md)
-
-## The Trading Contract
-
-* [Querying Prices](the-trading-contract/untitled.md)
-* [Executing a Trade](the-trading-contract/executing-a-trade.md)
-
-## The Accounting and FeeManager Contracts
-
-* [Fees](the-accounting-and-feemanager-contracts/fees.md)
-* [Querying Fund Metrics](the-accounting-and-feemanager-contracts/querying-fund-metrics.md)
-
-## Deployment Files
-
-* [Untitled](deployment-files/untitled.md)
+* [Setting Up a Melon Fund](examples/fund-setup.md)
+* [Investing in a Fund](examples/invest.md)
+* [Redeeming From a Fund](examples/redeem.md)
+* [List Investors in a Fund](examples/list-investors.md)
+* [Fetching Prices](examples/fetching-prices.md)
+* [Managing Fees](examples/fees.md)
+* [Querying Fund Metrics](examples/querying-fund-metrics.md)
+* [Deploying Policies](examples/deploying-policies/README.md)
+  * [User Whitelist](examples/deploying-policies/user-whitelist.md)
+  * [PriceTolerance](examples/deploying-policies/pricetolerance.md)
+  * [Max Concentration](examples/deploying-policies/max-concentration.md)
+  * [Asset Blacklist](examples/deploying-policies/asset-blacklist.md)
+  * [Asset Whitelist](examples/deploying-policies/asset-whitelist.md)
+  * [MaxPositions](examples/deploying-policies/max-positions.md)
+* [Trading](examples/trading/README.md)
+  * [Untitled](examples/trading/untitled-2.md)
+  * [Untitled](examples/trading/untitled-1.md)
+  * [Untitled](examples/trading/untitled.md)
+  * [Kyber Network](examples/trading/kyber.md)
 
