@@ -42,8 +42,8 @@ These steps can be chained together into something like this:
 ```javascript
 const transaction = SomeContract.create(environment, args)
 
-// the TransactionReceipt type is imported from Web3
-const receipt = await new Promise<TransactionReceipt>( (resolve, reject) => {
+function executeTransaction(transaction){
+  await new Promise( (resolve, reject) => {
   transaction.validate()
     .then(() => transaction.prepare({ gasPrice: GAS_PRICE })) // of your choosing, or omit this
     .then((options) => {
@@ -55,6 +55,7 @@ const receipt = await new Promise<TransactionReceipt>( (resolve, reject) => {
     })
     .catch(error) => reject(error));
     });
+}
 
 console.log(`Success: ${receipt.transactionHash}`);
 ```

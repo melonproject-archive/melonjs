@@ -25,8 +25,8 @@
 
 ## The Trading Contract
 
-* [Executing a Trade](the-trading-contract/executing-a-trade.md)
 * [Querying Prices](the-trading-contract/untitled.md)
+* [Executing a Trade](the-trading-contract/executing-a-trade.md)
 
 ## The Accounting and FeeManager Contracts
 

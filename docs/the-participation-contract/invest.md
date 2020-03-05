@@ -10,18 +10,20 @@ Investing in a Melon is a three step process. The first two steps are handled by
 
 The first step is to approve the fund's participation contract to transfer of a specific amount tokens from the investor's address.
 
+**This contract requires an** [**environment**](https://melonjs.melonprotocol.com/building-blocks/environment) **and will be executed using executeTransaction.**
+
 ```javascript
 const { StandardToken } = require('@melonproject/melonjs')
 const tokenAddress = string // address here is that of the ERC-20 that the user is trying to invest in the fund.
-const contract = new StandardToken(environment, tokenAddress)
+const token = new StandardToken(environment, tokenAddress)
 const accountAddress = string // the address of the user trying to make the investment
 const participationAddress = string // the address of your fund's participation contract
 const approvalAmount = bigNumber // a number equal to the amount of the ERC-20 that the user is trying to invest, with the correct number of decimals for that given token. On our front end, we use a helper function called toTokenBaseUnit to generate these bigNumbers
-const transaction = contract.approve(accountAddress, participationAddress, approvalAmount)
+const transaction = token.approve(accountAddress, participationAddress, approvalAmount)
 
 
 // At this point, we can pass the transaction through the flow we described above.
-const receipt = await new Promise<TransactionReceipt>( (resolve, reject) => {
+const receipt = await new Promise( (resolve, reject) => {
   transaction.validate()
     .then(() => tx.prepare({ gasPrice: GAS_PRICE })) // of your choosing, or omit this
     .then((options) => {
@@ -46,13 +48,13 @@ const participationAddress = string; // the address of the fund's participation 
 const tokenAddress = string; // the address of the token with which the user is asking to invest
 const userAddress = string; // the address of the user making the investment request
 
-const contract = new Participation(environment, participationAddress);
+const participation = new Participation(environment, participationAddress);
 const investmentAmount = BigNumber; // the amount of ERC-20 token the user is offering to invest, with the appropriate number of decimals for that token
 const sharesAmount = BigNumber; // the computed number of shares the user is requesting given the amount of the investment token, with the correct number of decimals (18)
-const transaction = contract.requestInvestment(userAddress, sharesAmount, investmentAmount, tokenAddress);
+const transaction = participation.requestInvestment(userAddress, sharesAmount, investmentAmount, tokenAddress);
 
 // At this point, we can pass the transaction through the flow we described above.
-const receipt = await new Promise<TransactionReceipt>( (resolve, reject) => {
+const receipt = await new Promise( (resolve, reject) => {
   transaction.validate()
     .then(() => tx.prepare({ gasPrice: GAS_PRICE })) // of your choosing, or omit this
     .then((options) => {
@@ -76,8 +78,8 @@ const participationAddress = string; // the address of the fund's participation 
 const userAddress = string; // the address of the user making the investment request
 const executorAddress = string; // the address of the account calling the function
 
-const contract = new Participation(environment, participationAddress);
-const transaction = contract.executeRequestFor(executorAddress, userAddress);
+const participation = new Participation(environment, participationAddress);
+const transaction = participation.executeRequestFor(executorAddress, userAddress);
 
 const receipt = ...etc // as above
 ```
