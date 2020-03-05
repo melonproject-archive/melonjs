@@ -5,13 +5,13 @@
 ## Building Blocks
 
 * [The Basics](building-blocks/the-basics.md)
-* [Environment](building-blocks/environment.md)
+* [Environment](building-blocks/environment/README.md)
+  * [Mainnet](building-blocks/environment/mainnet.md)
+  * [Rinkeby](building-blocks/environment/rinkeby.md)
+  * [Kovan](building-blocks/environment/kovan.md)
 * [Interacting with Contracts](building-blocks/contract.md)
 * [Transaction](building-blocks/transaction.md)
-* [Mainnet Deployment Configuration JSON](building-blocks/deploy-config.md)
 * [Fund Configuration JSON](building-blocks/fund-configuration-json.md)
-* [Rinkeby Deployment Configuration JSON](building-blocks/rinkeby-deployment-configuration-json.md)
-* [Kovan Deployment Configuration JSON](building-blocks/kovan-deployment-configuration-json.md)
 * [Setting Up a Melon Fund](fund-setup.md)
 
 ## The Participation Contract

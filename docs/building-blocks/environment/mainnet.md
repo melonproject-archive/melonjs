@@ -1,12 +1,9 @@
-# Mainnet Deployment Configuration JSON
-
-The deployment configuration file houses the current addresses for all contracts used by the Melon Protocol, as well as several other configuration settings. The addresses in the file below are current as of 5 March 2020.
+# Mainnet
 
 ```javascript
 {
   "conf": {
     "deployer": "0x0d580ae50B58fe08514dEAB4e38c0DFdB0D30adC",
-    "provider": "https://mainnet.infura.io/v3/9136e09ace01493b86fed528cb6a87a5",
     "track": "KYBER_PRICE",
     "networkID": 1
   },

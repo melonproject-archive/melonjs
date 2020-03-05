@@ -1,10 +1,9 @@
-# Rinkeby Deployment Configuration JSON
+# Rinkeby
 
 ```javascript
 {
   "conf": {
     "deployer": "0x0d580ae50b58fe08514deab4e38c0dfdb0d30adc",
-    "provider": "https://rinkeby.infura.io/v3/9136e09ace01493b86fed528cb6a87a5",
     "track": "TESTING",
     "networkID": 4
   },
