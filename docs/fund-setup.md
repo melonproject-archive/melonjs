@@ -25,8 +25,8 @@ const factory = new Version(environment, environment.deployment.melon.addr.Versi
 // declare some more necessary variables
 const denominationAddress = environment.deployment.tokens.addr['WETH']; // currently all funds are denominated in WETH
 const defaultAssets = ["WETH", "MLN", "BAT", "DAI", "LINK", "MKR", "KNC"...](t => environment.deployment.tokens.addr[t]); // an array of token addresses
-const managementFeeRate = new BigNumber(2).times('1000000000000000000'); // the management fee
-const performanceFeeRate = new BigNumber(20).times('1000000000000000000'); // the performance fee
+const managementFeeRate = new BigNumber(2).multipliedBy('1e18'); // the management fee
+const performanceFeeRate = new BigNumber(20).multipliedBy('1e18'); // the performance fee
 
 // these examples contain all exchanges currently integrated with the Melon protocol
 // you're free to have as many or as few of these exchanges as you like
@@ -38,7 +38,7 @@ const exchanges = [environment.deployment.oasis.addr.OasisDexExchange,
                 environment.deployment.uniswap.addr.UniswapExchange                
                 ]; // an array of decentralized exchange addresses 
 const adapters = [environment.melon.addr.OasisDexAdapter,
-                environemnt.melon.addr.KyberAdapter,
+                environment.melon.addr.KyberAdapter,
                 environment.melon.addr.ZeroExV2Adapter,
                 environment.melon.addr.ZeroExV3Adapter
                 environment.melon.addr.EngineAdapter,

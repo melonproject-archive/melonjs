@@ -4,9 +4,9 @@ Investing in a Melon is a three step process. The first two steps are handled by
 
 | Step | Contract | User |
 | :--- | :--- | :--- |
-| approve | ERC20 | investor |
-| request | `Participation` | investor |
-| execute | `Participation` | various |
+| approveInvestment | ERC20 | investor |
+| requestInvestment | `Participation` | investor |
+| executeInvestment | `Participation` | various |
 
 The first step is to approve the fund's participation contract to transfer of a specific amount tokens from the investor's address.
 
@@ -25,29 +25,31 @@ const eth = new Eth(new HttpProvider('https://mainnet.infura.io/v3/9136e09ace014
 const deployment = fs.readFileSync('./deployment.json');
 const environment = new DeployedEnvironment(eth, deployment);
 
-// declare the variables necessary for the Approval step
+// declare the variables necessary for the approveInvestment step
 const tokenAddress = '0x0324...' // address here is that of the ERC-20 that the user is trying to invest in the fund.
 const investorAddress = '0x3403vd4Jsd...' // the address of the user trying to make the investment
 const participationAddress = '0x0945dfger90e98r...' // the address of your fund's participation contract
 const approvalAmount = bigNumber // a number equal to the amount of the ERC-20 that the user is trying to invest, with the correct number of decimals for that given token. On our front end, we use a helper function called toTokenBaseUnit to generate these bigNumbers
 
-// execute the Approval step
+// execute the approveInvestment step
 const token = new StandardToken(environment, tokenAddress)
 const approveTransferTransaction = token.approve(accountAddress, participationAddress, approvalAmount)
 await executeTransaction(approveTransferTransaction)
 
-// declare the variables necessary for the Request step
+// declare the variables necessary for the requestInvestment step
 const participationAddress = '0xfew032nf...'; // the address of the fund's participation contract
 const investmentAmount = BigNumber; // the amount of ERC-20 token the user is offering to invest, with the appropriate number of decimals for that token
 const sharesAmount = BigNumber; // the computed number of shares the user is requesting given the amount of the investment token, with the correct number of decimals (18)
 
-// execute the Request step
+// execute the requestInvestment step
 const participation = new Participation(environment, participationAddress)
 const requestSharesTransaction = participation.requestInvestment(investorAddress, sharesAmount, InvestmentAmount, tokenAddress)
 await executeTransaction(requestSharesTransaction)
 
-// declare the variables necessary for the ExecuteInvestment step
+// declare the variables necessary for the executeInvestment step
 const executorAddress = '0xfejwio23...' // the address of the account calling the function
+
+// execute the executeInvestment step
 const executeInvestmentTransaction = participation.executeRequestFor(executorAddress, userAddress)
 await executeTransaction(executeInvestmentTransaction)
 
