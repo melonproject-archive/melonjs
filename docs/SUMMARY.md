@@ -6,7 +6,7 @@
 
 * [The Basics](building-blocks/the-basics.md)
 * [Environment](building-blocks/environment.md)
-* [Contract](building-blocks/contract.md)
+* [Interacting with Contracts](building-blocks/contract.md)
 * [Transaction](building-blocks/transaction.md)
 * [Mainnet Deployment Configuration JSON](building-blocks/deploy-config.md)
 * [Fund Configuration JSON](building-blocks/fund-configuration-json.md)
