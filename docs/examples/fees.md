@@ -13,7 +13,7 @@ import { FeeManager, Accounting } from '@melonproject/melonjs';
 
 const feeManagerAddress = '0xfidsoewf...'; // address of the fund's FeeManager contract
 const accountingAddress = '0xwerj923fs...'; //address of the fund's Accounting contract
-const fundAddress = '0xfjewf2023ds...'; // address of the fund manager
+const fundManagerAddress = '0xfjewf2023ds...'; // address of the fund manager
 const gasPrice = 2000000000000; // specify the gas price (refer to http://ethgasstation.info/).
 
 const feeManager = new FeeManager(environment, feeManagerAddress);
@@ -21,7 +21,7 @@ const accounting = new Accounting(environmnet, accountingAddress);
 
 {
     // execute the management fee reward
-    const transaction = feeManager.rewardManagementFees(fundAddress);
+    const transaction = feeManager.rewardManagementFees(fundManagerAddress);
     await transaction.send(await transaction.prepare({
         gasPrice
     }));
@@ -29,7 +29,7 @@ const accounting = new Accounting(environmnet, accountingAddress);
 
 {
     // execute the management and performance fee awards
-    const transaction = accounting.triggerRewardAllFees(fundAddress);
+    const transaction = accounting.triggerRewardAllFees(fundManagerAddress);
     await transaction.send(await transaction.prepare({
         gasPrice
     }));
