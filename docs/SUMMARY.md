@@ -9,15 +9,15 @@
   * [Mainnet](building-blocks/environment/mainnet.md)
   * [Rinkeby](building-blocks/environment/rinkeby.md)
   * [Kovan](building-blocks/environment/kovan.md)
-* [Interacting with Contracts](building-blocks/contract/README.md)
-  * [Useful Patterns](building-blocks/contract/useful-patterns.md)
+* [Interacting with Contracts](building-blocks/contract.md)
+* [Useful Patterns](building-blocks/useful-patterns.md)
 
 ## Examples
 
 * [Setting Up a Melon Fund](examples/fund-setup.md)
 * [Investing in a Fund](examples/invest.md)
-* [Redeeming From a Fund](examples/redeem.md)
-* [List Investors in a Fund](examples/list-investors.md)
+* [Redeeming Shares From a Fund](examples/redeem.md)
+* [Listing Investors in a Fund](examples/list-investors.md)
 * [Fetching Prices](examples/fetching-prices.md)
 * [Managing Fees](examples/fees.md)
 * [Querying Fund Metrics](examples/querying-fund-metrics.md)
@@ -29,8 +29,8 @@
   * [Asset Whitelist](examples/deploying-policies/asset-whitelist.md)
   * [MaxPositions](examples/deploying-policies/max-positions.md)
 * [Trading](examples/trading/README.md)
-  * [Untitled](examples/trading/untitled-2.md)
-  * [Untitled](examples/trading/untitled-1.md)
-  * [Untitled](examples/trading/untitled.md)
+  * [0xV2](examples/trading/0xv2.md)
+  * [0xV3](examples/trading/0xv3.md)
+  * [Uniswap](examples/trading/uniswap.md)
   * [Kyber Network](examples/trading/kyber.md)
 
