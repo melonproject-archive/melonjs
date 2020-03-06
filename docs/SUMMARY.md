@@ -17,7 +17,7 @@
 * [Setting Up a Melon Fund](examples/fund-setup.md)
 * [Investing in a Fund](examples/invest.md)
 * [Redeeming Shares From a Fund](examples/redeem.md)
-* [Listing Investors in a Fund](examples/list-investors.md)
+* [Querying Current and Historical Investors](examples/list-investors.md)
 * [Fetching Prices](examples/fetching-prices.md)
 * [Managing Fees](examples/fees.md)
 * [Querying Fund Metrics](examples/querying-fund-metrics.md)
