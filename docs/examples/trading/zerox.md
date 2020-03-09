@@ -2,8 +2,6 @@
 
 0x is a transaction layer for the Ethereum blockchain. You can read more about them [here](https://0x.org/why). 
 
-0x also provides a few useful tools through their library. We'll be using them in this example. They're easy to install via npm or yarn. Their documentation is fairly extensive, and can be found [here](https://0x.org/docs/tools/0x.js/v9.1.5).
-
 A 0x order looks like this:
 
 ```javascript
@@ -44,7 +42,6 @@ const exchangeAddress = environment.getExchange("ZeroExV3").exchange
 const offer = {json} // in the format from the preceeding code block
 const quantity = new BigNumber(10); // this is me choosing an arbitrary amount; you'll dictate the number of makerAssets to swap for takerAssets
 const adapter = await ZeroExV3TradingAdapter.create(enviornment, exchange, trading)
-
 
 
 // create the transaction
