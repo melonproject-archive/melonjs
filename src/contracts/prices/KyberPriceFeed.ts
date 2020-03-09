@@ -36,7 +36,25 @@ export class KyberPriceFeed extends Contract {
   }
 
   /**
-   * Gets the address of the registry contract
+   * Gets the address of the kyber network proxy contract.
+   *
+   * @param block The block number to execute the call on.
+   */
+  public getKyberNetworkProxy(block?: number) {
+    return this.makeCall<Address>('KYBER_NETWORK_PROXY', undefined, block);
+  }
+
+  /**
+   * Gets the max spread value.
+   *
+   * @param block The block number to execute the call on.
+   */
+  public getMaxSpread(block?: number) {
+    return this.makeCall<Address>('MAX_SPREAD', undefined, block);
+  }
+
+  /**
+   * Gets the address of the registry contract.
    *
    * @param block The block number to execute the call on.
    */
@@ -45,7 +63,7 @@ export class KyberPriceFeed extends Contract {
   }
 
   /**
-   * Gets the address of the registry contract
+   * Gets the address of the updater.
    *
    * @param block The block number to execute the call on.
    */

@@ -27,13 +27,13 @@ export interface AssetBaseInformation {
   name: string;
   symbol: string;
   url: string;
+  reserveMin: BigNumber;
   standards: number[];
   sigs: string[];
 }
 
 export interface AssetCreation extends AssetBaseInformation {
   address: Address;
-  reserveMin: BigNumber;
 }
 
 export interface AssetInformation extends AssetBaseInformation {
