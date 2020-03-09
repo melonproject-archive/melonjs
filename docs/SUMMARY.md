@@ -29,8 +29,8 @@
   * [Asset Whitelist](examples/deploying-policies/asset-whitelist.md)
   * [MaxPositions](examples/deploying-policies/max-positions.md)
 * [Trading](examples/trading/README.md)
-  * [0xV2](examples/trading/0xv2.md)
-  * [0xV3](examples/trading/0xv3.md)
+  * [0x](examples/trading/zerox.md)
+  * [OasisDex](examples/trading/oasisdex.md)
   * [Uniswap](examples/trading/uniswap.md)
   * [Kyber Network](examples/trading/kyber.md)
 
