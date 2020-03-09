@@ -12,7 +12,7 @@ import { KyberPriceSource } from '@melonproject/melonjs';
 // declare the priceSourceAddress 
 const priceSourceAddress = environment.melon.addr.KyberPriceFeed;
 // create a contract instance
-const priceSource = KyberPriceSource(environment, priceSourceAddress);
+const priceSource = new KyberPriceSource(environment, priceSourceAddress);
 
 // There are a many methods exposed on this contract instance.
 // We'll lay them out below, mostly in reference to the MLN token
@@ -20,13 +20,16 @@ const priceSource = KyberPriceSource(environment, priceSourceAddress);
 const mlnAddress = environment.tokens.addr.MLN;
 const batAddress = environment.tokens.addr.BAT
 
-const quoteAssetAddress = priceSource.getQuoteAsset(); // returns, at this point, the WETH address
+// returns, at this point, the WETH address
+const quoteAssetAddress = priceSource.getQuoteAsset(); 
 
-const lastUpdate = await priceSource.getLastUpdate(); // returns the unix timestamp of the last pricefeed update
+// returns the unix timestamp of the last pricefeed update
+const lastUpdate = await priceSource.getLastUpdate(); 
 
-const valid = priceSource.hasValidPrice(mlnAddress); // returns a boolean indicating whether the last price feed update was successful
+// returns a boolean indicating whether the last price feed update was successful
+const valid = priceSource.hasValidPrice(mlnAddress); 
 
-const mulitValid = priceSource.hasValidPrices([mlnAddress, batAddress, quoteAssetAddress]); // makes the same call as above on an array of tokens
+const multiValid = priceSource.hasValidPrices([mlnAddress, batAddress, quoteAssetAddress]); // makes the same call as above on an array of tokens
 
 const mlnPrice = await priceSource.getPrice(mlnAddress); // returns {price: bigNumber, timestamp: date}
 
