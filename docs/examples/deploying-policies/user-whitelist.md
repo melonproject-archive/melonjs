@@ -7,41 +7,42 @@ This example requires an [environment](../../building-blocks/environment/) insta
 {% endhint %}
 
 {% hint style="info" %}
-**One thing to note: to deploy specific policy contracts, you must pass the corresponding byte code to the that contract's deployment method.** Luckily, MelonJS provides that for you as well.
+One thing to note: to deploy specific policy contracts, you must pass the corresponding byte code to the that contract's deployment method.
 {% endhint %}
 
 ```javascript
 import { UserWhiteList, PolicyManager } from '@melonproject/melonjs';
 import { UserWhiteListBytecode } from '@melonproject/melonjs/abis/UserWhitelist.bin';
 
-const fundManager = '0x234fse8...'; // the address of the fund's manager 
-const policyManagerAddress = '0x23890f...'; // the address of the fund's PolicyManger contract
-const approvedUser = '0x23nfes98...'; // the addresss of a user you want on the whiteLis
+// the address of the fund's manager 
+const fundManager = '0x234fse8...'; 
+
+// the address of the fund's PolicyManger contract
+const policyManagerAddress = '0x23890f...'; 
+
+// the addresss of a user you want on the whiteLis
+const approvedUser = '0x23nfes98...'; 
 
 const manager = new PolicyManager(environment, policyManagerAddress);
-const gasPrice = 2000000000000; // specify the gas price (refer to http://ethgasstation.info/).
 
-let userWhitelistAddress = undefined; // this will be the address of your newly-deployed max positions contract
-let userWhitelistSignature = undefined; // this'll be the signature
+// specify the gas price (refer to http://ethgasstation.info/)
+const gasPrice = 2000000000000; 
 
-{
-    // execute the deployment transaction
-    const transaction = UserWhiteList.deploy(environment, UserWhiteListByteCode, fundManager, [approvedUser]);
-    const receipt = await transaction.send(await transaction.prepare({
-        gasPrice,
-    });
-    userWhiteListAddress = receipt.address;
-    userWhiteListSignature = receipt.signature;    
+// execute the deployment transaction
+const deploymentTransaction = UserWhiteList.deploy(environment, UserWhiteListBytecode, fundManager, tolerance);
+const deploymentReceipt = await deploymentTransaction.send(await deploymentTransaction.prepare({
+    gasPrice,
+});
 
-}
+// assign the proper address and signature
+const userWhitelistAddress = receipt.address;
+const userWhitelistSignature = receipt.signature;    
 
-{
-    // execute the registration transaction
-    const transaction = manager.registerPolicy(fundManager, userWhitelistSignature, userWhitelistAddress)
-    const receipt = await transaction.send(await transaction.prepare({
-        gasPrice
-    });
-}
+// execute the registration transaction
+const registerTransaction = manager.registerPolicy(fundManager, priceToleranceSignature, priceToleranceAddress)
+const registerReceipt = await registerTransaction.send(await transaction.prepare({
+    gasPrice
+});
 ```
 
 After a `UserWhiteList` policy is deployed, you can edit it by adding and removing addresses.
@@ -49,45 +50,42 @@ After a `UserWhiteList` policy is deployed, you can edit it by adding and removi
 ```javascript
 import {UserWhiteList} from '@melonproject/melonjs';
 
-const userWhiteListAddress = '0x2309fd...'; // the address of the fund's UserWhiteList
-const managerAddress = '0xermifoe...'; // the address of the fund's manager
+// the address of the fund's UserWhiteList
+const userWhiteListAddress = '0x510451e164b3c29034c9f2983ae8654ec5e1738f'; 
+
+// the address of the fund's manager
+const managerAddress = '0xb5f2c3ab65cdd7e81ec1f48da8be2c0006eba69b'; 
+
 const whiteList =  new UserWhiteList(environment, userWhiteListAddress)
-const gasPrice = 2000000000000; // specify the gas price (refer to http://ethgasstation.info/).
-const KYCdAddress = '0xens32s...'; // an account address you'll add to the list
-const DPRKPropDesk = '0x23enso...'; // an account address you'll remove from the list
 
-{
-    // execute the transaction to add a user to the whitelist
-    const transaction = whitelist.addToWhiteList(managerAddress, KYCdAddress);
-    const receipt = await transaction.send(await transaction.prepare({
-        gasPrice
-    });
-}
+// specify the gas price (refer to http://ethgasstation.info/).
+const gasPrice = 2000000000000; 
 
-{
-    // execute the transaction to remove a user to the whitelist
-    const transaction = whitelist.removeFromWhiteList(managerAddress, DPRKPropDesk);
-    const receipt = await transaction.send(await transaction.prepare({
-        gasPrice
-    });
-}
+// an account address you'll add to the list
+const KYCdAddress = '0xfbf4e3511bbb80f335988e7482efe2f6e1ef387e';
+
+// an account address you'll remove from the list
+const DPRKPropDesk = '0x6cd90a734f84feb8ca99ab479ecc753eec8f1030'; 
+
+// execute the transaction to add a user to the whitelist
+const addUserTransaction = whitelist.addToWhiteList(managerAddress, KYCdAddress);
+const addUserReceipt = await addUserTransaction.send(await addUserTransaction.prepare({gasPrice}));
+
+// execute the transaction to remove a user to the whitelist
+const removeUserTransaction = whitelist.removeFromWhiteList(managerAddress, DPRKPropDesk);
+const removeUserReceipt = await removeUserTransaction.send(await removeUserTransaction.prepare({
+  gasPrice
+  })
+);
 
 // You can also use batch methods to send arrays of users to be added or removed
 
-{
-    // execute the transaction to add a batch of users to the whitelist
-    const transaction = whitelist.batchAddToWhiteList(managerAddress, [KYCdAddress, another address, another address, another address]);
-    const receipt = await transaction.send(await transaction.prepare({
-        gasPrice
-    });
-}
+// execute the transaction to add a batch of users to the whitelist
+const batchAddTransaction = whitelist.batchAddToWhiteList(managerAddress, [KYCdAddress, another address, another address, another address]);
+const batchAddReceipt = await batchAddTransaction.send(await batchAddTransaction.prepare({gasPrice}));
 
-{
-    // execute the transaction to remove a batch of users from the whitelist
-    const transaction = whitelist.batchRemoveFromWhiteList(managerAddress, [DPRKPropDesk, moreAddresses, OFAC, etc]);
-    const receipt = await transaction.send(await transaction.prepare({
-        gasPrice
-    });
-}
+// execute the transaction to remove a batch of users from the whitelist
+const transaction = whitelist.batchRemoveFromWhiteList(managerAddress, [DPRKPropDesk, moreAddresses, OFAC, etc]);
+const receipt = await transaction.send(await transaction.prepare({gasPrice}));
 ```
 
