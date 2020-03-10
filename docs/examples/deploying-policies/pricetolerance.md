@@ -30,17 +30,22 @@ const gasPrice = 2000000000000;
 const manager = new PolicyManager(environment, policyManagerAddress);
 
 // execute the deployment transaction
-const deploymentTx = PriceTolerance.deploy(environment, PriceToleranceByteCode, fundManager, tolerance);
-const deploymentOpts = await deploymentTx.prepare({gasPrice});
+const deploymentTx = PriceTolerance.deploy(
+  environment, 
+  PriceToleranceByteCode, 
+  fundManager, 
+  tolerance
+);
+const deploymentOpts = await deploymentTx.prepare({ gasPrice });
 const deploymentReceipt = await deploymentTransaction.send(deploymentOpts);
 
 // assign the proper address and signature to pass to the registration transaction
-const priceToleranceAddress = receipt.address;
 const priceToleranceSignature = receipt.signature;    
+const priceToleranceAddress = receipt.address;
 
 // execute the registration transaction
 const registerTx = manager.registerPolicy(fundManager, priceToleranceSignature, priceToleranceAddress)
-const registerOpts = await registerTx.send({gasPrice});
+const registerOpts = await registerTx.send({ gasPrice });
 const registerReceipt = await registerTx.send(registerOpts);
 ```
 
