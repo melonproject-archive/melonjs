@@ -52,7 +52,10 @@ const fundNativeAsset = await accounting.getNativeAsset();
 const fundGAV = await accounting.getGAV(); 
 
 // the cost of 1 share of the fund in MLN
-const shareCostInMLN = await accounting.getShareCostInAsset(new BigNumber(1), melon.address) 
+const shareCostInMLN = await accounting.getShareCostInAsset(
+  new BigNumber(1), 
+  melon.address
+);
 
 ```
 
