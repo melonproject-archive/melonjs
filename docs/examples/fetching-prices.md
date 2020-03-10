@@ -9,14 +9,14 @@ This example requires an [environment](../building-blocks/environment/) instance
 ```javascript
 import { KyberPriceSource } from '@melonproject/melonjs';
 
-// declare the priceSourceAddress 
+// the priceSourceAddress 
 const priceSourceAddress = environment.melon.addr.KyberPriceFeed;
 
 // declare an instance of the KyberPriceSource contract
 const priceSource = new KyberPriceSource(environment, priceSourceAddress);
 
 // There are a many methods exposed on this contract instance.
-// We'll lay them out below, mostly in reference to the MLN token
+// We'll lay them out below
 
 // the MLN token object
 const mln = environment.getToken('MLN')
@@ -46,9 +46,16 @@ const variousPrices = await priceSource.getPrice([mln.address, bat.address]);
 const weirdPriceExists = await priceSource.existsPriceOnAssetPair(mln.address, bat.address); 
 
 // returns the { price: BigNumber, decimals: number } relative to the pair passed to the method
-const mlnBatRate = await priceSource.getReferencePriceInfo(mln.address, bat.address); 
+const mlnBatRate = await priceSource.getReferencePriceInfo(
+  mln.address, 
+  bat.address
+); 
 
 // returns the number of BAT you'd get for 10 MLN as a BigNumber
-const mlnInBat = await priceSource.convertQuantity(new BigNumber(10).multipliedBy('1e8'), mln.address, bat.address); 
+const mlnInBat = await priceSource.convertQuantity(
+  new BigNumber(10).multipliedBy('1e8'), 
+  mln.address, 
+  bat.address
+); 
 ```
 
