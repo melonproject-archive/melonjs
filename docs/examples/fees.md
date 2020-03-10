@@ -11,29 +11,36 @@ This example requires an [environment](../building-blocks/environment/) instance
 ```javascript
 import { FeeManager, Accounting } from '@melonproject/melonjs';
 
-const feeManagerAddress = '0xfidsoewf...'; // address of the fund's FeeManager contract
-const accountingAddress = '0xwerj923fs...'; //address of the fund's Accounting contract
-const fundManagerAddress = '0xfjewf2023ds...'; // address of the fund manager
-const gasPrice = 2000000000000; // specify the gas price (refer to http://ethgasstation.info/).
+// address of the fund's FeeManager contract
+const feeManagerAddress = '0x4ce072071c054cbfd99cc03f468db7dc921f2cbd'; 
 
+//address of the fund's Accounting contract
+const accountingAddress = '0x98ce238bf8956414347d08ff76065d0823f976d9'; 
+
+// address of the fund manager
+const fundManagerAddress = '0x33b2f147a2526ac8abccccf38b71c0467673bffd';
+
+// specify the gas price (refer to http://ethgasstation.info/).
+const gasPrice = 2000000000000; 
+
+// declare instances of the fund's FeeManager and Accounting contracts
 const feeManager = new FeeManager(environment, feeManagerAddress);
 const accounting = new Accounting(environmnet, accountingAddress);
+```
 
-{
-    // execute the management fee reward
-    const transaction = feeManager.rewardManagementFees(fundManagerAddress);
-    await transaction.send(await transaction.prepare({
-        gasPrice
-    }));
-}
+Once the contract instances are declared, you can go one of two ways - either reward **just** the management fees with the `FeeManager` contract instance:
 
-{
-    // execute the management and performance fee awards
-    const transaction = accounting.triggerRewardAllFees(fundManagerAddress);
-    await transaction.send(await transaction.prepare({
-        gasPrice
-    }));
-}
+```javascript
+const transaction = feeManager.rewardManagementFees(fundManagerAddress);
+const opts = transaction.prepare({gasPrice});
+const receipt = transaction.send(opts);
+```
 
+Or reward both the management and performance fees with the `Accounting` contract instance:
+
+```javascript
+const transaction = accounting.triggerRewardAllFees(fundManagerAddress);
+const opts = await transaction.prepare({gasPrice});
+const receipt = await transaction.send(opts);
 ```
 
