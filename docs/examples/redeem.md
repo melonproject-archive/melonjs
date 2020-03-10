@@ -1,23 +1,39 @@
 # Redeeming Shares From a Fund
 
-Redeeming one's shares from a Melon fund is fairly simple and requires only one step.
+Redeeming one's shares from a Melon fund is fairly simple. The first step is to create an instance of the `Participation` contract.
 
 ```javascript
 import { Participation } from '@melonproject/melonjs';
 
-const participationAddress = '0xfwewe93...'; // the address of the fund's participation contract
-const userAddress = '0xfew03rs...'; // the address of the user making the redemption request
-const shareQuantity = new BigNumber(329); // a bignumber representing the number of shares to redeem
+// the address of the fund's participation contract
+const participationAddress = '0xffe8bc42946d87e5d791dfa931deabe144ac23a8'; 
+
+// the address of the user making the redemption request
+const userAddress = '0xf039e6893ffa43196fd9d1d7038b74bf39dda4a5'; 
+
+// specify the gas price (refer to http://ethgasstation.info/).
+const gasPrice = 2000000000000; 
+
+// declare the instance of the fund's Participation contract
 const participation = new Participation(environment, participationAddress);
 
+```
 
-// the redemption transaction will either be .redeem(), which redeems all shares, 
-// or .redeemQuantity(), which redeems a partial balance of the user's shares. Note that the shareQuantity must be a BigNumber with an appropriate number of decimal places.
+From there, you can either redeem all shares:
+
+```javascript
 const transaction = participation.redeem(userAddress) 
-// ***OR***
-const transaction = paricipation.redeemQuantity(userAddress, shareQuantity)
-await transaction.send(await setupTransaction.prepare({
-    gasPrice
-}));
+const opts = transaction.prepare({gasPrice});
+const receipt = transaction.send(opts);
+```
+
+Or redeem a specific amount of shares:
+
+```javascript
+// a bignumber representing the number of shares to redeem
+const shareQuantity = new BigNumber(329); 
+const transaction = participation.redeemQuantity(userAddress, shareQuantity) 
+const opts = transaction.prepare({gasPrice});
+const receipt = transaction.send(opts);
 ```
 
