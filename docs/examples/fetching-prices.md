@@ -19,10 +19,10 @@ const priceSource = new KyberPriceSource(environment, priceSourceAddress);
 // We'll lay them out below
 
 // the MLN token object
-const mln = environment.getToken('MLN')
+const mln = environment.getToken('MLN');
 
 // the BAT token object
-const bat = environment.getToken('BAT'
+const bat = environment.getToken('BAT');
 
 // the WETH address
 const quoteAssetAddress = await priceSource.getQuoteAsset(); 
