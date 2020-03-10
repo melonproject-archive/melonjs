@@ -32,7 +32,7 @@ Once the contract instances are declared, you can go one of two ways - either re
 
 ```javascript
 const transaction = feeManager.rewardManagementFees(fundManagerAddress);
-const opts = transaction.prepare({gasPrice});
+const opts = transaction.prepare({ gasPrice });
 const receipt = transaction.send(opts);
 ```
 
@@ -40,7 +40,7 @@ Or reward both the management and performance fees with the `Accounting` contrac
 
 ```javascript
 const transaction = accounting.triggerRewardAllFees(fundManagerAddress);
-const opts = await transaction.prepare({gasPrice});
+const opts = await transaction.prepare({ gasPrice });
 const receipt = await transaction.send(opts);
 ```
 
