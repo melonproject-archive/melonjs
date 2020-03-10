@@ -21,26 +21,19 @@ const tolerance = 10; // the number, in percent, you'd like to set for priceTole
 const manager = new PolicyManager(environment, policyManagerAddress);
 const gasPrice = 2000000000000; // specify the gas price (refer to http://ethgasstation.info/).
 
-let priceToleranceAddress = undefined; // this will be the address of your newly-deployed max positions contract
-let priceToleranceSignature = undefined; // this'll be the signature
+// execute the deployment transaction
+const deploymentTx = PriceTolerance.deploy(environment, PriceToleranceByteCode, fundManager, tolerance);
+const deploymentOpts = await deploymentTx.prepare({gasPrice});
+const deploymentReceipt = await deploymentTransaction.send(deploymentOpts);
 
-{
-    // execute the deployment transaction
-    const transaction = PriceTolerance.deploy(environment, PriceToleranceByteCode, fundManager, tolerance);
-    const receipt = await transaction.send(await transaction.prepare({
-        gasPrice,
-    });
-    priceToleranceAddress = receipt.address;
-    priceToleranceSignature = receipt.signature;    
-}
+// assign the proper address and signature to pass to the registration transaction
+const priceToleranceAddress = receipt.address;
+const priceToleranceSignature = receipt.signature;    
 
-{
-    // execute the registration transaction
-    const transaction = manager.registerPolicy(fundManager, priceToleranceSignature, priceToleranceAddress)
-    const receipt = transaction.send(await transaction.prepare({
-        gasPrice
-    });
-}
+// execute the registration transaction
+const registerTx = manager.registerPolicy(fundManager, priceToleranceSignature, priceToleranceAddress)
+const registerOpts = await registerTx.send({gasPrice});
+const registerReceipt = await registerTx.send(registerOpts);
 ```
 
 

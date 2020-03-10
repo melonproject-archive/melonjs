@@ -15,10 +15,10 @@ import { UserWhiteList, PolicyManager } from '@melonproject/melonjs';
 import { UserWhiteListBytecode } from '@melonproject/melonjs/abis/UserWhitelist.bin';
 
 // the address of the fund's manager 
-const fundManager = '0x234fse8...'; 
+const fundManager = '0x0b64bf0fae1b9ffa80cd880f5b82d467ee34c28e'; 
 
 // the address of the fund's PolicyManger contract
-const policyManagerAddress = '0x23890f...'; 
+const policyManagerAddress = '0x510451e164b3c29034c9f2983ae8654ec5e1738f'; 
 
 // the addresss of a user you want on the whiteLis
 const approvedUser = '0x23nfes98...'; 
@@ -29,20 +29,18 @@ const manager = new PolicyManager(environment, policyManagerAddress);
 const gasPrice = 2000000000000; 
 
 // execute the deployment transaction
-const deploymentTransaction = UserWhiteList.deploy(environment, UserWhiteListBytecode, fundManager, tolerance);
-const deploymentReceipt = await deploymentTransaction.send(await deploymentTransaction.prepare({
-    gasPrice,
-});
+const deploymentTx = UserWhiteList.deploy(environment, UserWhiteListBytecode, fundManager, tolerance);
+const deploymentOpts = await deploymentTx.prepare({gasPrice});
+const deploymentReceipt = await deploymentTx.send(deploymentOpts);
 
 // assign the proper address and signature
-const userWhitelistAddress = receipt.address;
-const userWhitelistSignature = receipt.signature;    
+const userWhitelistAddr = receipt.address;
+const userWhitelistSig = receipt.signature;    
 
 // execute the registration transaction
-const registerTransaction = manager.registerPolicy(fundManager, priceToleranceSignature, priceToleranceAddress)
-const registerReceipt = await registerTransaction.send(await transaction.prepare({
-    gasPrice
-});
+const registerTx = manager.registerPolicy(fundManager, userWhitelistSig, userWhitelistAddr)
+const registerOpts = await registerTx.prepare({gasPrice});
+const registerReceipt = await registerTx.send(registerOpts);
 ```
 
 After a `UserWhiteList` policy is deployed, you can edit it by adding and removing addresses.
@@ -56,7 +54,7 @@ const userWhiteListAddress = '0x510451e164b3c29034c9f2983ae8654ec5e1738f';
 // the address of the fund's manager
 const managerAddress = '0xb5f2c3ab65cdd7e81ec1f48da8be2c0006eba69b'; 
 
-const whiteList =  new UserWhiteList(environment, userWhiteListAddress)
+const whiteList = new UserWhiteList(environment, userWhiteListAddress)
 
 // specify the gas price (refer to http://ethgasstation.info/).
 const gasPrice = 2000000000000; 
@@ -81,11 +79,13 @@ const removeUserReceipt = await removeUserTransaction.send(await removeUserTrans
 // You can also use batch methods to send arrays of users to be added or removed
 
 // execute the transaction to add a batch of users to the whitelist
-const batchAddTransaction = whitelist.batchAddToWhiteList(managerAddress, [KYCdAddress, another address, another address, another address]);
-const batchAddReceipt = await batchAddTransaction.send(await batchAddTransaction.prepare({gasPrice}));
+const batchAddTx = whitelist.batchAddToWhiteList(managerAddress, [KYCdAddress, another address, another address, another address]);
+const batchAddOpts = await batchAddTx.prepare({gasPrice});
+const batchAddReceipt = await batchAddTx.send(batchAddOpts);
 
 // execute the transaction to remove a batch of users from the whitelist
-const transaction = whitelist.batchRemoveFromWhiteList(managerAddress, [DPRKPropDesk, moreAddresses, OFAC, etc]);
-const receipt = await transaction.send(await transaction.prepare({gasPrice}));
+const batchRemoveTx = whitelist.batchRemoveFromWhiteList(managerAddress, [DPRKPropDesk, moreAddresses, OFAC, etc]);
+const batchRemoveOpts = await batchRemoveTx.prepare({gasPrice})
+const batchRemoveReceipt = await batchRemoveTx.send(batchRemoveOpts);
 ```
 
