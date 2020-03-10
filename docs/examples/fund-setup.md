@@ -13,7 +13,7 @@ const factory = new Version(environment, environment.deployment.melon.addr.Versi
 // declare some necessary variables:
 
 // the fund manager's address
-const managerAddress = '0x5b8677fb951517d55b224fbc07cd7e3ffb075203' 
+const managerAddress = '0x5b8677fb951517d55b224fbc07cd7e3ffb075203';
 
 // specify the gas price (refer to http://ethgasstation.info/)
 const gasPrice = 2000000000000; 
@@ -22,7 +22,7 @@ const gasPrice = 2000000000000;
 const denominationAddress = environment.getToken('WETH'); 
 
 // use the environment to generate an array of token addresses
-const defaultAssets = environment.tokens.map(token => token.address)  
+const defaultAssets = environment.tokens.map(token => token.address);  
 
 // declare the management fee
 const managementFeeRate = new BigNumber(2).multipliedBy('1e18'); 
@@ -31,10 +31,10 @@ const managementFeeRate = new BigNumber(2).multipliedBy('1e18');
 const performanceFeeRate = new BigNumber(20).multipliedBy('1e18'); 
 
 // declare the management fee period. In this case, the management fee is always redeemable
-const managementFeePeriod = new BigNumber(0)
+const managementFeePeriod = new BigNumber(0);
 
 // declare the performance fee period. In this case the performance fee is redeemable every 90 days
-const performanceFeePeriod = new BigNumber(90 * 24 * 60 * 60)
+const performanceFeePeriod = new BigNumber(90 * 24 * 60 * 60);
 
 // an array of decentralized exchange addresses 
 const exchanges = environment.exchanges.map(exchange => exchange.exchange); 
@@ -82,7 +82,7 @@ const adapters = environment.exchanges.map(exchange => exchange.adapter);
 {
   const transaction = factory.createPolicyManager(managerAddress);
   const opts = await transaction.prepare({gasPrice});
-  const receipt = await transaction.send(opts);}
+  const receipt = await transaction.send(opts);
 
 {
   const transaction = factory.createShares(managerAddress);
