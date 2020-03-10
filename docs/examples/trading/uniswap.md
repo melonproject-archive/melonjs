@@ -8,47 +8,66 @@ This example requires an [environment](../../building-blocks/environment/) insta
 
 ```javascript
 import {
-    UniswapExchange, 
-    UniswapTradingAdapter, 
-    UniswapFactory, 
-    Trading,
+  ExchangeIdentifier,
+  Trading,
+  UniswapExchange, 
+  UniswapTradingAdapter, 
+  UniswapFactory, 
 } from '@melonproject/melonjs';
 
-const makerAddress = environment.getToken('WETH').address // WETH, which we'll trade for
-const takerAddress = environment.getToken('MLN').address  // MLN
-const takerQuantity = new BigNumber(100).multipliedBy('1e18') // we'll buy 100 MLN (as always, denominated in WEI)
+// the maker token object
+const maker = environment.getToken('WETH');
+
+// the taker token object
+const taker = environment.getToken('MLN');
+
+// we'll buy 100 MLN (denominated in the decimals of the respective token)
+const takerQuantity = new BigNumber(100).multipliedBy(
+  new BigNumber(10).exponentiatedBy(taker.decimals)
+); 
 
 // first we'll find the available price for 100 MLN
-const exchangeAddress = await uniswapFactory.getExchange(takerAddress) // get the address of the WETH/MLN uniswap exchange
-const exchange = new UniswapExchange(environment, exchangeAddress) // create an instance of that exchange
-const makerQuantity = await exchange.getTokenToEthInputPrice(takerQuantity) // query the available MLN
-const price = makerQuantity.divdidedBy(takerQuantity) // do the math to deduce the rate of MLN per WETH
 
-// Assuming that price is agreeable, we'll next submit an order by preparing a transaction and pushing it through the normal pattern
-const tradingAddress = '0x32fdsl23...'; // the fund's trading contract address
-const managerAddress = '0x93jfdsf...'; // the fund manager's address
+// get the address of the WETH/MLN uniswap exchange
+const exchangeAddress = await UniswapFactory.getExchange(taker.address);
+
+// create an instance of that exchange
+const exchange = new UniswapExchange(environment, exchangeAddress); 
+
+// query the available MLN
+const makerQuantity = await exchange.getTokenToEthInputPrice(takerQuantity); 
+
+// do the math to deduce the rate of MLN per WETH
+const price = makerQuantity.divdidedBy(takerQuantity); 
+
+// We'll next submit an order by preparing a transaction and pushing it through the normal pattern
+
+// the fund's trading contract address
+const tradingAddress = '0xfbf4e3511bbb80f335988e7482efe2f6e1ef387e'; 
+
+// the fund manager's address
+const managerAddress = '0x8bd52d089d46f9e5bc08ca66afdde58f8159870e'; 
+
+// specify the gas price (refer to http://ethgasstation.info/).
+const gasPrice = 2000000000000; 
+
+// create a new instance of the fund's Trading contract
 const trading = new Trading(environment, tradingAddress);
-const gasPrice = 2000000000000; // specify the gas price (refer to http://ethgasstation.info/).
 
 // assemble an orderArgs object to pass to the takeOrderFunction
 const orderArgs =  {
   makerQuantity: makerQty; // amount of the makerToken with the appropriate number of decimal places ***Note that if you're calling these functions sequentially, makerQuantity shoudld be equal to the user -specified takerQuantity multiplied by the expectedRate that was fetched from the KyberNetworkProxy
   takerQuantity: takerQty; // amount of the takerToken with the appropriate number of decimal places
-  makerAsset: makerAddress; // address of the makerToken
-  takerAsset: takerAddress; // address of the takerToken
-}
+  makerAsset: maker.address; // address of the makerToken
+  takerAsset: taker.address; // address of the takerToken
+};    
 
-// Create the adapter instance
+// create the adapter instance
 const adapter = await UniswapTradingAdapter.create(environment, exchangeAddress, trading);
 
-// Create the transaction
+// create and execute the transaction
 const transaction = adapter.takeOrder( managerAddress, orderArgs );
-
-// Push it through the normal pattern
-await transaction.send(transaction.prepare({
-    gasPrice,
-})
+const opts = transaction.prepare({ gasPrice });
+const receipt = transaction.send(opts);
 ```
-
-
 
