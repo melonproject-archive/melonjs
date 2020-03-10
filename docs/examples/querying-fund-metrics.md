@@ -9,33 +9,64 @@ This example requires an [environment](../building-blocks/environment/) instance
 ```javascript
 import { Accounting } from '@melonproject/melonjs';
 
-const accountingAddress = '0x309sfdw...'; // the address of the fund's accounting contract
-const fundManagerAddress = '0xfjewf2023ds...'; // address of the fund manager
-const gasPrice = 2000000000000; // specify the gas price (refer to http://ethgasstation.info/).
+// the address of the fund's accounting contract
+const accountingAddress = '0x92eb512143439ea1b3ad67249dd61ed99783d252'; 
 
-const accounting = new Accounting(environmnet, accountingAddress);
+// the address of the fund manager
+const fundManagerAddress = '0x1e28b0d5edc7b1acad5abf4a048b5a1f6493673f'; 
+
+// the Melon token object
 const melon = environment.getToken('MLN');
 
-const fundHoldings = accounting.getFundHoldings(); // fundHoldings will be an array of objects shaped like this: [ {address: string, amount: BigNumber}... ]
-const fundStats = accounting.getCalculationResults(); // fundStats will be an object shaped like this:
-// {     
-//  sharePrice: BigNumber,
-//  gav: BigNumber
-//  nav: BigNumber
-//  feesInDenominationAsset: BigNumber
-//  feesInShares: BigNumber
-//  gavPerShareNetManagementFee: BigNumber
-// }
+// create an instance of the fund's accounting contract
+const accounting = new Accounting(environmnet, accountingAddress);
 
-const maxOwnedAssets = await accounting.getMaxOwnedAssets(); // returns a number representing the historical maximum number of assets the fund owned
-const ownedAssetsArrayLength = await accounting.getOwnedAssetsLength(); // returns a number == the lenght of the owned assets array
-const specificAsset = accounting.ownedAsset(index); // returns the address of the asset in a particular index in the owned assets array
-const allAssets = await accounting.allAssets(); // returns an array of addresses of all currently owned assets
-const mlnHoldingAmount = await accounting.getAssetHolding(melon.address); // returns a BigNumber == the fund's holding of a specific token, in this case MLN
-const defaultSharePrice = await accounting.getDefaultSharePrice(); // returns a BigNumber == the fund's default share price
-const fundNativeAsset = accounting.getNativeAsset() // returns the address of the Fund's native asset
-const fundGAV = await accounting.getGAV() // returns the fund's latest Gross Asset Value as a BigNumber
-const shareCostInMLN = await accounting.getShareCostInAsset(new BigNumber(1), melon.address) // returns the cost of 1 share of the fund in MLN
+// an array of objects shaped like this: [ {address: string, amount: BigNumber}... ]
+const fundHoldings = await accounting.getFundHoldings(); 
 
+// an object containing the fund's financial metrics - see below for an example
+const calculationResults = await accounting.getCalculationResults(); 
+
+// a number representing the historical maximum number of assets the fund owned
+const maxOwnedAssets = await accounting.getMaxOwnedAssets(); 
+
+// a number equal to the length of the owned assets array
+const ownedAssetsArrayLength = await accounting.getOwnedAssetsLength(); 
+
+// the address of the asset in a particular index in the owned assets array
+const specificAsset = await accounting.ownedAsset(index); 
+
+// an array of addresses of all currently owned assets
+const allAssets = await accounting.allAssets(); 
+
+// a BigNumber equal to the fund's holding of a specific token, in this case MLN
+const mlnHoldingAmount = await accounting.getAssetHolding(melon.address); 
+
+// a BigNumber equal to the fund's default share price
+const defaultSharePrice = await accounting.getDefaultSharePrice(); 
+
+// the address of the Fund's native asset
+const fundNativeAsset = await accounting.getNativeAsset(); 
+
+// the fund's latest Gross Asset Value as a BigNumber
+const fundGAV = await accounting.getGAV(); 
+
+// the cost of 1 share of the fund in MLN
+const shareCostInMLN = await accounting.getShareCostInAsset(new BigNumber(1), melon.address) 
+
+```
+
+The `CalculationResults` object returned from `accounting.getCalculationResults` is shaped thusly:
+
+```javascript
+
+CalculationResults {
+  sharePrice: BigNumber;
+  gav: BigNumber;
+  nav: BigNumber;
+  feesInDenominationAsset: BigNumber;
+  feesInShares: BigNumber;
+  gavPerShareNetManagementFee: BigNumber;
+}
 ```
 
