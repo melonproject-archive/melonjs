@@ -7,7 +7,7 @@ This example requires an [environment](../../building-blocks/environment/) insta
 {% endhint %}
 
 {% hint style="info" %}
-**One thing to note: to deploy specific policy contracts, you must pass the corresponding byte code to the that contract's deployment method.** Luckily, MelonJS provides that for you as well.
+One thing to note: to deploy specific policy contracts, you must pass the corresponding byte code to the that contract's deployment method.
 {% endhint %}
 
 ```javascript
@@ -42,6 +42,5 @@ const maxConcSig = deploymentReceipt.signature;
 const registerTx = manager.registerPolicy(fundManager, maxConcSig, maxConcAddr)
 const registerOpts = await registerTx.prepare({gasPrice});
 const registerReceipt = await registerTx.send(registerOpts);
-
 ```
 
