@@ -14,12 +14,20 @@ One thing to note: to deploy specific policy contracts, you must pass the corres
 import { PriceTolerance, PolicyManager } from '@melonproject/melonjs';
 import { PriceToleranceBytecode } from '@melonproject/melonjs/abis/MaxPositions.bin';
 
-const fundManager = '0x234fse8...'; // the address of the fund's manager 
-const policyManagerAddress = '0x23890f...'; // the address of the fund's PolicyManger contract
-const tolerance = 10; // the number, in percent, you'd like to set for priceTolerance
+// the address of the fund's manager 
+const fundManager = '0x1141caf50b083e21bb48130460ce11eb47758545'; 
 
+// the address of the fund's PolicyManger contract
+const policyManagerAddress = '0x91986328a5fc560a0d725bbc2daf5df5dca7aa7e'; 
+
+// the number, in percent, you'd like to set for priceTolerance
+const tolerance = 10; 
+
+// specify the gas price (refer to http://ethgasstation.info/).
+const gasPrice = 2000000000000; 
+
+// declare the instance of the fund's PolicyManager contract
 const manager = new PolicyManager(environment, policyManagerAddress);
-const gasPrice = 2000000000000; // specify the gas price (refer to http://ethgasstation.info/).
 
 // execute the deployment transaction
 const deploymentTx = PriceTolerance.deploy(environment, PriceToleranceByteCode, fundManager, tolerance);
