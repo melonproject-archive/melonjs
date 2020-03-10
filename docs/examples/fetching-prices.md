@@ -11,38 +11,44 @@ import { KyberPriceSource } from '@melonproject/melonjs';
 
 // declare the priceSourceAddress 
 const priceSourceAddress = environment.melon.addr.KyberPriceFeed;
-// create a contract instance
+
+// declare an instance of the KyberPriceSource contract
 const priceSource = new KyberPriceSource(environment, priceSourceAddress);
 
 // There are a many methods exposed on this contract instance.
 // We'll lay them out below, mostly in reference to the MLN token
 
-const mlnAddress = environment.tokens.addr.MLN;
-const batAddress = environment.tokens.addr.BAT
+// the MLN token object
+const mln = environment.getToken('MLN')
 
-// returns, at this point, the WETH address
-const quoteAssetAddress = priceSource.getQuoteAsset(); 
+// the BAT token object
+const bat = environment.getToken('BAT'
+
+// the WETH address
+const quoteAssetAddress = await priceSource.getQuoteAsset(); 
 
 // returns the unix timestamp of the last pricefeed update
 const lastUpdate = await priceSource.getLastUpdate(); 
 
 // returns a boolean indicating whether the last price feed update was successful
-const valid = priceSource.hasValidPrice(mlnAddress); 
+const valid = await priceSource.hasValidPrice(mln.address); 
 
-const multiValid = priceSource.hasValidPrices([mlnAddress, batAddress, quoteAssetAddress]); // makes the same call as above on an array of tokens
+// makes the same call as above on an array of tokens
+const multiValid = await priceSource.hasValidPrices([mln.address, bat.address]);
 
-const mlnPrice = await priceSource.getPrice(mlnAddress); // returns {price: bigNumber, timestamp: date}
+// returns {price: bigNumber, timestamp: date}
+const mlnPrice = await priceSource.getPrice(mln.address); 
 
-const variousPrices = await priceSource.getPrice([mlnAddress, quoteAssetAddress, batAddress]); // returns an array of price objects like the method directly above
+// returns an array of price objects like the method directly above
+const variousPrices = await priceSource.getPrice([mln.address, bat.address]); 
 
-const weirdPriceExists = await priceSource.existsPriceOnAssetPair(mlnAddress, batAddress); // returns a boolean if this asset pair exists in the price feed
+// returns a boolean if this asset pair exists in the price feed
+const weirdPriceExists = await priceSource.existsPriceOnAssetPair(mln.address, bat.address); 
 
-const mlnBatRate = await priceSource.getReferencePriceInfo(mlnAddress, batAddress); // returns the { price: BigNumber, decimals: number } relative to the pair passed to the method
+// returns the { price: BigNumber, decimals: number } relative to the pair passed to the method
+const mlnBatRate = await priceSource.getReferencePriceInfo(mln.address, bat.address); 
 
-const mlnInBat = await priceSource.convertQuantity(new BigNumber(10).multipliedBy('1e8'), mlnAddress, batAddress); // returns the number of BAT you'd get for 10 MLN as a BigNumber
+// returns the number of BAT you'd get for 10 MLN as a BigNumber
+const mlnInBat = await priceSource.convertQuantity(new BigNumber(10).multipliedBy('1e8'), mln.address, bat.address); 
 ```
-
-
-
-
 
