@@ -27,7 +27,7 @@ const opts = transaction.prepare({gasPrice});
 const receipt = transaction.send(opts);
 ```
 
-Or redeem a specific amount of shares:
+Or redeem a specific amount of shares to redeem:
 
 ```javascript
 // a bignumber representing the number of shares to redeem
