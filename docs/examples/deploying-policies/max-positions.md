@@ -15,29 +15,34 @@ import { MaxPositions, PolicyManager } from '@melonproject/melonjs';
 import { MaxPositionsBytecode } from '@melonproject/melonjs/abis/MaxPositions.bin';
 
 // the address of the fund's manager 
-const managerAddress = '0xce323bcc37b2e6075e22658d135c7bda0623e523' 
+const managerAddress = '0xce323bcc37b2e6075e22658d135c7bda0623e523'; 
 
 // specify the max number of positions as a Big Number
 const numberOfPositions = new BigNumber(5);
 
-// specify the gas price (refer to http://ethgasstation.info/).
+// specify the gas price (refer to http://ethgasstation.info/)
 const gasPrice = 2000000000000; 
 
 // declare the instance of the fund's PolicyManager contract
 const manager = new PolicyManager(environment, policyManagerAddress);
 
 // execute the deployment transaction
-const deploymentTx = MaxPositions.deploy(environment, MaxPositionsByteCode, managerAddress, numberOfPositions);
+const deploymentTx = MaxPositions.deploy(
+  environment, 
+  MaxPositionsByteCode, 
+  managerAddress, 
+  numberOfPositions
+);
 const deploymentOpts = await deplomentTx.prepare({gasPrice});
 const deploymentReceipt = await deploymentTx.send(deploymentOpts);
 
 // assign the proper address and signature to pass to the registration transaction
-const maxPosAddr = deploymentReceipt.address;
 const maxPosSig = deploymentReceipt.signature;    
+const maxPosAddr = deploymentReceipt.address;
 
 // execute the registration transaction
-const registerTx = manager.registerPolicy(fundAddress, maxPosSig, maxPosAddr)
-const registerOpts = await registerTx.prepare({gasPrice});
+const registerTx = manager.registerPolicy(fundAddress, maxPosSig, maxPosAddr);
+const registerOpts = await registerTx.prepare({ gasPrice });
 const registerReceipt = await transaction.send(registerOpts);
 ```
 
