@@ -7,7 +7,7 @@ This example requires an [environment](../../building-blocks/environment/) insta
 {% endhint %}
 
 {% hint style="info" %}
-**One thing to note: to deploy specific policy contracts, you must pass the corresponding byte code to the that contract's deployment method.** Luckily, MelonJS provides that for you as well.
+One thing to note: to deploy specific policy contracts, you must pass the corresponding byte code to the that contract's deployment method.
 {% endhint %}
 
 ```javascript
@@ -42,7 +42,6 @@ const AssetBlacklistSignature = receipt.signature;
 const registerTx = manager.registerPolicy(fundManager, AssetBlacklistSignature, AssetBlacklistAddress)
 const registerOpts = await registerTx.prepare({gasPrice});
 const registerReceipt = await transaction.send(registerOpts);
-
 ```
 
 After a `AssetBlackList` policy is deployed, you can edit it by adding token addresses.
@@ -58,8 +57,7 @@ const newBannedToken = '0xc8c617ef185830b51a3ad97b53916c18f99ed559'; // a token 
 
 // execute the transaction to add a token to the blacklist
 const transaction = blackList.addToBlackList(managerAddress, newBannedToken);
-const opts = transaction.prepare({gasPrice});
-const receipt = transaction.send(opts);
-
+const opts = await transaction.prepare({gasPrice});
+const receipt = await transaction.send(opts);
 ```
 
