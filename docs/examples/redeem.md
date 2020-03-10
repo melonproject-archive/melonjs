@@ -2,6 +2,10 @@
 
 Redeeming one's shares from a Melon fund is fairly simple. The first step is to create an instance of the `Participation` contract.
 
+{% hint style="info" %}
+This example requires an [environment](../building-blocks/environment/) instance as described [here](../building-blocks/environment/).
+{% endhint %}
+
 ```javascript
 import { Participation } from '@melonproject/melonjs';
 
@@ -16,13 +20,12 @@ const gasPrice = 2000000000000;
 
 // declare the instance of the fund's Participation contract
 const participation = new Participation(environment, participationAddress);
-
 ```
 
 From there, you can either redeem all shares:
 
 ```javascript
-const transaction = participation.redeem(userAddress) 
+const transaction = participation.redeem(userAddress); 
 const opts = transaction.prepare({gasPrice});
 const receipt = transaction.send(opts);
 ```
@@ -32,7 +35,7 @@ Or redeem a specific amount of shares to redeem:
 ```javascript
 // a bignumber representing the number of shares to redeem
 const shareQuantity = new BigNumber(329); 
-const transaction = participation.redeemQuantity(userAddress, shareQuantity) 
+const transaction = participation.redeemQuantity(userAddress, shareQuantity); 
 const opts = transaction.prepare({gasPrice});
 const receipt = transaction.send(opts);
 ```
