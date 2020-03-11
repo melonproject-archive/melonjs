@@ -66,21 +66,30 @@ export class DeployedEnvironment extends Environment {
   }
 
   public getExchange(id: string): ExchangeDefinition;
-  public getExchange(address: Address): ExchangeDefinition;
-  public getExchange(which: string | Address): ExchangeDefinition {
-    const address = which.startsWith('0x');
-    const exchange = this.exchanges.find(item => {
-      if (address && sameAddress(which, item.exchange)) {
-        return true;
+  public getExchange(addresses: { exchange: Address; adapter: Address }): ExchangeDefinition;
+  public getExchange(which: string | { exchange: Address; adapter: Address }): ExchangeDefinition {
+    console.log(which);
+    if (typeof which === 'object') {
+      const { adapter, exchange } = which;
+      if (adapter?.startsWith('0x') && exchange.startsWith('0x')) {
+        return this.exchanges.find(item => {
+          if (sameAddress(adapter, item.adapter) && sameAddress(exchange, item.exchange)) {
+            return true;
+          }
+
+          return false;
+        });
       }
+    } else {
+      return this.exchanges.find(item => {
+        if (which === item.id) {
+          return true;
+        }
 
-      if (which === item.id) {
-        return true;
-      }
+        return false;
+      });
+    }
 
-      return false;
-    });
-
-    return exchange;
+    return undefined;
   }
 }
