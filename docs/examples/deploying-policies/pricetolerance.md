@@ -11,14 +11,20 @@ One thing to note: to deploy specific policy contracts, you must pass the corres
 {% endhint %}
 
 ```javascript
-import { PriceTolerance, PolicyManager } from '@melonproject/melonjs';
+import { Hub, PriceTolerance, PolicyManager } from '@melonproject/melonjs';
 import { PriceToleranceBytecode } from '@melonproject/melonjs/abis/MaxPositions.bin';
 
+// your hub address
+const hubAddress = '0x05263237f43190ce0e93b48afb25dd60a03ad3c5';
+
 // the address of the fund's manager 
-const fundManager = '0x1141caf50b083e21bb48130460ce11eb47758545'; 
+const fundManager = '0x0b64bf0fae1b9ffa80cd880f5b82d467ee34c28e'; 
+
+// declare an instance of the fund's hub to access the spoke contract addresses
+const hub = new Hub(environment, hubAddress);
 
 // the address of the fund's PolicyManger contract
-const policyManagerAddress = '0x91986328a5fc560a0d725bbc2daf5df5dca7aa7e'; 
+const policyManagerAddress = hub.getRoutes().policyManager; 
 
 // the number, in percent, you'd like to set for priceTolerance
 const tolerance = 10; 

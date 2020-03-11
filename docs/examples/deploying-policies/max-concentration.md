@@ -11,36 +11,47 @@ One thing to note: to deploy specific policy contracts, you must pass the corres
 {% endhint %}
 
 ```javascript
-import { MaxConcentration, PolicyManager } from '@melonproject/melonjs';
+import { Hub, MaxConcentration, PolicyManager } from '@melonproject/melonjs';
 import { MaxConcentrationBytecode } from '@melonproject/melonjs/abis/MaxConcentration.bin';
 
- // the address of the fund's manager 
-const fundManager = '0xbb471b17e7be75334cb5134e57f2cc7b99754e09';
+// your hub address
+const hubAddress = '0x05263237f43190ce0e93b48afb25dd60a03ad3c5';
+
+// the address of the fund's manager 
+const fundManager = '0x0b64bf0fae1b9ffa80cd880f5b82d467ee34c28e'; 
+
+// declare an instance of the fund's hub to access the spoke contract addresses
+const hub = new Hub(environment, hubAddress);
 
 // the address of the fund's PolicyManger contract
-const policyManagerAddress = '0x83a422230f49ce9ab2d8e75c3d493a6ccf91e36a'; 
+const policyManagerAddress = hub.getRoutes().policyManager; 
 
 // the number, in percent, you'd like to set for MaxConcentration
 const concentration = 10; 
 
-// specify the gas price (refer to http://ethgasstation.info/).
+// specify the gas price (refer to http://ethgasstation.info/)
 const gasPrice = 2000000000000; 
 
 // declare the instance of the fund's PolicyManager contract
 const manager = new PolicyManager(environment, policyManagerAddress);
 
 // execute the deployment transaction
-const deploymentTx = MaxConcentration.deploy(environment, MaxConcentrationByteCode, fundManager, tolerance);
+const deploymentTx = MaxConcentration.deploy(
+  environment, 
+  MaxConcentrationByteCode, 
+  fundManager, 
+  concentration
+);
 const deploymentOpts = await deploymentTx.prepare({gasPrice});
-const deploymentReceipt = await deploymentTx.send(deploymentOpts)
+const deploymentReceipt = await deploymentTx.send(deploymentOpts);
 
 // assign the proper address and signature to pass to the registration transaction
+const maxConcSig = deploymentReceipt.signature; 
 const maxConcAddr = deploymentReceipt.address;
-const maxConcSig = deploymentReceipt.signature;    
-
+   
 // execute the registration transaction
-const registerTx = manager.registerPolicy(fundManager, maxConcSig, maxConcAddr)
-const registerOpts = await registerTx.prepare({gasPrice});
+const registerTx = manager.registerPolicy(fundManager, maxConcSig, maxConcAddr);
+const registerOpts = await registerTx.prepare({ gasPrice });
 const registerReceipt = await registerTx.send(registerOpts);
 ```
 

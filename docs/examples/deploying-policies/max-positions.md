@@ -11,11 +11,20 @@ One thing to note: to deploy specific policy contracts, you must pass the corres
 {% endhint %}
 
 ```javascript
-import { MaxPositions, PolicyManager } from '@melonproject/melonjs';
+import { Hub, MaxPositions, PolicyManager } from '@melonproject/melonjs';
 import { MaxPositionsBytecode } from '@melonproject/melonjs/abis/MaxPositions.bin';
 
+// your hub address
+const hubAddress = '0x05263237f43190ce0e93b48afb25dd60a03ad3c5';
+
 // the address of the fund's manager 
-const managerAddress = '0xce323bcc37b2e6075e22658d135c7bda0623e523'; 
+const fundManager = '0x0b64bf0fae1b9ffa80cd880f5b82d467ee34c28e'; 
+
+// declare an instance of the fund's hub to access the spoke contract addresses
+const hub = new Hub(environment, hubAddress);
+
+// the address of the fund's PolicyManger contract
+const policyManagerAddress = hub.getRoutes().policyManager; 
 
 // specify the max number of positions as a Big Number
 const numberOfPositions = new BigNumber(5);

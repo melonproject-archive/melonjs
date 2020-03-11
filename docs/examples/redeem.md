@@ -7,10 +7,16 @@ This example requires an [environment](../building-blocks/environment/) instance
 {% endhint %}
 
 ```javascript
-import { Participation } from '@melonproject/melonjs';
+import { Hub, Participation  } from '@melonproject/melonjs';
+
+// your hub address
+const hubAddress = '0x05263237f43190ce0e93b48afb25dd60a03ad3c5';
+
+// declare an instance of the fund's hub to access the spoke contract addresses
+const hub = new Hub(environment, hubAddress);
 
 // the address of the fund's participation contract
-const participationAddress = '0xffe8bc42946d87e5d791dfa931deabe144ac23a8'; 
+const participationAddress = hub.getRoutes().participation; 
 
 // the address of the user making the redemption request
 const userAddress = '0xf039e6893ffa43196fd9d1d7038b74bf39dda4a5'; 

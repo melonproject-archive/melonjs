@@ -14,14 +14,18 @@ import {
   Trading 
 } from '@melonproject/melonjs';
 
-// the fund manager's address
-const managerAddress = '0x738b302d875654165f10596abafca38059bbea39';
+// your hub address
+const hubAddress = '0x05263237f43190ce0e93b48afb25dd60a03ad3c5';
 
-// declare an exchange object, shape noted in ~/buildingblocks/environment
-const exchange = environment.getExchange(ExchangeIdentifier.OasisDex); 
+// the address of the fund's manager 
+const fundManager = '0x0b64bf0fae1b9ffa80cd880f5b82d467ee34c28e'; 
+
+// declare an instance of the fund's hub to access the spoke contract addresses
+const hub = new Hub(environment, hubAddress);
 
 // the address of the fund's trading contract
-const tradingAddress = '0x93587528236fc2364b4b1f83a2e10e4804b27d1d'; 
+const tradingAddress = hub.getRoutes().trading; // declare an exchange object, shape noted in ~/buildingblocks/environment
+const exchange = environment.getExchange(ExchangeIdentifier.OasisDex); 
 
 // the maker token object
 const maker = environment.getToken('WETH');
@@ -63,7 +67,7 @@ const gasPrice = 2000000000000;
 
 // create and execute the transaction
 const transaction = adapter.takeOrder(
-  managerAddress, 
+  fundManager, 
   order.id, 
   offer, 
   quantity

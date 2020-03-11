@@ -1,8 +1,8 @@
-# Getting Information for a Fund
+# Getting Fund Information
 
-Once a fund has been set up, its `Hub` contract exposes various methods to query fund-specific data. 
+Once a fund has been set up, its `Hub` contract exposes various methods to query fund-specific data. `Version` exposes methods to query aggregate fund data.
 
-The first step is to find the address of that contract. We'll do so using the fund manager's address, to which you should have access. I'll use a fake one here.
+If you don't know the address of your fund's `Hub` contract, you can access it using version and your fund manager's address. I'll use a fake one here to demonstrate.
 
 {% hint style="info" %}
 This example requires an [environment](../building-blocks/environment/) instance as described [here](../building-blocks/environment/).
@@ -37,9 +37,6 @@ const manager = await hub.getManager();
 // the fund's name
 const name = await hub.getName();
 
-// an object with the addresses of the fund's spoke contracts
-const spokes = await hub.getRoutes();
-
 // a boolean representing whether or not the fund is shut down
 const shutDOwn = await hub.isShutDown();
 
@@ -49,28 +46,30 @@ const initialized = await hub.isInitialized();
 // the version on which the fund is running
 const version = await hub.getVersion();
 
-// and finally the various contracts with which the fund is associated
-
 // the Registry contract
 const registry = await hub.getRegistry();
-
-// the Accounting contract
-const accounting = await hub.getAccounting();
 
 // the PriceSource countract
 const priceSource = await hub.getPriceSource();
 
-// the Participation contract
-const participation = await hub.getParticipation();
+// and finally an object with the addresses of the fund's spoke contracts
+const spokes = await hub.getRoutes();
 
-// the Trading contract
-const trading = await hub.getTrading();
+// from which you can access the addresses of the in individual contracts:
+const accounting = spokes.accounting;
 
-// the Shares contract
-const shares = await hub.getShares();
+const participation = spokes.participation;
 
-// the PolicyManager contract
-const policyManager = await hub.getPolicyManager();
+const shares = spokes.shares;
+
+const trading = spokes.trading;
+
+const vault = spokes.vault;
+
+const feeManager = spokes.feeManager;
+
+const policyManager = spokes.policyManager;
+
 
 ```
 

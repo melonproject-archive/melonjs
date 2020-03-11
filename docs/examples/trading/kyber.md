@@ -10,11 +10,26 @@ This example requires an [environment](../../building-blocks/environment/) insta
 
 ```javascript
 import { 
-  Trading, 
-  KyberTradingAdapter, 
-  KyberNetworkProxy 
+  Hub,
+  KyberNetworkProxy
+  KyberTradingAdapter,  
+  Trading
 } from '@melonproject/melonjs';
 
+// your hub address
+const hubAddress = '0x05263237f43190ce0e93b48afb25dd60a03ad3c5';
+
+// the address of the fund's manager 
+const fundManager = '0x0b64bf0fae1b9ffa80cd880f5b82d467ee34c28e'; 
+
+// declare an instance of the fund's hub to access the spoke contract addresses
+const hub = new Hub(environment, hubAddress);
+
+// the address of the fund's trading contract
+const tradingAddress = hub.getRoutes().trading; 
+
+// specify the gas price (refer to http://ethgasstation.info/).
+const gasPrice = 2000000000000; 
 
 // the address of WETH, 
 const makerAddress = environment.getToken('WETH').address;
@@ -36,20 +51,11 @@ const rate = await priceChecking.getExpectedRate(makerToken, takerToken, makerQt
 
 // We'll next submit an order by preparing a transaction and pushing it through the normal pattern
 
-// address of the fund's trading contract
-const tradingAddress = '0x8bd52d089d46f9e5bc08ca66afdde58f8159870e'; 
-
-// the fund manager's address
-const managerAddress = '0xfbf4e3511bbb80f335988e7482efe2f6e1ef387e';
-
 // declare an instance of the fund's Trading contract
 const trading = new Trading(environment, tradingAddress); 
 
 // the amount of the taker asset as implied by the rate returned above
 const takerQty = makerQty.multipliedBy(rate.expectedRate);
-
-// specify the gas price (refer to http://ethgasstation.info/).
-const gasPrice = 2000000000000; 
 
 // assemble an orderArgs object to pass to the takeOrderFunction
 const orderArgs =  {
@@ -63,7 +69,7 @@ const orderArgs =  {
 const adapter = await KyberTradingAdapter.create(environment, exchange, trading);
 
 // Create and execute the transaction
-const transaction = adapter.takeOrder(managerAddress, orderArgs);
+const transaction = adapter.takeOrder(fundManager, orderArgs);
 const opts = await transaction.prepare({ gasPrice });
 const receipt = await transaction.send(opts);
 ```

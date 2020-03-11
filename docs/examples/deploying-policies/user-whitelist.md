@@ -11,14 +11,20 @@ One thing to note: to deploy specific policy contracts, you must pass the corres
 {% endhint %}
 
 ```javascript
-import { UserWhiteList, PolicyManager } from '@melonproject/melonjs';
+import { Hub, PolicyManager, UserWhiteList } from '@melonproject/melonjs';
 import { UserWhiteListBytecode } from '@melonproject/melonjs/abis/UserWhitelist.bin';
+
+// your hub address
+const hubAddress = '0x05263237f43190ce0e93b48afb25dd60a03ad3c5';
+
+// declare an instance of the fund's hub to access the spoke contract addresses
+const hub = new Hub(environment, hubAddress);
 
 // the address of the fund's manager 
 const fundManager = '0x0b64bf0fae1b9ffa80cd880f5b82d467ee34c28e'; 
 
 // the address of the fund's PolicyManger contract
-const policyManagerAddress = '0x510451e164b3c29034c9f2983ae8654ec5e1738f'; 
+const policyManagerAddress = hub.getRoutes().policyManager; 
 
 // the addresss of a user you want on the whiteLis
 const approvedUser = '0x44de0560774bb11b67a08716de486f7a8803f850'; 

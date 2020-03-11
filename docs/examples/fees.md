@@ -9,18 +9,24 @@ This example requires an [environment](../building-blocks/environment/) instance
 {% endhint %}
 
 ```javascript
-import { FeeManager, Accounting } from '@melonproject/melonjs';
+import { Accounting, FeeManager, Hub } from '@melonproject/melonjs';
 
-// address of the fund's FeeManager contract
-const feeManagerAddress = '0x4ce072071c054cbfd99cc03f468db7dc921f2cbd'; 
+// your hub address
+const hubAddress = '0x05263237f43190ce0e93b48afb25dd60a03ad3c5';
 
-//address of the fund's Accounting contract
-const accountingAddress = '0x98ce238bf8956414347d08ff76065d0823f976d9'; 
+// declare an instance of the fund's hub to access the spoke contract addresses
+const hub = new Hub(environment, hubAddress);
 
-// address of the fund manager
+// the address of the fund's FeeManager contract
+const feeManagerAddress = hub.getRoutes().feeManager; 
+
+// the address of the fund's Accounting contract
+const accountingAddress = hub.getRoutes().accounting; 
+
+// the address of the fund manager
 const fundManagerAddress = '0x33b2f147a2526ac8abccccf38b71c0467673bffd';
 
-// specify the gas price (refer to http://ethgasstation.info/).
+// specify the gas price (refer to http://ethgasstation.info/)
 const gasPrice = 2000000000000; 
 
 // declare instances of the fund's FeeManager and Accounting contracts

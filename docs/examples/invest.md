@@ -16,16 +16,19 @@ This example requires an [environment](../building-blocks/environment/) instance
 
 ```javascript
 import BigNumber from 'bignumber.js';
-import { ERC20WithFields, Participation } from '@melonproject/melonjs';
+import { ERC20WithFields, Hub, Participation } from '@melonproject/melonjs';
 
-// specify the gas price (refer to http://ethgasstation.info/).
-const gasPrice = 2000000000000; 
+// your hub address
+const hubAddress = '0x05263237f43190ce0e93b48afb25dd60a03ad3c5';
+
+// declare an instance of the fund's hub to access the spoke contract addresses
+const hub = new Hub(environment, hubAddress);
 
 // the address of the user trying to make the investment
 const investorAddress = '0x4aaf7d8a61b5d4531961a3d40b677735e45ab774'; 
 
 // the address of the fund's participation contract
-const participationAddress = '0x98ce238bf8956414347d08ff76065d0823f976d9';
+const participationAddress = hub.getRoutes().participation;
 
 // fetch the token information for the WETH token.
 const tokenInfo = environment.getToken('WETH');
@@ -38,6 +41,9 @@ const investmentAmount = new BigNumber(1).multipliedBy('1e18');
 
 // the computed number of shares the user wishes to purchase in WEI
 const sharesAmount = new BigNumber(1).multipliedBy('1e18');
+
+// specify the gas price (refer to http://ethgasstation.info/).
+const gasPrice = 2000000000000; 
 
 // declare an instance of the fund's participation contract
 const participation = new Participation(environment, participationAddress);

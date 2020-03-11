@@ -7,10 +7,16 @@ This example requires an [environment](../building-blocks/environment/) instance
 {% endhint %}
 
 ```javascript
-import { Accounting } from '@melonproject/melonjs';
+import { Accounting, Hub } from '@melonproject/melonjs';
+
+// your hub address
+const hubAddress = '0x05263237f43190ce0e93b48afb25dd60a03ad3c5';
+
+// declare an instance of the fund's hub to access the spoke contract addresses
+const hub = new Hub(environment, hubAddress);
 
 // the address of the fund's accounting contract
-const accountingAddress = '0x92eb512143439ea1b3ad67249dd61ed99783d252'; 
+const accountingAddress = hub.getRoutes().accounting; 
 
 // the address of the fund manager
 const fundManagerAddress = '0x1e28b0d5edc7b1acad5abf4a048b5a1f6493673f'; 

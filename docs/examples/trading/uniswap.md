@@ -9,11 +9,27 @@ This example requires an [environment](../../building-blocks/environment/) insta
 ```javascript
 import {
   ExchangeIdentifier,
+  Hub,
   Trading,
   UniswapExchange, 
   UniswapTradingAdapter, 
   UniswapFactory, 
 } from '@melonproject/melonjs';
+
+// your hub address
+const hubAddress = '0x05263237f43190ce0e93b48afb25dd60a03ad3c5';
+
+// the address of the fund's manager 
+const fundManager = '0x0b64bf0fae1b9ffa80cd880f5b82d467ee34c28e'; 
+
+// declare an instance of the fund's hub to access the spoke contract addresses
+const hub = new Hub(environment, hubAddress);
+
+// the address of the fund's trading contract
+const tradingAddress = hub.getRoutes().trading; 
+
+// specify the gas price (refer to http://ethgasstation.info/).
+const gasPrice = 2000000000000; 
 
 // the maker token object
 const maker = environment.getToken('WETH');
@@ -42,15 +58,6 @@ const price = makerQuantity.dividedBy(takerQuantity);
 
 // We'll next submit an order by preparing a transaction and pushing it through the normal pattern
 
-// the fund's trading contract address
-const tradingAddress = '0xfbf4e3511bbb80f335988e7482efe2f6e1ef387e'; 
-
-// the fund manager's address
-const managerAddress = '0x8bd52d089d46f9e5bc08ca66afdde58f8159870e'; 
-
-// specify the gas price (refer to http://ethgasstation.info/).
-const gasPrice = 2000000000000; 
-
 // create a new instance of the fund's Trading contract
 const trading = new Trading(environment, tradingAddress);
 
@@ -66,7 +73,7 @@ const orderArgs =  {
 const adapter = await UniswapTradingAdapter.create(environment, exchangeAddress, trading);
 
 // create and execute the transaction
-const transaction = adapter.takeOrder( managerAddress, orderArgs );
+const transaction = adapter.takeOrder( fundManager, orderArgs );
 const opts = transaction.prepare({ gasPrice });
 const receipt = transaction.send(opts);
 ```
