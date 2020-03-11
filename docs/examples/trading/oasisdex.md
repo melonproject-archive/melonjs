@@ -1,6 +1,6 @@
 # OasisDex
 
-Oasis is a liquidity pool on the Ethereum blockchain. You can read more about it [here](https://developer.makerdao.com/oasis/).
+Oasis is a liquidity pool on the Ethereum blockchain. You can read more about it [here](https://developer.makerdao.com/oasis/). In the example below, we'll trade on an OasisDex order.
 
 {% hint style="info" %}
 This example requires an [environment](../../building-blocks/environment/) instance as described [here](../../building-blocks/environment/).
@@ -30,7 +30,7 @@ const maker = environment.getToken('WETH');
 const taker = environment.getToken('MLN');
 
 
-// using an OasisDex order shaped as such:
+// using an OasisDex order retrieved from their API and shaped as such:
 const order = { 
   id: new BigNumber(112), 
   sellQuantity: new BigNumer(120), 
