@@ -2,11 +2,6 @@
 
 ```javascript
 {
-  "conf": {
-    "deployer": "0x0d580ae50B58fe08514dEAB4e38c0DFdB0D30adC",
-    "track": "KYBER_PRICE",
-    "networkID": 1
-  },
   "melon": {
     "addr": {
       "KyberPriceFeed": "0x24d73974e5224BF5f9A6E091e19dE3ac54be860C",
@@ -32,24 +27,6 @@
       "Engine": "0x342814604Cd5CC4bdeed100EDEbD51CAc3fd98c9",
       "Registry": "0xb9Cb55C9366a224647B7ff66252b3613185DA0B9",
       "Version": "0x5f9AE054C7F0489888B1ea46824b4B9618f8A711"
-    },
-    "conf": {
-      "priceTolerance": 10,
-      "userWhitelist": ["0x0d580ae50B58fe08514dEAB4e38c0DFdB0D30adC"],
-      "registryOwner": "0x0d580ae50B58fe08514dEAB4e38c0DFdB0D30adC",
-      "engineDelay": 2592000,
-      "maxSpread": "150000000000000000",
-      "versionOwner": "0x0d580ae50B58fe08514dEAB4e38c0DFdB0D30adC",
-      "initialMGM": "0x0d580ae50B58fe08514dEAB4e38c0DFdB0D30adC",
-      "initialUpdater": "0x0d580ae50B58fe08514dEAB4e38c0DFdB0D30adC",
-      "versionName": "1.1.0",
-      "exchangeTakesCustody": {
-        "oasis": true,
-        "kyber": false,
-        "zeroex": false,
-        "ethfinex": true,
-        "engine": false
-      }
     }
   },
   "kyber": {
@@ -97,9 +74,6 @@
       "ZeroExV3Staking": "0x2a17c35ff147b32f13f19f2e311446eeb02503f3 ",
       "ZeroExV3StakingProxy": "0xa26e80e7dea86279c6d778d702cc413e6cffa777",
       "ZeroExV3ZrxVault": "0xba7f8b5fb1b19c1211c5d49550fcd149177a5eaf"
-    },
-    "conf": {
-      "protocolFeeMultiplier": 150000
     }
   },
   "tokens": {
@@ -124,108 +98,7 @@
       "WBTC": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
       "ZRX": "0xe41d2489571d322189246dafa5ebde1f4699f498"
     },
-    "conf": {
-      "WETH": {
-        "name": "Wrapped Ether",
-        "decimals": 18,
-        "initialDepositAmount": "1000000000000000000"
-      },
-      "MLN": {
-        "name": "Melon",
-        "decimals": 18,
-        "reserveMin": "44266376899446186143"
-      },
-      "ANT": {
-        "name": "Aragon Network",
-        "decimals": 18,
-        "reserveMin": "342083875233544858929"
-      },
-      "BAT": {
-        "name": "Basic Attention Token",
-        "decimals": 18,
-        "reserveMin": "912375039211224702810"
-      },
-      "DAI": {
-        "name": "Multi-Collateral Dai",
-        "decimals": 18,
-        "reserveMin": "283075578324490529074"
-      },
-      "ENG": {
-        "name": "Enigma",
-        "decimals": 8,
-        "reserveMin": "52441843889"
-      },
-      "KNC": {
-        "name": "Kyber Network",
-        "decimals": 18,
-        "reserveMin": "605977096443979462492"
-      },
-      "LINK": {
-        "name": "Chainlink",
-        "decimals": 18,
-        "reserveMin": "62963171673479219637"
-      },
-      "MANA": {
-        "name": "Decentraland",
-        "decimals": 18,
-        "reserveMin": "4497260574547067938002"
-      },
-      "MKR": {
-        "name": "Maker",
-        "decimals": 18,
-        "reserveMin": "447502970620050062"
-      },
-      "OMG": {
-        "name": "OmiseGo",
-        "decimals": 18,
-        "reserveMin": "206599071370609291590"
-      },
-      "REP": {
-        "name": "Augur Reputation",
-        "decimals": 18,
-        "reserveMin": "16991598107773581116"
-      },
-      "REN": {
-        "name": "Republic Project",
-        "decimals": 18,
-        "reserveMin": "4132182393854523979825"
-      },
-      "RLC": {
-        "name": "iExec",
-        "decimals": 9,
-        "reserveMin": "384127742843"
-      },
-      "SAI": {
-        "name": "Sai Stable Coin",
-        "decimals": 18,
-        "reserveMin": "281617642592700035235"
-      },
-      "USDC": {
-        "name": "USD Coin",
-        "decimals": 6,
-        "reserveMin": "282703338"
-      },
-      "USDT": {
-        "name": "Tether USD",
-        "decimals": 6,
-        "reserveMin": "282703338"
-      },
-      "WBTC": {
-        "name": "Wrapped Bitcoin",
-        "decimals": 8,
-        "reserveMin": "2716105"
-      },
-      "ZRX": {
-        "name": "0x Protocol Token",
-        "decimals": 18,
-        "reserveMin": "828697793129947226897"
-      }
-    }
-  },
-  "postDeployment": {
-    "deployerWethAmount": "100000000000000000000",
-    "kyberReserveAmount": "100000000000000000000"
-  }
+    
 }
 
 ```
