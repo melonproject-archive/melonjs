@@ -1,6 +1,6 @@
-# Querying Investment Status
+# Getting Investment Data
 
-Various query methods are exposed on the `Participation` contract that allow one to investigate the fund's current and historical investors.
+Various query methods are exposed on the `Participation` contract that allow one to investigate the fund's current and historical investors at the transaction level.
 
 {% hint style="info" %}
 This example requires an [environment](../building-blocks/environment/) instance as described [here](../building-blocks/environment/).
@@ -40,9 +40,9 @@ const alreadyLong = await participation.hasInvested(myETHAddress);
 const hasRequested = await participation.hasRequest(myETHAddress); 
 
 // returns a boolean describing whether a given address has executed an investment request that expired
-const didNotApprove = await participation.hasExpiredRequest(myETHAddress); 
+const hasExpired = await participation.hasExpiredRequest(myETHAddress); 
 
 // returns a boolean describing whether a given address has an outstanding investment request that has not expired
-const isWaitingForApproval = await participation.hasValidRequest(myETHAddress); 
+const hasValidRequest = await participation.hasValidRequest(myETHAddress); 
 ```
 

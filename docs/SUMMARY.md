@@ -18,7 +18,7 @@
 * [Getting Fund Information](examples/getting-information-for-a-fund.md)
 * [Investing in a Fund](examples/invest.md)
 * [Redeeming Shares From a Fund](examples/redeem.md)
-* [Querying Investment Status](examples/investmentstatus.md)
+* [Getting Investment Data](examples/investmentstatus.md)
 * [Fetching Prices](examples/fetching-prices.md)
 * [Managing Fees](examples/fees.md)
 * [Querying Fund Metrics](examples/querying-fund-metrics.md)
