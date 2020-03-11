@@ -38,7 +38,7 @@ const exchange = new UniswapExchange(environment, exchangeAddress);
 const makerQuantity = await exchange.getTokenToEthInputPrice(takerQuantity); 
 
 // do the math to deduce the rate of MLN per WETH
-const price = makerQuantity.divdidedBy(takerQuantity); 
+const price = makerQuantity.dividedBy(takerQuantity); 
 
 // We'll next submit an order by preparing a transaction and pushing it through the normal pattern
 
@@ -56,8 +56,8 @@ const trading = new Trading(environment, tradingAddress);
 
 // assemble an orderArgs object to pass to the takeOrderFunction
 const orderArgs =  {
-  makerQuantity: makerQty; // amount of the makerToken with the appropriate number of decimal places 
-  takerQuantity: takerQty; // amount of the takerToken with the appropriate number of decimal places
+  makerQuantity: makerQty; // amount of the makerToken 
+  takerQuantity: takerQty; // amount of the takerToken 
   makerAsset: maker.address; // address of the makerToken
   takerAsset: taker.address; // address of the takerToken
 };    
