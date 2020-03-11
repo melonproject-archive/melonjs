@@ -1,5 +1,19 @@
 # Setting Up a Melon Fund
 
+Starting a Melon Fund requires 9 Ethereum transactions. Together, these transactions instantiate the [hub and spoke](https://docs.melonport.com/chapters/fund.html#hub--spoke) contracts that will serve as the foundation for your fund. In order to begin this sequence of transactions, you must first decide on the parameters that will govern your fund. The first transaction must be initiated by the fund's manager. All subsequent steps can be called by anyone. 
+
+| Step | Contract | User |
+| :--- | :--- | :--- |
+| `beginSetup` | `Version` | fund manager |
+| `createAccounting` | `Version` | anyone |
+| `createFeeManager` | `Version` | anyone |
+| `createParticipation` | `Version` | anyone |
+| `createPolicyManager` | `Version` | anyone |
+| `createShares` | `Version` | anyone |
+| `createTrading` | `Version` | anyone |
+| `createVault` | `Version` | anyone |
+| `completeSetup` | `Version` | anyone |
+
 {% hint style="info" %}
 This example requires an [environment](../building-blocks/environment/) instance as described [here](../building-blocks/environment/).
 {% endhint %}
@@ -10,7 +24,7 @@ import { DeployedEnvironment, Version } from '@melonproject/melonjs';
 // instantiate the current version of the Melon Fund Factory
 const factory = new Version(environment, environment.deployment.melon.addr.Version);
 
-// declare some necessary variables:
+// declare the necessary variables:
 
 // the fund manager's address
 const managerAddress = '0x5b8677fb951517d55b224fbc07cd7e3ffb075203';
@@ -68,7 +82,7 @@ const adapters = environment.exchanges.map(exchange => exchange.adapter);
 }
 
 {
-  const transaction = factory.createAccounting(managerAddress);
+  const transaction = factory.createFeeManager(managerAddress);
   const opts = await transaction.prepare({gasPrice});
   const receipt = await transaction.send(opts);
 }

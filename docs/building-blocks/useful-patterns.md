@@ -6,7 +6,7 @@ description: Helper functions to abstract away some complexity
 
 ### Transactions
 
-The steps to validate, prepare, and execute a contract are used quite frequently. We've found it helpful to abstract those steps into a single function, as such:
+The steps to validate, prepare, and execute a contract are used quite frequently. In the code examples throughout this documentation we explicitly call each function to. However, in the real world, we've found it helpful to abstract those steps into a single function, as such:
 
 ```javascript
 function executeTransaction(transaction, options) {
