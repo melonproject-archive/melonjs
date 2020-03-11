@@ -89,7 +89,6 @@
       "WBTC": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
       "ZRX": "0xe41d2489571d322189246dafa5ebde1f4699f498"
     },
-    
 }
 
 ```
