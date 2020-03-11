@@ -56,7 +56,7 @@ const trading = new Trading(environment, tradingAddress);
 
 // assemble an orderArgs object to pass to the takeOrderFunction
 const orderArgs =  {
-  makerQuantity: makerQty; // amount of the makerToken with the appropriate number of decimal places ***Note that if you're calling these functions sequentially, makerQuantity shoudld be equal to the user -specified takerQuantity multiplied by the expectedRate that was fetched from the KyberNetworkProxy
+  makerQuantity: makerQty; // amount of the makerToken with the appropriate number of decimal places 
   takerQuantity: takerQty; // amount of the takerToken with the appropriate number of decimal places
   makerAsset: maker.address; // address of the makerToken
   takerAsset: taker.address; // address of the takerToken
