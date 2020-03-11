@@ -68,7 +68,6 @@ export class DeployedEnvironment extends Environment {
   public getExchange(id: string): ExchangeDefinition;
   public getExchange(addresses: { exchange: Address; adapter: Address }): ExchangeDefinition;
   public getExchange(which: string | { exchange: Address; adapter: Address }): ExchangeDefinition {
-    console.log(which);
     if (typeof which === 'object') {
       const { adapter, exchange } = which;
       if (adapter?.startsWith('0x') && exchange.startsWith('0x')) {
