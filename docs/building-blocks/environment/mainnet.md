@@ -40,32 +40,23 @@
       "ExpectedRate": "0x96B610046D63638d970E6243151311d8827D69a5",
       "FeeBurner": "0x52166528FCC12681aF996e409Ee3a421a4e128A3"
     },
-    "conf": {
-      "initialReserveAmount": "1000000000000000000"
-    }
   },
   "oasis": {
     "addr": {
       "OasisDexExchange": "0x794e6e91555438aFc3ccF1c5076A74F42133d08D"
     },
-    "conf": {
-      "closeTime": "9999999999999",
-      "quoteToken": "WETH"
-    }
   },
   "uniswap": {
     "addr": {
       "UniswapExchange": "",
       "UniswapFactory": "0xc0a47dFe034B400B47bDaD5FecDa2621de6c4d95"
-    },
-    "conf": {}
+    }
   },
   "zeroExV2": {
     "addr": {
       "ZeroExV2Exchange": "0x080bf510fcbf18b91105470639e9561022937712",
       "ZeroExV2ERC20Proxy": "0x95e6f48254609a6ee006f7d493c8e5fb97094cef"
-    },
-    "conf": {}
+    }
   },
   "zeroExV3": {
     "addr": {
