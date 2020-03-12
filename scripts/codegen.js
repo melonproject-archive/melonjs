@@ -18,9 +18,6 @@ const release = `https://github.com/${organization}/${project}/releases/download
 
 function download(from) {
   const file = path.join(__dirname, '..', path.basename(release));
-  if (fs.existsSync(file)) {
-    return Promise.resolve(file);
-  }
 
   return new Promise((resolve, reject) => {
     https.get(from, response => {
