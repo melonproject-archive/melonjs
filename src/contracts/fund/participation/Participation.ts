@@ -244,20 +244,20 @@ export class Participation extends Contract {
   }
 
   /**
-   * Execute investment request for
+   * Execute investment request for an investor
    *
    * @param from The address of the sender.
-   * @param forWhom The address of the investor
+   * @param investor The address of the investor
    */
-  public executeRequestFor(from: Address, forWhom: Address) {
+  public executeRequestFor(from: Address, investor: Address) {
     const amgu = this.calculateAmgu.bind(this);
 
     const validate = async () => {
-      if (!(await this.hasRequest(from))) {
-        throw new NoInvestmentRequestError(from);
+      if (!(await this.hasRequest(investor))) {
+        throw new NoInvestmentRequestError(investor);
       }
 
-      const request = await this.getRequest(from);
+      const request = await this.getRequest(investor);
       const priceSource = new IPriceSource(this.environment, await this.getPriceSource());
       if (!(await priceSource.hasValidPrice(request.investmentAsset))) {
         throw new PriceNotValidError(request.investmentAsset);
@@ -276,10 +276,19 @@ export class Participation extends Contract {
     return this.createTransaction({
       from,
       method: 'executeRequestFor',
-      args: [forWhom],
+      args: [investor],
       validate,
       amgu,
     });
+  }
+
+  /**
+   * Execute investment request
+   *
+   * @param from The address of the sender.
+   */
+  public executeRequest(from: Address) {
+    return this.executeRequestFor(from, from);
   }
 
   /**
@@ -297,22 +306,34 @@ export class Participation extends Contract {
   }
 
   /**
-   * Cancel investment request
+   * Cancel investment request for investor
    *
    * @param from The address of the sender.
+   * @param investor The address of the investor
+   *
    */
-  public cancelRequest(from: Address) {
+  public cancelRequestFor(from: Address, investor: Address) {
     const amgu = this.calculateAmgu.bind(this);
 
-    const validate = () => this.validateCancelRequest(from);
+    const validate = () => this.validateCancelRequest(investor);
 
     return this.createTransaction({
       from,
-      method: 'cancelRequest',
-      args: undefined,
+      method: 'cancelRequestFor',
+      args: [investor],
       validate,
       amgu,
     });
+  }
+
+  /**
+   * Cancel investment request
+   *
+   * @param from The address of the sender.
+   *
+   */
+  public cancelRequest(from: Address) {
+    return this.cancelRequestFor(from, from);
   }
 
   /**
@@ -367,24 +388,24 @@ export class Participation extends Contract {
   /**
    * Validate if a request can be cancelled
    *
-   * @param from The address of the sender.
+   * @param investor The address of the investor.
    */
-  private validateCancelRequest = async (from: Address, block?: number) => {
-    if (!(await this.hasRequest(from, block))) {
-      throw new NoInvestmentRequestError(from);
+  private validateCancelRequest = async (investor: Address, block?: number) => {
+    if (!(await this.hasRequest(investor, block))) {
+      throw new NoInvestmentRequestError(investor);
     }
 
-    const request = await this.getRequest(from, block);
+    const request = await this.getRequest(investor, block);
     const hub = new Hub(this.environment, await this.getHub(block));
     const priceSource = new IPriceSource(this.environment, await this.getPriceSource(block));
     if (
       !(
         !(await priceSource.hasValidPrice(request.investmentAsset, block)) ||
-        (await this.hasExpiredRequest(from, block)) ||
+        (await this.hasExpiredRequest(investor, block)) ||
         (await hub.isShutDown(block))
       )
     ) {
-      throw new CancelConditionsNotMetError(from);
+      throw new CancelConditionsNotMetError(investor);
     }
   };
 }
