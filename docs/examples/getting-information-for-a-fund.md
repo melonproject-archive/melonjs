@@ -10,9 +10,11 @@ These examples require an [environment](../building-blocks/environment/) instanc
 `Fund` and `Hub` addresses are currently referred to interchangeably. This will soon not be the case, and the docs will be edited to reflect the change. 
 {% endhint %}
 
-### Getting a Fund's \(or Funds'\) Address
+### Getting a Fund's Address
 
-In order to use the methods exposed on the `Hub` contract, we need its address. All Melon Funds are indexed on the blockchain. The `Version` contract exposes a method to get the index of the most recently-created fund. You can then pass that index to another `Version` method to get the fund's hub address. That would look something like this:
+#### Using the Fund's Index
+
+In order to use the methods exposed on the `Hub` contract, we need its address. All Melon Funds are indexed on the blockchain. The `Version` contract exposes a method to get the index of the most recently-created fund. You can then pass that index to another `Version` method to get the fund's address. That would look something like this:
 
 ```javascript
 import { Version } from '@melonproject/melonjs';
@@ -39,6 +41,8 @@ const fundAddresses = await Promise.all(promiseArray);
 ```
 
 The above **will** work. However, we suggest querying the subgraph for this data to avoid having to make calls to the blockchain. You can see an example of how we'd build the same array of addresses, along with some additional helpful data \(manager address and fund name\) [here](https://thegraph.com/explorer/subgraph/melonproject/melon?query=List%20of%20funds).
+
+#### Using the Manager's Address
 
 In the event you know the manager's address, the process for finding a hub's address is more straightforward.
 
