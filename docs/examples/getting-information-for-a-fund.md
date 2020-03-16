@@ -10,7 +10,7 @@ These examples require an [environment](../building-blocks/environment/) instanc
 `Fund` and `Hub` addresses are currently referred to interchangeably. This will soon not be the case, and the docs will be edited to reflect the change. 
 {% endhint %}
 
-### Getting a Fund's \(or Funds'\) Hub Address
+### Getting a Fund's \(or Funds'\) Address
 
 In order to use the methods exposed on the `Hub` contract, we need its address. All Melon Funds are indexed on the blockchain. The `Version` contract exposes a method to get the index of the most recently-created fund. You can then pass that index to another `Version` method to get the fund's hub address. That would look something like this:
 
@@ -69,8 +69,34 @@ import { Hub } from '@melonproject/melonjs';
 // create the instance of the Fund's hub contract
 const hub = new Hub(environment, fundAddress);
 
-// various methods are exposed on the hub object:
+// declare a variable that you'll set equal to an object that contains all the spoke contract addresses
+const spokes = await hub.getRoutes();
 
+// you can use regular object notation to access those addresses
+const accounting = spokes.accounting;
+
+const participation = spokes.participation;
+
+const shares = spokes.shares;
+
+const trading = spokes.trading;
+
+const vault = spokes.vault;
+
+const feeManager = spokes.feeManager;
+
+const policyManager = spokes.policyManager;
+```
+
+{% hint style="warning" %}
+These methods will be helpful through the code examples when creating contract instances. Each instance will require specific contract address to which it is referring. 
+{% endhint %}
+
+### Finding a Fund's Metadata
+
+Each fund contract also contains some useful metadata. Using the already instantiated hub above, we can make those queries as such:
+
+```javascript
 // the fund's creation date
 const date = await hub.getCreationTime();
 
@@ -98,32 +124,7 @@ const registry = await hub.getRegistry();
 // the PriceSource countract
 const priceSource = await hub.getPriceSource();
 
-// and finally an object with the addresses of the fund's spoke contracts
-const spokes = await hub.getRoutes();
-
-// from which you can access the addresses of the in individual contracts:
-const accounting = spokes.accounting;
-
-const participation = spokes.participation;
-
-const shares = spokes.shares;
-
-const trading = spokes.trading;
-
-const vault = spokes.vault;
-
-const feeManager = spokes.feeManager;
-
-const policyManager = spokes.policyManager;
-
-
 ```
-
-{% hint style="warning" %}
-These methods will be helpful through the code examples when creating contract instances. Each instance will require specific contract address to which it is referring. 
-{% endhint %}
-
-### Finding a Fund's Metadata
 
 
 
