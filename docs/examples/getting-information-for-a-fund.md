@@ -1,4 +1,4 @@
-# Getting a Fund's Contract Addresses
+# Getting Information About a Fund
 
 Once a fund has been set up, its `Hub` contract exposes various methods to query fund-specific data as well as the addresses of all of its spoke contracts. These contract addresses will be necessary in all further examples.
 
@@ -40,7 +40,7 @@ const promiseArray = Array(lastFundId+1).fill().map(
 const fundAddresses = await Promise.all(promiseArray);
 ```
 
-The above **will** work. However, we suggest querying the subgraph for this data to avoid having to make calls to the blockchain. You can see an example of how we'd build the same array of addresses, along with some additional helpful data \(manager address and fund name\) [here](https://thegraph.com/explorer/subgraph/melonproject/melon?query=List%20of%20funds).
+The above **will** work. However, we suggest querying the subgraph for this data as it's easier to filter and sort results. Requests made to the blockchain will also be quite slow in comparison. You can see an example of how we'd build the same array of addresses, along with some additional helpful data \(manager address and fund name\) [here](https://thegraph.com/explorer/subgraph/melonproject/melon?query=List%20of%20funds).
 
 #### Using the Manager's Address
 
