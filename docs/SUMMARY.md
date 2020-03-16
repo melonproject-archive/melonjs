@@ -15,7 +15,7 @@
 ## Examples
 
 * [Setting Up a Melon Fund](examples/fund-setup.md)
-* [Getting Fund Information](examples/getting-information-for-a-fund.md)
+* [Getting a Fund's Contract Addresses](examples/getting-information-for-a-fund.md)
 * [Investing in a Fund](examples/invest.md)
 * [Redeeming Shares From a Fund](examples/redeem.md)
 * [Getting Investment Data](examples/investmentstatus.md)
@@ -34,4 +34,5 @@
   * [OasisDex](examples/trading/oasisdex.md)
   * [Uniswap](examples/trading/uniswap.md)
   * [Kyber Network](examples/trading/kyber.md)
+* [Getting Information for Any Fund](getting-information-for-any-fund.md)
 
