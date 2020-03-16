@@ -34,5 +34,4 @@
   * [OasisDex](examples/trading/oasisdex.md)
   * [Uniswap](examples/trading/uniswap.md)
   * [Kyber Network](examples/trading/kyber.md)
-* [Getting Information for Any Fund](getting-information-for-any-fund.md)
 
