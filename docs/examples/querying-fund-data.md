@@ -1,4 +1,4 @@
-# Getting Information About a Fund
+# Querying Fund Data
 
 Once a fund has been set up, its `Hub` contract exposes various methods to query fund-specific data as well as the addresses of all of its spoke contracts. These contract addresses will be necessary in all further examples.
 

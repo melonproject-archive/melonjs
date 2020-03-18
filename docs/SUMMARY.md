@@ -15,7 +15,7 @@
 ## Examples
 
 * [Setting Up a Melon Fund](examples/fund-setup.md)
-* [Getting Information About a Fund](examples/getting-information-for-a-fund.md)
+* [Querying Fund Data](examples/querying-fund-data.md)
 * [Investing in a Fund](examples/invest.md)
 * [Redeeming Shares From a Fund](examples/redeem.md)
 * [Getting Investment Data](examples/investmentstatus.md)
