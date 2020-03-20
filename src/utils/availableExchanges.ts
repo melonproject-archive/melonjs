@@ -20,7 +20,7 @@ export interface ExchangeDefinition {
 export function availableExchanges(deployment: DeploymentOutput): ExchangeDefinition[] {
   const exchanges = [
     deployment.melon && {
-      name: 'Melon Engine',
+      name: 'Melon Engine (v2)',
       id: ExchangeIdentifier.MelonEngine,
       exchange: deployment.melon.addr.Engine,
       adapter: deployment.melon.addr.EngineAdapter,
@@ -48,14 +48,14 @@ export function availableExchanges(deployment: DeploymentOutput): ExchangeDefini
       historic: false,
     },
     deployment.zeroExV2 && {
-      name: '0x Protocol (v. 2.1)',
+      name: '0x (v2.1)',
       id: ExchangeIdentifier.ZeroExV2,
       adapter: deployment.melon.addr.ZeroExV2Adapter,
       exchange: deployment.zeroExV2.addr.ZeroExV2Exchange,
       historic: false,
     },
     deployment.zeroExV3 && {
-      name: '0x Protocol (v. 3.0)',
+      name: '0x (v3)',
       id: ExchangeIdentifier.ZeroExV3,
       adapter: deployment.melon.addr.ZeroExV3Adapter,
       exchange: deployment.zeroExV3.addr.ZeroExV3Exchange,
