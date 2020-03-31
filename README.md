@@ -32,7 +32,7 @@ yarn install
 yarn codegen
 ```
 
-You are now ready to start development. Check out the package.json scripts for useful commands for testing, test coverage, building and watch mode.
+You are now ready to start development. Documentation is available [here](https://melonjs.melonprotocol.com/). There are also several helpful scripts in package.json for testing, test coverage, building and watch mode.
 
 ## Testing
 
