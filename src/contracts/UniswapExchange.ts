@@ -3,6 +3,8 @@ import { ethers } from 'ethers';
 import { Contract, TransactionWrapper } from '../Contract';
 
 export class UniswapExchange extends Contract {
+  public readonly ethers: UniswapExchangeEthersContract;
+
   constructor(addressOrName: string, providerOrSigner: ethers.Signer | ethers.providers.Provider) {
     super(new.target.abi, addressOrName, providerOrSigner);
   }
@@ -11,7 +13,8 @@ export class UniswapExchange extends Contract {
    * `UniswapExchange` contract call for the `getEthToTokenInputPrice` function.
    *
    * @contract UniswapExchange
-   * @signature function getEthToTokenInputPrice(uint256) view returns (uint256) @5542
+   * @signature getEthToTokenInputPrice(uint256)
+   * @method function getEthToTokenInputPrice(uint256) view returns (uint256) @5542
    */
   getEthToTokenInputPrice: (
     eth_sold: ethers.BigNumberish,
@@ -22,7 +25,8 @@ export class UniswapExchange extends Contract {
    * `UniswapExchange` contract call for the `getEthToTokenOutputPrice` function.
    *
    * @contract UniswapExchange
-   * @signature function getEthToTokenOutputPrice(uint256) view returns (uint256) @6872
+   * @signature getEthToTokenOutputPrice(uint256)
+   * @method function getEthToTokenOutputPrice(uint256) view returns (uint256) @6872
    */
   getEthToTokenOutputPrice: (
     tokens_bought: ethers.BigNumberish,
@@ -33,7 +37,8 @@ export class UniswapExchange extends Contract {
    * `UniswapExchange` contract call for the `getTokenToEthInputPrice` function.
    *
    * @contract UniswapExchange
-   * @signature function getTokenToEthInputPrice(uint256) view returns (uint256) @5637
+   * @signature getTokenToEthInputPrice(uint256)
+   * @method function getTokenToEthInputPrice(uint256) view returns (uint256) @5637
    */
   getTokenToEthInputPrice: (
     tokens_sold: ethers.BigNumberish,
@@ -44,7 +49,8 @@ export class UniswapExchange extends Contract {
    * `UniswapExchange` contract call for the `getTokenToEthOutputPrice` function.
    *
    * @contract UniswapExchange
-   * @signature function getTokenToEthOutputPrice(uint256) view returns (uint256) @6897
+   * @signature getTokenToEthOutputPrice(uint256)
+   * @method function getTokenToEthOutputPrice(uint256) view returns (uint256) @6897
    */
   getTokenToEthOutputPrice: (
     eth_bought: ethers.BigNumberish,
@@ -55,7 +61,8 @@ export class UniswapExchange extends Contract {
    * `UniswapExchange` contract call for the `tokenAddress` function.
    *
    * @contract UniswapExchange
-   * @signature function tokenAddress() view returns (address) @1413
+   * @signature tokenAddress()
+   * @method function tokenAddress() view returns (address) @1413
    */
   tokenAddress: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
@@ -63,7 +70,8 @@ export class UniswapExchange extends Contract {
    * `UniswapExchange` contract call for the `factoryAddress` function.
    *
    * @contract UniswapExchange
-   * @signature function factoryAddress() view returns (address) @1443
+   * @signature factoryAddress()
+   * @method function factoryAddress() view returns (address) @1443
    */
   factoryAddress: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
@@ -71,7 +79,8 @@ export class UniswapExchange extends Contract {
    * `UniswapExchange` contract call for the `balanceOf` function.
    *
    * @contract UniswapExchange
-   * @signature function balanceOf(address) view returns (uint256) @1645
+   * @signature balanceOf(address)
+   * @method function balanceOf(address) view returns (uint256) @1645
    */
   balanceOf: (_owner: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
@@ -79,7 +88,8 @@ export class UniswapExchange extends Contract {
    * `UniswapExchange` contract call for the `allowance` function.
    *
    * @contract UniswapExchange
-   * @signature function allowance(address,address) view returns (uint256) @1925
+   * @signature allowance(address,address)
+   * @method function allowance(address,address) view returns (uint256) @1925
    */
   allowance: (_owner: string, _spender: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
@@ -87,7 +97,8 @@ export class UniswapExchange extends Contract {
    * `UniswapExchange` contract call for the `name` function.
    *
    * @contract UniswapExchange
-   * @signature function name() view returns (bytes32) @1623
+   * @signature name()
+   * @method function name() view returns (bytes32) @1623
    */
   name: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
@@ -95,7 +106,8 @@ export class UniswapExchange extends Contract {
    * `UniswapExchange` contract call for the `symbol` function.
    *
    * @contract UniswapExchange
-   * @signature function symbol() view returns (bytes32) @1653
+   * @signature symbol()
+   * @method function symbol() view returns (bytes32) @1653
    */
   symbol: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
@@ -103,7 +115,8 @@ export class UniswapExchange extends Contract {
    * `UniswapExchange` contract call for the `decimals` function.
    *
    * @contract UniswapExchange
-   * @signature function decimals() view returns (uint256) @1683
+   * @signature decimals()
+   * @method function decimals() view returns (uint256) @1683
    */
   decimals: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
@@ -111,7 +124,8 @@ export class UniswapExchange extends Contract {
    * `UniswapExchange` contract call for the `totalSupply` function.
    *
    * @contract UniswapExchange
-   * @signature function totalSupply() view returns (uint256) @1713
+   * @signature totalSupply()
+   * @method function totalSupply() view returns (uint256) @1713
    */
   totalSupply: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
@@ -119,7 +133,8 @@ export class UniswapExchange extends Contract {
    * `UniswapExchange` contract transaction for `setup` function.
    *
    * @contract UniswapExchange
-   * @signature function setup(address) @175875
+   * @signature setup(address)
+   * @method function setup(address) @175875
    */
   setup: (token_addr: string) => TransactionWrapper<ethers.Overrides>;
 
@@ -127,7 +142,8 @@ export class UniswapExchange extends Contract {
    * `UniswapExchange` contract transaction for `addLiquidity` function.
    *
    * @contract UniswapExchange
-   * @signature function addLiquidity(uint256,uint256,uint256) payable returns (uint256) @82616
+   * @signature addLiquidity(uint256,uint256,uint256)
+   * @method function addLiquidity(uint256,uint256,uint256) payable returns (uint256) @82616
    */
   addLiquidity: (
     min_liquidity: ethers.BigNumberish,
@@ -139,7 +155,8 @@ export class UniswapExchange extends Contract {
    * `UniswapExchange` contract transaction for `removeLiquidity` function.
    *
    * @contract UniswapExchange
-   * @signature function removeLiquidity(uint256,uint256,uint256,uint256) returns (uint256, uint256) @116814
+   * @signature removeLiquidity(uint256,uint256,uint256,uint256)
+   * @method function removeLiquidity(uint256,uint256,uint256,uint256) returns (uint256, uint256) @116814
    */
   removeLiquidity: (
     amount: ethers.BigNumberish,
@@ -152,7 +169,8 @@ export class UniswapExchange extends Contract {
    * `UniswapExchange` contract transaction for `__default__` function.
    *
    * @contract UniswapExchange
-   * @signature function __default__() payable
+   * @signature __default__()
+   * @method function __default__() payable
    */
   __default__: () => TransactionWrapper<ethers.PayableOverrides>;
 
@@ -160,7 +178,8 @@ export class UniswapExchange extends Contract {
    * `UniswapExchange` contract transaction for `ethToTokenSwapInput` function.
    *
    * @contract UniswapExchange
-   * @signature function ethToTokenSwapInput(uint256,uint256) payable returns (uint256) @12757
+   * @signature ethToTokenSwapInput(uint256,uint256)
+   * @method function ethToTokenSwapInput(uint256,uint256) payable returns (uint256) @12757
    */
   ethToTokenSwapInput: (
     min_tokens: ethers.BigNumberish,
@@ -171,7 +190,8 @@ export class UniswapExchange extends Contract {
    * `UniswapExchange` contract transaction for `ethToTokenTransferInput` function.
    *
    * @contract UniswapExchange
-   * @signature function ethToTokenTransferInput(uint256,uint256,address) payable returns (uint256) @12965
+   * @signature ethToTokenTransferInput(uint256,uint256,address)
+   * @method function ethToTokenTransferInput(uint256,uint256,address) payable returns (uint256) @12965
    */
   ethToTokenTransferInput: (
     min_tokens: ethers.BigNumberish,
@@ -183,7 +203,8 @@ export class UniswapExchange extends Contract {
    * `UniswapExchange` contract transaction for `ethToTokenSwapOutput` function.
    *
    * @contract UniswapExchange
-   * @signature function ethToTokenSwapOutput(uint256,uint256) payable returns (uint256) @50463
+   * @signature ethToTokenSwapOutput(uint256,uint256)
+   * @method function ethToTokenSwapOutput(uint256,uint256) payable returns (uint256) @50463
    */
   ethToTokenSwapOutput: (
     tokens_bought: ethers.BigNumberish,
@@ -194,7 +215,8 @@ export class UniswapExchange extends Contract {
    * `UniswapExchange` contract transaction for `ethToTokenTransferOutput` function.
    *
    * @contract UniswapExchange
-   * @signature function ethToTokenTransferOutput(uint256,uint256,address) payable returns (uint256) @50671
+   * @signature ethToTokenTransferOutput(uint256,uint256,address)
+   * @method function ethToTokenTransferOutput(uint256,uint256,address) payable returns (uint256) @50671
    */
   ethToTokenTransferOutput: (
     tokens_bought: ethers.BigNumberish,
@@ -206,7 +228,8 @@ export class UniswapExchange extends Contract {
    * `UniswapExchange` contract transaction for `tokenToEthSwapInput` function.
    *
    * @contract UniswapExchange
-   * @signature function tokenToEthSwapInput(uint256,uint256,uint256) returns (uint256) @47503
+   * @signature tokenToEthSwapInput(uint256,uint256,uint256)
+   * @method function tokenToEthSwapInput(uint256,uint256,uint256) returns (uint256) @47503
    */
   tokenToEthSwapInput: (
     tokens_sold: ethers.BigNumberish,
@@ -218,7 +241,8 @@ export class UniswapExchange extends Contract {
    * `UniswapExchange` contract transaction for `tokenToEthTransferInput` function.
    *
    * @contract UniswapExchange
-   * @signature function tokenToEthTransferInput(uint256,uint256,uint256,address) returns (uint256) @47712
+   * @signature tokenToEthTransferInput(uint256,uint256,uint256,address)
+   * @method function tokenToEthTransferInput(uint256,uint256,uint256,address) returns (uint256) @47712
    */
   tokenToEthTransferInput: (
     tokens_sold: ethers.BigNumberish,
@@ -231,7 +255,8 @@ export class UniswapExchange extends Contract {
    * `UniswapExchange` contract transaction for `tokenToEthSwapOutput` function.
    *
    * @contract UniswapExchange
-   * @signature function tokenToEthSwapOutput(uint256,uint256,uint256) returns (uint256) @50175
+   * @signature tokenToEthSwapOutput(uint256,uint256,uint256)
+   * @method function tokenToEthSwapOutput(uint256,uint256,uint256) returns (uint256) @50175
    */
   tokenToEthSwapOutput: (
     eth_bought: ethers.BigNumberish,
@@ -243,7 +268,8 @@ export class UniswapExchange extends Contract {
    * `UniswapExchange` contract transaction for `tokenToEthTransferOutput` function.
    *
    * @contract UniswapExchange
-   * @signature function tokenToEthTransferOutput(uint256,uint256,uint256,address) returns (uint256) @50384
+   * @signature tokenToEthTransferOutput(uint256,uint256,uint256,address)
+   * @method function tokenToEthTransferOutput(uint256,uint256,uint256,address) returns (uint256) @50384
    */
   tokenToEthTransferOutput: (
     eth_bought: ethers.BigNumberish,
@@ -256,7 +282,8 @@ export class UniswapExchange extends Contract {
    * `UniswapExchange` contract transaction for `tokenToTokenSwapInput` function.
    *
    * @contract UniswapExchange
-   * @signature function tokenToTokenSwapInput(uint256,uint256,uint256,uint256,address) returns (uint256) @51007
+   * @signature tokenToTokenSwapInput(uint256,uint256,uint256,uint256,address)
+   * @method function tokenToTokenSwapInput(uint256,uint256,uint256,uint256,address) returns (uint256) @51007
    */
   tokenToTokenSwapInput: (
     tokens_sold: ethers.BigNumberish,
@@ -270,7 +297,8 @@ export class UniswapExchange extends Contract {
    * `UniswapExchange` contract transaction for `tokenToTokenTransferInput` function.
    *
    * @contract UniswapExchange
-   * @signature function tokenToTokenTransferInput(uint256,uint256,uint256,uint256,address,address) returns (uint256) @51098
+   * @signature tokenToTokenTransferInput(uint256,uint256,uint256,uint256,address,address)
+   * @method function tokenToTokenTransferInput(uint256,uint256,uint256,uint256,address,address) returns (uint256) @51098
    */
   tokenToTokenTransferInput: (
     tokens_sold: ethers.BigNumberish,
@@ -285,7 +313,8 @@ export class UniswapExchange extends Contract {
    * `UniswapExchange` contract transaction for `tokenToTokenSwapOutput` function.
    *
    * @contract UniswapExchange
-   * @signature function tokenToTokenSwapOutput(uint256,uint256,uint256,uint256,address) returns (uint256) @54928
+   * @signature tokenToTokenSwapOutput(uint256,uint256,uint256,uint256,address)
+   * @method function tokenToTokenSwapOutput(uint256,uint256,uint256,uint256,address) returns (uint256) @54928
    */
   tokenToTokenSwapOutput: (
     tokens_bought: ethers.BigNumberish,
@@ -299,7 +328,8 @@ export class UniswapExchange extends Contract {
    * `UniswapExchange` contract transaction for `tokenToTokenTransferOutput` function.
    *
    * @contract UniswapExchange
-   * @signature function tokenToTokenTransferOutput(uint256,uint256,uint256,uint256,address,address) returns (uint256) @55019
+   * @signature tokenToTokenTransferOutput(uint256,uint256,uint256,uint256,address,address)
+   * @method function tokenToTokenTransferOutput(uint256,uint256,uint256,uint256,address,address) returns (uint256) @55019
    */
   tokenToTokenTransferOutput: (
     tokens_bought: ethers.BigNumberish,
@@ -314,7 +344,8 @@ export class UniswapExchange extends Contract {
    * `UniswapExchange` contract transaction for `tokenToExchangeSwapInput` function.
    *
    * @contract UniswapExchange
-   * @signature function tokenToExchangeSwapInput(uint256,uint256,uint256,uint256,address) returns (uint256) @49342
+   * @signature tokenToExchangeSwapInput(uint256,uint256,uint256,uint256,address)
+   * @method function tokenToExchangeSwapInput(uint256,uint256,uint256,uint256,address) returns (uint256) @49342
    */
   tokenToExchangeSwapInput: (
     tokens_sold: ethers.BigNumberish,
@@ -328,7 +359,8 @@ export class UniswapExchange extends Contract {
    * `UniswapExchange` contract transaction for `tokenToExchangeTransferInput` function.
    *
    * @contract UniswapExchange
-   * @signature function tokenToExchangeTransferInput(uint256,uint256,uint256,uint256,address,address) returns (uint256) @49532
+   * @signature tokenToExchangeTransferInput(uint256,uint256,uint256,uint256,address,address)
+   * @method function tokenToExchangeTransferInput(uint256,uint256,uint256,uint256,address,address) returns (uint256) @49532
    */
   tokenToExchangeTransferInput: (
     tokens_sold: ethers.BigNumberish,
@@ -343,7 +375,8 @@ export class UniswapExchange extends Contract {
    * `UniswapExchange` contract transaction for `tokenToExchangeSwapOutput` function.
    *
    * @contract UniswapExchange
-   * @signature function tokenToExchangeSwapOutput(uint256,uint256,uint256,uint256,address) returns (uint256) @53233
+   * @signature tokenToExchangeSwapOutput(uint256,uint256,uint256,uint256,address)
+   * @method function tokenToExchangeSwapOutput(uint256,uint256,uint256,uint256,address) returns (uint256) @53233
    */
   tokenToExchangeSwapOutput: (
     tokens_bought: ethers.BigNumberish,
@@ -357,7 +390,8 @@ export class UniswapExchange extends Contract {
    * `UniswapExchange` contract transaction for `tokenToExchangeTransferOutput` function.
    *
    * @contract UniswapExchange
-   * @signature function tokenToExchangeTransferOutput(uint256,uint256,uint256,uint256,address,address) returns (uint256) @53423
+   * @signature tokenToExchangeTransferOutput(uint256,uint256,uint256,uint256,address,address)
+   * @method function tokenToExchangeTransferOutput(uint256,uint256,uint256,uint256,address,address) returns (uint256) @53423
    */
   tokenToExchangeTransferOutput: (
     tokens_bought: ethers.BigNumberish,
@@ -372,7 +406,8 @@ export class UniswapExchange extends Contract {
    * `UniswapExchange` contract transaction for `transfer` function.
    *
    * @contract UniswapExchange
-   * @signature function transfer(address,uint256) returns (bool) @75034
+   * @signature transfer(address,uint256)
+   * @method function transfer(address,uint256) returns (bool) @75034
    */
   transfer: (_to: string, _value: ethers.BigNumberish) => TransactionWrapper<ethers.Overrides>;
 
@@ -380,7 +415,8 @@ export class UniswapExchange extends Contract {
    * `UniswapExchange` contract transaction for `transferFrom` function.
    *
    * @contract UniswapExchange
-   * @signature function transferFrom(address,address,uint256) returns (bool) @110907
+   * @signature transferFrom(address,address,uint256)
+   * @method function transferFrom(address,address,uint256) returns (bool) @110907
    */
   transferFrom: (_from: string, _to: string, _value: ethers.BigNumberish) => TransactionWrapper<ethers.Overrides>;
 
@@ -388,7 +424,8 @@ export class UniswapExchange extends Contract {
    * `UniswapExchange` contract transaction for `approve` function.
    *
    * @contract UniswapExchange
-   * @signature function approve(address,uint256) returns (bool) @38769
+   * @signature approve(address,uint256)
+   * @method function approve(address,uint256) returns (bool) @38769
    */
   approve: (_spender: string, _value: ethers.BigNumberish) => TransactionWrapper<ethers.Overrides>;
 
@@ -435,4 +472,660 @@ export class UniswapExchange extends Contract {
     'function decimals() view returns (uint256 out) @1683',
     'function totalSupply() view returns (uint256 out) @1713',
   ];
+}
+
+export interface UniswapExchangeEthersContract extends ethers.Contract {
+  'getEthToTokenInputPrice(uint256)': (
+    eth_sold: ethers.BigNumberish,
+    $$overrides?: ethers.CallOverrides,
+  ) => Promise<ethers.BigNumber>;
+  'getEthToTokenOutputPrice(uint256)': (
+    tokens_bought: ethers.BigNumberish,
+    $$overrides?: ethers.CallOverrides,
+  ) => Promise<ethers.BigNumber>;
+  'getTokenToEthInputPrice(uint256)': (
+    tokens_sold: ethers.BigNumberish,
+    $$overrides?: ethers.CallOverrides,
+  ) => Promise<ethers.BigNumber>;
+  'getTokenToEthOutputPrice(uint256)': (
+    eth_bought: ethers.BigNumberish,
+    $$overrides?: ethers.CallOverrides,
+  ) => Promise<ethers.BigNumber>;
+  'tokenAddress()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  'factoryAddress()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  'balanceOf(address)': (_owner: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+  'allowance(address,address)': (
+    _owner: string,
+    _spender: string,
+    $$overrides?: ethers.CallOverrides,
+  ) => Promise<ethers.BigNumber>;
+  'name()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  'symbol()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  'decimals()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+  'totalSupply()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+  'setup(address)': (token_addr: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  'addLiquidity(uint256,uint256,uint256)': (
+    min_liquidity: ethers.BigNumberish,
+    max_tokens: ethers.BigNumberish,
+    deadline: ethers.BigNumberish,
+    $$overrides?: ethers.PayableOverrides,
+  ) => ethers.providers.TransactionResponse;
+  'removeLiquidity(uint256,uint256,uint256,uint256)': (
+    amount: ethers.BigNumberish,
+    min_eth: ethers.BigNumberish,
+    min_tokens: ethers.BigNumberish,
+    deadline: ethers.BigNumberish,
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+  '__default__()': ($$overrides?: ethers.PayableOverrides) => ethers.providers.TransactionResponse;
+  'ethToTokenSwapInput(uint256,uint256)': (
+    min_tokens: ethers.BigNumberish,
+    deadline: ethers.BigNumberish,
+    $$overrides?: ethers.PayableOverrides,
+  ) => ethers.providers.TransactionResponse;
+  'ethToTokenTransferInput(uint256,uint256,address)': (
+    min_tokens: ethers.BigNumberish,
+    deadline: ethers.BigNumberish,
+    recipient: string,
+    $$overrides?: ethers.PayableOverrides,
+  ) => ethers.providers.TransactionResponse;
+  'ethToTokenSwapOutput(uint256,uint256)': (
+    tokens_bought: ethers.BigNumberish,
+    deadline: ethers.BigNumberish,
+    $$overrides?: ethers.PayableOverrides,
+  ) => ethers.providers.TransactionResponse;
+  'ethToTokenTransferOutput(uint256,uint256,address)': (
+    tokens_bought: ethers.BigNumberish,
+    deadline: ethers.BigNumberish,
+    recipient: string,
+    $$overrides?: ethers.PayableOverrides,
+  ) => ethers.providers.TransactionResponse;
+  'tokenToEthSwapInput(uint256,uint256,uint256)': (
+    tokens_sold: ethers.BigNumberish,
+    min_eth: ethers.BigNumberish,
+    deadline: ethers.BigNumberish,
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+  'tokenToEthTransferInput(uint256,uint256,uint256,address)': (
+    tokens_sold: ethers.BigNumberish,
+    min_eth: ethers.BigNumberish,
+    deadline: ethers.BigNumberish,
+    recipient: string,
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+  'tokenToEthSwapOutput(uint256,uint256,uint256)': (
+    eth_bought: ethers.BigNumberish,
+    max_tokens: ethers.BigNumberish,
+    deadline: ethers.BigNumberish,
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+  'tokenToEthTransferOutput(uint256,uint256,uint256,address)': (
+    eth_bought: ethers.BigNumberish,
+    max_tokens: ethers.BigNumberish,
+    deadline: ethers.BigNumberish,
+    recipient: string,
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+  'tokenToTokenSwapInput(uint256,uint256,uint256,uint256,address)': (
+    tokens_sold: ethers.BigNumberish,
+    min_tokens_bought: ethers.BigNumberish,
+    min_eth_bought: ethers.BigNumberish,
+    deadline: ethers.BigNumberish,
+    token_addr: string,
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+  'tokenToTokenTransferInput(uint256,uint256,uint256,uint256,address,address)': (
+    tokens_sold: ethers.BigNumberish,
+    min_tokens_bought: ethers.BigNumberish,
+    min_eth_bought: ethers.BigNumberish,
+    deadline: ethers.BigNumberish,
+    recipient: string,
+    token_addr: string,
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+  'tokenToTokenSwapOutput(uint256,uint256,uint256,uint256,address)': (
+    tokens_bought: ethers.BigNumberish,
+    max_tokens_sold: ethers.BigNumberish,
+    max_eth_sold: ethers.BigNumberish,
+    deadline: ethers.BigNumberish,
+    token_addr: string,
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+  'tokenToTokenTransferOutput(uint256,uint256,uint256,uint256,address,address)': (
+    tokens_bought: ethers.BigNumberish,
+    max_tokens_sold: ethers.BigNumberish,
+    max_eth_sold: ethers.BigNumberish,
+    deadline: ethers.BigNumberish,
+    recipient: string,
+    token_addr: string,
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+  'tokenToExchangeSwapInput(uint256,uint256,uint256,uint256,address)': (
+    tokens_sold: ethers.BigNumberish,
+    min_tokens_bought: ethers.BigNumberish,
+    min_eth_bought: ethers.BigNumberish,
+    deadline: ethers.BigNumberish,
+    exchange_addr: string,
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+  'tokenToExchangeTransferInput(uint256,uint256,uint256,uint256,address,address)': (
+    tokens_sold: ethers.BigNumberish,
+    min_tokens_bought: ethers.BigNumberish,
+    min_eth_bought: ethers.BigNumberish,
+    deadline: ethers.BigNumberish,
+    recipient: string,
+    exchange_addr: string,
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+  'tokenToExchangeSwapOutput(uint256,uint256,uint256,uint256,address)': (
+    tokens_bought: ethers.BigNumberish,
+    max_tokens_sold: ethers.BigNumberish,
+    max_eth_sold: ethers.BigNumberish,
+    deadline: ethers.BigNumberish,
+    exchange_addr: string,
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+  'tokenToExchangeTransferOutput(uint256,uint256,uint256,uint256,address,address)': (
+    tokens_bought: ethers.BigNumberish,
+    max_tokens_sold: ethers.BigNumberish,
+    max_eth_sold: ethers.BigNumberish,
+    deadline: ethers.BigNumberish,
+    recipient: string,
+    exchange_addr: string,
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+  'transfer(address,uint256)': (
+    _to: string,
+    _value: ethers.BigNumberish,
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+  'transferFrom(address,address,uint256)': (
+    _from: string,
+    _to: string,
+    _value: ethers.BigNumberish,
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+  'approve(address,uint256)': (
+    _spender: string,
+    _value: ethers.BigNumberish,
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+
+  callStatic: {
+    'getEthToTokenInputPrice(uint256)': (
+      eth_sold: ethers.BigNumberish,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'getEthToTokenOutputPrice(uint256)': (
+      tokens_bought: ethers.BigNumberish,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'getTokenToEthInputPrice(uint256)': (
+      tokens_sold: ethers.BigNumberish,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'getTokenToEthOutputPrice(uint256)': (
+      eth_bought: ethers.BigNumberish,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'tokenAddress()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'factoryAddress()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'balanceOf(address)': (_owner: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'allowance(address,address)': (
+      _owner: string,
+      _spender: string,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'name()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'symbol()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'decimals()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'totalSupply()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'setup(address)': (token_addr: string, $$overrides?: ethers.Overrides) => Promise<void>;
+    'addLiquidity(uint256,uint256,uint256)': (
+      min_liquidity: ethers.BigNumberish,
+      max_tokens: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      $$overrides?: ethers.PayableOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'removeLiquidity(uint256,uint256,uint256,uint256)': (
+      amount: ethers.BigNumberish,
+      min_eth: ethers.BigNumberish,
+      min_tokens: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<any[]>;
+    '__default__()': ($$overrides?: ethers.PayableOverrides) => Promise<void>;
+    'ethToTokenSwapInput(uint256,uint256)': (
+      min_tokens: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      $$overrides?: ethers.PayableOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'ethToTokenTransferInput(uint256,uint256,address)': (
+      min_tokens: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      recipient: string,
+      $$overrides?: ethers.PayableOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'ethToTokenSwapOutput(uint256,uint256)': (
+      tokens_bought: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      $$overrides?: ethers.PayableOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'ethToTokenTransferOutput(uint256,uint256,address)': (
+      tokens_bought: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      recipient: string,
+      $$overrides?: ethers.PayableOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'tokenToEthSwapInput(uint256,uint256,uint256)': (
+      tokens_sold: ethers.BigNumberish,
+      min_eth: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'tokenToEthTransferInput(uint256,uint256,uint256,address)': (
+      tokens_sold: ethers.BigNumberish,
+      min_eth: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      recipient: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'tokenToEthSwapOutput(uint256,uint256,uint256)': (
+      eth_bought: ethers.BigNumberish,
+      max_tokens: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'tokenToEthTransferOutput(uint256,uint256,uint256,address)': (
+      eth_bought: ethers.BigNumberish,
+      max_tokens: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      recipient: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'tokenToTokenSwapInput(uint256,uint256,uint256,uint256,address)': (
+      tokens_sold: ethers.BigNumberish,
+      min_tokens_bought: ethers.BigNumberish,
+      min_eth_bought: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      token_addr: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'tokenToTokenTransferInput(uint256,uint256,uint256,uint256,address,address)': (
+      tokens_sold: ethers.BigNumberish,
+      min_tokens_bought: ethers.BigNumberish,
+      min_eth_bought: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      recipient: string,
+      token_addr: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'tokenToTokenSwapOutput(uint256,uint256,uint256,uint256,address)': (
+      tokens_bought: ethers.BigNumberish,
+      max_tokens_sold: ethers.BigNumberish,
+      max_eth_sold: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      token_addr: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'tokenToTokenTransferOutput(uint256,uint256,uint256,uint256,address,address)': (
+      tokens_bought: ethers.BigNumberish,
+      max_tokens_sold: ethers.BigNumberish,
+      max_eth_sold: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      recipient: string,
+      token_addr: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'tokenToExchangeSwapInput(uint256,uint256,uint256,uint256,address)': (
+      tokens_sold: ethers.BigNumberish,
+      min_tokens_bought: ethers.BigNumberish,
+      min_eth_bought: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      exchange_addr: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'tokenToExchangeTransferInput(uint256,uint256,uint256,uint256,address,address)': (
+      tokens_sold: ethers.BigNumberish,
+      min_tokens_bought: ethers.BigNumberish,
+      min_eth_bought: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      recipient: string,
+      exchange_addr: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'tokenToExchangeSwapOutput(uint256,uint256,uint256,uint256,address)': (
+      tokens_bought: ethers.BigNumberish,
+      max_tokens_sold: ethers.BigNumberish,
+      max_eth_sold: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      exchange_addr: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'tokenToExchangeTransferOutput(uint256,uint256,uint256,uint256,address,address)': (
+      tokens_bought: ethers.BigNumberish,
+      max_tokens_sold: ethers.BigNumberish,
+      max_eth_sold: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      recipient: string,
+      exchange_addr: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'transfer(address,uint256)': (
+      _to: string,
+      _value: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<boolean>;
+    'transferFrom(address,address,uint256)': (
+      _from: string,
+      _to: string,
+      _value: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<boolean>;
+    'approve(address,uint256)': (
+      _spender: string,
+      _value: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<boolean>;
+  };
+
+  estimateGas: {
+    'setup(address)': (token_addr: string, $$overrides?: ethers.Overrides) => Promise<ethers.BigNumber>;
+    'addLiquidity(uint256,uint256,uint256)': (
+      min_liquidity: ethers.BigNumberish,
+      max_tokens: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      $$overrides?: ethers.PayableOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'removeLiquidity(uint256,uint256,uint256,uint256)': (
+      amount: ethers.BigNumberish,
+      min_eth: ethers.BigNumberish,
+      min_tokens: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    '__default__()': ($$overrides?: ethers.PayableOverrides) => Promise<ethers.BigNumber>;
+    'ethToTokenSwapInput(uint256,uint256)': (
+      min_tokens: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      $$overrides?: ethers.PayableOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'ethToTokenTransferInput(uint256,uint256,address)': (
+      min_tokens: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      recipient: string,
+      $$overrides?: ethers.PayableOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'ethToTokenSwapOutput(uint256,uint256)': (
+      tokens_bought: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      $$overrides?: ethers.PayableOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'ethToTokenTransferOutput(uint256,uint256,address)': (
+      tokens_bought: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      recipient: string,
+      $$overrides?: ethers.PayableOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'tokenToEthSwapInput(uint256,uint256,uint256)': (
+      tokens_sold: ethers.BigNumberish,
+      min_eth: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'tokenToEthTransferInput(uint256,uint256,uint256,address)': (
+      tokens_sold: ethers.BigNumberish,
+      min_eth: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      recipient: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'tokenToEthSwapOutput(uint256,uint256,uint256)': (
+      eth_bought: ethers.BigNumberish,
+      max_tokens: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'tokenToEthTransferOutput(uint256,uint256,uint256,address)': (
+      eth_bought: ethers.BigNumberish,
+      max_tokens: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      recipient: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'tokenToTokenSwapInput(uint256,uint256,uint256,uint256,address)': (
+      tokens_sold: ethers.BigNumberish,
+      min_tokens_bought: ethers.BigNumberish,
+      min_eth_bought: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      token_addr: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'tokenToTokenTransferInput(uint256,uint256,uint256,uint256,address,address)': (
+      tokens_sold: ethers.BigNumberish,
+      min_tokens_bought: ethers.BigNumberish,
+      min_eth_bought: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      recipient: string,
+      token_addr: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'tokenToTokenSwapOutput(uint256,uint256,uint256,uint256,address)': (
+      tokens_bought: ethers.BigNumberish,
+      max_tokens_sold: ethers.BigNumberish,
+      max_eth_sold: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      token_addr: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'tokenToTokenTransferOutput(uint256,uint256,uint256,uint256,address,address)': (
+      tokens_bought: ethers.BigNumberish,
+      max_tokens_sold: ethers.BigNumberish,
+      max_eth_sold: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      recipient: string,
+      token_addr: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'tokenToExchangeSwapInput(uint256,uint256,uint256,uint256,address)': (
+      tokens_sold: ethers.BigNumberish,
+      min_tokens_bought: ethers.BigNumberish,
+      min_eth_bought: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      exchange_addr: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'tokenToExchangeTransferInput(uint256,uint256,uint256,uint256,address,address)': (
+      tokens_sold: ethers.BigNumberish,
+      min_tokens_bought: ethers.BigNumberish,
+      min_eth_bought: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      recipient: string,
+      exchange_addr: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'tokenToExchangeSwapOutput(uint256,uint256,uint256,uint256,address)': (
+      tokens_bought: ethers.BigNumberish,
+      max_tokens_sold: ethers.BigNumberish,
+      max_eth_sold: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      exchange_addr: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'tokenToExchangeTransferOutput(uint256,uint256,uint256,uint256,address,address)': (
+      tokens_bought: ethers.BigNumberish,
+      max_tokens_sold: ethers.BigNumberish,
+      max_eth_sold: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      recipient: string,
+      exchange_addr: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'transfer(address,uint256)': (
+      _to: string,
+      _value: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'transferFrom(address,address,uint256)': (
+      _from: string,
+      _to: string,
+      _value: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'approve(address,uint256)': (
+      _spender: string,
+      _value: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+  };
+
+  populateTransaction: {
+    'setup(address)': (token_addr: string, $$overrides?: ethers.Overrides) => Promise<ethers.UnsignedTransaction>;
+    'addLiquidity(uint256,uint256,uint256)': (
+      min_liquidity: ethers.BigNumberish,
+      max_tokens: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      $$overrides?: ethers.PayableOverrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'removeLiquidity(uint256,uint256,uint256,uint256)': (
+      amount: ethers.BigNumberish,
+      min_eth: ethers.BigNumberish,
+      min_tokens: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    '__default__()': ($$overrides?: ethers.PayableOverrides) => Promise<ethers.UnsignedTransaction>;
+    'ethToTokenSwapInput(uint256,uint256)': (
+      min_tokens: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      $$overrides?: ethers.PayableOverrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'ethToTokenTransferInput(uint256,uint256,address)': (
+      min_tokens: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      recipient: string,
+      $$overrides?: ethers.PayableOverrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'ethToTokenSwapOutput(uint256,uint256)': (
+      tokens_bought: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      $$overrides?: ethers.PayableOverrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'ethToTokenTransferOutput(uint256,uint256,address)': (
+      tokens_bought: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      recipient: string,
+      $$overrides?: ethers.PayableOverrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'tokenToEthSwapInput(uint256,uint256,uint256)': (
+      tokens_sold: ethers.BigNumberish,
+      min_eth: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'tokenToEthTransferInput(uint256,uint256,uint256,address)': (
+      tokens_sold: ethers.BigNumberish,
+      min_eth: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      recipient: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'tokenToEthSwapOutput(uint256,uint256,uint256)': (
+      eth_bought: ethers.BigNumberish,
+      max_tokens: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'tokenToEthTransferOutput(uint256,uint256,uint256,address)': (
+      eth_bought: ethers.BigNumberish,
+      max_tokens: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      recipient: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'tokenToTokenSwapInput(uint256,uint256,uint256,uint256,address)': (
+      tokens_sold: ethers.BigNumberish,
+      min_tokens_bought: ethers.BigNumberish,
+      min_eth_bought: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      token_addr: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'tokenToTokenTransferInput(uint256,uint256,uint256,uint256,address,address)': (
+      tokens_sold: ethers.BigNumberish,
+      min_tokens_bought: ethers.BigNumberish,
+      min_eth_bought: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      recipient: string,
+      token_addr: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'tokenToTokenSwapOutput(uint256,uint256,uint256,uint256,address)': (
+      tokens_bought: ethers.BigNumberish,
+      max_tokens_sold: ethers.BigNumberish,
+      max_eth_sold: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      token_addr: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'tokenToTokenTransferOutput(uint256,uint256,uint256,uint256,address,address)': (
+      tokens_bought: ethers.BigNumberish,
+      max_tokens_sold: ethers.BigNumberish,
+      max_eth_sold: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      recipient: string,
+      token_addr: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'tokenToExchangeSwapInput(uint256,uint256,uint256,uint256,address)': (
+      tokens_sold: ethers.BigNumberish,
+      min_tokens_bought: ethers.BigNumberish,
+      min_eth_bought: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      exchange_addr: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'tokenToExchangeTransferInput(uint256,uint256,uint256,uint256,address,address)': (
+      tokens_sold: ethers.BigNumberish,
+      min_tokens_bought: ethers.BigNumberish,
+      min_eth_bought: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      recipient: string,
+      exchange_addr: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'tokenToExchangeSwapOutput(uint256,uint256,uint256,uint256,address)': (
+      tokens_bought: ethers.BigNumberish,
+      max_tokens_sold: ethers.BigNumberish,
+      max_eth_sold: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      exchange_addr: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'tokenToExchangeTransferOutput(uint256,uint256,uint256,uint256,address,address)': (
+      tokens_bought: ethers.BigNumberish,
+      max_tokens_sold: ethers.BigNumberish,
+      max_eth_sold: ethers.BigNumberish,
+      deadline: ethers.BigNumberish,
+      recipient: string,
+      exchange_addr: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'transfer(address,uint256)': (
+      _to: string,
+      _value: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'transferFrom(address,address,uint256)': (
+      _from: string,
+      _to: string,
+      _value: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'approve(address,uint256)': (
+      _spender: string,
+      _value: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+  };
 }

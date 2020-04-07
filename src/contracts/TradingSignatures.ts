@@ -3,25 +3,32 @@ import { ethers } from 'ethers';
 import { Contract, TransactionWrapper } from '../Contract';
 
 export class TradingSignatures extends Contract {
+  public readonly ethers: TradingSignaturesEthersContract;
+
   constructor(addressOrName: string, providerOrSigner: ethers.Signer | ethers.providers.Provider) {
     super(new.target.abi, addressOrName, providerOrSigner);
   }
 
   /**
-   * `TradingSignatures` contract call for the `MAKE_ORDER` function.
-   *
-   * @contract TradingSignatures
-   * @signature function MAKE_ORDER() view returns (bytes4)
-   */
-  MAKE_ORDER: ($$overrides?: ethers.CallOverrides) => Promise<string>;
-
-  /**
    * `TradingSignatures` contract call for the `TAKE_ORDER` function.
    *
    * @contract TradingSignatures
-   * @signature function TAKE_ORDER() view returns (bytes4)
+   * @signature TAKE_ORDER()
+   * @method function TAKE_ORDER() view returns (bytes4)
    */
   TAKE_ORDER: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
-  static abi: string[] = ['function MAKE_ORDER() view returns (bytes4)', 'function TAKE_ORDER() view returns (bytes4)'];
+  static abi: string[] = ['function TAKE_ORDER() view returns (bytes4)'];
+}
+
+export interface TradingSignaturesEthersContract extends ethers.Contract {
+  'TAKE_ORDER()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+
+  callStatic: {
+    'TAKE_ORDER()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  };
+
+  estimateGas: {};
+
+  populateTransaction: {};
 }

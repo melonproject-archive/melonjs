@@ -3,6 +3,8 @@ import { ethers } from 'ethers';
 import { Contract, TransactionWrapper } from '../Contract';
 
 export class ConversionRates extends Contract {
+  public readonly ethers: ConversionRatesEthersContract;
+
   constructor(addressOrName: string, providerOrSigner: ethers.Signer | ethers.providers.Provider) {
     super(new.target.abi, addressOrName, providerOrSigner);
   }
@@ -11,7 +13,8 @@ export class ConversionRates extends Contract {
    * `ConversionRates` contract call for the `validRateDurationInBlocks` function.
    *
    * @contract ConversionRates
-   * @signature function validRateDurationInBlocks() view returns (uint256)
+   * @signature validRateDurationInBlocks()
+   * @method function validRateDurationInBlocks() view returns (uint256)
    */
   validRateDurationInBlocks: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
@@ -19,7 +22,8 @@ export class ConversionRates extends Contract {
    * `ConversionRates` contract call for the `pendingAdmin` function.
    *
    * @contract ConversionRates
-   * @signature function pendingAdmin() view returns (address)
+   * @signature pendingAdmin()
+   * @method function pendingAdmin() view returns (address)
    */
   pendingAdmin: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
@@ -27,7 +31,8 @@ export class ConversionRates extends Contract {
    * `ConversionRates` contract call for the `getOperators` function.
    *
    * @contract ConversionRates
-   * @signature function getOperators() view returns (address[])
+   * @signature getOperators()
+   * @method function getOperators() view returns (address[])
    */
   getOperators: ($$overrides?: ethers.CallOverrides) => Promise<string[]>;
 
@@ -35,7 +40,8 @@ export class ConversionRates extends Contract {
    * `ConversionRates` contract call for the `getListedTokens` function.
    *
    * @contract ConversionRates
-   * @signature function getListedTokens() view returns (address[])
+   * @signature getListedTokens()
+   * @method function getListedTokens() view returns (address[])
    */
   getListedTokens: ($$overrides?: ethers.CallOverrides) => Promise<string[]>;
 
@@ -43,7 +49,8 @@ export class ConversionRates extends Contract {
    * `ConversionRates` contract call for the `numTokensInCurrentCompactData` function.
    *
    * @contract ConversionRates
-   * @signature function numTokensInCurrentCompactData() view returns (uint256)
+   * @signature numTokensInCurrentCompactData()
+   * @method function numTokensInCurrentCompactData() view returns (uint256)
    */
   numTokensInCurrentCompactData: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
@@ -51,7 +58,8 @@ export class ConversionRates extends Contract {
    * `ConversionRates` contract call for the `getStepFunctionData` function.
    *
    * @contract ConversionRates
-   * @signature function getStepFunctionData(address,uint256,uint256) view returns (int256)
+   * @signature getStepFunctionData(address,uint256,uint256)
+   * @method function getStepFunctionData(address,uint256,uint256) view returns (int256)
    */
   getStepFunctionData: (
     token: string,
@@ -64,7 +72,8 @@ export class ConversionRates extends Contract {
    * `ConversionRates` contract call for the `getTokenBasicData` function.
    *
    * @contract ConversionRates
-   * @signature function getTokenBasicData(address) view returns (bool, bool)
+   * @signature getTokenBasicData(address)
+   * @method function getTokenBasicData(address) view returns (bool, bool)
    */
   getTokenBasicData: (token: string, $$overrides?: ethers.CallOverrides) => Promise<any[]>;
 
@@ -72,7 +81,8 @@ export class ConversionRates extends Contract {
    * `ConversionRates` contract call for the `getAlerters` function.
    *
    * @contract ConversionRates
-   * @signature function getAlerters() view returns (address[])
+   * @signature getAlerters()
+   * @method function getAlerters() view returns (address[])
    */
   getAlerters: ($$overrides?: ethers.CallOverrides) => Promise<string[]>;
 
@@ -80,7 +90,8 @@ export class ConversionRates extends Contract {
    * `ConversionRates` contract call for the `getRateUpdateBlock` function.
    *
    * @contract ConversionRates
-   * @signature function getRateUpdateBlock(address) view returns (uint256)
+   * @signature getRateUpdateBlock(address)
+   * @method function getRateUpdateBlock(address) view returns (uint256)
    */
   getRateUpdateBlock: (token: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
@@ -88,7 +99,8 @@ export class ConversionRates extends Contract {
    * `ConversionRates` contract call for the `reserveContract` function.
    *
    * @contract ConversionRates
-   * @signature function reserveContract() view returns (address)
+   * @signature reserveContract()
+   * @method function reserveContract() view returns (address)
    */
   reserveContract: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
@@ -96,7 +108,8 @@ export class ConversionRates extends Contract {
    * `ConversionRates` contract call for the `tokenImbalanceData` function.
    *
    * @contract ConversionRates
-   * @signature function tokenImbalanceData(address,uint256) view returns (uint256)
+   * @signature tokenImbalanceData(address,uint256)
+   * @method function tokenImbalanceData(address,uint256) view returns (uint256)
    */
   tokenImbalanceData: (
     $$0: string,
@@ -108,7 +121,8 @@ export class ConversionRates extends Contract {
    * `ConversionRates` contract call for the `getRate` function.
    *
    * @contract ConversionRates
-   * @signature function getRate(address,uint256,bool,uint256) view returns (uint256)
+   * @signature getRate(address,uint256,bool,uint256)
+   * @method function getRate(address,uint256,bool,uint256) view returns (uint256)
    */
   getRate: (
     token: string,
@@ -122,7 +136,8 @@ export class ConversionRates extends Contract {
    * `ConversionRates` contract call for the `getBasicRate` function.
    *
    * @contract ConversionRates
-   * @signature function getBasicRate(address,bool) view returns (uint256)
+   * @signature getBasicRate(address,bool)
+   * @method function getBasicRate(address,bool) view returns (uint256)
    */
   getBasicRate: (token: string, buy: boolean, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
@@ -130,7 +145,8 @@ export class ConversionRates extends Contract {
    * `ConversionRates` contract call for the `getCompactData` function.
    *
    * @contract ConversionRates
-   * @signature function getCompactData(address) view returns (uint256, uint256, bytes1, bytes1)
+   * @signature getCompactData(address)
+   * @method function getCompactData(address) view returns (uint256, uint256, bytes1, bytes1)
    */
   getCompactData: (token: string, $$overrides?: ethers.CallOverrides) => Promise<any[]>;
 
@@ -138,7 +154,8 @@ export class ConversionRates extends Contract {
    * `ConversionRates` contract call for the `getTokenControlInfo` function.
    *
    * @contract ConversionRates
-   * @signature function getTokenControlInfo(address) view returns (uint256, uint256, uint256)
+   * @signature getTokenControlInfo(address)
+   * @method function getTokenControlInfo(address) view returns (uint256, uint256, uint256)
    */
   getTokenControlInfo: (token: string, $$overrides?: ethers.CallOverrides) => Promise<any[]>;
 
@@ -146,7 +163,8 @@ export class ConversionRates extends Contract {
    * `ConversionRates` contract call for the `admin` function.
    *
    * @contract ConversionRates
-   * @signature function admin() view returns (address)
+   * @signature admin()
+   * @method function admin() view returns (address)
    */
   admin: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
@@ -154,7 +172,8 @@ export class ConversionRates extends Contract {
    * `ConversionRates` contract transaction for `removeAlerter` function.
    *
    * @contract ConversionRates
-   * @signature function removeAlerter(address)
+   * @signature removeAlerter(address)
+   * @method function removeAlerter(address)
    */
   removeAlerter: (alerter: string) => TransactionWrapper<ethers.Overrides>;
 
@@ -162,7 +181,8 @@ export class ConversionRates extends Contract {
    * `ConversionRates` contract transaction for `setReserveAddress` function.
    *
    * @contract ConversionRates
-   * @signature function setReserveAddress(address)
+   * @signature setReserveAddress(address)
+   * @method function setReserveAddress(address)
    */
   setReserveAddress: (reserve: string) => TransactionWrapper<ethers.Overrides>;
 
@@ -170,7 +190,8 @@ export class ConversionRates extends Contract {
    * `ConversionRates` contract transaction for `disableTokenTrade` function.
    *
    * @contract ConversionRates
-   * @signature function disableTokenTrade(address)
+   * @signature disableTokenTrade(address)
+   * @method function disableTokenTrade(address)
    */
   disableTokenTrade: (token: string) => TransactionWrapper<ethers.Overrides>;
 
@@ -178,7 +199,8 @@ export class ConversionRates extends Contract {
    * `ConversionRates` contract transaction for `setBaseRate` function.
    *
    * @contract ConversionRates
-   * @signature function setBaseRate(address[],uint256[],uint256[],bytes14[],bytes14[],uint256,uint256[])
+   * @signature setBaseRate(address[],uint256[],uint256[],bytes14[],bytes14[],uint256,uint256[])
+   * @method function setBaseRate(address[],uint256[],uint256[],bytes14[],bytes14[],uint256,uint256[])
    */
   setBaseRate: (
     tokens: string[],
@@ -194,7 +216,8 @@ export class ConversionRates extends Contract {
    * `ConversionRates` contract transaction for `enableTokenTrade` function.
    *
    * @contract ConversionRates
-   * @signature function enableTokenTrade(address)
+   * @signature enableTokenTrade(address)
+   * @method function enableTokenTrade(address)
    */
   enableTokenTrade: (token: string) => TransactionWrapper<ethers.Overrides>;
 
@@ -202,7 +225,8 @@ export class ConversionRates extends Contract {
    * `ConversionRates` contract transaction for `withdrawToken` function.
    *
    * @contract ConversionRates
-   * @signature function withdrawToken(address,uint256,address)
+   * @signature withdrawToken(address,uint256,address)
+   * @method function withdrawToken(address,uint256,address)
    */
   withdrawToken: (token: string, amount: ethers.BigNumberish, sendTo: string) => TransactionWrapper<ethers.Overrides>;
 
@@ -210,7 +234,8 @@ export class ConversionRates extends Contract {
    * `ConversionRates` contract transaction for `addAlerter` function.
    *
    * @contract ConversionRates
-   * @signature function addAlerter(address)
+   * @signature addAlerter(address)
+   * @method function addAlerter(address)
    */
   addAlerter: (newAlerter: string) => TransactionWrapper<ethers.Overrides>;
 
@@ -218,7 +243,8 @@ export class ConversionRates extends Contract {
    * `ConversionRates` contract transaction for `setCompactData` function.
    *
    * @contract ConversionRates
-   * @signature function setCompactData(bytes14[],bytes14[],uint256,uint256[])
+   * @signature setCompactData(bytes14[],bytes14[],uint256,uint256[])
+   * @method function setCompactData(bytes14[],bytes14[],uint256,uint256[])
    */
   setCompactData: (
     buy: string | ethers.utils.BytesLike,
@@ -231,7 +257,8 @@ export class ConversionRates extends Contract {
    * `ConversionRates` contract transaction for `setValidRateDurationInBlocks` function.
    *
    * @contract ConversionRates
-   * @signature function setValidRateDurationInBlocks(uint256)
+   * @signature setValidRateDurationInBlocks(uint256)
+   * @method function setValidRateDurationInBlocks(uint256)
    */
   setValidRateDurationInBlocks: (duration: ethers.BigNumberish) => TransactionWrapper<ethers.Overrides>;
 
@@ -239,7 +266,8 @@ export class ConversionRates extends Contract {
    * `ConversionRates` contract transaction for `transferAdmin` function.
    *
    * @contract ConversionRates
-   * @signature function transferAdmin(address)
+   * @signature transferAdmin(address)
+   * @method function transferAdmin(address)
    */
   transferAdmin: (newAdmin: string) => TransactionWrapper<ethers.Overrides>;
 
@@ -247,7 +275,8 @@ export class ConversionRates extends Contract {
    * `ConversionRates` contract transaction for `claimAdmin` function.
    *
    * @contract ConversionRates
-   * @signature function claimAdmin()
+   * @signature claimAdmin()
+   * @method function claimAdmin()
    */
   claimAdmin: () => TransactionWrapper<ethers.Overrides>;
 
@@ -255,7 +284,8 @@ export class ConversionRates extends Contract {
    * `ConversionRates` contract transaction for `transferAdminQuickly` function.
    *
    * @contract ConversionRates
-   * @signature function transferAdminQuickly(address)
+   * @signature transferAdminQuickly(address)
+   * @method function transferAdminQuickly(address)
    */
   transferAdminQuickly: (newAdmin: string) => TransactionWrapper<ethers.Overrides>;
 
@@ -263,7 +293,8 @@ export class ConversionRates extends Contract {
    * `ConversionRates` contract transaction for `setQtyStepFunction` function.
    *
    * @contract ConversionRates
-   * @signature function setQtyStepFunction(address,int256[],int256[],int256[],int256[])
+   * @signature setQtyStepFunction(address,int256[],int256[],int256[],int256[])
+   * @method function setQtyStepFunction(address,int256[],int256[],int256[],int256[])
    */
   setQtyStepFunction: (
     token: string,
@@ -277,7 +308,8 @@ export class ConversionRates extends Contract {
    * `ConversionRates` contract transaction for `addOperator` function.
    *
    * @contract ConversionRates
-   * @signature function addOperator(address)
+   * @signature addOperator(address)
+   * @method function addOperator(address)
    */
   addOperator: (newOperator: string) => TransactionWrapper<ethers.Overrides>;
 
@@ -285,7 +317,8 @@ export class ConversionRates extends Contract {
    * `ConversionRates` contract transaction for `removeOperator` function.
    *
    * @contract ConversionRates
-   * @signature function removeOperator(address)
+   * @signature removeOperator(address)
+   * @method function removeOperator(address)
    */
   removeOperator: (operator: string) => TransactionWrapper<ethers.Overrides>;
 
@@ -293,7 +326,8 @@ export class ConversionRates extends Contract {
    * `ConversionRates` contract transaction for `setImbalanceStepFunction` function.
    *
    * @contract ConversionRates
-   * @signature function setImbalanceStepFunction(address,int256[],int256[],int256[],int256[])
+   * @signature setImbalanceStepFunction(address,int256[],int256[],int256[],int256[])
+   * @method function setImbalanceStepFunction(address,int256[],int256[],int256[],int256[])
    */
   setImbalanceStepFunction: (
     token: string,
@@ -307,7 +341,8 @@ export class ConversionRates extends Contract {
    * `ConversionRates` contract transaction for `setTokenControlInfo` function.
    *
    * @contract ConversionRates
-   * @signature function setTokenControlInfo(address,uint256,uint256,uint256)
+   * @signature setTokenControlInfo(address,uint256,uint256,uint256)
+   * @method function setTokenControlInfo(address,uint256,uint256,uint256)
    */
   setTokenControlInfo: (
     token: string,
@@ -320,7 +355,8 @@ export class ConversionRates extends Contract {
    * `ConversionRates` contract transaction for `recordImbalance` function.
    *
    * @contract ConversionRates
-   * @signature function recordImbalance(address,int256,uint256,uint256)
+   * @signature recordImbalance(address,int256,uint256,uint256)
+   * @method function recordImbalance(address,int256,uint256,uint256)
    */
   recordImbalance: (
     token: string,
@@ -333,7 +369,8 @@ export class ConversionRates extends Contract {
    * `ConversionRates` contract transaction for `withdrawEther` function.
    *
    * @contract ConversionRates
-   * @signature function withdrawEther(uint256,address)
+   * @signature withdrawEther(uint256,address)
+   * @method function withdrawEther(uint256,address)
    */
   withdrawEther: (amount: ethers.BigNumberish, sendTo: string) => TransactionWrapper<ethers.Overrides>;
 
@@ -341,7 +378,8 @@ export class ConversionRates extends Contract {
    * `ConversionRates` contract transaction for `addToken` function.
    *
    * @contract ConversionRates
-   * @signature function addToken(address)
+   * @signature addToken(address)
+   * @method function addToken(address)
    */
   addToken: (token: string) => TransactionWrapper<ethers.Overrides>;
 
@@ -390,4 +428,399 @@ export class ConversionRates extends Contract {
     'event AlerterAdded(address newAlerter, bool isAdd)',
     'event OperatorAdded(address newOperator, bool isAdd)',
   ];
+}
+
+export interface ConversionRatesEthersContract extends ethers.Contract {
+  'validRateDurationInBlocks()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+  'pendingAdmin()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  'getOperators()': ($$overrides?: ethers.CallOverrides) => Promise<string[]>;
+  'getListedTokens()': ($$overrides?: ethers.CallOverrides) => Promise<string[]>;
+  'numTokensInCurrentCompactData()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+  'getStepFunctionData(address,uint256,uint256)': (
+    token: string,
+    command: ethers.BigNumberish,
+    param: ethers.BigNumberish,
+    $$overrides?: ethers.CallOverrides,
+  ) => Promise<ethers.BigNumber>;
+  'getTokenBasicData(address)': (token: string, $$overrides?: ethers.CallOverrides) => Promise<any[]>;
+  'getAlerters()': ($$overrides?: ethers.CallOverrides) => Promise<string[]>;
+  'getRateUpdateBlock(address)': (token: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+  'reserveContract()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  'tokenImbalanceData(address,uint256)': (
+    $$0: string,
+    $$1: ethers.BigNumberish,
+    $$overrides?: ethers.CallOverrides,
+  ) => Promise<ethers.BigNumber>;
+  'getRate(address,uint256,bool,uint256)': (
+    token: string,
+    currentBlockNumber: ethers.BigNumberish,
+    buy: boolean,
+    qty: ethers.BigNumberish,
+    $$overrides?: ethers.CallOverrides,
+  ) => Promise<ethers.BigNumber>;
+  'getBasicRate(address,bool)': (
+    token: string,
+    buy: boolean,
+    $$overrides?: ethers.CallOverrides,
+  ) => Promise<ethers.BigNumber>;
+  'getCompactData(address)': (token: string, $$overrides?: ethers.CallOverrides) => Promise<any[]>;
+  'getTokenControlInfo(address)': (token: string, $$overrides?: ethers.CallOverrides) => Promise<any[]>;
+  'admin()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  'removeAlerter(address)': (alerter: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  'setReserveAddress(address)': (
+    reserve: string,
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+  'disableTokenTrade(address)': (token: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  'setBaseRate(address[],uint256[],uint256[],bytes14[],bytes14[],uint256,uint256[])': (
+    tokens: string[],
+    baseBuy: ethers.BigNumber[],
+    baseSell: ethers.BigNumber[],
+    buy: string | ethers.utils.BytesLike,
+    sell: string | ethers.utils.BytesLike,
+    blockNumber: ethers.BigNumberish,
+    indices: ethers.BigNumber[],
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+  'enableTokenTrade(address)': (token: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  'withdrawToken(address,uint256,address)': (
+    token: string,
+    amount: ethers.BigNumberish,
+    sendTo: string,
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+  'addAlerter(address)': (newAlerter: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  'setCompactData(bytes14[],bytes14[],uint256,uint256[])': (
+    buy: string | ethers.utils.BytesLike,
+    sell: string | ethers.utils.BytesLike,
+    blockNumber: ethers.BigNumberish,
+    indices: ethers.BigNumber[],
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+  'setValidRateDurationInBlocks(uint256)': (
+    duration: ethers.BigNumberish,
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+  'transferAdmin(address)': (newAdmin: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  'claimAdmin()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  'transferAdminQuickly(address)': (
+    newAdmin: string,
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+  'setQtyStepFunction(address,int256[],int256[],int256[],int256[])': (
+    token: string,
+    xBuy: ethers.BigNumber[],
+    yBuy: ethers.BigNumber[],
+    xSell: ethers.BigNumber[],
+    ySell: ethers.BigNumber[],
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+  'addOperator(address)': (newOperator: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  'removeOperator(address)': (operator: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  'setImbalanceStepFunction(address,int256[],int256[],int256[],int256[])': (
+    token: string,
+    xBuy: ethers.BigNumber[],
+    yBuy: ethers.BigNumber[],
+    xSell: ethers.BigNumber[],
+    ySell: ethers.BigNumber[],
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+  'setTokenControlInfo(address,uint256,uint256,uint256)': (
+    token: string,
+    minimalRecordResolution: ethers.BigNumberish,
+    maxPerBlockImbalance: ethers.BigNumberish,
+    maxTotalImbalance: ethers.BigNumberish,
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+  'recordImbalance(address,int256,uint256,uint256)': (
+    token: string,
+    buyAmount: ethers.BigNumberish,
+    rateUpdateBlock: ethers.BigNumberish,
+    currentBlock: ethers.BigNumberish,
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+  'withdrawEther(uint256,address)': (
+    amount: ethers.BigNumberish,
+    sendTo: string,
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+  'addToken(address)': (token: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+
+  callStatic: {
+    'validRateDurationInBlocks()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'pendingAdmin()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'getOperators()': ($$overrides?: ethers.CallOverrides) => Promise<string[]>;
+    'getListedTokens()': ($$overrides?: ethers.CallOverrides) => Promise<string[]>;
+    'numTokensInCurrentCompactData()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'getStepFunctionData(address,uint256,uint256)': (
+      token: string,
+      command: ethers.BigNumberish,
+      param: ethers.BigNumberish,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'getTokenBasicData(address)': (token: string, $$overrides?: ethers.CallOverrides) => Promise<any[]>;
+    'getAlerters()': ($$overrides?: ethers.CallOverrides) => Promise<string[]>;
+    'getRateUpdateBlock(address)': (token: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'reserveContract()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'tokenImbalanceData(address,uint256)': (
+      $$0: string,
+      $$1: ethers.BigNumberish,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'getRate(address,uint256,bool,uint256)': (
+      token: string,
+      currentBlockNumber: ethers.BigNumberish,
+      buy: boolean,
+      qty: ethers.BigNumberish,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'getBasicRate(address,bool)': (
+      token: string,
+      buy: boolean,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'getCompactData(address)': (token: string, $$overrides?: ethers.CallOverrides) => Promise<any[]>;
+    'getTokenControlInfo(address)': (token: string, $$overrides?: ethers.CallOverrides) => Promise<any[]>;
+    'admin()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'removeAlerter(address)': (alerter: string, $$overrides?: ethers.Overrides) => Promise<void>;
+    'setReserveAddress(address)': (reserve: string, $$overrides?: ethers.Overrides) => Promise<void>;
+    'disableTokenTrade(address)': (token: string, $$overrides?: ethers.Overrides) => Promise<void>;
+    'setBaseRate(address[],uint256[],uint256[],bytes14[],bytes14[],uint256,uint256[])': (
+      tokens: string[],
+      baseBuy: ethers.BigNumber[],
+      baseSell: ethers.BigNumber[],
+      buy: string | ethers.utils.BytesLike,
+      sell: string | ethers.utils.BytesLike,
+      blockNumber: ethers.BigNumberish,
+      indices: ethers.BigNumber[],
+      $$overrides?: ethers.Overrides,
+    ) => Promise<void>;
+    'enableTokenTrade(address)': (token: string, $$overrides?: ethers.Overrides) => Promise<void>;
+    'withdrawToken(address,uint256,address)': (
+      token: string,
+      amount: ethers.BigNumberish,
+      sendTo: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<void>;
+    'addAlerter(address)': (newAlerter: string, $$overrides?: ethers.Overrides) => Promise<void>;
+    'setCompactData(bytes14[],bytes14[],uint256,uint256[])': (
+      buy: string | ethers.utils.BytesLike,
+      sell: string | ethers.utils.BytesLike,
+      blockNumber: ethers.BigNumberish,
+      indices: ethers.BigNumber[],
+      $$overrides?: ethers.Overrides,
+    ) => Promise<void>;
+    'setValidRateDurationInBlocks(uint256)': (
+      duration: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<void>;
+    'transferAdmin(address)': (newAdmin: string, $$overrides?: ethers.Overrides) => Promise<void>;
+    'claimAdmin()': ($$overrides?: ethers.Overrides) => Promise<void>;
+    'transferAdminQuickly(address)': (newAdmin: string, $$overrides?: ethers.Overrides) => Promise<void>;
+    'setQtyStepFunction(address,int256[],int256[],int256[],int256[])': (
+      token: string,
+      xBuy: ethers.BigNumber[],
+      yBuy: ethers.BigNumber[],
+      xSell: ethers.BigNumber[],
+      ySell: ethers.BigNumber[],
+      $$overrides?: ethers.Overrides,
+    ) => Promise<void>;
+    'addOperator(address)': (newOperator: string, $$overrides?: ethers.Overrides) => Promise<void>;
+    'removeOperator(address)': (operator: string, $$overrides?: ethers.Overrides) => Promise<void>;
+    'setImbalanceStepFunction(address,int256[],int256[],int256[],int256[])': (
+      token: string,
+      xBuy: ethers.BigNumber[],
+      yBuy: ethers.BigNumber[],
+      xSell: ethers.BigNumber[],
+      ySell: ethers.BigNumber[],
+      $$overrides?: ethers.Overrides,
+    ) => Promise<void>;
+    'setTokenControlInfo(address,uint256,uint256,uint256)': (
+      token: string,
+      minimalRecordResolution: ethers.BigNumberish,
+      maxPerBlockImbalance: ethers.BigNumberish,
+      maxTotalImbalance: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<void>;
+    'recordImbalance(address,int256,uint256,uint256)': (
+      token: string,
+      buyAmount: ethers.BigNumberish,
+      rateUpdateBlock: ethers.BigNumberish,
+      currentBlock: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<void>;
+    'withdrawEther(uint256,address)': (
+      amount: ethers.BigNumberish,
+      sendTo: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<void>;
+    'addToken(address)': (token: string, $$overrides?: ethers.Overrides) => Promise<void>;
+  };
+
+  estimateGas: {
+    'removeAlerter(address)': (alerter: string, $$overrides?: ethers.Overrides) => Promise<ethers.BigNumber>;
+    'setReserveAddress(address)': (reserve: string, $$overrides?: ethers.Overrides) => Promise<ethers.BigNumber>;
+    'disableTokenTrade(address)': (token: string, $$overrides?: ethers.Overrides) => Promise<ethers.BigNumber>;
+    'setBaseRate(address[],uint256[],uint256[],bytes14[],bytes14[],uint256,uint256[])': (
+      tokens: string[],
+      baseBuy: ethers.BigNumber[],
+      baseSell: ethers.BigNumber[],
+      buy: string | ethers.utils.BytesLike,
+      sell: string | ethers.utils.BytesLike,
+      blockNumber: ethers.BigNumberish,
+      indices: ethers.BigNumber[],
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'enableTokenTrade(address)': (token: string, $$overrides?: ethers.Overrides) => Promise<ethers.BigNumber>;
+    'withdrawToken(address,uint256,address)': (
+      token: string,
+      amount: ethers.BigNumberish,
+      sendTo: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'addAlerter(address)': (newAlerter: string, $$overrides?: ethers.Overrides) => Promise<ethers.BigNumber>;
+    'setCompactData(bytes14[],bytes14[],uint256,uint256[])': (
+      buy: string | ethers.utils.BytesLike,
+      sell: string | ethers.utils.BytesLike,
+      blockNumber: ethers.BigNumberish,
+      indices: ethers.BigNumber[],
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'setValidRateDurationInBlocks(uint256)': (
+      duration: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'transferAdmin(address)': (newAdmin: string, $$overrides?: ethers.Overrides) => Promise<ethers.BigNumber>;
+    'claimAdmin()': ($$overrides?: ethers.Overrides) => Promise<ethers.BigNumber>;
+    'transferAdminQuickly(address)': (newAdmin: string, $$overrides?: ethers.Overrides) => Promise<ethers.BigNumber>;
+    'setQtyStepFunction(address,int256[],int256[],int256[],int256[])': (
+      token: string,
+      xBuy: ethers.BigNumber[],
+      yBuy: ethers.BigNumber[],
+      xSell: ethers.BigNumber[],
+      ySell: ethers.BigNumber[],
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'addOperator(address)': (newOperator: string, $$overrides?: ethers.Overrides) => Promise<ethers.BigNumber>;
+    'removeOperator(address)': (operator: string, $$overrides?: ethers.Overrides) => Promise<ethers.BigNumber>;
+    'setImbalanceStepFunction(address,int256[],int256[],int256[],int256[])': (
+      token: string,
+      xBuy: ethers.BigNumber[],
+      yBuy: ethers.BigNumber[],
+      xSell: ethers.BigNumber[],
+      ySell: ethers.BigNumber[],
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'setTokenControlInfo(address,uint256,uint256,uint256)': (
+      token: string,
+      minimalRecordResolution: ethers.BigNumberish,
+      maxPerBlockImbalance: ethers.BigNumberish,
+      maxTotalImbalance: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'recordImbalance(address,int256,uint256,uint256)': (
+      token: string,
+      buyAmount: ethers.BigNumberish,
+      rateUpdateBlock: ethers.BigNumberish,
+      currentBlock: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'withdrawEther(uint256,address)': (
+      amount: ethers.BigNumberish,
+      sendTo: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'addToken(address)': (token: string, $$overrides?: ethers.Overrides) => Promise<ethers.BigNumber>;
+  };
+
+  populateTransaction: {
+    'removeAlerter(address)': (alerter: string, $$overrides?: ethers.Overrides) => Promise<ethers.UnsignedTransaction>;
+    'setReserveAddress(address)': (
+      reserve: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'disableTokenTrade(address)': (
+      token: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'setBaseRate(address[],uint256[],uint256[],bytes14[],bytes14[],uint256,uint256[])': (
+      tokens: string[],
+      baseBuy: ethers.BigNumber[],
+      baseSell: ethers.BigNumber[],
+      buy: string | ethers.utils.BytesLike,
+      sell: string | ethers.utils.BytesLike,
+      blockNumber: ethers.BigNumberish,
+      indices: ethers.BigNumber[],
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'enableTokenTrade(address)': (token: string, $$overrides?: ethers.Overrides) => Promise<ethers.UnsignedTransaction>;
+    'withdrawToken(address,uint256,address)': (
+      token: string,
+      amount: ethers.BigNumberish,
+      sendTo: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'addAlerter(address)': (newAlerter: string, $$overrides?: ethers.Overrides) => Promise<ethers.UnsignedTransaction>;
+    'setCompactData(bytes14[],bytes14[],uint256,uint256[])': (
+      buy: string | ethers.utils.BytesLike,
+      sell: string | ethers.utils.BytesLike,
+      blockNumber: ethers.BigNumberish,
+      indices: ethers.BigNumber[],
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'setValidRateDurationInBlocks(uint256)': (
+      duration: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'transferAdmin(address)': (newAdmin: string, $$overrides?: ethers.Overrides) => Promise<ethers.UnsignedTransaction>;
+    'claimAdmin()': ($$overrides?: ethers.Overrides) => Promise<ethers.UnsignedTransaction>;
+    'transferAdminQuickly(address)': (
+      newAdmin: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'setQtyStepFunction(address,int256[],int256[],int256[],int256[])': (
+      token: string,
+      xBuy: ethers.BigNumber[],
+      yBuy: ethers.BigNumber[],
+      xSell: ethers.BigNumber[],
+      ySell: ethers.BigNumber[],
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'addOperator(address)': (
+      newOperator: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'removeOperator(address)': (
+      operator: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'setImbalanceStepFunction(address,int256[],int256[],int256[],int256[])': (
+      token: string,
+      xBuy: ethers.BigNumber[],
+      yBuy: ethers.BigNumber[],
+      xSell: ethers.BigNumber[],
+      ySell: ethers.BigNumber[],
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'setTokenControlInfo(address,uint256,uint256,uint256)': (
+      token: string,
+      minimalRecordResolution: ethers.BigNumberish,
+      maxPerBlockImbalance: ethers.BigNumberish,
+      maxTotalImbalance: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'recordImbalance(address,int256,uint256,uint256)': (
+      token: string,
+      buyAmount: ethers.BigNumberish,
+      rateUpdateBlock: ethers.BigNumberish,
+      currentBlock: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'withdrawEther(uint256,address)': (
+      amount: ethers.BigNumberish,
+      sendTo: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'addToken(address)': (token: string, $$overrides?: ethers.Overrides) => Promise<ethers.UnsignedTransaction>;
+  };
 }

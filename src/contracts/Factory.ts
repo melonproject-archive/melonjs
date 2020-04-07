@@ -3,6 +3,8 @@ import { ethers } from 'ethers';
 import { Contract, TransactionWrapper } from '../Contract';
 
 export class Factory extends Contract {
+  public readonly ethers: FactoryEthersContract;
+
   constructor(addressOrName: string, providerOrSigner: ethers.Signer | ethers.providers.Provider) {
     super(new.target.abi, addressOrName, providerOrSigner);
   }
@@ -11,7 +13,8 @@ export class Factory extends Contract {
    * `Factory` contract call for the `childExists` function.
    *
    * @contract Factory
-   * @signature function childExists(address) view returns (bool)
+   * @signature childExists(address)
+   * @method function childExists(address) view returns (bool)
    */
   childExists: ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
 
@@ -19,7 +22,8 @@ export class Factory extends Contract {
    * `Factory` contract call for the `isInstance` function.
    *
    * @contract Factory
-   * @signature function isInstance(address) view returns (bool)
+   * @signature isInstance(address)
+   * @method function isInstance(address) view returns (bool)
    */
   isInstance: (_child: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
 
@@ -28,4 +32,18 @@ export class Factory extends Contract {
     'function childExists(address) view returns (bool)',
     'function isInstance(address _child) view returns (bool)',
   ];
+}
+
+export interface FactoryEthersContract extends ethers.Contract {
+  'childExists(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+  'isInstance(address)': (_child: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+
+  callStatic: {
+    'childExists(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'isInstance(address)': (_child: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+  };
+
+  estimateGas: {};
+
+  populateTransaction: {};
 }

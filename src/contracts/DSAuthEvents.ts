@@ -3,6 +3,8 @@ import { ethers } from 'ethers';
 import { Contract, TransactionWrapper } from '../Contract';
 
 export class DSAuthEvents extends Contract {
+  public readonly ethers: DSAuthEventsEthersContract;
+
   constructor(addressOrName: string, providerOrSigner: ethers.Signer | ethers.providers.Provider) {
     super(new.target.abi, addressOrName, providerOrSigner);
   }
@@ -11,4 +13,12 @@ export class DSAuthEvents extends Contract {
     'event LogSetAuthority(address indexed authority)',
     'event LogSetOwner(address indexed owner)',
   ];
+}
+
+export interface DSAuthEventsEthersContract extends ethers.Contract {
+  callStatic: {};
+
+  estimateGas: {};
+
+  populateTransaction: {};
 }

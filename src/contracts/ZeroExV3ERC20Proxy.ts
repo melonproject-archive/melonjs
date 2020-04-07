@@ -3,6 +3,8 @@ import { ethers } from 'ethers';
 import { Contract, TransactionWrapper } from '../Contract';
 
 export class ZeroExV3ERC20Proxy extends Contract {
+  public readonly ethers: ZeroExV3ERC20ProxyEthersContract;
+
   constructor(addressOrName: string, providerOrSigner: ethers.Signer | ethers.providers.Provider) {
     super(new.target.abi, addressOrName, providerOrSigner);
   }
@@ -11,7 +13,8 @@ export class ZeroExV3ERC20Proxy extends Contract {
    * `ZeroExV3ERC20Proxy` contract call for the `authorities` function.
    *
    * @contract ZeroExV3ERC20Proxy
-   * @signature function authorities(uint256) view returns (address)
+   * @signature authorities(uint256)
+   * @method function authorities(uint256) view returns (address)
    */
   authorities: ($$0: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<string>;
 
@@ -19,7 +22,8 @@ export class ZeroExV3ERC20Proxy extends Contract {
    * `ZeroExV3ERC20Proxy` contract call for the `owner` function.
    *
    * @contract ZeroExV3ERC20Proxy
-   * @signature function owner() view returns (address)
+   * @signature owner()
+   * @method function owner() view returns (address)
    */
   owner: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
@@ -27,7 +31,8 @@ export class ZeroExV3ERC20Proxy extends Contract {
    * `ZeroExV3ERC20Proxy` contract call for the `getProxyId` function.
    *
    * @contract ZeroExV3ERC20Proxy
-   * @signature function getProxyId() pure returns (bytes4)
+   * @signature getProxyId()
+   * @method function getProxyId() pure returns (bytes4)
    */
   getProxyId: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
@@ -35,7 +40,8 @@ export class ZeroExV3ERC20Proxy extends Contract {
    * `ZeroExV3ERC20Proxy` contract call for the `authorized` function.
    *
    * @contract ZeroExV3ERC20Proxy
-   * @signature function authorized(address) view returns (bool)
+   * @signature authorized(address)
+   * @method function authorized(address) view returns (bool)
    */
   authorized: ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
 
@@ -43,7 +49,8 @@ export class ZeroExV3ERC20Proxy extends Contract {
    * `ZeroExV3ERC20Proxy` contract call for the `getAuthorizedAddresses` function.
    *
    * @contract ZeroExV3ERC20Proxy
-   * @signature function getAuthorizedAddresses() view returns (address[])
+   * @signature getAuthorizedAddresses()
+   * @method function getAuthorizedAddresses() view returns (address[])
    */
   getAuthorizedAddresses: ($$overrides?: ethers.CallOverrides) => Promise<string[]>;
 
@@ -51,7 +58,8 @@ export class ZeroExV3ERC20Proxy extends Contract {
    * `ZeroExV3ERC20Proxy` contract transaction for `addAuthorizedAddress` function.
    *
    * @contract ZeroExV3ERC20Proxy
-   * @signature function addAuthorizedAddress(address)
+   * @signature addAuthorizedAddress(address)
+   * @method function addAuthorizedAddress(address)
    */
   addAuthorizedAddress: (target: string) => TransactionWrapper<ethers.Overrides>;
 
@@ -59,7 +67,8 @@ export class ZeroExV3ERC20Proxy extends Contract {
    * `ZeroExV3ERC20Proxy` contract transaction for `removeAuthorizedAddress` function.
    *
    * @contract ZeroExV3ERC20Proxy
-   * @signature function removeAuthorizedAddress(address)
+   * @signature removeAuthorizedAddress(address)
+   * @method function removeAuthorizedAddress(address)
    */
   removeAuthorizedAddress: (target: string) => TransactionWrapper<ethers.Overrides>;
 
@@ -67,7 +76,8 @@ export class ZeroExV3ERC20Proxy extends Contract {
    * `ZeroExV3ERC20Proxy` contract transaction for `removeAuthorizedAddressAtIndex` function.
    *
    * @contract ZeroExV3ERC20Proxy
-   * @signature function removeAuthorizedAddressAtIndex(address,uint256)
+   * @signature removeAuthorizedAddressAtIndex(address,uint256)
+   * @method function removeAuthorizedAddressAtIndex(address,uint256)
    */
   removeAuthorizedAddressAtIndex: (target: string, index: ethers.BigNumberish) => TransactionWrapper<ethers.Overrides>;
 
@@ -75,7 +85,8 @@ export class ZeroExV3ERC20Proxy extends Contract {
    * `ZeroExV3ERC20Proxy` contract transaction for `transferOwnership` function.
    *
    * @contract ZeroExV3ERC20Proxy
-   * @signature function transferOwnership(address)
+   * @signature transferOwnership(address)
+   * @method function transferOwnership(address)
    */
   transferOwnership: (newOwner: string) => TransactionWrapper<ethers.Overrides>;
 
@@ -92,4 +103,76 @@ export class ZeroExV3ERC20Proxy extends Contract {
     'event AuthorizedAddressAdded(address indexed target, address indexed caller)',
     'event AuthorizedAddressRemoved(address indexed target, address indexed caller)',
   ];
+}
+
+export interface ZeroExV3ERC20ProxyEthersContract extends ethers.Contract {
+  'authorities(uint256)': ($$0: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<string>;
+  'owner()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  'getProxyId()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  'authorized(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+  'getAuthorizedAddresses()': ($$overrides?: ethers.CallOverrides) => Promise<string[]>;
+  'addAuthorizedAddress(address)': (
+    target: string,
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+  'removeAuthorizedAddress(address)': (
+    target: string,
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+  'removeAuthorizedAddressAtIndex(address,uint256)': (
+    target: string,
+    index: ethers.BigNumberish,
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+  'transferOwnership(address)': (
+    newOwner: string,
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+
+  callStatic: {
+    'authorities(uint256)': ($$0: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<string>;
+    'owner()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'getProxyId()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'authorized(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'getAuthorizedAddresses()': ($$overrides?: ethers.CallOverrides) => Promise<string[]>;
+    'addAuthorizedAddress(address)': (target: string, $$overrides?: ethers.Overrides) => Promise<void>;
+    'removeAuthorizedAddress(address)': (target: string, $$overrides?: ethers.Overrides) => Promise<void>;
+    'removeAuthorizedAddressAtIndex(address,uint256)': (
+      target: string,
+      index: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<void>;
+    'transferOwnership(address)': (newOwner: string, $$overrides?: ethers.Overrides) => Promise<void>;
+  };
+
+  estimateGas: {
+    'addAuthorizedAddress(address)': (target: string, $$overrides?: ethers.Overrides) => Promise<ethers.BigNumber>;
+    'removeAuthorizedAddress(address)': (target: string, $$overrides?: ethers.Overrides) => Promise<ethers.BigNumber>;
+    'removeAuthorizedAddressAtIndex(address,uint256)': (
+      target: string,
+      index: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'transferOwnership(address)': (newOwner: string, $$overrides?: ethers.Overrides) => Promise<ethers.BigNumber>;
+  };
+
+  populateTransaction: {
+    'addAuthorizedAddress(address)': (
+      target: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'removeAuthorizedAddress(address)': (
+      target: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'removeAuthorizedAddressAtIndex(address,uint256)': (
+      target: string,
+      index: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'transferOwnership(address)': (
+      newOwner: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+  };
 }

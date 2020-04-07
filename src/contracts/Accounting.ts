@@ -3,6 +3,8 @@ import { ethers } from 'ethers';
 import { Contract, TransactionWrapper } from '../Contract';
 
 export class Accounting extends Contract {
+  public readonly ethers: AccountingEthersContract;
+
   constructor(addressOrName: string, providerOrSigner: ethers.Signer | ethers.providers.Provider) {
     super(new.target.abi, addressOrName, providerOrSigner);
   }
@@ -11,7 +13,8 @@ export class Accounting extends Contract {
    * `Accounting` contract call for the `DEFAULT_SHARE_PRICE` function.
    *
    * @contract Accounting
-   * @signature function DEFAULT_SHARE_PRICE() view returns (uint256)
+   * @signature DEFAULT_SHARE_PRICE()
+   * @method function DEFAULT_SHARE_PRICE() view returns (uint256)
    */
   DEFAULT_SHARE_PRICE: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
@@ -19,139 +22,188 @@ export class Accounting extends Contract {
    * `Accounting` contract call for the `DENOMINATION_ASSET` function.
    *
    * @contract Accounting
-   * @signature function DENOMINATION_ASSET() view returns (address)
+   * @signature DENOMINATION_ASSET()
+   * @method function DENOMINATION_ASSET() view returns (address)
    */
   DENOMINATION_ASSET: ($$overrides?: ethers.CallOverrides) => Promise<string>;
-
-  /**
-   * `Accounting` contract call for the `DENOMINATION_ASSET_DECIMALS` function.
-   *
-   * @contract Accounting
-   * @signature function DENOMINATION_ASSET_DECIMALS() view returns (uint256)
-   */
-  DENOMINATION_ASSET_DECIMALS: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
   /**
    * `Accounting` contract call for the `MAX_OWNED_ASSETS` function.
    *
    * @contract Accounting
-   * @signature function MAX_OWNED_ASSETS() view returns (uint256)
+   * @signature MAX_OWNED_ASSETS()
+   * @method function MAX_OWNED_ASSETS() view returns (uint8)
    */
-  MAX_OWNED_ASSETS: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+  MAX_OWNED_ASSETS: ($$overrides?: ethers.CallOverrides) => Promise<number>;
 
   /**
-   * `Accounting` contract call for the `NATIVE_ASSET` function.
+   * `Accounting` contract call for the `REGISTRY` function.
    *
    * @contract Accounting
-   * @signature function NATIVE_ASSET() view returns (address)
+   * @signature REGISTRY()
+   * @method function REGISTRY() view returns (address)
    */
-  NATIVE_ASSET: ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  REGISTRY: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
    * `Accounting` contract call for the `SHARES_DECIMALS` function.
    *
    * @contract Accounting
-   * @signature function SHARES_DECIMALS() view returns (uint256)
+   * @signature SHARES_DECIMALS()
+   * @method function SHARES_DECIMALS() view returns (uint8)
    */
-  SHARES_DECIMALS: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+  SHARES_DECIMALS: ($$overrides?: ethers.CallOverrides) => Promise<number>;
 
   /**
-   * `Accounting` contract call for the `atLastAllocation` function.
+   * `Accounting` contract call for the `assetBalances` function.
    *
    * @contract Accounting
-   * @signature function atLastAllocation() view returns (uint256, uint256, uint256, uint256, uint256)
+   * @signature assetBalances(address)
+   * @method function assetBalances(address) view returns (uint256)
    */
-  atLastAllocation: (
-    $$overrides?: ethers.CallOverrides,
-  ) => Promise<{
-    gav: ethers.BigNumber;
-    nav: ethers.BigNumber;
-    allocatedFees: ethers.BigNumber;
-    totalSupply: ethers.BigNumber;
-    timestamp: ethers.BigNumber;
-  }>;
+  assetBalances: ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
   /**
    * `Accounting` contract call for the `authority` function.
    *
    * @contract Accounting
-   * @signature function authority() view returns (address)
+   * @signature authority()
+   * @method function authority() view returns (address)
    */
   authority: ($$overrides?: ethers.CallOverrides) => Promise<string>;
+
+  /**
+   * `Accounting` contract call for the `calcAssetGav` function.
+   *
+   * @contract Accounting
+   * @signature calcAssetGav(address)
+   * @method function calcAssetGav(address) view returns (uint256)
+   */
+  calcAssetGav: (_asset: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+
+  /**
+   * `Accounting` contract call for the `calcGav` function.
+   *
+   * @contract Accounting
+   * @signature calcGav()
+   * @method function calcGav() view returns (uint256)
+   */
+  calcGav: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
   /**
    * `Accounting` contract call for the `calcNav` function.
    *
    * @contract Accounting
-   * @signature function calcNav(uint256,uint256) pure returns (uint256)
+   * @signature calcNav(uint256,uint256)
+   * @method function calcNav(uint256,uint256) pure returns (uint256)
    */
   calcNav: (
-    gav: ethers.BigNumberish,
-    unclaimedFeesInDenominationAsset: ethers.BigNumberish,
+    _gav: ethers.BigNumberish,
+    _unclaimedFeesInDenominationAsset: ethers.BigNumberish,
     $$overrides?: ethers.CallOverrides,
   ) => Promise<ethers.BigNumber>;
 
   /**
-   * `Accounting` contract call for the `engine` function.
+   * `Accounting` contract call for the `fundFactory` function.
    *
    * @contract Accounting
-   * @signature function engine() view returns (address)
+   * @signature fundFactory()
+   * @method function fundFactory() view returns (address)
    */
-  engine: ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  fundFactory: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Accounting` contract call for the `getOwnedAssets` function.
+   * `Accounting` contract call for the `getAllAssetBalances` function.
    *
    * @contract Accounting
-   * @signature function getOwnedAssets() view returns (address[])
+   * @signature getAllAssetBalances()
+   * @method function getAllAssetBalances() view returns (address[], uint256[])
    */
-  getOwnedAssets: ($$overrides?: ethers.CallOverrides) => Promise<string[]>;
+  getAllAssetBalances: (
+    $$overrides?: ethers.CallOverrides,
+  ) => Promise<{ assets_: string[]; balances_: ethers.BigNumber[] }>;
+
+  /**
+   * `Accounting` contract call for the `getAssetBalances` function.
+   *
+   * @contract Accounting
+   * @signature getAssetBalances(address[])
+   * @method function getAssetBalances(address[]) view returns (uint256[])
+   */
+  getAssetBalances: (_assets: string[], $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber[]>;
+
+  /**
+   * `Accounting` contract call for the `getFundHoldings` function.
+   *
+   * @contract Accounting
+   * @signature getFundHoldings()
+   * @method function getFundHoldings() view returns (address[], uint256[])
+   */
+  getFundHoldings: (
+    $$overrides?: ethers.CallOverrides,
+  ) => Promise<{ assets_: string[]; balances_: ethers.BigNumber[] }>;
+
+  /**
+   * `Accounting` contract call for the `getFundHoldingsForAsset` function.
+   *
+   * @contract Accounting
+   * @signature getFundHoldingsForAsset(address)
+   * @method function getFundHoldingsForAsset(address) view returns (uint256)
+   */
+  getFundHoldingsForAsset: (_asset: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+
+  /**
+   * `Accounting` contract call for the `getHub` function.
+   *
+   * @contract Accounting
+   * @signature getHub()
+   * @method function getHub() view returns (address)
+   */
+  getHub: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
    * `Accounting` contract call for the `getOwnedAssetsLength` function.
    *
    * @contract Accounting
-   * @signature function getOwnedAssetsLength() view returns (uint256)
+   * @signature getOwnedAssetsLength()
+   * @method function getOwnedAssetsLength() view returns (uint256)
    */
   getOwnedAssetsLength: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
   /**
-   * `Accounting` contract call for the `hub` function.
+   * `Accounting` contract call for the `getRoutes` function.
    *
    * @contract Accounting
-   * @signature function hub() view returns (address)
+   * @signature getRoutes()
+   * @method function getRoutes() view returns (tuple(address,address,address,address,address,address,address))
    */
-  hub: ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  getRoutes: (
+    $$overrides?: ethers.CallOverrides,
+  ) => Promise<{
+    accounting: string;
+    feeManager: string;
+    policyManager: string;
+    shares: string;
+    vault: string;
+    registry: string;
+    fundFactory: string;
+  }>;
 
   /**
    * `Accounting` contract call for the `initialized` function.
    *
    * @contract Accounting
-   * @signature function initialized() view returns (bool)
+   * @signature initialized()
+   * @method function initialized() view returns (bool)
    */
   initialized: ($$overrides?: ethers.CallOverrides) => Promise<boolean>;
-
-  /**
-   * `Accounting` contract call for the `isInAssetList` function.
-   *
-   * @contract Accounting
-   * @signature function isInAssetList(address) view returns (bool)
-   */
-  isInAssetList: ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
-
-  /**
-   * `Accounting` contract call for the `mlnToken` function.
-   *
-   * @contract Accounting
-   * @signature function mlnToken() view returns (address)
-   */
-  mlnToken: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
    * `Accounting` contract call for the `ownedAssets` function.
    *
    * @contract Accounting
-   * @signature function ownedAssets(uint256) view returns (address)
+   * @signature ownedAssets(uint256)
+   * @method function ownedAssets(uint256) view returns (address)
    */
   ownedAssets: ($$0: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<string>;
 
@@ -159,7 +211,8 @@ export class Accounting extends Contract {
    * `Accounting` contract call for the `owner` function.
    *
    * @contract Accounting
-   * @signature function owner() view returns (address)
+   * @signature owner()
+   * @method function owner() view returns (address)
    */
   owner: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
@@ -167,147 +220,77 @@ export class Accounting extends Contract {
    * `Accounting` contract call for the `priceSource` function.
    *
    * @contract Accounting
-   * @signature function priceSource() view returns (address)
+   * @signature priceSource()
+   * @method function priceSource() view returns (address)
    */
   priceSource: ($$overrides?: ethers.CallOverrides) => Promise<string>;
-
-  /**
-   * `Accounting` contract call for the `registry` function.
-   *
-   * @contract Accounting
-   * @signature function registry() view returns (address)
-   */
-  registry: ($$overrides?: ethers.CallOverrides) => Promise<string>;
-
-  /**
-   * `Accounting` contract call for the `routes` function.
-   *
-   * @contract Accounting
-   * @signature function routes() view returns (address, address, address, address, address, address, address, address, address, address, address)
-   */
-  routes: (
-    $$overrides?: ethers.CallOverrides,
-  ) => Promise<{
-    accounting: string;
-    feeManager: string;
-    participation: string;
-    policyManager: string;
-    shares: string;
-    trading: string;
-    vault: string;
-    registry: string;
-    version: string;
-    engine: string;
-    mlnToken: string;
-  }>;
 
   /**
    * `Accounting` contract call for the `valuePerShare` function.
    *
    * @contract Accounting
-   * @signature function valuePerShare(uint256,uint256) pure returns (uint256)
+   * @signature valuePerShare(uint256,uint256)
+   * @method function valuePerShare(uint256,uint256) pure returns (uint256)
    */
   valuePerShare: (
-    totalValue: ethers.BigNumberish,
-    numShares: ethers.BigNumberish,
+    _totalValue: ethers.BigNumberish,
+    _numShares: ethers.BigNumberish,
     $$overrides?: ethers.CallOverrides,
   ) => Promise<ethers.BigNumber>;
 
   /**
-   * `Accounting` contract call for the `version` function.
+   * `Accounting` contract transaction for `calcFundMetrics` function.
    *
    * @contract Accounting
-   * @signature function version() view returns (address)
+   * @signature calcFundMetrics()
+   * @method function calcFundMetrics() returns (uint256, uint256, uint256, uint256, uint256, uint256)
    */
-  version: ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  calcFundMetrics: () => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Accounting` contract transaction for `addAssetToOwnedAssets` function.
+   * `Accounting` contract transaction for `decreaseAssetBalance` function.
    *
    * @contract Accounting
-   * @signature function addAssetToOwnedAssets(address)
+   * @signature decreaseAssetBalance(address,uint256)
+   * @method function decreaseAssetBalance(address,uint256)
    */
-  addAssetToOwnedAssets: (_asset: string) => TransactionWrapper<ethers.Overrides>;
-
-  /**
-   * `Accounting` contract transaction for `assetHoldings` function.
-   *
-   * @contract Accounting
-   * @signature function assetHoldings(address) returns (uint256)
-   */
-  assetHoldings: (_asset: string) => TransactionWrapper<ethers.Overrides>;
-
-  /**
-   * `Accounting` contract transaction for `calcAssetGAV` function.
-   *
-   * @contract Accounting
-   * @signature function calcAssetGAV(address) returns (uint256)
-   */
-  calcAssetGAV: (_queryAsset: string) => TransactionWrapper<ethers.Overrides>;
-
-  /**
-   * `Accounting` contract transaction for `calcGav` function.
-   *
-   * @contract Accounting
-   * @signature function calcGav() returns (uint256)
-   */
-  calcGav: () => TransactionWrapper<ethers.Overrides>;
-
-  /**
-   * `Accounting` contract transaction for `calcGavPerShareNetManagementFee` function.
-   *
-   * @contract Accounting
-   * @signature function calcGavPerShareNetManagementFee() returns (uint256)
-   */
-  calcGavPerShareNetManagementFee: () => TransactionWrapper<ethers.Overrides>;
-
-  /**
-   * `Accounting` contract transaction for `getFundHoldings` function.
-   *
-   * @contract Accounting
-   * @signature function getFundHoldings() returns (uint256[], address[])
-   */
-  getFundHoldings: () => TransactionWrapper<ethers.Overrides>;
+  decreaseAssetBalance: (_asset: string, _amount: ethers.BigNumberish) => TransactionWrapper<ethers.Overrides>;
 
   /**
    * `Accounting` contract transaction for `getShareCostInAsset` function.
    *
    * @contract Accounting
-   * @signature function getShareCostInAsset(uint256,address) returns (uint256)
+   * @signature getShareCostInAsset(uint256,address)
+   * @method function getShareCostInAsset(uint256,address) returns (uint256)
    */
   getShareCostInAsset: (_numShares: ethers.BigNumberish, _altAsset: string) => TransactionWrapper<ethers.Overrides>;
+
+  /**
+   * `Accounting` contract transaction for `increaseAssetBalance` function.
+   *
+   * @contract Accounting
+   * @signature increaseAssetBalance(address,uint256)
+   * @method function increaseAssetBalance(address,uint256)
+   */
+  increaseAssetBalance: (_asset: string, _amount: ethers.BigNumberish) => TransactionWrapper<ethers.Overrides>;
 
   /**
    * `Accounting` contract transaction for `initialize` function.
    *
    * @contract Accounting
-   * @signature function initialize(address[11])
+   * @signature initialize(address[7])
+   * @method function initialize(address[7])
    */
   initialize: (
-    _spokes: [string, string, string, string, string, string, string, string, string, string, string],
+    _spokes: [string, string, string, string, string, string, string],
   ) => TransactionWrapper<ethers.Overrides>;
-
-  /**
-   * `Accounting` contract transaction for `performCalculations` function.
-   *
-   * @contract Accounting
-   * @signature function performCalculations() returns (uint256, uint256, uint256, uint256, uint256, uint256)
-   */
-  performCalculations: () => TransactionWrapper<ethers.Overrides>;
-
-  /**
-   * `Accounting` contract transaction for `removeFromOwnedAssets` function.
-   *
-   * @contract Accounting
-   * @signature function removeFromOwnedAssets(address)
-   */
-  removeFromOwnedAssets: (_asset: string) => TransactionWrapper<ethers.Overrides>;
 
   /**
    * `Accounting` contract transaction for `setAuthority` function.
    *
    * @contract Accounting
-   * @signature function setAuthority(address)
+   * @signature setAuthority(address)
+   * @method function setAuthority(address)
    */
   setAuthority: (authority_: string) => TransactionWrapper<ethers.Overrides>;
 
@@ -315,7 +298,8 @@ export class Accounting extends Contract {
    * `Accounting` contract transaction for `setOwner` function.
    *
    * @contract Accounting
-   * @signature function setOwner(address)
+   * @signature setOwner(address)
+   * @method function setOwner(address)
    */
   setOwner: (owner_: string) => TransactionWrapper<ethers.Overrides>;
 
@@ -323,61 +307,262 @@ export class Accounting extends Contract {
    * `Accounting` contract transaction for `triggerRewardAllFees` function.
    *
    * @contract Accounting
-   * @signature function triggerRewardAllFees() payable
+   * @signature triggerRewardAllFees()
+   * @method function triggerRewardAllFees() payable
    */
   triggerRewardAllFees: () => TransactionWrapper<ethers.PayableOverrides>;
 
-  /**
-   * `Accounting` contract transaction for `updateOwnedAssets` function.
-   *
-   * @contract Accounting
-   * @signature function updateOwnedAssets()
-   */
-  updateOwnedAssets: () => TransactionWrapper<ethers.Overrides>;
-
   static abi: string[] = [
-    'constructor(address _hub, address _denominationAsset, address _nativeAsset)',
-    'event AmguPaid(address indexed payer, uint256 totalAmguPaidInEth, uint256 amguChargableGas, uint256 incentivePaid)',
+    'constructor(address _hub, address _denominationAsset, address _registry)',
+    'event AmguPaid(address indexed payer, uint256 totalAmguPaidInEth, uint256 amguChargableGas)',
     'event AssetAddition(address indexed asset)',
+    'event AssetBalanceUpdated(address indexed asset, uint256 oldBalance, uint256 newBalance)',
     'event AssetRemoval(address indexed asset)',
+    'event IncentivePaid(address indexed payer, uint256 incentiveAmount)',
     'event LogSetAuthority(address indexed authority)',
     'event LogSetOwner(address indexed owner)',
     'function DEFAULT_SHARE_PRICE() view returns (uint256)',
     'function DENOMINATION_ASSET() view returns (address)',
-    'function DENOMINATION_ASSET_DECIMALS() view returns (uint256)',
-    'function MAX_OWNED_ASSETS() view returns (uint256)',
-    'function NATIVE_ASSET() view returns (address)',
-    'function SHARES_DECIMALS() view returns (uint256)',
-    'function addAssetToOwnedAssets(address _asset)',
-    'function assetHoldings(address _asset) returns (uint256)',
-    'function atLastAllocation() view returns (uint256 gav, uint256 nav, uint256 allocatedFees, uint256 totalSupply, uint256 timestamp)',
+    'function MAX_OWNED_ASSETS() view returns (uint8)',
+    'function REGISTRY() view returns (address)',
+    'function SHARES_DECIMALS() view returns (uint8)',
+    'function assetBalances(address) view returns (uint256)',
     'function authority() view returns (address)',
-    'function calcAssetGAV(address _queryAsset) returns (uint256)',
-    'function calcGav() returns (uint256 gav)',
-    'function calcGavPerShareNetManagementFee() returns (uint256 gavPerShareNetManagementFee)',
-    'function calcNav(uint256 gav, uint256 unclaimedFeesInDenominationAsset) pure returns (uint256)',
-    'function engine() view returns (address)',
-    'function getFundHoldings() returns (uint256[], address[])',
-    'function getOwnedAssets() view returns (address[])',
+    'function calcAssetGav(address _asset) view returns (uint256)',
+    'function calcFundMetrics() returns (uint256 gav_, uint256 feesInDenominationAsset_, uint256 feesInShares_, uint256 nav_, uint256 sharePrice_, uint256 gavPerShareNetManagementFee_)',
+    'function calcGav() view returns (uint256)',
+    'function calcNav(uint256 _gav, uint256 _unclaimedFeesInDenominationAsset) pure returns (uint256)',
+    'function decreaseAssetBalance(address _asset, uint256 _amount)',
+    'function fundFactory() view returns (address)',
+    'function getAllAssetBalances() view returns (address[] assets_, uint256[] balances_)',
+    'function getAssetBalances(address[] _assets) view returns (uint256[])',
+    'function getFundHoldings() view returns (address[] assets_, uint256[] balances_)',
+    'function getFundHoldingsForAsset(address _asset) view returns (uint256)',
+    'function getHub() view returns (address)',
     'function getOwnedAssetsLength() view returns (uint256)',
+    'function getRoutes() view returns (tuple(address accounting, address feeManager, address policyManager, address shares, address vault, address registry, address fundFactory))',
     'function getShareCostInAsset(uint256 _numShares, address _altAsset) returns (uint256)',
-    'function hub() view returns (address)',
-    'function initialize(address[11] _spokes)',
+    'function increaseAssetBalance(address _asset, uint256 _amount)',
+    'function initialize(address[7] _spokes)',
     'function initialized() view returns (bool)',
-    'function isInAssetList(address) view returns (bool)',
-    'function mlnToken() view returns (address)',
     'function ownedAssets(uint256) view returns (address)',
     'function owner() view returns (address)',
-    'function performCalculations() returns (uint256 gav, uint256 feesInDenominationAsset, uint256 feesInShares, uint256 nav, uint256 sharePrice, uint256 gavPerShareNetManagementFee)',
     'function priceSource() view returns (address)',
-    'function registry() view returns (address)',
-    'function removeFromOwnedAssets(address _asset)',
-    'function routes() view returns (address accounting, address feeManager, address participation, address policyManager, address shares, address trading, address vault, address registry, address version, address engine, address mlnToken)',
     'function setAuthority(address authority_)',
     'function setOwner(address owner_)',
     'function triggerRewardAllFees() payable',
-    'function updateOwnedAssets()',
-    'function valuePerShare(uint256 totalValue, uint256 numShares) pure returns (uint256)',
-    'function version() view returns (address)',
+    'function valuePerShare(uint256 _totalValue, uint256 _numShares) pure returns (uint256)',
   ];
+}
+
+export interface AccountingEthersContract extends ethers.Contract {
+  'DEFAULT_SHARE_PRICE()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+  'DENOMINATION_ASSET()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  'MAX_OWNED_ASSETS()': ($$overrides?: ethers.CallOverrides) => Promise<number>;
+  'REGISTRY()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  'SHARES_DECIMALS()': ($$overrides?: ethers.CallOverrides) => Promise<number>;
+  'assetBalances(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+  'authority()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  'calcAssetGav(address)': (_asset: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+  'calcGav()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+  'calcNav(uint256,uint256)': (
+    _gav: ethers.BigNumberish,
+    _unclaimedFeesInDenominationAsset: ethers.BigNumberish,
+    $$overrides?: ethers.CallOverrides,
+  ) => Promise<ethers.BigNumber>;
+  'fundFactory()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  'getAllAssetBalances()': (
+    $$overrides?: ethers.CallOverrides,
+  ) => Promise<{ assets_: string[]; balances_: ethers.BigNumber[] }>;
+  'getAssetBalances(address[])': (_assets: string[], $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber[]>;
+  'getFundHoldings()': (
+    $$overrides?: ethers.CallOverrides,
+  ) => Promise<{ assets_: string[]; balances_: ethers.BigNumber[] }>;
+  'getFundHoldingsForAsset(address)': (_asset: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+  'getHub()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  'getOwnedAssetsLength()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+  'getRoutes()': (
+    $$overrides?: ethers.CallOverrides,
+  ) => Promise<{
+    accounting: string;
+    feeManager: string;
+    policyManager: string;
+    shares: string;
+    vault: string;
+    registry: string;
+    fundFactory: string;
+  }>;
+  'initialized()': ($$overrides?: ethers.CallOverrides) => Promise<boolean>;
+  'ownedAssets(uint256)': ($$0: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<string>;
+  'owner()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  'priceSource()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  'valuePerShare(uint256,uint256)': (
+    _totalValue: ethers.BigNumberish,
+    _numShares: ethers.BigNumberish,
+    $$overrides?: ethers.CallOverrides,
+  ) => Promise<ethers.BigNumber>;
+  'calcFundMetrics()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  'decreaseAssetBalance(address,uint256)': (
+    _asset: string,
+    _amount: ethers.BigNumberish,
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+  'getShareCostInAsset(uint256,address)': (
+    _numShares: ethers.BigNumberish,
+    _altAsset: string,
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+  'increaseAssetBalance(address,uint256)': (
+    _asset: string,
+    _amount: ethers.BigNumberish,
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+  'initialize(address[7])': (
+    _spokes: [string, string, string, string, string, string, string],
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+  'setAuthority(address)': (authority_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  'triggerRewardAllFees()': ($$overrides?: ethers.PayableOverrides) => ethers.providers.TransactionResponse;
+
+  callStatic: {
+    'DEFAULT_SHARE_PRICE()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'DENOMINATION_ASSET()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'MAX_OWNED_ASSETS()': ($$overrides?: ethers.CallOverrides) => Promise<number>;
+    'REGISTRY()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'SHARES_DECIMALS()': ($$overrides?: ethers.CallOverrides) => Promise<number>;
+    'assetBalances(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'authority()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'calcAssetGav(address)': (_asset: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'calcGav()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'calcNav(uint256,uint256)': (
+      _gav: ethers.BigNumberish,
+      _unclaimedFeesInDenominationAsset: ethers.BigNumberish,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'fundFactory()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'getAllAssetBalances()': (
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<{ assets_: string[]; balances_: ethers.BigNumber[] }>;
+    'getAssetBalances(address[])': (
+      _assets: string[],
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber[]>;
+    'getFundHoldings()': (
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<{ assets_: string[]; balances_: ethers.BigNumber[] }>;
+    'getFundHoldingsForAsset(address)': (
+      _asset: string,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'getHub()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'getOwnedAssetsLength()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'getRoutes()': (
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<{
+      accounting: string;
+      feeManager: string;
+      policyManager: string;
+      shares: string;
+      vault: string;
+      registry: string;
+      fundFactory: string;
+    }>;
+    'initialized()': ($$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'ownedAssets(uint256)': ($$0: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<string>;
+    'owner()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'priceSource()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'valuePerShare(uint256,uint256)': (
+      _totalValue: ethers.BigNumberish,
+      _numShares: ethers.BigNumberish,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'calcFundMetrics()': (
+      $$overrides?: ethers.Overrides,
+    ) => Promise<{
+      gav_: ethers.BigNumber;
+      feesInDenominationAsset_: ethers.BigNumber;
+      feesInShares_: ethers.BigNumber;
+      nav_: ethers.BigNumber;
+      sharePrice_: ethers.BigNumber;
+      gavPerShareNetManagementFee_: ethers.BigNumber;
+    }>;
+    'decreaseAssetBalance(address,uint256)': (
+      _asset: string,
+      _amount: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<void>;
+    'getShareCostInAsset(uint256,address)': (
+      _numShares: ethers.BigNumberish,
+      _altAsset: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'increaseAssetBalance(address,uint256)': (
+      _asset: string,
+      _amount: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<void>;
+    'initialize(address[7])': (
+      _spokes: [string, string, string, string, string, string, string],
+      $$overrides?: ethers.Overrides,
+    ) => Promise<void>;
+    'setAuthority(address)': (authority_: string, $$overrides?: ethers.Overrides) => Promise<void>;
+    'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => Promise<void>;
+    'triggerRewardAllFees()': ($$overrides?: ethers.PayableOverrides) => Promise<void>;
+  };
+
+  estimateGas: {
+    'calcFundMetrics()': ($$overrides?: ethers.Overrides) => Promise<ethers.BigNumber>;
+    'decreaseAssetBalance(address,uint256)': (
+      _asset: string,
+      _amount: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'getShareCostInAsset(uint256,address)': (
+      _numShares: ethers.BigNumberish,
+      _altAsset: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'increaseAssetBalance(address,uint256)': (
+      _asset: string,
+      _amount: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'initialize(address[7])': (
+      _spokes: [string, string, string, string, string, string, string],
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'setAuthority(address)': (authority_: string, $$overrides?: ethers.Overrides) => Promise<ethers.BigNumber>;
+    'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => Promise<ethers.BigNumber>;
+    'triggerRewardAllFees()': ($$overrides?: ethers.PayableOverrides) => Promise<ethers.BigNumber>;
+  };
+
+  populateTransaction: {
+    'calcFundMetrics()': ($$overrides?: ethers.Overrides) => Promise<ethers.UnsignedTransaction>;
+    'decreaseAssetBalance(address,uint256)': (
+      _asset: string,
+      _amount: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'getShareCostInAsset(uint256,address)': (
+      _numShares: ethers.BigNumberish,
+      _altAsset: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'increaseAssetBalance(address,uint256)': (
+      _asset: string,
+      _amount: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'initialize(address[7])': (
+      _spokes: [string, string, string, string, string, string, string],
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'setAuthority(address)': (
+      authority_: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => Promise<ethers.UnsignedTransaction>;
+    'triggerRewardAllFees()': ($$overrides?: ethers.PayableOverrides) => Promise<ethers.UnsignedTransaction>;
+  };
 }

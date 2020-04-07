@@ -20,7 +20,3 @@ docs/
 !.dockerignore
 !.travis.yml
 !.editorconfig
-!.protocol
-
-# ABI tarball.
-melon-protocol-*.tar.gz

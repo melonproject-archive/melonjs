@@ -3,6 +3,8 @@ import { ethers } from 'ethers';
 import { Contract, TransactionWrapper } from '../Contract';
 
 export class MockFeeManager extends Contract {
+  public readonly ethers: MockFeeManagerEthersContract;
+
   constructor(addressOrName: string, providerOrSigner: ethers.Signer | ethers.providers.Provider) {
     super(new.target.abi, addressOrName, providerOrSigner);
   }
@@ -11,47 +13,63 @@ export class MockFeeManager extends Contract {
    * `MockFeeManager` contract call for the `authority` function.
    *
    * @contract MockFeeManager
-   * @signature function authority() view returns (address)
+   * @signature authority()
+   * @method function authority() view returns (address)
    */
   authority: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `MockFeeManager` contract call for the `engine` function.
+   * `MockFeeManager` contract call for the `fundFactory` function.
    *
    * @contract MockFeeManager
-   * @signature function engine() view returns (address)
+   * @signature fundFactory()
+   * @method function fundFactory() view returns (address)
    */
-  engine: ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  fundFactory: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `MockFeeManager` contract call for the `hub` function.
+   * `MockFeeManager` contract call for the `getHub` function.
    *
    * @contract MockFeeManager
-   * @signature function hub() view returns (address)
+   * @signature getHub()
+   * @method function getHub() view returns (address)
    */
-  hub: ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  getHub: ($$overrides?: ethers.CallOverrides) => Promise<string>;
+
+  /**
+   * `MockFeeManager` contract call for the `getRoutes` function.
+   *
+   * @contract MockFeeManager
+   * @signature getRoutes()
+   * @method function getRoutes() view returns (tuple(address,address,address,address,address,address,address))
+   */
+  getRoutes: (
+    $$overrides?: ethers.CallOverrides,
+  ) => Promise<{
+    accounting: string;
+    feeManager: string;
+    policyManager: string;
+    shares: string;
+    vault: string;
+    registry: string;
+    fundFactory: string;
+  }>;
 
   /**
    * `MockFeeManager` contract call for the `initialized` function.
    *
    * @contract MockFeeManager
-   * @signature function initialized() view returns (bool)
+   * @signature initialized()
+   * @method function initialized() view returns (bool)
    */
   initialized: ($$overrides?: ethers.CallOverrides) => Promise<boolean>;
-
-  /**
-   * `MockFeeManager` contract call for the `mlnToken` function.
-   *
-   * @contract MockFeeManager
-   * @signature function mlnToken() view returns (address)
-   */
-  mlnToken: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
    * `MockFeeManager` contract call for the `owner` function.
    *
    * @contract MockFeeManager
-   * @signature function owner() view returns (address)
+   * @signature owner()
+   * @method function owner() view returns (address)
    */
   owner: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
@@ -59,63 +77,28 @@ export class MockFeeManager extends Contract {
    * `MockFeeManager` contract call for the `priceSource` function.
    *
    * @contract MockFeeManager
-   * @signature function priceSource() view returns (address)
+   * @signature priceSource()
+   * @method function priceSource() view returns (address)
    */
   priceSource: ($$overrides?: ethers.CallOverrides) => Promise<string>;
-
-  /**
-   * `MockFeeManager` contract call for the `registry` function.
-   *
-   * @contract MockFeeManager
-   * @signature function registry() view returns (address)
-   */
-  registry: ($$overrides?: ethers.CallOverrides) => Promise<string>;
-
-  /**
-   * `MockFeeManager` contract call for the `routes` function.
-   *
-   * @contract MockFeeManager
-   * @signature function routes() view returns (address, address, address, address, address, address, address, address, address, address, address)
-   */
-  routes: (
-    $$overrides?: ethers.CallOverrides,
-  ) => Promise<{
-    accounting: string;
-    feeManager: string;
-    participation: string;
-    policyManager: string;
-    shares: string;
-    trading: string;
-    vault: string;
-    registry: string;
-    version: string;
-    engine: string;
-    mlnToken: string;
-  }>;
-
-  /**
-   * `MockFeeManager` contract call for the `version` function.
-   *
-   * @contract MockFeeManager
-   * @signature function version() view returns (address)
-   */
-  version: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
    * `MockFeeManager` contract transaction for `initialize` function.
    *
    * @contract MockFeeManager
-   * @signature function initialize(address[11])
+   * @signature initialize(address[7])
+   * @method function initialize(address[7])
    */
   initialize: (
-    _spokes: [string, string, string, string, string, string, string, string, string, string, string],
+    _spokes: [string, string, string, string, string, string, string],
   ) => TransactionWrapper<ethers.Overrides>;
 
   /**
    * `MockFeeManager` contract transaction for `performanceFeeAmount` function.
    *
    * @contract MockFeeManager
-   * @signature function performanceFeeAmount() returns (uint256)
+   * @signature performanceFeeAmount()
+   * @method function performanceFeeAmount() returns (uint256)
    */
   performanceFeeAmount: () => TransactionWrapper<ethers.Overrides>;
 
@@ -123,7 +106,8 @@ export class MockFeeManager extends Contract {
    * `MockFeeManager` contract transaction for `rewardManagementFee` function.
    *
    * @contract MockFeeManager
-   * @signature function rewardManagementFee()
+   * @signature rewardManagementFee()
+   * @method function rewardManagementFee()
    */
   rewardManagementFee: () => TransactionWrapper<ethers.Overrides>;
 
@@ -131,7 +115,8 @@ export class MockFeeManager extends Contract {
    * `MockFeeManager` contract transaction for `setAuthority` function.
    *
    * @contract MockFeeManager
-   * @signature function setAuthority(address)
+   * @signature setAuthority(address)
+   * @method function setAuthority(address)
    */
   setAuthority: (authority_: string) => TransactionWrapper<ethers.Overrides>;
 
@@ -139,7 +124,8 @@ export class MockFeeManager extends Contract {
    * `MockFeeManager` contract transaction for `setOwner` function.
    *
    * @contract MockFeeManager
-   * @signature function setOwner(address)
+   * @signature setOwner(address)
+   * @method function setOwner(address)
    */
   setOwner: (owner_: string) => TransactionWrapper<ethers.Overrides>;
 
@@ -147,7 +133,8 @@ export class MockFeeManager extends Contract {
    * `MockFeeManager` contract transaction for `setPerformanceFeeAmount` function.
    *
    * @contract MockFeeManager
-   * @signature function setPerformanceFeeAmount(uint256)
+   * @signature setPerformanceFeeAmount(uint256)
+   * @method function setPerformanceFeeAmount(uint256)
    */
   setPerformanceFeeAmount: (_amt: ethers.BigNumberish) => TransactionWrapper<ethers.Overrides>;
 
@@ -155,7 +142,8 @@ export class MockFeeManager extends Contract {
    * `MockFeeManager` contract transaction for `setTotalFeeAmount` function.
    *
    * @contract MockFeeManager
-   * @signature function setTotalFeeAmount(uint256)
+   * @signature setTotalFeeAmount(uint256)
+   * @method function setTotalFeeAmount(uint256)
    */
   setTotalFeeAmount: (_amt: ethers.BigNumberish) => TransactionWrapper<ethers.Overrides>;
 
@@ -163,32 +151,140 @@ export class MockFeeManager extends Contract {
    * `MockFeeManager` contract transaction for `totalFeeAmount` function.
    *
    * @contract MockFeeManager
-   * @signature function totalFeeAmount() returns (uint256)
+   * @signature totalFeeAmount()
+   * @method function totalFeeAmount() returns (uint256)
    */
   totalFeeAmount: () => TransactionWrapper<ethers.Overrides>;
 
   static abi: string[] = [
     'constructor(address _hub, address _denominationAsset, address[] _fees, uint256[] _periods, uint256 _rates, address registry)',
-    'event AmguPaid(address indexed payer, uint256 totalAmguPaidInEth, uint256 amguChargableGas, uint256 incentivePaid)',
     'event LogSetAuthority(address indexed authority)',
     'event LogSetOwner(address indexed owner)',
     'function authority() view returns (address)',
-    'function engine() view returns (address)',
-    'function hub() view returns (address)',
-    'function initialize(address[11] _spokes)',
+    'function fundFactory() view returns (address)',
+    'function getHub() view returns (address)',
+    'function getRoutes() view returns (tuple(address accounting, address feeManager, address policyManager, address shares, address vault, address registry, address fundFactory))',
+    'function initialize(address[7] _spokes)',
     'function initialized() view returns (bool)',
-    'function mlnToken() view returns (address)',
     'function owner() view returns (address)',
     'function performanceFeeAmount() returns (uint256)',
     'function priceSource() view returns (address)',
-    'function registry() view returns (address)',
     'function rewardManagementFee()',
-    'function routes() view returns (address accounting, address feeManager, address participation, address policyManager, address shares, address trading, address vault, address registry, address version, address engine, address mlnToken)',
     'function setAuthority(address authority_)',
     'function setOwner(address owner_)',
     'function setPerformanceFeeAmount(uint256 _amt)',
     'function setTotalFeeAmount(uint256 _amt)',
     'function totalFeeAmount() returns (uint256)',
-    'function version() view returns (address)',
   ];
+}
+
+export interface MockFeeManagerEthersContract extends ethers.Contract {
+  'authority()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  'fundFactory()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  'getHub()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  'getRoutes()': (
+    $$overrides?: ethers.CallOverrides,
+  ) => Promise<{
+    accounting: string;
+    feeManager: string;
+    policyManager: string;
+    shares: string;
+    vault: string;
+    registry: string;
+    fundFactory: string;
+  }>;
+  'initialized()': ($$overrides?: ethers.CallOverrides) => Promise<boolean>;
+  'owner()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  'priceSource()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  'initialize(address[7])': (
+    _spokes: [string, string, string, string, string, string, string],
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+  'performanceFeeAmount()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  'rewardManagementFee()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  'setAuthority(address)': (authority_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  'setPerformanceFeeAmount(uint256)': (
+    _amt: ethers.BigNumberish,
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+  'setTotalFeeAmount(uint256)': (
+    _amt: ethers.BigNumberish,
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+  'totalFeeAmount()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+
+  callStatic: {
+    'authority()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'fundFactory()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'getHub()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'getRoutes()': (
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<{
+      accounting: string;
+      feeManager: string;
+      policyManager: string;
+      shares: string;
+      vault: string;
+      registry: string;
+      fundFactory: string;
+    }>;
+    'initialized()': ($$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'owner()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'priceSource()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'initialize(address[7])': (
+      _spokes: [string, string, string, string, string, string, string],
+      $$overrides?: ethers.Overrides,
+    ) => Promise<void>;
+    'performanceFeeAmount()': ($$overrides?: ethers.Overrides) => Promise<ethers.BigNumber>;
+    'rewardManagementFee()': ($$overrides?: ethers.Overrides) => Promise<void>;
+    'setAuthority(address)': (authority_: string, $$overrides?: ethers.Overrides) => Promise<void>;
+    'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => Promise<void>;
+    'setPerformanceFeeAmount(uint256)': (_amt: ethers.BigNumberish, $$overrides?: ethers.Overrides) => Promise<void>;
+    'setTotalFeeAmount(uint256)': (_amt: ethers.BigNumberish, $$overrides?: ethers.Overrides) => Promise<void>;
+    'totalFeeAmount()': ($$overrides?: ethers.Overrides) => Promise<ethers.BigNumber>;
+  };
+
+  estimateGas: {
+    'initialize(address[7])': (
+      _spokes: [string, string, string, string, string, string, string],
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'performanceFeeAmount()': ($$overrides?: ethers.Overrides) => Promise<ethers.BigNumber>;
+    'rewardManagementFee()': ($$overrides?: ethers.Overrides) => Promise<ethers.BigNumber>;
+    'setAuthority(address)': (authority_: string, $$overrides?: ethers.Overrides) => Promise<ethers.BigNumber>;
+    'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => Promise<ethers.BigNumber>;
+    'setPerformanceFeeAmount(uint256)': (
+      _amt: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'setTotalFeeAmount(uint256)': (
+      _amt: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'totalFeeAmount()': ($$overrides?: ethers.Overrides) => Promise<ethers.BigNumber>;
+  };
+
+  populateTransaction: {
+    'initialize(address[7])': (
+      _spokes: [string, string, string, string, string, string, string],
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'performanceFeeAmount()': ($$overrides?: ethers.Overrides) => Promise<ethers.UnsignedTransaction>;
+    'rewardManagementFee()': ($$overrides?: ethers.Overrides) => Promise<ethers.UnsignedTransaction>;
+    'setAuthority(address)': (
+      authority_: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => Promise<ethers.UnsignedTransaction>;
+    'setPerformanceFeeAmount(uint256)': (
+      _amt: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'setTotalFeeAmount(uint256)': (
+      _amt: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'totalFeeAmount()': ($$overrides?: ethers.Overrides) => Promise<ethers.UnsignedTransaction>;
+  };
 }

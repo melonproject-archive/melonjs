@@ -3,6 +3,8 @@ import { ethers } from 'ethers';
 import { Contract, TransactionWrapper } from '../Contract';
 
 export class PolicyManagerFactory extends Contract {
+  public readonly ethers: PolicyManagerFactoryEthersContract;
+
   constructor(addressOrName: string, providerOrSigner: ethers.Signer | ethers.providers.Provider) {
     super(new.target.abi, addressOrName, providerOrSigner);
   }
@@ -11,7 +13,8 @@ export class PolicyManagerFactory extends Contract {
    * `PolicyManagerFactory` contract call for the `childExists` function.
    *
    * @contract PolicyManagerFactory
-   * @signature function childExists(address) view returns (bool)
+   * @signature childExists(address)
+   * @method function childExists(address) view returns (bool)
    */
   childExists: ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
 
@@ -19,7 +22,8 @@ export class PolicyManagerFactory extends Contract {
    * `PolicyManagerFactory` contract call for the `isInstance` function.
    *
    * @contract PolicyManagerFactory
-   * @signature function isInstance(address) view returns (bool)
+   * @signature isInstance(address)
+   * @method function isInstance(address) view returns (bool)
    */
   isInstance: (_child: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
 
@@ -27,7 +31,8 @@ export class PolicyManagerFactory extends Contract {
    * `PolicyManagerFactory` contract transaction for `createInstance` function.
    *
    * @contract PolicyManagerFactory
-   * @signature function createInstance(address) returns (address)
+   * @signature createInstance(address)
+   * @method function createInstance(address) returns (address)
    */
   createInstance: (_hub: string) => TransactionWrapper<ethers.Overrides>;
 
@@ -37,4 +42,24 @@ export class PolicyManagerFactory extends Contract {
     'function createInstance(address _hub) returns (address)',
     'function isInstance(address _child) view returns (bool)',
   ];
+}
+
+export interface PolicyManagerFactoryEthersContract extends ethers.Contract {
+  'childExists(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+  'isInstance(address)': (_child: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+  'createInstance(address)': (_hub: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+
+  callStatic: {
+    'childExists(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'isInstance(address)': (_child: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'createInstance(address)': (_hub: string, $$overrides?: ethers.Overrides) => Promise<string>;
+  };
+
+  estimateGas: {
+    'createInstance(address)': (_hub: string, $$overrides?: ethers.Overrides) => Promise<ethers.BigNumber>;
+  };
+
+  populateTransaction: {
+    'createInstance(address)': (_hub: string, $$overrides?: ethers.Overrides) => Promise<ethers.UnsignedTransaction>;
+  };
 }

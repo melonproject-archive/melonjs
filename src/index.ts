@@ -1,1 +1,1 @@
-console.log('Nothing here yet!');
+export * as contracts from './contracts';

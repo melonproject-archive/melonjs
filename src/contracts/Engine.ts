@@ -3,6 +3,8 @@ import { ethers } from 'ethers';
 import { Contract, TransactionWrapper } from '../Contract';
 
 export class Engine extends Contract {
+  public readonly ethers: EngineEthersContract;
+
   constructor(addressOrName: string, providerOrSigner: ethers.Signer | ethers.providers.Provider) {
     super(new.target.abi, addressOrName, providerOrSigner);
   }
@@ -11,7 +13,8 @@ export class Engine extends Contract {
    * `Engine` contract call for the `MLN_DECIMALS` function.
    *
    * @contract Engine
-   * @signature function MLN_DECIMALS() view returns (uint256)
+   * @signature MLN_DECIMALS()
+   * @method function MLN_DECIMALS() view returns (uint256)
    */
   MLN_DECIMALS: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
@@ -19,7 +22,8 @@ export class Engine extends Contract {
    * `Engine` contract call for the `amguPrice` function.
    *
    * @contract Engine
-   * @signature function amguPrice() view returns (uint256)
+   * @signature amguPrice()
+   * @method function amguPrice() view returns (uint256)
    */
   amguPrice: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
@@ -27,7 +31,8 @@ export class Engine extends Contract {
    * `Engine` contract call for the `enginePrice` function.
    *
    * @contract Engine
-   * @signature function enginePrice() view returns (uint256)
+   * @signature enginePrice()
+   * @method function enginePrice() view returns (uint256)
    */
   enginePrice: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
@@ -35,10 +40,11 @@ export class Engine extends Contract {
    * `Engine` contract call for the `ethPayoutForMlnAmount` function.
    *
    * @contract Engine
-   * @signature function ethPayoutForMlnAmount(uint256) view returns (uint256)
+   * @signature ethPayoutForMlnAmount(uint256)
+   * @method function ethPayoutForMlnAmount(uint256) view returns (uint256)
    */
   ethPayoutForMlnAmount: (
-    mlnAmount: ethers.BigNumberish,
+    _mlnAmount: ethers.BigNumberish,
     $$overrides?: ethers.CallOverrides,
   ) => Promise<ethers.BigNumber>;
 
@@ -46,7 +52,8 @@ export class Engine extends Contract {
    * `Engine` contract call for the `frozenEther` function.
    *
    * @contract Engine
-   * @signature function frozenEther() view returns (uint256)
+   * @signature frozenEther()
+   * @method function frozenEther() view returns (uint256)
    */
   frozenEther: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
@@ -54,7 +61,8 @@ export class Engine extends Contract {
    * `Engine` contract call for the `getAmguPrice` function.
    *
    * @contract Engine
-   * @signature function getAmguPrice() view returns (uint256)
+   * @signature getAmguPrice()
+   * @method function getAmguPrice() view returns (uint256)
    */
   getAmguPrice: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
@@ -62,7 +70,8 @@ export class Engine extends Contract {
    * `Engine` contract call for the `lastThaw` function.
    *
    * @contract Engine
-   * @signature function lastThaw() view returns (uint256)
+   * @signature lastThaw()
+   * @method function lastThaw() view returns (uint256)
    */
   lastThaw: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
@@ -70,7 +79,8 @@ export class Engine extends Contract {
    * `Engine` contract call for the `liquidEther` function.
    *
    * @contract Engine
-   * @signature function liquidEther() view returns (uint256)
+   * @signature liquidEther()
+   * @method function liquidEther() view returns (uint256)
    */
   liquidEther: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
@@ -78,7 +88,8 @@ export class Engine extends Contract {
    * `Engine` contract call for the `mlnToken` function.
    *
    * @contract Engine
-   * @signature function mlnToken() view returns (address)
+   * @signature mlnToken()
+   * @method function mlnToken() view returns (address)
    */
   mlnToken: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
@@ -86,7 +97,8 @@ export class Engine extends Contract {
    * `Engine` contract call for the `premiumPercent` function.
    *
    * @contract Engine
-   * @signature function premiumPercent() view returns (uint256)
+   * @signature premiumPercent()
+   * @method function premiumPercent() view returns (uint256)
    */
   premiumPercent: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
@@ -94,7 +106,8 @@ export class Engine extends Contract {
    * `Engine` contract call for the `priceSource` function.
    *
    * @contract Engine
-   * @signature function priceSource() view returns (address)
+   * @signature priceSource()
+   * @method function priceSource() view returns (address)
    */
   priceSource: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
@@ -102,7 +115,8 @@ export class Engine extends Contract {
    * `Engine` contract call for the `registry` function.
    *
    * @contract Engine
-   * @signature function registry() view returns (address)
+   * @signature registry()
+   * @method function registry() view returns (address)
    */
   registry: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
@@ -110,7 +124,8 @@ export class Engine extends Contract {
    * `Engine` contract call for the `thawingDelay` function.
    *
    * @contract Engine
-   * @signature function thawingDelay() view returns (uint256)
+   * @signature thawingDelay()
+   * @method function thawingDelay() view returns (uint256)
    */
   thawingDelay: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
@@ -118,7 +133,8 @@ export class Engine extends Contract {
    * `Engine` contract call for the `totalAmguConsumed` function.
    *
    * @contract Engine
-   * @signature function totalAmguConsumed() view returns (uint256)
+   * @signature totalAmguConsumed()
+   * @method function totalAmguConsumed() view returns (uint256)
    */
   totalAmguConsumed: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
@@ -126,7 +142,8 @@ export class Engine extends Contract {
    * `Engine` contract call for the `totalEtherConsumed` function.
    *
    * @contract Engine
-   * @signature function totalEtherConsumed() view returns (uint256)
+   * @signature totalEtherConsumed()
+   * @method function totalEtherConsumed() view returns (uint256)
    */
   totalEtherConsumed: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
@@ -134,7 +151,8 @@ export class Engine extends Contract {
    * `Engine` contract call for the `totalMlnBurned` function.
    *
    * @contract Engine
-   * @signature function totalMlnBurned() view returns (uint256)
+   * @signature totalMlnBurned()
+   * @method function totalMlnBurned() view returns (uint256)
    */
   totalMlnBurned: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
@@ -142,7 +160,8 @@ export class Engine extends Contract {
    * `Engine` contract transaction for `payAmguInEther` function.
    *
    * @contract Engine
-   * @signature function payAmguInEther() payable
+   * @signature payAmguInEther()
+   * @method function payAmguInEther() payable
    */
   payAmguInEther: () => TransactionWrapper<ethers.PayableOverrides>;
 
@@ -150,15 +169,17 @@ export class Engine extends Contract {
    * `Engine` contract transaction for `sellAndBurnMln` function.
    *
    * @contract Engine
-   * @signature function sellAndBurnMln(uint256)
+   * @signature sellAndBurnMln(uint256)
+   * @method function sellAndBurnMln(uint256)
    */
-  sellAndBurnMln: (mlnAmount: ethers.BigNumberish) => TransactionWrapper<ethers.Overrides>;
+  sellAndBurnMln: (_mlnAmount: ethers.BigNumberish) => TransactionWrapper<ethers.Overrides>;
 
   /**
    * `Engine` contract transaction for `setAmguPrice` function.
    *
    * @contract Engine
-   * @signature function setAmguPrice(uint256)
+   * @signature setAmguPrice(uint256)
+   * @method function setAmguPrice(uint256)
    */
   setAmguPrice: (_price: ethers.BigNumberish) => TransactionWrapper<ethers.Overrides>;
 
@@ -166,7 +187,8 @@ export class Engine extends Contract {
    * `Engine` contract transaction for `setRegistry` function.
    *
    * @contract Engine
-   * @signature function setRegistry(address)
+   * @signature setRegistry(address)
+   * @method function setRegistry(address)
    */
   setRegistry: (_registry: string) => TransactionWrapper<ethers.Overrides>;
 
@@ -174,7 +196,8 @@ export class Engine extends Contract {
    * `Engine` contract transaction for `thaw` function.
    *
    * @contract Engine
-   * @signature function thaw()
+   * @signature thaw()
+   * @method function thaw()
    */
   thaw: () => TransactionWrapper<ethers.Overrides>;
 
@@ -188,7 +211,7 @@ export class Engine extends Contract {
     'function MLN_DECIMALS() view returns (uint256)',
     'function amguPrice() view returns (uint256)',
     'function enginePrice() view returns (uint256)',
-    'function ethPayoutForMlnAmount(uint256 mlnAmount) view returns (uint256)',
+    'function ethPayoutForMlnAmount(uint256 _mlnAmount) view returns (uint256)',
     'function frozenEther() view returns (uint256)',
     'function getAmguPrice() view returns (uint256)',
     'function lastThaw() view returns (uint256)',
@@ -198,7 +221,7 @@ export class Engine extends Contract {
     'function premiumPercent() view returns (uint256)',
     'function priceSource() view returns (address)',
     'function registry() view returns (address)',
-    'function sellAndBurnMln(uint256 mlnAmount)',
+    'function sellAndBurnMln(uint256 _mlnAmount)',
     'function setAmguPrice(uint256 _price)',
     'function setRegistry(address _registry)',
     'function thaw()',
@@ -207,4 +230,89 @@ export class Engine extends Contract {
     'function totalEtherConsumed() view returns (uint256)',
     'function totalMlnBurned() view returns (uint256)',
   ];
+}
+
+export interface EngineEthersContract extends ethers.Contract {
+  'MLN_DECIMALS()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+  'amguPrice()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+  'enginePrice()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+  'ethPayoutForMlnAmount(uint256)': (
+    _mlnAmount: ethers.BigNumberish,
+    $$overrides?: ethers.CallOverrides,
+  ) => Promise<ethers.BigNumber>;
+  'frozenEther()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+  'getAmguPrice()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+  'lastThaw()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+  'liquidEther()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+  'mlnToken()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  'premiumPercent()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+  'priceSource()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  'registry()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  'thawingDelay()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+  'totalAmguConsumed()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+  'totalEtherConsumed()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+  'totalMlnBurned()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+  'payAmguInEther()': ($$overrides?: ethers.PayableOverrides) => ethers.providers.TransactionResponse;
+  'sellAndBurnMln(uint256)': (
+    _mlnAmount: ethers.BigNumberish,
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+  'setAmguPrice(uint256)': (
+    _price: ethers.BigNumberish,
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+  'setRegistry(address)': (_registry: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  'thaw()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+
+  callStatic: {
+    'MLN_DECIMALS()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'amguPrice()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'enginePrice()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'ethPayoutForMlnAmount(uint256)': (
+      _mlnAmount: ethers.BigNumberish,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'frozenEther()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'getAmguPrice()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'lastThaw()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'liquidEther()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'mlnToken()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'premiumPercent()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'priceSource()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'registry()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'thawingDelay()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'totalAmguConsumed()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'totalEtherConsumed()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'totalMlnBurned()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'payAmguInEther()': ($$overrides?: ethers.PayableOverrides) => Promise<void>;
+    'sellAndBurnMln(uint256)': (_mlnAmount: ethers.BigNumberish, $$overrides?: ethers.Overrides) => Promise<void>;
+    'setAmguPrice(uint256)': (_price: ethers.BigNumberish, $$overrides?: ethers.Overrides) => Promise<void>;
+    'setRegistry(address)': (_registry: string, $$overrides?: ethers.Overrides) => Promise<void>;
+    'thaw()': ($$overrides?: ethers.Overrides) => Promise<void>;
+  };
+
+  estimateGas: {
+    'payAmguInEther()': ($$overrides?: ethers.PayableOverrides) => Promise<ethers.BigNumber>;
+    'sellAndBurnMln(uint256)': (
+      _mlnAmount: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'setAmguPrice(uint256)': (_price: ethers.BigNumberish, $$overrides?: ethers.Overrides) => Promise<ethers.BigNumber>;
+    'setRegistry(address)': (_registry: string, $$overrides?: ethers.Overrides) => Promise<ethers.BigNumber>;
+    'thaw()': ($$overrides?: ethers.Overrides) => Promise<ethers.BigNumber>;
+  };
+
+  populateTransaction: {
+    'payAmguInEther()': ($$overrides?: ethers.PayableOverrides) => Promise<ethers.UnsignedTransaction>;
+    'sellAndBurnMln(uint256)': (
+      _mlnAmount: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'setAmguPrice(uint256)': (
+      _price: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'setRegistry(address)': (_registry: string, $$overrides?: ethers.Overrides) => Promise<ethers.UnsignedTransaction>;
+    'thaw()': ($$overrides?: ethers.Overrides) => Promise<ethers.UnsignedTransaction>;
+  };
 }

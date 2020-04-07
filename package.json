@@ -18,11 +18,6 @@
   "bugs": {
     "url": "https://github.com/melonproject/melonjs/issues"
   },
-  "contributors": [
-    "Sebastian Siemssen <fubhy@fubhy.com>",
-    "Ivan Herger <ivan@herger.org>",
-    "Luong Nguyen <luongnt.58@gmail.com>"
-  ],
   "scripts": {
     "clean": "rimraf dist docs coverage",
     "prebuild": "rimraf build",
@@ -32,15 +27,15 @@
     "prewatch": "cp package.json dist",
     "watch": "tsc --watch",
     "precodegen": "rimraf src/contracts",
-    "codegen": "ts-node --transpile-only src/scripts/codegen",
+    "codegen": "ts-node --transpile-only scripts/codegen",
     "predocs": "rimraf docs",
     "docs": "typedoc",
     "postdocs": "cp jekyll.config.yml docs/_config.yml",
     "pretest": "rimraf coverage",
     "test": "jest --verbose --config tests/jest.config.js",
     "coverage": "yarn test --coverage",
-    "format": "prettier --write src/{*,**/*}.ts",
-    "lint": "yarn prettier --list-different src/{*,**/*}.ts",
+    "format": "prettier --write {src,scripts}/{*,**/*}.ts",
+    "lint": "yarn prettier --list-different {src,scripts}/{*,**/*}.ts",
     "typecheck": "tsc --noEmit",
     "preversion": "yarn codegen && yarn typecheck && yarn test && yarn lint && yarn docs && yarn build",
     "postversion": "cp package.json dist",
@@ -71,7 +66,11 @@
     "ts-jest": "^25.3.1",
     "ts-node": "^8.8.2",
     "typedoc": "^0.17.4",
-    "typescript": "^3.8.3"
+    "typescript": "^3.8.3",
+    "yargs": "^15.3.1"
+  },
+  "codegen": {
+    "abis": "../melon-protocol/out"
   },
   "husky": {
     "hooks": {

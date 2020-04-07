@@ -1,5 +1,5 @@
 import { ethers } from 'ethers';
-import { Hub } from './contracts/Hub';
+import * as melon from '.';
 
 describe('Smoke test', () => {
   it('Generated contracts should work', async () => {
@@ -7,7 +7,7 @@ describe('Smoke test', () => {
       'https://kovan.infura.io/v3/ffe0be31d7d34594b3decc6c7778e9ad',
     );
 
-    const hub = new Hub('0x7b099237599ab0263ba299e954127b54c51d82c9', provider);
+    const hub = new melon.contracts.Hub('0x7b099237599ab0263ba299e954127b54c51d82c9', provider);
     const manager = await hub.manager();
 
     console.log(manager);

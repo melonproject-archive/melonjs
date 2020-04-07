@@ -3,6 +3,8 @@ import { ethers } from 'ethers';
 import { Contract, TransactionWrapper } from '../Contract';
 
 export class ISharesFactory extends Contract {
+  public readonly ethers: ISharesFactoryEthersContract;
+
   constructor(addressOrName: string, providerOrSigner: ethers.Signer | ethers.providers.Provider) {
     super(new.target.abi, addressOrName, providerOrSigner);
   }
@@ -11,9 +13,46 @@ export class ISharesFactory extends Contract {
    * `ISharesFactory` contract transaction for `createInstance` function.
    *
    * @contract ISharesFactory
-   * @signature function createInstance(address) returns (address)
+   * @signature createInstance(address,address[],address)
+   * @method function createInstance(address,address[],address) returns (address)
    */
-  createInstance: (_hub: string) => TransactionWrapper<ethers.Overrides>;
+  createInstance: ($$0: string, $$1: string[], $$2: string) => TransactionWrapper<ethers.Overrides>;
 
-  static abi: string[] = ['function createInstance(address _hub) returns (address)'];
+  static abi: string[] = ['function createInstance(address, address[], address) returns (address)'];
+}
+
+export interface ISharesFactoryEthersContract extends ethers.Contract {
+  'createInstance(address,address[],address)': (
+    $$0: string,
+    $$1: string[],
+    $$2: string,
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+
+  callStatic: {
+    'createInstance(address,address[],address)': (
+      $$0: string,
+      $$1: string[],
+      $$2: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<string>;
+  };
+
+  estimateGas: {
+    'createInstance(address,address[],address)': (
+      $$0: string,
+      $$1: string[],
+      $$2: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+  };
+
+  populateTransaction: {
+    'createInstance(address,address[],address)': (
+      $$0: string,
+      $$1: string[],
+      $$2: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+  };
 }

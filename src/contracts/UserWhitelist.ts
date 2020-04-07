@@ -3,6 +3,8 @@ import { ethers } from 'ethers';
 import { Contract, TransactionWrapper } from '../Contract';
 
 export class UserWhitelist extends Contract {
+  public readonly ethers: UserWhitelistEthersContract;
+
   constructor(addressOrName: string, providerOrSigner: ethers.Signer | ethers.providers.Provider) {
     super(new.target.abi, addressOrName, providerOrSigner);
   }
@@ -11,7 +13,8 @@ export class UserWhitelist extends Contract {
    * `UserWhitelist` contract call for the `authority` function.
    *
    * @contract UserWhitelist
-   * @signature function authority() view returns (address)
+   * @signature authority()
+   * @method function authority() view returns (address)
    */
   authority: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
@@ -19,7 +22,8 @@ export class UserWhitelist extends Contract {
    * `UserWhitelist` contract call for the `identifier` function.
    *
    * @contract UserWhitelist
-   * @signature function identifier() pure returns (string)
+   * @signature identifier()
+   * @method function identifier() pure returns (string)
    */
   identifier: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
@@ -27,7 +31,8 @@ export class UserWhitelist extends Contract {
    * `UserWhitelist` contract call for the `owner` function.
    *
    * @contract UserWhitelist
-   * @signature function owner() view returns (address)
+   * @signature owner()
+   * @method function owner() view returns (address)
    */
   owner: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
@@ -35,7 +40,8 @@ export class UserWhitelist extends Contract {
    * `UserWhitelist` contract call for the `position` function.
    *
    * @contract UserWhitelist
-   * @signature function position() pure returns (uint8)
+   * @signature position()
+   * @method function position() pure returns (uint8)
    */
   position: ($$overrides?: ethers.CallOverrides) => Promise<number>;
 
@@ -43,7 +49,8 @@ export class UserWhitelist extends Contract {
    * `UserWhitelist` contract call for the `whitelisted` function.
    *
    * @contract UserWhitelist
-   * @signature function whitelisted(address) view returns (bool)
+   * @signature whitelisted(address)
+   * @method function whitelisted(address) view returns (bool)
    */
   whitelisted: ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
 
@@ -51,7 +58,8 @@ export class UserWhitelist extends Contract {
    * `UserWhitelist` contract transaction for `addToWhitelist` function.
    *
    * @contract UserWhitelist
-   * @signature function addToWhitelist(address)
+   * @signature addToWhitelist(address)
+   * @method function addToWhitelist(address)
    */
   addToWhitelist: (_who: string) => TransactionWrapper<ethers.Overrides>;
 
@@ -59,7 +67,8 @@ export class UserWhitelist extends Contract {
    * `UserWhitelist` contract transaction for `batchAddToWhitelist` function.
    *
    * @contract UserWhitelist
-   * @signature function batchAddToWhitelist(address[])
+   * @signature batchAddToWhitelist(address[])
+   * @method function batchAddToWhitelist(address[])
    */
   batchAddToWhitelist: (_members: string[]) => TransactionWrapper<ethers.Overrides>;
 
@@ -67,7 +76,8 @@ export class UserWhitelist extends Contract {
    * `UserWhitelist` contract transaction for `batchRemoveFromWhitelist` function.
    *
    * @contract UserWhitelist
-   * @signature function batchRemoveFromWhitelist(address[])
+   * @signature batchRemoveFromWhitelist(address[])
+   * @method function batchRemoveFromWhitelist(address[])
    */
   batchRemoveFromWhitelist: (_members: string[]) => TransactionWrapper<ethers.Overrides>;
 
@@ -75,7 +85,8 @@ export class UserWhitelist extends Contract {
    * `UserWhitelist` contract transaction for `removeFromWhitelist` function.
    *
    * @contract UserWhitelist
-   * @signature function removeFromWhitelist(address)
+   * @signature removeFromWhitelist(address)
+   * @method function removeFromWhitelist(address)
    */
   removeFromWhitelist: (_who: string) => TransactionWrapper<ethers.Overrides>;
 
@@ -83,7 +94,8 @@ export class UserWhitelist extends Contract {
    * `UserWhitelist` contract transaction for `rule` function.
    *
    * @contract UserWhitelist
-   * @signature function rule(bytes4,address[5],uint256[3],bytes32) returns (bool)
+   * @signature rule(bytes4,address[5],uint256[3],bytes32)
+   * @method function rule(bytes4,address[5],uint256[3],bytes32) returns (bool)
    */
   rule: (
     sig: string | ethers.utils.BytesLike,
@@ -96,7 +108,8 @@ export class UserWhitelist extends Contract {
    * `UserWhitelist` contract transaction for `setAuthority` function.
    *
    * @contract UserWhitelist
-   * @signature function setAuthority(address)
+   * @signature setAuthority(address)
+   * @method function setAuthority(address)
    */
   setAuthority: (authority_: string) => TransactionWrapper<ethers.Overrides>;
 
@@ -104,7 +117,8 @@ export class UserWhitelist extends Contract {
    * `UserWhitelist` contract transaction for `setOwner` function.
    *
    * @contract UserWhitelist
-   * @signature function setOwner(address)
+   * @signature setOwner(address)
+   * @method function setOwner(address)
    */
   setOwner: (owner_: string) => TransactionWrapper<ethers.Overrides>;
 
@@ -127,4 +141,102 @@ export class UserWhitelist extends Contract {
     'function setOwner(address owner_)',
     'function whitelisted(address) view returns (bool)',
   ];
+}
+
+export interface UserWhitelistEthersContract extends ethers.Contract {
+  'authority()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  'identifier()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  'owner()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  'position()': ($$overrides?: ethers.CallOverrides) => Promise<number>;
+  'whitelisted(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+  'addToWhitelist(address)': (_who: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  'batchAddToWhitelist(address[])': (
+    _members: string[],
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+  'batchRemoveFromWhitelist(address[])': (
+    _members: string[],
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+  'removeFromWhitelist(address)': (
+    _who: string,
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+  'rule(bytes4,address[5],uint256[3],bytes32)': (
+    sig: string | ethers.utils.BytesLike,
+    addresses: [string, string, string, string, string],
+    values: [ethers.BigNumber, ethers.BigNumber, ethers.BigNumber],
+    identifier: string | ethers.utils.BytesLike,
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+  'setAuthority(address)': (authority_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+
+  callStatic: {
+    'authority()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'identifier()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'owner()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'position()': ($$overrides?: ethers.CallOverrides) => Promise<number>;
+    'whitelisted(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'addToWhitelist(address)': (_who: string, $$overrides?: ethers.Overrides) => Promise<void>;
+    'batchAddToWhitelist(address[])': (_members: string[], $$overrides?: ethers.Overrides) => Promise<void>;
+    'batchRemoveFromWhitelist(address[])': (_members: string[], $$overrides?: ethers.Overrides) => Promise<void>;
+    'removeFromWhitelist(address)': (_who: string, $$overrides?: ethers.Overrides) => Promise<void>;
+    'rule(bytes4,address[5],uint256[3],bytes32)': (
+      sig: string | ethers.utils.BytesLike,
+      addresses: [string, string, string, string, string],
+      values: [ethers.BigNumber, ethers.BigNumber, ethers.BigNumber],
+      identifier: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<boolean>;
+    'setAuthority(address)': (authority_: string, $$overrides?: ethers.Overrides) => Promise<void>;
+    'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => Promise<void>;
+  };
+
+  estimateGas: {
+    'addToWhitelist(address)': (_who: string, $$overrides?: ethers.Overrides) => Promise<ethers.BigNumber>;
+    'batchAddToWhitelist(address[])': (_members: string[], $$overrides?: ethers.Overrides) => Promise<ethers.BigNumber>;
+    'batchRemoveFromWhitelist(address[])': (
+      _members: string[],
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'removeFromWhitelist(address)': (_who: string, $$overrides?: ethers.Overrides) => Promise<ethers.BigNumber>;
+    'rule(bytes4,address[5],uint256[3],bytes32)': (
+      sig: string | ethers.utils.BytesLike,
+      addresses: [string, string, string, string, string],
+      values: [ethers.BigNumber, ethers.BigNumber, ethers.BigNumber],
+      identifier: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'setAuthority(address)': (authority_: string, $$overrides?: ethers.Overrides) => Promise<ethers.BigNumber>;
+    'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => Promise<ethers.BigNumber>;
+  };
+
+  populateTransaction: {
+    'addToWhitelist(address)': (_who: string, $$overrides?: ethers.Overrides) => Promise<ethers.UnsignedTransaction>;
+    'batchAddToWhitelist(address[])': (
+      _members: string[],
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'batchRemoveFromWhitelist(address[])': (
+      _members: string[],
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'removeFromWhitelist(address)': (
+      _who: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'rule(bytes4,address[5],uint256[3],bytes32)': (
+      sig: string | ethers.utils.BytesLike,
+      addresses: [string, string, string, string, string],
+      values: [ethers.BigNumber, ethers.BigNumber, ethers.BigNumber],
+      identifier: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'setAuthority(address)': (
+      authority_: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => Promise<ethers.UnsignedTransaction>;
+  };
 }

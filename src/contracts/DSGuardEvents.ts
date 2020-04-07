@@ -3,6 +3,8 @@ import { ethers } from 'ethers';
 import { Contract, TransactionWrapper } from '../Contract';
 
 export class DSGuardEvents extends Contract {
+  public readonly ethers: DSGuardEventsEthersContract;
+
   constructor(addressOrName: string, providerOrSigner: ethers.Signer | ethers.providers.Provider) {
     super(new.target.abi, addressOrName, providerOrSigner);
   }
@@ -11,4 +13,12 @@ export class DSGuardEvents extends Contract {
     'event LogForbid(bytes32 indexed src, bytes32 indexed dst, bytes32 indexed sig)',
     'event LogPermit(bytes32 indexed src, bytes32 indexed dst, bytes32 indexed sig)',
   ];
+}
+
+export interface DSGuardEventsEthersContract extends ethers.Contract {
+  callStatic: {};
+
+  estimateGas: {};
+
+  populateTransaction: {};
 }

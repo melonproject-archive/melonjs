@@ -3,6 +3,8 @@ import { ethers } from 'ethers';
 import { Contract, TransactionWrapper } from '../Contract';
 
 export class ManagementFee extends Contract {
+  public readonly ethers: ManagementFeeEthersContract;
+
   constructor(addressOrName: string, providerOrSigner: ethers.Signer | ethers.providers.Provider) {
     super(new.target.abi, addressOrName, providerOrSigner);
   }
@@ -11,7 +13,8 @@ export class ManagementFee extends Contract {
    * `ManagementFee` contract call for the `DIVISOR` function.
    *
    * @contract ManagementFee
-   * @signature function DIVISOR() view returns (uint256)
+   * @signature DIVISOR()
+   * @method function DIVISOR() view returns (uint256)
    */
   DIVISOR: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
@@ -19,7 +22,8 @@ export class ManagementFee extends Contract {
    * `ManagementFee` contract call for the `feeAmount` function.
    *
    * @contract ManagementFee
-   * @signature function feeAmount() view returns (uint256)
+   * @signature feeAmount()
+   * @method function feeAmount() view returns (uint256)
    */
   feeAmount: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
@@ -27,7 +31,8 @@ export class ManagementFee extends Contract {
    * `ManagementFee` contract call for the `identifier` function.
    *
    * @contract ManagementFee
-   * @signature function identifier() pure returns (uint256)
+   * @signature identifier()
+   * @method function identifier() pure returns (uint256)
    */
   identifier: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
@@ -35,7 +40,8 @@ export class ManagementFee extends Contract {
    * `ManagementFee` contract call for the `lastPayoutTime` function.
    *
    * @contract ManagementFee
-   * @signature function lastPayoutTime(address) view returns (uint256)
+   * @signature lastPayoutTime(address)
+   * @method function lastPayoutTime(address) view returns (uint256)
    */
   lastPayoutTime: ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
@@ -43,7 +49,8 @@ export class ManagementFee extends Contract {
    * `ManagementFee` contract call for the `managementFeeRate` function.
    *
    * @contract ManagementFee
-   * @signature function managementFeeRate(address) view returns (uint256)
+   * @signature managementFeeRate(address)
+   * @method function managementFeeRate(address) view returns (uint256)
    */
   managementFeeRate: ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
@@ -51,7 +58,8 @@ export class ManagementFee extends Contract {
    * `ManagementFee` contract transaction for `initializeForUser` function.
    *
    * @contract ManagementFee
-   * @signature function initializeForUser(uint256,uint256,address)
+   * @signature initializeForUser(uint256,uint256,address)
+   * @method function initializeForUser(uint256,uint256,address)
    */
   initializeForUser: (
     feeRate: ethers.BigNumberish,
@@ -63,7 +71,8 @@ export class ManagementFee extends Contract {
    * `ManagementFee` contract transaction for `updateState` function.
    *
    * @contract ManagementFee
-   * @signature function updateState()
+   * @signature updateState()
+   * @method function updateState()
    */
   updateState: () => TransactionWrapper<ethers.Overrides>;
 
@@ -76,4 +85,54 @@ export class ManagementFee extends Contract {
     'function managementFeeRate(address) view returns (uint256)',
     'function updateState()',
   ];
+}
+
+export interface ManagementFeeEthersContract extends ethers.Contract {
+  'DIVISOR()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+  'feeAmount()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+  'identifier()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+  'lastPayoutTime(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+  'managementFeeRate(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+  'initializeForUser(uint256,uint256,address)': (
+    feeRate: ethers.BigNumberish,
+    feePeriod: ethers.BigNumberish,
+    denominationAsset: string,
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+  'updateState()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+
+  callStatic: {
+    'DIVISOR()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'feeAmount()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'identifier()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'lastPayoutTime(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'managementFeeRate(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'initializeForUser(uint256,uint256,address)': (
+      feeRate: ethers.BigNumberish,
+      feePeriod: ethers.BigNumberish,
+      denominationAsset: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<void>;
+    'updateState()': ($$overrides?: ethers.Overrides) => Promise<void>;
+  };
+
+  estimateGas: {
+    'initializeForUser(uint256,uint256,address)': (
+      feeRate: ethers.BigNumberish,
+      feePeriod: ethers.BigNumberish,
+      denominationAsset: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'updateState()': ($$overrides?: ethers.Overrides) => Promise<ethers.BigNumber>;
+  };
+
+  populateTransaction: {
+    'initializeForUser(uint256,uint256,address)': (
+      feeRate: ethers.BigNumberish,
+      feePeriod: ethers.BigNumberish,
+      denominationAsset: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'updateState()': ($$overrides?: ethers.Overrides) => Promise<ethers.UnsignedTransaction>;
+  };
 }

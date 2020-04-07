@@ -3,6 +3,8 @@ import { ethers } from 'ethers';
 import { Contract, TransactionWrapper } from '../Contract';
 
 export class DSGuard extends Contract {
+  public readonly ethers: DSGuardEthersContract;
+
   constructor(addressOrName: string, providerOrSigner: ethers.Signer | ethers.providers.Provider) {
     super(new.target.abi, addressOrName, providerOrSigner);
   }
@@ -11,7 +13,8 @@ export class DSGuard extends Contract {
    * `DSGuard` contract call for the `ANY` function.
    *
    * @contract DSGuard
-   * @signature function ANY() view returns (bytes32)
+   * @signature ANY()
+   * @method function ANY() view returns (bytes32)
    */
   ANY: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
@@ -19,7 +22,8 @@ export class DSGuard extends Contract {
    * `DSGuard` contract call for the `authority` function.
    *
    * @contract DSGuard
-   * @signature function authority() view returns (address)
+   * @signature authority()
+   * @method function authority() view returns (address)
    */
   authority: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
@@ -27,7 +31,8 @@ export class DSGuard extends Contract {
    * `DSGuard` contract call for the `canCall` function.
    *
    * @contract DSGuard
-   * @signature function canCall(address,address,bytes4) view returns (bool)
+   * @signature canCall(address,address,bytes4)
+   * @method function canCall(address,address,bytes4) view returns (bool)
    */
   canCall: (
     src_: string,
@@ -40,7 +45,8 @@ export class DSGuard extends Contract {
    * `DSGuard` contract call for the `owner` function.
    *
    * @contract DSGuard
-   * @signature function owner() view returns (address)
+   * @signature owner()
+   * @method function owner() view returns (address)
    */
   owner: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
@@ -48,7 +54,8 @@ export class DSGuard extends Contract {
    * `DSGuard` contract transaction for `forbid` function.
    *
    * @contract DSGuard
-   * @signature function forbid(address,address,bytes32)
+   * @signature forbid(address,address,bytes32)
+   * @method function forbid(address,address,bytes32)
    */
   forbid: (src: string, dst: string, sig: string | ethers.utils.BytesLike) => TransactionWrapper<ethers.Overrides>;
 
@@ -56,7 +63,8 @@ export class DSGuard extends Contract {
    * `DSGuard` contract transaction for `permit` function.
    *
    * @contract DSGuard
-   * @signature function permit(address,address,bytes32)
+   * @signature permit(address,address,bytes32)
+   * @method function permit(address,address,bytes32)
    */
   permit: (src: string, dst: string, sig: string | ethers.utils.BytesLike) => TransactionWrapper<ethers.Overrides>;
 
@@ -64,7 +72,8 @@ export class DSGuard extends Contract {
    * `DSGuard` contract transaction for `setAuthority` function.
    *
    * @contract DSGuard
-   * @signature function setAuthority(address)
+   * @signature setAuthority(address)
+   * @method function setAuthority(address)
    */
   setAuthority: (authority_: string) => TransactionWrapper<ethers.Overrides>;
 
@@ -72,7 +81,8 @@ export class DSGuard extends Contract {
    * `DSGuard` contract transaction for `setOwner` function.
    *
    * @contract DSGuard
-   * @signature function setOwner(address)
+   * @signature setOwner(address)
+   * @method function setOwner(address)
    */
   setOwner: (owner_: string) => TransactionWrapper<ethers.Overrides>;
 
@@ -92,4 +102,93 @@ export class DSGuard extends Contract {
     'function setAuthority(address authority_)',
     'function setOwner(address owner_)',
   ];
+}
+
+export interface DSGuardEthersContract extends ethers.Contract {
+  'ANY()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  'authority()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  'canCall(address,address,bytes4)': (
+    src_: string,
+    dst_: string,
+    sig: string | ethers.utils.BytesLike,
+    $$overrides?: ethers.CallOverrides,
+  ) => Promise<boolean>;
+  'owner()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  'forbid(address,address,bytes32)': (
+    src: string,
+    dst: string,
+    sig: string | ethers.utils.BytesLike,
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+  'permit(address,address,bytes32)': (
+    src: string,
+    dst: string,
+    sig: string | ethers.utils.BytesLike,
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+  'setAuthority(address)': (authority_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+
+  callStatic: {
+    'ANY()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'authority()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'canCall(address,address,bytes4)': (
+      src_: string,
+      dst_: string,
+      sig: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<boolean>;
+    'owner()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'forbid(address,address,bytes32)': (
+      src: string,
+      dst: string,
+      sig: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<void>;
+    'permit(address,address,bytes32)': (
+      src: string,
+      dst: string,
+      sig: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<void>;
+    'setAuthority(address)': (authority_: string, $$overrides?: ethers.Overrides) => Promise<void>;
+    'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => Promise<void>;
+  };
+
+  estimateGas: {
+    'forbid(address,address,bytes32)': (
+      src: string,
+      dst: string,
+      sig: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'permit(address,address,bytes32)': (
+      src: string,
+      dst: string,
+      sig: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'setAuthority(address)': (authority_: string, $$overrides?: ethers.Overrides) => Promise<ethers.BigNumber>;
+    'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => Promise<ethers.BigNumber>;
+  };
+
+  populateTransaction: {
+    'forbid(address,address,bytes32)': (
+      src: string,
+      dst: string,
+      sig: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'permit(address,address,bytes32)': (
+      src: string,
+      dst: string,
+      sig: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'setAuthority(address)': (
+      authority_: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => Promise<ethers.UnsignedTransaction>;
+  };
 }

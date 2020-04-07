@@ -3,6 +3,8 @@ import { ethers } from 'ethers';
 import { Contract, TransactionWrapper } from '../Contract';
 
 export class IOasisDex extends Contract {
+  public readonly ethers: IOasisDexEthersContract;
+
   constructor(addressOrName: string, providerOrSigner: ethers.Signer | ethers.providers.Provider) {
     super(new.target.abi, addressOrName, providerOrSigner);
   }
@@ -11,7 +13,8 @@ export class IOasisDex extends Contract {
    * `IOasisDex` contract call for the `getBestOffer` function.
    *
    * @contract IOasisDex
-   * @signature function getBestOffer(address,address) view returns (uint256)
+   * @signature getBestOffer(address,address)
+   * @method function getBestOffer(address,address) view returns (uint256)
    */
   getBestOffer: ($$0: string, $$1: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
@@ -19,7 +22,8 @@ export class IOasisDex extends Contract {
    * `IOasisDex` contract call for the `getFirstUnsortedOffer` function.
    *
    * @contract IOasisDex
-   * @signature function getFirstUnsortedOffer() view returns (uint256)
+   * @signature getFirstUnsortedOffer()
+   * @method function getFirstUnsortedOffer() view returns (uint256)
    */
   getFirstUnsortedOffer: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
@@ -27,7 +31,8 @@ export class IOasisDex extends Contract {
    * `IOasisDex` contract call for the `getNextUnsortedOffer` function.
    *
    * @contract IOasisDex
-   * @signature function getNextUnsortedOffer(uint256) view returns (uint256)
+   * @signature getNextUnsortedOffer(uint256)
+   * @method function getNextUnsortedOffer(uint256) view returns (uint256)
    */
   getNextUnsortedOffer: ($$0: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
@@ -35,7 +40,8 @@ export class IOasisDex extends Contract {
    * `IOasisDex` contract call for the `getOffer` function.
    *
    * @contract IOasisDex
-   * @signature function getOffer(uint256) view returns (uint256, address, uint256, address)
+   * @signature getOffer(uint256)
+   * @method function getOffer(uint256) view returns (uint256, address, uint256, address)
    */
   getOffer: ($$0: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<any[]>;
 
@@ -43,7 +49,8 @@ export class IOasisDex extends Contract {
    * `IOasisDex` contract call for the `getWorseOffer` function.
    *
    * @contract IOasisDex
-   * @signature function getWorseOffer(uint256) view returns (uint256)
+   * @signature getWorseOffer(uint256)
+   * @method function getWorseOffer(uint256) view returns (uint256)
    */
   getWorseOffer: ($$0: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
@@ -51,7 +58,8 @@ export class IOasisDex extends Contract {
    * `IOasisDex` contract call for the `isActive` function.
    *
    * @contract IOasisDex
-   * @signature function isActive(uint256) view returns (bool)
+   * @signature isActive(uint256)
+   * @method function isActive(uint256) view returns (bool)
    */
   isActive: ($$0: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
 
@@ -59,7 +67,8 @@ export class IOasisDex extends Contract {
    * `IOasisDex` contract transaction for `buy` function.
    *
    * @contract IOasisDex
-   * @signature function buy(uint256,uint256) returns (bool)
+   * @signature buy(uint256,uint256)
+   * @method function buy(uint256,uint256) returns (bool)
    */
   buy: ($$0: ethers.BigNumberish, $$1: ethers.BigNumberish) => TransactionWrapper<ethers.Overrides>;
 
@@ -67,7 +76,8 @@ export class IOasisDex extends Contract {
    * `IOasisDex` contract transaction for `cancel` function.
    *
    * @contract IOasisDex
-   * @signature function cancel(uint256) returns (bool)
+   * @signature cancel(uint256)
+   * @method function cancel(uint256) returns (bool)
    */
   cancel: ($$0: ethers.BigNumberish) => TransactionWrapper<ethers.Overrides>;
 
@@ -75,7 +85,8 @@ export class IOasisDex extends Contract {
    * `IOasisDex` contract transaction for `offer` function.
    *
    * @contract IOasisDex
-   * @signature function offer(uint256,address,uint256,address) returns (uint256)
+   * @signature offer(uint256,address,uint256,address)
+   * @method function offer(uint256,address,uint256,address) returns (uint256)
    */
   offer: (
     $$0: ethers.BigNumberish,
@@ -95,4 +106,100 @@ export class IOasisDex extends Contract {
     'function isActive(uint256) view returns (bool)',
     'function offer(uint256, address, uint256, address) returns (uint256)',
   ];
+}
+
+export interface IOasisDexEthersContract extends ethers.Contract {
+  'getBestOffer(address,address)': (
+    $$0: string,
+    $$1: string,
+    $$overrides?: ethers.CallOverrides,
+  ) => Promise<ethers.BigNumber>;
+  'getFirstUnsortedOffer()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+  'getNextUnsortedOffer(uint256)': (
+    $$0: ethers.BigNumberish,
+    $$overrides?: ethers.CallOverrides,
+  ) => Promise<ethers.BigNumber>;
+  'getOffer(uint256)': ($$0: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<any[]>;
+  'getWorseOffer(uint256)': ($$0: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+  'isActive(uint256)': ($$0: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+  'buy(uint256,uint256)': (
+    $$0: ethers.BigNumberish,
+    $$1: ethers.BigNumberish,
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+  'cancel(uint256)': ($$0: ethers.BigNumberish, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  'offer(uint256,address,uint256,address)': (
+    $$0: ethers.BigNumberish,
+    $$1: string,
+    $$2: ethers.BigNumberish,
+    $$3: string,
+    $$overrides?: ethers.Overrides,
+  ) => ethers.providers.TransactionResponse;
+
+  callStatic: {
+    'getBestOffer(address,address)': (
+      $$0: string,
+      $$1: string,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'getFirstUnsortedOffer()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'getNextUnsortedOffer(uint256)': (
+      $$0: ethers.BigNumberish,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'getOffer(uint256)': ($$0: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<any[]>;
+    'getWorseOffer(uint256)': (
+      $$0: ethers.BigNumberish,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'isActive(uint256)': ($$0: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'buy(uint256,uint256)': (
+      $$0: ethers.BigNumberish,
+      $$1: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<boolean>;
+    'cancel(uint256)': ($$0: ethers.BigNumberish, $$overrides?: ethers.Overrides) => Promise<boolean>;
+    'offer(uint256,address,uint256,address)': (
+      $$0: ethers.BigNumberish,
+      $$1: string,
+      $$2: ethers.BigNumberish,
+      $$3: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+  };
+
+  estimateGas: {
+    'buy(uint256,uint256)': (
+      $$0: ethers.BigNumberish,
+      $$1: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+    'cancel(uint256)': ($$0: ethers.BigNumberish, $$overrides?: ethers.Overrides) => Promise<ethers.BigNumber>;
+    'offer(uint256,address,uint256,address)': (
+      $$0: ethers.BigNumberish,
+      $$1: string,
+      $$2: ethers.BigNumberish,
+      $$3: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.BigNumber>;
+  };
+
+  populateTransaction: {
+    'buy(uint256,uint256)': (
+      $$0: ethers.BigNumberish,
+      $$1: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'cancel(uint256)': (
+      $$0: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+    'offer(uint256,address,uint256,address)': (
+      $$0: ethers.BigNumberish,
+      $$1: string,
+      $$2: ethers.BigNumberish,
+      $$3: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.UnsignedTransaction>;
+  };
 }
