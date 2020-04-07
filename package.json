@@ -7,7 +7,7 @@
   "typings": "index.d.ts",
   "license": "MIT",
   "author": "Avantgarde Finance <team@avantgarde.finance>",
-  "homepage": "https://melonprotocol.com",
+  "homepage": "https://melonjs.melonprotocol.com",
   "publishConfig": {
     "access": "public"
   },
@@ -19,9 +19,10 @@
     "url": "https://github.com/melonproject/melonjs/issues"
   },
   "contributors": [
-    "Sebastian Siemssen <fubhy@fubhy.com>",
+    "Erin Koen <erin.koen@gmail.com>",
     "Ivan Herger <ivan@herger.org>",
-    "Luong Nguyen <luongnt.58@gmail.com>"
+    "Luong Nguyen <luongnt.58@gmail.com>",
+    "Sebastian Siemssen <fubhy@fubhy.com>"
   ],
   "scripts": {
     "clean": "rimraf dist docs coverage",
@@ -67,7 +68,6 @@
     "@0x/types": "^2.5.0-beta.3",
     "@types/jest": "^24.0.19",
     "@types/lru-cache": "^5.1.0",
-    "@types/ramda": "^0.26.33",
     "cp": "^0.2.0",
     "ganache-core": "^2.8.0",
     "gh-pages": "^2.1.1",
