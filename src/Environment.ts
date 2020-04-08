@@ -4,6 +4,7 @@ import { Address, isAddress, sameAddress } from './Address';
 export interface EnvironmentOptions {
   adapters?: ExchangeAdapterDefinition[];
   tokens?: TokenDefinition[];
+  deployment?: DeploymentOutput;
 }
 
 export enum ExchangeAdapter {
@@ -91,6 +92,7 @@ function deploymentTokens(deployment: DeploymentOutput): TokenDefinition[] {
 }
 
 export class Environment {
+  public readonly deployment: DeploymentOutput;
   public readonly adapters: ExchangeAdapterDefinition[];
   public readonly tokens: TokenDefinition[];
 
@@ -112,6 +114,7 @@ export class Environment {
   }
 
   constructor(options?: EnvironmentOptions) {
+    this.deployment = options.deployment;
     this.tokens = options?.tokens ?? [];
     this.adapters = options?.adapters ?? [];
   }
