@@ -301,6 +301,64 @@ export interface WhiteListEthersContract extends ethers.Contract {
     $$overrides?: ethers.Overrides,
   ) => ethers.providers.TransactionResponse;
 
+  functions: {
+    'kgtToken()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'pendingAdmin()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'getOperators()': ($$overrides?: ethers.CallOverrides) => Promise<string[]>;
+    'getUserCapInWei(address)': (user: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'kgtHolderCategory()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'userCategory(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'getAlerters()': ($$overrides?: ethers.CallOverrides) => Promise<string[]>;
+    'weiPerSgd()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'getUserCategory(address)': (user: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'admin()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'categoryCap(uint256)': ($$0: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'removeAlerter(address)': (alerter: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'setUserCategory(address,uint256)': (
+      user: string,
+      category: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'withdrawToken(address,uint256,address)': (
+      token: string,
+      amount: ethers.BigNumberish,
+      sendTo: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'addAlerter(address)': (newAlerter: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'setCategoryCap(uint256,uint256)': (
+      category: ethers.BigNumberish,
+      sgdCap: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setSgdToEthRate(uint256)': (
+      _sgdToWeiRate: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'transferAdmin(address)': (
+      newAdmin: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'claimAdmin()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'transferAdminQuickly(address)': (
+      newAdmin: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'addOperator(address)': (
+      newOperator: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'removeOperator(address)': (
+      operator: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'withdrawEther(uint256,address)': (
+      amount: ethers.BigNumberish,
+      sendTo: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+  };
+
   callStatic: {
     'kgtToken()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
     'pendingAdmin()': ($$overrides?: ethers.CallOverrides) => Promise<string>;

@@ -425,6 +425,86 @@ export interface AccountingEthersContract extends ethers.Contract {
   'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
   'triggerRewardAllFees()': ($$overrides?: ethers.PayableOverrides) => ethers.providers.TransactionResponse;
 
+  functions: {
+    'DEFAULT_SHARE_PRICE()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'DENOMINATION_ASSET()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'MAX_OWNED_ASSETS()': ($$overrides?: ethers.CallOverrides) => Promise<number>;
+    'REGISTRY()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'SHARES_DECIMALS()': ($$overrides?: ethers.CallOverrides) => Promise<number>;
+    'assetBalances(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'authority()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'calcAssetGav(address)': (_asset: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'calcGav()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'calcNav(uint256,uint256)': (
+      _gav: ethers.BigNumberish,
+      _unclaimedFeesInDenominationAsset: ethers.BigNumberish,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'fundFactory()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'getAllAssetBalances()': (
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<{ assets_: string[]; balances_: ethers.BigNumber[] }>;
+    'getAssetBalances(address[])': (
+      _assets: string[],
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber[]>;
+    'getFundHoldings()': (
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<{ assets_: string[]; balances_: ethers.BigNumber[] }>;
+    'getFundHoldingsForAsset(address)': (
+      _asset: string,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'getHub()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'getOwnedAssetsLength()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'getRoutes()': (
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<{
+      accounting: string;
+      feeManager: string;
+      policyManager: string;
+      shares: string;
+      vault: string;
+      registry: string;
+      fundFactory: string;
+    }>;
+    'initialized()': ($$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'ownedAssets(uint256)': ($$0: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<string>;
+    'owner()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'priceSource()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'valuePerShare(uint256,uint256)': (
+      _totalValue: ethers.BigNumberish,
+      _numShares: ethers.BigNumberish,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'calcFundMetrics()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'decreaseAssetBalance(address,uint256)': (
+      _asset: string,
+      _amount: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'getShareCostInAsset(uint256,address)': (
+      _numShares: ethers.BigNumberish,
+      _altAsset: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'increaseAssetBalance(address,uint256)': (
+      _asset: string,
+      _amount: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'initialize(address[7])': (
+      _spokes: [string, string, string, string, string, string, string],
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setAuthority(address)': (
+      authority_: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'triggerRewardAllFees()': ($$overrides?: ethers.PayableOverrides) => ethers.providers.TransactionResponse;
+  };
+
   callStatic: {
     'DEFAULT_SHARE_PRICE()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
     'DENOMINATION_ASSET()': ($$overrides?: ethers.CallOverrides) => Promise<string>;

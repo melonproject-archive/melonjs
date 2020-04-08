@@ -409,6 +409,77 @@ export interface MockAccountingEthersContract extends ethers.Contract {
   ) => ethers.providers.TransactionResponse;
   'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
 
+  functions: {
+    'DEFAULT_SHARE_PRICE()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'DENOMINATION_ASSET()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'assetGav(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'authority()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'calcAssetGav(address)': (_a: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'calcFundMetrics()': ($$overrides?: ethers.CallOverrides) => Promise<any[]>;
+    'calcGav()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'calcNav()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'fundFactory()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'gav()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'getFundHoldings()': ($$overrides?: ethers.CallOverrides) => Promise<any[]>;
+    'getHub()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'getOwnedAssetsLength()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'getRoutes()': (
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<{
+      accounting: string;
+      feeManager: string;
+      policyManager: string;
+      shares: string;
+      vault: string;
+      registry: string;
+      fundFactory: string;
+    }>;
+    'held(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'initialized()': ($$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'mockValuePerShare()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'nav()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'ownedAssets(uint256)': ($$0: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<string>;
+    'owner()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'priceSource()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'unclaimedFees()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'valuePerShare(uint256,uint256)': (
+      totalValue: ethers.BigNumberish,
+      numShares: ethers.BigNumberish,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'initialize(address[7])': (
+      _spokes: [string, string, string, string, string, string, string],
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setAssetGAV(address,uint256)': (
+      _asset: string,
+      _amt: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setAuthority(address)': (
+      authority_: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setFundHoldings(uint256[],address[])': (
+      _amounts: ethers.BigNumber[],
+      _assets: string[],
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setGav(uint256)': (
+      _gav: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setNav(uint256)': (
+      _nav: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setOwnedAssets(address[])': (
+      _assets: string[],
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  };
+
   callStatic: {
     'DEFAULT_SHARE_PRICE()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
     'DENOMINATION_ASSET()': ($$overrides?: ethers.CallOverrides) => Promise<string>;

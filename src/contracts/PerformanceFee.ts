@@ -157,6 +157,26 @@ export interface PerformanceFeeEthersContract extends ethers.Contract {
   ) => ethers.providers.TransactionResponse;
   'updateState()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
 
+  functions: {
+    'DIVISOR()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'REDEEM_WINDOW()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'canUpdate(address)': (_who: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'highWaterMark(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'identifier()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'initializeTime(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'lastPayoutTime(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'performanceFeePeriod(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'performanceFeeRate(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'feeAmount()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'initializeForUser(uint256,uint256,address)': (
+      feeRate: ethers.BigNumberish,
+      feePeriod: ethers.BigNumberish,
+      denominationAsset: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'updateState()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  };
+
   callStatic: {
     'DIVISOR()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
     'REDEEM_WINDOW()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;

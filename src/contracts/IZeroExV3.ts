@@ -280,6 +280,106 @@ export interface IZeroExV3EthersContract extends ethers.Contract {
     $$overrides?: ethers.Overrides,
   ) => ethers.providers.TransactionResponse;
 
+  functions: {
+    'cancelled(bytes32)': (
+      $$0: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<boolean>;
+    'filled(bytes32)': (
+      $$0: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'getAssetProxy(bytes4)': (
+      $$0: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<string>;
+    'getOrderInfo((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes,bytes,bytes))': (
+      $$0: {
+        makerAddress: string;
+        takerAddress: string;
+        feeRecipientAddress: string;
+        senderAddress: string;
+        makerAssetAmount: ethers.BigNumberish;
+        takerAssetAmount: ethers.BigNumberish;
+        makerFee: ethers.BigNumberish;
+        takerFee: ethers.BigNumberish;
+        expirationTimeSeconds: ethers.BigNumberish;
+        salt: ethers.BigNumberish;
+        makerAssetData: string | ethers.utils.BytesLike;
+        takerAssetData: string | ethers.utils.BytesLike;
+        makerFeeAssetData: string | ethers.utils.BytesLike;
+        takerFeeAssetData: string | ethers.utils.BytesLike;
+      },
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<{ orderStatus: number; orderHash: string; orderTakerAssetFilledAmount: ethers.BigNumber }>;
+    'isValidOrderSignature((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes,bytes,bytes),bytes)': (
+      $$0: {
+        makerAddress: string;
+        takerAddress: string;
+        feeRecipientAddress: string;
+        senderAddress: string;
+        makerAssetAmount: ethers.BigNumberish;
+        takerAssetAmount: ethers.BigNumberish;
+        makerFee: ethers.BigNumberish;
+        takerFee: ethers.BigNumberish;
+        expirationTimeSeconds: ethers.BigNumberish;
+        salt: ethers.BigNumberish;
+        makerAssetData: string | ethers.utils.BytesLike;
+        takerAssetData: string | ethers.utils.BytesLike;
+        makerFeeAssetData: string | ethers.utils.BytesLike;
+        takerFeeAssetData: string | ethers.utils.BytesLike;
+      },
+      $$1: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<boolean>;
+    'protocolFeeCollector()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'protocolFeeMultiplier()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'cancelOrder((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes,bytes,bytes))': (
+      $$0: {
+        makerAddress: string;
+        takerAddress: string;
+        feeRecipientAddress: string;
+        senderAddress: string;
+        makerAssetAmount: ethers.BigNumberish;
+        takerAssetAmount: ethers.BigNumberish;
+        makerFee: ethers.BigNumberish;
+        takerFee: ethers.BigNumberish;
+        expirationTimeSeconds: ethers.BigNumberish;
+        salt: ethers.BigNumberish;
+        makerAssetData: string | ethers.utils.BytesLike;
+        takerAssetData: string | ethers.utils.BytesLike;
+        makerFeeAssetData: string | ethers.utils.BytesLike;
+        takerFeeAssetData: string | ethers.utils.BytesLike;
+      },
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'fillOrder((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes,bytes,bytes),uint256,bytes)': (
+      $$0: {
+        makerAddress: string;
+        takerAddress: string;
+        feeRecipientAddress: string;
+        senderAddress: string;
+        makerAssetAmount: ethers.BigNumberish;
+        takerAssetAmount: ethers.BigNumberish;
+        makerFee: ethers.BigNumberish;
+        takerFee: ethers.BigNumberish;
+        expirationTimeSeconds: ethers.BigNumberish;
+        salt: ethers.BigNumberish;
+        makerAssetData: string | ethers.utils.BytesLike;
+        takerAssetData: string | ethers.utils.BytesLike;
+        makerFeeAssetData: string | ethers.utils.BytesLike;
+        takerFeeAssetData: string | ethers.utils.BytesLike;
+      },
+      $$1: ethers.BigNumberish,
+      $$2: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.PayableOverrides,
+    ) => ethers.providers.TransactionResponse;
+    'preSign(bytes32)': (
+      $$0: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+  };
+
   callStatic: {
     'cancelled(bytes32)': (
       $$0: string | ethers.utils.BytesLike,

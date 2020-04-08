@@ -13,6 +13,8 @@ export class TokenUser extends Contract {
 }
 
 export interface TokenUserEthersContract extends ethers.Contract {
+  functions: {};
+
   callStatic: {};
 
   estimateGas: {};

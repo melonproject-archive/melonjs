@@ -242,6 +242,63 @@ export interface PolicyManagerEthersContract extends ethers.Contract {
   'setAuthority(address)': (authority_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
   'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
 
+  functions: {
+    'authority()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'fundFactory()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'getHub()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'getPoliciesBySig(bytes4)': (
+      sig: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<any[]>;
+    'getRoutes()': (
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<{
+      accounting: string;
+      feeManager: string;
+      policyManager: string;
+      shares: string;
+      vault: string;
+      registry: string;
+      fundFactory: string;
+    }>;
+    'initialized()': ($$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'owner()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'priceSource()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'batchRegister(bytes4[],address[])': (
+      sig: string | ethers.utils.BytesLike,
+      _policies: string[],
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'initialize(address[7])': (
+      _spokes: [string, string, string, string, string, string, string],
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'postValidate(bytes4,address[5],uint256[3],bytes32)': (
+      sig: string | ethers.utils.BytesLike,
+      addresses: [string, string, string, string, string],
+      values: [ethers.BigNumber, ethers.BigNumber, ethers.BigNumber],
+      identifier: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'preValidate(bytes4,address[5],uint256[3],bytes32)': (
+      sig: string | ethers.utils.BytesLike,
+      addresses: [string, string, string, string, string],
+      values: [ethers.BigNumber, ethers.BigNumber, ethers.BigNumber],
+      identifier: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'register(bytes4,address)': (
+      sig: string | ethers.utils.BytesLike,
+      _policy: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setAuthority(address)': (
+      authority_: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  };
+
   callStatic: {
     'authority()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
     'fundFactory()': ($$overrides?: ethers.CallOverrides) => Promise<string>;

@@ -34,6 +34,15 @@ export interface DSAuthorityEthersContract extends ethers.Contract {
     $$overrides?: ethers.CallOverrides,
   ) => Promise<boolean>;
 
+  functions: {
+    'canCall(address,address,bytes4)': (
+      src: string,
+      dst: string,
+      sig: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<boolean>;
+  };
+
   callStatic: {
     'canCall(address,address,bytes4)': (
       src: string,

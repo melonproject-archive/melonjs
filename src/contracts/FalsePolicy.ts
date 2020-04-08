@@ -60,6 +60,18 @@ export interface FalsePolicyEthersContract extends ethers.Contract {
     $$overrides?: ethers.Overrides,
   ) => ethers.providers.TransactionResponse;
 
+  functions: {
+    'identifier()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'position()': ($$overrides?: ethers.CallOverrides) => Promise<number>;
+    'rule(bytes4,address[5],uint256[3],bytes32)': (
+      sig: string | ethers.utils.BytesLike,
+      addresses: [string, string, string, string, string],
+      values: [ethers.BigNumber, ethers.BigNumber, ethers.BigNumber],
+      identifier: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+  };
+
   callStatic: {
     'identifier()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
     'position()': ($$overrides?: ethers.CallOverrides) => Promise<number>;

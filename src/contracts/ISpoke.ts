@@ -79,6 +79,23 @@ export interface ISpokeEthersContract extends ethers.Contract {
   'initialized()': ($$overrides?: ethers.CallOverrides) => Promise<boolean>;
   'priceSource()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
+  functions: {
+    'getHub()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'getRoutes()': (
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<{
+      accounting: string;
+      feeManager: string;
+      policyManager: string;
+      shares: string;
+      vault: string;
+      registry: string;
+      fundFactory: string;
+    }>;
+    'initialized()': ($$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'priceSource()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  };
+
   callStatic: {
     'getHub()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
     'getRoutes()': (

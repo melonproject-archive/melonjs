@@ -1025,6 +1025,380 @@ export interface ZeroExV2ExchangeEthersContract extends ethers.Contract {
     $$overrides?: ethers.Overrides,
   ) => ethers.providers.TransactionResponse;
 
+  functions: {
+    'filled(bytes32)': (
+      $$0: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'cancelled(bytes32)': (
+      $$0: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<boolean>;
+    'assetProxies(bytes4)': (
+      $$0: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<string>;
+    'getAssetProxy(bytes4)': (
+      assetProxyId: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<string>;
+    'transactions(bytes32)': (
+      $$0: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<boolean>;
+    'allowedValidators(address,address)': (
+      $$0: string,
+      $$1: string,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<boolean>;
+    'getOrdersInfo((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes)[])': (
+      orders: {
+        makerAddress: string;
+        takerAddress: string;
+        feeRecipientAddress: string;
+        senderAddress: string;
+        makerAssetAmount: ethers.BigNumber;
+        takerAssetAmount: ethers.BigNumber;
+        makerFee: ethers.BigNumber;
+        takerFee: ethers.BigNumber;
+        expirationTimeSeconds: ethers.BigNumber;
+        salt: ethers.BigNumber;
+        makerAssetData: string;
+        takerAssetData: string;
+      }[],
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<{ orderStatus: number; orderHash: string; orderTakerAssetFilledAmount: ethers.BigNumber }[]>;
+    'preSigned(bytes32,address)': (
+      $$0: string | ethers.utils.BytesLike,
+      $$1: string,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<boolean>;
+    'owner()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'isValidSignature(bytes32,address,bytes)': (
+      hash: string | ethers.utils.BytesLike,
+      signerAddress: string,
+      signature: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<boolean>;
+    'getOrderInfo((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes))': (
+      order: {
+        makerAddress: string;
+        takerAddress: string;
+        feeRecipientAddress: string;
+        senderAddress: string;
+        makerAssetAmount: ethers.BigNumberish;
+        takerAssetAmount: ethers.BigNumberish;
+        makerFee: ethers.BigNumberish;
+        takerFee: ethers.BigNumberish;
+        expirationTimeSeconds: ethers.BigNumberish;
+        salt: ethers.BigNumberish;
+        makerAssetData: string | ethers.utils.BytesLike;
+        takerAssetData: string | ethers.utils.BytesLike;
+      },
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<{ orderStatus: number; orderHash: string; orderTakerAssetFilledAmount: ethers.BigNumber }>;
+    'orderEpoch(address,address)': (
+      $$0: string,
+      $$1: string,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'ZRX_ASSET_DATA()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'EIP712_DOMAIN_HASH()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'currentContextAddress()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'VERSION()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'batchFillOrders((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes)[],uint256[],bytes[])': (
+      orders: {
+        makerAddress: string;
+        takerAddress: string;
+        feeRecipientAddress: string;
+        senderAddress: string;
+        makerAssetAmount: ethers.BigNumber;
+        takerAssetAmount: ethers.BigNumber;
+        makerFee: ethers.BigNumber;
+        takerFee: ethers.BigNumber;
+        expirationTimeSeconds: ethers.BigNumber;
+        salt: ethers.BigNumber;
+        makerAssetData: string;
+        takerAssetData: string;
+      }[],
+      takerAssetFillAmounts: ethers.BigNumber[],
+      signatures: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'preSign(bytes32,address,bytes)': (
+      hash: string | ethers.utils.BytesLike,
+      signerAddress: string,
+      signature: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'matchOrders((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes),(address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes),bytes,bytes)': (
+      leftOrder: {
+        makerAddress: string;
+        takerAddress: string;
+        feeRecipientAddress: string;
+        senderAddress: string;
+        makerAssetAmount: ethers.BigNumberish;
+        takerAssetAmount: ethers.BigNumberish;
+        makerFee: ethers.BigNumberish;
+        takerFee: ethers.BigNumberish;
+        expirationTimeSeconds: ethers.BigNumberish;
+        salt: ethers.BigNumberish;
+        makerAssetData: string | ethers.utils.BytesLike;
+        takerAssetData: string | ethers.utils.BytesLike;
+      },
+      rightOrder: {
+        makerAddress: string;
+        takerAddress: string;
+        feeRecipientAddress: string;
+        senderAddress: string;
+        makerAssetAmount: ethers.BigNumberish;
+        takerAssetAmount: ethers.BigNumberish;
+        makerFee: ethers.BigNumberish;
+        takerFee: ethers.BigNumberish;
+        expirationTimeSeconds: ethers.BigNumberish;
+        salt: ethers.BigNumberish;
+        makerAssetData: string | ethers.utils.BytesLike;
+        takerAssetData: string | ethers.utils.BytesLike;
+      },
+      leftSignature: string | ethers.utils.BytesLike,
+      rightSignature: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'fillOrderNoThrow((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes),uint256,bytes)': (
+      order: {
+        makerAddress: string;
+        takerAddress: string;
+        feeRecipientAddress: string;
+        senderAddress: string;
+        makerAssetAmount: ethers.BigNumberish;
+        takerAssetAmount: ethers.BigNumberish;
+        makerFee: ethers.BigNumberish;
+        takerFee: ethers.BigNumberish;
+        expirationTimeSeconds: ethers.BigNumberish;
+        salt: ethers.BigNumberish;
+        makerAssetData: string | ethers.utils.BytesLike;
+        takerAssetData: string | ethers.utils.BytesLike;
+      },
+      takerAssetFillAmount: ethers.BigNumberish,
+      signature: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'batchCancelOrders((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes)[])': (
+      orders: {
+        makerAddress: string;
+        takerAddress: string;
+        feeRecipientAddress: string;
+        senderAddress: string;
+        makerAssetAmount: ethers.BigNumber;
+        takerAssetAmount: ethers.BigNumber;
+        makerFee: ethers.BigNumber;
+        takerFee: ethers.BigNumber;
+        expirationTimeSeconds: ethers.BigNumber;
+        salt: ethers.BigNumber;
+        makerAssetData: string;
+        takerAssetData: string;
+      }[],
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'batchFillOrKillOrders((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes)[],uint256[],bytes[])': (
+      orders: {
+        makerAddress: string;
+        takerAddress: string;
+        feeRecipientAddress: string;
+        senderAddress: string;
+        makerAssetAmount: ethers.BigNumber;
+        takerAssetAmount: ethers.BigNumber;
+        makerFee: ethers.BigNumber;
+        takerFee: ethers.BigNumber;
+        expirationTimeSeconds: ethers.BigNumber;
+        salt: ethers.BigNumber;
+        makerAssetData: string;
+        takerAssetData: string;
+      }[],
+      takerAssetFillAmounts: ethers.BigNumber[],
+      signatures: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'cancelOrdersUpTo(uint256)': (
+      targetOrderEpoch: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'batchFillOrdersNoThrow((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes)[],uint256[],bytes[])': (
+      orders: {
+        makerAddress: string;
+        takerAddress: string;
+        feeRecipientAddress: string;
+        senderAddress: string;
+        makerAssetAmount: ethers.BigNumber;
+        takerAssetAmount: ethers.BigNumber;
+        makerFee: ethers.BigNumber;
+        takerFee: ethers.BigNumber;
+        expirationTimeSeconds: ethers.BigNumber;
+        salt: ethers.BigNumber;
+        makerAssetData: string;
+        takerAssetData: string;
+      }[],
+      takerAssetFillAmounts: ethers.BigNumber[],
+      signatures: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'fillOrKillOrder((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes),uint256,bytes)': (
+      order: {
+        makerAddress: string;
+        takerAddress: string;
+        feeRecipientAddress: string;
+        senderAddress: string;
+        makerAssetAmount: ethers.BigNumberish;
+        takerAssetAmount: ethers.BigNumberish;
+        makerFee: ethers.BigNumberish;
+        takerFee: ethers.BigNumberish;
+        expirationTimeSeconds: ethers.BigNumberish;
+        salt: ethers.BigNumberish;
+        makerAssetData: string | ethers.utils.BytesLike;
+        takerAssetData: string | ethers.utils.BytesLike;
+      },
+      takerAssetFillAmount: ethers.BigNumberish,
+      signature: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'changeZRXAssetData(bytes)': (
+      newData: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setSignatureValidatorApproval(address,bool)': (
+      validatorAddress: string,
+      approval: boolean,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'marketSellOrders((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes)[],uint256,bytes[])': (
+      orders: {
+        makerAddress: string;
+        takerAddress: string;
+        feeRecipientAddress: string;
+        senderAddress: string;
+        makerAssetAmount: ethers.BigNumber;
+        takerAssetAmount: ethers.BigNumber;
+        makerFee: ethers.BigNumber;
+        takerFee: ethers.BigNumber;
+        expirationTimeSeconds: ethers.BigNumber;
+        salt: ethers.BigNumber;
+        makerAssetData: string;
+        takerAssetData: string;
+      }[],
+      takerAssetFillAmount: ethers.BigNumberish,
+      signatures: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'marketBuyOrdersNoThrow((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes)[],uint256,bytes[])': (
+      orders: {
+        makerAddress: string;
+        takerAddress: string;
+        feeRecipientAddress: string;
+        senderAddress: string;
+        makerAssetAmount: ethers.BigNumber;
+        takerAssetAmount: ethers.BigNumber;
+        makerFee: ethers.BigNumber;
+        takerFee: ethers.BigNumber;
+        expirationTimeSeconds: ethers.BigNumber;
+        salt: ethers.BigNumber;
+        makerAssetData: string;
+        takerAssetData: string;
+      }[],
+      makerAssetFillAmount: ethers.BigNumberish,
+      signatures: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'fillOrder((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes),uint256,bytes)': (
+      order: {
+        makerAddress: string;
+        takerAddress: string;
+        feeRecipientAddress: string;
+        senderAddress: string;
+        makerAssetAmount: ethers.BigNumberish;
+        takerAssetAmount: ethers.BigNumberish;
+        makerFee: ethers.BigNumberish;
+        takerFee: ethers.BigNumberish;
+        expirationTimeSeconds: ethers.BigNumberish;
+        salt: ethers.BigNumberish;
+        makerAssetData: string | ethers.utils.BytesLike;
+        takerAssetData: string | ethers.utils.BytesLike;
+      },
+      takerAssetFillAmount: ethers.BigNumberish,
+      signature: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'executeTransaction(uint256,address,bytes,bytes)': (
+      salt: ethers.BigNumberish,
+      signerAddress: string,
+      data: string | ethers.utils.BytesLike,
+      signature: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'registerAssetProxy(address)': (
+      assetProxy: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'cancelOrder((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes))': (
+      order: {
+        makerAddress: string;
+        takerAddress: string;
+        feeRecipientAddress: string;
+        senderAddress: string;
+        makerAssetAmount: ethers.BigNumberish;
+        takerAssetAmount: ethers.BigNumberish;
+        makerFee: ethers.BigNumberish;
+        takerFee: ethers.BigNumberish;
+        expirationTimeSeconds: ethers.BigNumberish;
+        salt: ethers.BigNumberish;
+        makerAssetData: string | ethers.utils.BytesLike;
+        takerAssetData: string | ethers.utils.BytesLike;
+      },
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'marketSellOrdersNoThrow((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes)[],uint256,bytes[])': (
+      orders: {
+        makerAddress: string;
+        takerAddress: string;
+        feeRecipientAddress: string;
+        senderAddress: string;
+        makerAssetAmount: ethers.BigNumber;
+        takerAssetAmount: ethers.BigNumber;
+        makerFee: ethers.BigNumber;
+        takerFee: ethers.BigNumber;
+        expirationTimeSeconds: ethers.BigNumber;
+        salt: ethers.BigNumber;
+        makerAssetData: string;
+        takerAssetData: string;
+      }[],
+      takerAssetFillAmount: ethers.BigNumberish,
+      signatures: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'marketBuyOrders((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes)[],uint256,bytes[])': (
+      orders: {
+        makerAddress: string;
+        takerAddress: string;
+        feeRecipientAddress: string;
+        senderAddress: string;
+        makerAssetAmount: ethers.BigNumber;
+        takerAssetAmount: ethers.BigNumber;
+        makerFee: ethers.BigNumber;
+        takerFee: ethers.BigNumber;
+        expirationTimeSeconds: ethers.BigNumber;
+        salt: ethers.BigNumber;
+        makerAssetData: string;
+        takerAssetData: string;
+      }[],
+      makerAssetFillAmount: ethers.BigNumberish,
+      signatures: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'transferOwnership(address)': (
+      newOwner: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+  };
+
   callStatic: {
     'filled(bytes32)': (
       $$0: string | ethers.utils.BytesLike,

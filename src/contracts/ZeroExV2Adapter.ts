@@ -60,6 +60,27 @@ export interface ZeroExV2AdapterEthersContract extends ethers.Contract {
     $$overrides?: ethers.Overrides,
   ) => ethers.providers.TransactionResponse;
 
+  functions: {
+    'takeOrder(address,address[8],uint256[8],bytes[4],bytes32,bytes)': (
+      _targetExchange: string,
+      _orderAddresses: [string, string, string, string, string, string, string, string],
+      _orderValues: [
+        ethers.BigNumber,
+        ethers.BigNumber,
+        ethers.BigNumber,
+        ethers.BigNumber,
+        ethers.BigNumber,
+        ethers.BigNumber,
+        ethers.BigNumber,
+        ethers.BigNumber,
+      ],
+      _orderData: string | ethers.utils.BytesLike,
+      _identifier: string | ethers.utils.BytesLike,
+      _signature: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+  };
+
   callStatic: {
     'takeOrder(address,address[8],uint256[8],bytes[4],bytes32,bytes)': (
       _targetExchange: string,

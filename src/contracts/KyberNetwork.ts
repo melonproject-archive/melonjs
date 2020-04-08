@@ -768,6 +768,185 @@ export interface KyberNetworkEthersContract extends ethers.Contract {
     $$overrides?: ethers.Overrides,
   ) => ethers.providers.TransactionResponse;
 
+  functions: {
+    'getReserves()': ($$overrides?: ethers.CallOverrides) => Promise<string[]>;
+    'searchBestRate(address,address,uint256,bool)': (
+      src: string,
+      dest: string,
+      srcAmount: ethers.BigNumberish,
+      usePermissionless: boolean,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<any[]>;
+    'infoFields(bytes32)': (
+      $$0: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'findBestRateOnlyPermission(address,address,uint256)': (
+      src: string,
+      dest: string,
+      srcAmount: ethers.BigNumberish,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<{ obsolete: ethers.BigNumber; rate: ethers.BigNumber }>;
+    'enabled()': ($$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'pendingAdmin()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'getOperators()': ($$overrides?: ethers.CallOverrides) => Promise<string[]>;
+    'reservesPerTokenSrc(address,uint256)': (
+      $$0: string,
+      $$1: ethers.BigNumberish,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<string>;
+    'maxGasPrice()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'negligibleRateDiff()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'feeBurnerContract()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'expectedRateContract()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'whiteListContract()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'getUserCapInWei(address)': (user: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'isEnabled()': ($$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'reserveType(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<number>;
+    'kyberNetworkProxyContract()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'getAlerters()': ($$overrides?: ethers.CallOverrides) => Promise<string[]>;
+    'getExpectedRate(address,address,uint256)': (
+      src: string,
+      dest: string,
+      srcQty: ethers.BigNumberish,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<{ expectedRate: ethers.BigNumber; slippageRate: ethers.BigNumber }>;
+    'reserves(uint256)': ($$0: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<string>;
+    'getExpectedRateOnlyPermission(address,address,uint256)': (
+      src: string,
+      dest: string,
+      srcQty: ethers.BigNumberish,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<{ expectedRate: ethers.BigNumber; slippageRate: ethers.BigNumber }>;
+    'PERM_HINT()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'getUserCapInTokenWei(address,address)': (
+      user: string,
+      token: string,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'reservesPerTokenDest(address,uint256)': (
+      $$0: string,
+      $$1: ethers.BigNumberish,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<string>;
+    'maxGasPriceValue()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'info(bytes32)': (
+      field: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'findBestRate(address,address,uint256)': (
+      src: string,
+      dest: string,
+      srcAmount: ethers.BigNumberish,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<{ obsolete: ethers.BigNumber; rate: ethers.BigNumber }>;
+    'PERM_HINT_GET_RATE()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'getNumReserves()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'getBalance(address,address)': (
+      token: string,
+      user: string,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'getReservesRates(address,uint256)': (
+      token: string,
+      optionalAmount: ethers.BigNumberish,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<{
+      buyReserves: string[];
+      buyRates: ethers.BigNumber[];
+      sellReserves: string[];
+      sellRates: ethers.BigNumber[];
+    }>;
+    'admin()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'removeAlerter(address)': (alerter: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'tradeWithHint(address,address,uint256,address,address,uint256,uint256,address,bytes)': (
+      trader: string,
+      src: string,
+      srcAmount: ethers.BigNumberish,
+      dest: string,
+      destAddress: string,
+      maxDestAmount: ethers.BigNumberish,
+      minConversionRate: ethers.BigNumberish,
+      walletId: string,
+      hint: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.PayableOverrides,
+    ) => ethers.providers.TransactionResponse;
+    'setFeeBurner(address)': (
+      feeBurner: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'removeReserve(address,uint256)': (
+      reserve: string,
+      index: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setWhiteList(address)': (
+      whiteList: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'withdrawToken(address,uint256,address)': (
+      token: string,
+      amount: ethers.BigNumberish,
+      sendTo: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'addAlerter(address)': (newAlerter: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'setExpectedRate(address)': (
+      expectedRate: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setInfo(bytes32,uint256)': (
+      field: string | ethers.utils.BytesLike,
+      value: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'transferAdmin(address)': (
+      newAdmin: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setEnable(bool)': (_enable: boolean, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'claimAdmin()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'transferAdminQuickly(address)': (
+      newAdmin: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'addOperator(address)': (
+      newOperator: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'addReserve(address,bool)': (
+      reserve: string,
+      isPermissionless: boolean,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'removeOperator(address)': (
+      operator: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setParams(uint256,uint256)': (
+      _maxGasPrice: ethers.BigNumberish,
+      _negligibleRateDiff: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setKyberProxy(address)': (
+      networkProxy: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'withdrawEther(uint256,address)': (
+      amount: ethers.BigNumberish,
+      sendTo: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'listPairForReserve(address,address,bool,bool,bool)': (
+      reserve: string,
+      token: string,
+      ethToToken: boolean,
+      tokenToEth: boolean,
+      add: boolean,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+  };
+
   callStatic: {
     'getReserves()': ($$overrides?: ethers.CallOverrides) => Promise<string[]>;
     'searchBestRate(address,address,uint256,bool)': (

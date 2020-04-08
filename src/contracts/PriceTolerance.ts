@@ -145,6 +145,38 @@ export interface PriceToleranceEthersContract extends ethers.Contract {
     $$overrides?: ethers.Overrides,
   ) => ethers.providers.TransactionResponse;
 
+  functions: {
+    'TAKE_ORDER()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'identifier()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'position()': ($$overrides?: ethers.CallOverrides) => Promise<number>;
+    'takeGenericOrder(address,address,uint256[3])': (
+      _makerAsset: string,
+      _takerAsset: string,
+      _values: [ethers.BigNumber, ethers.BigNumber, ethers.BigNumber],
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<boolean>;
+    'takeOasisDex(address,bytes32,uint256)': (
+      _exchange: string,
+      _identifier: string | ethers.utils.BytesLike,
+      _fillTakerQuantity: ethers.BigNumberish,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<boolean>;
+    'takeOrder(address[5],uint256[3],bytes32)': (
+      _addresses: [string, string, string, string, string],
+      _values: [ethers.BigNumber, ethers.BigNumber, ethers.BigNumber],
+      _identifier: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<boolean>;
+    'tolerance()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'rule(bytes4,address[5],uint256[3],bytes32)': (
+      _sig: string | ethers.utils.BytesLike,
+      _addresses: [string, string, string, string, string],
+      _values: [ethers.BigNumber, ethers.BigNumber, ethers.BigNumber],
+      _identifier: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+  };
+
   callStatic: {
     'TAKE_ORDER()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
     'identifier()': ($$overrides?: ethers.CallOverrides) => Promise<string>;

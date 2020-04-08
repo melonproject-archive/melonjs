@@ -160,6 +160,40 @@ export interface WETHEthersContract extends ethers.Contract {
     $$overrides?: ethers.Overrides,
   ) => ethers.providers.TransactionResponse;
 
+  functions: {
+    'allowance(address,address)': (
+      $$0: string,
+      $$1: string,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'balanceOf(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'decimals()': ($$overrides?: ethers.CallOverrides) => Promise<number>;
+    'name()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'symbol()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'totalSupply()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'approve(address,uint256)': (
+      guy: string,
+      wad: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'deposit()': ($$overrides?: ethers.PayableOverrides) => ethers.providers.TransactionResponse;
+    'transfer(address,uint256)': (
+      dst: string,
+      wad: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'transferFrom(address,address,uint256)': (
+      src: string,
+      dst: string,
+      wad: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'withdraw(uint256)': (
+      wad: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+  };
+
   callStatic: {
     'allowance(address,address)': (
       $$0: string,

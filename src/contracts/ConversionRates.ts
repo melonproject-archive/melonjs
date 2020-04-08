@@ -546,6 +546,138 @@ export interface ConversionRatesEthersContract extends ethers.Contract {
   ) => ethers.providers.TransactionResponse;
   'addToken(address)': (token: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
 
+  functions: {
+    'validRateDurationInBlocks()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'pendingAdmin()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'getOperators()': ($$overrides?: ethers.CallOverrides) => Promise<string[]>;
+    'getListedTokens()': ($$overrides?: ethers.CallOverrides) => Promise<string[]>;
+    'numTokensInCurrentCompactData()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'getStepFunctionData(address,uint256,uint256)': (
+      token: string,
+      command: ethers.BigNumberish,
+      param: ethers.BigNumberish,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'getTokenBasicData(address)': (token: string, $$overrides?: ethers.CallOverrides) => Promise<any[]>;
+    'getAlerters()': ($$overrides?: ethers.CallOverrides) => Promise<string[]>;
+    'getRateUpdateBlock(address)': (token: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'reserveContract()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'tokenImbalanceData(address,uint256)': (
+      $$0: string,
+      $$1: ethers.BigNumberish,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'getRate(address,uint256,bool,uint256)': (
+      token: string,
+      currentBlockNumber: ethers.BigNumberish,
+      buy: boolean,
+      qty: ethers.BigNumberish,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'getBasicRate(address,bool)': (
+      token: string,
+      buy: boolean,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'getCompactData(address)': (token: string, $$overrides?: ethers.CallOverrides) => Promise<any[]>;
+    'getTokenControlInfo(address)': (token: string, $$overrides?: ethers.CallOverrides) => Promise<any[]>;
+    'admin()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'removeAlerter(address)': (alerter: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'setReserveAddress(address)': (
+      reserve: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'disableTokenTrade(address)': (
+      token: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setBaseRate(address[],uint256[],uint256[],bytes14[],bytes14[],uint256,uint256[])': (
+      tokens: string[],
+      baseBuy: ethers.BigNumber[],
+      baseSell: ethers.BigNumber[],
+      buy: string | ethers.utils.BytesLike,
+      sell: string | ethers.utils.BytesLike,
+      blockNumber: ethers.BigNumberish,
+      indices: ethers.BigNumber[],
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'enableTokenTrade(address)': (
+      token: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'withdrawToken(address,uint256,address)': (
+      token: string,
+      amount: ethers.BigNumberish,
+      sendTo: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'addAlerter(address)': (newAlerter: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'setCompactData(bytes14[],bytes14[],uint256,uint256[])': (
+      buy: string | ethers.utils.BytesLike,
+      sell: string | ethers.utils.BytesLike,
+      blockNumber: ethers.BigNumberish,
+      indices: ethers.BigNumber[],
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setValidRateDurationInBlocks(uint256)': (
+      duration: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'transferAdmin(address)': (
+      newAdmin: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'claimAdmin()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'transferAdminQuickly(address)': (
+      newAdmin: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setQtyStepFunction(address,int256[],int256[],int256[],int256[])': (
+      token: string,
+      xBuy: ethers.BigNumber[],
+      yBuy: ethers.BigNumber[],
+      xSell: ethers.BigNumber[],
+      ySell: ethers.BigNumber[],
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'addOperator(address)': (
+      newOperator: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'removeOperator(address)': (
+      operator: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setImbalanceStepFunction(address,int256[],int256[],int256[],int256[])': (
+      token: string,
+      xBuy: ethers.BigNumber[],
+      yBuy: ethers.BigNumber[],
+      xSell: ethers.BigNumber[],
+      ySell: ethers.BigNumber[],
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setTokenControlInfo(address,uint256,uint256,uint256)': (
+      token: string,
+      minimalRecordResolution: ethers.BigNumberish,
+      maxPerBlockImbalance: ethers.BigNumberish,
+      maxTotalImbalance: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'recordImbalance(address,int256,uint256,uint256)': (
+      token: string,
+      buyAmount: ethers.BigNumberish,
+      rateUpdateBlock: ethers.BigNumberish,
+      currentBlock: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'withdrawEther(uint256,address)': (
+      amount: ethers.BigNumberish,
+      sendTo: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'addToken(address)': (token: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  };
+
   callStatic: {
     'validRateDurationInBlocks()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
     'pendingAdmin()': ($$overrides?: ethers.CallOverrides) => Promise<string>;

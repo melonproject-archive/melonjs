@@ -225,6 +225,57 @@ export interface SharesTokenEthersContract extends ethers.Contract {
     $$overrides?: ethers.Overrides,
   ) => ethers.providers.TransactionResponse;
 
+  functions: {
+    'allowance(address,address)': (
+      _owner: string,
+      _spender: string,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'authority()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'balanceOf(address)': (_owner: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'decimals()': ($$overrides?: ethers.CallOverrides) => Promise<number>;
+    'name()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'owner()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'symbol()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'totalSupply()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'approve(address,uint256)': (
+      spender: string,
+      amount: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'createFor(address,uint256)': (
+      who: string,
+      amount: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'decreaseApproval(address,uint256)': (
+      spender: string,
+      amount: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'increaseApproval(address,uint256)': (
+      spender: string,
+      amount: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setAuthority(address)': (
+      authority_: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'transfer(address,uint256)': (
+      to: string,
+      amount: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'transferFrom(address,address,uint256)': (
+      from: string,
+      to: string,
+      amount: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+  };
+
   callStatic: {
     'allowance(address,address)': (
       _owner: string,

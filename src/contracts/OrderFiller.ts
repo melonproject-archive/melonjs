@@ -15,6 +15,8 @@ export class OrderFiller extends Contract {
 }
 
 export interface OrderFillerEthersContract extends ethers.Contract {
+  functions: {};
+
   callStatic: {};
 
   estimateGas: {};

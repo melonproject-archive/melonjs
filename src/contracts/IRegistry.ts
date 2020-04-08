@@ -252,6 +252,42 @@ export interface IRegistryEthersContract extends ethers.Contract {
     $$overrides?: ethers.Overrides,
   ) => ethers.providers.TransactionResponse;
 
+  functions: {
+    'MGM()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'adapterMethodIsAllowed(address,bytes4)': (
+      $$0: string,
+      $$1: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<boolean>;
+    'assetIsRegistered(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'engine()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'exchangeAdapterIsRegistered(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'exchangeForAdapter(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<string>;
+    'getRegisteredAssets()': ($$overrides?: ethers.CallOverrides) => Promise<string[]>;
+    'getReserveMin(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'incentive()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'isFeeRegistered(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'isFund(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'isFundFactory(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'isHub(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'mlnToken()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'nativeAsset()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'owner()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'priceSource()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'sharesRequestor()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'registerFund(address,address,string)': (
+      _fund: string,
+      _owner: string,
+      _name: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'reserveFundName(address,string)': (
+      _owner: string,
+      _name: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+  };
+
   callStatic: {
     'MGM()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
     'adapterMethodIsAllowed(address,bytes4)': (

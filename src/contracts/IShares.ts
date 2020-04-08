@@ -42,6 +42,16 @@ export interface ISharesEthersContract extends ethers.Contract {
     $$overrides?: ethers.Overrides,
   ) => ethers.providers.TransactionResponse;
 
+  functions: {
+    'isSharesInvestmentAsset(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'buyShares(address,address,uint256)': (
+      $$0: string,
+      $$1: string,
+      $$2: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+  };
+
   callStatic: {
     'isSharesInvestmentAsset(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
     'buyShares(address,address,uint256)': (

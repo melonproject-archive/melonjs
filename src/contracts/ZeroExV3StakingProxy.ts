@@ -369,6 +369,71 @@ export interface ZeroExV3StakingProxyEthersContract extends ethers.Contract {
     $$overrides?: ethers.Overrides,
   ) => ethers.providers.TransactionResponse;
 
+  functions: {
+    'aggregatedStatsByEpoch(uint256)': (
+      $$0: ethers.BigNumberish,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<{
+      rewardsAvailable: ethers.BigNumber;
+      numPoolsToFinalize: ethers.BigNumber;
+      totalFeesCollected: ethers.BigNumber;
+      totalWeightedStake: ethers.BigNumber;
+      totalRewardsFinalized: ethers.BigNumber;
+    }>;
+    'assertValidStorageParams()': ($$overrides?: ethers.CallOverrides) => Promise<void>;
+    'authorities(uint256)': ($$0: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<string>;
+    'authorized(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'cobbDouglasAlphaDenominator()': ($$overrides?: ethers.CallOverrides) => Promise<number>;
+    'cobbDouglasAlphaNumerator()': ($$overrides?: ethers.CallOverrides) => Promise<number>;
+    'currentEpoch()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'currentEpochStartTimeInSeconds()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'epochDurationInSeconds()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'getAuthorizedAddresses()': ($$overrides?: ethers.CallOverrides) => Promise<string[]>;
+    'lastPoolId()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'minimumPoolStake()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'owner()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'poolIdByMaker(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<string>;
+    'poolStatsByEpoch(bytes32,uint256)': (
+      $$0: string | ethers.utils.BytesLike,
+      $$1: ethers.BigNumberish,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<{ feesCollected: ethers.BigNumber; weightedStake: ethers.BigNumber; membersStake: ethers.BigNumber }>;
+    'rewardDelegatedStakeWeight()': ($$overrides?: ethers.CallOverrides) => Promise<number>;
+    'rewardsByPoolId(bytes32)': (
+      $$0: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'stakingContract()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'validExchanges(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'wethReservedForPoolRewards()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'addAuthorizedAddress(address)': (
+      target: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'attachStakingContract(address)': (
+      _stakingContract: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'batchExecute(bytes[])': (
+      data: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'detachStakingContract()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'removeAuthorizedAddress(address)': (
+      target: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'removeAuthorizedAddressAtIndex(address,uint256)': (
+      target: string,
+      index: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'transferOwnership(address)': (
+      newOwner: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+  };
+
   callStatic: {
     'aggregatedStatsByEpoch(uint256)': (
       $$0: ethers.BigNumberish,

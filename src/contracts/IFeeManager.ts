@@ -70,6 +70,14 @@ export interface IFeeManagerEthersContract extends ethers.Contract {
   'rewardManagementFee()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
   'totalFeeAmount()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
 
+  functions: {
+    'managementFeeAmount()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'performanceFeeAmount()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'rewardAllFees()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'rewardManagementFee()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'totalFeeAmount()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  };
+
   callStatic: {
     'managementFeeAmount()': ($$overrides?: ethers.Overrides) => Promise<ethers.BigNumber>;
     'performanceFeeAmount()': ($$overrides?: ethers.Overrides) => Promise<ethers.BigNumber>;

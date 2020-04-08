@@ -186,6 +186,55 @@ export interface SharesRequestorEthersContract extends ethers.Contract {
     $$overrides?: ethers.PayableOverrides,
   ) => ethers.providers.TransactionResponse;
 
+  functions: {
+    'REGISTRY()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'getFundsRequestedSet(address)': (_requestOwner: string, $$overrides?: ethers.CallOverrides) => Promise<string[]>;
+    'ownerToRequestByFund(address,address)': (
+      $$0: string,
+      $$1: string,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<{
+      investmentAsset: string;
+      maxInvestmentAmount: ethers.BigNumber;
+      sharesQuantity: ethers.BigNumber;
+      timestamp: ethers.BigNumber;
+      incentiveFee: ethers.BigNumber;
+    }>;
+    'requestExists(address,address)': (
+      _requestOwner: string,
+      _hub: string,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<boolean>;
+    'requestHasExpired(address,address)': (
+      _requestOwner: string,
+      _hub: string,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<boolean>;
+    'requestIsExecutable(address,address)': (
+      _requestOwner: string,
+      _hub: string,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<{ pass_: boolean; reason_: string }>;
+    'cancelRequest(address)': (_hub: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'cancelRequestFor(address,address)': (
+      _requestOwner: string,
+      _hub: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'executeRequestFor(address,address)': (
+      _requestOwner: string,
+      _hub: string,
+      $$overrides?: ethers.PayableOverrides,
+    ) => ethers.providers.TransactionResponse;
+    'requestShares(address,address,uint256,uint256)': (
+      _hub: string,
+      _investmentAsset: string,
+      _maxInvestmentAmount: ethers.BigNumberish,
+      _sharesQuantity: ethers.BigNumberish,
+      $$overrides?: ethers.PayableOverrides,
+    ) => ethers.providers.TransactionResponse;
+  };
+
   callStatic: {
     'REGISTRY()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
     'getFundsRequestedSet(address)': (_requestOwner: string, $$overrides?: ethers.CallOverrides) => Promise<string[]>;

@@ -13,6 +13,8 @@ export class EnumerableSet extends Contract {
 }
 
 export interface EnumerableSetEthersContract extends ethers.Contract {
+  functions: {};
+
   callStatic: {};
 
   estimateGas: {};

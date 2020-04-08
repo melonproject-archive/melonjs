@@ -68,6 +68,18 @@ export interface IFeeEthersContract extends ethers.Contract {
   ) => ethers.providers.TransactionResponse;
   'updateState()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
 
+  functions: {
+    'identifier()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'feeAmount()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'initializeForUser(uint256,uint256,address)': (
+      $$0: ethers.BigNumberish,
+      $$1: ethers.BigNumberish,
+      $$2: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'updateState()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  };
+
   callStatic: {
     'identifier()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
     'feeAmount()': ($$overrides?: ethers.Overrides) => Promise<ethers.BigNumber>;

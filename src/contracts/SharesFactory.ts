@@ -55,6 +55,17 @@ export interface SharesFactoryEthersContract extends ethers.Contract {
     $$overrides?: ethers.Overrides,
   ) => ethers.providers.TransactionResponse;
 
+  functions: {
+    'childExists(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'isInstance(address)': (_child: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'createInstance(address,address[],address)': (
+      _hub: string,
+      _defaultAssets: string[],
+      _registry: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+  };
+
   callStatic: {
     'childExists(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
     'isInstance(address)': (_child: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;

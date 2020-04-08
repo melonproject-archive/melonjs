@@ -24,6 +24,10 @@ export class IUniswapFactory extends Contract {
 export interface IUniswapFactoryEthersContract extends ethers.Contract {
   'getExchange(address)': (token: string, $$overrides?: ethers.CallOverrides) => Promise<string>;
 
+  functions: {
+    'getExchange(address)': (token: string, $$overrides?: ethers.CallOverrides) => Promise<string>;
+  };
+
   callStatic: {
     'getExchange(address)': (token: string, $$overrides?: ethers.CallOverrides) => Promise<string>;
   };

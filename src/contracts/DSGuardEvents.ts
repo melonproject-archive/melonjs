@@ -16,6 +16,8 @@ export class DSGuardEvents extends Contract {
 }
 
 export interface DSGuardEventsEthersContract extends ethers.Contract {
+  functions: {};
+
   callStatic: {};
 
   estimateGas: {};

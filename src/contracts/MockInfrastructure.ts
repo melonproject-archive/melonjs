@@ -95,6 +95,19 @@ export interface MockInfrastructureEthersContract extends ethers.Contract {
   ) => ethers.providers.TransactionResponse;
   'shutDownFund(address)': (_hub: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
 
+  functions: {
+    'amguPrice()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'getAmguPrice()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'getShutDownStatus()': ($$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'isShutDown()': ($$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'securityShutDown()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'setAmguPrice(uint256)': (
+      _price: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'shutDownFund(address)': (_hub: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  };
+
   callStatic: {
     'amguPrice()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
     'getAmguPrice()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;

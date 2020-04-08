@@ -136,6 +136,41 @@ export interface IOasisDexEthersContract extends ethers.Contract {
     $$overrides?: ethers.Overrides,
   ) => ethers.providers.TransactionResponse;
 
+  functions: {
+    'getBestOffer(address,address)': (
+      $$0: string,
+      $$1: string,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'getFirstUnsortedOffer()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'getNextUnsortedOffer(uint256)': (
+      $$0: ethers.BigNumberish,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'getOffer(uint256)': ($$0: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<any[]>;
+    'getWorseOffer(uint256)': (
+      $$0: ethers.BigNumberish,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'isActive(uint256)': ($$0: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'buy(uint256,uint256)': (
+      $$0: ethers.BigNumberish,
+      $$1: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'cancel(uint256)': (
+      $$0: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'offer(uint256,address,uint256,address)': (
+      $$0: ethers.BigNumberish,
+      $$1: string,
+      $$2: ethers.BigNumberish,
+      $$3: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+  };
+
   callStatic: {
     'getBestOffer(address,address)': (
       $$0: string,

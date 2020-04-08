@@ -264,6 +264,39 @@ export interface EngineEthersContract extends ethers.Contract {
   'setRegistry(address)': (_registry: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
   'thaw()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
 
+  functions: {
+    'MLN_DECIMALS()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'amguPrice()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'enginePrice()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'ethPayoutForMlnAmount(uint256)': (
+      _mlnAmount: ethers.BigNumberish,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'frozenEther()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'getAmguPrice()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'lastThaw()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'liquidEther()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'mlnToken()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'premiumPercent()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'priceSource()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'registry()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'thawingDelay()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'totalAmguConsumed()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'totalEtherConsumed()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'totalMlnBurned()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'payAmguInEther()': ($$overrides?: ethers.PayableOverrides) => ethers.providers.TransactionResponse;
+    'sellAndBurnMln(uint256)': (
+      _mlnAmount: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setAmguPrice(uint256)': (
+      _price: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setRegistry(address)': (_registry: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'thaw()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  };
+
   callStatic: {
     'MLN_DECIMALS()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
     'amguPrice()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;

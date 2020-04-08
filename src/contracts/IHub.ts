@@ -114,6 +114,18 @@ export interface IHubEthersContract extends ethers.Contract {
   'policyManager()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
   'shares()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
+  functions: {
+    'accounting()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'feeManager()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'fundInitialized()': ($$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'getName()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'isShutDown()': ($$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'isSpoke(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'manager()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'policyManager()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'shares()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  };
+
   callStatic: {
     'accounting()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
     'feeManager()': ($$overrides?: ethers.CallOverrides) => Promise<string>;

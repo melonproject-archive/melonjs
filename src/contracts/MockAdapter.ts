@@ -60,6 +60,27 @@ export interface MockAdapterEthersContract extends ethers.Contract {
     $$overrides?: ethers.Overrides,
   ) => ethers.providers.TransactionResponse;
 
+  functions: {
+    'takeOrder(address,address[8],uint256[8],bytes[4],bytes32,bytes)': (
+      targetExchange: string,
+      orderAddresses: [string, string, string, string, string, string, string, string],
+      orderValues: [
+        ethers.BigNumber,
+        ethers.BigNumber,
+        ethers.BigNumber,
+        ethers.BigNumber,
+        ethers.BigNumber,
+        ethers.BigNumber,
+        ethers.BigNumber,
+        ethers.BigNumber,
+      ],
+      orderData: string | ethers.utils.BytesLike,
+      identifier: string | ethers.utils.BytesLike,
+      signature: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+  };
+
   callStatic: {
     'takeOrder(address,address[8],uint256[8],bytes[4],bytes32,bytes)': (
       targetExchange: string,

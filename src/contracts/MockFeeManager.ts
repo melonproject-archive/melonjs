@@ -214,6 +214,46 @@ export interface MockFeeManagerEthersContract extends ethers.Contract {
   ) => ethers.providers.TransactionResponse;
   'totalFeeAmount()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
 
+  functions: {
+    'authority()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'fundFactory()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'getHub()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'getRoutes()': (
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<{
+      accounting: string;
+      feeManager: string;
+      policyManager: string;
+      shares: string;
+      vault: string;
+      registry: string;
+      fundFactory: string;
+    }>;
+    'initialized()': ($$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'owner()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'priceSource()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'initialize(address[7])': (
+      _spokes: [string, string, string, string, string, string, string],
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'performanceFeeAmount()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'rewardManagementFee()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'setAuthority(address)': (
+      authority_: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'setPerformanceFeeAmount(uint256)': (
+      _amt: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setTotalFeeAmount(uint256)': (
+      _amt: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'totalFeeAmount()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  };
+
   callStatic: {
     'authority()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
     'fundFactory()': ($$overrides?: ethers.CallOverrides) => Promise<string>;

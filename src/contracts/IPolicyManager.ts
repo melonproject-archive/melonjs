@@ -59,6 +59,23 @@ export interface IPolicyManagerEthersContract extends ethers.Contract {
     $$overrides?: ethers.Overrides,
   ) => ethers.providers.TransactionResponse;
 
+  functions: {
+    'postValidate(bytes4,address[5],uint256[3],bytes32)': (
+      $$0: string | ethers.utils.BytesLike,
+      $$1: [string, string, string, string, string],
+      $$2: [ethers.BigNumber, ethers.BigNumber, ethers.BigNumber],
+      $$3: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'preValidate(bytes4,address[5],uint256[3],bytes32)': (
+      $$0: string | ethers.utils.BytesLike,
+      $$1: [string, string, string, string, string],
+      $$2: [ethers.BigNumber, ethers.BigNumber, ethers.BigNumber],
+      $$3: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+  };
+
   callStatic: {
     'postValidate(bytes4,address[5],uint256[3],bytes32)': (
       $$0: string | ethers.utils.BytesLike,

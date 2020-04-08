@@ -185,6 +185,56 @@ export interface IKyberNetworkProxyEthersContract extends ethers.Contract {
     $$overrides?: ethers.PayableOverrides,
   ) => ethers.providers.TransactionResponse;
 
+  functions: {
+    'enabled()': ($$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'getExpectedRate(address,address,uint256)': (
+      $$0: string,
+      $$1: string,
+      $$2: ethers.BigNumberish,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<any[]>;
+    'getUserCapInTokenWei(address,address)': (
+      $$0: string,
+      $$1: string,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'getUserCapInWei(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'info(bytes32)': (
+      $$0: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'maxGasPrice()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'swapEtherToToken(address,uint256)': (
+      $$0: string,
+      $$1: ethers.BigNumberish,
+      $$overrides?: ethers.PayableOverrides,
+    ) => ethers.providers.TransactionResponse;
+    'swapTokenToEther(address,uint256,uint256)': (
+      $$0: string,
+      $$1: ethers.BigNumberish,
+      $$2: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'swapTokenToToken(address,uint256,address,uint256)': (
+      $$0: string,
+      $$1: ethers.BigNumberish,
+      $$2: string,
+      $$3: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'tradeWithHint(address,uint256,address,address,uint256,uint256,address,bytes)': (
+      $$0: string,
+      $$1: ethers.BigNumberish,
+      $$2: string,
+      $$3: string,
+      $$4: ethers.BigNumberish,
+      $$5: ethers.BigNumberish,
+      $$6: string,
+      $$7: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.PayableOverrides,
+    ) => ethers.providers.TransactionResponse;
+  };
+
   callStatic: {
     'enabled()': ($$overrides?: ethers.CallOverrides) => Promise<boolean>;
     'getExpectedRate(address,address,uint256)': (

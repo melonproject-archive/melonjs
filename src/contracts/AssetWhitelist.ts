@@ -176,6 +176,34 @@ export interface AssetWhitelistEthersContract extends ethers.Contract {
   'setAuthority(address)': (authority_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
   'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
 
+  functions: {
+    'TAKE_ORDER()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'authority()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'getAssetIndex(address)': (_asset: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'getMemberCount()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'getMembers()': ($$overrides?: ethers.CallOverrides) => Promise<string[]>;
+    'identifier()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'isMember(address)': (_asset: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'owner()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'position()': ($$overrides?: ethers.CallOverrides) => Promise<number>;
+    'removeFromWhitelist(address)': (
+      _asset: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'rule(bytes4,address[5],uint256[3],bytes32)': (
+      sig: string | ethers.utils.BytesLike,
+      addresses: [string, string, string, string, string],
+      values: [ethers.BigNumber, ethers.BigNumber, ethers.BigNumber],
+      identifier: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setAuthority(address)': (
+      authority_: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  };
+
   callStatic: {
     'TAKE_ORDER()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
     'authority()': ($$overrides?: ethers.CallOverrides) => Promise<string>;

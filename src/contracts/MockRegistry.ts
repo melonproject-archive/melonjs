@@ -392,6 +392,53 @@ export interface MockRegistryEthersContract extends ethers.Contract {
   'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
   'setPriceSource(address)': (_a: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
 
+  functions: {
+    'adapterMethodIsAllowed(address,bytes4)': (
+      _adapter: string,
+      _sig: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<boolean>;
+    'alwaysRegistered()': ($$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'assetIsRegistered(address)': (_asset: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'assets(uint256)': ($$0: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<string>;
+    'authority()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'engine()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'exchangeAdapterIsRegistered(address)': (_adapter: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'exchangeForAdapter(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<string>;
+    'fundExists(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'fundFactory()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'getRegisteredAssets()': ($$overrides?: ethers.CallOverrides) => Promise<string[]>;
+    'getReserveMin(address)': (_asset: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'incentive()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'isFeeRegistered(address)': (_fee: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'isFund(address)': (_who: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'isFundFactory(address)': (_who: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'methodAllowed()': ($$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'mlnToken()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'nativeAsset()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'owner()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'priceSource()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'registered(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'register(address)': (_addr: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'registerExchangeAdapter(address,address)': (
+      _exchange: string,
+      _adapter: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'remove(address)': (_addr: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'setAuthority(address)': (
+      authority_: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setEngine(address)': (_a: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'setFundFactory(address)': (_a: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'setIsFund(address)': (_who: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'setMlnToken(address)': (_a: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'setNativeAsset(address)': (_a: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'setPriceSource(address)': (_a: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  };
+
   callStatic: {
     'adapterMethodIsAllowed(address,bytes4)': (
       _adapter: string,

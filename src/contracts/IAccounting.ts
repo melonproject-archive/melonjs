@@ -167,6 +167,37 @@ export interface IAccountingEthersContract extends ethers.Contract {
     $$overrides?: ethers.Overrides,
   ) => ethers.providers.TransactionResponse;
 
+  functions: {
+    'DEFAULT_SHARE_PRICE()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'DENOMINATION_ASSET()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'assetBalances(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'calcAssetGav(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'calcGav()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'getFundHoldings()': ($$overrides?: ethers.CallOverrides) => Promise<any[]>;
+    'getFundHoldingsForAsset(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'getOwnedAssetsLength()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'valuePerShare(uint256,uint256)': (
+      $$0: ethers.BigNumberish,
+      $$1: ethers.BigNumberish,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'decreaseAssetBalance(address,uint256)': (
+      $$0: string,
+      $$1: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'getShareCostInAsset(uint256,address)': (
+      $$0: ethers.BigNumberish,
+      $$1: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'increaseAssetBalance(address,uint256)': (
+      $$0: string,
+      $$1: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+  };
+
   callStatic: {
     'DEFAULT_SHARE_PRICE()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
     'DENOMINATION_ASSET()': ($$overrides?: ethers.CallOverrides) => Promise<string>;

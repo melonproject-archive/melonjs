@@ -101,6 +101,21 @@ export interface ManagementFeeEthersContract extends ethers.Contract {
   ) => ethers.providers.TransactionResponse;
   'updateState()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
 
+  functions: {
+    'DIVISOR()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'feeAmount()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'identifier()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'lastPayoutTime(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'managementFeeRate(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'initializeForUser(uint256,uint256,address)': (
+      feeRate: ethers.BigNumberish,
+      feePeriod: ethers.BigNumberish,
+      denominationAsset: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'updateState()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  };
+
   callStatic: {
     'DIVISOR()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
     'feeAmount()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;

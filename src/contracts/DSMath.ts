@@ -13,6 +13,8 @@ export class DSMath extends Contract {
 }
 
 export interface DSMathEthersContract extends ethers.Contract {
+  functions: {};
+
   callStatic: {};
 
   estimateGas: {};

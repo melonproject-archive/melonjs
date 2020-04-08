@@ -129,6 +129,35 @@ export interface DSGuardEthersContract extends ethers.Contract {
   'setAuthority(address)': (authority_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
   'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
 
+  functions: {
+    'ANY()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'authority()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'canCall(address,address,bytes4)': (
+      src_: string,
+      dst_: string,
+      sig: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<boolean>;
+    'owner()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'forbid(address,address,bytes32)': (
+      src: string,
+      dst: string,
+      sig: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'permit(address,address,bytes32)': (
+      src: string,
+      dst: string,
+      sig: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setAuthority(address)': (
+      authority_: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  };
+
   callStatic: {
     'ANY()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
     'authority()': ($$overrides?: ethers.CallOverrides) => Promise<string>;

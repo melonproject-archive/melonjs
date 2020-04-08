@@ -24,6 +24,10 @@ export class TradingSignatures extends Contract {
 export interface TradingSignaturesEthersContract extends ethers.Contract {
   'TAKE_ORDER()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
+  functions: {
+    'TAKE_ORDER()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  };
+
   callStatic: {
     'TAKE_ORDER()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
   };

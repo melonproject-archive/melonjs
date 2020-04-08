@@ -126,7 +126,7 @@ export function generate(name: string, $contract: ethers.ContractInterface): str
 
   const body: string[] = [];
   const fields: { [key: string]: string[] } = {
-    root: [],
+    functions: [],
     call: [],
     estimate: [],
     populate: [],
@@ -134,7 +134,7 @@ export function generate(name: string, $contract: ethers.ContractInterface): str
 
   calls.forEach((item) => {
     const params = item.inputs.concat([`$$overrides?: ${item.overrides}`]).join(', ');
-    fields.root.push(`'${item.signature}': (${params}) => Promise<${item.output}>;`);
+    fields.functions.push(`'${item.signature}': (${params}) => Promise<${item.output}>;`);
     fields.call.push(`'${item.signature}': (${params}) => Promise<${item.output}>;`);
 
     body.push(`
@@ -151,7 +151,7 @@ export function generate(name: string, $contract: ethers.ContractInterface): str
 
   transactions.forEach((item) => {
     const params = item.inputs.concat([`$$overrides?: ${item.overrides}`]).join(', ');
-    fields.root.push(`'${item.signature}': (${params}) => ethers.providers.TransactionResponse;`);
+    fields.functions.push(`'${item.signature}': (${params}) => ethers.providers.TransactionResponse;`);
     fields.call.push(`'${item.signature}': (${params}) => Promise<${item.output}>;`);
     fields.estimate.push(`'${item.signature}': (${params}) => Promise<ethers.BigNumber>;`);
     fields.populate.push(`'${item.signature}': (${params}) => Promise<ethers.UnsignedTransaction>;`);
@@ -188,7 +188,11 @@ export function generate(name: string, $contract: ethers.ContractInterface): str
     }
 
     export interface ${name}EthersContract extends ethers.Contract {
-      ${fields.root.join('\n')}
+      ${fields.functions.join('\n')}
+
+      functions: {
+        ${fields.functions.join('\n')}
+      }
 
       callStatic: {
         ${fields.call.join('\n')}

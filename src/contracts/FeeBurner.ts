@@ -444,6 +444,98 @@ export interface FeeBurnerEthersContract extends ethers.Contract {
     $$overrides?: ethers.Overrides,
   ) => ethers.providers.TransactionResponse;
 
+  functions: {
+    'reserveKNCWallet(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<string>;
+    'reserveFeeToWallet(address,address)': (
+      $$0: string,
+      $$1: string,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'pendingAdmin()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'getOperators()': ($$overrides?: ethers.CallOverrides) => Promise<string[]>;
+    'reserveFeeToBurn(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'taxWallet()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'kncPerEthRatePrecision()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'reserveFeesInBps(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'taxFeeBps()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'walletFeesInBps(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'getAlerters()': ($$overrides?: ethers.CallOverrides) => Promise<string[]>;
+    'kyberNetwork()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'getBalance(address,address)': (
+      token: string,
+      user: string,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'feePayedPerReserve(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'knc()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'admin()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'removeAlerter(address)': (alerter: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'withdrawToken(address,uint256,address)': (
+      token: string,
+      amount: ethers.BigNumberish,
+      sendTo: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'addAlerter(address)': (newAlerter: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'setReserveData(address,uint256,address)': (
+      reserve: string,
+      feesInBps: ethers.BigNumberish,
+      kncWallet: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setWalletFees(address,uint256)': (
+      wallet: string,
+      feesInBps: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'transferAdmin(address)': (
+      newAdmin: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'claimAdmin()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'transferAdminQuickly(address)': (
+      newAdmin: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setKNCRate()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'addOperator(address)': (
+      newOperator: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setTaxInBps(uint256)': (
+      _taxFeeBps: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'removeOperator(address)': (
+      operator: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'withdrawEther(uint256,address)': (
+      amount: ethers.BigNumberish,
+      sendTo: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'sendFeeToWallet(address,address)': (
+      wallet: string,
+      reserve: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setTaxWallet(address)': (
+      _taxWallet: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'burnReserveFees(address)': (
+      reserve: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'handleFees(uint256,address,address)': (
+      tradeWeiAmount: ethers.BigNumberish,
+      reserve: string,
+      wallet: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+  };
+
   callStatic: {
     'reserveKNCWallet(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<string>;
     'reserveFeeToWallet(address,address)': (

@@ -29,6 +29,15 @@ export interface ISharesFactoryEthersContract extends ethers.Contract {
     $$overrides?: ethers.Overrides,
   ) => ethers.providers.TransactionResponse;
 
+  functions: {
+    'createInstance(address,address[],address)': (
+      $$0: string,
+      $$1: string[],
+      $$2: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+  };
+
   callStatic: {
     'createInstance(address,address[],address)': (
       $$0: string,

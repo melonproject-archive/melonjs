@@ -96,6 +96,19 @@ export interface UniswapFactoryEthersContract extends ethers.Contract {
   ) => ethers.providers.TransactionResponse;
   'createExchange(address)': (token: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
 
+  functions: {
+    'getExchange(address)': (token: string, $$overrides?: ethers.CallOverrides) => Promise<string>;
+    'getToken(address)': (exchange: string, $$overrides?: ethers.CallOverrides) => Promise<string>;
+    'getTokenWithId(uint256)': (token_id: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<string>;
+    'exchangeTemplate()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'tokenCount()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'initializeFactory(address)': (
+      template: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'createExchange(address)': (token: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  };
+
   callStatic: {
     'getExchange(address)': (token: string, $$overrides?: ethers.CallOverrides) => Promise<string>;
     'getToken(address)': (exchange: string, $$overrides?: ethers.CallOverrides) => Promise<string>;

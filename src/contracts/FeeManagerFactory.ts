@@ -64,6 +64,20 @@ export interface FeeManagerFactoryEthersContract extends ethers.Contract {
     $$overrides?: ethers.Overrides,
   ) => ethers.providers.TransactionResponse;
 
+  functions: {
+    'childExists(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'isInstance(address)': (_child: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'createInstance(address,address,address[],uint256[],uint256[],address)': (
+      _hub: string,
+      _denominationAsset: string,
+      _fees: string[],
+      _feeRates: ethers.BigNumber[],
+      _feePeriods: ethers.BigNumber[],
+      _registry: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+  };
+
   callStatic: {
     'childExists(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
     'isInstance(address)': (_child: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;

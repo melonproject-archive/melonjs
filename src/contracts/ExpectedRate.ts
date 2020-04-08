@@ -306,6 +306,71 @@ export interface ExpectedRateEthersContract extends ethers.Contract {
     $$overrides?: ethers.Overrides,
   ) => ethers.providers.TransactionResponse;
 
+  functions: {
+    'pendingAdmin()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'getOperators()': ($$overrides?: ethers.CallOverrides) => Promise<string[]>;
+    'getAlerters()': ($$overrides?: ethers.CallOverrides) => Promise<string[]>;
+    'worstCaseRateFactorInBps()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'quantityFactor()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'kyberNetwork()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'getExpectedRate(address,address,uint256,bool)': (
+      src: string,
+      dest: string,
+      srcQty: ethers.BigNumberish,
+      usePermissionless: boolean,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<{ expectedRate: ethers.BigNumber; slippageRate: ethers.BigNumber }>;
+    'getBalance(address,address)': (
+      token: string,
+      user: string,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'knc()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'checkKncArbitrageRate(uint256)': (
+      currentKncToEthRate: ethers.BigNumberish,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<boolean>;
+    'admin()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'removeAlerter(address)': (alerter: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'withdrawToken(address,uint256,address)': (
+      token: string,
+      amount: ethers.BigNumberish,
+      sendTo: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'addAlerter(address)': (newAlerter: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'transferAdmin(address)': (
+      newAdmin: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setQuantityFactor(uint256)': (
+      newFactor: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'claimAdmin()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'transferAdminQuickly(address)': (
+      newAdmin: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'addOperator(address)': (
+      newOperator: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'removeOperator(address)': (
+      operator: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'withdrawEther(uint256,address)': (
+      amount: ethers.BigNumberish,
+      sendTo: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setWorstCaseRateFactor(uint256)': (
+      bps: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+  };
+
   callStatic: {
     'pendingAdmin()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
     'getOperators()': ($$overrides?: ethers.CallOverrides) => Promise<string[]>;

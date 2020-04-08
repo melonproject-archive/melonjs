@@ -29,6 +29,10 @@ export class AmguConsumer extends Contract {
 export interface AmguConsumerEthersContract extends ethers.Contract {
   'REGISTRY()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
+  functions: {
+    'REGISTRY()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  };
+
   callStatic: {
     'REGISTRY()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
   };

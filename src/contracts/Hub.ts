@@ -365,6 +365,67 @@ export interface HubEthersContract extends ethers.Contract {
   'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
   'shutDownFund()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
 
+  functions: {
+    'ANY()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'accounting()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'authority()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'canCall(address,address,bytes4)': (
+      src_: string,
+      dst_: string,
+      sig: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<boolean>;
+    'creationTime()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'creator()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'feeManager()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'fundFactory()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'fundInitialized()': ($$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'getName()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'isShutDown()': ($$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'isSpoke(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'manager()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'name()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'owner()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'policyManager()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'priceSource()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'registry()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'routes()': (
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<{
+      accounting: string;
+      feeManager: string;
+      policyManager: string;
+      shares: string;
+      vault: string;
+      registry: string;
+      fundFactory: string;
+    }>;
+    'shares()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'vault()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'forbid(address,address,bytes32)': (
+      src: string,
+      dst: string,
+      sig: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'initializeAndSetPermissions(address[7])': (
+      _spokes: [string, string, string, string, string, string, string],
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'permit(address,address,bytes32)': (
+      src: string,
+      dst: string,
+      sig: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setAuthority(address)': (
+      authority_: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'shutDownFund()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  };
+
   callStatic: {
     'ANY()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
     'accounting()': ($$overrides?: ethers.CallOverrides) => Promise<string>;

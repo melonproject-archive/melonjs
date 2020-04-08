@@ -450,6 +450,87 @@ export interface FundFactoryEthersContract extends ethers.Contract {
   'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
   'shutDownFund(address)': (_hub: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
 
+  functions: {
+    'REGISTRY()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'accountingFactory()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'authority()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'childExists(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'feeManagerFactory()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'funds(uint256)': ($$0: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<string>;
+    'getExchangesInfo(address)': (_user: string, $$overrides?: ethers.CallOverrides) => Promise<string[]>;
+    'getFundById(uint256)': (_id: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<string>;
+    'getLastFundId()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'isInstance(address)': (_child: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'managersToHubs(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<string>;
+    'managersToRoutes(address)': (
+      $$0: string,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<{
+      accounting: string;
+      feeManager: string;
+      policyManager: string;
+      shares: string;
+      vault: string;
+      registry: string;
+      fundFactory: string;
+    }>;
+    'managersToSettings(address)': (
+      $$0: string,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<{ name: string; denominationAsset: string }>;
+    'owner()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'policyManagerFactory()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'sharesFactory()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'vaultFactory()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'beginSetup(string,address[],uint256[],uint256[],address[],address[],address,address[])': (
+      _name: string,
+      _fees: string[],
+      _feeRates: ethers.BigNumber[],
+      _feePeriods: ethers.BigNumber[],
+      _exchanges: string[],
+      _adapters: string[],
+      _denominationAsset: string,
+      _defaultInvestmentAssets: string[],
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'completeSetup()': ($$overrides?: ethers.PayableOverrides) => ethers.providers.TransactionResponse;
+    'completeSetupFor(address)': (
+      _manager: string,
+      $$overrides?: ethers.PayableOverrides,
+    ) => ethers.providers.TransactionResponse;
+    'createAccounting()': ($$overrides?: ethers.PayableOverrides) => ethers.providers.TransactionResponse;
+    'createAccountingFor(address)': (
+      _manager: string,
+      $$overrides?: ethers.PayableOverrides,
+    ) => ethers.providers.TransactionResponse;
+    'createFeeManager()': ($$overrides?: ethers.PayableOverrides) => ethers.providers.TransactionResponse;
+    'createFeeManagerFor(address)': (
+      _manager: string,
+      $$overrides?: ethers.PayableOverrides,
+    ) => ethers.providers.TransactionResponse;
+    'createPolicyManager()': ($$overrides?: ethers.PayableOverrides) => ethers.providers.TransactionResponse;
+    'createPolicyManagerFor(address)': (
+      _manager: string,
+      $$overrides?: ethers.PayableOverrides,
+    ) => ethers.providers.TransactionResponse;
+    'createShares()': ($$overrides?: ethers.PayableOverrides) => ethers.providers.TransactionResponse;
+    'createSharesFor(address)': (
+      _manager: string,
+      $$overrides?: ethers.PayableOverrides,
+    ) => ethers.providers.TransactionResponse;
+    'createVault()': ($$overrides?: ethers.PayableOverrides) => ethers.providers.TransactionResponse;
+    'createVaultFor(address)': (
+      _manager: string,
+      $$overrides?: ethers.PayableOverrides,
+    ) => ethers.providers.TransactionResponse;
+    'setAuthority(address)': (
+      authority_: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'shutDownFund(address)': (_hub: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  };
+
   callStatic: {
     'REGISTRY()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
     'accountingFactory()': ($$overrides?: ethers.CallOverrides) => Promise<string>;

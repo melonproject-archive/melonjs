@@ -51,6 +51,15 @@ export interface IEngineEthersContract extends ethers.Contract {
     $$overrides?: ethers.Overrides,
   ) => ethers.providers.TransactionResponse;
 
+  functions: {
+    'getAmguPrice()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'payAmguInEther()': ($$overrides?: ethers.PayableOverrides) => ethers.providers.TransactionResponse;
+    'sellAndBurnMln(uint256)': (
+      $$0: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+  };
+
   callStatic: {
     'getAmguPrice()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
     'payAmguInEther()': ($$overrides?: ethers.PayableOverrides) => Promise<void>;

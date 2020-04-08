@@ -41,6 +41,18 @@ export interface IFeeManagerFactoryEthersContract extends ethers.Contract {
     $$overrides?: ethers.Overrides,
   ) => ethers.providers.TransactionResponse;
 
+  functions: {
+    'createInstance(address,address,address[],uint256[],uint256[],address)': (
+      $$0: string,
+      $$1: string,
+      $$2: string[],
+      $$3: ethers.BigNumber[],
+      $$4: ethers.BigNumber[],
+      $$5: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+  };
+
   callStatic: {
     'createInstance(address,address,address[],uint256[],uint256[],address)': (
       $$0: string,

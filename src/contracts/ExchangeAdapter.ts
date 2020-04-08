@@ -13,6 +13,8 @@ export class ExchangeAdapter extends Contract {
 }
 
 export interface ExchangeAdapterEthersContract extends ethers.Contract {
+  functions: {};
+
   callStatic: {};
 
   estimateGas: {};

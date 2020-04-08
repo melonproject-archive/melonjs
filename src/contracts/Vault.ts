@@ -279,6 +279,71 @@ export interface VaultEthersContract extends ethers.Contract {
     $$overrides?: ethers.Overrides,
   ) => ethers.providers.TransactionResponse;
 
+  functions: {
+    'TAKE_ORDER()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'adapterIsAdded(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'authority()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'exchanges(uint256)': (
+      $$0: ethers.BigNumberish,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<{ exchange: string; adapter: string }>;
+    'fundFactory()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'getExchangeInfo()': ($$overrides?: ethers.CallOverrides) => Promise<any[]>;
+    'getHub()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'getRoutes()': (
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<{
+      accounting: string;
+      feeManager: string;
+      policyManager: string;
+      shares: string;
+      vault: string;
+      registry: string;
+      fundFactory: string;
+    }>;
+    'initialized()': ($$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'owner()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'priceSource()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'addExchange(address,address)': (
+      _exchange: string,
+      _adapter: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'callOnExchange(uint256,string,address[8],uint256[8],bytes[4],bytes32,bytes)': (
+      _exchangeIndex: ethers.BigNumberish,
+      _methodSignature: string,
+      _orderAddresses: [string, string, string, string, string, string, string, string],
+      _orderValues: [
+        ethers.BigNumber,
+        ethers.BigNumber,
+        ethers.BigNumber,
+        ethers.BigNumber,
+        ethers.BigNumber,
+        ethers.BigNumber,
+        ethers.BigNumber,
+        ethers.BigNumber,
+      ],
+      _orderData: string | ethers.utils.BytesLike,
+      _identifier: string | ethers.utils.BytesLike,
+      _signature: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'initialize(address[7])': (
+      _spokes: [string, string, string, string, string, string, string],
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setAuthority(address)': (
+      authority_: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'withdraw(address,uint256)': (
+      _token: string,
+      _amount: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+  };
+
   callStatic: {
     'TAKE_ORDER()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
     'adapterIsAdded(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;

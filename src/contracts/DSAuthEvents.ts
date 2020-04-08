@@ -16,6 +16,8 @@ export class DSAuthEvents extends Contract {
 }
 
 export interface DSAuthEventsEthersContract extends ethers.Contract {
+  functions: {};
+
   callStatic: {};
 
   estimateGas: {};

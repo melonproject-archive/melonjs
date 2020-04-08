@@ -127,6 +127,31 @@ export interface IPriceSourceEthersContract extends ethers.Contract {
   'hasValidPrices(address[])': ($$0: string[], $$overrides?: ethers.CallOverrides) => Promise<boolean>;
   'lastUpdate()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
+  functions: {
+    'convertQuantity(uint256,address,address)': (
+      $$0: ethers.BigNumberish,
+      $$1: string,
+      $$2: string,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'getOrderPriceInfo(address,uint256,uint256)': (
+      $$0: string,
+      $$1: ethers.BigNumberish,
+      $$2: ethers.BigNumberish,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'getPrice(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<any[]>;
+    'getPrices(address[])': ($$0: string[], $$overrides?: ethers.CallOverrides) => Promise<any[]>;
+    'getReferencePriceInfo(address,address)': (
+      $$0: string,
+      $$1: string,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<any[]>;
+    'hasValidPrice(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'hasValidPrices(address[])': ($$0: string[], $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'lastUpdate()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+  };
+
   callStatic: {
     'convertQuantity(uint256,address,address)': (
       $$0: ethers.BigNumberish,

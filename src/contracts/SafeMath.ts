@@ -13,6 +13,8 @@ export class SafeMath extends Contract {
 }
 
 export interface SafeMathEthersContract extends ethers.Contract {
+  functions: {};
+
   callStatic: {};
 
   estimateGas: {};

@@ -335,6 +335,72 @@ export interface KyberPriceFeedEthersContract extends ethers.Contract {
     $$overrides?: ethers.Overrides,
   ) => ethers.providers.TransactionResponse;
 
+  functions: {
+    'KYBER_NETWORK_PROXY()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'KYBER_PRECISION()': ($$overrides?: ethers.CallOverrides) => Promise<number>;
+    'QUOTE_ASSET()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'VALIDITY_INTERVAL()': ($$overrides?: ethers.CallOverrides) => Promise<number>;
+    'convertQuantity(uint256,address,address)': (
+      _fromAssetQuantity: ethers.BigNumberish,
+      _fromAsset: string,
+      _toAsset: string,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'getKyberPrice(address,address)': (
+      _baseAsset: string,
+      _quoteAsset: string,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<{ validity_: boolean; kyberPrice_: ethers.BigNumber }>;
+    'getOrderPriceInfo(address,uint256,uint256)': (
+      _sellAsset: string,
+      _sellQuantity: ethers.BigNumberish,
+      _buyQuantity: ethers.BigNumberish,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'getPrice(address)': (
+      _asset: string,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<{ price_: ethers.BigNumber; timestamp_: ethers.BigNumber }>;
+    'getPrices(address[])': (
+      _assets: string[],
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<{ prices_: ethers.BigNumber[]; timestamps_: ethers.BigNumber[] }>;
+    'getReferencePriceInfo(address,address)': (
+      _baseAsset: string,
+      _quoteAsset: string,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<{ referencePrice_: ethers.BigNumber; decimals_: ethers.BigNumber }>;
+    'hasValidPrice(address)': (_asset: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'hasValidPrices(address[])': (_assets: string[], $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'lastUpdate()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'maxPriceDeviation()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'maxSpread()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'prices(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'registry()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'updater()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'setMaxPriceDeviation(uint256)': (
+      _newMaxPriceDeviation: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setMaxSpread(uint256)': (
+      _newMaxSpread: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setRegistry(address)': (
+      _newRegistry: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setUpdater(address)': (
+      _newUpdater: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'update(address[],uint256[])': (
+      _saneAssets: string[],
+      _sanePrices: ethers.BigNumber[],
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+  };
+
   callStatic: {
     'KYBER_NETWORK_PROXY()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
     'KYBER_PRECISION()': ($$overrides?: ethers.CallOverrides) => Promise<number>;

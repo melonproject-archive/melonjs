@@ -100,6 +100,32 @@ export interface IERC20EthersContract extends ethers.Contract {
     $$overrides?: ethers.Overrides,
   ) => ethers.providers.TransactionResponse;
 
+  functions: {
+    'allowance(address,address)': (
+      _owner: string,
+      _spender: string,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'balanceOf(address)': (_who: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'totalSupply()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'approve(address,uint256)': (
+      _spender: string,
+      _value: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'transfer(address,uint256)': (
+      _to: string,
+      _value: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'transferFrom(address,address,uint256)': (
+      _from: string,
+      _to: string,
+      _value: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+  };
+
   callStatic: {
     'allowance(address,address)': (
       _owner: string,

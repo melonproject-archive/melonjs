@@ -260,6 +260,58 @@ export interface ZeroExV3ZrxVaultEthersContract extends ethers.Contract {
     $$overrides?: ethers.Overrides,
   ) => ethers.providers.TransactionResponse;
 
+  functions: {
+    'authorities(uint256)': ($$0: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<string>;
+    'authorized(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'balanceOf(address)': (staker: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'balanceOfZrxVault()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'getAuthorizedAddresses()': ($$overrides?: ethers.CallOverrides) => Promise<string[]>;
+    'isInCatastrophicFailure()': ($$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'owner()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'stakingProxyAddress()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'zrxAssetProxy()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'addAuthorizedAddress(address)': (
+      target: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'depositFrom(address,uint256)': (
+      staker: string,
+      amount: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'enterCatastrophicFailure()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'removeAuthorizedAddress(address)': (
+      target: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'removeAuthorizedAddressAtIndex(address,uint256)': (
+      target: string,
+      index: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setStakingProxy(address)': (
+      _stakingProxyAddress: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setZrxProxy(address)': (
+      _zrxProxyAddress: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'transferOwnership(address)': (
+      newOwner: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'withdrawAllFrom(address)': (
+      staker: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'withdrawFrom(address,uint256)': (
+      staker: string,
+      amount: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+  };
+
   callStatic: {
     'authorities(uint256)': ($$0: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<string>;
     'authorized(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;

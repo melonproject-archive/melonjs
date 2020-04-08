@@ -13,6 +13,8 @@ export class SpokeAccessor extends Contract {
 }
 
 export interface SpokeAccessorEthersContract extends ethers.Contract {
+  functions: {};
+
   callStatic: {};
 
   estimateGas: {};

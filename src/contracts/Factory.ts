@@ -38,6 +38,11 @@ export interface FactoryEthersContract extends ethers.Contract {
   'childExists(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
   'isInstance(address)': (_child: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
 
+  functions: {
+    'childExists(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'isInstance(address)': (_child: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+  };
+
   callStatic: {
     'childExists(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
     'isInstance(address)': (_child: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;

@@ -232,6 +232,42 @@ export interface FeeManagerEthersContract extends ethers.Contract {
   'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
   'totalFeeAmount()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
 
+  functions: {
+    'authority()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'feeIsRegistered(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'fees(uint256)': ($$0: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<string>;
+    'fundFactory()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'getHub()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'getRoutes()': (
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<{
+      accounting: string;
+      feeManager: string;
+      policyManager: string;
+      shares: string;
+      vault: string;
+      registry: string;
+      fundFactory: string;
+    }>;
+    'initialized()': ($$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'owner()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'priceSource()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'initialize(address[7])': (
+      _spokes: [string, string, string, string, string, string, string],
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'managementFeeAmount()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'performanceFeeAmount()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'rewardAllFees()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'rewardManagementFee()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'setAuthority(address)': (
+      authority_: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'totalFeeAmount()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  };
+
   callStatic: {
     'authority()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
     'feeIsRegistered(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;

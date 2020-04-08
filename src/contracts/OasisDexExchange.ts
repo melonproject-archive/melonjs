@@ -674,6 +674,165 @@ export interface OasisDexExchangeEthersContract extends ethers.Contract {
     $$overrides?: ethers.Overrides,
   ) => ethers.providers.TransactionResponse;
 
+  functions: {
+    '_best(address,address)': (
+      $$0: string,
+      $$1: string,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    '_dust(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    '_near(uint256)': ($$0: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    '_rank(uint256)': (
+      $$0: ethers.BigNumberish,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<{ next: ethers.BigNumber; prev: ethers.BigNumber; delb: ethers.BigNumber }>;
+    '_span(address,address)': (
+      $$0: string,
+      $$1: string,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'authority()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'buyEnabled()': ($$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'close_time()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'dustId()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'getBestOffer(address,address)': (
+      sell_gem: string,
+      buy_gem: string,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'getBetterOffer(uint256)': (
+      id: ethers.BigNumberish,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'getBuyAmount(address,address,uint256)': (
+      buy_gem: string,
+      pay_gem: string,
+      pay_amt: ethers.BigNumberish,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'getFirstUnsortedOffer()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'getMinSell(address)': (pay_gem: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'getNextUnsortedOffer(uint256)': (
+      id: ethers.BigNumberish,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'getOffer(uint256)': (id: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<any[]>;
+    'getOfferCount(address,address)': (
+      sell_gem: string,
+      buy_gem: string,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'getOwner(uint256)': (id: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<string>;
+    'getPayAmount(address,address,uint256)': (
+      pay_gem: string,
+      buy_gem: string,
+      buy_amt: ethers.BigNumberish,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'getTime()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'getWorseOffer(uint256)': (
+      id: ethers.BigNumberish,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<ethers.BigNumber>;
+    'isActive(uint256)': (id: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'isClosed()': ($$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'isOfferSorted(uint256)': (id: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'last_offer_id()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+    'matchingEnabled()': ($$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'offers(uint256)': (
+      $$0: ethers.BigNumberish,
+      $$overrides?: ethers.CallOverrides,
+    ) => Promise<{
+      pay_amt: ethers.BigNumber;
+      pay_gem: string;
+      buy_amt: ethers.BigNumber;
+      buy_gem: string;
+      owner: string;
+      timestamp: ethers.BigNumber;
+    }>;
+    'owner()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
+    'stopped()': ($$overrides?: ethers.CallOverrides) => Promise<boolean>;
+    'bump(bytes32)': (
+      id_: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'buy(uint256,uint256)': (
+      id: ethers.BigNumberish,
+      amount: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'buyAllAmount(address,uint256,address,uint256)': (
+      buy_gem: string,
+      buy_amt: ethers.BigNumberish,
+      pay_gem: string,
+      max_fill_amount: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'cancel(uint256)': (
+      id: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'del_rank(uint256)': (
+      id: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'insert(uint256,uint256)': (
+      id: ethers.BigNumberish,
+      pos: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'kill(bytes32)': (
+      id: string | ethers.utils.BytesLike,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'make(address,address,uint128,uint128)': (
+      pay_gem: string,
+      buy_gem: string,
+      pay_amt: ethers.BigNumberish,
+      buy_amt: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'offer(uint256,address,uint256,address,uint256)': (
+      pay_amt: ethers.BigNumberish,
+      pay_gem: string,
+      buy_amt: ethers.BigNumberish,
+      buy_gem: string,
+      pos: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'sellAllAmount(address,uint256,address,uint256)': (
+      pay_gem: string,
+      pay_amt: ethers.BigNumberish,
+      buy_gem: string,
+      min_fill_amount: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setAuthority(address)': (
+      authority_: string,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setBuyEnabled(bool)': (
+      buyEnabled_: boolean,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setMatchingEnabled(bool)': (
+      matchingEnabled_: boolean,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setMinSell(address,uint256)': (
+      pay_gem: string,
+      dust: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+    'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'stop()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'take(bytes32,uint128)': (
+      id: string | ethers.utils.BytesLike,
+      maxTakeAmount: ethers.BigNumberish,
+      $$overrides?: ethers.Overrides,
+    ) => ethers.providers.TransactionResponse;
+  };
+
   callStatic: {
     '_best(address,address)': (
       $$0: string,
