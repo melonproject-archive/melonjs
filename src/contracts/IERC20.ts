@@ -87,18 +87,18 @@ export interface IERC20EthersContract extends ethers.Contract {
     _spender: string,
     _value: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'transfer(address,uint256)': (
     _to: string,
     _value: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'transferFrom(address,address,uint256)': (
     _from: string,
     _to: string,
     _value: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
 
   functions: {
     'allowance(address,address)': (
@@ -112,18 +112,18 @@ export interface IERC20EthersContract extends ethers.Contract {
       _spender: string,
       _value: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'transfer(address,uint256)': (
       _to: string,
       _value: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'transferFrom(address,address,uint256)': (
       _from: string,
       _to: string,
       _value: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
   };
 
   callStatic: {

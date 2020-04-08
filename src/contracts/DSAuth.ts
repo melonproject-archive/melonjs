@@ -59,8 +59,14 @@ export class DSAuth extends Contract {
 export interface DSAuthEthersContract extends ethers.Contract {
   'authority()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
   'owner()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
-  'setAuthority(address)': (authority_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
-  'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  'setAuthority(address)': (
+    authority_: string,
+    $$overrides?: ethers.Overrides,
+  ) => Promise<ethers.providers.TransactionResponse>;
+  'setOwner(address)': (
+    owner_: string,
+    $$overrides?: ethers.Overrides,
+  ) => Promise<ethers.providers.TransactionResponse>;
 
   functions: {
     'authority()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
@@ -68,8 +74,11 @@ export interface DSAuthEthersContract extends ethers.Contract {
     'setAuthority(address)': (
       authority_: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
-    'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
+    'setOwner(address)': (
+      owner_: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.providers.TransactionResponse>;
   };
 
   callStatic: {

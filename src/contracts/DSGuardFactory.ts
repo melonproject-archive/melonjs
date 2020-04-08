@@ -35,11 +35,11 @@ export class DSGuardFactory extends Contract {
 
 export interface DSGuardFactoryEthersContract extends ethers.Contract {
   'isGuard(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
-  'newGuard()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  'newGuard()': ($$overrides?: ethers.Overrides) => Promise<ethers.providers.TransactionResponse>;
 
   functions: {
     'isGuard(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
-    'newGuard()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'newGuard()': ($$overrides?: ethers.Overrides) => Promise<ethers.providers.TransactionResponse>;
   };
 
   callStatic: {

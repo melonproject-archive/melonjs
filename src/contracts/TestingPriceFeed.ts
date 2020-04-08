@@ -232,19 +232,25 @@ export interface TestingPriceFeedEthersContract extends ethers.Contract {
     _assets: string[],
     _decimals: ethers.BigNumber[],
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'setDecimals(address,uint256)': (
     _asset: string,
     _decimal: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
-  'setIsRecent(bool)': (_state: boolean, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
-  'setNeverValid(bool)': (_state: boolean, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
+  'setIsRecent(bool)': (
+    _state: boolean,
+    $$overrides?: ethers.Overrides,
+  ) => Promise<ethers.providers.TransactionResponse>;
+  'setNeverValid(bool)': (
+    _state: boolean,
+    $$overrides?: ethers.Overrides,
+  ) => Promise<ethers.providers.TransactionResponse>;
   'update(address[],uint256[])': (
     _assets: string[],
     _prices: ethers.BigNumber[],
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
 
   functions: {
     'QUOTE_ASSET()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
@@ -280,19 +286,25 @@ export interface TestingPriceFeedEthersContract extends ethers.Contract {
       _assets: string[],
       _decimals: ethers.BigNumber[],
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'setDecimals(address,uint256)': (
       _asset: string,
       _decimal: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
-    'setIsRecent(bool)': (_state: boolean, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
-    'setNeverValid(bool)': (_state: boolean, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
+    'setIsRecent(bool)': (
+      _state: boolean,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.providers.TransactionResponse>;
+    'setNeverValid(bool)': (
+      _state: boolean,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.providers.TransactionResponse>;
     'update(address[],uint256[])': (
       _assets: string[],
       _prices: ethers.BigNumber[],
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
   };
 
   callStatic: {

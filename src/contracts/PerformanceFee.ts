@@ -148,14 +148,14 @@ export interface PerformanceFeeEthersContract extends ethers.Contract {
   'lastPayoutTime(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
   'performanceFeePeriod(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
   'performanceFeeRate(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
-  'feeAmount()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  'feeAmount()': ($$overrides?: ethers.Overrides) => Promise<ethers.providers.TransactionResponse>;
   'initializeForUser(uint256,uint256,address)': (
     feeRate: ethers.BigNumberish,
     feePeriod: ethers.BigNumberish,
     denominationAsset: string,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
-  'updateState()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
+  'updateState()': ($$overrides?: ethers.Overrides) => Promise<ethers.providers.TransactionResponse>;
 
   functions: {
     'DIVISOR()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
@@ -167,14 +167,14 @@ export interface PerformanceFeeEthersContract extends ethers.Contract {
     'lastPayoutTime(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
     'performanceFeePeriod(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
     'performanceFeeRate(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
-    'feeAmount()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'feeAmount()': ($$overrides?: ethers.Overrides) => Promise<ethers.providers.TransactionResponse>;
     'initializeForUser(uint256,uint256,address)': (
       feeRate: ethers.BigNumberish,
       feePeriod: ethers.BigNumberish,
       denominationAsset: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
-    'updateState()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
+    'updateState()': ($$overrides?: ethers.Overrides) => Promise<ethers.providers.TransactionResponse>;
   };
 
   callStatic: {

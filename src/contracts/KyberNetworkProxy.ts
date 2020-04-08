@@ -355,7 +355,10 @@ export interface KyberNetworkProxyEthersContract extends ethers.Contract {
     $$overrides?: ethers.CallOverrides,
   ) => Promise<ethers.BigNumber>;
   'admin()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
-  'removeAlerter(address)': (alerter: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  'removeAlerter(address)': (
+    alerter: string,
+    $$overrides?: ethers.Overrides,
+  ) => Promise<ethers.providers.TransactionResponse>;
   'tradeWithHint(address,uint256,address,address,uint256,uint256,address,bytes)': (
     src: string,
     srcAmount: ethers.BigNumberish,
@@ -366,44 +369,56 @@ export interface KyberNetworkProxyEthersContract extends ethers.Contract {
     walletId: string,
     hint: string | ethers.utils.BytesLike,
     $$overrides?: ethers.PayableOverrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'swapTokenToEther(address,uint256,uint256)': (
     token: string,
     srcAmount: ethers.BigNumberish,
     minConversionRate: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'withdrawToken(address,uint256,address)': (
     token: string,
     amount: ethers.BigNumberish,
     sendTo: string,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
-  'addAlerter(address)': (newAlerter: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
+  'addAlerter(address)': (
+    newAlerter: string,
+    $$overrides?: ethers.Overrides,
+  ) => Promise<ethers.providers.TransactionResponse>;
   'swapTokenToToken(address,uint256,address,uint256)': (
     src: string,
     srcAmount: ethers.BigNumberish,
     dest: string,
     minConversionRate: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
-  'transferAdmin(address)': (newAdmin: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
-  'claimAdmin()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
+  'transferAdmin(address)': (
+    newAdmin: string,
+    $$overrides?: ethers.Overrides,
+  ) => Promise<ethers.providers.TransactionResponse>;
+  'claimAdmin()': ($$overrides?: ethers.Overrides) => Promise<ethers.providers.TransactionResponse>;
   'swapEtherToToken(address,uint256)': (
     token: string,
     minConversionRate: ethers.BigNumberish,
     $$overrides?: ethers.PayableOverrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'transferAdminQuickly(address)': (
     newAdmin: string,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
-  'addOperator(address)': (newOperator: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
+  'addOperator(address)': (
+    newOperator: string,
+    $$overrides?: ethers.Overrides,
+  ) => Promise<ethers.providers.TransactionResponse>;
   'setKyberNetworkContract(address)': (
     _kyberNetworkContract: string,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
-  'removeOperator(address)': (operator: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
+  'removeOperator(address)': (
+    operator: string,
+    $$overrides?: ethers.Overrides,
+  ) => Promise<ethers.providers.TransactionResponse>;
   'trade(address,uint256,address,address,uint256,uint256,address)': (
     src: string,
     srcAmount: ethers.BigNumberish,
@@ -413,12 +428,12 @@ export interface KyberNetworkProxyEthersContract extends ethers.Contract {
     minConversionRate: ethers.BigNumberish,
     walletId: string,
     $$overrides?: ethers.PayableOverrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'withdrawEther(uint256,address)': (
     amount: ethers.BigNumberish,
     sendTo: string,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
 
   functions: {
     'enabled()': ($$overrides?: ethers.CallOverrides) => Promise<boolean>;
@@ -449,7 +464,10 @@ export interface KyberNetworkProxyEthersContract extends ethers.Contract {
       $$overrides?: ethers.CallOverrides,
     ) => Promise<ethers.BigNumber>;
     'admin()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
-    'removeAlerter(address)': (alerter: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'removeAlerter(address)': (
+      alerter: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.providers.TransactionResponse>;
     'tradeWithHint(address,uint256,address,address,uint256,uint256,address,bytes)': (
       src: string,
       srcAmount: ethers.BigNumberish,
@@ -460,53 +478,56 @@ export interface KyberNetworkProxyEthersContract extends ethers.Contract {
       walletId: string,
       hint: string | ethers.utils.BytesLike,
       $$overrides?: ethers.PayableOverrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'swapTokenToEther(address,uint256,uint256)': (
       token: string,
       srcAmount: ethers.BigNumberish,
       minConversionRate: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'withdrawToken(address,uint256,address)': (
       token: string,
       amount: ethers.BigNumberish,
       sendTo: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
-    'addAlerter(address)': (newAlerter: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
+    'addAlerter(address)': (
+      newAlerter: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.providers.TransactionResponse>;
     'swapTokenToToken(address,uint256,address,uint256)': (
       src: string,
       srcAmount: ethers.BigNumberish,
       dest: string,
       minConversionRate: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'transferAdmin(address)': (
       newAdmin: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
-    'claimAdmin()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
+    'claimAdmin()': ($$overrides?: ethers.Overrides) => Promise<ethers.providers.TransactionResponse>;
     'swapEtherToToken(address,uint256)': (
       token: string,
       minConversionRate: ethers.BigNumberish,
       $$overrides?: ethers.PayableOverrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'transferAdminQuickly(address)': (
       newAdmin: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'addOperator(address)': (
       newOperator: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'setKyberNetworkContract(address)': (
       _kyberNetworkContract: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'removeOperator(address)': (
       operator: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'trade(address,uint256,address,address,uint256,uint256,address)': (
       src: string,
       srcAmount: ethers.BigNumberish,
@@ -516,12 +537,12 @@ export interface KyberNetworkProxyEthersContract extends ethers.Contract {
       minConversionRate: ethers.BigNumberish,
       walletId: string,
       $$overrides?: ethers.PayableOverrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'withdrawEther(uint256,address)': (
       amount: ethers.BigNumberish,
       sendTo: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
   };
 
   callStatic: {

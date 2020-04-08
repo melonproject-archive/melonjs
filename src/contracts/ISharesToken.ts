@@ -26,14 +26,14 @@ export interface ISharesTokenEthersContract extends ethers.Contract {
     $$0: string,
     $$1: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
 
   functions: {
     'createFor(address,uint256)': (
       $$0: string,
       $$1: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
   };
 
   callStatic: {

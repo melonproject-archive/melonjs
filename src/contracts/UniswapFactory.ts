@@ -93,8 +93,11 @@ export interface UniswapFactoryEthersContract extends ethers.Contract {
   'initializeFactory(address)': (
     template: string,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
-  'createExchange(address)': (token: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
+  'createExchange(address)': (
+    token: string,
+    $$overrides?: ethers.Overrides,
+  ) => Promise<ethers.providers.TransactionResponse>;
 
   functions: {
     'getExchange(address)': (token: string, $$overrides?: ethers.CallOverrides) => Promise<string>;
@@ -105,8 +108,11 @@ export interface UniswapFactoryEthersContract extends ethers.Contract {
     'initializeFactory(address)': (
       template: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
-    'createExchange(address)': (token: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
+    'createExchange(address)': (
+      token: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.providers.TransactionResponse>;
   };
 
   callStatic: {

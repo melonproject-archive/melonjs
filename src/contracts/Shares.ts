@@ -375,63 +375,69 @@ export interface SharesEthersContract extends ethers.Contract {
     spender: string,
     amount: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'buyShares(address,address,uint256)': (
     _buyer: string,
     _investmentAsset: string,
     _sharesQuantity: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'createFor(address,uint256)': (
     who: string,
     amount: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'decreaseApproval(address,uint256)': (
     spender: string,
     amount: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'disableSharesInvestmentAssets(address[])': (
     _assets: string[],
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'enableSharesInvestmentAssets(address[])': (
     _assets: string[],
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'increaseApproval(address,uint256)': (
     spender: string,
     amount: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'initialize(address[7])': (
     _spokes: [string, string, string, string, string, string, string],
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
-  'redeemShares()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
+  'redeemShares()': ($$overrides?: ethers.Overrides) => Promise<ethers.providers.TransactionResponse>;
   'redeemSharesQuantity(uint256)': (
     _sharesQuantity: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'redeemSharesWithConstraints(uint256,address[])': (
     _sharesQuantity: ethers.BigNumberish,
     _assets: string[],
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
-  'setAuthority(address)': (authority_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
-  'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
+  'setAuthority(address)': (
+    authority_: string,
+    $$overrides?: ethers.Overrides,
+  ) => Promise<ethers.providers.TransactionResponse>;
+  'setOwner(address)': (
+    owner_: string,
+    $$overrides?: ethers.Overrides,
+  ) => Promise<ethers.providers.TransactionResponse>;
   'transfer(address,uint256)': (
     to: string,
     amount: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'transferFrom(address,address,uint256)': (
     from: string,
     to: string,
     amount: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
 
   functions: {
     'allowance(address,address)': (
@@ -467,66 +473,69 @@ export interface SharesEthersContract extends ethers.Contract {
       spender: string,
       amount: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'buyShares(address,address,uint256)': (
       _buyer: string,
       _investmentAsset: string,
       _sharesQuantity: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'createFor(address,uint256)': (
       who: string,
       amount: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'decreaseApproval(address,uint256)': (
       spender: string,
       amount: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'disableSharesInvestmentAssets(address[])': (
       _assets: string[],
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'enableSharesInvestmentAssets(address[])': (
       _assets: string[],
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'increaseApproval(address,uint256)': (
       spender: string,
       amount: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'initialize(address[7])': (
       _spokes: [string, string, string, string, string, string, string],
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
-    'redeemShares()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
+    'redeemShares()': ($$overrides?: ethers.Overrides) => Promise<ethers.providers.TransactionResponse>;
     'redeemSharesQuantity(uint256)': (
       _sharesQuantity: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'redeemSharesWithConstraints(uint256,address[])': (
       _sharesQuantity: ethers.BigNumberish,
       _assets: string[],
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'setAuthority(address)': (
       authority_: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
-    'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
+    'setOwner(address)': (
+      owner_: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.providers.TransactionResponse>;
     'transfer(address,uint256)': (
       to: string,
       amount: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'transferFrom(address,address,uint256)': (
       from: string,
       to: string,
       amount: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
   };
 
   callStatic: {

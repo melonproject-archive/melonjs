@@ -142,23 +142,23 @@ export interface WETHEthersContract extends ethers.Contract {
     guy: string,
     wad: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
-  'deposit()': ($$overrides?: ethers.PayableOverrides) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
+  'deposit()': ($$overrides?: ethers.PayableOverrides) => Promise<ethers.providers.TransactionResponse>;
   'transfer(address,uint256)': (
     dst: string,
     wad: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'transferFrom(address,address,uint256)': (
     src: string,
     dst: string,
     wad: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'withdraw(uint256)': (
     wad: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
 
   functions: {
     'allowance(address,address)': (
@@ -175,23 +175,23 @@ export interface WETHEthersContract extends ethers.Contract {
       guy: string,
       wad: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
-    'deposit()': ($$overrides?: ethers.PayableOverrides) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
+    'deposit()': ($$overrides?: ethers.PayableOverrides) => Promise<ethers.providers.TransactionResponse>;
     'transfer(address,uint256)': (
       dst: string,
       wad: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'transferFrom(address,address,uint256)': (
       src: string,
       dst: string,
       wad: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'withdraw(uint256)': (
       wad: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
   };
 
   callStatic: {

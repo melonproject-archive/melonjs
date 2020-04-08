@@ -167,24 +167,27 @@ export interface SharesRequestorEthersContract extends ethers.Contract {
     _hub: string,
     $$overrides?: ethers.CallOverrides,
   ) => Promise<{ pass_: boolean; reason_: string }>;
-  'cancelRequest(address)': (_hub: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  'cancelRequest(address)': (
+    _hub: string,
+    $$overrides?: ethers.Overrides,
+  ) => Promise<ethers.providers.TransactionResponse>;
   'cancelRequestFor(address,address)': (
     _requestOwner: string,
     _hub: string,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'executeRequestFor(address,address)': (
     _requestOwner: string,
     _hub: string,
     $$overrides?: ethers.PayableOverrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'requestShares(address,address,uint256,uint256)': (
     _hub: string,
     _investmentAsset: string,
     _maxInvestmentAmount: ethers.BigNumberish,
     _sharesQuantity: ethers.BigNumberish,
     $$overrides?: ethers.PayableOverrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
 
   functions: {
     'REGISTRY()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
@@ -215,24 +218,27 @@ export interface SharesRequestorEthersContract extends ethers.Contract {
       _hub: string,
       $$overrides?: ethers.CallOverrides,
     ) => Promise<{ pass_: boolean; reason_: string }>;
-    'cancelRequest(address)': (_hub: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'cancelRequest(address)': (
+      _hub: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.providers.TransactionResponse>;
     'cancelRequestFor(address,address)': (
       _requestOwner: string,
       _hub: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'executeRequestFor(address,address)': (
       _requestOwner: string,
       _hub: string,
       $$overrides?: ethers.PayableOverrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'requestShares(address,address,uint256,uint256)': (
       _hub: string,
       _investmentAsset: string,
       _maxInvestmentAmount: ethers.BigNumberish,
       _sharesQuantity: ethers.BigNumberish,
       $$overrides?: ethers.PayableOverrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
   };
 
   callStatic: {

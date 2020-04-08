@@ -356,32 +356,47 @@ export interface MockHubEthersContract extends ethers.Contract {
     dst: string,
     sig: string | ethers.utils.BytesLike,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
-  'initializeSpoke(address)': (_spoke: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
+  'initializeSpoke(address)': (
+    _spoke: string,
+    $$overrides?: ethers.Overrides,
+  ) => Promise<ethers.providers.TransactionResponse>;
   'permit(address,address,bytes32)': (
     src: string,
     dst: string,
     sig: string | ethers.utils.BytesLike,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'permitSomething(address,address,bytes4)': (
     _from: string,
     _to: string,
     _sig: string | ethers.utils.BytesLike,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
-  'setAuthority(address)': (authority_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
-  'setManager(address)': (_manager: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
-  'setName(string)': (_name: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
-  'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
-  'setPermissions()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
-  'setRouting()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
-  'setShutDownState(bool)': (_state: boolean, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
+  'setAuthority(address)': (
+    authority_: string,
+    $$overrides?: ethers.Overrides,
+  ) => Promise<ethers.providers.TransactionResponse>;
+  'setManager(address)': (
+    _manager: string,
+    $$overrides?: ethers.Overrides,
+  ) => Promise<ethers.providers.TransactionResponse>;
+  'setName(string)': (_name: string, $$overrides?: ethers.Overrides) => Promise<ethers.providers.TransactionResponse>;
+  'setOwner(address)': (
+    owner_: string,
+    $$overrides?: ethers.Overrides,
+  ) => Promise<ethers.providers.TransactionResponse>;
+  'setPermissions()': ($$overrides?: ethers.Overrides) => Promise<ethers.providers.TransactionResponse>;
+  'setRouting()': ($$overrides?: ethers.Overrides) => Promise<ethers.providers.TransactionResponse>;
+  'setShutDownState(bool)': (
+    _state: boolean,
+    $$overrides?: ethers.Overrides,
+  ) => Promise<ethers.providers.TransactionResponse>;
   'setSpokes(address[7])': (
     _spokes: [string, string, string, string, string, string, string],
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
-  'shutDownFund()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
+  'shutDownFund()': ($$overrides?: ethers.Overrides) => Promise<ethers.providers.TransactionResponse>;
 
   functions: {
     'ANY()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
@@ -419,38 +434,47 @@ export interface MockHubEthersContract extends ethers.Contract {
       dst: string,
       sig: string | ethers.utils.BytesLike,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'initializeSpoke(address)': (
       _spoke: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'permit(address,address,bytes32)': (
       src: string,
       dst: string,
       sig: string | ethers.utils.BytesLike,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'permitSomething(address,address,bytes4)': (
       _from: string,
       _to: string,
       _sig: string | ethers.utils.BytesLike,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'setAuthority(address)': (
       authority_: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
-    'setManager(address)': (_manager: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
-    'setName(string)': (_name: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
-    'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
-    'setPermissions()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
-    'setRouting()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
-    'setShutDownState(bool)': (_state: boolean, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
+    'setManager(address)': (
+      _manager: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.providers.TransactionResponse>;
+    'setName(string)': (_name: string, $$overrides?: ethers.Overrides) => Promise<ethers.providers.TransactionResponse>;
+    'setOwner(address)': (
+      owner_: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.providers.TransactionResponse>;
+    'setPermissions()': ($$overrides?: ethers.Overrides) => Promise<ethers.providers.TransactionResponse>;
+    'setRouting()': ($$overrides?: ethers.Overrides) => Promise<ethers.providers.TransactionResponse>;
+    'setShutDownState(bool)': (
+      _state: boolean,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.providers.TransactionResponse>;
     'setSpokes(address[7])': (
       _spokes: [string, string, string, string, string, string, string],
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
-    'shutDownFund()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
+    'shutDownFund()': ($$overrides?: ethers.Overrides) => Promise<ethers.providers.TransactionResponse>;
   };
 
   callStatic: {

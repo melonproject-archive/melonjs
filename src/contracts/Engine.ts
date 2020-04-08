@@ -252,17 +252,20 @@ export interface EngineEthersContract extends ethers.Contract {
   'totalAmguConsumed()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
   'totalEtherConsumed()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
   'totalMlnBurned()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
-  'payAmguInEther()': ($$overrides?: ethers.PayableOverrides) => ethers.providers.TransactionResponse;
+  'payAmguInEther()': ($$overrides?: ethers.PayableOverrides) => Promise<ethers.providers.TransactionResponse>;
   'sellAndBurnMln(uint256)': (
     _mlnAmount: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'setAmguPrice(uint256)': (
     _price: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
-  'setRegistry(address)': (_registry: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
-  'thaw()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
+  'setRegistry(address)': (
+    _registry: string,
+    $$overrides?: ethers.Overrides,
+  ) => Promise<ethers.providers.TransactionResponse>;
+  'thaw()': ($$overrides?: ethers.Overrides) => Promise<ethers.providers.TransactionResponse>;
 
   functions: {
     'MLN_DECIMALS()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
@@ -284,17 +287,20 @@ export interface EngineEthersContract extends ethers.Contract {
     'totalAmguConsumed()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
     'totalEtherConsumed()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
     'totalMlnBurned()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
-    'payAmguInEther()': ($$overrides?: ethers.PayableOverrides) => ethers.providers.TransactionResponse;
+    'payAmguInEther()': ($$overrides?: ethers.PayableOverrides) => Promise<ethers.providers.TransactionResponse>;
     'sellAndBurnMln(uint256)': (
       _mlnAmount: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'setAmguPrice(uint256)': (
       _price: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
-    'setRegistry(address)': (_registry: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
-    'thaw()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
+    'setRegistry(address)': (
+      _registry: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.providers.TransactionResponse>;
+    'thaw()': ($$overrides?: ethers.Overrides) => Promise<ethers.providers.TransactionResponse>;
   };
 
   callStatic: {

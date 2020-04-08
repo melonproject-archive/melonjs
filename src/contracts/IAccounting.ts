@@ -155,17 +155,17 @@ export interface IAccountingEthersContract extends ethers.Contract {
     $$0: string,
     $$1: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'getShareCostInAsset(uint256,address)': (
     $$0: ethers.BigNumberish,
     $$1: string,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'increaseAssetBalance(address,uint256)': (
     $$0: string,
     $$1: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
 
   functions: {
     'DEFAULT_SHARE_PRICE()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
@@ -185,17 +185,17 @@ export interface IAccountingEthersContract extends ethers.Contract {
       $$0: string,
       $$1: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'getShareCostInAsset(uint256,address)': (
       $$0: ethers.BigNumberish,
       $$1: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'increaseAssetBalance(address,uint256)': (
       $$0: string,
       $$1: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
   };
 
   callStatic: {

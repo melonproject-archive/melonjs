@@ -93,8 +93,14 @@ export interface AddressListEthersContract extends ethers.Contract {
   'getMembers()': ($$overrides?: ethers.CallOverrides) => Promise<string[]>;
   'isMember(address)': (_asset: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
   'owner()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
-  'setAuthority(address)': (authority_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
-  'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  'setAuthority(address)': (
+    authority_: string,
+    $$overrides?: ethers.Overrides,
+  ) => Promise<ethers.providers.TransactionResponse>;
+  'setOwner(address)': (
+    owner_: string,
+    $$overrides?: ethers.Overrides,
+  ) => Promise<ethers.providers.TransactionResponse>;
 
   functions: {
     'authority()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
@@ -105,8 +111,11 @@ export interface AddressListEthersContract extends ethers.Contract {
     'setAuthority(address)': (
       authority_: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
-    'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
+    'setOwner(address)': (
+      owner_: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.providers.TransactionResponse>;
   };
 
   callStatic: {

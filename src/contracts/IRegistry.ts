@@ -245,12 +245,12 @@ export interface IRegistryEthersContract extends ethers.Contract {
     _owner: string,
     _name: string,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'reserveFundName(address,string)': (
     _owner: string,
     _name: string,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
 
   functions: {
     'MGM()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
@@ -280,12 +280,12 @@ export interface IRegistryEthersContract extends ethers.Contract {
       _owner: string,
       _name: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'reserveFundName(address,string)': (
       _owner: string,
       _name: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
   };
 
   callStatic: {

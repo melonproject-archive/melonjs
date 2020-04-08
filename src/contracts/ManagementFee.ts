@@ -98,8 +98,8 @@ export interface ManagementFeeEthersContract extends ethers.Contract {
     feePeriod: ethers.BigNumberish,
     denominationAsset: string,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
-  'updateState()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
+  'updateState()': ($$overrides?: ethers.Overrides) => Promise<ethers.providers.TransactionResponse>;
 
   functions: {
     'DIVISOR()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
@@ -112,8 +112,8 @@ export interface ManagementFeeEthersContract extends ethers.Contract {
       feePeriod: ethers.BigNumberish,
       denominationAsset: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
-    'updateState()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
+    'updateState()': ($$overrides?: ethers.Overrides) => Promise<ethers.providers.TransactionResponse>;
   };
 
   callStatic: {

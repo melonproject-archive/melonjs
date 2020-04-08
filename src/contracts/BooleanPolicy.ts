@@ -46,7 +46,7 @@ export interface BooleanPolicyEthersContract extends ethers.Contract {
     values: [ethers.BigNumber, ethers.BigNumber, ethers.BigNumber],
     identifier: string | ethers.utils.BytesLike,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
 
   functions: {
     'position()': ($$overrides?: ethers.CallOverrides) => Promise<number>;
@@ -56,7 +56,7 @@ export interface BooleanPolicyEthersContract extends ethers.Contract {
       values: [ethers.BigNumber, ethers.BigNumber, ethers.BigNumber],
       identifier: string | ethers.utils.BytesLike,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
   };
 
   callStatic: {

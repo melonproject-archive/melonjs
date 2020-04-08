@@ -28,7 +28,7 @@ export interface IVaultFactoryEthersContract extends ethers.Contract {
     $$2: string[],
     $$3: string,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
 
   functions: {
     'createInstance(address,address[],address[],address)': (
@@ -37,7 +37,7 @@ export interface IVaultFactoryEthersContract extends ethers.Contract {
       $$2: string[],
       $$3: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
   };
 
   callStatic: {

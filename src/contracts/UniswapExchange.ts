@@ -503,69 +503,72 @@ export interface UniswapExchangeEthersContract extends ethers.Contract {
   'symbol()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
   'decimals()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
   'totalSupply()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
-  'setup(address)': (token_addr: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  'setup(address)': (
+    token_addr: string,
+    $$overrides?: ethers.Overrides,
+  ) => Promise<ethers.providers.TransactionResponse>;
   'addLiquidity(uint256,uint256,uint256)': (
     min_liquidity: ethers.BigNumberish,
     max_tokens: ethers.BigNumberish,
     deadline: ethers.BigNumberish,
     $$overrides?: ethers.PayableOverrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'removeLiquidity(uint256,uint256,uint256,uint256)': (
     amount: ethers.BigNumberish,
     min_eth: ethers.BigNumberish,
     min_tokens: ethers.BigNumberish,
     deadline: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
-  '__default__()': ($$overrides?: ethers.PayableOverrides) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
+  '__default__()': ($$overrides?: ethers.PayableOverrides) => Promise<ethers.providers.TransactionResponse>;
   'ethToTokenSwapInput(uint256,uint256)': (
     min_tokens: ethers.BigNumberish,
     deadline: ethers.BigNumberish,
     $$overrides?: ethers.PayableOverrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'ethToTokenTransferInput(uint256,uint256,address)': (
     min_tokens: ethers.BigNumberish,
     deadline: ethers.BigNumberish,
     recipient: string,
     $$overrides?: ethers.PayableOverrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'ethToTokenSwapOutput(uint256,uint256)': (
     tokens_bought: ethers.BigNumberish,
     deadline: ethers.BigNumberish,
     $$overrides?: ethers.PayableOverrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'ethToTokenTransferOutput(uint256,uint256,address)': (
     tokens_bought: ethers.BigNumberish,
     deadline: ethers.BigNumberish,
     recipient: string,
     $$overrides?: ethers.PayableOverrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'tokenToEthSwapInput(uint256,uint256,uint256)': (
     tokens_sold: ethers.BigNumberish,
     min_eth: ethers.BigNumberish,
     deadline: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'tokenToEthTransferInput(uint256,uint256,uint256,address)': (
     tokens_sold: ethers.BigNumberish,
     min_eth: ethers.BigNumberish,
     deadline: ethers.BigNumberish,
     recipient: string,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'tokenToEthSwapOutput(uint256,uint256,uint256)': (
     eth_bought: ethers.BigNumberish,
     max_tokens: ethers.BigNumberish,
     deadline: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'tokenToEthTransferOutput(uint256,uint256,uint256,address)': (
     eth_bought: ethers.BigNumberish,
     max_tokens: ethers.BigNumberish,
     deadline: ethers.BigNumberish,
     recipient: string,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'tokenToTokenSwapInput(uint256,uint256,uint256,uint256,address)': (
     tokens_sold: ethers.BigNumberish,
     min_tokens_bought: ethers.BigNumberish,
@@ -573,7 +576,7 @@ export interface UniswapExchangeEthersContract extends ethers.Contract {
     deadline: ethers.BigNumberish,
     token_addr: string,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'tokenToTokenTransferInput(uint256,uint256,uint256,uint256,address,address)': (
     tokens_sold: ethers.BigNumberish,
     min_tokens_bought: ethers.BigNumberish,
@@ -582,7 +585,7 @@ export interface UniswapExchangeEthersContract extends ethers.Contract {
     recipient: string,
     token_addr: string,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'tokenToTokenSwapOutput(uint256,uint256,uint256,uint256,address)': (
     tokens_bought: ethers.BigNumberish,
     max_tokens_sold: ethers.BigNumberish,
@@ -590,7 +593,7 @@ export interface UniswapExchangeEthersContract extends ethers.Contract {
     deadline: ethers.BigNumberish,
     token_addr: string,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'tokenToTokenTransferOutput(uint256,uint256,uint256,uint256,address,address)': (
     tokens_bought: ethers.BigNumberish,
     max_tokens_sold: ethers.BigNumberish,
@@ -599,7 +602,7 @@ export interface UniswapExchangeEthersContract extends ethers.Contract {
     recipient: string,
     token_addr: string,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'tokenToExchangeSwapInput(uint256,uint256,uint256,uint256,address)': (
     tokens_sold: ethers.BigNumberish,
     min_tokens_bought: ethers.BigNumberish,
@@ -607,7 +610,7 @@ export interface UniswapExchangeEthersContract extends ethers.Contract {
     deadline: ethers.BigNumberish,
     exchange_addr: string,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'tokenToExchangeTransferInput(uint256,uint256,uint256,uint256,address,address)': (
     tokens_sold: ethers.BigNumberish,
     min_tokens_bought: ethers.BigNumberish,
@@ -616,7 +619,7 @@ export interface UniswapExchangeEthersContract extends ethers.Contract {
     recipient: string,
     exchange_addr: string,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'tokenToExchangeSwapOutput(uint256,uint256,uint256,uint256,address)': (
     tokens_bought: ethers.BigNumberish,
     max_tokens_sold: ethers.BigNumberish,
@@ -624,7 +627,7 @@ export interface UniswapExchangeEthersContract extends ethers.Contract {
     deadline: ethers.BigNumberish,
     exchange_addr: string,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'tokenToExchangeTransferOutput(uint256,uint256,uint256,uint256,address,address)': (
     tokens_bought: ethers.BigNumberish,
     max_tokens_sold: ethers.BigNumberish,
@@ -633,23 +636,23 @@ export interface UniswapExchangeEthersContract extends ethers.Contract {
     recipient: string,
     exchange_addr: string,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'transfer(address,uint256)': (
     _to: string,
     _value: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'transferFrom(address,address,uint256)': (
     _from: string,
     _to: string,
     _value: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'approve(address,uint256)': (
     _spender: string,
     _value: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
 
   functions: {
     'getEthToTokenInputPrice(uint256)': (
@@ -680,69 +683,72 @@ export interface UniswapExchangeEthersContract extends ethers.Contract {
     'symbol()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
     'decimals()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
     'totalSupply()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
-    'setup(address)': (token_addr: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'setup(address)': (
+      token_addr: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.providers.TransactionResponse>;
     'addLiquidity(uint256,uint256,uint256)': (
       min_liquidity: ethers.BigNumberish,
       max_tokens: ethers.BigNumberish,
       deadline: ethers.BigNumberish,
       $$overrides?: ethers.PayableOverrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'removeLiquidity(uint256,uint256,uint256,uint256)': (
       amount: ethers.BigNumberish,
       min_eth: ethers.BigNumberish,
       min_tokens: ethers.BigNumberish,
       deadline: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
-    '__default__()': ($$overrides?: ethers.PayableOverrides) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
+    '__default__()': ($$overrides?: ethers.PayableOverrides) => Promise<ethers.providers.TransactionResponse>;
     'ethToTokenSwapInput(uint256,uint256)': (
       min_tokens: ethers.BigNumberish,
       deadline: ethers.BigNumberish,
       $$overrides?: ethers.PayableOverrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'ethToTokenTransferInput(uint256,uint256,address)': (
       min_tokens: ethers.BigNumberish,
       deadline: ethers.BigNumberish,
       recipient: string,
       $$overrides?: ethers.PayableOverrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'ethToTokenSwapOutput(uint256,uint256)': (
       tokens_bought: ethers.BigNumberish,
       deadline: ethers.BigNumberish,
       $$overrides?: ethers.PayableOverrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'ethToTokenTransferOutput(uint256,uint256,address)': (
       tokens_bought: ethers.BigNumberish,
       deadline: ethers.BigNumberish,
       recipient: string,
       $$overrides?: ethers.PayableOverrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'tokenToEthSwapInput(uint256,uint256,uint256)': (
       tokens_sold: ethers.BigNumberish,
       min_eth: ethers.BigNumberish,
       deadline: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'tokenToEthTransferInput(uint256,uint256,uint256,address)': (
       tokens_sold: ethers.BigNumberish,
       min_eth: ethers.BigNumberish,
       deadline: ethers.BigNumberish,
       recipient: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'tokenToEthSwapOutput(uint256,uint256,uint256)': (
       eth_bought: ethers.BigNumberish,
       max_tokens: ethers.BigNumberish,
       deadline: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'tokenToEthTransferOutput(uint256,uint256,uint256,address)': (
       eth_bought: ethers.BigNumberish,
       max_tokens: ethers.BigNumberish,
       deadline: ethers.BigNumberish,
       recipient: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'tokenToTokenSwapInput(uint256,uint256,uint256,uint256,address)': (
       tokens_sold: ethers.BigNumberish,
       min_tokens_bought: ethers.BigNumberish,
@@ -750,7 +756,7 @@ export interface UniswapExchangeEthersContract extends ethers.Contract {
       deadline: ethers.BigNumberish,
       token_addr: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'tokenToTokenTransferInput(uint256,uint256,uint256,uint256,address,address)': (
       tokens_sold: ethers.BigNumberish,
       min_tokens_bought: ethers.BigNumberish,
@@ -759,7 +765,7 @@ export interface UniswapExchangeEthersContract extends ethers.Contract {
       recipient: string,
       token_addr: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'tokenToTokenSwapOutput(uint256,uint256,uint256,uint256,address)': (
       tokens_bought: ethers.BigNumberish,
       max_tokens_sold: ethers.BigNumberish,
@@ -767,7 +773,7 @@ export interface UniswapExchangeEthersContract extends ethers.Contract {
       deadline: ethers.BigNumberish,
       token_addr: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'tokenToTokenTransferOutput(uint256,uint256,uint256,uint256,address,address)': (
       tokens_bought: ethers.BigNumberish,
       max_tokens_sold: ethers.BigNumberish,
@@ -776,7 +782,7 @@ export interface UniswapExchangeEthersContract extends ethers.Contract {
       recipient: string,
       token_addr: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'tokenToExchangeSwapInput(uint256,uint256,uint256,uint256,address)': (
       tokens_sold: ethers.BigNumberish,
       min_tokens_bought: ethers.BigNumberish,
@@ -784,7 +790,7 @@ export interface UniswapExchangeEthersContract extends ethers.Contract {
       deadline: ethers.BigNumberish,
       exchange_addr: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'tokenToExchangeTransferInput(uint256,uint256,uint256,uint256,address,address)': (
       tokens_sold: ethers.BigNumberish,
       min_tokens_bought: ethers.BigNumberish,
@@ -793,7 +799,7 @@ export interface UniswapExchangeEthersContract extends ethers.Contract {
       recipient: string,
       exchange_addr: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'tokenToExchangeSwapOutput(uint256,uint256,uint256,uint256,address)': (
       tokens_bought: ethers.BigNumberish,
       max_tokens_sold: ethers.BigNumberish,
@@ -801,7 +807,7 @@ export interface UniswapExchangeEthersContract extends ethers.Contract {
       deadline: ethers.BigNumberish,
       exchange_addr: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'tokenToExchangeTransferOutput(uint256,uint256,uint256,uint256,address,address)': (
       tokens_bought: ethers.BigNumberish,
       max_tokens_sold: ethers.BigNumberish,
@@ -810,23 +816,23 @@ export interface UniswapExchangeEthersContract extends ethers.Contract {
       recipient: string,
       exchange_addr: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'transfer(address,uint256)': (
       _to: string,
       _value: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'transferFrom(address,address,uint256)': (
       _from: string,
       _to: string,
       _value: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'approve(address,uint256)': (
       _spender: string,
       _value: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
   };
 
   callStatic: {

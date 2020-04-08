@@ -720,53 +720,56 @@ export interface ZeroExV3StakingEthersContract extends ethers.Contract {
   'addAuthorizedAddress(address)': (
     target: string,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
-  'addExchangeAddress(address)': (addr: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
+  'addExchangeAddress(address)': (
+    addr: string,
+    $$overrides?: ethers.Overrides,
+  ) => Promise<ethers.providers.TransactionResponse>;
   'createStakingPool(uint32,bool)': (
     operatorShare: ethers.BigNumberish,
     addOperatorAsMaker: boolean,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'decreaseStakingPoolOperatorShare(bytes32,uint32)': (
     poolId: string | ethers.utils.BytesLike,
     newOperatorShare: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
-  'endEpoch()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
+  'endEpoch()': ($$overrides?: ethers.Overrides) => Promise<ethers.providers.TransactionResponse>;
   'finalizePool(bytes32)': (
     poolId: string | ethers.utils.BytesLike,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
-  'init()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
+  'init()': ($$overrides?: ethers.Overrides) => Promise<ethers.providers.TransactionResponse>;
   'joinStakingPoolAsMaker(bytes32)': (
     poolId: string | ethers.utils.BytesLike,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'moveStake((uint8,bytes32),(uint8,bytes32),uint256)': (
     from: { status: ethers.BigNumberish; poolId: string | ethers.utils.BytesLike },
     to: { status: ethers.BigNumberish; poolId: string | ethers.utils.BytesLike },
     amount: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'payProtocolFee(address,address,uint256)': (
     makerAddress: string,
     payerAddress: string,
     protocolFee: ethers.BigNumberish,
     $$overrides?: ethers.PayableOverrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'removeAuthorizedAddress(address)': (
     target: string,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'removeAuthorizedAddressAtIndex(address,uint256)': (
     target: string,
     index: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'removeExchangeAddress(address)': (
     addr: string,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'setParams(uint256,uint32,uint256,uint32,uint32)': (
     _epochDurationInSeconds: ethers.BigNumberish,
     _rewardDelegatedStakeWeight: ethers.BigNumberish,
@@ -774,23 +777,23 @@ export interface ZeroExV3StakingEthersContract extends ethers.Contract {
     _cobbDouglasAlphaNumerator: ethers.BigNumberish,
     _cobbDouglasAlphaDenominator: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'stake(uint256)': (
     amount: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'transferOwnership(address)': (
     newOwner: string,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'unstake(uint256)': (
     amount: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'withdrawDelegatorRewards(bytes32)': (
     poolId: string | ethers.utils.BytesLike,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
 
   functions: {
     'aggregatedStatsByEpoch(uint256)': (
@@ -895,56 +898,56 @@ export interface ZeroExV3StakingEthersContract extends ethers.Contract {
     'addAuthorizedAddress(address)': (
       target: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'addExchangeAddress(address)': (
       addr: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'createStakingPool(uint32,bool)': (
       operatorShare: ethers.BigNumberish,
       addOperatorAsMaker: boolean,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'decreaseStakingPoolOperatorShare(bytes32,uint32)': (
       poolId: string | ethers.utils.BytesLike,
       newOperatorShare: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
-    'endEpoch()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
+    'endEpoch()': ($$overrides?: ethers.Overrides) => Promise<ethers.providers.TransactionResponse>;
     'finalizePool(bytes32)': (
       poolId: string | ethers.utils.BytesLike,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
-    'init()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
+    'init()': ($$overrides?: ethers.Overrides) => Promise<ethers.providers.TransactionResponse>;
     'joinStakingPoolAsMaker(bytes32)': (
       poolId: string | ethers.utils.BytesLike,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'moveStake((uint8,bytes32),(uint8,bytes32),uint256)': (
       from: { status: ethers.BigNumberish; poolId: string | ethers.utils.BytesLike },
       to: { status: ethers.BigNumberish; poolId: string | ethers.utils.BytesLike },
       amount: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'payProtocolFee(address,address,uint256)': (
       makerAddress: string,
       payerAddress: string,
       protocolFee: ethers.BigNumberish,
       $$overrides?: ethers.PayableOverrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'removeAuthorizedAddress(address)': (
       target: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'removeAuthorizedAddressAtIndex(address,uint256)': (
       target: string,
       index: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'removeExchangeAddress(address)': (
       addr: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'setParams(uint256,uint32,uint256,uint32,uint32)': (
       _epochDurationInSeconds: ethers.BigNumberish,
       _rewardDelegatedStakeWeight: ethers.BigNumberish,
@@ -952,23 +955,23 @@ export interface ZeroExV3StakingEthersContract extends ethers.Contract {
       _cobbDouglasAlphaNumerator: ethers.BigNumberish,
       _cobbDouglasAlphaDenominator: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'stake(uint256)': (
       amount: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'transferOwnership(address)': (
       newOwner: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'unstake(uint256)': (
       amount: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'withdrawDelegatorRewards(bytes32)': (
       poolId: string | ethers.utils.BytesLike,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
   };
 
   callStatic: {

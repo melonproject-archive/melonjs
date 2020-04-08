@@ -401,29 +401,35 @@ export interface AccountingEthersContract extends ethers.Contract {
     _numShares: ethers.BigNumberish,
     $$overrides?: ethers.CallOverrides,
   ) => Promise<ethers.BigNumber>;
-  'calcFundMetrics()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  'calcFundMetrics()': ($$overrides?: ethers.Overrides) => Promise<ethers.providers.TransactionResponse>;
   'decreaseAssetBalance(address,uint256)': (
     _asset: string,
     _amount: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'getShareCostInAsset(uint256,address)': (
     _numShares: ethers.BigNumberish,
     _altAsset: string,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'increaseAssetBalance(address,uint256)': (
     _asset: string,
     _amount: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'initialize(address[7])': (
     _spokes: [string, string, string, string, string, string, string],
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
-  'setAuthority(address)': (authority_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
-  'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
-  'triggerRewardAllFees()': ($$overrides?: ethers.PayableOverrides) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
+  'setAuthority(address)': (
+    authority_: string,
+    $$overrides?: ethers.Overrides,
+  ) => Promise<ethers.providers.TransactionResponse>;
+  'setOwner(address)': (
+    owner_: string,
+    $$overrides?: ethers.Overrides,
+  ) => Promise<ethers.providers.TransactionResponse>;
+  'triggerRewardAllFees()': ($$overrides?: ethers.PayableOverrides) => Promise<ethers.providers.TransactionResponse>;
 
   functions: {
     'DEFAULT_SHARE_PRICE()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
@@ -477,32 +483,35 @@ export interface AccountingEthersContract extends ethers.Contract {
       _numShares: ethers.BigNumberish,
       $$overrides?: ethers.CallOverrides,
     ) => Promise<ethers.BigNumber>;
-    'calcFundMetrics()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'calcFundMetrics()': ($$overrides?: ethers.Overrides) => Promise<ethers.providers.TransactionResponse>;
     'decreaseAssetBalance(address,uint256)': (
       _asset: string,
       _amount: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'getShareCostInAsset(uint256,address)': (
       _numShares: ethers.BigNumberish,
       _altAsset: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'increaseAssetBalance(address,uint256)': (
       _asset: string,
       _amount: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'initialize(address[7])': (
       _spokes: [string, string, string, string, string, string, string],
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'setAuthority(address)': (
       authority_: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
-    'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
-    'triggerRewardAllFees()': ($$overrides?: ethers.PayableOverrides) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
+    'setOwner(address)': (
+      owner_: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.providers.TransactionResponse>;
+    'triggerRewardAllFees()': ($$overrides?: ethers.PayableOverrides) => Promise<ethers.providers.TransactionResponse>;
   };
 
   callStatic: {

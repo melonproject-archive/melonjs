@@ -64,18 +64,18 @@ export class IFeeManager extends Contract {
 }
 
 export interface IFeeManagerEthersContract extends ethers.Contract {
-  'managementFeeAmount()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
-  'performanceFeeAmount()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
-  'rewardAllFees()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
-  'rewardManagementFee()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
-  'totalFeeAmount()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  'managementFeeAmount()': ($$overrides?: ethers.Overrides) => Promise<ethers.providers.TransactionResponse>;
+  'performanceFeeAmount()': ($$overrides?: ethers.Overrides) => Promise<ethers.providers.TransactionResponse>;
+  'rewardAllFees()': ($$overrides?: ethers.Overrides) => Promise<ethers.providers.TransactionResponse>;
+  'rewardManagementFee()': ($$overrides?: ethers.Overrides) => Promise<ethers.providers.TransactionResponse>;
+  'totalFeeAmount()': ($$overrides?: ethers.Overrides) => Promise<ethers.providers.TransactionResponse>;
 
   functions: {
-    'managementFeeAmount()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
-    'performanceFeeAmount()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
-    'rewardAllFees()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
-    'rewardManagementFee()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
-    'totalFeeAmount()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'managementFeeAmount()': ($$overrides?: ethers.Overrides) => Promise<ethers.providers.TransactionResponse>;
+    'performanceFeeAmount()': ($$overrides?: ethers.Overrides) => Promise<ethers.providers.TransactionResponse>;
+    'rewardAllFees()': ($$overrides?: ethers.Overrides) => Promise<ethers.providers.TransactionResponse>;
+    'rewardManagementFee()': ($$overrides?: ethers.Overrides) => Promise<ethers.providers.TransactionResponse>;
+    'totalFeeAmount()': ($$overrides?: ethers.Overrides) => Promise<ethers.providers.TransactionResponse>;
   };
 
   callStatic: {

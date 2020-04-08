@@ -110,18 +110,18 @@ export interface IUniswapExchangeEthersContract extends ethers.Contract {
     max_tokens: ethers.BigNumberish,
     deadline: ethers.BigNumberish,
     $$overrides?: ethers.PayableOverrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'ethToTokenSwapInput(uint256,uint256)': (
     min_tokens: ethers.BigNumberish,
     deadline: ethers.BigNumberish,
     $$overrides?: ethers.PayableOverrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'tokenToEthSwapInput(uint256,uint256,uint256)': (
     tokens_sold: ethers.BigNumberish,
     min_eth: ethers.BigNumberish,
     deadline: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'tokenToTokenSwapInput(uint256,uint256,uint256,uint256,address)': (
     tokens_sold: ethers.BigNumberish,
     min_tokens_bought: ethers.BigNumberish,
@@ -129,7 +129,7 @@ export interface IUniswapExchangeEthersContract extends ethers.Contract {
     deadline: ethers.BigNumberish,
     token_addr: string,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
 
   functions: {
     'getEthToTokenInputPrice(uint256)': (
@@ -145,18 +145,18 @@ export interface IUniswapExchangeEthersContract extends ethers.Contract {
       max_tokens: ethers.BigNumberish,
       deadline: ethers.BigNumberish,
       $$overrides?: ethers.PayableOverrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'ethToTokenSwapInput(uint256,uint256)': (
       min_tokens: ethers.BigNumberish,
       deadline: ethers.BigNumberish,
       $$overrides?: ethers.PayableOverrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'tokenToEthSwapInput(uint256,uint256,uint256)': (
       tokens_sold: ethers.BigNumberish,
       min_eth: ethers.BigNumberish,
       deadline: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'tokenToTokenSwapInput(uint256,uint256,uint256,uint256,address)': (
       tokens_sold: ethers.BigNumberish,
       min_tokens_bought: ethers.BigNumberish,
@@ -164,7 +164,7 @@ export interface IUniswapExchangeEthersContract extends ethers.Contract {
       deadline: ethers.BigNumberish,
       token_addr: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
   };
 
   callStatic: {

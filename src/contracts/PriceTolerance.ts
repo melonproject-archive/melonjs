@@ -143,7 +143,7 @@ export interface PriceToleranceEthersContract extends ethers.Contract {
     _values: [ethers.BigNumber, ethers.BigNumber, ethers.BigNumber],
     _identifier: string | ethers.utils.BytesLike,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
 
   functions: {
     'TAKE_ORDER()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
@@ -174,7 +174,7 @@ export interface PriceToleranceEthersContract extends ethers.Contract {
       _values: [ethers.BigNumber, ethers.BigNumber, ethers.BigNumber],
       _identifier: string | ethers.utils.BytesLike,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
   };
 
   callStatic: {

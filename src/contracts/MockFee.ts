@@ -114,18 +114,18 @@ export interface MockFeeEthersContract extends ethers.Contract {
   'fee()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
   'feeNumber()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
   'identifier()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
-  'feeAmount()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  'feeAmount()': ($$overrides?: ethers.Overrides) => Promise<ethers.providers.TransactionResponse>;
   'initializeForUser(uint256,uint256,address)': (
     feeRate: ethers.BigNumberish,
     feePeriod: ethers.BigNumberish,
     denominationAsset: string,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'setFeeAmount(uint256)': (
     amount: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
-  'updateState()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
+  'updateState()': ($$overrides?: ethers.Overrides) => Promise<ethers.providers.TransactionResponse>;
 
   functions: {
     'FEE_PERIOD()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
@@ -133,18 +133,18 @@ export interface MockFeeEthersContract extends ethers.Contract {
     'fee()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
     'feeNumber()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
     'identifier()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
-    'feeAmount()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'feeAmount()': ($$overrides?: ethers.Overrides) => Promise<ethers.providers.TransactionResponse>;
     'initializeForUser(uint256,uint256,address)': (
       feeRate: ethers.BigNumberish,
       feePeriod: ethers.BigNumberish,
       denominationAsset: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'setFeeAmount(uint256)': (
       amount: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
-    'updateState()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
+    'updateState()': ($$overrides?: ethers.Overrides) => Promise<ethers.providers.TransactionResponse>;
   };
 
   callStatic: {

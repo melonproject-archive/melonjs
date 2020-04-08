@@ -253,7 +253,7 @@ export interface IZeroExV3EthersContract extends ethers.Contract {
       takerFeeAssetData: string | ethers.utils.BytesLike;
     },
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'fillOrder((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes,bytes,bytes),uint256,bytes)': (
     $$0: {
       makerAddress: string;
@@ -274,11 +274,11 @@ export interface IZeroExV3EthersContract extends ethers.Contract {
     $$1: ethers.BigNumberish,
     $$2: string | ethers.utils.BytesLike,
     $$overrides?: ethers.PayableOverrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'preSign(bytes32)': (
     $$0: string | ethers.utils.BytesLike,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
 
   functions: {
     'cancelled(bytes32)': (
@@ -352,7 +352,7 @@ export interface IZeroExV3EthersContract extends ethers.Contract {
         takerFeeAssetData: string | ethers.utils.BytesLike;
       },
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'fillOrder((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes,bytes,bytes),uint256,bytes)': (
       $$0: {
         makerAddress: string;
@@ -373,11 +373,11 @@ export interface IZeroExV3EthersContract extends ethers.Contract {
       $$1: ethers.BigNumberish,
       $$2: string | ethers.utils.BytesLike,
       $$overrides?: ethers.PayableOverrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'preSign(bytes32)': (
       $$0: string | ethers.utils.BytesLike,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
   };
 
   callStatic: {

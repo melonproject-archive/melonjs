@@ -976,7 +976,7 @@ export interface ZeroExV3ExchangeEthersContract extends ethers.Contract {
       takerFeeAssetData: string;
     }[],
     $$overrides?: ethers.PayableOverrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'batchExecuteTransactions((uint256,uint256,uint256,address,bytes)[],bytes[])': (
     transactions: {
       salt: ethers.BigNumber;
@@ -987,7 +987,7 @@ export interface ZeroExV3ExchangeEthersContract extends ethers.Contract {
     }[],
     signatures: string | ethers.utils.BytesLike,
     $$overrides?: ethers.PayableOverrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'batchFillOrKillOrders((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes,bytes,bytes)[],uint256[],bytes[])': (
     orders: {
       makerAddress: string;
@@ -1008,7 +1008,7 @@ export interface ZeroExV3ExchangeEthersContract extends ethers.Contract {
     takerAssetFillAmounts: ethers.BigNumber[],
     signatures: string | ethers.utils.BytesLike,
     $$overrides?: ethers.PayableOverrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'batchFillOrders((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes,bytes,bytes)[],uint256[],bytes[])': (
     orders: {
       makerAddress: string;
@@ -1029,7 +1029,7 @@ export interface ZeroExV3ExchangeEthersContract extends ethers.Contract {
     takerAssetFillAmounts: ethers.BigNumber[],
     signatures: string | ethers.utils.BytesLike,
     $$overrides?: ethers.PayableOverrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'batchFillOrdersNoThrow((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes,bytes,bytes)[],uint256[],bytes[])': (
     orders: {
       makerAddress: string;
@@ -1050,7 +1050,7 @@ export interface ZeroExV3ExchangeEthersContract extends ethers.Contract {
     takerAssetFillAmounts: ethers.BigNumber[],
     signatures: string | ethers.utils.BytesLike,
     $$overrides?: ethers.PayableOverrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'batchMatchOrders((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes,bytes,bytes)[],(address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes,bytes,bytes)[],bytes[],bytes[])': (
     leftOrders: {
       makerAddress: string;
@@ -1087,7 +1087,7 @@ export interface ZeroExV3ExchangeEthersContract extends ethers.Contract {
     leftSignatures: string | ethers.utils.BytesLike,
     rightSignatures: string | ethers.utils.BytesLike,
     $$overrides?: ethers.PayableOverrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'batchMatchOrdersWithMaximalFill((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes,bytes,bytes)[],(address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes,bytes,bytes)[],bytes[],bytes[])': (
     leftOrders: {
       makerAddress: string;
@@ -1124,7 +1124,7 @@ export interface ZeroExV3ExchangeEthersContract extends ethers.Contract {
     leftSignatures: string | ethers.utils.BytesLike,
     rightSignatures: string | ethers.utils.BytesLike,
     $$overrides?: ethers.PayableOverrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'cancelOrder((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes,bytes,bytes))': (
     order: {
       makerAddress: string;
@@ -1143,11 +1143,11 @@ export interface ZeroExV3ExchangeEthersContract extends ethers.Contract {
       takerFeeAssetData: string | ethers.utils.BytesLike;
     },
     $$overrides?: ethers.PayableOverrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'cancelOrdersUpTo(uint256)': (
     targetOrderEpoch: ethers.BigNumberish,
     $$overrides?: ethers.PayableOverrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'executeTransaction((uint256,uint256,uint256,address,bytes),bytes)': (
     transaction: {
       salt: ethers.BigNumberish;
@@ -1158,7 +1158,7 @@ export interface ZeroExV3ExchangeEthersContract extends ethers.Contract {
     },
     signature: string | ethers.utils.BytesLike,
     $$overrides?: ethers.PayableOverrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'fillOrKillOrder((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes,bytes,bytes),uint256,bytes)': (
     order: {
       makerAddress: string;
@@ -1179,7 +1179,7 @@ export interface ZeroExV3ExchangeEthersContract extends ethers.Contract {
     takerAssetFillAmount: ethers.BigNumberish,
     signature: string | ethers.utils.BytesLike,
     $$overrides?: ethers.PayableOverrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'fillOrder((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes,bytes,bytes),uint256,bytes)': (
     order: {
       makerAddress: string;
@@ -1200,7 +1200,7 @@ export interface ZeroExV3ExchangeEthersContract extends ethers.Contract {
     takerAssetFillAmount: ethers.BigNumberish,
     signature: string | ethers.utils.BytesLike,
     $$overrides?: ethers.PayableOverrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'marketBuyOrdersFillOrKill((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes,bytes,bytes)[],uint256,bytes[])': (
     orders: {
       makerAddress: string;
@@ -1221,7 +1221,7 @@ export interface ZeroExV3ExchangeEthersContract extends ethers.Contract {
     makerAssetFillAmount: ethers.BigNumberish,
     signatures: string | ethers.utils.BytesLike,
     $$overrides?: ethers.PayableOverrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'marketBuyOrdersNoThrow((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes,bytes,bytes)[],uint256,bytes[])': (
     orders: {
       makerAddress: string;
@@ -1242,7 +1242,7 @@ export interface ZeroExV3ExchangeEthersContract extends ethers.Contract {
     makerAssetFillAmount: ethers.BigNumberish,
     signatures: string | ethers.utils.BytesLike,
     $$overrides?: ethers.PayableOverrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'marketSellOrdersFillOrKill((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes,bytes,bytes)[],uint256,bytes[])': (
     orders: {
       makerAddress: string;
@@ -1263,7 +1263,7 @@ export interface ZeroExV3ExchangeEthersContract extends ethers.Contract {
     takerAssetFillAmount: ethers.BigNumberish,
     signatures: string | ethers.utils.BytesLike,
     $$overrides?: ethers.PayableOverrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'marketSellOrdersNoThrow((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes,bytes,bytes)[],uint256,bytes[])': (
     orders: {
       makerAddress: string;
@@ -1284,7 +1284,7 @@ export interface ZeroExV3ExchangeEthersContract extends ethers.Contract {
     takerAssetFillAmount: ethers.BigNumberish,
     signatures: string | ethers.utils.BytesLike,
     $$overrides?: ethers.PayableOverrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'matchOrders((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes,bytes,bytes),(address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes,bytes,bytes),bytes,bytes)': (
     leftOrder: {
       makerAddress: string;
@@ -1321,7 +1321,7 @@ export interface ZeroExV3ExchangeEthersContract extends ethers.Contract {
     leftSignature: string | ethers.utils.BytesLike,
     rightSignature: string | ethers.utils.BytesLike,
     $$overrides?: ethers.PayableOverrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'matchOrdersWithMaximalFill((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes,bytes,bytes),(address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes,bytes,bytes),bytes,bytes)': (
     leftOrder: {
       makerAddress: string;
@@ -1358,39 +1358,39 @@ export interface ZeroExV3ExchangeEthersContract extends ethers.Contract {
     leftSignature: string | ethers.utils.BytesLike,
     rightSignature: string | ethers.utils.BytesLike,
     $$overrides?: ethers.PayableOverrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'preSign(bytes32)': (
     hash: string | ethers.utils.BytesLike,
     $$overrides?: ethers.PayableOverrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'registerAssetProxy(address)': (
     assetProxy: string,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'setProtocolFeeCollectorAddress(address)': (
     updatedProtocolFeeCollector: string,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'setProtocolFeeMultiplier(uint256)': (
     updatedProtocolFeeMultiplier: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'setSignatureValidatorApproval(address,bool)': (
     validatorAddress: string,
     approval: boolean,
     $$overrides?: ethers.PayableOverrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'simulateDispatchTransferFromCalls(bytes[],address[],address[],uint256[])': (
     assetData: string | ethers.utils.BytesLike,
     fromAddresses: string[],
     toAddresses: string[],
     amounts: ethers.BigNumber[],
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'transferOwnership(address)': (
     newOwner: string,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
 
   functions: {
     'EIP1271_MAGIC_VALUE()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
@@ -1504,7 +1504,7 @@ export interface ZeroExV3ExchangeEthersContract extends ethers.Contract {
         takerFeeAssetData: string;
       }[],
       $$overrides?: ethers.PayableOverrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'batchExecuteTransactions((uint256,uint256,uint256,address,bytes)[],bytes[])': (
       transactions: {
         salt: ethers.BigNumber;
@@ -1515,7 +1515,7 @@ export interface ZeroExV3ExchangeEthersContract extends ethers.Contract {
       }[],
       signatures: string | ethers.utils.BytesLike,
       $$overrides?: ethers.PayableOverrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'batchFillOrKillOrders((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes,bytes,bytes)[],uint256[],bytes[])': (
       orders: {
         makerAddress: string;
@@ -1536,7 +1536,7 @@ export interface ZeroExV3ExchangeEthersContract extends ethers.Contract {
       takerAssetFillAmounts: ethers.BigNumber[],
       signatures: string | ethers.utils.BytesLike,
       $$overrides?: ethers.PayableOverrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'batchFillOrders((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes,bytes,bytes)[],uint256[],bytes[])': (
       orders: {
         makerAddress: string;
@@ -1557,7 +1557,7 @@ export interface ZeroExV3ExchangeEthersContract extends ethers.Contract {
       takerAssetFillAmounts: ethers.BigNumber[],
       signatures: string | ethers.utils.BytesLike,
       $$overrides?: ethers.PayableOverrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'batchFillOrdersNoThrow((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes,bytes,bytes)[],uint256[],bytes[])': (
       orders: {
         makerAddress: string;
@@ -1578,7 +1578,7 @@ export interface ZeroExV3ExchangeEthersContract extends ethers.Contract {
       takerAssetFillAmounts: ethers.BigNumber[],
       signatures: string | ethers.utils.BytesLike,
       $$overrides?: ethers.PayableOverrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'batchMatchOrders((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes,bytes,bytes)[],(address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes,bytes,bytes)[],bytes[],bytes[])': (
       leftOrders: {
         makerAddress: string;
@@ -1615,7 +1615,7 @@ export interface ZeroExV3ExchangeEthersContract extends ethers.Contract {
       leftSignatures: string | ethers.utils.BytesLike,
       rightSignatures: string | ethers.utils.BytesLike,
       $$overrides?: ethers.PayableOverrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'batchMatchOrdersWithMaximalFill((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes,bytes,bytes)[],(address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes,bytes,bytes)[],bytes[],bytes[])': (
       leftOrders: {
         makerAddress: string;
@@ -1652,7 +1652,7 @@ export interface ZeroExV3ExchangeEthersContract extends ethers.Contract {
       leftSignatures: string | ethers.utils.BytesLike,
       rightSignatures: string | ethers.utils.BytesLike,
       $$overrides?: ethers.PayableOverrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'cancelOrder((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes,bytes,bytes))': (
       order: {
         makerAddress: string;
@@ -1671,11 +1671,11 @@ export interface ZeroExV3ExchangeEthersContract extends ethers.Contract {
         takerFeeAssetData: string | ethers.utils.BytesLike;
       },
       $$overrides?: ethers.PayableOverrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'cancelOrdersUpTo(uint256)': (
       targetOrderEpoch: ethers.BigNumberish,
       $$overrides?: ethers.PayableOverrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'executeTransaction((uint256,uint256,uint256,address,bytes),bytes)': (
       transaction: {
         salt: ethers.BigNumberish;
@@ -1686,7 +1686,7 @@ export interface ZeroExV3ExchangeEthersContract extends ethers.Contract {
       },
       signature: string | ethers.utils.BytesLike,
       $$overrides?: ethers.PayableOverrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'fillOrKillOrder((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes,bytes,bytes),uint256,bytes)': (
       order: {
         makerAddress: string;
@@ -1707,7 +1707,7 @@ export interface ZeroExV3ExchangeEthersContract extends ethers.Contract {
       takerAssetFillAmount: ethers.BigNumberish,
       signature: string | ethers.utils.BytesLike,
       $$overrides?: ethers.PayableOverrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'fillOrder((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes,bytes,bytes),uint256,bytes)': (
       order: {
         makerAddress: string;
@@ -1728,7 +1728,7 @@ export interface ZeroExV3ExchangeEthersContract extends ethers.Contract {
       takerAssetFillAmount: ethers.BigNumberish,
       signature: string | ethers.utils.BytesLike,
       $$overrides?: ethers.PayableOverrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'marketBuyOrdersFillOrKill((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes,bytes,bytes)[],uint256,bytes[])': (
       orders: {
         makerAddress: string;
@@ -1749,7 +1749,7 @@ export interface ZeroExV3ExchangeEthersContract extends ethers.Contract {
       makerAssetFillAmount: ethers.BigNumberish,
       signatures: string | ethers.utils.BytesLike,
       $$overrides?: ethers.PayableOverrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'marketBuyOrdersNoThrow((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes,bytes,bytes)[],uint256,bytes[])': (
       orders: {
         makerAddress: string;
@@ -1770,7 +1770,7 @@ export interface ZeroExV3ExchangeEthersContract extends ethers.Contract {
       makerAssetFillAmount: ethers.BigNumberish,
       signatures: string | ethers.utils.BytesLike,
       $$overrides?: ethers.PayableOverrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'marketSellOrdersFillOrKill((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes,bytes,bytes)[],uint256,bytes[])': (
       orders: {
         makerAddress: string;
@@ -1791,7 +1791,7 @@ export interface ZeroExV3ExchangeEthersContract extends ethers.Contract {
       takerAssetFillAmount: ethers.BigNumberish,
       signatures: string | ethers.utils.BytesLike,
       $$overrides?: ethers.PayableOverrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'marketSellOrdersNoThrow((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes,bytes,bytes)[],uint256,bytes[])': (
       orders: {
         makerAddress: string;
@@ -1812,7 +1812,7 @@ export interface ZeroExV3ExchangeEthersContract extends ethers.Contract {
       takerAssetFillAmount: ethers.BigNumberish,
       signatures: string | ethers.utils.BytesLike,
       $$overrides?: ethers.PayableOverrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'matchOrders((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes,bytes,bytes),(address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes,bytes,bytes),bytes,bytes)': (
       leftOrder: {
         makerAddress: string;
@@ -1849,7 +1849,7 @@ export interface ZeroExV3ExchangeEthersContract extends ethers.Contract {
       leftSignature: string | ethers.utils.BytesLike,
       rightSignature: string | ethers.utils.BytesLike,
       $$overrides?: ethers.PayableOverrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'matchOrdersWithMaximalFill((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes,bytes,bytes),(address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes,bytes,bytes),bytes,bytes)': (
       leftOrder: {
         makerAddress: string;
@@ -1886,39 +1886,39 @@ export interface ZeroExV3ExchangeEthersContract extends ethers.Contract {
       leftSignature: string | ethers.utils.BytesLike,
       rightSignature: string | ethers.utils.BytesLike,
       $$overrides?: ethers.PayableOverrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'preSign(bytes32)': (
       hash: string | ethers.utils.BytesLike,
       $$overrides?: ethers.PayableOverrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'registerAssetProxy(address)': (
       assetProxy: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'setProtocolFeeCollectorAddress(address)': (
       updatedProtocolFeeCollector: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'setProtocolFeeMultiplier(uint256)': (
       updatedProtocolFeeMultiplier: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'setSignatureValidatorApproval(address,bool)': (
       validatorAddress: string,
       approval: boolean,
       $$overrides?: ethers.PayableOverrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'simulateDispatchTransferFromCalls(bytes[],address[],address[],uint256[])': (
       assetData: string | ethers.utils.BytesLike,
       fromAddresses: string[],
       toAddresses: string[],
       amounts: ethers.BigNumber[],
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'transferOwnership(address)': (
       newOwner: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
   };
 
   callStatic: {

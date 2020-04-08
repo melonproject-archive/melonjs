@@ -22,10 +22,16 @@ export class IPolicyManagerFactory extends Contract {
 }
 
 export interface IPolicyManagerFactoryEthersContract extends ethers.Contract {
-  'createInstance(address)': (_hub: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  'createInstance(address)': (
+    _hub: string,
+    $$overrides?: ethers.Overrides,
+  ) => Promise<ethers.providers.TransactionResponse>;
 
   functions: {
-    'createInstance(address)': (_hub: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'createInstance(address)': (
+      _hub: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.providers.TransactionResponse>;
   };
 
   callStatic: {

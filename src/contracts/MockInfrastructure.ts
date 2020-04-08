@@ -88,24 +88,30 @@ export interface MockInfrastructureEthersContract extends ethers.Contract {
   'getAmguPrice()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
   'getShutDownStatus()': ($$overrides?: ethers.CallOverrides) => Promise<boolean>;
   'isShutDown()': ($$overrides?: ethers.CallOverrides) => Promise<boolean>;
-  'securityShutDown()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  'securityShutDown()': ($$overrides?: ethers.Overrides) => Promise<ethers.providers.TransactionResponse>;
   'setAmguPrice(uint256)': (
     _price: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
-  'shutDownFund(address)': (_hub: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
+  'shutDownFund(address)': (
+    _hub: string,
+    $$overrides?: ethers.Overrides,
+  ) => Promise<ethers.providers.TransactionResponse>;
 
   functions: {
     'amguPrice()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
     'getAmguPrice()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
     'getShutDownStatus()': ($$overrides?: ethers.CallOverrides) => Promise<boolean>;
     'isShutDown()': ($$overrides?: ethers.CallOverrides) => Promise<boolean>;
-    'securityShutDown()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'securityShutDown()': ($$overrides?: ethers.Overrides) => Promise<ethers.providers.TransactionResponse>;
     'setAmguPrice(uint256)': (
       _price: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
-    'shutDownFund(address)': (_hub: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
+    'shutDownFund(address)': (
+      _hub: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.providers.TransactionResponse>;
   };
 
   callStatic: {

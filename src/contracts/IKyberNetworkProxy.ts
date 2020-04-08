@@ -159,20 +159,20 @@ export interface IKyberNetworkProxyEthersContract extends ethers.Contract {
     $$0: string,
     $$1: ethers.BigNumberish,
     $$overrides?: ethers.PayableOverrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'swapTokenToEther(address,uint256,uint256)': (
     $$0: string,
     $$1: ethers.BigNumberish,
     $$2: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'swapTokenToToken(address,uint256,address,uint256)': (
     $$0: string,
     $$1: ethers.BigNumberish,
     $$2: string,
     $$3: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'tradeWithHint(address,uint256,address,address,uint256,uint256,address,bytes)': (
     $$0: string,
     $$1: ethers.BigNumberish,
@@ -183,7 +183,7 @@ export interface IKyberNetworkProxyEthersContract extends ethers.Contract {
     $$6: string,
     $$7: string | ethers.utils.BytesLike,
     $$overrides?: ethers.PayableOverrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
 
   functions: {
     'enabled()': ($$overrides?: ethers.CallOverrides) => Promise<boolean>;
@@ -208,20 +208,20 @@ export interface IKyberNetworkProxyEthersContract extends ethers.Contract {
       $$0: string,
       $$1: ethers.BigNumberish,
       $$overrides?: ethers.PayableOverrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'swapTokenToEther(address,uint256,uint256)': (
       $$0: string,
       $$1: ethers.BigNumberish,
       $$2: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'swapTokenToToken(address,uint256,address,uint256)': (
       $$0: string,
       $$1: ethers.BigNumberish,
       $$2: string,
       $$3: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'tradeWithHint(address,uint256,address,address,uint256,uint256,address,bytes)': (
       $$0: string,
       $$1: ethers.BigNumberish,
@@ -232,7 +232,7 @@ export interface IKyberNetworkProxyEthersContract extends ethers.Contract {
       $$6: string,
       $$7: string | ethers.utils.BytesLike,
       $$overrides?: ethers.PayableOverrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
   };
 
   callStatic: {

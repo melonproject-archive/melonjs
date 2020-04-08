@@ -208,7 +208,7 @@ export interface IZeroExV2EthersContract extends ethers.Contract {
       takerAssetData: string | ethers.utils.BytesLike;
     },
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'fillOrder((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes),uint256,bytes)': (
     $$0: {
       makerAddress: string;
@@ -227,13 +227,13 @@ export interface IZeroExV2EthersContract extends ethers.Contract {
     $$1: ethers.BigNumberish,
     $$2: string | ethers.utils.BytesLike,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'preSign(bytes32,address,bytes)': (
     $$0: string | ethers.utils.BytesLike,
     $$1: string,
     $$2: string | ethers.utils.BytesLike,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
 
   functions: {
     'ZRX_ASSET_DATA()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
@@ -288,7 +288,7 @@ export interface IZeroExV2EthersContract extends ethers.Contract {
         takerAssetData: string | ethers.utils.BytesLike;
       },
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'fillOrder((address,address,address,address,uint256,uint256,uint256,uint256,uint256,uint256,bytes,bytes),uint256,bytes)': (
       $$0: {
         makerAddress: string;
@@ -307,13 +307,13 @@ export interface IZeroExV2EthersContract extends ethers.Contract {
       $$1: ethers.BigNumberish,
       $$2: string | ethers.utils.BytesLike,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'preSign(bytes32,address,bytes)': (
       $$0: string | ethers.utils.BytesLike,
       $$1: string,
       $$2: string | ethers.utils.BytesLike,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
   };
 
   callStatic: {

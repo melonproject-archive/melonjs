@@ -150,7 +150,7 @@ export interface TradingEthersContract extends ethers.Contract {
     _exchange: string,
     _adapter: string,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'callOnExchange(uint256,string,address[8],uint256[8],bytes[4],bytes32,bytes)': (
     _exchangeIndex: ethers.BigNumberish,
     _methodSignature: string,
@@ -169,9 +169,15 @@ export interface TradingEthersContract extends ethers.Contract {
     _identifier: string | ethers.utils.BytesLike,
     _signature: string | ethers.utils.BytesLike,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
-  'setAuthority(address)': (authority_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
-  'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
+  'setAuthority(address)': (
+    authority_: string,
+    $$overrides?: ethers.Overrides,
+  ) => Promise<ethers.providers.TransactionResponse>;
+  'setOwner(address)': (
+    owner_: string,
+    $$overrides?: ethers.Overrides,
+  ) => Promise<ethers.providers.TransactionResponse>;
 
   functions: {
     'TAKE_ORDER()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
@@ -187,7 +193,7 @@ export interface TradingEthersContract extends ethers.Contract {
       _exchange: string,
       _adapter: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'callOnExchange(uint256,string,address[8],uint256[8],bytes[4],bytes32,bytes)': (
       _exchangeIndex: ethers.BigNumberish,
       _methodSignature: string,
@@ -206,12 +212,15 @@ export interface TradingEthersContract extends ethers.Contract {
       _identifier: string | ethers.utils.BytesLike,
       _signature: string | ethers.utils.BytesLike,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'setAuthority(address)': (
       authority_: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
-    'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
+    'setOwner(address)': (
+      owner_: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.providers.TransactionResponse>;
   };
 
   callStatic: {

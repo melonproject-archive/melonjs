@@ -59,7 +59,7 @@ export interface VaultFactoryEthersContract extends ethers.Contract {
     _adapters: string[],
     _registry: string,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
 
   functions: {
     'childExists(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
@@ -70,7 +70,7 @@ export interface VaultFactoryEthersContract extends ethers.Contract {
       _adapters: string[],
       _registry: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
   };
 
   callStatic: {

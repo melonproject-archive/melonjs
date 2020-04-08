@@ -53,7 +53,7 @@ export interface SharesFactoryEthersContract extends ethers.Contract {
     _defaultAssets: string[],
     _registry: string,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
 
   functions: {
     'childExists(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
@@ -63,7 +63,7 @@ export interface SharesFactoryEthersContract extends ethers.Contract {
       _defaultAssets: string[],
       _registry: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
   };
 
   callStatic: {

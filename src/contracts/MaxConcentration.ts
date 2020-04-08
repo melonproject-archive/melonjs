@@ -80,7 +80,7 @@ export interface MaxConcentrationEthersContract extends ethers.Contract {
     values: [ethers.BigNumber, ethers.BigNumber, ethers.BigNumber],
     identifier: string | ethers.utils.BytesLike,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
 
   functions: {
     'TAKE_ORDER()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
@@ -93,7 +93,7 @@ export interface MaxConcentrationEthersContract extends ethers.Contract {
       values: [ethers.BigNumber, ethers.BigNumber, ethers.BigNumber],
       identifier: string | ethers.utils.BytesLike,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
   };
 
   callStatic: {

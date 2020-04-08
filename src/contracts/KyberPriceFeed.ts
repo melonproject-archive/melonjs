@@ -319,21 +319,24 @@ export interface KyberPriceFeedEthersContract extends ethers.Contract {
   'setMaxPriceDeviation(uint256)': (
     _newMaxPriceDeviation: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'setMaxSpread(uint256)': (
     _newMaxSpread: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'setRegistry(address)': (
     _newRegistry: string,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
-  'setUpdater(address)': (_newUpdater: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
+  'setUpdater(address)': (
+    _newUpdater: string,
+    $$overrides?: ethers.Overrides,
+  ) => Promise<ethers.providers.TransactionResponse>;
   'update(address[],uint256[])': (
     _saneAssets: string[],
     _sanePrices: ethers.BigNumber[],
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
 
   functions: {
     'KYBER_NETWORK_PROXY()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
@@ -381,24 +384,24 @@ export interface KyberPriceFeedEthersContract extends ethers.Contract {
     'setMaxPriceDeviation(uint256)': (
       _newMaxPriceDeviation: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'setMaxSpread(uint256)': (
       _newMaxSpread: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'setRegistry(address)': (
       _newRegistry: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'setUpdater(address)': (
       _newUpdater: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'update(address[],uint256[])': (
       _saneAssets: string[],
       _sanePrices: ethers.BigNumber[],
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
   };
 
   callStatic: {

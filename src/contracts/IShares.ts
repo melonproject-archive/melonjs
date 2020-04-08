@@ -40,7 +40,7 @@ export interface ISharesEthersContract extends ethers.Contract {
     $$1: string,
     $$2: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
 
   functions: {
     'isSharesInvestmentAsset(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
@@ -49,7 +49,7 @@ export interface ISharesEthersContract extends ethers.Contract {
       $$1: string,
       $$2: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
   };
 
   callStatic: {

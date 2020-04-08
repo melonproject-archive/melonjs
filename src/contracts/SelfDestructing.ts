@@ -22,10 +22,13 @@ export class SelfDestructing extends Contract {
 }
 
 export interface SelfDestructingEthersContract extends ethers.Contract {
-  'bequeath(address)': (_heir: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  'bequeath(address)': (_heir: string, $$overrides?: ethers.Overrides) => Promise<ethers.providers.TransactionResponse>;
 
   functions: {
-    'bequeath(address)': (_heir: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'bequeath(address)': (
+      _heir: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.providers.TransactionResponse>;
   };
 
   callStatic: {

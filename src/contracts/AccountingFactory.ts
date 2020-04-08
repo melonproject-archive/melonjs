@@ -53,7 +53,7 @@ export interface AccountingFactoryEthersContract extends ethers.Contract {
     _denominationAsset: string,
     _registry: string,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
 
   functions: {
     'childExists(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
@@ -63,7 +63,7 @@ export interface AccountingFactoryEthersContract extends ethers.Contract {
       _denominationAsset: string,
       _registry: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
   };
 
   callStatic: {

@@ -22,10 +22,16 @@ export class IFundFactory extends Contract {
 }
 
 export interface IFundFactoryEthersContract extends ethers.Contract {
-  'shutDownFund(address)': ($$0: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  'shutDownFund(address)': (
+    $$0: string,
+    $$overrides?: ethers.Overrides,
+  ) => Promise<ethers.providers.TransactionResponse>;
 
   functions: {
-    'shutDownFund(address)': ($$0: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    'shutDownFund(address)': (
+      $$0: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.providers.TransactionResponse>;
   };
 
   callStatic: {

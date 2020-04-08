@@ -57,7 +57,7 @@ export interface IPolicyEthersContract extends ethers.Contract {
     $$2: [ethers.BigNumber, ethers.BigNumber, ethers.BigNumber],
     $$3: string | ethers.utils.BytesLike,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
 
   functions: {
     'identifier()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
@@ -68,7 +68,7 @@ export interface IPolicyEthersContract extends ethers.Contract {
       $$2: [ethers.BigNumber, ethers.BigNumber, ethers.BigNumber],
       $$3: string | ethers.utils.BytesLike,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
   };
 
   callStatic: {

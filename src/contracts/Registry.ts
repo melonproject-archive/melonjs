@@ -818,7 +818,7 @@ export interface RegistryEthersContract extends ethers.Contract {
   'deregisterFees(address[])': (
     _fees: string[],
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'registerAsset(address,string,string,string,uint256,uint256[],bytes4[])': (
     _asset: string,
     _name: string,
@@ -828,61 +828,76 @@ export interface RegistryEthersContract extends ethers.Contract {
     _standards: ethers.BigNumber[],
     _sigs: string | ethers.utils.BytesLike,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'registerExchangeAdapter(address,address,bytes4[])': (
     _exchange: string,
     _adapter: string,
     _sigs: string | ethers.utils.BytesLike,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
-  'registerFees(address[])': (_fees: string[], $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
+  'registerFees(address[])': (
+    _fees: string[],
+    $$overrides?: ethers.Overrides,
+  ) => Promise<ethers.providers.TransactionResponse>;
   'registerFund(address,address,string)': (
     _fund: string,
     _owner: string,
     _name: string,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'registerFundFactory(address,bytes32)': (
     _fundFactory: string,
     _name: string | ethers.utils.BytesLike,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'removeAsset(address,uint256)': (
     _asset: string,
     _assetIndex: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'removeExchangeAdapter(address,uint256)': (
     _adapter: string,
     _adapterIndex: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'reserveFundName(address,string)': (
     _owner: string,
     _name: string,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
-  'setAuthority(address)': (authority_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
-  'setEngine(address)': (_engine: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
+  'setAuthority(address)': (
+    authority_: string,
+    $$overrides?: ethers.Overrides,
+  ) => Promise<ethers.providers.TransactionResponse>;
+  'setEngine(address)': (
+    _engine: string,
+    $$overrides?: ethers.Overrides,
+  ) => Promise<ethers.providers.TransactionResponse>;
   'setIncentive(uint256)': (
     _weiAmount: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
-  'setMGM(address)': (_MGM: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
-  'setMlnToken(address)': (_mlnToken: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
+  'setMGM(address)': (_MGM: string, $$overrides?: ethers.Overrides) => Promise<ethers.providers.TransactionResponse>;
+  'setMlnToken(address)': (
+    _mlnToken: string,
+    $$overrides?: ethers.Overrides,
+  ) => Promise<ethers.providers.TransactionResponse>;
   'setNativeAsset(address)': (
     _nativeAsset: string,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
-  'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
+  'setOwner(address)': (
+    owner_: string,
+    $$overrides?: ethers.Overrides,
+  ) => Promise<ethers.providers.TransactionResponse>;
   'setPriceSource(address)': (
     _priceSource: string,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'setSharesRequestor(address)': (
     _sharesRequestor: string,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'updateAsset(address,string,string,string,uint256,uint256[],bytes4[])': (
     _asset: string,
     _name: string,
@@ -892,13 +907,13 @@ export interface RegistryEthersContract extends ethers.Contract {
     _standards: ethers.BigNumber[],
     _sigs: string | ethers.utils.BytesLike,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'updateExchangeAdapter(address,address,bytes4[])': (
     _exchange: string,
     _adapter: string,
     _sigs: string | ethers.utils.BytesLike,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
 
   functions: {
     'MAX_FUND_NAME_BYTES()': ($$overrides?: ethers.CallOverrides) => Promise<number>;
@@ -1004,7 +1019,7 @@ export interface RegistryEthersContract extends ethers.Contract {
     'deregisterFees(address[])': (
       _fees: string[],
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'registerAsset(address,string,string,string,uint256,uint256[],bytes4[])': (
       _asset: string,
       _name: string,
@@ -1014,67 +1029,76 @@ export interface RegistryEthersContract extends ethers.Contract {
       _standards: ethers.BigNumber[],
       _sigs: string | ethers.utils.BytesLike,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'registerExchangeAdapter(address,address,bytes4[])': (
       _exchange: string,
       _adapter: string,
       _sigs: string | ethers.utils.BytesLike,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'registerFees(address[])': (
       _fees: string[],
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'registerFund(address,address,string)': (
       _fund: string,
       _owner: string,
       _name: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'registerFundFactory(address,bytes32)': (
       _fundFactory: string,
       _name: string | ethers.utils.BytesLike,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'removeAsset(address,uint256)': (
       _asset: string,
       _assetIndex: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'removeExchangeAdapter(address,uint256)': (
       _adapter: string,
       _adapterIndex: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'reserveFundName(address,string)': (
       _owner: string,
       _name: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'setAuthority(address)': (
       authority_: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
-    'setEngine(address)': (_engine: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
+    'setEngine(address)': (
+      _engine: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.providers.TransactionResponse>;
     'setIncentive(uint256)': (
       _weiAmount: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
-    'setMGM(address)': (_MGM: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
-    'setMlnToken(address)': (_mlnToken: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
+    'setMGM(address)': (_MGM: string, $$overrides?: ethers.Overrides) => Promise<ethers.providers.TransactionResponse>;
+    'setMlnToken(address)': (
+      _mlnToken: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.providers.TransactionResponse>;
     'setNativeAsset(address)': (
       _nativeAsset: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
-    'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
+    'setOwner(address)': (
+      owner_: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.providers.TransactionResponse>;
     'setPriceSource(address)': (
       _priceSource: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'setSharesRequestor(address)': (
       _sharesRequestor: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'updateAsset(address,string,string,string,uint256,uint256[],bytes4[])': (
       _asset: string,
       _name: string,
@@ -1084,13 +1108,13 @@ export interface RegistryEthersContract extends ethers.Contract {
       _standards: ethers.BigNumber[],
       _sigs: string | ethers.utils.BytesLike,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'updateExchangeAdapter(address,address,bytes4[])': (
       _exchange: string,
       _adapter: string,
       _sigs: string | ethers.utils.BytesLike,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
   };
 
   callStatic: {

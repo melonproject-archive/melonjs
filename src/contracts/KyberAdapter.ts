@@ -58,7 +58,7 @@ export interface KyberAdapterEthersContract extends ethers.Contract {
     _identifier: string | ethers.utils.BytesLike,
     _signature: string | ethers.utils.BytesLike,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
 
   functions: {
     'takeOrder(address,address[8],uint256[8],bytes[4],bytes32,bytes)': (
@@ -78,7 +78,7 @@ export interface KyberAdapterEthersContract extends ethers.Contract {
       _identifier: string | ethers.utils.BytesLike,
       _signature: string | ethers.utils.BytesLike,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
   };
 
   callStatic: {

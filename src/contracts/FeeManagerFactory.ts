@@ -62,7 +62,7 @@ export interface FeeManagerFactoryEthersContract extends ethers.Contract {
     _feePeriods: ethers.BigNumber[],
     _registry: string,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
 
   functions: {
     'childExists(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
@@ -75,7 +75,7 @@ export interface FeeManagerFactoryEthersContract extends ethers.Contract {
       _feePeriods: ethers.BigNumber[],
       _registry: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
   };
 
   callStatic: {

@@ -345,29 +345,29 @@ export interface ZeroExV3StakingProxyEthersContract extends ethers.Contract {
   'addAuthorizedAddress(address)': (
     target: string,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'attachStakingContract(address)': (
     _stakingContract: string,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'batchExecute(bytes[])': (
     data: string | ethers.utils.BytesLike,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
-  'detachStakingContract()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
+  'detachStakingContract()': ($$overrides?: ethers.Overrides) => Promise<ethers.providers.TransactionResponse>;
   'removeAuthorizedAddress(address)': (
     target: string,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'removeAuthorizedAddressAtIndex(address,uint256)': (
     target: string,
     index: ethers.BigNumberish,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'transferOwnership(address)': (
     newOwner: string,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
 
   functions: {
     'aggregatedStatsByEpoch(uint256)': (
@@ -409,29 +409,29 @@ export interface ZeroExV3StakingProxyEthersContract extends ethers.Contract {
     'addAuthorizedAddress(address)': (
       target: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'attachStakingContract(address)': (
       _stakingContract: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'batchExecute(bytes[])': (
       data: string | ethers.utils.BytesLike,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
-    'detachStakingContract()': ($$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
+    'detachStakingContract()': ($$overrides?: ethers.Overrides) => Promise<ethers.providers.TransactionResponse>;
     'removeAuthorizedAddress(address)': (
       target: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'removeAuthorizedAddressAtIndex(address,uint256)': (
       target: string,
       index: ethers.BigNumberish,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'transferOwnership(address)': (
       newOwner: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
   };
 
   callStatic: {

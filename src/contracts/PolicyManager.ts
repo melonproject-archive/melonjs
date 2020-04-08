@@ -215,32 +215,38 @@ export interface PolicyManagerEthersContract extends ethers.Contract {
     sig: string | ethers.utils.BytesLike,
     _policies: string[],
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'initialize(address[7])': (
     _spokes: [string, string, string, string, string, string, string],
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'postValidate(bytes4,address[5],uint256[3],bytes32)': (
     sig: string | ethers.utils.BytesLike,
     addresses: [string, string, string, string, string],
     values: [ethers.BigNumber, ethers.BigNumber, ethers.BigNumber],
     identifier: string | ethers.utils.BytesLike,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'preValidate(bytes4,address[5],uint256[3],bytes32)': (
     sig: string | ethers.utils.BytesLike,
     addresses: [string, string, string, string, string],
     values: [ethers.BigNumber, ethers.BigNumber, ethers.BigNumber],
     identifier: string | ethers.utils.BytesLike,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
   'register(bytes4,address)': (
     sig: string | ethers.utils.BytesLike,
     _policy: string,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
-  'setAuthority(address)': (authority_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
-  'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
+  'setAuthority(address)': (
+    authority_: string,
+    $$overrides?: ethers.Overrides,
+  ) => Promise<ethers.providers.TransactionResponse>;
+  'setOwner(address)': (
+    owner_: string,
+    $$overrides?: ethers.Overrides,
+  ) => Promise<ethers.providers.TransactionResponse>;
 
   functions: {
     'authority()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
@@ -268,35 +274,38 @@ export interface PolicyManagerEthersContract extends ethers.Contract {
       sig: string | ethers.utils.BytesLike,
       _policies: string[],
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'initialize(address[7])': (
       _spokes: [string, string, string, string, string, string, string],
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'postValidate(bytes4,address[5],uint256[3],bytes32)': (
       sig: string | ethers.utils.BytesLike,
       addresses: [string, string, string, string, string],
       values: [ethers.BigNumber, ethers.BigNumber, ethers.BigNumber],
       identifier: string | ethers.utils.BytesLike,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'preValidate(bytes4,address[5],uint256[3],bytes32)': (
       sig: string | ethers.utils.BytesLike,
       addresses: [string, string, string, string, string],
       values: [ethers.BigNumber, ethers.BigNumber, ethers.BigNumber],
       identifier: string | ethers.utils.BytesLike,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'register(bytes4,address)': (
       sig: string | ethers.utils.BytesLike,
       _policy: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
     'setAuthority(address)': (
       authority_: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
-    'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
+    'setOwner(address)': (
+      owner_: string,
+      $$overrides?: ethers.Overrides,
+    ) => Promise<ethers.providers.TransactionResponse>;
   };
 
   callStatic: {

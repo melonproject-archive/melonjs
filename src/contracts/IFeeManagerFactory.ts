@@ -39,7 +39,7 @@ export interface IFeeManagerFactoryEthersContract extends ethers.Contract {
     $$4: ethers.BigNumber[],
     $$5: string,
     $$overrides?: ethers.Overrides,
-  ) => ethers.providers.TransactionResponse;
+  ) => Promise<ethers.providers.TransactionResponse>;
 
   functions: {
     'createInstance(address,address,address[],uint256[],uint256[],address)': (
@@ -50,7 +50,7 @@ export interface IFeeManagerFactoryEthersContract extends ethers.Contract {
       $$4: ethers.BigNumber[],
       $$5: string,
       $$overrides?: ethers.Overrides,
-    ) => ethers.providers.TransactionResponse;
+    ) => Promise<ethers.providers.TransactionResponse>;
   };
 
   callStatic: {

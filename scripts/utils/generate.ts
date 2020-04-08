@@ -151,7 +151,7 @@ export function generate(name: string, $contract: ethers.ContractInterface): str
 
   transactions.forEach((item) => {
     const params = item.inputs.concat([`$$overrides?: ${item.overrides}`]).join(', ');
-    fields.functions.push(`'${item.signature}': (${params}) => ethers.providers.TransactionResponse;`);
+    fields.functions.push(`'${item.signature}': (${params}) => Promise<ethers.providers.TransactionResponse>;`);
     fields.call.push(`'${item.signature}': (${params}) => Promise<${item.output}>;`);
     fields.estimate.push(`'${item.signature}': (${params}) => Promise<ethers.BigNumber>;`);
     fields.populate.push(`'${item.signature}': (${params}) => Promise<ethers.UnsignedTransaction>;`);
