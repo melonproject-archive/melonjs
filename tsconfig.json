@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "es2015",
     "module": "commonjs",
-    "lib": ["es2015", "es2017.object", "es2017.string", "dom"],
+    "lib": ["es2019", "es2017.object", "es2017.string", "dom"],
     "rootDir": "src",
     "outDir": "dist",
     "declaration": true,
@@ -29,5 +29,5 @@
     "media": "assets",
     "gitRevision": "master"
   },
-  "include": ["src/**/*"]
+  "include": ["src"]
 }

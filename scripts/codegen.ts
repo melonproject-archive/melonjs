@@ -9,6 +9,7 @@ import { generate } from './utils/generate';
 
 yargs
   .option('abis', {
+    array: true,
     normalize: true,
   })
   .option('release', {})
@@ -41,23 +42,30 @@ yargs
       }
 
       const abis = await (async () => {
-        if (args.abis) {
-          if (args.abis.indexOf('*') !== -1) {
-            return glob.sync(args.abis);
-          }
-
-          if (fs.existsSync(args.abis)) {
-            const stats = fs.lstatSync(args.abis);
-            if (stats.isDirectory()) {
-              return glob.sync(path.join(args.abis, '**/*.abi'));
+        if (args.abis && args.abis.length) {
+          const nested = args.abis.map((item) => {
+            if (item.indexOf('*') !== -1 || item.indexOf('{') !== -1) {
+              return glob.sync(item);
             }
 
-            if (stats.isFile()) {
-              return [args.abis];
-            }
-          }
+            if (fs.existsSync(item)) {
+              const stats = fs.lstatSync(item);
+              if (stats.isDirectory()) {
+                return glob.sync(path.join(item, '**/*.abi'));
+              }
 
-          throw new Error('Failed to recognize abis. Please pass the path to a file or directory or a glob pattern.');
+              if (stats.isFile()) {
+                return [item];
+              }
+            }
+
+            throw new Error(
+              'Failed to recognize abi path. Please pass the path to a file or directory or a glob pattern.',
+            );
+          });
+
+          // @ts-ignore
+          return nested.flat();
         }
 
         try {
