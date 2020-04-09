@@ -16,6 +16,7 @@ export { PolicyManager } from './PolicyManager';
 export { PriceTolerance } from './PriceTolerance';
 export { Registry } from './Registry';
 export { Shares } from './Shares';
+export { TestingPriceFeed } from './TestingPriceFeed';
 export { UniswapAdapter } from './UniswapAdapter';
 export { UserWhitelist } from './UserWhitelist';
 export { Vault } from './Vault';

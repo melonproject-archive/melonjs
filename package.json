@@ -19,7 +19,7 @@
     "url": "https://github.com/melonproject/melonjs/issues"
   },
   "scripts": {
-    "clean": "rimraf dist docs coverage",
+    "clean": "rimraf dist typedocs coverage",
     "prebuild": "rimraf build",
     "build": "tsc && rollup --config",
     "postbuild": "cp package.json LICENSE README.md dist",
@@ -28,20 +28,20 @@
     "watch": "tsc --watch",
     "precodegen": "rimraf src/contracts",
     "codegen": "ts-node --transpile-only scripts/codegen",
-    "predocs": "rimraf docs",
-    "docs": "typedoc",
-    "postdocs": "cp jekyll.config.yml docs/_config.yml",
+    "pretypedocs": "rimraf typedocs",
+    "typedocs": "typedoc",
+    "posttypedocs": "cp jekyll.config.yml typedocs/_config.yml",
     "pretest": "rimraf coverage",
     "test": "jest --verbose --config tests/jest.config.js",
     "coverage": "yarn test --coverage",
     "format": "prettier --write {src,scripts}/{*,**/*}.ts",
     "lint": "yarn prettier --list-different {src,scripts}/{*,**/*}.ts",
     "typecheck": "tsc --noEmit",
-    "preversion": "yarn codegen && yarn typecheck && yarn test && yarn lint && yarn docs && yarn build",
+    "preversion": "yarn codegen && yarn typecheck && yarn test && yarn lint && yarn typedocs && yarn build",
     "postversion": "cp package.json dist",
     "prerelease": "yarn version",
     "release": "git push --tags && yarn publish dist --new-version $npm_package_version",
-    "postrelease": "git push && gh-pages -d docs"
+    "postrelease": "git push && gh-pages -d typedocs"
   },
   "dependencies": {
     "bignumber.js": "^9.0.0",
@@ -70,7 +70,7 @@
     "yargs": "^15.3.1"
   },
   "codegen": {
-    "abis": "../melon-protocol/out/{Registry,KyberPriceFeed,Vault,Shares,PolicyManager,Hub,Accounting,ManagementFee,PerformanceFee,Accounting,FundFactory,ZeroExV3Adapter,ZeroExV2Adapter,OasisDexAdapter,UniswapAdapter,KyberAdapter,EngineAdapter,Engine,AssetBlacklist,AssetWhitelist,MaxConcentration,MaxPositions,PriceTolerance,UserWhitelist}.abi"
+    "abis": "../melon-protocol/out/{Registry,KyberPriceFeed,TestingPriceFeed,Vault,Shares,PolicyManager,Hub,Accounting,ManagementFee,PerformanceFee,Accounting,FundFactory,ZeroExV3Adapter,ZeroExV2Adapter,OasisDexAdapter,UniswapAdapter,KyberAdapter,EngineAdapter,Engine,AssetBlacklist,AssetWhitelist,MaxConcentration,MaxPositions,PriceTolerance,UserWhitelist}.abi"
   },
   "husky": {
     "hooks": {

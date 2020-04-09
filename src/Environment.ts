@@ -97,15 +97,16 @@ export class Environment {
   public readonly tokens: TokenDefinition[];
 
   public static fromDeployment(deployment: DeploymentOutput, options?: EnvironmentOptions) {
-    const adapters = (options.adapters ?? []).concat(deploymentExchanges(deployment)).filter((item, index, array) => {
+    const adapters = (options?.adapters ?? []).concat(deploymentExchanges(deployment)).filter((item, index, array) => {
       return index === array.findIndex((inner) => sameAddress(inner.adapter, item.adapter));
     });
 
-    const tokens = (options.tokens ?? []).concat(deploymentTokens(deployment)).filter((item, index, array) => {
+    const tokens = (options?.tokens ?? []).concat(deploymentTokens(deployment)).filter((item, index, array) => {
       return index === array.findIndex((inner) => sameAddress(inner.address, item.address));
     });
 
     const opts: EnvironmentOptions = {
+      deployment,
       adapters,
       tokens,
     };
