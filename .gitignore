@@ -5,7 +5,7 @@ node_modules/
 package-lock.json
 coverage/
 dist/
-docs/
+typedocs/
 
 # The abis are pulled from the protocol release using `yarn codegen`.
 src/abis/

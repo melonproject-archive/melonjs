@@ -25,7 +25,7 @@
     "Sebastian Siemssen <fubhy@fubhy.com>"
   ],
   "scripts": {
-    "clean": "rimraf dist docs coverage",
+    "clean": "rimraf dist typedocs coverage",
     "prebuild": "rimraf build",
     "build": "tsc && rollup --config",
     "postbuild": "cp package.json LICENSE README.md dist",
@@ -34,9 +34,9 @@
     "watch": "tsc --watch",
     "precodegen": "rimraf src/abis",
     "codegen": "node scripts/codegen",
-    "predocs": "rimraf docs",
-    "docs": "typedoc",
-    "postdocs": "cp jekyll.config.yml docs/_config.yml",
+    "pretypedocs": "rimraf typedocs",
+    "typedocs": "typedoc",
+    "posttypedocs": "cp jekyll.config.yml typedocs/_config.yml",
     "pretest": "rimraf coverage",
     "test": "jest --verbose --config tests/jest.config.js",
     "coverage": "yarn test --coverage",
@@ -45,11 +45,11 @@
     "lint:tslint": "tsc --noEmit && tslint src/{*,**/*}.ts",
     "lint": "yarn lint:tslint && yarn lint:prettier",
     "typecheck": "tsc --noEmit",
-    "preversion": "yarn codegen && yarn typecheck && yarn test && yarn lint && yarn docs && yarn build",
+    "preversion": "yarn codegen && yarn typecheck && yarn test && yarn lint && yarn typedocs && yarn build",
     "postversion": "cp package.json dist",
     "prerelease": "yarn version",
     "release": "git push --tags && yarn publish dist --new-version $npm_package_version",
-    "postrelease": "git push && gh-pages -d docs"
+    "postrelease": "git push && gh-pages -d typedocs"
   },
   "dependencies": {
     "@0x/order-utils": "^8.5.0-beta.4",
