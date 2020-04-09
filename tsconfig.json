@@ -22,7 +22,7 @@
   "typedocOptions": {
     "mode": "modules",
     "out": "typedocs",
-    "exclude": ["**/*.test.ts", "src/index.ts", "src/utils/**", "src/abis/**", "src/deployments/**"],
+    "exclude": ["**/*.test.ts"],
     "excludeExternals": true,
     "excludeNotExported": true,
     "excludePrivate": true,

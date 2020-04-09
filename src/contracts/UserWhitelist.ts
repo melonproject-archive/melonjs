@@ -2,6 +2,9 @@ import { ethers } from 'ethers';
 // @ts-ignore
 import { Contract, TransactionWrapper } from '../Contract';
 
+/**
+ * `UserWhitelist` contract
+ */
 export class UserWhitelist extends Contract {
   public readonly ethers: UserWhitelistEthersContract;
 
@@ -10,92 +13,92 @@ export class UserWhitelist extends Contract {
   }
 
   /**
-   * `UserWhitelist` contract call for the `authority` function.
+   * `UserWhitelist` contract call for `authority` function.
    *
-   * @contract UserWhitelist
-   * @signature authority()
-   * @method function authority() view returns (address)
+   * ```solc
+   * function authority() view returns (address)
+   * ```
    */
   authority: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `UserWhitelist` contract call for the `identifier` function.
+   * `UserWhitelist` contract call for `identifier` function.
    *
-   * @contract UserWhitelist
-   * @signature identifier()
-   * @method function identifier() pure returns (string)
+   * ```solc
+   * function identifier() pure returns (string)
+   * ```
    */
   identifier: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `UserWhitelist` contract call for the `owner` function.
+   * `UserWhitelist` contract call for `owner` function.
    *
-   * @contract UserWhitelist
-   * @signature owner()
-   * @method function owner() view returns (address)
+   * ```solc
+   * function owner() view returns (address)
+   * ```
    */
   owner: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `UserWhitelist` contract call for the `position` function.
+   * `UserWhitelist` contract call for `position` function.
    *
-   * @contract UserWhitelist
-   * @signature position()
-   * @method function position() pure returns (uint8)
+   * ```solc
+   * function position() pure returns (uint8)
+   * ```
    */
   position: ($$overrides?: ethers.CallOverrides) => Promise<number>;
 
   /**
-   * `UserWhitelist` contract call for the `whitelisted` function.
+   * `UserWhitelist` contract call for `whitelisted` function.
    *
-   * @contract UserWhitelist
-   * @signature whitelisted(address)
-   * @method function whitelisted(address) view returns (bool)
+   * ```solc
+   * function whitelisted(address) view returns (bool)
+   * ```
    */
   whitelisted: ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
 
   /**
-   * `UserWhitelist` contract transaction for `addToWhitelist` function.
+   * `UserWhitelist` contract call for `addToWhitelist` function.
    *
-   * @contract UserWhitelist
-   * @signature addToWhitelist(address)
-   * @method function addToWhitelist(address)
+   * ```solc
+   * function addToWhitelist(address)
+   * ```
    */
   addToWhitelist: (_who: string) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `UserWhitelist` contract transaction for `batchAddToWhitelist` function.
+   * `UserWhitelist` contract call for `batchAddToWhitelist` function.
    *
-   * @contract UserWhitelist
-   * @signature batchAddToWhitelist(address[])
-   * @method function batchAddToWhitelist(address[])
+   * ```solc
+   * function batchAddToWhitelist(address[])
+   * ```
    */
   batchAddToWhitelist: (_members: string[]) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `UserWhitelist` contract transaction for `batchRemoveFromWhitelist` function.
+   * `UserWhitelist` contract call for `batchRemoveFromWhitelist` function.
    *
-   * @contract UserWhitelist
-   * @signature batchRemoveFromWhitelist(address[])
-   * @method function batchRemoveFromWhitelist(address[])
+   * ```solc
+   * function batchRemoveFromWhitelist(address[])
+   * ```
    */
   batchRemoveFromWhitelist: (_members: string[]) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `UserWhitelist` contract transaction for `removeFromWhitelist` function.
+   * `UserWhitelist` contract call for `removeFromWhitelist` function.
    *
-   * @contract UserWhitelist
-   * @signature removeFromWhitelist(address)
-   * @method function removeFromWhitelist(address)
+   * ```solc
+   * function removeFromWhitelist(address)
+   * ```
    */
   removeFromWhitelist: (_who: string) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `UserWhitelist` contract transaction for `rule` function.
+   * `UserWhitelist` contract call for `rule` function.
    *
-   * @contract UserWhitelist
-   * @signature rule(bytes4,address[5],uint256[3],bytes32)
-   * @method function rule(bytes4,address[5],uint256[3],bytes32) returns (bool)
+   * ```solc
+   * function rule(bytes4,address[5],uint256[3],bytes32) returns (bool)
+   * ```
    */
   rule: (
     sig: string | ethers.utils.BytesLike,
@@ -105,20 +108,20 @@ export class UserWhitelist extends Contract {
   ) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `UserWhitelist` contract transaction for `setAuthority` function.
+   * `UserWhitelist` contract call for `setAuthority` function.
    *
-   * @contract UserWhitelist
-   * @signature setAuthority(address)
-   * @method function setAuthority(address)
+   * ```solc
+   * function setAuthority(address)
+   * ```
    */
   setAuthority: (authority_: string) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `UserWhitelist` contract transaction for `setOwner` function.
+   * `UserWhitelist` contract call for `setOwner` function.
    *
-   * @contract UserWhitelist
-   * @signature setOwner(address)
-   * @method function setOwner(address)
+   * ```solc
+   * function setOwner(address)
+   * ```
    */
   setOwner: (owner_: string) => TransactionWrapper<ethers.Overrides>;
 

@@ -2,6 +2,9 @@ import { ethers } from 'ethers';
 // @ts-ignore
 import { Contract, TransactionWrapper } from '../Contract';
 
+/**
+ * `Registry` contract
+ */
 export class Registry extends Contract {
   public readonly ethers: RegistryEthersContract;
 
@@ -10,38 +13,38 @@ export class Registry extends Contract {
   }
 
   /**
-   * `Registry` contract call for the `MAX_FUND_NAME_BYTES` function.
+   * `Registry` contract call for `MAX_FUND_NAME_BYTES` function.
    *
-   * @contract Registry
-   * @signature MAX_FUND_NAME_BYTES()
-   * @method function MAX_FUND_NAME_BYTES() view returns (uint8)
+   * ```solc
+   * function MAX_FUND_NAME_BYTES() view returns (uint8)
+   * ```
    */
   MAX_FUND_NAME_BYTES: ($$overrides?: ethers.CallOverrides) => Promise<number>;
 
   /**
-   * `Registry` contract call for the `MAX_REGISTERED_ENTITIES` function.
+   * `Registry` contract call for `MAX_REGISTERED_ENTITIES` function.
    *
-   * @contract Registry
-   * @signature MAX_REGISTERED_ENTITIES()
-   * @method function MAX_REGISTERED_ENTITIES() view returns (uint8)
+   * ```solc
+   * function MAX_REGISTERED_ENTITIES() view returns (uint8)
+   * ```
    */
   MAX_REGISTERED_ENTITIES: ($$overrides?: ethers.CallOverrides) => Promise<number>;
 
   /**
-   * `Registry` contract call for the `MGM` function.
+   * `Registry` contract call for `MGM` function.
    *
-   * @contract Registry
-   * @signature MGM()
-   * @method function MGM() view returns (address)
+   * ```solc
+   * function MGM() view returns (address)
+   * ```
    */
   MGM: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Registry` contract call for the `adapterMethodIsAllowed` function.
+   * `Registry` contract call for `adapterMethodIsAllowed` function.
    *
-   * @contract Registry
-   * @signature adapterMethodIsAllowed(address,bytes4)
-   * @method function adapterMethodIsAllowed(address,bytes4) view returns (bool)
+   * ```solc
+   * function adapterMethodIsAllowed(address,bytes4) view returns (bool)
+   * ```
    */
   adapterMethodIsAllowed: (
     _adapter: string,
@@ -50,11 +53,11 @@ export class Registry extends Contract {
   ) => Promise<boolean>;
 
   /**
-   * `Registry` contract call for the `assetInformation` function.
+   * `Registry` contract call for `assetInformation` function.
    *
-   * @contract Registry
-   * @signature assetInformation(address)
-   * @method function assetInformation(address) view returns (bool, string, string, uint256, string, uint256)
+   * ```solc
+   * function assetInformation(address) view returns (bool, string, string, uint256, string, uint256)
+   * ```
    */
   assetInformation: (
     $$0: string,
@@ -69,20 +72,20 @@ export class Registry extends Contract {
   }>;
 
   /**
-   * `Registry` contract call for the `assetIsRegistered` function.
+   * `Registry` contract call for `assetIsRegistered` function.
    *
-   * @contract Registry
-   * @signature assetIsRegistered(address)
-   * @method function assetIsRegistered(address) view returns (bool)
+   * ```solc
+   * function assetIsRegistered(address) view returns (bool)
+   * ```
    */
   assetIsRegistered: (_asset: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
 
   /**
-   * `Registry` contract call for the `assetMethodIsAllowed` function.
+   * `Registry` contract call for `assetMethodIsAllowed` function.
    *
-   * @contract Registry
-   * @signature assetMethodIsAllowed(address,bytes4)
-   * @method function assetMethodIsAllowed(address,bytes4) view returns (bool)
+   * ```solc
+   * function assetMethodIsAllowed(address,bytes4) view returns (bool)
+   * ```
    */
   assetMethodIsAllowed: (
     _asset: string,
@@ -91,56 +94,56 @@ export class Registry extends Contract {
   ) => Promise<boolean>;
 
   /**
-   * `Registry` contract call for the `authority` function.
+   * `Registry` contract call for `authority` function.
    *
-   * @contract Registry
-   * @signature authority()
-   * @method function authority() view returns (address)
+   * ```solc
+   * function authority() view returns (address)
+   * ```
    */
   authority: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Registry` contract call for the `canUseFundName` function.
+   * Whether _user can use _name for their fund
    *
-   * @contract Registry
-   * @signature canUseFundName(address,string)
-   * @method function canUseFundName(address,string) view returns (bool)
+   * ```solc
+   * function canUseFundName(address,string) view returns (bool)
+   * ```
    */
   canUseFundName: (_user: string, _name: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
 
   /**
-   * `Registry` contract call for the `engine` function.
+   * `Registry` contract call for `engine` function.
    *
-   * @contract Registry
-   * @signature engine()
-   * @method function engine() view returns (address)
+   * ```solc
+   * function engine() view returns (address)
+   * ```
    */
   engine: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Registry` contract call for the `exchangeAdapterIsRegistered` function.
+   * `Registry` contract call for `exchangeAdapterIsRegistered` function.
    *
-   * @contract Registry
-   * @signature exchangeAdapterIsRegistered(address)
-   * @method function exchangeAdapterIsRegistered(address) view returns (bool)
+   * ```solc
+   * function exchangeAdapterIsRegistered(address) view returns (bool)
+   * ```
    */
   exchangeAdapterIsRegistered: (_adapter: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
 
   /**
-   * `Registry` contract call for the `exchangeForAdapter` function.
+   * `Registry` contract call for `exchangeForAdapter` function.
    *
-   * @contract Registry
-   * @signature exchangeForAdapter(address)
-   * @method function exchangeForAdapter(address) view returns (address)
+   * ```solc
+   * function exchangeForAdapter(address) view returns (address)
+   * ```
    */
   exchangeForAdapter: (_adapter: string, $$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Registry` contract call for the `exchangeInformation` function.
+   * `Registry` contract call for `exchangeInformation` function.
    *
-   * @contract Registry
-   * @signature exchangeInformation(address)
-   * @method function exchangeInformation(address) view returns (bool, address)
+   * ```solc
+   * function exchangeInformation(address) view returns (bool, address)
+   * ```
    */
   exchangeInformation: (
     $$0: string,
@@ -148,11 +151,11 @@ export class Registry extends Contract {
   ) => Promise<{ exists: boolean; exchangeAddress: string }>;
 
   /**
-   * `Registry` contract call for the `fundFactoryInformation` function.
+   * `Registry` contract call for `fundFactoryInformation` function.
    *
-   * @contract Registry
-   * @signature fundFactoryInformation(address)
-   * @method function fundFactoryInformation(address) view returns (bool, bytes32)
+   * ```solc
+   * function fundFactoryInformation(address) view returns (bool, bytes32)
+   * ```
    */
   fundFactoryInformation: (
     $$0: string,
@@ -160,47 +163,47 @@ export class Registry extends Contract {
   ) => Promise<{ exists: boolean; name: string }>;
 
   /**
-   * `Registry` contract call for the `fundFactoryNameExists` function.
+   * `Registry` contract call for `fundFactoryNameExists` function.
    *
-   * @contract Registry
-   * @signature fundFactoryNameExists(bytes32)
-   * @method function fundFactoryNameExists(bytes32) view returns (bool)
+   * ```solc
+   * function fundFactoryNameExists(bytes32) view returns (bool)
+   * ```
    */
   fundFactoryNameExists: ($$0: string | ethers.utils.BytesLike, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
 
   /**
-   * `Registry` contract call for the `fundNameHashToOwner` function.
+   * `Registry` contract call for `fundNameHashToOwner` function.
    *
-   * @contract Registry
-   * @signature fundNameHashToOwner(bytes32)
-   * @method function fundNameHashToOwner(bytes32) view returns (address)
+   * ```solc
+   * function fundNameHashToOwner(bytes32) view returns (address)
+   * ```
    */
   fundNameHashToOwner: ($$0: string | ethers.utils.BytesLike, $$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Registry` contract call for the `fundsToFundFactories` function.
+   * `Registry` contract call for `fundsToFundFactories` function.
    *
-   * @contract Registry
-   * @signature fundsToFundFactories(address)
-   * @method function fundsToFundFactories(address) view returns (address)
+   * ```solc
+   * function fundsToFundFactories(address) view returns (address)
+   * ```
    */
   fundsToFundFactories: ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Registry` contract call for the `getAdapterFunctionSignatures` function.
+   * `Registry` contract call for `getAdapterFunctionSignatures` function.
    *
-   * @contract Registry
-   * @signature getAdapterFunctionSignatures(address)
-   * @method function getAdapterFunctionSignatures(address) view returns (bytes4[])
+   * ```solc
+   * function getAdapterFunctionSignatures(address) view returns (bytes4[])
+   * ```
    */
   getAdapterFunctionSignatures: (_adapter: string, $$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Registry` contract call for the `getAssetInformation` function.
+   * `Registry` contract call for `getAssetInformation` function.
    *
-   * @contract Registry
-   * @signature getAssetInformation(address)
-   * @method function getAssetInformation(address) view returns (tuple(bool,string,string,uint256,string,uint256,uint256[],bytes4[]))
+   * ```solc
+   * function getAssetInformation(address) view returns (tuple(bool,string,string,uint256,string,uint256,uint256[],bytes4[]))
+   * ```
    */
   getAssetInformation: (
     _asset: string,
@@ -217,20 +220,20 @@ export class Registry extends Contract {
   }>;
 
   /**
-   * `Registry` contract call for the `getDecimals` function.
+   * `Registry` contract call for `getDecimals` function.
    *
-   * @contract Registry
-   * @signature getDecimals(address)
-   * @method function getDecimals(address) view returns (uint256)
+   * ```solc
+   * function getDecimals(address) view returns (uint256)
+   * ```
    */
   getDecimals: (_asset: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
   /**
-   * `Registry` contract call for the `getExchangeInformation` function.
+   * `Registry` contract call for `getExchangeInformation` function.
    *
-   * @contract Registry
-   * @signature getExchangeInformation(address)
-   * @method function getExchangeInformation(address) view returns (tuple(bool,address,bytes4[]))
+   * ```solc
+   * function getExchangeInformation(address) view returns (tuple(bool,address,bytes4[]))
+   * ```
    */
   getExchangeInformation: (
     _exchange: string,
@@ -238,11 +241,11 @@ export class Registry extends Contract {
   ) => Promise<{ exists: boolean; exchangeAddress: string; sigs: string }>;
 
   /**
-   * `Registry` contract call for the `getFundFactoryInformation` function.
+   * `Registry` contract call for `getFundFactoryInformation` function.
    *
-   * @contract Registry
-   * @signature getFundFactoryInformation(address)
-   * @method function getFundFactoryInformation(address) view returns (tuple(bool,bytes32))
+   * ```solc
+   * function getFundFactoryInformation(address) view returns (tuple(bool,bytes32))
+   * ```
    */
   getFundFactoryInformation: (
     _fundFactory: string,
@@ -250,200 +253,209 @@ export class Registry extends Contract {
   ) => Promise<{ exists: boolean; name: string }>;
 
   /**
-   * `Registry` contract call for the `getName` function.
+   * `Registry` contract call for `getName` function.
    *
-   * @contract Registry
-   * @signature getName(address)
-   * @method function getName(address) view returns (string)
+   * ```solc
+   * function getName(address) view returns (string)
+   * ```
    */
   getName: (_asset: string, $$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Registry` contract call for the `getRegisteredAssets` function.
+   * `Registry` contract call for `getRegisteredAssets` function.
    *
-   * @contract Registry
-   * @signature getRegisteredAssets()
-   * @method function getRegisteredAssets() view returns (address[])
+   * ```solc
+   * function getRegisteredAssets() view returns (address[])
+   * ```
    */
   getRegisteredAssets: ($$overrides?: ethers.CallOverrides) => Promise<string[]>;
 
   /**
-   * `Registry` contract call for the `getRegisteredExchangeAdapters` function.
+   * `Registry` contract call for `getRegisteredExchangeAdapters` function.
    *
-   * @contract Registry
-   * @signature getRegisteredExchangeAdapters()
-   * @method function getRegisteredExchangeAdapters() view returns (address[])
+   * ```solc
+   * function getRegisteredExchangeAdapters() view returns (address[])
+   * ```
    */
   getRegisteredExchangeAdapters: ($$overrides?: ethers.CallOverrides) => Promise<string[]>;
 
   /**
-   * `Registry` contract call for the `getRegisteredFundFactories` function.
+   * get FundFactory and fund information
    *
-   * @contract Registry
-   * @signature getRegisteredFundFactories()
-   * @method function getRegisteredFundFactories() view returns (address[])
+   * ```solc
+   * function getRegisteredFundFactories() view returns (address[])
+   * ```
    */
   getRegisteredFundFactories: ($$overrides?: ethers.CallOverrides) => Promise<string[]>;
 
   /**
-   * `Registry` contract call for the `getReserveMin` function.
+   * `Registry` contract call for `getReserveMin` function.
    *
-   * @contract Registry
-   * @signature getReserveMin(address)
-   * @method function getReserveMin(address) view returns (uint256)
+   * ```solc
+   * function getReserveMin(address) view returns (uint256)
+   * ```
    */
   getReserveMin: (_asset: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
   /**
-   * `Registry` contract call for the `getSymbol` function.
+   * `Registry` contract call for `getSymbol` function.
    *
-   * @contract Registry
-   * @signature getSymbol(address)
-   * @method function getSymbol(address) view returns (string)
+   * ```solc
+   * function getSymbol(address) view returns (string)
+   * ```
    */
   getSymbol: (_asset: string, $$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Registry` contract call for the `incentive` function.
+   * `Registry` contract call for `incentive` function.
    *
-   * @contract Registry
-   * @signature incentive()
-   * @method function incentive() view returns (uint256)
+   * ```solc
+   * function incentive() view returns (uint256)
+   * ```
    */
   incentive: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
   /**
-   * `Registry` contract call for the `isFeeRegistered` function.
+   * `Registry` contract call for `isFeeRegistered` function.
    *
-   * @contract Registry
-   * @signature isFeeRegistered(address)
-   * @method function isFeeRegistered(address) view returns (bool)
+   * ```solc
+   * function isFeeRegistered(address) view returns (bool)
+   * ```
    */
   isFeeRegistered: ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
 
   /**
-   * `Registry` contract call for the `isFund` function.
+   * `Registry` contract call for `isFund` function.
    *
-   * @contract Registry
-   * @signature isFund(address)
-   * @method function isFund(address) view returns (bool)
+   * ```solc
+   * function isFund(address) view returns (bool)
+   * ```
    */
   isFund: (_who: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
 
   /**
-   * `Registry` contract call for the `isFundFactory` function.
+   * `Registry` contract call for `isFundFactory` function.
    *
-   * @contract Registry
-   * @signature isFundFactory(address)
-   * @method function isFundFactory(address) view returns (bool)
+   * ```solc
+   * function isFundFactory(address) view returns (bool)
+   * ```
    */
   isFundFactory: (_who: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
 
   /**
-   * `Registry` contract call for the `isHub` function.
+   * `Registry` contract call for `isHub` function.
    *
-   * @contract Registry
-   * @signature isHub(address)
-   * @method function isHub(address) view returns (bool)
+   * ```solc
+   * function isHub(address) view returns (bool)
+   * ```
    */
   isHub: (_who: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
 
   /**
-   * `Registry` contract call for the `isValidFundName` function.
+   * Whether _name has only valid characters
    *
-   * @contract Registry
-   * @signature isValidFundName(string)
-   * @method function isValidFundName(string) pure returns (bool)
+   * ```solc
+   * function isValidFundName(string) pure returns (bool)
+   * ```
    */
   isValidFundName: (_name: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
 
   /**
-   * `Registry` contract call for the `mlnToken` function.
+   * `Registry` contract call for `mlnToken` function.
    *
-   * @contract Registry
-   * @signature mlnToken()
-   * @method function mlnToken() view returns (address)
+   * ```solc
+   * function mlnToken() view returns (address)
+   * ```
    */
   mlnToken: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Registry` contract call for the `nativeAsset` function.
+   * `Registry` contract call for `nativeAsset` function.
    *
-   * @contract Registry
-   * @signature nativeAsset()
-   * @method function nativeAsset() view returns (address)
+   * ```solc
+   * function nativeAsset() view returns (address)
+   * ```
    */
   nativeAsset: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Registry` contract call for the `owner` function.
+   * `Registry` contract call for `owner` function.
    *
-   * @contract Registry
-   * @signature owner()
-   * @method function owner() view returns (address)
+   * ```solc
+   * function owner() view returns (address)
+   * ```
    */
   owner: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Registry` contract call for the `priceSource` function.
+   * `Registry` contract call for `priceSource` function.
    *
-   * @contract Registry
-   * @signature priceSource()
-   * @method function priceSource() view returns (address)
+   * ```solc
+   * function priceSource() view returns (address)
+   * ```
    */
   priceSource: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Registry` contract call for the `registeredAssets` function.
+   * `Registry` contract call for `registeredAssets` function.
    *
-   * @contract Registry
-   * @signature registeredAssets(uint256)
-   * @method function registeredAssets(uint256) view returns (address)
+   * ```solc
+   * function registeredAssets(uint256) view returns (address)
+   * ```
    */
   registeredAssets: ($$0: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Registry` contract call for the `registeredExchangeAdapters` function.
+   * `Registry` contract call for `registeredExchangeAdapters` function.
    *
-   * @contract Registry
-   * @signature registeredExchangeAdapters(uint256)
-   * @method function registeredExchangeAdapters(uint256) view returns (address)
+   * ```solc
+   * function registeredExchangeAdapters(uint256) view returns (address)
+   * ```
    */
   registeredExchangeAdapters: ($$0: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Registry` contract call for the `registeredFundFactories` function.
+   * `Registry` contract call for `registeredFundFactories` function.
    *
-   * @contract Registry
-   * @signature registeredFundFactories(uint256)
-   * @method function registeredFundFactories(uint256) view returns (address)
+   * ```solc
+   * function registeredFundFactories(uint256) view returns (address)
+   * ```
    */
   registeredFundFactories: ($$0: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Registry` contract call for the `sharesRequestor` function.
+   * `Registry` contract call for `sharesRequestor` function.
    *
-   * @contract Registry
-   * @signature sharesRequestor()
-   * @method function sharesRequestor() view returns (address)
+   * ```solc
+   * function sharesRequestor() view returns (address)
+   * ```
    */
   sharesRequestor: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Registry` contract transaction for `deregisterFees` function.
+   * `Registry` contract call for `deregisterFees` function.
    *
-   * @contract Registry
-   * @signature deregisterFees(address[])
-   * @method function deregisterFees(address[])
+   * ```solc
+   * function deregisterFees(address[])
+   * ```
    */
   deregisterFees: (_fees: string[]) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Registry` contract transaction for `registerAsset` function.
+   * Registers an Asset information entry
    *
-   * @contract Registry
-   * @signature registerAsset(address,string,string,string,uint256,uint256[],bytes4[])
-   * @method function registerAsset(address,string,string,string,uint256,uint256[],bytes4[])
+   * Pre: Only registrar owner should be able to registerPost: Address _asset is registered
+   *
+   * ```solc
+   * function registerAsset(address,string,string,string,uint256,uint256[],bytes4[])
+   * ```
+   *
+   * @param _asset Address of asset to be registered
+   * @param _name Human-readable name of the Asset
+   * @param _sigs Function signatures for whitelisted asset functions
+   * @param _standards Integers of EIP standards this asset adheres to
+   * @param _symbol Human-readable symbol of the Asset
+   * @param _url Url for extended information of the asset
    */
   registerAsset: (
     _asset: string,
@@ -456,11 +468,17 @@ export class Registry extends Contract {
   ) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Registry` contract transaction for `registerExchangeAdapter` function.
+   * Register an exchange information entry (A mapping from exchange adapter -> Exchange information)
    *
-   * @contract Registry
-   * @signature registerExchangeAdapter(address,address,bytes4[])
-   * @method function registerExchangeAdapter(address,address,bytes4[])
+   * Adapters are unique so are used as the mapping key. There may be different adapters for same exchange (0x / Ethfinex)Pre: Only registrar owner should be able to registerPost: Address _exchange is registered
+   *
+   * ```solc
+   * function registerExchangeAdapter(address,address,bytes4[])
+   * ```
+   *
+   * @param _adapter Address of exchange adapter
+   * @param _exchange Address of the exchange for the adapter
+   * @param _sigs Function signatures for whitelisted exchange functions
    */
   registerExchangeAdapter: (
     _exchange: string,
@@ -469,29 +487,32 @@ export class Registry extends Contract {
   ) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Registry` contract transaction for `registerFees` function.
+   * `Registry` contract call for `registerFees` function.
    *
-   * @contract Registry
-   * @signature registerFees(address[])
-   * @method function registerFees(address[])
+   * ```solc
+   * function registerFees(address[])
+   * ```
    */
   registerFees: (_fees: string[]) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Registry` contract transaction for `registerFund` function.
+   * `Registry` contract call for `registerFund` function.
    *
-   * @contract Registry
-   * @signature registerFund(address,address,string)
-   * @method function registerFund(address,address,string)
+   * ```solc
+   * function registerFund(address,address,string)
+   * ```
    */
   registerFund: (_fund: string, _owner: string, _name: string) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Registry` contract transaction for `registerFundFactory` function.
+   * FundFactories cannot be removed from registry
    *
-   * @contract Registry
-   * @signature registerFundFactory(address,bytes32)
-   * @method function registerFundFactory(address,bytes32)
+   * ```solc
+   * function registerFundFactory(address,bytes32)
+   * ```
+   *
+   * @param _fundFactory Address of the FundFactory contract
+   * @param _name Name of the fundFactory version
    */
   registerFundFactory: (
     _fundFactory: string,
@@ -499,119 +520,135 @@ export class Registry extends Contract {
   ) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Registry` contract transaction for `removeAsset` function.
+   * Deletes an existing entry
    *
-   * @contract Registry
-   * @signature removeAsset(address,uint256)
-   * @method function removeAsset(address,uint256)
+   * Owner can delete an existing entry
+   *
+   * ```solc
+   * function removeAsset(address,uint256)
+   * ```
+   *
+   * @param _asset address for which specific information is requested
    */
   removeAsset: (_asset: string, _assetIndex: ethers.BigNumberish) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Registry` contract transaction for `removeExchangeAdapter` function.
+   * Deletes an existing entry
    *
-   * @contract Registry
-   * @signature removeExchangeAdapter(address,uint256)
-   * @method function removeExchangeAdapter(address,uint256)
+   * Owner can delete an existing entry
+   *
+   * ```solc
+   * function removeExchangeAdapter(address,uint256)
+   * ```
+   *
+   * @param _adapter address of the adapter of the exchange that is to be removed
+   * @param _adapterIndex index of the exchange in array
    */
   removeExchangeAdapter: (_adapter: string, _adapterIndex: ethers.BigNumberish) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Registry` contract transaction for `reserveFundName` function.
+   * `Registry` contract call for `reserveFundName` function.
    *
-   * @contract Registry
-   * @signature reserveFundName(address,string)
-   * @method function reserveFundName(address,string)
+   * ```solc
+   * function reserveFundName(address,string)
+   * ```
    */
   reserveFundName: (_owner: string, _name: string) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Registry` contract transaction for `setAuthority` function.
+   * `Registry` contract call for `setAuthority` function.
    *
-   * @contract Registry
-   * @signature setAuthority(address)
-   * @method function setAuthority(address)
+   * ```solc
+   * function setAuthority(address)
+   * ```
    */
   setAuthority: (authority_: string) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Registry` contract transaction for `setEngine` function.
+   * `Registry` contract call for `setEngine` function.
    *
-   * @contract Registry
-   * @signature setEngine(address)
-   * @method function setEngine(address)
+   * ```solc
+   * function setEngine(address)
+   * ```
    */
   setEngine: (_engine: string) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Registry` contract transaction for `setIncentive` function.
+   * `Registry` contract call for `setIncentive` function.
    *
-   * @contract Registry
-   * @signature setIncentive(uint256)
-   * @method function setIncentive(uint256)
+   * ```solc
+   * function setIncentive(uint256)
+   * ```
    */
   setIncentive: (_weiAmount: ethers.BigNumberish) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Registry` contract transaction for `setMGM` function.
+   * `Registry` contract call for `setMGM` function.
    *
-   * @contract Registry
-   * @signature setMGM(address)
-   * @method function setMGM(address)
+   * ```solc
+   * function setMGM(address)
+   * ```
    */
   setMGM: (_MGM: string) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Registry` contract transaction for `setMlnToken` function.
+   * `Registry` contract call for `setMlnToken` function.
    *
-   * @contract Registry
-   * @signature setMlnToken(address)
-   * @method function setMlnToken(address)
+   * ```solc
+   * function setMlnToken(address)
+   * ```
    */
   setMlnToken: (_mlnToken: string) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Registry` contract transaction for `setNativeAsset` function.
+   * `Registry` contract call for `setNativeAsset` function.
    *
-   * @contract Registry
-   * @signature setNativeAsset(address)
-   * @method function setNativeAsset(address)
+   * ```solc
+   * function setNativeAsset(address)
+   * ```
    */
   setNativeAsset: (_nativeAsset: string) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Registry` contract transaction for `setOwner` function.
+   * `Registry` contract call for `setOwner` function.
    *
-   * @contract Registry
-   * @signature setOwner(address)
-   * @method function setOwner(address)
+   * ```solc
+   * function setOwner(address)
+   * ```
    */
   setOwner: (owner_: string) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Registry` contract transaction for `setPriceSource` function.
+   * `Registry` contract call for `setPriceSource` function.
    *
-   * @contract Registry
-   * @signature setPriceSource(address)
-   * @method function setPriceSource(address)
+   * ```solc
+   * function setPriceSource(address)
+   * ```
    */
   setPriceSource: (_priceSource: string) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Registry` contract transaction for `setSharesRequestor` function.
+   * `Registry` contract call for `setSharesRequestor` function.
    *
-   * @contract Registry
-   * @signature setSharesRequestor(address)
-   * @method function setSharesRequestor(address)
+   * ```solc
+   * function setSharesRequestor(address)
+   * ```
    */
   setSharesRequestor: (_sharesRequestor: string) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Registry` contract transaction for `updateAsset` function.
+   * Updates description information of a registered Asset
    *
-   * @contract Registry
-   * @signature updateAsset(address,string,string,string,uint256,uint256[],bytes4[])
-   * @method function updateAsset(address,string,string,string,uint256,uint256[],bytes4[])
+   * Pre: Owner can change an existing entryPost: Changed Name, Symbol, URL and/or IPFSHash
+   *
+   * ```solc
+   * function updateAsset(address,string,string,string,uint256,uint256[],bytes4[])
+   * ```
+   *
+   * @param _asset Address of the asset to be updated
+   * @param _name Human-readable name of the Asset
+   * @param _symbol Human-readable symbol of the Asset
+   * @param _url Url for extended information of the asset
    */
   updateAsset: (
     _asset: string,
@@ -624,11 +661,11 @@ export class Registry extends Contract {
   ) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Registry` contract transaction for `updateExchangeAdapter` function.
+   * `Registry` contract call for `updateExchangeAdapter` function.
    *
-   * @contract Registry
-   * @signature updateExchangeAdapter(address,address,bytes4[])
-   * @method function updateExchangeAdapter(address,address,bytes4[])
+   * ```solc
+   * function updateExchangeAdapter(address,address,bytes4[])
+   * ```
    */
   updateExchangeAdapter: (
     _exchange: string,

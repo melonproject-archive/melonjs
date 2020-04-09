@@ -70,7 +70,7 @@
     "yargs": "^15.3.1"
   },
   "codegen": {
-    "abis": "../melon-protocol/out/{Registry,KyberPriceFeed,TestingPriceFeed,Vault,Shares,PolicyManager,Hub,Accounting,ManagementFee,PerformanceFee,Accounting,FundFactory,ZeroExV3Adapter,ZeroExV2Adapter,OasisDexAdapter,UniswapAdapter,KyberAdapter,EngineAdapter,Engine,AssetBlacklist,AssetWhitelist,MaxConcentration,MaxPositions,PriceTolerance,UserWhitelist}.abi"
+    "input": "../melon-protocol/out/{Registry,KyberPriceFeed,TestingPriceFeed,Vault,Shares,PolicyManager,Hub,Accounting,ManagementFee,PerformanceFee,Accounting,FundFactory,ZeroExV3Adapter,ZeroExV2Adapter,OasisDexAdapter,UniswapAdapter,KyberAdapter,EngineAdapter,Engine,AssetBlacklist,AssetWhitelist,MaxConcentration,MaxPositions,PriceTolerance,UserWhitelist}.json"
   },
   "husky": {
     "hooks": {

@@ -2,6 +2,9 @@ import { ethers } from 'ethers';
 // @ts-ignore
 import { Contract, TransactionWrapper } from '../Contract';
 
+/**
+ * `MaxPositions` contract
+ */
 export class MaxPositions extends Contract {
   public readonly ethers: MaxPositionsEthersContract;
 
@@ -10,47 +13,47 @@ export class MaxPositions extends Contract {
   }
 
   /**
-   * `MaxPositions` contract call for the `TAKE_ORDER` function.
+   * `MaxPositions` contract call for `TAKE_ORDER` function.
    *
-   * @contract MaxPositions
-   * @signature TAKE_ORDER()
-   * @method function TAKE_ORDER() view returns (bytes4)
+   * ```solc
+   * function TAKE_ORDER() view returns (bytes4)
+   * ```
    */
   TAKE_ORDER: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `MaxPositions` contract call for the `identifier` function.
+   * `MaxPositions` contract call for `identifier` function.
    *
-   * @contract MaxPositions
-   * @signature identifier()
-   * @method function identifier() pure returns (string)
+   * ```solc
+   * function identifier() pure returns (string)
+   * ```
    */
   identifier: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `MaxPositions` contract call for the `maxPositions` function.
+   * `MaxPositions` contract call for `maxPositions` function.
    *
-   * @contract MaxPositions
-   * @signature maxPositions()
-   * @method function maxPositions() view returns (uint256)
+   * ```solc
+   * function maxPositions() view returns (uint256)
+   * ```
    */
   maxPositions: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
   /**
-   * `MaxPositions` contract call for the `position` function.
+   * `MaxPositions` contract call for `position` function.
    *
-   * @contract MaxPositions
-   * @signature position()
-   * @method function position() pure returns (uint8)
+   * ```solc
+   * function position() pure returns (uint8)
+   * ```
    */
   position: ($$overrides?: ethers.CallOverrides) => Promise<number>;
 
   /**
-   * `MaxPositions` contract transaction for `rule` function.
+   * `MaxPositions` contract call for `rule` function.
    *
-   * @contract MaxPositions
-   * @signature rule(bytes4,address[5],uint256[3],bytes32)
-   * @method function rule(bytes4,address[5],uint256[3],bytes32) returns (bool)
+   * ```solc
+   * function rule(bytes4,address[5],uint256[3],bytes32) returns (bool)
+   * ```
    */
   rule: (
     sig: string | ethers.utils.BytesLike,

@@ -2,6 +2,9 @@ import { ethers } from 'ethers';
 // @ts-ignore
 import { Contract, TransactionWrapper } from '../Contract';
 
+/**
+ * `Vault` contract
+ */
 export class Vault extends Contract {
   public readonly ethers: VaultEthersContract;
 
@@ -10,38 +13,38 @@ export class Vault extends Contract {
   }
 
   /**
-   * `Vault` contract call for the `TAKE_ORDER` function.
+   * `Vault` contract call for `TAKE_ORDER` function.
    *
-   * @contract Vault
-   * @signature TAKE_ORDER()
-   * @method function TAKE_ORDER() view returns (bytes4)
+   * ```solc
+   * function TAKE_ORDER() view returns (bytes4)
+   * ```
    */
   TAKE_ORDER: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Vault` contract call for the `adapterIsAdded` function.
+   * `Vault` contract call for `adapterIsAdded` function.
    *
-   * @contract Vault
-   * @signature adapterIsAdded(address)
-   * @method function adapterIsAdded(address) view returns (bool)
+   * ```solc
+   * function adapterIsAdded(address) view returns (bool)
+   * ```
    */
   adapterIsAdded: ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
 
   /**
-   * `Vault` contract call for the `authority` function.
+   * `Vault` contract call for `authority` function.
    *
-   * @contract Vault
-   * @signature authority()
-   * @method function authority() view returns (address)
+   * ```solc
+   * function authority() view returns (address)
+   * ```
    */
   authority: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Vault` contract call for the `exchanges` function.
+   * `Vault` contract call for `exchanges` function.
    *
-   * @contract Vault
-   * @signature exchanges(uint256)
-   * @method function exchanges(uint256) view returns (address, address)
+   * ```solc
+   * function exchanges(uint256) view returns (address, address)
+   * ```
    */
   exchanges: (
     $$0: ethers.BigNumberish,
@@ -49,38 +52,38 @@ export class Vault extends Contract {
   ) => Promise<{ exchange: string; adapter: string }>;
 
   /**
-   * `Vault` contract call for the `fundFactory` function.
+   * `Vault` contract call for `fundFactory` function.
    *
-   * @contract Vault
-   * @signature fundFactory()
-   * @method function fundFactory() view returns (address)
+   * ```solc
+   * function fundFactory() view returns (address)
+   * ```
    */
   fundFactory: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Vault` contract call for the `getExchangeInfo` function.
+   * `Vault` contract call for `getExchangeInfo` function.
    *
-   * @contract Vault
-   * @signature getExchangeInfo()
-   * @method function getExchangeInfo() view returns (address[], address[])
+   * ```solc
+   * function getExchangeInfo() view returns (address[], address[])
+   * ```
    */
   getExchangeInfo: ($$overrides?: ethers.CallOverrides) => Promise<any[]>;
 
   /**
-   * `Vault` contract call for the `getHub` function.
+   * `Vault` contract call for `getHub` function.
    *
-   * @contract Vault
-   * @signature getHub()
-   * @method function getHub() view returns (address)
+   * ```solc
+   * function getHub() view returns (address)
+   * ```
    */
   getHub: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Vault` contract call for the `getRoutes` function.
+   * `Vault` contract call for `getRoutes` function.
    *
-   * @contract Vault
-   * @signature getRoutes()
-   * @method function getRoutes() view returns (tuple(address,address,address,address,address,address,address))
+   * ```solc
+   * function getRoutes() view returns (tuple(address,address,address,address,address,address,address))
+   * ```
    */
   getRoutes: (
     $$overrides?: ethers.CallOverrides,
@@ -95,47 +98,54 @@ export class Vault extends Contract {
   }>;
 
   /**
-   * `Vault` contract call for the `initialized` function.
+   * `Vault` contract call for `initialized` function.
    *
-   * @contract Vault
-   * @signature initialized()
-   * @method function initialized() view returns (bool)
+   * ```solc
+   * function initialized() view returns (bool)
+   * ```
    */
   initialized: ($$overrides?: ethers.CallOverrides) => Promise<boolean>;
 
   /**
-   * `Vault` contract call for the `owner` function.
+   * `Vault` contract call for `owner` function.
    *
-   * @contract Vault
-   * @signature owner()
-   * @method function owner() view returns (address)
+   * ```solc
+   * function owner() view returns (address)
+   * ```
    */
   owner: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Vault` contract call for the `priceSource` function.
+   * `Vault` contract call for `priceSource` function.
    *
-   * @contract Vault
-   * @signature priceSource()
-   * @method function priceSource() view returns (address)
+   * ```solc
+   * function priceSource() view returns (address)
+   * ```
    */
   priceSource: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Vault` contract transaction for `addExchange` function.
+   * `Vault` contract call for `addExchange` function.
    *
-   * @contract Vault
-   * @signature addExchange(address,address)
-   * @method function addExchange(address,address)
+   * ```solc
+   * function addExchange(address,address)
+   * ```
    */
   addExchange: (_exchange: string, _adapter: string) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Vault` contract transaction for `callOnExchange` function.
+   * Universal method for calling exchange functions through adaptersSee adapter contracts for parameters needed for each exchange
    *
-   * @contract Vault
-   * @signature callOnExchange(uint256,string,address[8],uint256[8],bytes[4],bytes32,bytes)
-   * @method function callOnExchange(uint256,string,address[8],uint256[8],bytes[4],bytes32,bytes)
+   * ```solc
+   * function callOnExchange(uint256,string,address[8],uint256[8],bytes[4],bytes32,bytes)
+   * ```
+   *
+   * @param _exchangeIndex Index of the exchange in the "exchanges" array
+   * @param _identifier Order identifier
+   * @param _orderAddresses [7] taker fee asset
+   * @param _orderData [3] Encoded data specific to taker asset fee
+   * @param _orderValues [7] Dexy signature mode
+   * @param _signature Signature of order maker
    */
   callOnExchange: (
     _exchangeIndex: ethers.BigNumberish,
@@ -157,40 +167,40 @@ export class Vault extends Contract {
   ) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Vault` contract transaction for `initialize` function.
+   * `Vault` contract call for `initialize` function.
    *
-   * @contract Vault
-   * @signature initialize(address[7])
-   * @method function initialize(address[7])
+   * ```solc
+   * function initialize(address[7])
+   * ```
    */
   initialize: (
     _spokes: [string, string, string, string, string, string, string],
   ) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Vault` contract transaction for `setAuthority` function.
+   * `Vault` contract call for `setAuthority` function.
    *
-   * @contract Vault
-   * @signature setAuthority(address)
-   * @method function setAuthority(address)
+   * ```solc
+   * function setAuthority(address)
+   * ```
    */
   setAuthority: (authority_: string) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Vault` contract transaction for `setOwner` function.
+   * `Vault` contract call for `setOwner` function.
    *
-   * @contract Vault
-   * @signature setOwner(address)
-   * @method function setOwner(address)
+   * ```solc
+   * function setOwner(address)
+   * ```
    */
   setOwner: (owner_: string) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Vault` contract transaction for `withdraw` function.
+   * `Vault` contract call for `withdraw` function.
    *
-   * @contract Vault
-   * @signature withdraw(address,uint256)
-   * @method function withdraw(address,uint256)
+   * ```solc
+   * function withdraw(address,uint256)
+   * ```
    */
   withdraw: (_token: string, _amount: ethers.BigNumberish) => TransactionWrapper<ethers.Overrides>;
 

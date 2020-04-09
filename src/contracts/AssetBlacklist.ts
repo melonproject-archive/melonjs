@@ -2,6 +2,11 @@ import { ethers } from 'ethers';
 // @ts-ignore
 import { Contract, TransactionWrapper } from '../Contract';
 
+/**
+ * `AssetBlacklist` contract
+ *
+ * Assets can be added but not removed from blacklist
+ */
 export class AssetBlacklist extends Contract {
   public readonly ethers: AssetBlacklistEthersContract;
 
@@ -10,92 +15,92 @@ export class AssetBlacklist extends Contract {
   }
 
   /**
-   * `AssetBlacklist` contract call for the `TAKE_ORDER` function.
+   * `AssetBlacklist` contract call for `TAKE_ORDER` function.
    *
-   * @contract AssetBlacklist
-   * @signature TAKE_ORDER()
-   * @method function TAKE_ORDER() view returns (bytes4)
+   * ```solc
+   * function TAKE_ORDER() view returns (bytes4)
+   * ```
    */
   TAKE_ORDER: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `AssetBlacklist` contract call for the `authority` function.
+   * `AssetBlacklist` contract call for `authority` function.
    *
-   * @contract AssetBlacklist
-   * @signature authority()
-   * @method function authority() view returns (address)
+   * ```solc
+   * function authority() view returns (address)
+   * ```
    */
   authority: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `AssetBlacklist` contract call for the `getMemberCount` function.
+   * `AssetBlacklist` contract call for `getMemberCount` function.
    *
-   * @contract AssetBlacklist
-   * @signature getMemberCount()
-   * @method function getMemberCount() view returns (uint256)
+   * ```solc
+   * function getMemberCount() view returns (uint256)
+   * ```
    */
   getMemberCount: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
   /**
-   * `AssetBlacklist` contract call for the `getMembers` function.
+   * `AssetBlacklist` contract call for `getMembers` function.
    *
-   * @contract AssetBlacklist
-   * @signature getMembers()
-   * @method function getMembers() view returns (address[])
+   * ```solc
+   * function getMembers() view returns (address[])
+   * ```
    */
   getMembers: ($$overrides?: ethers.CallOverrides) => Promise<string[]>;
 
   /**
-   * `AssetBlacklist` contract call for the `identifier` function.
+   * `AssetBlacklist` contract call for `identifier` function.
    *
-   * @contract AssetBlacklist
-   * @signature identifier()
-   * @method function identifier() pure returns (string)
+   * ```solc
+   * function identifier() pure returns (string)
+   * ```
    */
   identifier: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `AssetBlacklist` contract call for the `isMember` function.
+   * `AssetBlacklist` contract call for `isMember` function.
    *
-   * @contract AssetBlacklist
-   * @signature isMember(address)
-   * @method function isMember(address) view returns (bool)
+   * ```solc
+   * function isMember(address) view returns (bool)
+   * ```
    */
   isMember: (_asset: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
 
   /**
-   * `AssetBlacklist` contract call for the `owner` function.
+   * `AssetBlacklist` contract call for `owner` function.
    *
-   * @contract AssetBlacklist
-   * @signature owner()
-   * @method function owner() view returns (address)
+   * ```solc
+   * function owner() view returns (address)
+   * ```
    */
   owner: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `AssetBlacklist` contract call for the `position` function.
+   * `AssetBlacklist` contract call for `position` function.
    *
-   * @contract AssetBlacklist
-   * @signature position()
-   * @method function position() pure returns (uint8)
+   * ```solc
+   * function position() pure returns (uint8)
+   * ```
    */
   position: ($$overrides?: ethers.CallOverrides) => Promise<number>;
 
   /**
-   * `AssetBlacklist` contract transaction for `addToBlacklist` function.
+   * `AssetBlacklist` contract call for `addToBlacklist` function.
    *
-   * @contract AssetBlacklist
-   * @signature addToBlacklist(address)
-   * @method function addToBlacklist(address)
+   * ```solc
+   * function addToBlacklist(address)
+   * ```
    */
   addToBlacklist: (_asset: string) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `AssetBlacklist` contract transaction for `rule` function.
+   * `AssetBlacklist` contract call for `rule` function.
    *
-   * @contract AssetBlacklist
-   * @signature rule(bytes4,address[5],uint256[3],bytes32)
-   * @method function rule(bytes4,address[5],uint256[3],bytes32) returns (bool)
+   * ```solc
+   * function rule(bytes4,address[5],uint256[3],bytes32) returns (bool)
+   * ```
    */
   rule: (
     sig: string | ethers.utils.BytesLike,
@@ -105,20 +110,20 @@ export class AssetBlacklist extends Contract {
   ) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `AssetBlacklist` contract transaction for `setAuthority` function.
+   * `AssetBlacklist` contract call for `setAuthority` function.
    *
-   * @contract AssetBlacklist
-   * @signature setAuthority(address)
-   * @method function setAuthority(address)
+   * ```solc
+   * function setAuthority(address)
+   * ```
    */
   setAuthority: (authority_: string) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `AssetBlacklist` contract transaction for `setOwner` function.
+   * `AssetBlacklist` contract call for `setOwner` function.
    *
-   * @contract AssetBlacklist
-   * @signature setOwner(address)
-   * @method function setOwner(address)
+   * ```solc
+   * function setOwner(address)
+   * ```
    */
   setOwner: (owner_: string) => TransactionWrapper<ethers.Overrides>;
 

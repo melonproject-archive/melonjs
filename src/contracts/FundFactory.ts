@@ -2,6 +2,11 @@ import { ethers } from 'ethers';
 // @ts-ignore
 import { Contract, TransactionWrapper } from '../Contract';
 
+/**
+ * `FundFactory` contract
+ *
+ * Creates fund routes and links them together
+ */
 export class FundFactory extends Contract {
   public readonly ethers: FundFactoryEthersContract;
 
@@ -10,110 +15,110 @@ export class FundFactory extends Contract {
   }
 
   /**
-   * `FundFactory` contract call for the `REGISTRY` function.
+   * `FundFactory` contract call for `REGISTRY` function.
    *
-   * @contract FundFactory
-   * @signature REGISTRY()
-   * @method function REGISTRY() view returns (address)
+   * ```solc
+   * function REGISTRY() view returns (address)
+   * ```
    */
   REGISTRY: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `FundFactory` contract call for the `accountingFactory` function.
+   * `FundFactory` contract call for `accountingFactory` function.
    *
-   * @contract FundFactory
-   * @signature accountingFactory()
-   * @method function accountingFactory() view returns (address)
+   * ```solc
+   * function accountingFactory() view returns (address)
+   * ```
    */
   accountingFactory: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `FundFactory` contract call for the `authority` function.
+   * `FundFactory` contract call for `authority` function.
    *
-   * @contract FundFactory
-   * @signature authority()
-   * @method function authority() view returns (address)
+   * ```solc
+   * function authority() view returns (address)
+   * ```
    */
   authority: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `FundFactory` contract call for the `childExists` function.
+   * `FundFactory` contract call for `childExists` function.
    *
-   * @contract FundFactory
-   * @signature childExists(address)
-   * @method function childExists(address) view returns (bool)
+   * ```solc
+   * function childExists(address) view returns (bool)
+   * ```
    */
   childExists: ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
 
   /**
-   * `FundFactory` contract call for the `feeManagerFactory` function.
+   * `FundFactory` contract call for `feeManagerFactory` function.
    *
-   * @contract FundFactory
-   * @signature feeManagerFactory()
-   * @method function feeManagerFactory() view returns (address)
+   * ```solc
+   * function feeManagerFactory() view returns (address)
+   * ```
    */
   feeManagerFactory: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `FundFactory` contract call for the `funds` function.
+   * `FundFactory` contract call for `funds` function.
    *
-   * @contract FundFactory
-   * @signature funds(uint256)
-   * @method function funds(uint256) view returns (address)
+   * ```solc
+   * function funds(uint256) view returns (address)
+   * ```
    */
   funds: ($$0: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `FundFactory` contract call for the `getExchangesInfo` function.
+   * `FundFactory` contract call for `getExchangesInfo` function.
    *
-   * @contract FundFactory
-   * @signature getExchangesInfo(address)
-   * @method function getExchangesInfo(address) view returns (address[])
+   * ```solc
+   * function getExchangesInfo(address) view returns (address[])
+   * ```
    */
   getExchangesInfo: (_user: string, $$overrides?: ethers.CallOverrides) => Promise<string[]>;
 
   /**
-   * `FundFactory` contract call for the `getFundById` function.
+   * `FundFactory` contract call for `getFundById` function.
    *
-   * @contract FundFactory
-   * @signature getFundById(uint256)
-   * @method function getFundById(uint256) view returns (address)
+   * ```solc
+   * function getFundById(uint256) view returns (address)
+   * ```
    */
   getFundById: (_id: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `FundFactory` contract call for the `getLastFundId` function.
+   * `FundFactory` contract call for `getLastFundId` function.
    *
-   * @contract FundFactory
-   * @signature getLastFundId()
-   * @method function getLastFundId() view returns (uint256)
+   * ```solc
+   * function getLastFundId() view returns (uint256)
+   * ```
    */
   getLastFundId: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
   /**
-   * `FundFactory` contract call for the `isInstance` function.
+   * `FundFactory` contract call for `isInstance` function.
    *
-   * @contract FundFactory
-   * @signature isInstance(address)
-   * @method function isInstance(address) view returns (bool)
+   * ```solc
+   * function isInstance(address) view returns (bool)
+   * ```
    */
   isInstance: (_child: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
 
   /**
-   * `FundFactory` contract call for the `managersToHubs` function.
+   * `FundFactory` contract call for `managersToHubs` function.
    *
-   * @contract FundFactory
-   * @signature managersToHubs(address)
-   * @method function managersToHubs(address) view returns (address)
+   * ```solc
+   * function managersToHubs(address) view returns (address)
+   * ```
    */
   managersToHubs: ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `FundFactory` contract call for the `managersToRoutes` function.
+   * `FundFactory` contract call for `managersToRoutes` function.
    *
-   * @contract FundFactory
-   * @signature managersToRoutes(address)
-   * @method function managersToRoutes(address) view returns (address, address, address, address, address, address, address)
+   * ```solc
+   * function managersToRoutes(address) view returns (address, address, address, address, address, address, address)
+   * ```
    */
   managersToRoutes: (
     $$0: string,
@@ -129,11 +134,11 @@ export class FundFactory extends Contract {
   }>;
 
   /**
-   * `FundFactory` contract call for the `managersToSettings` function.
+   * `FundFactory` contract call for `managersToSettings` function.
    *
-   * @contract FundFactory
-   * @signature managersToSettings(address)
-   * @method function managersToSettings(address) view returns (string, address)
+   * ```solc
+   * function managersToSettings(address) view returns (string, address)
+   * ```
    */
   managersToSettings: (
     $$0: string,
@@ -141,47 +146,47 @@ export class FundFactory extends Contract {
   ) => Promise<{ name: string; denominationAsset: string }>;
 
   /**
-   * `FundFactory` contract call for the `owner` function.
+   * `FundFactory` contract call for `owner` function.
    *
-   * @contract FundFactory
-   * @signature owner()
-   * @method function owner() view returns (address)
+   * ```solc
+   * function owner() view returns (address)
+   * ```
    */
   owner: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `FundFactory` contract call for the `policyManagerFactory` function.
+   * `FundFactory` contract call for `policyManagerFactory` function.
    *
-   * @contract FundFactory
-   * @signature policyManagerFactory()
-   * @method function policyManagerFactory() view returns (address)
+   * ```solc
+   * function policyManagerFactory() view returns (address)
+   * ```
    */
   policyManagerFactory: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `FundFactory` contract call for the `sharesFactory` function.
+   * `FundFactory` contract call for `sharesFactory` function.
    *
-   * @contract FundFactory
-   * @signature sharesFactory()
-   * @method function sharesFactory() view returns (address)
+   * ```solc
+   * function sharesFactory() view returns (address)
+   * ```
    */
   sharesFactory: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `FundFactory` contract call for the `vaultFactory` function.
+   * `FundFactory` contract call for `vaultFactory` function.
    *
-   * @contract FundFactory
-   * @signature vaultFactory()
-   * @method function vaultFactory() view returns (address)
+   * ```solc
+   * function vaultFactory() view returns (address)
+   * ```
    */
   vaultFactory: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `FundFactory` contract transaction for `beginSetup` function.
+   * `FundFactory` contract call for `beginSetup` function.
    *
-   * @contract FundFactory
-   * @signature beginSetup(string,address[],uint256[],uint256[],address[],address[],address,address[])
-   * @method function beginSetup(string,address[],uint256[],uint256[],address[],address[],address,address[])
+   * ```solc
+   * function beginSetup(string,address[],uint256[],uint256[],address[],address[],address,address[])
+   * ```
    */
   beginSetup: (
     _name: string,
@@ -195,137 +200,137 @@ export class FundFactory extends Contract {
   ) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `FundFactory` contract transaction for `completeSetup` function.
+   * `FundFactory` contract call for `completeSetup` function.
    *
-   * @contract FundFactory
-   * @signature completeSetup()
-   * @method function completeSetup() payable
+   * ```solc
+   * function completeSetup() payable
+   * ```
    */
   completeSetup: () => TransactionWrapper<ethers.PayableOverrides>;
 
   /**
-   * `FundFactory` contract transaction for `completeSetupFor` function.
+   * `FundFactory` contract call for `completeSetupFor` function.
    *
-   * @contract FundFactory
-   * @signature completeSetupFor(address)
-   * @method function completeSetupFor(address) payable
+   * ```solc
+   * function completeSetupFor(address) payable
+   * ```
    */
   completeSetupFor: (_manager: string) => TransactionWrapper<ethers.PayableOverrides>;
 
   /**
-   * `FundFactory` contract transaction for `createAccounting` function.
+   * `FundFactory` contract call for `createAccounting` function.
    *
-   * @contract FundFactory
-   * @signature createAccounting()
-   * @method function createAccounting() payable
+   * ```solc
+   * function createAccounting() payable
+   * ```
    */
   createAccounting: () => TransactionWrapper<ethers.PayableOverrides>;
 
   /**
-   * `FundFactory` contract transaction for `createAccountingFor` function.
+   * `FundFactory` contract call for `createAccountingFor` function.
    *
-   * @contract FundFactory
-   * @signature createAccountingFor(address)
-   * @method function createAccountingFor(address) payable
+   * ```solc
+   * function createAccountingFor(address) payable
+   * ```
    */
   createAccountingFor: (_manager: string) => TransactionWrapper<ethers.PayableOverrides>;
 
   /**
-   * `FundFactory` contract transaction for `createFeeManager` function.
+   * `FundFactory` contract call for `createFeeManager` function.
    *
-   * @contract FundFactory
-   * @signature createFeeManager()
-   * @method function createFeeManager() payable
+   * ```solc
+   * function createFeeManager() payable
+   * ```
    */
   createFeeManager: () => TransactionWrapper<ethers.PayableOverrides>;
 
   /**
-   * `FundFactory` contract transaction for `createFeeManagerFor` function.
+   * `FundFactory` contract call for `createFeeManagerFor` function.
    *
-   * @contract FundFactory
-   * @signature createFeeManagerFor(address)
-   * @method function createFeeManagerFor(address) payable
+   * ```solc
+   * function createFeeManagerFor(address) payable
+   * ```
    */
   createFeeManagerFor: (_manager: string) => TransactionWrapper<ethers.PayableOverrides>;
 
   /**
-   * `FundFactory` contract transaction for `createPolicyManager` function.
+   * `FundFactory` contract call for `createPolicyManager` function.
    *
-   * @contract FundFactory
-   * @signature createPolicyManager()
-   * @method function createPolicyManager() payable
+   * ```solc
+   * function createPolicyManager() payable
+   * ```
    */
   createPolicyManager: () => TransactionWrapper<ethers.PayableOverrides>;
 
   /**
-   * `FundFactory` contract transaction for `createPolicyManagerFor` function.
+   * `FundFactory` contract call for `createPolicyManagerFor` function.
    *
-   * @contract FundFactory
-   * @signature createPolicyManagerFor(address)
-   * @method function createPolicyManagerFor(address) payable
+   * ```solc
+   * function createPolicyManagerFor(address) payable
+   * ```
    */
   createPolicyManagerFor: (_manager: string) => TransactionWrapper<ethers.PayableOverrides>;
 
   /**
-   * `FundFactory` contract transaction for `createShares` function.
+   * `FundFactory` contract call for `createShares` function.
    *
-   * @contract FundFactory
-   * @signature createShares()
-   * @method function createShares() payable
+   * ```solc
+   * function createShares() payable
+   * ```
    */
   createShares: () => TransactionWrapper<ethers.PayableOverrides>;
 
   /**
-   * `FundFactory` contract transaction for `createSharesFor` function.
+   * `FundFactory` contract call for `createSharesFor` function.
    *
-   * @contract FundFactory
-   * @signature createSharesFor(address)
-   * @method function createSharesFor(address) payable
+   * ```solc
+   * function createSharesFor(address) payable
+   * ```
    */
   createSharesFor: (_manager: string) => TransactionWrapper<ethers.PayableOverrides>;
 
   /**
-   * `FundFactory` contract transaction for `createVault` function.
+   * `FundFactory` contract call for `createVault` function.
    *
-   * @contract FundFactory
-   * @signature createVault()
-   * @method function createVault() payable
+   * ```solc
+   * function createVault() payable
+   * ```
    */
   createVault: () => TransactionWrapper<ethers.PayableOverrides>;
 
   /**
-   * `FundFactory` contract transaction for `createVaultFor` function.
+   * `FundFactory` contract call for `createVaultFor` function.
    *
-   * @contract FundFactory
-   * @signature createVaultFor(address)
-   * @method function createVaultFor(address) payable
+   * ```solc
+   * function createVaultFor(address) payable
+   * ```
    */
   createVaultFor: (_manager: string) => TransactionWrapper<ethers.PayableOverrides>;
 
   /**
-   * `FundFactory` contract transaction for `setAuthority` function.
+   * `FundFactory` contract call for `setAuthority` function.
    *
-   * @contract FundFactory
-   * @signature setAuthority(address)
-   * @method function setAuthority(address)
+   * ```solc
+   * function setAuthority(address)
+   * ```
    */
   setAuthority: (authority_: string) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `FundFactory` contract transaction for `setOwner` function.
+   * `FundFactory` contract call for `setOwner` function.
    *
-   * @contract FundFactory
-   * @signature setOwner(address)
-   * @method function setOwner(address)
+   * ```solc
+   * function setOwner(address)
+   * ```
    */
   setOwner: (owner_: string) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `FundFactory` contract transaction for `shutDownFund` function.
+   * `FundFactory` contract call for `shutDownFund` function.
    *
-   * @contract FundFactory
-   * @signature shutDownFund(address)
-   * @method function shutDownFund(address)
+   * ```solc
+   * function shutDownFund(address)
+   * ```
    */
   shutDownFund: (_hub: string) => TransactionWrapper<ethers.Overrides>;
 

@@ -2,6 +2,13 @@ import { ethers } from 'ethers';
 // @ts-ignore
 import { Contract, TransactionWrapper } from '../Contract';
 
+/**
+ * ZeroExV2Adapter Contract
+ *
+ * Adapter to 0xV2 Exchange Contract
+ *
+ * @author Melonport AG <team@melonport.com>
+ */
 export class ZeroExV2Adapter extends Contract {
   public readonly ethers: ZeroExV2AdapterEthersContract;
 
@@ -10,11 +17,20 @@ export class ZeroExV2Adapter extends Contract {
   }
 
   /**
-   * `ZeroExV2Adapter` contract transaction for `takeOrder` function.
+   * Perform a Take Order on a particular exchange
    *
-   * @contract ZeroExV2Adapter
-   * @signature takeOrder(address,address[8],uint256[8],bytes[4],bytes32,bytes)
-   * @method function takeOrder(address,address[8],uint256[8],bytes[4],bytes32,bytes)
+   * Synchronously handles the responsibilities of takeOrder: - Validate user inputs - Prepare a formatted list of assets and their expected fill amounts - Fill an order on the _targetExchange (with validateAndFinalizeFilledOrder)
+   *
+   * ```solc
+   * function takeOrder(address,address[8],uint256[8],bytes[4],bytes32,bytes)
+   * ```
+   *
+   * @param _identifier Order identifier
+   * @param _orderAddresses [7] taker fee asset
+   * @param _orderData [3] Encoded data specific to taker asset fee
+   * @param _orderValues [7] Dexy signature mode
+   * @param _signature Signature of order maker
+   * @param _targetExchange Order maker
    */
   takeOrder: (
     _targetExchange: string,

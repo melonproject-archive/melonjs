@@ -2,6 +2,9 @@ import { ethers } from 'ethers';
 // @ts-ignore
 import { Contract, TransactionWrapper } from '../Contract';
 
+/**
+ * `PriceTolerance` contract
+ */
 export class PriceTolerance extends Contract {
   public readonly ethers: PriceToleranceEthersContract;
 
@@ -10,38 +13,38 @@ export class PriceTolerance extends Contract {
   }
 
   /**
-   * `PriceTolerance` contract call for the `TAKE_ORDER` function.
+   * `PriceTolerance` contract call for `TAKE_ORDER` function.
    *
-   * @contract PriceTolerance
-   * @signature TAKE_ORDER()
-   * @method function TAKE_ORDER() view returns (bytes4)
+   * ```solc
+   * function TAKE_ORDER() view returns (bytes4)
+   * ```
    */
   TAKE_ORDER: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `PriceTolerance` contract call for the `identifier` function.
+   * `PriceTolerance` contract call for `identifier` function.
    *
-   * @contract PriceTolerance
-   * @signature identifier()
-   * @method function identifier() pure returns (string)
+   * ```solc
+   * function identifier() pure returns (string)
+   * ```
    */
   identifier: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `PriceTolerance` contract call for the `position` function.
+   * `PriceTolerance` contract call for `position` function.
    *
-   * @contract PriceTolerance
-   * @signature position()
-   * @method function position() pure returns (uint8)
+   * ```solc
+   * function position() pure returns (uint8)
+   * ```
    */
   position: ($$overrides?: ethers.CallOverrides) => Promise<number>;
 
   /**
-   * `PriceTolerance` contract call for the `takeGenericOrder` function.
+   * `PriceTolerance` contract call for `takeGenericOrder` function.
    *
-   * @contract PriceTolerance
-   * @signature takeGenericOrder(address,address,uint256[3])
-   * @method function takeGenericOrder(address,address,uint256[3]) view returns (bool)
+   * ```solc
+   * function takeGenericOrder(address,address,uint256[3]) view returns (bool)
+   * ```
    */
   takeGenericOrder: (
     _makerAsset: string,
@@ -51,11 +54,11 @@ export class PriceTolerance extends Contract {
   ) => Promise<boolean>;
 
   /**
-   * `PriceTolerance` contract call for the `takeOasisDex` function.
+   * `PriceTolerance` contract call for `takeOasisDex` function.
    *
-   * @contract PriceTolerance
-   * @signature takeOasisDex(address,bytes32,uint256)
-   * @method function takeOasisDex(address,bytes32,uint256) view returns (bool)
+   * ```solc
+   * function takeOasisDex(address,bytes32,uint256) view returns (bool)
+   * ```
    */
   takeOasisDex: (
     _exchange: string,
@@ -65,11 +68,11 @@ export class PriceTolerance extends Contract {
   ) => Promise<boolean>;
 
   /**
-   * `PriceTolerance` contract call for the `takeOrder` function.
+   * `PriceTolerance` contract call for `takeOrder` function.
    *
-   * @contract PriceTolerance
-   * @signature takeOrder(address[5],uint256[3],bytes32)
-   * @method function takeOrder(address[5],uint256[3],bytes32) view returns (bool)
+   * ```solc
+   * function takeOrder(address[5],uint256[3],bytes32) view returns (bool)
+   * ```
    */
   takeOrder: (
     _addresses: [string, string, string, string, string],
@@ -79,20 +82,20 @@ export class PriceTolerance extends Contract {
   ) => Promise<boolean>;
 
   /**
-   * `PriceTolerance` contract call for the `tolerance` function.
+   * `PriceTolerance` contract call for `tolerance` function.
    *
-   * @contract PriceTolerance
-   * @signature tolerance()
-   * @method function tolerance() view returns (uint256)
+   * ```solc
+   * function tolerance() view returns (uint256)
+   * ```
    */
   tolerance: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
   /**
-   * `PriceTolerance` contract transaction for `rule` function.
+   * `PriceTolerance` contract call for `rule` function.
    *
-   * @contract PriceTolerance
-   * @signature rule(bytes4,address[5],uint256[3],bytes32)
-   * @method function rule(bytes4,address[5],uint256[3],bytes32) returns (bool)
+   * ```solc
+   * function rule(bytes4,address[5],uint256[3],bytes32) returns (bool)
+   * ```
    */
   rule: (
     _sig: string | ethers.utils.BytesLike,

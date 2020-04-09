@@ -2,6 +2,13 @@ import { ethers } from 'ethers';
 // @ts-ignore
 import { Contract, TransactionWrapper } from '../Contract';
 
+/**
+ * Price Feed Template
+ *
+ * Routes external prices to smart contracts from Kyber
+ *
+ * @author Melonport AG <team@melonport.com>
+ */
 export class KyberPriceFeed extends Contract {
   public readonly ethers: KyberPriceFeedEthersContract;
 
@@ -10,47 +17,51 @@ export class KyberPriceFeed extends Contract {
   }
 
   /**
-   * `KyberPriceFeed` contract call for the `KYBER_NETWORK_PROXY` function.
+   * `KyberPriceFeed` contract call for `KYBER_NETWORK_PROXY` function.
    *
-   * @contract KyberPriceFeed
-   * @signature KYBER_NETWORK_PROXY()
-   * @method function KYBER_NETWORK_PROXY() view returns (address)
+   * ```solc
+   * function KYBER_NETWORK_PROXY() view returns (address)
+   * ```
    */
   KYBER_NETWORK_PROXY: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `KyberPriceFeed` contract call for the `KYBER_PRECISION` function.
+   * `KyberPriceFeed` contract call for `KYBER_PRECISION` function.
    *
-   * @contract KyberPriceFeed
-   * @signature KYBER_PRECISION()
-   * @method function KYBER_PRECISION() view returns (uint8)
+   * ```solc
+   * function KYBER_PRECISION() view returns (uint8)
+   * ```
    */
   KYBER_PRECISION: ($$overrides?: ethers.CallOverrides) => Promise<number>;
 
   /**
-   * `KyberPriceFeed` contract call for the `QUOTE_ASSET` function.
+   * `KyberPriceFeed` contract call for `QUOTE_ASSET` function.
    *
-   * @contract KyberPriceFeed
-   * @signature QUOTE_ASSET()
-   * @method function QUOTE_ASSET() view returns (address)
+   * ```solc
+   * function QUOTE_ASSET() view returns (address)
+   * ```
    */
   QUOTE_ASSET: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `KyberPriceFeed` contract call for the `VALIDITY_INTERVAL` function.
+   * `KyberPriceFeed` contract call for `VALIDITY_INTERVAL` function.
    *
-   * @contract KyberPriceFeed
-   * @signature VALIDITY_INTERVAL()
-   * @method function VALIDITY_INTERVAL() view returns (uint32)
+   * ```solc
+   * function VALIDITY_INTERVAL() view returns (uint32)
+   * ```
    */
   VALIDITY_INTERVAL: ($$overrides?: ethers.CallOverrides) => Promise<number>;
 
   /**
-   * `KyberPriceFeed` contract call for the `convertQuantity` function.
+   * Get quantity of _toAsset equal in value to some quantity of _fromAsset
    *
-   * @contract KyberPriceFeed
-   * @signature convertQuantity(uint256,address,address)
-   * @method function convertQuantity(uint256,address,address) view returns (uint256)
+   * ```solc
+   * function convertQuantity(uint256,address,address) view returns (uint256)
+   * ```
+   *
+   * @param _fromAsset Address of _fromAsset
+   * @param _fromAssetQuantity Amount of _fromAsset
+   * @param _toAsset Address of _toAsset
    */
   convertQuantity: (
     _fromAssetQuantity: ethers.BigNumberish,
@@ -60,11 +71,14 @@ export class KyberPriceFeed extends Contract {
   ) => Promise<ethers.BigNumber>;
 
   /**
-   * `KyberPriceFeed` contract call for the `getKyberPrice` function.
+   * Returns validity and price for some pair of assets from Kyber
    *
-   * @contract KyberPriceFeed
-   * @signature getKyberPrice(address,address)
-   * @method function getKyberPrice(address,address) view returns (bool, uint256)
+   * ```solc
+   * function getKyberPrice(address,address) view returns (bool, uint256)
+   * ```
+   *
+   * @param _baseAsset Address of base asset from the pair
+   * @param _quoteAsset Address of quote asset from the pair
    */
   getKyberPrice: (
     _baseAsset: string,
@@ -73,11 +87,15 @@ export class KyberPriceFeed extends Contract {
   ) => Promise<{ validity_: boolean; kyberPrice_: ethers.BigNumber }>;
 
   /**
-   * `KyberPriceFeed` contract call for the `getOrderPriceInfo` function.
+   * Returns price as determined by an order
    *
-   * @contract KyberPriceFeed
-   * @signature getOrderPriceInfo(address,uint256,uint256)
-   * @method function getOrderPriceInfo(address,uint256,uint256) view returns (uint256)
+   * ```solc
+   * function getOrderPriceInfo(address,uint256,uint256) view returns (uint256)
+   * ```
+   *
+   * @param _buyQuantity Quantity (in base units) of _buyAsset being bought
+   * @param _sellAsset Address of the asset to be sold
+   * @param _sellQuantity Quantity (in base units) of _sellAsset being sold
    */
   getOrderPriceInfo: (
     _sellAsset: string,
@@ -87,11 +105,15 @@ export class KyberPriceFeed extends Contract {
   ) => Promise<ethers.BigNumber>;
 
   /**
-   * `KyberPriceFeed` contract call for the `getPrice` function.
+   * Gets price of an asset times 10^assetDecimals
    *
-   * @contract KyberPriceFeed
-   * @signature getPrice(address)
-   * @method function getPrice(address) view returns (uint256, uint256)
+   * Asset must be registered
+   *
+   * ```solc
+   * function getPrice(address) view returns (uint256, uint256)
+   * ```
+   *
+   * @param _asset Asset for which price should be returned
    */
   getPrice: (
     _asset: string,
@@ -99,11 +121,13 @@ export class KyberPriceFeed extends Contract {
   ) => Promise<{ price_: ethers.BigNumber; timestamp_: ethers.BigNumber }>;
 
   /**
-   * `KyberPriceFeed` contract call for the `getPrices` function.
+   * Return getPrice for each of _assets
    *
-   * @contract KyberPriceFeed
-   * @signature getPrices(address[])
-   * @method function getPrices(address[]) view returns (uint256[], uint256[])
+   * ```solc
+   * function getPrices(address[]) view returns (uint256[], uint256[])
+   * ```
+   *
+   * @param _assets Assets for which prices should be returned
    */
   getPrices: (
     _assets: string[],
@@ -111,11 +135,14 @@ export class KyberPriceFeed extends Contract {
   ) => Promise<{ prices_: ethers.BigNumber[]; timestamps_: ethers.BigNumber[] }>;
 
   /**
-   * `KyberPriceFeed` contract call for the `getReferencePriceInfo` function.
+   * Get price of an asset in terms of some quote asset, plus the quote asset's decimalsThis function reverts if either the base or quote have invalid prices
    *
-   * @contract KyberPriceFeed
-   * @signature getReferencePriceInfo(address,address)
-   * @method function getReferencePriceInfo(address,address) view returns (uint256, uint256)
+   * ```solc
+   * function getReferencePriceInfo(address,address) view returns (uint256, uint256)
+   * ```
+   *
+   * @param _baseAsset Address of base asset
+   * @param _quoteAsset Address of quote asset
    */
   getReferencePriceInfo: (
     _baseAsset: string,
@@ -124,119 +151,136 @@ export class KyberPriceFeed extends Contract {
   ) => Promise<{ referencePrice_: ethers.BigNumber; decimals_: ethers.BigNumber }>;
 
   /**
-   * `KyberPriceFeed` contract call for the `hasValidPrice` function.
+   * Whether an asset is registered and has a fresh price
    *
-   * @contract KyberPriceFeed
-   * @signature hasValidPrice(address)
-   * @method function hasValidPrice(address) view returns (bool)
+   * ```solc
+   * function hasValidPrice(address) view returns (bool)
+   * ```
+   *
+   * @param _asset Asset to check for a valid price
    */
   hasValidPrice: (_asset: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
 
   /**
-   * `KyberPriceFeed` contract call for the `hasValidPrices` function.
+   * Whether each of the _assets is registered and has a fresh price
    *
-   * @contract KyberPriceFeed
-   * @signature hasValidPrices(address[])
-   * @method function hasValidPrices(address[]) view returns (bool)
+   * ```solc
+   * function hasValidPrices(address[]) view returns (bool)
+   * ```
+   *
+   * @param _assets Assets for which validity information should be returned
    */
   hasValidPrices: (_assets: string[], $$overrides?: ethers.CallOverrides) => Promise<boolean>;
 
   /**
-   * `KyberPriceFeed` contract call for the `lastUpdate` function.
+   * `KyberPriceFeed` contract call for `lastUpdate` function.
    *
-   * @contract KyberPriceFeed
-   * @signature lastUpdate()
-   * @method function lastUpdate() view returns (uint256)
+   * ```solc
+   * function lastUpdate() view returns (uint256)
+   * ```
    */
   lastUpdate: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
   /**
-   * `KyberPriceFeed` contract call for the `maxPriceDeviation` function.
+   * `KyberPriceFeed` contract call for `maxPriceDeviation` function.
    *
-   * @contract KyberPriceFeed
-   * @signature maxPriceDeviation()
-   * @method function maxPriceDeviation() view returns (uint256)
+   * ```solc
+   * function maxPriceDeviation() view returns (uint256)
+   * ```
    */
   maxPriceDeviation: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
   /**
-   * `KyberPriceFeed` contract call for the `maxSpread` function.
+   * `KyberPriceFeed` contract call for `maxSpread` function.
    *
-   * @contract KyberPriceFeed
-   * @signature maxSpread()
-   * @method function maxSpread() view returns (uint256)
+   * ```solc
+   * function maxSpread() view returns (uint256)
+   * ```
    */
   maxSpread: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
   /**
-   * `KyberPriceFeed` contract call for the `prices` function.
+   * `KyberPriceFeed` contract call for `prices` function.
    *
-   * @contract KyberPriceFeed
-   * @signature prices(address)
-   * @method function prices(address) view returns (uint256)
+   * ```solc
+   * function prices(address) view returns (uint256)
+   * ```
    */
   prices: ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
   /**
-   * `KyberPriceFeed` contract call for the `registry` function.
+   * `KyberPriceFeed` contract call for `registry` function.
    *
-   * @contract KyberPriceFeed
-   * @signature registry()
-   * @method function registry() view returns (address)
+   * ```solc
+   * function registry() view returns (address)
+   * ```
    */
   registry: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `KyberPriceFeed` contract call for the `updater` function.
+   * `KyberPriceFeed` contract call for `updater` function.
    *
-   * @contract KyberPriceFeed
-   * @signature updater()
-   * @method function updater() view returns (address)
+   * ```solc
+   * function updater() view returns (address)
+   * ```
    */
   updater: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `KyberPriceFeed` contract transaction for `setMaxPriceDeviation` function.
+   * Update maximum price deviation between price hints and Kyber pricePrice deviation becomes a % when divided by 10^18 (e.g. 10^17 becomes 10%)
    *
-   * @contract KyberPriceFeed
-   * @signature setMaxPriceDeviation(uint256)
-   * @method function setMaxPriceDeviation(uint256)
+   * ```solc
+   * function setMaxPriceDeviation(uint256)
+   * ```
+   *
+   * @param _newMaxPriceDeviation New maximum price deviation
    */
   setMaxPriceDeviation: (_newMaxPriceDeviation: ethers.BigNumberish) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `KyberPriceFeed` contract transaction for `setMaxSpread` function.
+   * Update maximum spread for prices derived from KyberMax spread becomes a % when divided by 10^18 (e.g. 10^17 becomes 10%)
    *
-   * @contract KyberPriceFeed
-   * @signature setMaxSpread(uint256)
-   * @method function setMaxSpread(uint256)
+   * ```solc
+   * function setMaxSpread(uint256)
+   * ```
+   *
+   * @param _newMaxSpread New maximum spread
    */
   setMaxSpread: (_newMaxSpread: ethers.BigNumberish) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `KyberPriceFeed` contract transaction for `setRegistry` function.
+   * Update this feed's Registry reference
    *
-   * @contract KyberPriceFeed
-   * @signature setRegistry(address)
-   * @method function setRegistry(address)
+   * ```solc
+   * function setRegistry(address)
+   * ```
+   *
+   * @param _newRegistry New Registry this feed should point to
    */
   setRegistry: (_newRegistry: string) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `KyberPriceFeed` contract transaction for `setUpdater` function.
+   * Update this feed's designated updater
    *
-   * @contract KyberPriceFeed
-   * @signature setUpdater(address)
-   * @method function setUpdater(address)
+   * ```solc
+   * function setUpdater(address)
+   * ```
+   *
+   * @param _newUpdater New designated updater for this feed
    */
   setUpdater: (_newUpdater: string) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `KyberPriceFeed` contract transaction for `update` function.
+   * Update prices for registered assets
    *
-   * @contract KyberPriceFeed
-   * @signature update(address[],uint256[])
-   * @method function update(address[],uint256[])
+   * Stores zero as a convention for invalid price
+   *
+   * ```solc
+   * function update(address[],uint256[])
+   * ```
+   *
+   * @param _saneAssets Asset addresses (must match assets array from getRegisteredAssets)
+   * @param _sanePrices Asset price hints (checked against prices from Kyber)
    */
   update: (_saneAssets: string[], _sanePrices: ethers.BigNumber[]) => TransactionWrapper<ethers.Overrides>;
 

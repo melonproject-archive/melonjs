@@ -2,6 +2,11 @@ import { ethers } from 'ethers';
 // @ts-ignore
 import { Contract, TransactionWrapper } from '../Contract';
 
+/**
+ * `AssetWhitelist` contract
+ *
+ * Assets can be removed from but not added to whitelist
+ */
 export class AssetWhitelist extends Contract {
   public readonly ethers: AssetWhitelistEthersContract;
 
@@ -10,101 +15,101 @@ export class AssetWhitelist extends Contract {
   }
 
   /**
-   * `AssetWhitelist` contract call for the `TAKE_ORDER` function.
+   * `AssetWhitelist` contract call for `TAKE_ORDER` function.
    *
-   * @contract AssetWhitelist
-   * @signature TAKE_ORDER()
-   * @method function TAKE_ORDER() view returns (bytes4)
+   * ```solc
+   * function TAKE_ORDER() view returns (bytes4)
+   * ```
    */
   TAKE_ORDER: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `AssetWhitelist` contract call for the `authority` function.
+   * `AssetWhitelist` contract call for `authority` function.
    *
-   * @contract AssetWhitelist
-   * @signature authority()
-   * @method function authority() view returns (address)
+   * ```solc
+   * function authority() view returns (address)
+   * ```
    */
   authority: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `AssetWhitelist` contract call for the `getAssetIndex` function.
+   * `AssetWhitelist` contract call for `getAssetIndex` function.
    *
-   * @contract AssetWhitelist
-   * @signature getAssetIndex(address)
-   * @method function getAssetIndex(address) view returns (uint256)
+   * ```solc
+   * function getAssetIndex(address) view returns (uint256)
+   * ```
    */
   getAssetIndex: (_asset: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
   /**
-   * `AssetWhitelist` contract call for the `getMemberCount` function.
+   * `AssetWhitelist` contract call for `getMemberCount` function.
    *
-   * @contract AssetWhitelist
-   * @signature getMemberCount()
-   * @method function getMemberCount() view returns (uint256)
+   * ```solc
+   * function getMemberCount() view returns (uint256)
+   * ```
    */
   getMemberCount: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
   /**
-   * `AssetWhitelist` contract call for the `getMembers` function.
+   * `AssetWhitelist` contract call for `getMembers` function.
    *
-   * @contract AssetWhitelist
-   * @signature getMembers()
-   * @method function getMembers() view returns (address[])
+   * ```solc
+   * function getMembers() view returns (address[])
+   * ```
    */
   getMembers: ($$overrides?: ethers.CallOverrides) => Promise<string[]>;
 
   /**
-   * `AssetWhitelist` contract call for the `identifier` function.
+   * `AssetWhitelist` contract call for `identifier` function.
    *
-   * @contract AssetWhitelist
-   * @signature identifier()
-   * @method function identifier() pure returns (string)
+   * ```solc
+   * function identifier() pure returns (string)
+   * ```
    */
   identifier: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `AssetWhitelist` contract call for the `isMember` function.
+   * `AssetWhitelist` contract call for `isMember` function.
    *
-   * @contract AssetWhitelist
-   * @signature isMember(address)
-   * @method function isMember(address) view returns (bool)
+   * ```solc
+   * function isMember(address) view returns (bool)
+   * ```
    */
   isMember: (_asset: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
 
   /**
-   * `AssetWhitelist` contract call for the `owner` function.
+   * `AssetWhitelist` contract call for `owner` function.
    *
-   * @contract AssetWhitelist
-   * @signature owner()
-   * @method function owner() view returns (address)
+   * ```solc
+   * function owner() view returns (address)
+   * ```
    */
   owner: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `AssetWhitelist` contract call for the `position` function.
+   * `AssetWhitelist` contract call for `position` function.
    *
-   * @contract AssetWhitelist
-   * @signature position()
-   * @method function position() pure returns (uint8)
+   * ```solc
+   * function position() pure returns (uint8)
+   * ```
    */
   position: ($$overrides?: ethers.CallOverrides) => Promise<number>;
 
   /**
-   * `AssetWhitelist` contract transaction for `removeFromWhitelist` function.
+   * `AssetWhitelist` contract call for `removeFromWhitelist` function.
    *
-   * @contract AssetWhitelist
-   * @signature removeFromWhitelist(address)
-   * @method function removeFromWhitelist(address)
+   * ```solc
+   * function removeFromWhitelist(address)
+   * ```
    */
   removeFromWhitelist: (_asset: string) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `AssetWhitelist` contract transaction for `rule` function.
+   * `AssetWhitelist` contract call for `rule` function.
    *
-   * @contract AssetWhitelist
-   * @signature rule(bytes4,address[5],uint256[3],bytes32)
-   * @method function rule(bytes4,address[5],uint256[3],bytes32) returns (bool)
+   * ```solc
+   * function rule(bytes4,address[5],uint256[3],bytes32) returns (bool)
+   * ```
    */
   rule: (
     sig: string | ethers.utils.BytesLike,
@@ -114,20 +119,20 @@ export class AssetWhitelist extends Contract {
   ) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `AssetWhitelist` contract transaction for `setAuthority` function.
+   * `AssetWhitelist` contract call for `setAuthority` function.
    *
-   * @contract AssetWhitelist
-   * @signature setAuthority(address)
-   * @method function setAuthority(address)
+   * ```solc
+   * function setAuthority(address)
+   * ```
    */
   setAuthority: (authority_: string) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `AssetWhitelist` contract transaction for `setOwner` function.
+   * `AssetWhitelist` contract call for `setOwner` function.
    *
-   * @contract AssetWhitelist
-   * @signature setOwner(address)
-   * @method function setOwner(address)
+   * ```solc
+   * function setOwner(address)
+   * ```
    */
   setOwner: (owner_: string) => TransactionWrapper<ethers.Overrides>;
 

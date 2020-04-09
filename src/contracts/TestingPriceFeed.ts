@@ -2,6 +2,11 @@ import { ethers } from 'ethers';
 // @ts-ignore
 import { Contract, TransactionWrapper } from '../Contract';
 
+/**
+ * `TestingPriceFeed` contract
+ *
+ * Intended for testing purposes onlyUpdates and exposes price information
+ */
 export class TestingPriceFeed extends Contract {
   public readonly ethers: TestingPriceFeedEthersContract;
 
@@ -10,29 +15,29 @@ export class TestingPriceFeed extends Contract {
   }
 
   /**
-   * `TestingPriceFeed` contract call for the `QUOTE_ASSET` function.
+   * `TestingPriceFeed` contract call for `QUOTE_ASSET` function.
    *
-   * @contract TestingPriceFeed
-   * @signature QUOTE_ASSET()
-   * @method function QUOTE_ASSET() view returns (address)
+   * ```solc
+   * function QUOTE_ASSET() view returns (address)
+   * ```
    */
   QUOTE_ASSET: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `TestingPriceFeed` contract call for the `assetsToDecimals` function.
+   * `TestingPriceFeed` contract call for `assetsToDecimals` function.
    *
-   * @contract TestingPriceFeed
-   * @signature assetsToDecimals(address)
-   * @method function assetsToDecimals(address) view returns (uint256)
+   * ```solc
+   * function assetsToDecimals(address) view returns (uint256)
+   * ```
    */
   assetsToDecimals: ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
   /**
-   * `TestingPriceFeed` contract call for the `assetsToPrices` function.
+   * `TestingPriceFeed` contract call for `assetsToPrices` function.
    *
-   * @contract TestingPriceFeed
-   * @signature assetsToPrices(address)
-   * @method function assetsToPrices(address) view returns (uint256, uint256)
+   * ```solc
+   * function assetsToPrices(address) view returns (uint256, uint256)
+   * ```
    */
   assetsToPrices: (
     $$0: string,
@@ -40,11 +45,11 @@ export class TestingPriceFeed extends Contract {
   ) => Promise<{ price: ethers.BigNumber; timestamp: ethers.BigNumber }>;
 
   /**
-   * `TestingPriceFeed` contract call for the `convertQuantity` function.
+   * Get quantity of _toAsset equal in value to given quantity of _fromAsset
    *
-   * @contract TestingPriceFeed
-   * @signature convertQuantity(uint256,address,address)
-   * @method function convertQuantity(uint256,address,address) view returns (uint256)
+   * ```solc
+   * function convertQuantity(uint256,address,address) view returns (uint256)
+   * ```
    */
   convertQuantity: (
     _fromAssetQuantity: ethers.BigNumberish,
@@ -54,11 +59,11 @@ export class TestingPriceFeed extends Contract {
   ) => Promise<ethers.BigNumber>;
 
   /**
-   * `TestingPriceFeed` contract call for the `getOrderPriceInfo` function.
+   * `TestingPriceFeed` contract call for `getOrderPriceInfo` function.
    *
-   * @contract TestingPriceFeed
-   * @signature getOrderPriceInfo(address,uint256,uint256)
-   * @method function getOrderPriceInfo(address,uint256,uint256) view returns (uint256)
+   * ```solc
+   * function getOrderPriceInfo(address,uint256,uint256) view returns (uint256)
+   * ```
    */
   getOrderPriceInfo: (
     _sellAsset: string,
@@ -68,110 +73,112 @@ export class TestingPriceFeed extends Contract {
   ) => Promise<ethers.BigNumber>;
 
   /**
-   * `TestingPriceFeed` contract call for the `getPrice` function.
+   * `TestingPriceFeed` contract call for `getPrice` function.
    *
-   * @contract TestingPriceFeed
-   * @signature getPrice(address)
-   * @method function getPrice(address) view returns (uint256, uint256)
+   * ```solc
+   * function getPrice(address) view returns (uint256, uint256)
+   * ```
    */
   getPrice: (_asset: string, $$overrides?: ethers.CallOverrides) => Promise<any[]>;
 
   /**
-   * `TestingPriceFeed` contract call for the `getPriceInfo` function.
+   * `TestingPriceFeed` contract call for `getPriceInfo` function.
    *
-   * @contract TestingPriceFeed
-   * @signature getPriceInfo(address)
-   * @method function getPriceInfo(address) view returns (uint256, uint256)
+   * ```solc
+   * function getPriceInfo(address) view returns (uint256, uint256)
+   * ```
    */
   getPriceInfo: (_asset: string, $$overrides?: ethers.CallOverrides) => Promise<any[]>;
 
   /**
-   * `TestingPriceFeed` contract call for the `getPrices` function.
+   * `TestingPriceFeed` contract call for `getPrices` function.
    *
-   * @contract TestingPriceFeed
-   * @signature getPrices(address[])
-   * @method function getPrices(address[]) view returns (uint256[], uint256[])
+   * ```solc
+   * function getPrices(address[]) view returns (uint256[], uint256[])
+   * ```
    */
   getPrices: (_assets: string[], $$overrides?: ethers.CallOverrides) => Promise<any[]>;
 
   /**
-   * `TestingPriceFeed` contract call for the `getReferencePriceInfo` function.
+   * `TestingPriceFeed` contract call for `getReferencePriceInfo` function.
    *
-   * @contract TestingPriceFeed
-   * @signature getReferencePriceInfo(address,address)
-   * @method function getReferencePriceInfo(address,address) view returns (uint256, uint256)
+   * ```solc
+   * function getReferencePriceInfo(address,address) view returns (uint256, uint256)
+   * ```
    */
   getReferencePriceInfo: (_base: string, _quote: string, $$overrides?: ethers.CallOverrides) => Promise<any[]>;
 
   /**
-   * `TestingPriceFeed` contract call for the `hasValidPrice` function.
+   * Doesn't check validity as TestingPriceFeed has no validity variable
    *
-   * @contract TestingPriceFeed
-   * @signature hasValidPrice(address)
-   * @method function hasValidPrice(address) view returns (bool)
+   * ```solc
+   * function hasValidPrice(address) view returns (bool)
+   * ```
+   *
+   * @param _asset Asset in registrar
    */
   hasValidPrice: (_asset: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
 
   /**
-   * `TestingPriceFeed` contract call for the `hasValidPrices` function.
+   * `TestingPriceFeed` contract call for `hasValidPrices` function.
    *
-   * @contract TestingPriceFeed
-   * @signature hasValidPrices(address[])
-   * @method function hasValidPrices(address[]) view returns (bool)
+   * ```solc
+   * function hasValidPrices(address[]) view returns (bool)
+   * ```
    */
   hasValidPrices: (_assets: string[], $$overrides?: ethers.CallOverrides) => Promise<boolean>;
 
   /**
-   * `TestingPriceFeed` contract call for the `lastUpdate` function.
+   * `TestingPriceFeed` contract call for `lastUpdate` function.
    *
-   * @contract TestingPriceFeed
-   * @signature lastUpdate()
-   * @method function lastUpdate() view returns (uint256)
+   * ```solc
+   * function lastUpdate() view returns (uint256)
+   * ```
    */
   lastUpdate: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
   /**
-   * `TestingPriceFeed` contract transaction for `batchSetDecimals` function.
+   * `TestingPriceFeed` contract call for `batchSetDecimals` function.
    *
-   * @contract TestingPriceFeed
-   * @signature batchSetDecimals(address[],uint256[])
-   * @method function batchSetDecimals(address[],uint256[])
+   * ```solc
+   * function batchSetDecimals(address[],uint256[])
+   * ```
    */
   batchSetDecimals: (_assets: string[], _decimals: ethers.BigNumber[]) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `TestingPriceFeed` contract transaction for `setDecimals` function.
+   * `TestingPriceFeed` contract call for `setDecimals` function.
    *
-   * @contract TestingPriceFeed
-   * @signature setDecimals(address,uint256)
-   * @method function setDecimals(address,uint256)
+   * ```solc
+   * function setDecimals(address,uint256)
+   * ```
    */
   setDecimals: (_asset: string, _decimal: ethers.BigNumberish) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `TestingPriceFeed` contract transaction for `setIsRecent` function.
+   * `TestingPriceFeed` contract call for `setIsRecent` function.
    *
-   * @contract TestingPriceFeed
-   * @signature setIsRecent(bool)
-   * @method function setIsRecent(bool)
+   * ```solc
+   * function setIsRecent(bool)
+   * ```
    */
   setIsRecent: (_state: boolean) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `TestingPriceFeed` contract transaction for `setNeverValid` function.
+   * `TestingPriceFeed` contract call for `setNeverValid` function.
    *
-   * @contract TestingPriceFeed
-   * @signature setNeverValid(bool)
-   * @method function setNeverValid(bool)
+   * ```solc
+   * function setNeverValid(bool)
+   * ```
    */
   setNeverValid: (_state: boolean) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `TestingPriceFeed` contract transaction for `update` function.
+   * `TestingPriceFeed` contract call for `update` function.
    *
-   * @contract TestingPriceFeed
-   * @signature update(address[],uint256[])
-   * @method function update(address[],uint256[])
+   * ```solc
+   * function update(address[],uint256[])
+   * ```
    */
   update: (_assets: string[], _prices: ethers.BigNumber[]) => TransactionWrapper<ethers.Overrides>;
 

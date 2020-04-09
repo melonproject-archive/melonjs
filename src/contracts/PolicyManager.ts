@@ -2,6 +2,9 @@ import { ethers } from 'ethers';
 // @ts-ignore
 import { Contract, TransactionWrapper } from '../Contract';
 
+/**
+ * `PolicyManager` contract
+ */
 export class PolicyManager extends Contract {
   public readonly ethers: PolicyManagerEthersContract;
 
@@ -10,47 +13,47 @@ export class PolicyManager extends Contract {
   }
 
   /**
-   * `PolicyManager` contract call for the `authority` function.
+   * `PolicyManager` contract call for `authority` function.
    *
-   * @contract PolicyManager
-   * @signature authority()
-   * @method function authority() view returns (address)
+   * ```solc
+   * function authority() view returns (address)
+   * ```
    */
   authority: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `PolicyManager` contract call for the `fundFactory` function.
+   * `PolicyManager` contract call for `fundFactory` function.
    *
-   * @contract PolicyManager
-   * @signature fundFactory()
-   * @method function fundFactory() view returns (address)
+   * ```solc
+   * function fundFactory() view returns (address)
+   * ```
    */
   fundFactory: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `PolicyManager` contract call for the `getHub` function.
+   * `PolicyManager` contract call for `getHub` function.
    *
-   * @contract PolicyManager
-   * @signature getHub()
-   * @method function getHub() view returns (address)
+   * ```solc
+   * function getHub() view returns (address)
+   * ```
    */
   getHub: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `PolicyManager` contract call for the `getPoliciesBySig` function.
+   * `PolicyManager` contract call for `getPoliciesBySig` function.
    *
-   * @contract PolicyManager
-   * @signature getPoliciesBySig(bytes4)
-   * @method function getPoliciesBySig(bytes4) view returns (address[], address[])
+   * ```solc
+   * function getPoliciesBySig(bytes4) view returns (address[], address[])
+   * ```
    */
   getPoliciesBySig: (sig: string | ethers.utils.BytesLike, $$overrides?: ethers.CallOverrides) => Promise<any[]>;
 
   /**
-   * `PolicyManager` contract call for the `getRoutes` function.
+   * `PolicyManager` contract call for `getRoutes` function.
    *
-   * @contract PolicyManager
-   * @signature getRoutes()
-   * @method function getRoutes() view returns (tuple(address,address,address,address,address,address,address))
+   * ```solc
+   * function getRoutes() view returns (tuple(address,address,address,address,address,address,address))
+   * ```
    */
   getRoutes: (
     $$overrides?: ethers.CallOverrides,
@@ -65,58 +68,58 @@ export class PolicyManager extends Contract {
   }>;
 
   /**
-   * `PolicyManager` contract call for the `initialized` function.
+   * `PolicyManager` contract call for `initialized` function.
    *
-   * @contract PolicyManager
-   * @signature initialized()
-   * @method function initialized() view returns (bool)
+   * ```solc
+   * function initialized() view returns (bool)
+   * ```
    */
   initialized: ($$overrides?: ethers.CallOverrides) => Promise<boolean>;
 
   /**
-   * `PolicyManager` contract call for the `owner` function.
+   * `PolicyManager` contract call for `owner` function.
    *
-   * @contract PolicyManager
-   * @signature owner()
-   * @method function owner() view returns (address)
+   * ```solc
+   * function owner() view returns (address)
+   * ```
    */
   owner: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `PolicyManager` contract call for the `priceSource` function.
+   * `PolicyManager` contract call for `priceSource` function.
    *
-   * @contract PolicyManager
-   * @signature priceSource()
-   * @method function priceSource() view returns (address)
+   * ```solc
+   * function priceSource() view returns (address)
+   * ```
    */
   priceSource: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `PolicyManager` contract transaction for `batchRegister` function.
+   * `PolicyManager` contract call for `batchRegister` function.
    *
-   * @contract PolicyManager
-   * @signature batchRegister(bytes4[],address[])
-   * @method function batchRegister(bytes4[],address[])
+   * ```solc
+   * function batchRegister(bytes4[],address[])
+   * ```
    */
   batchRegister: (sig: string | ethers.utils.BytesLike, _policies: string[]) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `PolicyManager` contract transaction for `initialize` function.
+   * `PolicyManager` contract call for `initialize` function.
    *
-   * @contract PolicyManager
-   * @signature initialize(address[7])
-   * @method function initialize(address[7])
+   * ```solc
+   * function initialize(address[7])
+   * ```
    */
   initialize: (
     _spokes: [string, string, string, string, string, string, string],
   ) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `PolicyManager` contract transaction for `postValidate` function.
+   * `PolicyManager` contract call for `postValidate` function.
    *
-   * @contract PolicyManager
-   * @signature postValidate(bytes4,address[5],uint256[3],bytes32)
-   * @method function postValidate(bytes4,address[5],uint256[3],bytes32)
+   * ```solc
+   * function postValidate(bytes4,address[5],uint256[3],bytes32)
+   * ```
    */
   postValidate: (
     sig: string | ethers.utils.BytesLike,
@@ -126,11 +129,11 @@ export class PolicyManager extends Contract {
   ) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `PolicyManager` contract transaction for `preValidate` function.
+   * `PolicyManager` contract call for `preValidate` function.
    *
-   * @contract PolicyManager
-   * @signature preValidate(bytes4,address[5],uint256[3],bytes32)
-   * @method function preValidate(bytes4,address[5],uint256[3],bytes32)
+   * ```solc
+   * function preValidate(bytes4,address[5],uint256[3],bytes32)
+   * ```
    */
   preValidate: (
     sig: string | ethers.utils.BytesLike,
@@ -140,29 +143,29 @@ export class PolicyManager extends Contract {
   ) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `PolicyManager` contract transaction for `register` function.
+   * `PolicyManager` contract call for `register` function.
    *
-   * @contract PolicyManager
-   * @signature register(bytes4,address)
-   * @method function register(bytes4,address)
+   * ```solc
+   * function register(bytes4,address)
+   * ```
    */
   register: (sig: string | ethers.utils.BytesLike, _policy: string) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `PolicyManager` contract transaction for `setAuthority` function.
+   * `PolicyManager` contract call for `setAuthority` function.
    *
-   * @contract PolicyManager
-   * @signature setAuthority(address)
-   * @method function setAuthority(address)
+   * ```solc
+   * function setAuthority(address)
+   * ```
    */
   setAuthority: (authority_: string) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `PolicyManager` contract transaction for `setOwner` function.
+   * `PolicyManager` contract call for `setOwner` function.
    *
-   * @contract PolicyManager
-   * @signature setOwner(address)
-   * @method function setOwner(address)
+   * ```solc
+   * function setOwner(address)
+   * ```
    */
   setOwner: (owner_: string) => TransactionWrapper<ethers.Overrides>;
 

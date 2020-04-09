@@ -2,6 +2,9 @@ import { ethers } from 'ethers';
 // @ts-ignore
 import { Contract, TransactionWrapper } from '../Contract';
 
+/**
+ * `MaxConcentration` contract
+ */
 export class MaxConcentration extends Contract {
   public readonly ethers: MaxConcentrationEthersContract;
 
@@ -10,47 +13,47 @@ export class MaxConcentration extends Contract {
   }
 
   /**
-   * `MaxConcentration` contract call for the `TAKE_ORDER` function.
+   * `MaxConcentration` contract call for `TAKE_ORDER` function.
    *
-   * @contract MaxConcentration
-   * @signature TAKE_ORDER()
-   * @method function TAKE_ORDER() view returns (bytes4)
+   * ```solc
+   * function TAKE_ORDER() view returns (bytes4)
+   * ```
    */
   TAKE_ORDER: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `MaxConcentration` contract call for the `identifier` function.
+   * `MaxConcentration` contract call for `identifier` function.
    *
-   * @contract MaxConcentration
-   * @signature identifier()
-   * @method function identifier() pure returns (string)
+   * ```solc
+   * function identifier() pure returns (string)
+   * ```
    */
   identifier: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `MaxConcentration` contract call for the `maxConcentration` function.
+   * `MaxConcentration` contract call for `maxConcentration` function.
    *
-   * @contract MaxConcentration
-   * @signature maxConcentration()
-   * @method function maxConcentration() view returns (uint256)
+   * ```solc
+   * function maxConcentration() view returns (uint256)
+   * ```
    */
   maxConcentration: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
   /**
-   * `MaxConcentration` contract call for the `position` function.
+   * `MaxConcentration` contract call for `position` function.
    *
-   * @contract MaxConcentration
-   * @signature position()
-   * @method function position() pure returns (uint8)
+   * ```solc
+   * function position() pure returns (uint8)
+   * ```
    */
   position: ($$overrides?: ethers.CallOverrides) => Promise<number>;
 
   /**
-   * `MaxConcentration` contract transaction for `rule` function.
+   * `MaxConcentration` contract call for `rule` function.
    *
-   * @contract MaxConcentration
-   * @signature rule(bytes4,address[5],uint256[3],bytes32)
-   * @method function rule(bytes4,address[5],uint256[3],bytes32) returns (bool)
+   * ```solc
+   * function rule(bytes4,address[5],uint256[3],bytes32) returns (bool)
+   * ```
    */
   rule: (
     sig: string | ethers.utils.BytesLike,

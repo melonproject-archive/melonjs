@@ -2,6 +2,9 @@ import { ethers } from 'ethers';
 // @ts-ignore
 import { Contract, TransactionWrapper } from '../Contract';
 
+/**
+ * `PerformanceFee` contract
+ */
 export class PerformanceFee extends Contract {
   public readonly ethers: PerformanceFeeEthersContract;
 
@@ -10,101 +13,101 @@ export class PerformanceFee extends Contract {
   }
 
   /**
-   * `PerformanceFee` contract call for the `DIVISOR` function.
+   * `PerformanceFee` contract call for `DIVISOR` function.
    *
-   * @contract PerformanceFee
-   * @signature DIVISOR()
-   * @method function DIVISOR() view returns (uint256)
+   * ```solc
+   * function DIVISOR() view returns (uint256)
+   * ```
    */
   DIVISOR: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
   /**
-   * `PerformanceFee` contract call for the `REDEEM_WINDOW` function.
+   * `PerformanceFee` contract call for `REDEEM_WINDOW` function.
    *
-   * @contract PerformanceFee
-   * @signature REDEEM_WINDOW()
-   * @method function REDEEM_WINDOW() view returns (uint256)
+   * ```solc
+   * function REDEEM_WINDOW() view returns (uint256)
+   * ```
    */
   REDEEM_WINDOW: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
   /**
-   * `PerformanceFee` contract call for the `canUpdate` function.
+   * `PerformanceFee` contract call for `canUpdate` function.
    *
-   * @contract PerformanceFee
-   * @signature canUpdate(address)
-   * @method function canUpdate(address) view returns (bool)
+   * ```solc
+   * function canUpdate(address) view returns (bool)
+   * ```
    */
   canUpdate: (_who: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
 
   /**
-   * `PerformanceFee` contract call for the `highWaterMark` function.
+   * `PerformanceFee` contract call for `highWaterMark` function.
    *
-   * @contract PerformanceFee
-   * @signature highWaterMark(address)
-   * @method function highWaterMark(address) view returns (uint256)
+   * ```solc
+   * function highWaterMark(address) view returns (uint256)
+   * ```
    */
   highWaterMark: ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
   /**
-   * `PerformanceFee` contract call for the `identifier` function.
+   * `PerformanceFee` contract call for `identifier` function.
    *
-   * @contract PerformanceFee
-   * @signature identifier()
-   * @method function identifier() pure returns (uint256)
+   * ```solc
+   * function identifier() pure returns (uint256)
+   * ```
    */
   identifier: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
   /**
-   * `PerformanceFee` contract call for the `initializeTime` function.
+   * `PerformanceFee` contract call for `initializeTime` function.
    *
-   * @contract PerformanceFee
-   * @signature initializeTime(address)
-   * @method function initializeTime(address) view returns (uint256)
+   * ```solc
+   * function initializeTime(address) view returns (uint256)
+   * ```
    */
   initializeTime: ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
   /**
-   * `PerformanceFee` contract call for the `lastPayoutTime` function.
+   * `PerformanceFee` contract call for `lastPayoutTime` function.
    *
-   * @contract PerformanceFee
-   * @signature lastPayoutTime(address)
-   * @method function lastPayoutTime(address) view returns (uint256)
+   * ```solc
+   * function lastPayoutTime(address) view returns (uint256)
+   * ```
    */
   lastPayoutTime: ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
   /**
-   * `PerformanceFee` contract call for the `performanceFeePeriod` function.
+   * `PerformanceFee` contract call for `performanceFeePeriod` function.
    *
-   * @contract PerformanceFee
-   * @signature performanceFeePeriod(address)
-   * @method function performanceFeePeriod(address) view returns (uint256)
+   * ```solc
+   * function performanceFeePeriod(address) view returns (uint256)
+   * ```
    */
   performanceFeePeriod: ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
   /**
-   * `PerformanceFee` contract call for the `performanceFeeRate` function.
+   * `PerformanceFee` contract call for `performanceFeeRate` function.
    *
-   * @contract PerformanceFee
-   * @signature performanceFeeRate(address)
-   * @method function performanceFeeRate(address) view returns (uint256)
+   * ```solc
+   * function performanceFeeRate(address) view returns (uint256)
+   * ```
    */
   performanceFeeRate: ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
   /**
-   * `PerformanceFee` contract transaction for `feeAmount` function.
+   * Assumes management fee is zero
    *
-   * @contract PerformanceFee
-   * @signature feeAmount()
-   * @method function feeAmount() returns (uint256)
+   * ```solc
+   * function feeAmount() returns (uint256)
+   * ```
    */
   feeAmount: () => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `PerformanceFee` contract transaction for `initializeForUser` function.
+   * Sets initial state of the fee for a user
    *
-   * @contract PerformanceFee
-   * @signature initializeForUser(uint256,uint256,address)
-   * @method function initializeForUser(uint256,uint256,address)
+   * ```solc
+   * function initializeForUser(uint256,uint256,address)
+   * ```
    */
   initializeForUser: (
     feeRate: ethers.BigNumberish,
@@ -113,11 +116,11 @@ export class PerformanceFee extends Contract {
   ) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `PerformanceFee` contract transaction for `updateState` function.
+   * Assumes management fee is zero
    *
-   * @contract PerformanceFee
-   * @signature updateState()
-   * @method function updateState()
+   * ```solc
+   * function updateState()
+   * ```
    */
   updateState: () => TransactionWrapper<ethers.Overrides>;
 

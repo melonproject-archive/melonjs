@@ -2,6 +2,9 @@ import { ethers } from 'ethers';
 // @ts-ignore
 import { Contract, TransactionWrapper } from '../Contract';
 
+/**
+ * `ManagementFee` contract
+ */
 export class ManagementFee extends Contract {
   public readonly ethers: ManagementFeeEthersContract;
 
@@ -10,56 +13,56 @@ export class ManagementFee extends Contract {
   }
 
   /**
-   * `ManagementFee` contract call for the `DIVISOR` function.
+   * `ManagementFee` contract call for `DIVISOR` function.
    *
-   * @contract ManagementFee
-   * @signature DIVISOR()
-   * @method function DIVISOR() view returns (uint256)
+   * ```solc
+   * function DIVISOR() view returns (uint256)
+   * ```
    */
   DIVISOR: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
   /**
-   * `ManagementFee` contract call for the `feeAmount` function.
+   * `ManagementFee` contract call for `feeAmount` function.
    *
-   * @contract ManagementFee
-   * @signature feeAmount()
-   * @method function feeAmount() view returns (uint256)
+   * ```solc
+   * function feeAmount() view returns (uint256)
+   * ```
    */
   feeAmount: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
   /**
-   * `ManagementFee` contract call for the `identifier` function.
+   * `ManagementFee` contract call for `identifier` function.
    *
-   * @contract ManagementFee
-   * @signature identifier()
-   * @method function identifier() pure returns (uint256)
+   * ```solc
+   * function identifier() pure returns (uint256)
+   * ```
    */
   identifier: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
   /**
-   * `ManagementFee` contract call for the `lastPayoutTime` function.
+   * `ManagementFee` contract call for `lastPayoutTime` function.
    *
-   * @contract ManagementFee
-   * @signature lastPayoutTime(address)
-   * @method function lastPayoutTime(address) view returns (uint256)
+   * ```solc
+   * function lastPayoutTime(address) view returns (uint256)
+   * ```
    */
   lastPayoutTime: ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
   /**
-   * `ManagementFee` contract call for the `managementFeeRate` function.
+   * `ManagementFee` contract call for `managementFeeRate` function.
    *
-   * @contract ManagementFee
-   * @signature managementFeeRate(address)
-   * @method function managementFeeRate(address) view returns (uint256)
+   * ```solc
+   * function managementFeeRate(address) view returns (uint256)
+   * ```
    */
   managementFeeRate: ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
   /**
-   * `ManagementFee` contract transaction for `initializeForUser` function.
+   * `ManagementFee` contract call for `initializeForUser` function.
    *
-   * @contract ManagementFee
-   * @signature initializeForUser(uint256,uint256,address)
-   * @method function initializeForUser(uint256,uint256,address)
+   * ```solc
+   * function initializeForUser(uint256,uint256,address)
+   * ```
    */
   initializeForUser: (
     feeRate: ethers.BigNumberish,
@@ -68,11 +71,11 @@ export class ManagementFee extends Contract {
   ) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `ManagementFee` contract transaction for `updateState` function.
+   * `ManagementFee` contract call for `updateState` function.
    *
-   * @contract ManagementFee
-   * @signature updateState()
-   * @method function updateState()
+   * ```solc
+   * function updateState()
+   * ```
    */
   updateState: () => TransactionWrapper<ethers.Overrides>;
 

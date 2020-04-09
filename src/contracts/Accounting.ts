@@ -2,6 +2,9 @@ import { ethers } from 'ethers';
 // @ts-ignore
 import { Contract, TransactionWrapper } from '../Contract';
 
+/**
+ * `Accounting` contract
+ */
 export class Accounting extends Contract {
   public readonly ethers: AccountingEthersContract;
 
@@ -10,92 +13,97 @@ export class Accounting extends Contract {
   }
 
   /**
-   * `Accounting` contract call for the `DEFAULT_SHARE_PRICE` function.
+   * `Accounting` contract call for `DEFAULT_SHARE_PRICE` function.
    *
-   * @contract Accounting
-   * @signature DEFAULT_SHARE_PRICE()
-   * @method function DEFAULT_SHARE_PRICE() view returns (uint256)
+   * ```solc
+   * function DEFAULT_SHARE_PRICE() view returns (uint256)
+   * ```
    */
   DEFAULT_SHARE_PRICE: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
   /**
-   * `Accounting` contract call for the `DENOMINATION_ASSET` function.
+   * `Accounting` contract call for `DENOMINATION_ASSET` function.
    *
-   * @contract Accounting
-   * @signature DENOMINATION_ASSET()
-   * @method function DENOMINATION_ASSET() view returns (address)
+   * ```solc
+   * function DENOMINATION_ASSET() view returns (address)
+   * ```
    */
   DENOMINATION_ASSET: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Accounting` contract call for the `MAX_OWNED_ASSETS` function.
+   * `Accounting` contract call for `MAX_OWNED_ASSETS` function.
    *
-   * @contract Accounting
-   * @signature MAX_OWNED_ASSETS()
-   * @method function MAX_OWNED_ASSETS() view returns (uint8)
+   * ```solc
+   * function MAX_OWNED_ASSETS() view returns (uint8)
+   * ```
    */
   MAX_OWNED_ASSETS: ($$overrides?: ethers.CallOverrides) => Promise<number>;
 
   /**
-   * `Accounting` contract call for the `REGISTRY` function.
+   * `Accounting` contract call for `REGISTRY` function.
    *
-   * @contract Accounting
-   * @signature REGISTRY()
-   * @method function REGISTRY() view returns (address)
+   * ```solc
+   * function REGISTRY() view returns (address)
+   * ```
    */
   REGISTRY: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Accounting` contract call for the `SHARES_DECIMALS` function.
+   * `Accounting` contract call for `SHARES_DECIMALS` function.
    *
-   * @contract Accounting
-   * @signature SHARES_DECIMALS()
-   * @method function SHARES_DECIMALS() view returns (uint8)
+   * ```solc
+   * function SHARES_DECIMALS() view returns (uint8)
+   * ```
    */
   SHARES_DECIMALS: ($$overrides?: ethers.CallOverrides) => Promise<number>;
 
   /**
-   * `Accounting` contract call for the `assetBalances` function.
+   * `Accounting` contract call for `assetBalances` function.
    *
-   * @contract Accounting
-   * @signature assetBalances(address)
-   * @method function assetBalances(address) view returns (uint256)
+   * ```solc
+   * function assetBalances(address) view returns (uint256)
+   * ```
    */
   assetBalances: ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
   /**
-   * `Accounting` contract call for the `authority` function.
+   * `Accounting` contract call for `authority` function.
    *
-   * @contract Accounting
-   * @signature authority()
-   * @method function authority() view returns (address)
+   * ```solc
+   * function authority() view returns (address)
+   * ```
    */
   authority: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Accounting` contract call for the `calcAssetGav` function.
+   * Calculates the GAV for an asset held by the fund
    *
-   * @contract Accounting
-   * @signature calcAssetGav(address)
-   * @method function calcAssetGav(address) view returns (uint256)
+   * ```solc
+   * function calcAssetGav(address) view returns (uint256)
+   * ```
+   *
+   * @param _asset The ERC20 token for which to calculate the GAV
    */
   calcAssetGav: (_asset: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
   /**
-   * `Accounting` contract call for the `calcGav` function.
+   * Calculate the overall GAV of the fund
    *
-   * @contract Accounting
-   * @signature calcGav()
-   * @method function calcGav() view returns (uint256)
+   * ```solc
+   * function calcGav() view returns (uint256)
+   * ```
    */
   calcGav: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
   /**
-   * `Accounting` contract call for the `calcNav` function.
+   * Calculate the overall NAV of the fund
    *
-   * @contract Accounting
-   * @signature calcNav(uint256,uint256)
-   * @method function calcNav(uint256,uint256) pure returns (uint256)
+   * ```solc
+   * function calcNav(uint256,uint256) pure returns (uint256)
+   * ```
+   *
+   * @param _gav The fund GAV
+   * @param _unclaimedFeesInDenominationAsset The fees owed to the fund manager relative to the fund's denomination asset
    */
   calcNav: (
     _gav: ethers.BigNumberish,
@@ -104,78 +112,88 @@ export class Accounting extends Contract {
   ) => Promise<ethers.BigNumber>;
 
   /**
-   * `Accounting` contract call for the `fundFactory` function.
+   * `Accounting` contract call for `fundFactory` function.
    *
-   * @contract Accounting
-   * @signature fundFactory()
-   * @method function fundFactory() view returns (address)
+   * ```solc
+   * function fundFactory() view returns (address)
+   * ```
    */
   fundFactory: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Accounting` contract call for the `getAllAssetBalances` function.
+   * Retrieves the assetBalances of all assets of the fund
    *
-   * @contract Accounting
-   * @signature getAllAssetBalances()
-   * @method function getAllAssetBalances() view returns (address[], uint256[])
+   * Use getFundHoldings() as the canonical way to get all token balances for a fund
+   *
+   * ```solc
+   * function getAllAssetBalances() view returns (address[], uint256[])
+   * ```
    */
   getAllAssetBalances: (
     $$overrides?: ethers.CallOverrides,
   ) => Promise<{ assets_: string[]; balances_: ethers.BigNumber[] }>;
 
   /**
-   * `Accounting` contract call for the `getAssetBalances` function.
+   * Retrieves the assetBalances of an array of tokens for the fund
    *
-   * @contract Accounting
-   * @signature getAssetBalances(address[])
-   * @method function getAssetBalances(address[]) view returns (uint256[])
+   * ```solc
+   * function getAssetBalances(address[]) view returns (uint256[])
+   * ```
+   *
+   * @param _assets The assets for which to retrieve assetBalances
    */
   getAssetBalances: (_assets: string[], $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber[]>;
 
   /**
-   * `Accounting` contract call for the `getFundHoldings` function.
+   * Retrieves the balances of all holdings of the fund
    *
-   * @contract Accounting
-   * @signature getFundHoldings()
-   * @method function getFundHoldings() view returns (address[], uint256[])
+   * Use this as the canonical function for retrieving total balances, not only balances currently in the contract (e.g., includes lending balances)
+   *
+   * ```solc
+   * function getFundHoldings() view returns (address[], uint256[])
+   * ```
    */
   getFundHoldings: (
     $$overrides?: ethers.CallOverrides,
   ) => Promise<{ assets_: string[]; balances_: ethers.BigNumber[] }>;
 
   /**
-   * `Accounting` contract call for the `getFundHoldingsForAsset` function.
+   * Retrieves the balance of a particular asset holding of the fund
    *
-   * @contract Accounting
-   * @signature getFundHoldingsForAsset(address)
-   * @method function getFundHoldingsForAsset(address) view returns (uint256)
+   * Use this as the canonical function for retrieving a single asset's total balance
+   *
+   * ```solc
+   * function getFundHoldingsForAsset(address) view returns (uint256)
+   * ```
+   *
+   * @param _asset The asset for which to retrieve the fund's balance
    */
   getFundHoldingsForAsset: (_asset: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
   /**
-   * `Accounting` contract call for the `getHub` function.
+   * `Accounting` contract call for `getHub` function.
    *
-   * @contract Accounting
-   * @signature getHub()
-   * @method function getHub() view returns (address)
+   * ```solc
+   * function getHub() view returns (address)
+   * ```
    */
   getHub: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Accounting` contract call for the `getOwnedAssetsLength` function.
+   * Retrieves the number of owned assets in this fund
    *
-   * @contract Accounting
-   * @signature getOwnedAssetsLength()
-   * @method function getOwnedAssetsLength() view returns (uint256)
+   * ```solc
+   * function getOwnedAssetsLength() view returns (uint256)
+   * ```
    */
   getOwnedAssetsLength: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
   /**
-   * `Accounting` contract call for the `getRoutes` function.
+   * `Accounting` contract call for `getRoutes` function.
    *
-   * @contract Accounting
-   * @signature getRoutes()
-   * @method function getRoutes() view returns (tuple(address,address,address,address,address,address,address))
+   * ```solc
+   * function getRoutes() view returns (tuple(address,address,address,address,address,address,address))
+   * ```
    */
   getRoutes: (
     $$overrides?: ethers.CallOverrides,
@@ -190,47 +208,50 @@ export class Accounting extends Contract {
   }>;
 
   /**
-   * `Accounting` contract call for the `initialized` function.
+   * `Accounting` contract call for `initialized` function.
    *
-   * @contract Accounting
-   * @signature initialized()
-   * @method function initialized() view returns (bool)
+   * ```solc
+   * function initialized() view returns (bool)
+   * ```
    */
   initialized: ($$overrides?: ethers.CallOverrides) => Promise<boolean>;
 
   /**
-   * `Accounting` contract call for the `ownedAssets` function.
+   * `Accounting` contract call for `ownedAssets` function.
    *
-   * @contract Accounting
-   * @signature ownedAssets(uint256)
-   * @method function ownedAssets(uint256) view returns (address)
+   * ```solc
+   * function ownedAssets(uint256) view returns (address)
+   * ```
    */
   ownedAssets: ($$0: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Accounting` contract call for the `owner` function.
+   * `Accounting` contract call for `owner` function.
    *
-   * @contract Accounting
-   * @signature owner()
-   * @method function owner() view returns (address)
+   * ```solc
+   * function owner() view returns (address)
+   * ```
    */
   owner: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Accounting` contract call for the `priceSource` function.
+   * `Accounting` contract call for `priceSource` function.
    *
-   * @contract Accounting
-   * @signature priceSource()
-   * @method function priceSource() view returns (address)
+   * ```solc
+   * function priceSource() view returns (address)
+   * ```
    */
   priceSource: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Accounting` contract call for the `valuePerShare` function.
+   * Calculates the value per unit of shares, given a total value and total number of shares
    *
-   * @contract Accounting
-   * @signature valuePerShare(uint256,uint256)
-   * @method function valuePerShare(uint256,uint256) pure returns (uint256)
+   * ```solc
+   * function valuePerShare(uint256,uint256) pure returns (uint256)
+   * ```
+   *
+   * @param _numShares The total number of shares of a fund (can include management fee shares)
+   * @param _totalValue The total value of a fund, generally the GAV
    */
   valuePerShare: (
     _totalValue: ethers.BigNumberish,
@@ -239,76 +260,87 @@ export class Accounting extends Contract {
   ) => Promise<ethers.BigNumber>;
 
   /**
-   * `Accounting` contract transaction for `calcFundMetrics` function.
+   * Calculates fund metrics
    *
-   * @contract Accounting
-   * @signature calcFundMetrics()
-   * @method function calcFundMetrics() returns (uint256, uint256, uint256, uint256, uint256, uint256)
+   * ```solc
+   * function calcFundMetrics() returns (uint256, uint256, uint256, uint256, uint256, uint256)
+   * ```
    */
   calcFundMetrics: () => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Accounting` contract transaction for `decreaseAssetBalance` function.
+   * Decreases the balance of an asset in a fund's internal system of account
    *
-   * @contract Accounting
-   * @signature decreaseAssetBalance(address,uint256)
-   * @method function decreaseAssetBalance(address,uint256)
+   * ```solc
+   * function decreaseAssetBalance(address,uint256)
+   * ```
+   *
+   * @param _amount The amount by which to decrease the assetBalance
+   * @param _asset The asset for which to decrease the assetBalance
    */
   decreaseAssetBalance: (_asset: string, _amount: ethers.BigNumberish) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Accounting` contract transaction for `getShareCostInAsset` function.
+   * Calculate the cost for a given number of shares this fund, in an asset other than the fund's denomination asset
    *
-   * @contract Accounting
-   * @signature getShareCostInAsset(uint256,address)
-   * @method function getShareCostInAsset(uint256,address) returns (uint256)
+   * ```solc
+   * function getShareCostInAsset(uint256,address) returns (uint256)
+   * ```
+   *
+   * @param _altAsset Alternative asset in which to calculate share cost
+   * @param _numShares Number of shares
    */
   getShareCostInAsset: (_numShares: ethers.BigNumberish, _altAsset: string) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Accounting` contract transaction for `increaseAssetBalance` function.
+   * Increases the balance of an asset in a fund's internal system of account
    *
-   * @contract Accounting
-   * @signature increaseAssetBalance(address,uint256)
-   * @method function increaseAssetBalance(address,uint256)
+   * ```solc
+   * function increaseAssetBalance(address,uint256)
+   * ```
+   *
+   * @param _amount The amount by which to increase the assetBalance
+   * @param _asset The asset for which to increase the assetBalance
    */
   increaseAssetBalance: (_asset: string, _amount: ethers.BigNumberish) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Accounting` contract transaction for `initialize` function.
+   * `Accounting` contract call for `initialize` function.
    *
-   * @contract Accounting
-   * @signature initialize(address[7])
-   * @method function initialize(address[7])
+   * ```solc
+   * function initialize(address[7])
+   * ```
    */
   initialize: (
     _spokes: [string, string, string, string, string, string, string],
   ) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Accounting` contract transaction for `setAuthority` function.
+   * `Accounting` contract call for `setAuthority` function.
    *
-   * @contract Accounting
-   * @signature setAuthority(address)
-   * @method function setAuthority(address)
+   * ```solc
+   * function setAuthority(address)
+   * ```
    */
   setAuthority: (authority_: string) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Accounting` contract transaction for `setOwner` function.
+   * `Accounting` contract call for `setOwner` function.
    *
-   * @contract Accounting
-   * @signature setOwner(address)
-   * @method function setOwner(address)
+   * ```solc
+   * function setOwner(address)
+   * ```
    */
   setOwner: (owner_: string) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Accounting` contract transaction for `triggerRewardAllFees` function.
+   * Triggers FeeManager's rewardAllFees(), allocating fees (in shares) to the fund manager
    *
-   * @contract Accounting
-   * @signature triggerRewardAllFees()
-   * @method function triggerRewardAllFees() payable
+   * Anyone can call this
+   *
+   * ```solc
+   * function triggerRewardAllFees() payable
+   * ```
    */
   triggerRewardAllFees: () => TransactionWrapper<ethers.PayableOverrides>;
 

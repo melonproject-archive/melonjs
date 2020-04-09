@@ -97,10 +97,29 @@ function getType(param: ethers.utils.ParamType, flexible?: boolean): string {
   return 'any';
 }
 
-export function generate(name: string, $contract: ethers.ContractInterface): string {
-  const contract = ethers.utils.Interface.isInterface($contract) ? $contract : new ethers.utils.Interface($contract);
-  const abis = contract.fragments.map((fragment) => `"${fragment.format(ethers.utils.FormatTypes.full)}"`);
+export interface NatspecDevdoc {
+  notice?: string;
+  methods?: {
+    [key: string]: any;
+  };
+}
 
+export interface NatspecUserdoc {
+  title?: string;
+  author?: string;
+  methods?: {
+    [key: string]: any;
+  };
+}
+
+export function generate(
+  name: string,
+  interfaze: ethers.ContractInterface,
+  devdoc?: NatspecDevdoc,
+  userdoc?: NatspecUserdoc,
+): string {
+  const contract = ethers.utils.Interface.isInterface(interfaze) ? interfaze : new ethers.utils.Interface(interfaze);
+  const abis = contract.fragments.map((fragment) => `"${fragment.format(ethers.utils.FormatTypes.full)}"`);
   const signatures = Object.keys(contract.functions);
   const functions = signatures.map((signature) => {
     const fragment = contract.functions[signature];
@@ -109,6 +128,8 @@ export function generate(name: string, $contract: ethers.ContractInterface): str
       fragment,
       signature,
       contract: name,
+      userdoc: userdoc?.methods?.[signature],
+      devdoc: devdoc?.methods?.[signature],
       output: getOutput(fragment),
       inputs: getInputs(fragment),
       overrides: getOverrides(fragment),
@@ -132,18 +153,41 @@ export function generate(name: string, $contract: ethers.ContractInterface): str
     populate: [],
   };
 
+  const fallback = `\`${name}\` contract`;
+  const header: string[] = [userdoc?.title ?? fallback];
+
+  if (devdoc.notice) {
+    header.push('', devdoc.notice);
+  }
+
+  if (userdoc.author) {
+    header.push('', `@author ${userdoc.author}`);
+  }
+
   calls.forEach((item) => {
     const params = item.inputs.concat([`$$overrides?: ${item.overrides}`]).join(', ');
     fields.functions.push(`'${item.signature}': (${params}) => Promise<${item.output}>;`);
     fields.call.push(`'${item.signature}': (${params}) => Promise<${item.output}>;`);
 
+    const fallback = `\`${item.contract}\` contract call for \`${item.fragment.name}\` function.`;
+    const header = item.devdoc?.notice ?? fallback;
+    const docs = [header, ``];
+
+    if (item.userdoc?.details) {
+      docs.push(item.userdoc.details, '');
+    }
+
+    docs.push('```solc', item.minimal, '```');
+
+    const paramz = Object.entries(item.userdoc?.params ?? {});
+    paramz.forEach(([key, value], index) => {
+      index === 0 && docs.push('');
+      docs.push(`@param ${key} ${value}`);
+    });
+
     body.push(`
       /**
-       * \`${item.contract}\` contract call for the \`${item.fragment.name}\` function.
-       *
-       * @contract ${item.contract}
-       * @signature ${item.signature}
-       * @method ${item.minimal}
+       * ${docs.join('\n* ')}
        */
       ${item.fragment.name}: (${params}) => Promise<${item.output}>;
     `);
@@ -156,13 +200,25 @@ export function generate(name: string, $contract: ethers.ContractInterface): str
     fields.estimate.push(`'${item.signature}': (${params}) => Promise<ethers.BigNumber>;`);
     fields.populate.push(`'${item.signature}': (${params}) => Promise<ethers.UnsignedTransaction>;`);
 
+    const fallback = `\`${item.contract}\` contract call for \`${item.fragment.name}\` function.`;
+    const header = item.devdoc?.notice ?? fallback;
+    const docs = [header, ``];
+
+    if (item.userdoc?.details) {
+      docs.push(item.userdoc.details, '');
+    }
+
+    docs.push('```solc', item.minimal, '```');
+
+    const paramz = Object.entries(item.userdoc?.params ?? {});
+    paramz.forEach(([key, value], index) => {
+      index === 0 && docs.push('');
+      docs.push(`@param ${key} ${value}`);
+    });
+
     body.push(`
       /**
-       * \`${item.contract}\` contract transaction for \`${item.fragment.name}\` function.
-       *
-       * @contract ${name}
-       * @signature ${item.signature}
-       * @method ${item.minimal}
+       * ${docs.join('\n* ')}
        */
       ${item.fragment.name}: (${item.inputs.join(', ')}) => TransactionWrapper<${item.overrides}>
     `);
@@ -173,6 +229,9 @@ export function generate(name: string, $contract: ethers.ContractInterface): str
     // @ts-ignore
     import { Contract, TransactionWrapper } from "../Contract";
 
+    /**
+     * ${header.join('\n* ')}
+     */
     export class ${name} extends Contract {
       public readonly ethers: ${name}EthersContract;
 

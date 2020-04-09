@@ -2,6 +2,13 @@ import { ethers } from 'ethers';
 // @ts-ignore
 import { Contract, TransactionWrapper } from '../Contract';
 
+/**
+ * Shares Contract
+ *
+ * Buy and sell shares for a Melon fund
+ *
+ * @author Melon Council DAO <security@meloncoucil.io>
+ */
 export class Shares extends Contract {
   public readonly ethers: SharesEthersContract;
 
@@ -10,65 +17,74 @@ export class Shares extends Contract {
   }
 
   /**
-   * `Shares` contract call for the `allowance` function.
+   * `Shares` contract call for `allowance` function.
    *
-   * @contract Shares
-   * @signature allowance(address,address)
-   * @method function allowance(address,address) view returns (uint256)
+   * Function to check the amount of tokens that an owner allowed to a spender.
+   *
+   * ```solc
+   * function allowance(address,address) view returns (uint256)
+   * ```
+   *
+   * @param _owner address The address which owns the funds.
+   * @param _spender address The address which will spend the funds.
    */
   allowance: (_owner: string, _spender: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
   /**
-   * `Shares` contract call for the `authority` function.
+   * `Shares` contract call for `authority` function.
    *
-   * @contract Shares
-   * @signature authority()
-   * @method function authority() view returns (address)
+   * ```solc
+   * function authority() view returns (address)
+   * ```
    */
   authority: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Shares` contract call for the `balanceOf` function.
+   * `Shares` contract call for `balanceOf` function.
    *
-   * @contract Shares
-   * @signature balanceOf(address)
-   * @method function balanceOf(address) view returns (uint256)
+   * Gets the balance of the specified address.
+   *
+   * ```solc
+   * function balanceOf(address) view returns (uint256)
+   * ```
+   *
+   * @param _owner The address to query the the balance of.
    */
   balanceOf: (_owner: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
   /**
-   * `Shares` contract call for the `decimals` function.
+   * `Shares` contract call for `decimals` function.
    *
-   * @contract Shares
-   * @signature decimals()
-   * @method function decimals() view returns (uint8)
+   * ```solc
+   * function decimals() view returns (uint8)
+   * ```
    */
   decimals: ($$overrides?: ethers.CallOverrides) => Promise<number>;
 
   /**
-   * `Shares` contract call for the `fundFactory` function.
+   * `Shares` contract call for `fundFactory` function.
    *
-   * @contract Shares
-   * @signature fundFactory()
-   * @method function fundFactory() view returns (address)
+   * ```solc
+   * function fundFactory() view returns (address)
+   * ```
    */
   fundFactory: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Shares` contract call for the `getHub` function.
+   * `Shares` contract call for `getHub` function.
    *
-   * @contract Shares
-   * @signature getHub()
-   * @method function getHub() view returns (address)
+   * ```solc
+   * function getHub() view returns (address)
+   * ```
    */
   getHub: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Shares` contract call for the `getRoutes` function.
+   * `Shares` contract call for `getRoutes` function.
    *
-   * @contract Shares
-   * @signature getRoutes()
-   * @method function getRoutes() view returns (tuple(address,address,address,address,address,address,address))
+   * ```solc
+   * function getRoutes() view returns (tuple(address,address,address,address,address,address,address))
+   * ```
    */
   getRoutes: (
     $$overrides?: ethers.CallOverrides,
@@ -83,92 +99,102 @@ export class Shares extends Contract {
   }>;
 
   /**
-   * `Shares` contract call for the `getSharesInvestmentAssets` function.
+   * Get all assets that can be used to buy shares
    *
-   * @contract Shares
-   * @signature getSharesInvestmentAssets()
-   * @method function getSharesInvestmentAssets() view returns (address[])
+   * ```solc
+   * function getSharesInvestmentAssets() view returns (address[])
+   * ```
    */
   getSharesInvestmentAssets: ($$overrides?: ethers.CallOverrides) => Promise<string[]>;
 
   /**
-   * `Shares` contract call for the `initialized` function.
+   * `Shares` contract call for `initialized` function.
    *
-   * @contract Shares
-   * @signature initialized()
-   * @method function initialized() view returns (bool)
+   * ```solc
+   * function initialized() view returns (bool)
+   * ```
    */
   initialized: ($$overrides?: ethers.CallOverrides) => Promise<boolean>;
 
   /**
-   * `Shares` contract call for the `isSharesInvestmentAsset` function.
+   * Confirm whether asset can be used to buy shares
    *
-   * @contract Shares
-   * @signature isSharesInvestmentAsset(address)
-   * @method function isSharesInvestmentAsset(address) view returns (bool)
+   * ```solc
+   * function isSharesInvestmentAsset(address) view returns (bool)
+   * ```
+   *
+   * @param _asset The asset to confirm
    */
   isSharesInvestmentAsset: (_asset: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
 
   /**
-   * `Shares` contract call for the `name` function.
+   * `Shares` contract call for `name` function.
    *
-   * @contract Shares
-   * @signature name()
-   * @method function name() view returns (string)
+   * ```solc
+   * function name() view returns (string)
+   * ```
    */
   name: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Shares` contract call for the `owner` function.
+   * `Shares` contract call for `owner` function.
    *
-   * @contract Shares
-   * @signature owner()
-   * @method function owner() view returns (address)
+   * ```solc
+   * function owner() view returns (address)
+   * ```
    */
   owner: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Shares` contract call for the `priceSource` function.
+   * `Shares` contract call for `priceSource` function.
    *
-   * @contract Shares
-   * @signature priceSource()
-   * @method function priceSource() view returns (address)
+   * ```solc
+   * function priceSource() view returns (address)
+   * ```
    */
   priceSource: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Shares` contract call for the `symbol` function.
+   * `Shares` contract call for `symbol` function.
    *
-   * @contract Shares
-   * @signature symbol()
-   * @method function symbol() view returns (string)
+   * ```solc
+   * function symbol() view returns (string)
+   * ```
    */
   symbol: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Shares` contract call for the `totalSupply` function.
+   * `Shares` contract call for `totalSupply` function.
    *
-   * @contract Shares
-   * @signature totalSupply()
-   * @method function totalSupply() view returns (uint256)
+   * Total number of tokens in existence
+   *
+   * ```solc
+   * function totalSupply() view returns (uint256)
+   * ```
    */
   totalSupply: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
   /**
-   * `Shares` contract transaction for `approve` function.
+   * `Shares` contract call for `approve` function.
    *
-   * @contract Shares
-   * @signature approve(address,uint256)
-   * @method function approve(address,uint256) returns (bool)
+   * ```solc
+   * function approve(address,uint256) returns (bool)
+   * ```
    */
   approve: (spender: string, amount: ethers.BigNumberish) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Shares` contract transaction for `buyShares` function.
+   * Buy shares on behalf of a specified user
    *
-   * @contract Shares
-   * @signature buyShares(address,address,uint256)
-   * @method function buyShares(address,address,uint256) returns (uint256)
+   * Only callable by the SharesRequestor associated with the Registry
+   *
+   * ```solc
+   * function buyShares(address,address,uint256) returns (uint256)
+   * ```
+   *
+   * @param _buyer The for which to buy shares
+   * @param _investmentAsset The asset with which to buy shares
+   * @param _sharesQuantity The desired amount of shares
    */
   buyShares: (
     _buyer: string,
@@ -177,85 +203,96 @@ export class Shares extends Contract {
   ) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Shares` contract transaction for `createFor` function.
+   * `Shares` contract call for `createFor` function.
    *
-   * @contract Shares
-   * @signature createFor(address,uint256)
-   * @method function createFor(address,uint256)
+   * ```solc
+   * function createFor(address,uint256)
+   * ```
    */
   createFor: (who: string, amount: ethers.BigNumberish) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Shares` contract transaction for `decreaseApproval` function.
+   * `Shares` contract call for `decreaseApproval` function.
    *
-   * @contract Shares
-   * @signature decreaseApproval(address,uint256)
-   * @method function decreaseApproval(address,uint256) returns (bool)
+   * ```solc
+   * function decreaseApproval(address,uint256) returns (bool)
+   * ```
    */
   decreaseApproval: (spender: string, amount: ethers.BigNumberish) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Shares` contract transaction for `disableSharesInvestmentAssets` function.
+   * Disable the buying of shares with specific assets
    *
-   * @contract Shares
-   * @signature disableSharesInvestmentAssets(address[])
-   * @method function disableSharesInvestmentAssets(address[])
+   * ```solc
+   * function disableSharesInvestmentAssets(address[])
+   * ```
+   *
+   * @param _assets The assets for which to disable the buying of shares
    */
   disableSharesInvestmentAssets: (_assets: string[]) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Shares` contract transaction for `enableSharesInvestmentAssets` function.
+   * Enable the buying of shares with specific assets
    *
-   * @contract Shares
-   * @signature enableSharesInvestmentAssets(address[])
-   * @method function enableSharesInvestmentAssets(address[])
+   * ```solc
+   * function enableSharesInvestmentAssets(address[])
+   * ```
+   *
+   * @param _assets The assets for which to disable the buying of shares
    */
   enableSharesInvestmentAssets: (_assets: string[]) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Shares` contract transaction for `increaseApproval` function.
+   * `Shares` contract call for `increaseApproval` function.
    *
-   * @contract Shares
-   * @signature increaseApproval(address,uint256)
-   * @method function increaseApproval(address,uint256) returns (bool)
+   * ```solc
+   * function increaseApproval(address,uint256) returns (bool)
+   * ```
    */
   increaseApproval: (spender: string, amount: ethers.BigNumberish) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Shares` contract transaction for `initialize` function.
+   * `Shares` contract call for `initialize` function.
    *
-   * @contract Shares
-   * @signature initialize(address[7])
-   * @method function initialize(address[7])
+   * ```solc
+   * function initialize(address[7])
+   * ```
    */
   initialize: (
     _spokes: [string, string, string, string, string, string, string],
   ) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Shares` contract transaction for `redeemShares` function.
+   * Redeem all of the sender's shares for a proportionate slice of the fund's assets
    *
-   * @contract Shares
-   * @signature redeemShares()
-   * @method function redeemShares()
+   * ```solc
+   * function redeemShares()
+   * ```
    */
   redeemShares: () => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Shares` contract transaction for `redeemSharesQuantity` function.
+   * Redeem a specified quantity of the sender's shares for a proportionate slice of the fund's assets
    *
-   * @contract Shares
-   * @signature redeemSharesQuantity(uint256)
-   * @method function redeemSharesQuantity(uint256)
+   * ```solc
+   * function redeemSharesQuantity(uint256)
+   * ```
+   *
+   * @param _sharesQuantity The amount of shares to redeem
    */
   redeemSharesQuantity: (_sharesQuantity: ethers.BigNumberish) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Shares` contract transaction for `redeemSharesWithConstraints` function.
+   * Redeem a specified quantity of the sender's shares for ONLY SPECIFIC ASSETS in the fund, forfeiting the remaining assets
    *
-   * @contract Shares
-   * @signature redeemSharesWithConstraints(uint256,address[])
-   * @method function redeemSharesWithConstraints(uint256,address[])
+   * Do not call directly, unless an asset throws preventing redemption. Calling directly with a limited set of assets will result in the sender losing claim to the remaining assets for their shares. It is intended as a last resort for users to directly redeem their assets.
+   *
+   * ```solc
+   * function redeemSharesWithConstraints(uint256,address[])
+   * ```
+   *
+   * @param _assets The assets to receive from the redemption
+   * @param _sharesQuantity The amount of shares to redeem
    */
   redeemSharesWithConstraints: (
     _sharesQuantity: ethers.BigNumberish,
@@ -263,38 +300,38 @@ export class Shares extends Contract {
   ) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Shares` contract transaction for `setAuthority` function.
+   * `Shares` contract call for `setAuthority` function.
    *
-   * @contract Shares
-   * @signature setAuthority(address)
-   * @method function setAuthority(address)
+   * ```solc
+   * function setAuthority(address)
+   * ```
    */
   setAuthority: (authority_: string) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Shares` contract transaction for `setOwner` function.
+   * `Shares` contract call for `setOwner` function.
    *
-   * @contract Shares
-   * @signature setOwner(address)
-   * @method function setOwner(address)
+   * ```solc
+   * function setOwner(address)
+   * ```
    */
   setOwner: (owner_: string) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Shares` contract transaction for `transfer` function.
+   * `Shares` contract call for `transfer` function.
    *
-   * @contract Shares
-   * @signature transfer(address,uint256)
-   * @method function transfer(address,uint256) returns (bool)
+   * ```solc
+   * function transfer(address,uint256) returns (bool)
+   * ```
    */
   transfer: (to: string, amount: ethers.BigNumberish) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Shares` contract transaction for `transferFrom` function.
+   * `Shares` contract call for `transferFrom` function.
    *
-   * @contract Shares
-   * @signature transferFrom(address,address,uint256)
-   * @method function transferFrom(address,address,uint256) returns (bool)
+   * ```solc
+   * function transferFrom(address,address,uint256) returns (bool)
+   * ```
    */
   transferFrom: (from: string, to: string, amount: ethers.BigNumberish) => TransactionWrapper<ethers.Overrides>;
 

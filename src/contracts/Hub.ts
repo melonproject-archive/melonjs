@@ -2,6 +2,11 @@ import { ethers } from 'ethers';
 // @ts-ignore
 import { Contract, TransactionWrapper } from '../Contract';
 
+/**
+ * `Hub` contract
+ *
+ * Router for communication between componentsHas one or more Spokes
+ */
 export class Hub extends Contract {
   public readonly ethers: HubEthersContract;
 
@@ -10,38 +15,38 @@ export class Hub extends Contract {
   }
 
   /**
-   * `Hub` contract call for the `ANY` function.
+   * `Hub` contract call for `ANY` function.
    *
-   * @contract Hub
-   * @signature ANY()
-   * @method function ANY() view returns (bytes32)
+   * ```solc
+   * function ANY() view returns (bytes32)
+   * ```
    */
   ANY: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Hub` contract call for the `accounting` function.
+   * `Hub` contract call for `accounting` function.
    *
-   * @contract Hub
-   * @signature accounting()
-   * @method function accounting() view returns (address)
+   * ```solc
+   * function accounting() view returns (address)
+   * ```
    */
   accounting: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Hub` contract call for the `authority` function.
+   * `Hub` contract call for `authority` function.
    *
-   * @contract Hub
-   * @signature authority()
-   * @method function authority() view returns (address)
+   * ```solc
+   * function authority() view returns (address)
+   * ```
    */
   authority: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Hub` contract call for the `canCall` function.
+   * `Hub` contract call for `canCall` function.
    *
-   * @contract Hub
-   * @signature canCall(address,address,bytes4)
-   * @method function canCall(address,address,bytes4) view returns (bool)
+   * ```solc
+   * function canCall(address,address,bytes4) view returns (bool)
+   * ```
    */
   canCall: (
     src_: string,
@@ -51,137 +56,137 @@ export class Hub extends Contract {
   ) => Promise<boolean>;
 
   /**
-   * `Hub` contract call for the `creationTime` function.
+   * `Hub` contract call for `creationTime` function.
    *
-   * @contract Hub
-   * @signature creationTime()
-   * @method function creationTime() view returns (uint256)
+   * ```solc
+   * function creationTime() view returns (uint256)
+   * ```
    */
   creationTime: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
   /**
-   * `Hub` contract call for the `creator` function.
+   * `Hub` contract call for `creator` function.
    *
-   * @contract Hub
-   * @signature creator()
-   * @method function creator() view returns (address)
+   * ```solc
+   * function creator() view returns (address)
+   * ```
    */
   creator: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Hub` contract call for the `feeManager` function.
+   * `Hub` contract call for `feeManager` function.
    *
-   * @contract Hub
-   * @signature feeManager()
-   * @method function feeManager() view returns (address)
+   * ```solc
+   * function feeManager() view returns (address)
+   * ```
    */
   feeManager: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Hub` contract call for the `fundFactory` function.
+   * `Hub` contract call for `fundFactory` function.
    *
-   * @contract Hub
-   * @signature fundFactory()
-   * @method function fundFactory() view returns (address)
+   * ```solc
+   * function fundFactory() view returns (address)
+   * ```
    */
   fundFactory: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Hub` contract call for the `fundInitialized` function.
+   * `Hub` contract call for `fundInitialized` function.
    *
-   * @contract Hub
-   * @signature fundInitialized()
-   * @method function fundInitialized() view returns (bool)
+   * ```solc
+   * function fundInitialized() view returns (bool)
+   * ```
    */
   fundInitialized: ($$overrides?: ethers.CallOverrides) => Promise<boolean>;
 
   /**
-   * `Hub` contract call for the `getName` function.
+   * `Hub` contract call for `getName` function.
    *
-   * @contract Hub
-   * @signature getName()
-   * @method function getName() view returns (string)
+   * ```solc
+   * function getName() view returns (string)
+   * ```
    */
   getName: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Hub` contract call for the `isShutDown` function.
+   * `Hub` contract call for `isShutDown` function.
    *
-   * @contract Hub
-   * @signature isShutDown()
-   * @method function isShutDown() view returns (bool)
+   * ```solc
+   * function isShutDown() view returns (bool)
+   * ```
    */
   isShutDown: ($$overrides?: ethers.CallOverrides) => Promise<boolean>;
 
   /**
-   * `Hub` contract call for the `isSpoke` function.
+   * `Hub` contract call for `isSpoke` function.
    *
-   * @contract Hub
-   * @signature isSpoke(address)
-   * @method function isSpoke(address) view returns (bool)
+   * ```solc
+   * function isSpoke(address) view returns (bool)
+   * ```
    */
   isSpoke: ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
 
   /**
-   * `Hub` contract call for the `manager` function.
+   * `Hub` contract call for `manager` function.
    *
-   * @contract Hub
-   * @signature manager()
-   * @method function manager() view returns (address)
+   * ```solc
+   * function manager() view returns (address)
+   * ```
    */
   manager: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Hub` contract call for the `name` function.
+   * `Hub` contract call for `name` function.
    *
-   * @contract Hub
-   * @signature name()
-   * @method function name() view returns (string)
+   * ```solc
+   * function name() view returns (string)
+   * ```
    */
   name: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Hub` contract call for the `owner` function.
+   * `Hub` contract call for `owner` function.
    *
-   * @contract Hub
-   * @signature owner()
-   * @method function owner() view returns (address)
+   * ```solc
+   * function owner() view returns (address)
+   * ```
    */
   owner: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Hub` contract call for the `policyManager` function.
+   * `Hub` contract call for `policyManager` function.
    *
-   * @contract Hub
-   * @signature policyManager()
-   * @method function policyManager() view returns (address)
+   * ```solc
+   * function policyManager() view returns (address)
+   * ```
    */
   policyManager: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Hub` contract call for the `priceSource` function.
+   * `Hub` contract call for `priceSource` function.
    *
-   * @contract Hub
-   * @signature priceSource()
-   * @method function priceSource() view returns (address)
+   * ```solc
+   * function priceSource() view returns (address)
+   * ```
    */
   priceSource: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Hub` contract call for the `registry` function.
+   * `Hub` contract call for `registry` function.
    *
-   * @contract Hub
-   * @signature registry()
-   * @method function registry() view returns (address)
+   * ```solc
+   * function registry() view returns (address)
+   * ```
    */
   registry: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Hub` contract call for the `routes` function.
+   * `Hub` contract call for `routes` function.
    *
-   * @contract Hub
-   * @signature routes()
-   * @method function routes() view returns (address, address, address, address, address, address, address)
+   * ```solc
+   * function routes() view returns (address, address, address, address, address, address, address)
+   * ```
    */
   routes: (
     $$overrides?: ethers.CallOverrides,
@@ -196,76 +201,76 @@ export class Hub extends Contract {
   }>;
 
   /**
-   * `Hub` contract call for the `shares` function.
+   * `Hub` contract call for `shares` function.
    *
-   * @contract Hub
-   * @signature shares()
-   * @method function shares() view returns (address)
+   * ```solc
+   * function shares() view returns (address)
+   * ```
    */
   shares: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Hub` contract call for the `vault` function.
+   * `Hub` contract call for `vault` function.
    *
-   * @contract Hub
-   * @signature vault()
-   * @method function vault() view returns (address)
+   * ```solc
+   * function vault() view returns (address)
+   * ```
    */
   vault: ($$overrides?: ethers.CallOverrides) => Promise<string>;
 
   /**
-   * `Hub` contract transaction for `forbid` function.
+   * `Hub` contract call for `forbid` function.
    *
-   * @contract Hub
-   * @signature forbid(address,address,bytes32)
-   * @method function forbid(address,address,bytes32)
+   * ```solc
+   * function forbid(address,address,bytes32)
+   * ```
    */
   forbid: (src: string, dst: string, sig: string | ethers.utils.BytesLike) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Hub` contract transaction for `initializeAndSetPermissions` function.
+   * `Hub` contract call for `initializeAndSetPermissions` function.
    *
-   * @contract Hub
-   * @signature initializeAndSetPermissions(address[7])
-   * @method function initializeAndSetPermissions(address[7])
+   * ```solc
+   * function initializeAndSetPermissions(address[7])
+   * ```
    */
   initializeAndSetPermissions: (
     _spokes: [string, string, string, string, string, string, string],
   ) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Hub` contract transaction for `permit` function.
+   * `Hub` contract call for `permit` function.
    *
-   * @contract Hub
-   * @signature permit(address,address,bytes32)
-   * @method function permit(address,address,bytes32)
+   * ```solc
+   * function permit(address,address,bytes32)
+   * ```
    */
   permit: (src: string, dst: string, sig: string | ethers.utils.BytesLike) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Hub` contract transaction for `setAuthority` function.
+   * `Hub` contract call for `setAuthority` function.
    *
-   * @contract Hub
-   * @signature setAuthority(address)
-   * @method function setAuthority(address)
+   * ```solc
+   * function setAuthority(address)
+   * ```
    */
   setAuthority: (authority_: string) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Hub` contract transaction for `setOwner` function.
+   * `Hub` contract call for `setOwner` function.
    *
-   * @contract Hub
-   * @signature setOwner(address)
-   * @method function setOwner(address)
+   * ```solc
+   * function setOwner(address)
+   * ```
    */
   setOwner: (owner_: string) => TransactionWrapper<ethers.Overrides>;
 
   /**
-   * `Hub` contract transaction for `shutDownFund` function.
+   * `Hub` contract call for `shutDownFund` function.
    *
-   * @contract Hub
-   * @signature shutDownFund()
-   * @method function shutDownFund()
+   * ```solc
+   * function shutDownFund()
+   * ```
    */
   shutDownFund: () => TransactionWrapper<ethers.Overrides>;
 
