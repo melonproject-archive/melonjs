@@ -14,3 +14,7 @@ yarn add @melonproject/melonjs
 npm install @melonproject/melonjs
 ```
 
+### Links
+
+[API documentation](https://melonproject.github.io/melonjs/)
+[Melon Protocol](https://melonprotocol.com)
