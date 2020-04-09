@@ -22,6 +22,7 @@ npm install @melonproject/melonjs
 
 - Extensive documentation (including examples): https://melonjs.melonprotocol.com
 - API: https://melonproject.github.io/melonjs/
+- Melon Protocol: https://melonprotocol.com
 
 ## Development
 
