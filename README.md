@@ -10,7 +10,7 @@
 
 This library is published as an [npm package][npm]. You can install it through npm or yarn.
 
-```
+```bash
 # Using yarn
 yarn add @melonproject/melonjs
 
@@ -24,7 +24,7 @@ Before you can start developing, you'll need to have [Node.js][node] and [Yarn][
 
 Installing only takes two commands and you're ready to roll:
 
-```
+```bash
 # Install all library dependencies.
 yarn install
 
@@ -40,7 +40,7 @@ The tests contained in this repository use an in-memory ganache test chain.
 
 In order to execute the tests, simply run:
 
-```
+```bash
 yarn test
 ```
 
