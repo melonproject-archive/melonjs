@@ -17,7 +17,7 @@ export class AssetBlacklist extends Contract {
   /**
    * `AssetBlacklist` contract call for `TAKE_ORDER` function.
    *
-   * ```solc
+   * ```solidity
    * function TAKE_ORDER() view returns (bytes4)
    * ```
    */
@@ -26,7 +26,7 @@ export class AssetBlacklist extends Contract {
   /**
    * `AssetBlacklist` contract call for `authority` function.
    *
-   * ```solc
+   * ```solidity
    * function authority() view returns (address)
    * ```
    */
@@ -35,7 +35,7 @@ export class AssetBlacklist extends Contract {
   /**
    * `AssetBlacklist` contract call for `getMemberCount` function.
    *
-   * ```solc
+   * ```solidity
    * function getMemberCount() view returns (uint256)
    * ```
    */
@@ -44,7 +44,7 @@ export class AssetBlacklist extends Contract {
   /**
    * `AssetBlacklist` contract call for `getMembers` function.
    *
-   * ```solc
+   * ```solidity
    * function getMembers() view returns (address[])
    * ```
    */
@@ -53,7 +53,7 @@ export class AssetBlacklist extends Contract {
   /**
    * `AssetBlacklist` contract call for `identifier` function.
    *
-   * ```solc
+   * ```solidity
    * function identifier() pure returns (string)
    * ```
    */
@@ -62,7 +62,7 @@ export class AssetBlacklist extends Contract {
   /**
    * `AssetBlacklist` contract call for `isMember` function.
    *
-   * ```solc
+   * ```solidity
    * function isMember(address) view returns (bool)
    * ```
    */
@@ -71,7 +71,7 @@ export class AssetBlacklist extends Contract {
   /**
    * `AssetBlacklist` contract call for `owner` function.
    *
-   * ```solc
+   * ```solidity
    * function owner() view returns (address)
    * ```
    */
@@ -80,7 +80,7 @@ export class AssetBlacklist extends Contract {
   /**
    * `AssetBlacklist` contract call for `position` function.
    *
-   * ```solc
+   * ```solidity
    * function position() pure returns (uint8)
    * ```
    */
@@ -89,7 +89,7 @@ export class AssetBlacklist extends Contract {
   /**
    * `AssetBlacklist` contract call for `addToBlacklist` function.
    *
-   * ```solc
+   * ```solidity
    * function addToBlacklist(address)
    * ```
    */
@@ -98,7 +98,7 @@ export class AssetBlacklist extends Contract {
   /**
    * `AssetBlacklist` contract call for `rule` function.
    *
-   * ```solc
+   * ```solidity
    * function rule(bytes4,address[5],uint256[3],bytes32) returns (bool)
    * ```
    */
@@ -112,7 +112,7 @@ export class AssetBlacklist extends Contract {
   /**
    * `AssetBlacklist` contract call for `setAuthority` function.
    *
-   * ```solc
+   * ```solidity
    * function setAuthority(address)
    * ```
    */
@@ -121,7 +121,7 @@ export class AssetBlacklist extends Contract {
   /**
    * `AssetBlacklist` contract call for `setOwner` function.
    *
-   * ```solc
+   * ```solidity
    * function setOwner(address)
    * ```
    */

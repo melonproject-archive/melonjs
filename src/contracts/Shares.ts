@@ -21,19 +21,20 @@ export class Shares extends Contract {
    *
    * Function to check the amount of tokens that an owner allowed to a spender.
    *
-   * ```solc
+   * ```solidity
    * function allowance(address,address) view returns (uint256)
    * ```
    *
    * @param _owner address The address which owns the funds.
    * @param _spender address The address which will spend the funds.
+   * @returns A uint256 specifying the amount of tokens still available for the spender.
    */
   allowance: (_owner: string, _spender: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
   /**
    * `Shares` contract call for `authority` function.
    *
-   * ```solc
+   * ```solidity
    * function authority() view returns (address)
    * ```
    */
@@ -44,18 +45,19 @@ export class Shares extends Contract {
    *
    * Gets the balance of the specified address.
    *
-   * ```solc
+   * ```solidity
    * function balanceOf(address) view returns (uint256)
    * ```
    *
    * @param _owner The address to query the the balance of.
+   * @returns An uint256 representing the amount owned by the passed address.
    */
   balanceOf: (_owner: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
   /**
    * `Shares` contract call for `decimals` function.
    *
-   * ```solc
+   * ```solidity
    * function decimals() view returns (uint8)
    * ```
    */
@@ -64,7 +66,7 @@ export class Shares extends Contract {
   /**
    * `Shares` contract call for `fundFactory` function.
    *
-   * ```solc
+   * ```solidity
    * function fundFactory() view returns (address)
    * ```
    */
@@ -73,7 +75,7 @@ export class Shares extends Contract {
   /**
    * `Shares` contract call for `getHub` function.
    *
-   * ```solc
+   * ```solidity
    * function getHub() view returns (address)
    * ```
    */
@@ -82,7 +84,7 @@ export class Shares extends Contract {
   /**
    * `Shares` contract call for `getRoutes` function.
    *
-   * ```solc
+   * ```solidity
    * function getRoutes() view returns (tuple(address,address,address,address,address,address,address))
    * ```
    */
@@ -101,7 +103,7 @@ export class Shares extends Contract {
   /**
    * Get all assets that can be used to buy shares
    *
-   * ```solc
+   * ```solidity
    * function getSharesInvestmentAssets() view returns (address[])
    * ```
    */
@@ -110,7 +112,7 @@ export class Shares extends Contract {
   /**
    * `Shares` contract call for `initialized` function.
    *
-   * ```solc
+   * ```solidity
    * function initialized() view returns (bool)
    * ```
    */
@@ -119,18 +121,19 @@ export class Shares extends Contract {
   /**
    * Confirm whether asset can be used to buy shares
    *
-   * ```solc
+   * ```solidity
    * function isSharesInvestmentAsset(address) view returns (bool)
    * ```
    *
    * @param _asset The asset to confirm
+   * @returns True if the asset can be used to buy shares
    */
   isSharesInvestmentAsset: (_asset: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
 
   /**
    * `Shares` contract call for `name` function.
    *
-   * ```solc
+   * ```solidity
    * function name() view returns (string)
    * ```
    */
@@ -139,7 +142,7 @@ export class Shares extends Contract {
   /**
    * `Shares` contract call for `owner` function.
    *
-   * ```solc
+   * ```solidity
    * function owner() view returns (address)
    * ```
    */
@@ -148,7 +151,7 @@ export class Shares extends Contract {
   /**
    * `Shares` contract call for `priceSource` function.
    *
-   * ```solc
+   * ```solidity
    * function priceSource() view returns (address)
    * ```
    */
@@ -157,7 +160,7 @@ export class Shares extends Contract {
   /**
    * `Shares` contract call for `symbol` function.
    *
-   * ```solc
+   * ```solidity
    * function symbol() view returns (string)
    * ```
    */
@@ -168,7 +171,7 @@ export class Shares extends Contract {
    *
    * Total number of tokens in existence
    *
-   * ```solc
+   * ```solidity
    * function totalSupply() view returns (uint256)
    * ```
    */
@@ -177,7 +180,7 @@ export class Shares extends Contract {
   /**
    * `Shares` contract call for `approve` function.
    *
-   * ```solc
+   * ```solidity
    * function approve(address,uint256) returns (bool)
    * ```
    */
@@ -188,13 +191,14 @@ export class Shares extends Contract {
    *
    * Only callable by the SharesRequestor associated with the Registry
    *
-   * ```solc
+   * ```solidity
    * function buyShares(address,address,uint256) returns (uint256)
    * ```
    *
    * @param _buyer The for which to buy shares
    * @param _investmentAsset The asset with which to buy shares
    * @param _sharesQuantity The desired amount of shares
+   * @returns The amount of investment asset used to buy the desired shares
    */
   buyShares: (
     _buyer: string,
@@ -205,7 +209,7 @@ export class Shares extends Contract {
   /**
    * `Shares` contract call for `createFor` function.
    *
-   * ```solc
+   * ```solidity
    * function createFor(address,uint256)
    * ```
    */
@@ -214,7 +218,7 @@ export class Shares extends Contract {
   /**
    * `Shares` contract call for `decreaseApproval` function.
    *
-   * ```solc
+   * ```solidity
    * function decreaseApproval(address,uint256) returns (bool)
    * ```
    */
@@ -223,7 +227,7 @@ export class Shares extends Contract {
   /**
    * Disable the buying of shares with specific assets
    *
-   * ```solc
+   * ```solidity
    * function disableSharesInvestmentAssets(address[])
    * ```
    *
@@ -234,7 +238,7 @@ export class Shares extends Contract {
   /**
    * Enable the buying of shares with specific assets
    *
-   * ```solc
+   * ```solidity
    * function enableSharesInvestmentAssets(address[])
    * ```
    *
@@ -245,7 +249,7 @@ export class Shares extends Contract {
   /**
    * `Shares` contract call for `increaseApproval` function.
    *
-   * ```solc
+   * ```solidity
    * function increaseApproval(address,uint256) returns (bool)
    * ```
    */
@@ -254,7 +258,7 @@ export class Shares extends Contract {
   /**
    * `Shares` contract call for `initialize` function.
    *
-   * ```solc
+   * ```solidity
    * function initialize(address[7])
    * ```
    */
@@ -265,7 +269,7 @@ export class Shares extends Contract {
   /**
    * Redeem all of the sender's shares for a proportionate slice of the fund's assets
    *
-   * ```solc
+   * ```solidity
    * function redeemShares()
    * ```
    */
@@ -274,7 +278,7 @@ export class Shares extends Contract {
   /**
    * Redeem a specified quantity of the sender's shares for a proportionate slice of the fund's assets
    *
-   * ```solc
+   * ```solidity
    * function redeemSharesQuantity(uint256)
    * ```
    *
@@ -287,7 +291,7 @@ export class Shares extends Contract {
    *
    * Do not call directly, unless an asset throws preventing redemption. Calling directly with a limited set of assets will result in the sender losing claim to the remaining assets for their shares. It is intended as a last resort for users to directly redeem their assets.
    *
-   * ```solc
+   * ```solidity
    * function redeemSharesWithConstraints(uint256,address[])
    * ```
    *
@@ -302,7 +306,7 @@ export class Shares extends Contract {
   /**
    * `Shares` contract call for `setAuthority` function.
    *
-   * ```solc
+   * ```solidity
    * function setAuthority(address)
    * ```
    */
@@ -311,7 +315,7 @@ export class Shares extends Contract {
   /**
    * `Shares` contract call for `setOwner` function.
    *
-   * ```solc
+   * ```solidity
    * function setOwner(address)
    * ```
    */
@@ -320,7 +324,7 @@ export class Shares extends Contract {
   /**
    * `Shares` contract call for `transfer` function.
    *
-   * ```solc
+   * ```solidity
    * function transfer(address,uint256) returns (bool)
    * ```
    */
@@ -329,7 +333,7 @@ export class Shares extends Contract {
   /**
    * `Shares` contract call for `transferFrom` function.
    *
-   * ```solc
+   * ```solidity
    * function transferFrom(address,address,uint256) returns (bool)
    * ```
    */

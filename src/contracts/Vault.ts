@@ -15,7 +15,7 @@ export class Vault extends Contract {
   /**
    * `Vault` contract call for `TAKE_ORDER` function.
    *
-   * ```solc
+   * ```solidity
    * function TAKE_ORDER() view returns (bytes4)
    * ```
    */
@@ -24,7 +24,7 @@ export class Vault extends Contract {
   /**
    * `Vault` contract call for `adapterIsAdded` function.
    *
-   * ```solc
+   * ```solidity
    * function adapterIsAdded(address) view returns (bool)
    * ```
    */
@@ -33,7 +33,7 @@ export class Vault extends Contract {
   /**
    * `Vault` contract call for `authority` function.
    *
-   * ```solc
+   * ```solidity
    * function authority() view returns (address)
    * ```
    */
@@ -42,7 +42,7 @@ export class Vault extends Contract {
   /**
    * `Vault` contract call for `exchanges` function.
    *
-   * ```solc
+   * ```solidity
    * function exchanges(uint256) view returns (address, address)
    * ```
    */
@@ -54,7 +54,7 @@ export class Vault extends Contract {
   /**
    * `Vault` contract call for `fundFactory` function.
    *
-   * ```solc
+   * ```solidity
    * function fundFactory() view returns (address)
    * ```
    */
@@ -63,7 +63,7 @@ export class Vault extends Contract {
   /**
    * `Vault` contract call for `getExchangeInfo` function.
    *
-   * ```solc
+   * ```solidity
    * function getExchangeInfo() view returns (address[], address[])
    * ```
    */
@@ -72,7 +72,7 @@ export class Vault extends Contract {
   /**
    * `Vault` contract call for `getHub` function.
    *
-   * ```solc
+   * ```solidity
    * function getHub() view returns (address)
    * ```
    */
@@ -81,7 +81,7 @@ export class Vault extends Contract {
   /**
    * `Vault` contract call for `getRoutes` function.
    *
-   * ```solc
+   * ```solidity
    * function getRoutes() view returns (tuple(address,address,address,address,address,address,address))
    * ```
    */
@@ -100,7 +100,7 @@ export class Vault extends Contract {
   /**
    * `Vault` contract call for `initialized` function.
    *
-   * ```solc
+   * ```solidity
    * function initialized() view returns (bool)
    * ```
    */
@@ -109,7 +109,7 @@ export class Vault extends Contract {
   /**
    * `Vault` contract call for `owner` function.
    *
-   * ```solc
+   * ```solidity
    * function owner() view returns (address)
    * ```
    */
@@ -118,7 +118,7 @@ export class Vault extends Contract {
   /**
    * `Vault` contract call for `priceSource` function.
    *
-   * ```solc
+   * ```solidity
    * function priceSource() view returns (address)
    * ```
    */
@@ -127,7 +127,7 @@ export class Vault extends Contract {
   /**
    * `Vault` contract call for `addExchange` function.
    *
-   * ```solc
+   * ```solidity
    * function addExchange(address,address)
    * ```
    */
@@ -136,7 +136,7 @@ export class Vault extends Contract {
   /**
    * Universal method for calling exchange functions through adaptersSee adapter contracts for parameters needed for each exchange
    *
-   * ```solc
+   * ```solidity
    * function callOnExchange(uint256,string,address[8],uint256[8],bytes[4],bytes32,bytes)
    * ```
    *
@@ -169,7 +169,7 @@ export class Vault extends Contract {
   /**
    * `Vault` contract call for `initialize` function.
    *
-   * ```solc
+   * ```solidity
    * function initialize(address[7])
    * ```
    */
@@ -180,7 +180,7 @@ export class Vault extends Contract {
   /**
    * `Vault` contract call for `setAuthority` function.
    *
-   * ```solc
+   * ```solidity
    * function setAuthority(address)
    * ```
    */
@@ -189,7 +189,7 @@ export class Vault extends Contract {
   /**
    * `Vault` contract call for `setOwner` function.
    *
-   * ```solc
+   * ```solidity
    * function setOwner(address)
    * ```
    */
@@ -198,7 +198,7 @@ export class Vault extends Contract {
   /**
    * `Vault` contract call for `withdraw` function.
    *
-   * ```solc
+   * ```solidity
    * function withdraw(address,uint256)
    * ```
    */

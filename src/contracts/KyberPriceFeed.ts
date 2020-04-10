@@ -19,7 +19,7 @@ export class KyberPriceFeed extends Contract {
   /**
    * `KyberPriceFeed` contract call for `KYBER_NETWORK_PROXY` function.
    *
-   * ```solc
+   * ```solidity
    * function KYBER_NETWORK_PROXY() view returns (address)
    * ```
    */
@@ -28,7 +28,7 @@ export class KyberPriceFeed extends Contract {
   /**
    * `KyberPriceFeed` contract call for `KYBER_PRECISION` function.
    *
-   * ```solc
+   * ```solidity
    * function KYBER_PRECISION() view returns (uint8)
    * ```
    */
@@ -37,7 +37,7 @@ export class KyberPriceFeed extends Contract {
   /**
    * `KyberPriceFeed` contract call for `QUOTE_ASSET` function.
    *
-   * ```solc
+   * ```solidity
    * function QUOTE_ASSET() view returns (address)
    * ```
    */
@@ -46,7 +46,7 @@ export class KyberPriceFeed extends Contract {
   /**
    * `KyberPriceFeed` contract call for `VALIDITY_INTERVAL` function.
    *
-   * ```solc
+   * ```solidity
    * function VALIDITY_INTERVAL() view returns (uint32)
    * ```
    */
@@ -55,13 +55,14 @@ export class KyberPriceFeed extends Contract {
   /**
    * Get quantity of _toAsset equal in value to some quantity of _fromAsset
    *
-   * ```solc
+   * ```solidity
    * function convertQuantity(uint256,address,address) view returns (uint256)
    * ```
    *
    * @param _fromAsset Address of _fromAsset
    * @param _fromAssetQuantity Amount of _fromAsset
    * @param _toAsset Address of _toAsset
+   * @returns Amount of _toAsset equal in value to _fromAssetQuantity
    */
   convertQuantity: (
     _fromAssetQuantity: ethers.BigNumberish,
@@ -73,12 +74,15 @@ export class KyberPriceFeed extends Contract {
   /**
    * Returns validity and price for some pair of assets from Kyber
    *
-   * ```solc
+   * ```solidity
    * function getKyberPrice(address,address) view returns (bool, uint256)
    * ```
    *
    * @param _baseAsset Address of base asset from the pair
    * @param _quoteAsset Address of quote asset from the pair
+   * @returns
+   *   - `kyberPrice_` — The price of _baseAsset in terms of _quoteAsset
+   *   - `validity_` — Whether the price for this pair is valid
    */
   getKyberPrice: (
     _baseAsset: string,
@@ -89,13 +93,14 @@ export class KyberPriceFeed extends Contract {
   /**
    * Returns price as determined by an order
    *
-   * ```solc
+   * ```solidity
    * function getOrderPriceInfo(address,uint256,uint256) view returns (uint256)
    * ```
    *
    * @param _buyQuantity Quantity (in base units) of _buyAsset being bought
    * @param _sellAsset Address of the asset to be sold
    * @param _sellQuantity Quantity (in base units) of _sellAsset being sold
+   * @returns Price determined by buy/sell quantities
    */
   getOrderPriceInfo: (
     _sellAsset: string,
@@ -109,11 +114,14 @@ export class KyberPriceFeed extends Contract {
    *
    * Asset must be registered
    *
-   * ```solc
+   * ```solidity
    * function getPrice(address) view returns (uint256, uint256)
    * ```
    *
    * @param _asset Asset for which price should be returned
+   * @returns
+   *   - `price_` — Formatting: exchangePrice * 10^decimals (to avoid floating point)
+   *   - `timestamp_` — When the asset's price was last updated
    */
   getPrice: (
     _asset: string,
@@ -123,11 +131,14 @@ export class KyberPriceFeed extends Contract {
   /**
    * Return getPrice for each of _assets
    *
-   * ```solc
+   * ```solidity
    * function getPrices(address[]) view returns (uint256[], uint256[])
    * ```
    *
    * @param _assets Assets for which prices should be returned
+   * @returns
+   *   - `prices_` — Prices for each of the assets_
+   *   - `timestamps_` — Update times for each of the assets_
    */
   getPrices: (
     _assets: string[],
@@ -137,12 +148,15 @@ export class KyberPriceFeed extends Contract {
   /**
    * Get price of an asset in terms of some quote asset, plus the quote asset's decimalsThis function reverts if either the base or quote have invalid prices
    *
-   * ```solc
+   * ```solidity
    * function getReferencePriceInfo(address,address) view returns (uint256, uint256)
    * ```
    *
    * @param _baseAsset Address of base asset
    * @param _quoteAsset Address of quote asset
+   * @returns
+   *   - `decimals_` — Decimal places for _quoteAsset
+   *   - `referencePrice_` — Quantity of _quoteAsset per whole _baseAsset
    */
   getReferencePriceInfo: (
     _baseAsset: string,
@@ -153,29 +167,31 @@ export class KyberPriceFeed extends Contract {
   /**
    * Whether an asset is registered and has a fresh price
    *
-   * ```solc
+   * ```solidity
    * function hasValidPrice(address) view returns (bool)
    * ```
    *
    * @param _asset Asset to check for a valid price
+   * @returns whether price of _asset is valid
    */
   hasValidPrice: (_asset: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
 
   /**
    * Whether each of the _assets is registered and has a fresh price
    *
-   * ```solc
+   * ```solidity
    * function hasValidPrices(address[]) view returns (bool)
    * ```
    *
    * @param _assets Assets for which validity information should be returned
+   * @returns Validity of prices for each of _assets (true/false)
    */
   hasValidPrices: (_assets: string[], $$overrides?: ethers.CallOverrides) => Promise<boolean>;
 
   /**
    * `KyberPriceFeed` contract call for `lastUpdate` function.
    *
-   * ```solc
+   * ```solidity
    * function lastUpdate() view returns (uint256)
    * ```
    */
@@ -184,7 +200,7 @@ export class KyberPriceFeed extends Contract {
   /**
    * `KyberPriceFeed` contract call for `maxPriceDeviation` function.
    *
-   * ```solc
+   * ```solidity
    * function maxPriceDeviation() view returns (uint256)
    * ```
    */
@@ -193,7 +209,7 @@ export class KyberPriceFeed extends Contract {
   /**
    * `KyberPriceFeed` contract call for `maxSpread` function.
    *
-   * ```solc
+   * ```solidity
    * function maxSpread() view returns (uint256)
    * ```
    */
@@ -202,7 +218,7 @@ export class KyberPriceFeed extends Contract {
   /**
    * `KyberPriceFeed` contract call for `prices` function.
    *
-   * ```solc
+   * ```solidity
    * function prices(address) view returns (uint256)
    * ```
    */
@@ -211,7 +227,7 @@ export class KyberPriceFeed extends Contract {
   /**
    * `KyberPriceFeed` contract call for `registry` function.
    *
-   * ```solc
+   * ```solidity
    * function registry() view returns (address)
    * ```
    */
@@ -220,7 +236,7 @@ export class KyberPriceFeed extends Contract {
   /**
    * `KyberPriceFeed` contract call for `updater` function.
    *
-   * ```solc
+   * ```solidity
    * function updater() view returns (address)
    * ```
    */
@@ -229,7 +245,7 @@ export class KyberPriceFeed extends Contract {
   /**
    * Update maximum price deviation between price hints and Kyber pricePrice deviation becomes a % when divided by 10^18 (e.g. 10^17 becomes 10%)
    *
-   * ```solc
+   * ```solidity
    * function setMaxPriceDeviation(uint256)
    * ```
    *
@@ -240,7 +256,7 @@ export class KyberPriceFeed extends Contract {
   /**
    * Update maximum spread for prices derived from KyberMax spread becomes a % when divided by 10^18 (e.g. 10^17 becomes 10%)
    *
-   * ```solc
+   * ```solidity
    * function setMaxSpread(uint256)
    * ```
    *
@@ -251,7 +267,7 @@ export class KyberPriceFeed extends Contract {
   /**
    * Update this feed's Registry reference
    *
-   * ```solc
+   * ```solidity
    * function setRegistry(address)
    * ```
    *
@@ -262,7 +278,7 @@ export class KyberPriceFeed extends Contract {
   /**
    * Update this feed's designated updater
    *
-   * ```solc
+   * ```solidity
    * function setUpdater(address)
    * ```
    *
@@ -275,7 +291,7 @@ export class KyberPriceFeed extends Contract {
    *
    * Stores zero as a convention for invalid price
    *
-   * ```solc
+   * ```solidity
    * function update(address[],uint256[])
    * ```
    *

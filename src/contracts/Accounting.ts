@@ -15,7 +15,7 @@ export class Accounting extends Contract {
   /**
    * `Accounting` contract call for `DEFAULT_SHARE_PRICE` function.
    *
-   * ```solc
+   * ```solidity
    * function DEFAULT_SHARE_PRICE() view returns (uint256)
    * ```
    */
@@ -24,7 +24,7 @@ export class Accounting extends Contract {
   /**
    * `Accounting` contract call for `DENOMINATION_ASSET` function.
    *
-   * ```solc
+   * ```solidity
    * function DENOMINATION_ASSET() view returns (address)
    * ```
    */
@@ -33,7 +33,7 @@ export class Accounting extends Contract {
   /**
    * `Accounting` contract call for `MAX_OWNED_ASSETS` function.
    *
-   * ```solc
+   * ```solidity
    * function MAX_OWNED_ASSETS() view returns (uint8)
    * ```
    */
@@ -42,7 +42,7 @@ export class Accounting extends Contract {
   /**
    * `Accounting` contract call for `REGISTRY` function.
    *
-   * ```solc
+   * ```solidity
    * function REGISTRY() view returns (address)
    * ```
    */
@@ -51,7 +51,7 @@ export class Accounting extends Contract {
   /**
    * `Accounting` contract call for `SHARES_DECIMALS` function.
    *
-   * ```solc
+   * ```solidity
    * function SHARES_DECIMALS() view returns (uint8)
    * ```
    */
@@ -60,7 +60,7 @@ export class Accounting extends Contract {
   /**
    * `Accounting` contract call for `assetBalances` function.
    *
-   * ```solc
+   * ```solidity
    * function assetBalances(address) view returns (uint256)
    * ```
    */
@@ -69,7 +69,7 @@ export class Accounting extends Contract {
   /**
    * `Accounting` contract call for `authority` function.
    *
-   * ```solc
+   * ```solidity
    * function authority() view returns (address)
    * ```
    */
@@ -78,18 +78,19 @@ export class Accounting extends Contract {
   /**
    * Calculates the GAV for an asset held by the fund
    *
-   * ```solc
+   * ```solidity
    * function calcAssetGav(address) view returns (uint256)
    * ```
    *
    * @param _asset The ERC20 token for which to calculate the GAV
+   * @returns The GAV of the _asset
    */
   calcAssetGav: (_asset: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
   /**
    * Calculate the overall GAV of the fund
    *
-   * ```solc
+   * ```solidity
    * function calcGav() view returns (uint256)
    * ```
    */
@@ -98,12 +99,13 @@ export class Accounting extends Contract {
   /**
    * Calculate the overall NAV of the fund
    *
-   * ```solc
+   * ```solidity
    * function calcNav(uint256,uint256) pure returns (uint256)
    * ```
    *
    * @param _gav The fund GAV
    * @param _unclaimedFeesInDenominationAsset The fees owed to the fund manager relative to the fund's denomination asset
+   * @returns The fund NAV
    */
   calcNav: (
     _gav: ethers.BigNumberish,
@@ -114,7 +116,7 @@ export class Accounting extends Contract {
   /**
    * `Accounting` contract call for `fundFactory` function.
    *
-   * ```solc
+   * ```solidity
    * function fundFactory() view returns (address)
    * ```
    */
@@ -125,9 +127,13 @@ export class Accounting extends Contract {
    *
    * Use getFundHoldings() as the canonical way to get all token balances for a fund
    *
-   * ```solc
+   * ```solidity
    * function getAllAssetBalances() view returns (address[], uint256[])
    * ```
+   *
+   * @returns
+   *   - `assets_` — The assets of the fund
+   *   - `balances_` — The assetBalances of owned assets
    */
   getAllAssetBalances: (
     $$overrides?: ethers.CallOverrides,
@@ -136,11 +142,12 @@ export class Accounting extends Contract {
   /**
    * Retrieves the assetBalances of an array of tokens for the fund
    *
-   * ```solc
+   * ```solidity
    * function getAssetBalances(address[]) view returns (uint256[])
    * ```
    *
    * @param _assets The assets for which to retrieve assetBalances
+   * @returns The assetBalances relative to _assets
    */
   getAssetBalances: (_assets: string[], $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber[]>;
 
@@ -149,9 +156,13 @@ export class Accounting extends Contract {
    *
    * Use this as the canonical function for retrieving total balances, not only balances currently in the contract (e.g., includes lending balances)
    *
-   * ```solc
+   * ```solidity
    * function getFundHoldings() view returns (address[], uint256[])
    * ```
+   *
+   * @returns
+   *   - `assets_` — The owned assets
+   *   - `balances_` — The balances of owned assets
    */
   getFundHoldings: (
     $$overrides?: ethers.CallOverrides,
@@ -162,18 +173,19 @@ export class Accounting extends Contract {
    *
    * Use this as the canonical function for retrieving a single asset's total balance
    *
-   * ```solc
+   * ```solidity
    * function getFundHoldingsForAsset(address) view returns (uint256)
    * ```
    *
    * @param _asset The asset for which to retrieve the fund's balance
+   * @returns The fund's balance of the _asset
    */
   getFundHoldingsForAsset: (_asset: string, $$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
 
   /**
    * `Accounting` contract call for `getHub` function.
    *
-   * ```solc
+   * ```solidity
    * function getHub() view returns (address)
    * ```
    */
@@ -182,7 +194,7 @@ export class Accounting extends Contract {
   /**
    * Retrieves the number of owned assets in this fund
    *
-   * ```solc
+   * ```solidity
    * function getOwnedAssetsLength() view returns (uint256)
    * ```
    */
@@ -191,7 +203,7 @@ export class Accounting extends Contract {
   /**
    * `Accounting` contract call for `getRoutes` function.
    *
-   * ```solc
+   * ```solidity
    * function getRoutes() view returns (tuple(address,address,address,address,address,address,address))
    * ```
    */
@@ -210,7 +222,7 @@ export class Accounting extends Contract {
   /**
    * `Accounting` contract call for `initialized` function.
    *
-   * ```solc
+   * ```solidity
    * function initialized() view returns (bool)
    * ```
    */
@@ -219,7 +231,7 @@ export class Accounting extends Contract {
   /**
    * `Accounting` contract call for `ownedAssets` function.
    *
-   * ```solc
+   * ```solidity
    * function ownedAssets(uint256) view returns (address)
    * ```
    */
@@ -228,7 +240,7 @@ export class Accounting extends Contract {
   /**
    * `Accounting` contract call for `owner` function.
    *
-   * ```solc
+   * ```solidity
    * function owner() view returns (address)
    * ```
    */
@@ -237,7 +249,7 @@ export class Accounting extends Contract {
   /**
    * `Accounting` contract call for `priceSource` function.
    *
-   * ```solc
+   * ```solidity
    * function priceSource() view returns (address)
    * ```
    */
@@ -246,12 +258,13 @@ export class Accounting extends Contract {
   /**
    * Calculates the value per unit of shares, given a total value and total number of shares
    *
-   * ```solc
+   * ```solidity
    * function valuePerShare(uint256,uint256) pure returns (uint256)
    * ```
    *
    * @param _numShares The total number of shares of a fund (can include management fee shares)
    * @param _totalValue The total value of a fund, generally the GAV
+   * @returns The value per unit of shares (relative to the decimals of shares)
    */
   valuePerShare: (
     _totalValue: ethers.BigNumberish,
@@ -262,7 +275,7 @@ export class Accounting extends Contract {
   /**
    * Calculates fund metrics
    *
-   * ```solc
+   * ```solidity
    * function calcFundMetrics() returns (uint256, uint256, uint256, uint256, uint256, uint256)
    * ```
    */
@@ -271,7 +284,7 @@ export class Accounting extends Contract {
   /**
    * Decreases the balance of an asset in a fund's internal system of account
    *
-   * ```solc
+   * ```solidity
    * function decreaseAssetBalance(address,uint256)
    * ```
    *
@@ -283,19 +296,20 @@ export class Accounting extends Contract {
   /**
    * Calculate the cost for a given number of shares this fund, in an asset other than the fund's denomination asset
    *
-   * ```solc
+   * ```solidity
    * function getShareCostInAsset(uint256,address) returns (uint256)
    * ```
    *
    * @param _altAsset Alternative asset in which to calculate share cost
    * @param _numShares Number of shares
+   * @returns The cost of _numShares in the _altAsset
    */
   getShareCostInAsset: (_numShares: ethers.BigNumberish, _altAsset: string) => TransactionWrapper<ethers.Overrides>;
 
   /**
    * Increases the balance of an asset in a fund's internal system of account
    *
-   * ```solc
+   * ```solidity
    * function increaseAssetBalance(address,uint256)
    * ```
    *
@@ -307,7 +321,7 @@ export class Accounting extends Contract {
   /**
    * `Accounting` contract call for `initialize` function.
    *
-   * ```solc
+   * ```solidity
    * function initialize(address[7])
    * ```
    */
@@ -318,7 +332,7 @@ export class Accounting extends Contract {
   /**
    * `Accounting` contract call for `setAuthority` function.
    *
-   * ```solc
+   * ```solidity
    * function setAuthority(address)
    * ```
    */
@@ -327,7 +341,7 @@ export class Accounting extends Contract {
   /**
    * `Accounting` contract call for `setOwner` function.
    *
-   * ```solc
+   * ```solidity
    * function setOwner(address)
    * ```
    */
@@ -338,7 +352,7 @@ export class Accounting extends Contract {
    *
    * Anyone can call this
    *
-   * ```solc
+   * ```solidity
    * function triggerRewardAllFees() payable
    * ```
    */

@@ -17,7 +17,7 @@ export class TestingPriceFeed extends Contract {
   /**
    * `TestingPriceFeed` contract call for `QUOTE_ASSET` function.
    *
-   * ```solc
+   * ```solidity
    * function QUOTE_ASSET() view returns (address)
    * ```
    */
@@ -26,7 +26,7 @@ export class TestingPriceFeed extends Contract {
   /**
    * `TestingPriceFeed` contract call for `assetsToDecimals` function.
    *
-   * ```solc
+   * ```solidity
    * function assetsToDecimals(address) view returns (uint256)
    * ```
    */
@@ -35,7 +35,7 @@ export class TestingPriceFeed extends Contract {
   /**
    * `TestingPriceFeed` contract call for `assetsToPrices` function.
    *
-   * ```solc
+   * ```solidity
    * function assetsToPrices(address) view returns (uint256, uint256)
    * ```
    */
@@ -47,7 +47,7 @@ export class TestingPriceFeed extends Contract {
   /**
    * Get quantity of _toAsset equal in value to given quantity of _fromAsset
    *
-   * ```solc
+   * ```solidity
    * function convertQuantity(uint256,address,address) view returns (uint256)
    * ```
    */
@@ -61,7 +61,7 @@ export class TestingPriceFeed extends Contract {
   /**
    * `TestingPriceFeed` contract call for `getOrderPriceInfo` function.
    *
-   * ```solc
+   * ```solidity
    * function getOrderPriceInfo(address,uint256,uint256) view returns (uint256)
    * ```
    */
@@ -75,7 +75,7 @@ export class TestingPriceFeed extends Contract {
   /**
    * `TestingPriceFeed` contract call for `getPrice` function.
    *
-   * ```solc
+   * ```solidity
    * function getPrice(address) view returns (uint256, uint256)
    * ```
    */
@@ -84,7 +84,7 @@ export class TestingPriceFeed extends Contract {
   /**
    * `TestingPriceFeed` contract call for `getPriceInfo` function.
    *
-   * ```solc
+   * ```solidity
    * function getPriceInfo(address) view returns (uint256, uint256)
    * ```
    */
@@ -93,7 +93,7 @@ export class TestingPriceFeed extends Contract {
   /**
    * `TestingPriceFeed` contract call for `getPrices` function.
    *
-   * ```solc
+   * ```solidity
    * function getPrices(address[]) view returns (uint256[], uint256[])
    * ```
    */
@@ -102,7 +102,7 @@ export class TestingPriceFeed extends Contract {
   /**
    * `TestingPriceFeed` contract call for `getReferencePriceInfo` function.
    *
-   * ```solc
+   * ```solidity
    * function getReferencePriceInfo(address,address) view returns (uint256, uint256)
    * ```
    */
@@ -111,7 +111,7 @@ export class TestingPriceFeed extends Contract {
   /**
    * Doesn't check validity as TestingPriceFeed has no validity variable
    *
-   * ```solc
+   * ```solidity
    * function hasValidPrice(address) view returns (bool)
    * ```
    *
@@ -122,7 +122,7 @@ export class TestingPriceFeed extends Contract {
   /**
    * `TestingPriceFeed` contract call for `hasValidPrices` function.
    *
-   * ```solc
+   * ```solidity
    * function hasValidPrices(address[]) view returns (bool)
    * ```
    */
@@ -131,7 +131,7 @@ export class TestingPriceFeed extends Contract {
   /**
    * `TestingPriceFeed` contract call for `lastUpdate` function.
    *
-   * ```solc
+   * ```solidity
    * function lastUpdate() view returns (uint256)
    * ```
    */
@@ -140,7 +140,7 @@ export class TestingPriceFeed extends Contract {
   /**
    * `TestingPriceFeed` contract call for `batchSetDecimals` function.
    *
-   * ```solc
+   * ```solidity
    * function batchSetDecimals(address[],uint256[])
    * ```
    */
@@ -149,7 +149,7 @@ export class TestingPriceFeed extends Contract {
   /**
    * `TestingPriceFeed` contract call for `setDecimals` function.
    *
-   * ```solc
+   * ```solidity
    * function setDecimals(address,uint256)
    * ```
    */
@@ -158,7 +158,7 @@ export class TestingPriceFeed extends Contract {
   /**
    * `TestingPriceFeed` contract call for `setIsRecent` function.
    *
-   * ```solc
+   * ```solidity
    * function setIsRecent(bool)
    * ```
    */
@@ -167,7 +167,7 @@ export class TestingPriceFeed extends Contract {
   /**
    * `TestingPriceFeed` contract call for `setNeverValid` function.
    *
-   * ```solc
+   * ```solidity
    * function setNeverValid(bool)
    * ```
    */
@@ -176,7 +176,7 @@ export class TestingPriceFeed extends Contract {
   /**
    * `TestingPriceFeed` contract call for `update` function.
    *
-   * ```solc
+   * ```solidity
    * function update(address[],uint256[])
    * ```
    */

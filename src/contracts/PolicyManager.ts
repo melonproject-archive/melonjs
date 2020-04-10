@@ -15,7 +15,7 @@ export class PolicyManager extends Contract {
   /**
    * `PolicyManager` contract call for `authority` function.
    *
-   * ```solc
+   * ```solidity
    * function authority() view returns (address)
    * ```
    */
@@ -24,7 +24,7 @@ export class PolicyManager extends Contract {
   /**
    * `PolicyManager` contract call for `fundFactory` function.
    *
-   * ```solc
+   * ```solidity
    * function fundFactory() view returns (address)
    * ```
    */
@@ -33,7 +33,7 @@ export class PolicyManager extends Contract {
   /**
    * `PolicyManager` contract call for `getHub` function.
    *
-   * ```solc
+   * ```solidity
    * function getHub() view returns (address)
    * ```
    */
@@ -42,7 +42,7 @@ export class PolicyManager extends Contract {
   /**
    * `PolicyManager` contract call for `getPoliciesBySig` function.
    *
-   * ```solc
+   * ```solidity
    * function getPoliciesBySig(bytes4) view returns (address[], address[])
    * ```
    */
@@ -51,7 +51,7 @@ export class PolicyManager extends Contract {
   /**
    * `PolicyManager` contract call for `getRoutes` function.
    *
-   * ```solc
+   * ```solidity
    * function getRoutes() view returns (tuple(address,address,address,address,address,address,address))
    * ```
    */
@@ -70,7 +70,7 @@ export class PolicyManager extends Contract {
   /**
    * `PolicyManager` contract call for `initialized` function.
    *
-   * ```solc
+   * ```solidity
    * function initialized() view returns (bool)
    * ```
    */
@@ -79,7 +79,7 @@ export class PolicyManager extends Contract {
   /**
    * `PolicyManager` contract call for `owner` function.
    *
-   * ```solc
+   * ```solidity
    * function owner() view returns (address)
    * ```
    */
@@ -88,7 +88,7 @@ export class PolicyManager extends Contract {
   /**
    * `PolicyManager` contract call for `priceSource` function.
    *
-   * ```solc
+   * ```solidity
    * function priceSource() view returns (address)
    * ```
    */
@@ -97,7 +97,7 @@ export class PolicyManager extends Contract {
   /**
    * `PolicyManager` contract call for `batchRegister` function.
    *
-   * ```solc
+   * ```solidity
    * function batchRegister(bytes4[],address[])
    * ```
    */
@@ -106,7 +106,7 @@ export class PolicyManager extends Contract {
   /**
    * `PolicyManager` contract call for `initialize` function.
    *
-   * ```solc
+   * ```solidity
    * function initialize(address[7])
    * ```
    */
@@ -117,7 +117,7 @@ export class PolicyManager extends Contract {
   /**
    * `PolicyManager` contract call for `postValidate` function.
    *
-   * ```solc
+   * ```solidity
    * function postValidate(bytes4,address[5],uint256[3],bytes32)
    * ```
    */
@@ -131,7 +131,7 @@ export class PolicyManager extends Contract {
   /**
    * `PolicyManager` contract call for `preValidate` function.
    *
-   * ```solc
+   * ```solidity
    * function preValidate(bytes4,address[5],uint256[3],bytes32)
    * ```
    */
@@ -145,7 +145,7 @@ export class PolicyManager extends Contract {
   /**
    * `PolicyManager` contract call for `register` function.
    *
-   * ```solc
+   * ```solidity
    * function register(bytes4,address)
    * ```
    */
@@ -154,7 +154,7 @@ export class PolicyManager extends Contract {
   /**
    * `PolicyManager` contract call for `setAuthority` function.
    *
-   * ```solc
+   * ```solidity
    * function setAuthority(address)
    * ```
    */
@@ -163,7 +163,7 @@ export class PolicyManager extends Contract {
   /**
    * `PolicyManager` contract call for `setOwner` function.
    *
-   * ```solc
+   * ```solidity
    * function setOwner(address)
    * ```
    */

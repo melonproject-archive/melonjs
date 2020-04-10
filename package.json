@@ -20,10 +20,9 @@
   },
   "scripts": {
     "clean": "rimraf dist typedocs coverage",
-    "prebuild": "rimraf build",
+    "prebuild": "rimraf dist",
     "build": "tsc && rollup --config",
     "postbuild": "cp package.json LICENSE README.md dist",
-    "dev": "jest --watch",
     "prewatch": "cp package.json dist",
     "watch": "tsc --watch",
     "precodegen": "rimraf src/contracts",
@@ -37,7 +36,7 @@
     "format": "prettier --write {src,scripts}/{*,**/*}.ts",
     "lint": "yarn prettier --list-different {src,scripts}/{*,**/*}.ts",
     "typecheck": "tsc --noEmit",
-    "preversion": "yarn codegen && yarn typecheck && yarn test && yarn lint && yarn typedocs && yarn build",
+    "preversion": "yarn typecheck && yarn test && yarn lint && yarn typedocs && yarn build",
     "postversion": "cp package.json dist",
     "prerelease": "yarn version",
     "release": "git push --tags && yarn publish dist --new-version $npm_package_version",
@@ -45,12 +44,12 @@
   },
   "dependencies": {
     "bignumber.js": "^9.0.0",
-    "ethers": "^5.0.0-beta.180"
+    "ethers": "^5.0.0-beta.180",
+    "typedoc-plugin-solidity": "^1.0.0"
   },
   "devDependencies": {
     "@types/glob": "^7.1.1",
     "@types/jest": "^25.2.1",
-    "@types/tar": "^4.0.3",
     "cp": "^0.2.0",
     "gh-pages": "^2.1.1",
     "glob": "^7.1.5",
@@ -62,7 +61,6 @@
     "rollup": "^2.3.3",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-sourcemaps": "^0.5.0",
-    "tar": "^6.0.1",
     "ts-jest": "^25.3.1",
     "ts-node": "^8.8.2",
     "typedoc": "^0.17.4",
@@ -70,7 +68,7 @@
     "yargs": "^15.3.1"
   },
   "codegen": {
-    "input": "../melon-protocol/out/{Registry,KyberPriceFeed,TestingPriceFeed,Vault,Shares,PolicyManager,Hub,Accounting,ManagementFee,PerformanceFee,Accounting,FundFactory,ZeroExV3Adapter,ZeroExV2Adapter,OasisDexAdapter,UniswapAdapter,KyberAdapter,EngineAdapter,Engine,AssetBlacklist,AssetWhitelist,MaxConcentration,MaxPositions,PriceTolerance,UserWhitelist}.json"
+    "input": "../melon-protocol/out/{Registry,KyberPriceFeed,TestingPriceFeed,Vault,Shares,PolicyManager,Hub,Accounting,ManagementFee,PerformanceFee,Accounting,FundFactory,OrderTaker,Engine,StandardToken,AssetBlacklist,AssetWhitelist,MaxConcentration,MaxPositions,PriceTolerance,UserWhitelist}.json"
   },
   "husky": {
     "hooks": {

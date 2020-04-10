@@ -16,7 +16,5 @@ typedocs/
 # Allowed dot files
 !.gitignore
 !.prettierrc
-!.prettierignore
 !.dockerignore
 !.travis.yml
-!.editorconfig

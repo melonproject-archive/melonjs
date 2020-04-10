@@ -17,7 +17,7 @@ export class FundFactory extends Contract {
   /**
    * `FundFactory` contract call for `REGISTRY` function.
    *
-   * ```solc
+   * ```solidity
    * function REGISTRY() view returns (address)
    * ```
    */
@@ -26,7 +26,7 @@ export class FundFactory extends Contract {
   /**
    * `FundFactory` contract call for `accountingFactory` function.
    *
-   * ```solc
+   * ```solidity
    * function accountingFactory() view returns (address)
    * ```
    */
@@ -35,7 +35,7 @@ export class FundFactory extends Contract {
   /**
    * `FundFactory` contract call for `authority` function.
    *
-   * ```solc
+   * ```solidity
    * function authority() view returns (address)
    * ```
    */
@@ -44,7 +44,7 @@ export class FundFactory extends Contract {
   /**
    * `FundFactory` contract call for `childExists` function.
    *
-   * ```solc
+   * ```solidity
    * function childExists(address) view returns (bool)
    * ```
    */
@@ -53,7 +53,7 @@ export class FundFactory extends Contract {
   /**
    * `FundFactory` contract call for `feeManagerFactory` function.
    *
-   * ```solc
+   * ```solidity
    * function feeManagerFactory() view returns (address)
    * ```
    */
@@ -62,7 +62,7 @@ export class FundFactory extends Contract {
   /**
    * `FundFactory` contract call for `funds` function.
    *
-   * ```solc
+   * ```solidity
    * function funds(uint256) view returns (address)
    * ```
    */
@@ -71,7 +71,7 @@ export class FundFactory extends Contract {
   /**
    * `FundFactory` contract call for `getExchangesInfo` function.
    *
-   * ```solc
+   * ```solidity
    * function getExchangesInfo(address) view returns (address[])
    * ```
    */
@@ -80,7 +80,7 @@ export class FundFactory extends Contract {
   /**
    * `FundFactory` contract call for `getFundById` function.
    *
-   * ```solc
+   * ```solidity
    * function getFundById(uint256) view returns (address)
    * ```
    */
@@ -89,7 +89,7 @@ export class FundFactory extends Contract {
   /**
    * `FundFactory` contract call for `getLastFundId` function.
    *
-   * ```solc
+   * ```solidity
    * function getLastFundId() view returns (uint256)
    * ```
    */
@@ -98,7 +98,7 @@ export class FundFactory extends Contract {
   /**
    * `FundFactory` contract call for `isInstance` function.
    *
-   * ```solc
+   * ```solidity
    * function isInstance(address) view returns (bool)
    * ```
    */
@@ -107,7 +107,7 @@ export class FundFactory extends Contract {
   /**
    * `FundFactory` contract call for `managersToHubs` function.
    *
-   * ```solc
+   * ```solidity
    * function managersToHubs(address) view returns (address)
    * ```
    */
@@ -116,7 +116,7 @@ export class FundFactory extends Contract {
   /**
    * `FundFactory` contract call for `managersToRoutes` function.
    *
-   * ```solc
+   * ```solidity
    * function managersToRoutes(address) view returns (address, address, address, address, address, address, address)
    * ```
    */
@@ -136,7 +136,7 @@ export class FundFactory extends Contract {
   /**
    * `FundFactory` contract call for `managersToSettings` function.
    *
-   * ```solc
+   * ```solidity
    * function managersToSettings(address) view returns (string, address)
    * ```
    */
@@ -148,7 +148,7 @@ export class FundFactory extends Contract {
   /**
    * `FundFactory` contract call for `owner` function.
    *
-   * ```solc
+   * ```solidity
    * function owner() view returns (address)
    * ```
    */
@@ -157,7 +157,7 @@ export class FundFactory extends Contract {
   /**
    * `FundFactory` contract call for `policyManagerFactory` function.
    *
-   * ```solc
+   * ```solidity
    * function policyManagerFactory() view returns (address)
    * ```
    */
@@ -166,7 +166,7 @@ export class FundFactory extends Contract {
   /**
    * `FundFactory` contract call for `sharesFactory` function.
    *
-   * ```solc
+   * ```solidity
    * function sharesFactory() view returns (address)
    * ```
    */
@@ -175,7 +175,7 @@ export class FundFactory extends Contract {
   /**
    * `FundFactory` contract call for `vaultFactory` function.
    *
-   * ```solc
+   * ```solidity
    * function vaultFactory() view returns (address)
    * ```
    */
@@ -184,7 +184,7 @@ export class FundFactory extends Contract {
   /**
    * `FundFactory` contract call for `beginSetup` function.
    *
-   * ```solc
+   * ```solidity
    * function beginSetup(string,address[],uint256[],uint256[],address[],address[],address,address[])
    * ```
    */
@@ -202,7 +202,7 @@ export class FundFactory extends Contract {
   /**
    * `FundFactory` contract call for `completeSetup` function.
    *
-   * ```solc
+   * ```solidity
    * function completeSetup() payable
    * ```
    */
@@ -211,7 +211,7 @@ export class FundFactory extends Contract {
   /**
    * `FundFactory` contract call for `completeSetupFor` function.
    *
-   * ```solc
+   * ```solidity
    * function completeSetupFor(address) payable
    * ```
    */
@@ -220,7 +220,7 @@ export class FundFactory extends Contract {
   /**
    * `FundFactory` contract call for `createAccounting` function.
    *
-   * ```solc
+   * ```solidity
    * function createAccounting() payable
    * ```
    */
@@ -229,7 +229,7 @@ export class FundFactory extends Contract {
   /**
    * `FundFactory` contract call for `createAccountingFor` function.
    *
-   * ```solc
+   * ```solidity
    * function createAccountingFor(address) payable
    * ```
    */
@@ -238,7 +238,7 @@ export class FundFactory extends Contract {
   /**
    * `FundFactory` contract call for `createFeeManager` function.
    *
-   * ```solc
+   * ```solidity
    * function createFeeManager() payable
    * ```
    */
@@ -247,7 +247,7 @@ export class FundFactory extends Contract {
   /**
    * `FundFactory` contract call for `createFeeManagerFor` function.
    *
-   * ```solc
+   * ```solidity
    * function createFeeManagerFor(address) payable
    * ```
    */
@@ -256,7 +256,7 @@ export class FundFactory extends Contract {
   /**
    * `FundFactory` contract call for `createPolicyManager` function.
    *
-   * ```solc
+   * ```solidity
    * function createPolicyManager() payable
    * ```
    */
@@ -265,7 +265,7 @@ export class FundFactory extends Contract {
   /**
    * `FundFactory` contract call for `createPolicyManagerFor` function.
    *
-   * ```solc
+   * ```solidity
    * function createPolicyManagerFor(address) payable
    * ```
    */
@@ -274,7 +274,7 @@ export class FundFactory extends Contract {
   /**
    * `FundFactory` contract call for `createShares` function.
    *
-   * ```solc
+   * ```solidity
    * function createShares() payable
    * ```
    */
@@ -283,7 +283,7 @@ export class FundFactory extends Contract {
   /**
    * `FundFactory` contract call for `createSharesFor` function.
    *
-   * ```solc
+   * ```solidity
    * function createSharesFor(address) payable
    * ```
    */
@@ -292,7 +292,7 @@ export class FundFactory extends Contract {
   /**
    * `FundFactory` contract call for `createVault` function.
    *
-   * ```solc
+   * ```solidity
    * function createVault() payable
    * ```
    */
@@ -301,7 +301,7 @@ export class FundFactory extends Contract {
   /**
    * `FundFactory` contract call for `createVaultFor` function.
    *
-   * ```solc
+   * ```solidity
    * function createVaultFor(address) payable
    * ```
    */
@@ -310,7 +310,7 @@ export class FundFactory extends Contract {
   /**
    * `FundFactory` contract call for `setAuthority` function.
    *
-   * ```solc
+   * ```solidity
    * function setAuthority(address)
    * ```
    */
@@ -319,7 +319,7 @@ export class FundFactory extends Contract {
   /**
    * `FundFactory` contract call for `setOwner` function.
    *
-   * ```solc
+   * ```solidity
    * function setOwner(address)
    * ```
    */
@@ -328,7 +328,7 @@ export class FundFactory extends Contract {
   /**
    * `FundFactory` contract call for `shutDownFund` function.
    *
-   * ```solc
+   * ```solidity
    * function shutDownFund(address)
    * ```
    */

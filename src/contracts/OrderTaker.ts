@@ -3,14 +3,12 @@ import { ethers } from 'ethers';
 import { Contract, TransactionWrapper } from '../Contract';
 
 /**
- * OasisDexAdapter Contract
- *
- * Adapter between Melon and OasisDex Matching Market
+ * Order Taker base contract
  *
  * @author Melonport AG <team@melonport.com>
  */
-export class OasisDexAdapter extends Contract {
-  public readonly ethers: OasisDexAdapterEthersContract;
+export class OrderTaker extends Contract {
+  public readonly ethers: OrderTakerEthersContract;
 
   constructor(addressOrName: string, providerOrSigner: ethers.Signer | ethers.providers.Provider) {
     super(new.target.abi, addressOrName, providerOrSigner);
@@ -21,7 +19,7 @@ export class OasisDexAdapter extends Contract {
    *
    * Synchronously handles the responsibilities of takeOrder: - Validate user inputs - Prepare a formatted list of assets and their expected fill amounts - Fill an order on the _targetExchange (with validateAndFinalizeFilledOrder)
    *
-   * ```solc
+   * ```solidity
    * function takeOrder(address,address[8],uint256[8],bytes[4],bytes32,bytes)
    * ```
    *
@@ -56,7 +54,7 @@ export class OasisDexAdapter extends Contract {
   ];
 }
 
-export interface OasisDexAdapterEthersContract extends ethers.Contract {
+export interface OrderTakerEthersContract extends ethers.Contract {
   'takeOrder(address,address[8],uint256[8],bytes[4],bytes32,bytes)': (
     _targetExchange: string,
     _orderAddresses: [string, string, string, string, string, string, string, string],

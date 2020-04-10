@@ -177,12 +177,27 @@ export function generate(
       docs.push(item.userdoc.details, '');
     }
 
-    docs.push('```solc', item.minimal, '```');
+    docs.push('```solidity', item.minimal, '```');
 
     const paramz = Object.entries(item.userdoc?.params ?? {});
-    paramz.forEach(([key, value], index) => {
-      index === 0 && docs.push('');
+    const returnz = Object.entries(item.userdoc?.returns ?? {});
+
+    if (paramz.length || returnz.length) {
+      docs.push('');
+    }
+
+    paramz.forEach(([key, value]) => {
       docs.push(`@param ${key} ${value}`);
+    });
+
+    returnz.forEach(([key, value], index, array) => {
+      index === 0 && array.length !== 1 && docs.push('@returns  ');
+
+      if (array.length === 1) {
+        docs.push(`@returns ${value}`);
+      } else {
+        docs.push(`  - \`${key}\` — ${value}${index === array.length - 1 ? '' : '  '}`);
+      }
     });
 
     body.push(`
@@ -208,12 +223,27 @@ export function generate(
       docs.push(item.userdoc.details, '');
     }
 
-    docs.push('```solc', item.minimal, '```');
+    docs.push('```solidity', item.minimal, '```');
 
     const paramz = Object.entries(item.userdoc?.params ?? {});
-    paramz.forEach(([key, value], index) => {
-      index === 0 && docs.push('');
+    const returnz = Object.entries(item.userdoc?.returns ?? {});
+
+    if (paramz.length || returnz.length) {
+      docs.push('');
+    }
+
+    paramz.forEach(([key, value]) => {
       docs.push(`@param ${key} ${value}`);
+    });
+
+    returnz.forEach(([key, value], index, array) => {
+      index === 0 && array.length !== 1 && docs.push('@returns  ');
+
+      if (array.length === 1) {
+        docs.push(`@returns ${value}`);
+      } else {
+        docs.push(`  - \`${key}\` — ${value}${index === array.length - 1 ? '' : '  '}`);
+      }
     });
 
     body.push(`

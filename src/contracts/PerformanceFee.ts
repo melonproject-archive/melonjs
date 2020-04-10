@@ -15,7 +15,7 @@ export class PerformanceFee extends Contract {
   /**
    * `PerformanceFee` contract call for `DIVISOR` function.
    *
-   * ```solc
+   * ```solidity
    * function DIVISOR() view returns (uint256)
    * ```
    */
@@ -24,7 +24,7 @@ export class PerformanceFee extends Contract {
   /**
    * `PerformanceFee` contract call for `REDEEM_WINDOW` function.
    *
-   * ```solc
+   * ```solidity
    * function REDEEM_WINDOW() view returns (uint256)
    * ```
    */
@@ -33,7 +33,7 @@ export class PerformanceFee extends Contract {
   /**
    * `PerformanceFee` contract call for `canUpdate` function.
    *
-   * ```solc
+   * ```solidity
    * function canUpdate(address) view returns (bool)
    * ```
    */
@@ -42,7 +42,7 @@ export class PerformanceFee extends Contract {
   /**
    * `PerformanceFee` contract call for `highWaterMark` function.
    *
-   * ```solc
+   * ```solidity
    * function highWaterMark(address) view returns (uint256)
    * ```
    */
@@ -51,7 +51,7 @@ export class PerformanceFee extends Contract {
   /**
    * `PerformanceFee` contract call for `identifier` function.
    *
-   * ```solc
+   * ```solidity
    * function identifier() pure returns (uint256)
    * ```
    */
@@ -60,7 +60,7 @@ export class PerformanceFee extends Contract {
   /**
    * `PerformanceFee` contract call for `initializeTime` function.
    *
-   * ```solc
+   * ```solidity
    * function initializeTime(address) view returns (uint256)
    * ```
    */
@@ -69,7 +69,7 @@ export class PerformanceFee extends Contract {
   /**
    * `PerformanceFee` contract call for `lastPayoutTime` function.
    *
-   * ```solc
+   * ```solidity
    * function lastPayoutTime(address) view returns (uint256)
    * ```
    */
@@ -78,7 +78,7 @@ export class PerformanceFee extends Contract {
   /**
    * `PerformanceFee` contract call for `performanceFeePeriod` function.
    *
-   * ```solc
+   * ```solidity
    * function performanceFeePeriod(address) view returns (uint256)
    * ```
    */
@@ -87,7 +87,7 @@ export class PerformanceFee extends Contract {
   /**
    * `PerformanceFee` contract call for `performanceFeeRate` function.
    *
-   * ```solc
+   * ```solidity
    * function performanceFeeRate(address) view returns (uint256)
    * ```
    */
@@ -96,7 +96,7 @@ export class PerformanceFee extends Contract {
   /**
    * Assumes management fee is zero
    *
-   * ```solc
+   * ```solidity
    * function feeAmount() returns (uint256)
    * ```
    */
@@ -105,7 +105,7 @@ export class PerformanceFee extends Contract {
   /**
    * Sets initial state of the fee for a user
    *
-   * ```solc
+   * ```solidity
    * function initializeForUser(uint256,uint256,address)
    * ```
    */
@@ -118,7 +118,7 @@ export class PerformanceFee extends Contract {
   /**
    * Assumes management fee is zero
    *
-   * ```solc
+   * ```solidity
    * function updateState()
    * ```
    */

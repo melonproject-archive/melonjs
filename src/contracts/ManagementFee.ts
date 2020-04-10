@@ -15,7 +15,7 @@ export class ManagementFee extends Contract {
   /**
    * `ManagementFee` contract call for `DIVISOR` function.
    *
-   * ```solc
+   * ```solidity
    * function DIVISOR() view returns (uint256)
    * ```
    */
@@ -24,7 +24,7 @@ export class ManagementFee extends Contract {
   /**
    * `ManagementFee` contract call for `feeAmount` function.
    *
-   * ```solc
+   * ```solidity
    * function feeAmount() view returns (uint256)
    * ```
    */
@@ -33,7 +33,7 @@ export class ManagementFee extends Contract {
   /**
    * `ManagementFee` contract call for `identifier` function.
    *
-   * ```solc
+   * ```solidity
    * function identifier() pure returns (uint256)
    * ```
    */
@@ -42,7 +42,7 @@ export class ManagementFee extends Contract {
   /**
    * `ManagementFee` contract call for `lastPayoutTime` function.
    *
-   * ```solc
+   * ```solidity
    * function lastPayoutTime(address) view returns (uint256)
    * ```
    */
@@ -51,7 +51,7 @@ export class ManagementFee extends Contract {
   /**
    * `ManagementFee` contract call for `managementFeeRate` function.
    *
-   * ```solc
+   * ```solidity
    * function managementFeeRate(address) view returns (uint256)
    * ```
    */
@@ -60,7 +60,7 @@ export class ManagementFee extends Contract {
   /**
    * `ManagementFee` contract call for `initializeForUser` function.
    *
-   * ```solc
+   * ```solidity
    * function initializeForUser(uint256,uint256,address)
    * ```
    */
@@ -73,7 +73,7 @@ export class ManagementFee extends Contract {
   /**
    * `ManagementFee` contract call for `updateState` function.
    *
-   * ```solc
+   * ```solidity
    * function updateState()
    * ```
    */

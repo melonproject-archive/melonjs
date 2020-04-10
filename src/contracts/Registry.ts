@@ -15,7 +15,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `MAX_FUND_NAME_BYTES` function.
    *
-   * ```solc
+   * ```solidity
    * function MAX_FUND_NAME_BYTES() view returns (uint8)
    * ```
    */
@@ -24,7 +24,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `MAX_REGISTERED_ENTITIES` function.
    *
-   * ```solc
+   * ```solidity
    * function MAX_REGISTERED_ENTITIES() view returns (uint8)
    * ```
    */
@@ -33,7 +33,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `MGM` function.
    *
-   * ```solc
+   * ```solidity
    * function MGM() view returns (address)
    * ```
    */
@@ -42,7 +42,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `adapterMethodIsAllowed` function.
    *
-   * ```solc
+   * ```solidity
    * function adapterMethodIsAllowed(address,bytes4) view returns (bool)
    * ```
    */
@@ -55,7 +55,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `assetInformation` function.
    *
-   * ```solc
+   * ```solidity
    * function assetInformation(address) view returns (bool, string, string, uint256, string, uint256)
    * ```
    */
@@ -74,7 +74,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `assetIsRegistered` function.
    *
-   * ```solc
+   * ```solidity
    * function assetIsRegistered(address) view returns (bool)
    * ```
    */
@@ -83,7 +83,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `assetMethodIsAllowed` function.
    *
-   * ```solc
+   * ```solidity
    * function assetMethodIsAllowed(address,bytes4) view returns (bool)
    * ```
    */
@@ -96,7 +96,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `authority` function.
    *
-   * ```solc
+   * ```solidity
    * function authority() view returns (address)
    * ```
    */
@@ -105,7 +105,7 @@ export class Registry extends Contract {
   /**
    * Whether _user can use _name for their fund
    *
-   * ```solc
+   * ```solidity
    * function canUseFundName(address,string) view returns (bool)
    * ```
    */
@@ -114,7 +114,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `engine` function.
    *
-   * ```solc
+   * ```solidity
    * function engine() view returns (address)
    * ```
    */
@@ -123,7 +123,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `exchangeAdapterIsRegistered` function.
    *
-   * ```solc
+   * ```solidity
    * function exchangeAdapterIsRegistered(address) view returns (bool)
    * ```
    */
@@ -132,7 +132,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `exchangeForAdapter` function.
    *
-   * ```solc
+   * ```solidity
    * function exchangeForAdapter(address) view returns (address)
    * ```
    */
@@ -141,7 +141,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `exchangeInformation` function.
    *
-   * ```solc
+   * ```solidity
    * function exchangeInformation(address) view returns (bool, address)
    * ```
    */
@@ -153,7 +153,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `fundFactoryInformation` function.
    *
-   * ```solc
+   * ```solidity
    * function fundFactoryInformation(address) view returns (bool, bytes32)
    * ```
    */
@@ -165,7 +165,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `fundFactoryNameExists` function.
    *
-   * ```solc
+   * ```solidity
    * function fundFactoryNameExists(bytes32) view returns (bool)
    * ```
    */
@@ -174,7 +174,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `fundNameHashToOwner` function.
    *
-   * ```solc
+   * ```solidity
    * function fundNameHashToOwner(bytes32) view returns (address)
    * ```
    */
@@ -183,7 +183,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `fundsToFundFactories` function.
    *
-   * ```solc
+   * ```solidity
    * function fundsToFundFactories(address) view returns (address)
    * ```
    */
@@ -192,7 +192,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `getAdapterFunctionSignatures` function.
    *
-   * ```solc
+   * ```solidity
    * function getAdapterFunctionSignatures(address) view returns (bytes4[])
    * ```
    */
@@ -201,7 +201,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `getAssetInformation` function.
    *
-   * ```solc
+   * ```solidity
    * function getAssetInformation(address) view returns (tuple(bool,string,string,uint256,string,uint256,uint256[],bytes4[]))
    * ```
    */
@@ -222,7 +222,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `getDecimals` function.
    *
-   * ```solc
+   * ```solidity
    * function getDecimals(address) view returns (uint256)
    * ```
    */
@@ -231,7 +231,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `getExchangeInformation` function.
    *
-   * ```solc
+   * ```solidity
    * function getExchangeInformation(address) view returns (tuple(bool,address,bytes4[]))
    * ```
    */
@@ -243,7 +243,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `getFundFactoryInformation` function.
    *
-   * ```solc
+   * ```solidity
    * function getFundFactoryInformation(address) view returns (tuple(bool,bytes32))
    * ```
    */
@@ -255,7 +255,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `getName` function.
    *
-   * ```solc
+   * ```solidity
    * function getName(address) view returns (string)
    * ```
    */
@@ -264,7 +264,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `getRegisteredAssets` function.
    *
-   * ```solc
+   * ```solidity
    * function getRegisteredAssets() view returns (address[])
    * ```
    */
@@ -273,7 +273,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `getRegisteredExchangeAdapters` function.
    *
-   * ```solc
+   * ```solidity
    * function getRegisteredExchangeAdapters() view returns (address[])
    * ```
    */
@@ -282,7 +282,7 @@ export class Registry extends Contract {
   /**
    * get FundFactory and fund information
    *
-   * ```solc
+   * ```solidity
    * function getRegisteredFundFactories() view returns (address[])
    * ```
    */
@@ -291,7 +291,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `getReserveMin` function.
    *
-   * ```solc
+   * ```solidity
    * function getReserveMin(address) view returns (uint256)
    * ```
    */
@@ -300,7 +300,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `getSymbol` function.
    *
-   * ```solc
+   * ```solidity
    * function getSymbol(address) view returns (string)
    * ```
    */
@@ -309,7 +309,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `incentive` function.
    *
-   * ```solc
+   * ```solidity
    * function incentive() view returns (uint256)
    * ```
    */
@@ -318,7 +318,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `isFeeRegistered` function.
    *
-   * ```solc
+   * ```solidity
    * function isFeeRegistered(address) view returns (bool)
    * ```
    */
@@ -327,7 +327,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `isFund` function.
    *
-   * ```solc
+   * ```solidity
    * function isFund(address) view returns (bool)
    * ```
    */
@@ -336,7 +336,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `isFundFactory` function.
    *
-   * ```solc
+   * ```solidity
    * function isFundFactory(address) view returns (bool)
    * ```
    */
@@ -345,7 +345,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `isHub` function.
    *
-   * ```solc
+   * ```solidity
    * function isHub(address) view returns (bool)
    * ```
    */
@@ -354,7 +354,7 @@ export class Registry extends Contract {
   /**
    * Whether _name has only valid characters
    *
-   * ```solc
+   * ```solidity
    * function isValidFundName(string) pure returns (bool)
    * ```
    */
@@ -363,7 +363,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `mlnToken` function.
    *
-   * ```solc
+   * ```solidity
    * function mlnToken() view returns (address)
    * ```
    */
@@ -372,7 +372,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `nativeAsset` function.
    *
-   * ```solc
+   * ```solidity
    * function nativeAsset() view returns (address)
    * ```
    */
@@ -381,7 +381,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `owner` function.
    *
-   * ```solc
+   * ```solidity
    * function owner() view returns (address)
    * ```
    */
@@ -390,7 +390,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `priceSource` function.
    *
-   * ```solc
+   * ```solidity
    * function priceSource() view returns (address)
    * ```
    */
@@ -399,7 +399,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `registeredAssets` function.
    *
-   * ```solc
+   * ```solidity
    * function registeredAssets(uint256) view returns (address)
    * ```
    */
@@ -408,7 +408,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `registeredExchangeAdapters` function.
    *
-   * ```solc
+   * ```solidity
    * function registeredExchangeAdapters(uint256) view returns (address)
    * ```
    */
@@ -417,7 +417,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `registeredFundFactories` function.
    *
-   * ```solc
+   * ```solidity
    * function registeredFundFactories(uint256) view returns (address)
    * ```
    */
@@ -426,7 +426,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `sharesRequestor` function.
    *
-   * ```solc
+   * ```solidity
    * function sharesRequestor() view returns (address)
    * ```
    */
@@ -435,7 +435,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `deregisterFees` function.
    *
-   * ```solc
+   * ```solidity
    * function deregisterFees(address[])
    * ```
    */
@@ -446,7 +446,7 @@ export class Registry extends Contract {
    *
    * Pre: Only registrar owner should be able to registerPost: Address _asset is registered
    *
-   * ```solc
+   * ```solidity
    * function registerAsset(address,string,string,string,uint256,uint256[],bytes4[])
    * ```
    *
@@ -472,7 +472,7 @@ export class Registry extends Contract {
    *
    * Adapters are unique so are used as the mapping key. There may be different adapters for same exchange (0x / Ethfinex)Pre: Only registrar owner should be able to registerPost: Address _exchange is registered
    *
-   * ```solc
+   * ```solidity
    * function registerExchangeAdapter(address,address,bytes4[])
    * ```
    *
@@ -489,7 +489,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `registerFees` function.
    *
-   * ```solc
+   * ```solidity
    * function registerFees(address[])
    * ```
    */
@@ -498,7 +498,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `registerFund` function.
    *
-   * ```solc
+   * ```solidity
    * function registerFund(address,address,string)
    * ```
    */
@@ -507,7 +507,7 @@ export class Registry extends Contract {
   /**
    * FundFactories cannot be removed from registry
    *
-   * ```solc
+   * ```solidity
    * function registerFundFactory(address,bytes32)
    * ```
    *
@@ -524,7 +524,7 @@ export class Registry extends Contract {
    *
    * Owner can delete an existing entry
    *
-   * ```solc
+   * ```solidity
    * function removeAsset(address,uint256)
    * ```
    *
@@ -537,7 +537,7 @@ export class Registry extends Contract {
    *
    * Owner can delete an existing entry
    *
-   * ```solc
+   * ```solidity
    * function removeExchangeAdapter(address,uint256)
    * ```
    *
@@ -549,7 +549,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `reserveFundName` function.
    *
-   * ```solc
+   * ```solidity
    * function reserveFundName(address,string)
    * ```
    */
@@ -558,7 +558,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `setAuthority` function.
    *
-   * ```solc
+   * ```solidity
    * function setAuthority(address)
    * ```
    */
@@ -567,7 +567,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `setEngine` function.
    *
-   * ```solc
+   * ```solidity
    * function setEngine(address)
    * ```
    */
@@ -576,7 +576,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `setIncentive` function.
    *
-   * ```solc
+   * ```solidity
    * function setIncentive(uint256)
    * ```
    */
@@ -585,7 +585,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `setMGM` function.
    *
-   * ```solc
+   * ```solidity
    * function setMGM(address)
    * ```
    */
@@ -594,7 +594,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `setMlnToken` function.
    *
-   * ```solc
+   * ```solidity
    * function setMlnToken(address)
    * ```
    */
@@ -603,7 +603,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `setNativeAsset` function.
    *
-   * ```solc
+   * ```solidity
    * function setNativeAsset(address)
    * ```
    */
@@ -612,7 +612,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `setOwner` function.
    *
-   * ```solc
+   * ```solidity
    * function setOwner(address)
    * ```
    */
@@ -621,7 +621,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `setPriceSource` function.
    *
-   * ```solc
+   * ```solidity
    * function setPriceSource(address)
    * ```
    */
@@ -630,7 +630,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `setSharesRequestor` function.
    *
-   * ```solc
+   * ```solidity
    * function setSharesRequestor(address)
    * ```
    */
@@ -641,7 +641,7 @@ export class Registry extends Contract {
    *
    * Pre: Owner can change an existing entryPost: Changed Name, Symbol, URL and/or IPFSHash
    *
-   * ```solc
+   * ```solidity
    * function updateAsset(address,string,string,string,uint256,uint256[],bytes4[])
    * ```
    *
@@ -663,7 +663,7 @@ export class Registry extends Contract {
   /**
    * `Registry` contract call for `updateExchangeAdapter` function.
    *
-   * ```solc
+   * ```solidity
    * function updateExchangeAdapter(address,address,bytes4[])
    * ```
    */

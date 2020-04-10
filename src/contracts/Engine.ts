@@ -17,7 +17,7 @@ export class Engine extends Contract {
   /**
    * `Engine` contract call for `MLN_DECIMALS` function.
    *
-   * ```solc
+   * ```solidity
    * function MLN_DECIMALS() view returns (uint256)
    * ```
    */
@@ -26,7 +26,7 @@ export class Engine extends Contract {
   /**
    * `Engine` contract call for `amguPrice` function.
    *
-   * ```solc
+   * ```solidity
    * function amguPrice() view returns (uint256)
    * ```
    */
@@ -35,7 +35,7 @@ export class Engine extends Contract {
   /**
    * `Engine` contract call for `enginePrice` function.
    *
-   * ```solc
+   * ```solidity
    * function enginePrice() view returns (uint256)
    * ```
    */
@@ -44,7 +44,7 @@ export class Engine extends Contract {
   /**
    * `Engine` contract call for `ethPayoutForMlnAmount` function.
    *
-   * ```solc
+   * ```solidity
    * function ethPayoutForMlnAmount(uint256) view returns (uint256)
    * ```
    */
@@ -56,7 +56,7 @@ export class Engine extends Contract {
   /**
    * `Engine` contract call for `frozenEther` function.
    *
-   * ```solc
+   * ```solidity
    * function frozenEther() view returns (uint256)
    * ```
    */
@@ -65,7 +65,7 @@ export class Engine extends Contract {
   /**
    * `Engine` contract call for `getAmguPrice` function.
    *
-   * ```solc
+   * ```solidity
    * function getAmguPrice() view returns (uint256)
    * ```
    */
@@ -74,7 +74,7 @@ export class Engine extends Contract {
   /**
    * `Engine` contract call for `lastThaw` function.
    *
-   * ```solc
+   * ```solidity
    * function lastThaw() view returns (uint256)
    * ```
    */
@@ -83,7 +83,7 @@ export class Engine extends Contract {
   /**
    * `Engine` contract call for `liquidEther` function.
    *
-   * ```solc
+   * ```solidity
    * function liquidEther() view returns (uint256)
    * ```
    */
@@ -94,7 +94,7 @@ export class Engine extends Contract {
    *
    * Get MLN from the registry
    *
-   * ```solc
+   * ```solidity
    * function mlnToken() view returns (address)
    * ```
    */
@@ -103,7 +103,7 @@ export class Engine extends Contract {
   /**
    * `Engine` contract call for `premiumPercent` function.
    *
-   * ```solc
+   * ```solidity
    * function premiumPercent() view returns (uint256)
    * ```
    */
@@ -114,7 +114,7 @@ export class Engine extends Contract {
    *
    * Get PriceSource from the registry
    *
-   * ```solc
+   * ```solidity
    * function priceSource() view returns (address)
    * ```
    */
@@ -123,7 +123,7 @@ export class Engine extends Contract {
   /**
    * `Engine` contract call for `registry` function.
    *
-   * ```solc
+   * ```solidity
    * function registry() view returns (address)
    * ```
    */
@@ -132,7 +132,7 @@ export class Engine extends Contract {
   /**
    * `Engine` contract call for `thawingDelay` function.
    *
-   * ```solc
+   * ```solidity
    * function thawingDelay() view returns (uint256)
    * ```
    */
@@ -141,7 +141,7 @@ export class Engine extends Contract {
   /**
    * `Engine` contract call for `totalAmguConsumed` function.
    *
-   * ```solc
+   * ```solidity
    * function totalAmguConsumed() view returns (uint256)
    * ```
    */
@@ -150,7 +150,7 @@ export class Engine extends Contract {
   /**
    * `Engine` contract call for `totalEtherConsumed` function.
    *
-   * ```solc
+   * ```solidity
    * function totalEtherConsumed() view returns (uint256)
    * ```
    */
@@ -159,7 +159,7 @@ export class Engine extends Contract {
   /**
    * `Engine` contract call for `totalMlnBurned` function.
    *
-   * ```solc
+   * ```solidity
    * function totalMlnBurned() view returns (uint256)
    * ```
    */
@@ -168,7 +168,7 @@ export class Engine extends Contract {
   /**
    * `Engine` contract call for `payAmguInEther` function.
    *
-   * ```solc
+   * ```solidity
    * function payAmguInEther() payable
    * ```
    */
@@ -177,7 +177,7 @@ export class Engine extends Contract {
   /**
    * MLN must be approved first
    *
-   * ```solc
+   * ```solidity
    * function sellAndBurnMln(uint256)
    * ```
    */
@@ -188,7 +188,7 @@ export class Engine extends Contract {
    *
    * set price of AMGU in MLN (base units)only callable by MGM
    *
-   * ```solc
+   * ```solidity
    * function setAmguPrice(uint256)
    * ```
    */
@@ -199,7 +199,7 @@ export class Engine extends Contract {
    *
    * only callable by MTC
    *
-   * ```solc
+   * ```solidity
    * function setRegistry(address)
    * ```
    */
@@ -210,7 +210,7 @@ export class Engine extends Contract {
    *
    * Delay only restarts when this function is called
    *
-   * ```solc
+   * ```solidity
    * function thaw()
    * ```
    */

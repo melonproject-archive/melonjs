@@ -15,7 +15,7 @@ export class MaxPositions extends Contract {
   /**
    * `MaxPositions` contract call for `TAKE_ORDER` function.
    *
-   * ```solc
+   * ```solidity
    * function TAKE_ORDER() view returns (bytes4)
    * ```
    */
@@ -24,7 +24,7 @@ export class MaxPositions extends Contract {
   /**
    * `MaxPositions` contract call for `identifier` function.
    *
-   * ```solc
+   * ```solidity
    * function identifier() pure returns (string)
    * ```
    */
@@ -33,7 +33,7 @@ export class MaxPositions extends Contract {
   /**
    * `MaxPositions` contract call for `maxPositions` function.
    *
-   * ```solc
+   * ```solidity
    * function maxPositions() view returns (uint256)
    * ```
    */
@@ -42,7 +42,7 @@ export class MaxPositions extends Contract {
   /**
    * `MaxPositions` contract call for `position` function.
    *
-   * ```solc
+   * ```solidity
    * function position() pure returns (uint8)
    * ```
    */
@@ -51,7 +51,7 @@ export class MaxPositions extends Contract {
   /**
    * `MaxPositions` contract call for `rule` function.
    *
-   * ```solc
+   * ```solidity
    * function rule(bytes4,address[5],uint256[3],bytes32) returns (bool)
    * ```
    */

@@ -15,7 +15,7 @@ export class PriceTolerance extends Contract {
   /**
    * `PriceTolerance` contract call for `TAKE_ORDER` function.
    *
-   * ```solc
+   * ```solidity
    * function TAKE_ORDER() view returns (bytes4)
    * ```
    */
@@ -24,7 +24,7 @@ export class PriceTolerance extends Contract {
   /**
    * `PriceTolerance` contract call for `identifier` function.
    *
-   * ```solc
+   * ```solidity
    * function identifier() pure returns (string)
    * ```
    */
@@ -33,7 +33,7 @@ export class PriceTolerance extends Contract {
   /**
    * `PriceTolerance` contract call for `position` function.
    *
-   * ```solc
+   * ```solidity
    * function position() pure returns (uint8)
    * ```
    */
@@ -42,7 +42,7 @@ export class PriceTolerance extends Contract {
   /**
    * `PriceTolerance` contract call for `takeGenericOrder` function.
    *
-   * ```solc
+   * ```solidity
    * function takeGenericOrder(address,address,uint256[3]) view returns (bool)
    * ```
    */
@@ -56,7 +56,7 @@ export class PriceTolerance extends Contract {
   /**
    * `PriceTolerance` contract call for `takeOasisDex` function.
    *
-   * ```solc
+   * ```solidity
    * function takeOasisDex(address,bytes32,uint256) view returns (bool)
    * ```
    */
@@ -70,7 +70,7 @@ export class PriceTolerance extends Contract {
   /**
    * `PriceTolerance` contract call for `takeOrder` function.
    *
-   * ```solc
+   * ```solidity
    * function takeOrder(address[5],uint256[3],bytes32) view returns (bool)
    * ```
    */
@@ -84,7 +84,7 @@ export class PriceTolerance extends Contract {
   /**
    * `PriceTolerance` contract call for `tolerance` function.
    *
-   * ```solc
+   * ```solidity
    * function tolerance() view returns (uint256)
    * ```
    */
@@ -93,7 +93,7 @@ export class PriceTolerance extends Contract {
   /**
    * `PriceTolerance` contract call for `rule` function.
    *
-   * ```solc
+   * ```solidity
    * function rule(bytes4,address[5],uint256[3],bytes32) returns (bool)
    * ```
    */

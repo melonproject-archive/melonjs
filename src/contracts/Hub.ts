@@ -17,7 +17,7 @@ export class Hub extends Contract {
   /**
    * `Hub` contract call for `ANY` function.
    *
-   * ```solc
+   * ```solidity
    * function ANY() view returns (bytes32)
    * ```
    */
@@ -26,7 +26,7 @@ export class Hub extends Contract {
   /**
    * `Hub` contract call for `accounting` function.
    *
-   * ```solc
+   * ```solidity
    * function accounting() view returns (address)
    * ```
    */
@@ -35,7 +35,7 @@ export class Hub extends Contract {
   /**
    * `Hub` contract call for `authority` function.
    *
-   * ```solc
+   * ```solidity
    * function authority() view returns (address)
    * ```
    */
@@ -44,7 +44,7 @@ export class Hub extends Contract {
   /**
    * `Hub` contract call for `canCall` function.
    *
-   * ```solc
+   * ```solidity
    * function canCall(address,address,bytes4) view returns (bool)
    * ```
    */
@@ -58,7 +58,7 @@ export class Hub extends Contract {
   /**
    * `Hub` contract call for `creationTime` function.
    *
-   * ```solc
+   * ```solidity
    * function creationTime() view returns (uint256)
    * ```
    */
@@ -67,7 +67,7 @@ export class Hub extends Contract {
   /**
    * `Hub` contract call for `creator` function.
    *
-   * ```solc
+   * ```solidity
    * function creator() view returns (address)
    * ```
    */
@@ -76,7 +76,7 @@ export class Hub extends Contract {
   /**
    * `Hub` contract call for `feeManager` function.
    *
-   * ```solc
+   * ```solidity
    * function feeManager() view returns (address)
    * ```
    */
@@ -85,7 +85,7 @@ export class Hub extends Contract {
   /**
    * `Hub` contract call for `fundFactory` function.
    *
-   * ```solc
+   * ```solidity
    * function fundFactory() view returns (address)
    * ```
    */
@@ -94,7 +94,7 @@ export class Hub extends Contract {
   /**
    * `Hub` contract call for `fundInitialized` function.
    *
-   * ```solc
+   * ```solidity
    * function fundInitialized() view returns (bool)
    * ```
    */
@@ -103,7 +103,7 @@ export class Hub extends Contract {
   /**
    * `Hub` contract call for `getName` function.
    *
-   * ```solc
+   * ```solidity
    * function getName() view returns (string)
    * ```
    */
@@ -112,7 +112,7 @@ export class Hub extends Contract {
   /**
    * `Hub` contract call for `isShutDown` function.
    *
-   * ```solc
+   * ```solidity
    * function isShutDown() view returns (bool)
    * ```
    */
@@ -121,7 +121,7 @@ export class Hub extends Contract {
   /**
    * `Hub` contract call for `isSpoke` function.
    *
-   * ```solc
+   * ```solidity
    * function isSpoke(address) view returns (bool)
    * ```
    */
@@ -130,7 +130,7 @@ export class Hub extends Contract {
   /**
    * `Hub` contract call for `manager` function.
    *
-   * ```solc
+   * ```solidity
    * function manager() view returns (address)
    * ```
    */
@@ -139,7 +139,7 @@ export class Hub extends Contract {
   /**
    * `Hub` contract call for `name` function.
    *
-   * ```solc
+   * ```solidity
    * function name() view returns (string)
    * ```
    */
@@ -148,7 +148,7 @@ export class Hub extends Contract {
   /**
    * `Hub` contract call for `owner` function.
    *
-   * ```solc
+   * ```solidity
    * function owner() view returns (address)
    * ```
    */
@@ -157,7 +157,7 @@ export class Hub extends Contract {
   /**
    * `Hub` contract call for `policyManager` function.
    *
-   * ```solc
+   * ```solidity
    * function policyManager() view returns (address)
    * ```
    */
@@ -166,7 +166,7 @@ export class Hub extends Contract {
   /**
    * `Hub` contract call for `priceSource` function.
    *
-   * ```solc
+   * ```solidity
    * function priceSource() view returns (address)
    * ```
    */
@@ -175,7 +175,7 @@ export class Hub extends Contract {
   /**
    * `Hub` contract call for `registry` function.
    *
-   * ```solc
+   * ```solidity
    * function registry() view returns (address)
    * ```
    */
@@ -184,7 +184,7 @@ export class Hub extends Contract {
   /**
    * `Hub` contract call for `routes` function.
    *
-   * ```solc
+   * ```solidity
    * function routes() view returns (address, address, address, address, address, address, address)
    * ```
    */
@@ -203,7 +203,7 @@ export class Hub extends Contract {
   /**
    * `Hub` contract call for `shares` function.
    *
-   * ```solc
+   * ```solidity
    * function shares() view returns (address)
    * ```
    */
@@ -212,7 +212,7 @@ export class Hub extends Contract {
   /**
    * `Hub` contract call for `vault` function.
    *
-   * ```solc
+   * ```solidity
    * function vault() view returns (address)
    * ```
    */
@@ -221,7 +221,7 @@ export class Hub extends Contract {
   /**
    * `Hub` contract call for `forbid` function.
    *
-   * ```solc
+   * ```solidity
    * function forbid(address,address,bytes32)
    * ```
    */
@@ -230,7 +230,7 @@ export class Hub extends Contract {
   /**
    * `Hub` contract call for `initializeAndSetPermissions` function.
    *
-   * ```solc
+   * ```solidity
    * function initializeAndSetPermissions(address[7])
    * ```
    */
@@ -241,7 +241,7 @@ export class Hub extends Contract {
   /**
    * `Hub` contract call for `permit` function.
    *
-   * ```solc
+   * ```solidity
    * function permit(address,address,bytes32)
    * ```
    */
@@ -250,7 +250,7 @@ export class Hub extends Contract {
   /**
    * `Hub` contract call for `setAuthority` function.
    *
-   * ```solc
+   * ```solidity
    * function setAuthority(address)
    * ```
    */
@@ -259,7 +259,7 @@ export class Hub extends Contract {
   /**
    * `Hub` contract call for `setOwner` function.
    *
-   * ```solc
+   * ```solidity
    * function setOwner(address)
    * ```
    */
@@ -268,7 +268,7 @@ export class Hub extends Contract {
   /**
    * `Hub` contract call for `shutDownFund` function.
    *
-   * ```solc
+   * ```solidity
    * function shutDownFund()
    * ```
    */

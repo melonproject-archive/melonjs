@@ -15,7 +15,7 @@ export class UserWhitelist extends Contract {
   /**
    * `UserWhitelist` contract call for `authority` function.
    *
-   * ```solc
+   * ```solidity
    * function authority() view returns (address)
    * ```
    */
@@ -24,7 +24,7 @@ export class UserWhitelist extends Contract {
   /**
    * `UserWhitelist` contract call for `identifier` function.
    *
-   * ```solc
+   * ```solidity
    * function identifier() pure returns (string)
    * ```
    */
@@ -33,7 +33,7 @@ export class UserWhitelist extends Contract {
   /**
    * `UserWhitelist` contract call for `owner` function.
    *
-   * ```solc
+   * ```solidity
    * function owner() view returns (address)
    * ```
    */
@@ -42,7 +42,7 @@ export class UserWhitelist extends Contract {
   /**
    * `UserWhitelist` contract call for `position` function.
    *
-   * ```solc
+   * ```solidity
    * function position() pure returns (uint8)
    * ```
    */
@@ -51,7 +51,7 @@ export class UserWhitelist extends Contract {
   /**
    * `UserWhitelist` contract call for `whitelisted` function.
    *
-   * ```solc
+   * ```solidity
    * function whitelisted(address) view returns (bool)
    * ```
    */
@@ -60,7 +60,7 @@ export class UserWhitelist extends Contract {
   /**
    * `UserWhitelist` contract call for `addToWhitelist` function.
    *
-   * ```solc
+   * ```solidity
    * function addToWhitelist(address)
    * ```
    */
@@ -69,7 +69,7 @@ export class UserWhitelist extends Contract {
   /**
    * `UserWhitelist` contract call for `batchAddToWhitelist` function.
    *
-   * ```solc
+   * ```solidity
    * function batchAddToWhitelist(address[])
    * ```
    */
@@ -78,7 +78,7 @@ export class UserWhitelist extends Contract {
   /**
    * `UserWhitelist` contract call for `batchRemoveFromWhitelist` function.
    *
-   * ```solc
+   * ```solidity
    * function batchRemoveFromWhitelist(address[])
    * ```
    */
@@ -87,7 +87,7 @@ export class UserWhitelist extends Contract {
   /**
    * `UserWhitelist` contract call for `removeFromWhitelist` function.
    *
-   * ```solc
+   * ```solidity
    * function removeFromWhitelist(address)
    * ```
    */
@@ -96,7 +96,7 @@ export class UserWhitelist extends Contract {
   /**
    * `UserWhitelist` contract call for `rule` function.
    *
-   * ```solc
+   * ```solidity
    * function rule(bytes4,address[5],uint256[3],bytes32) returns (bool)
    * ```
    */
@@ -110,7 +110,7 @@ export class UserWhitelist extends Contract {
   /**
    * `UserWhitelist` contract call for `setAuthority` function.
    *
-   * ```solc
+   * ```solidity
    * function setAuthority(address)
    * ```
    */
@@ -119,7 +119,7 @@ export class UserWhitelist extends Contract {
   /**
    * `UserWhitelist` contract call for `setOwner` function.
    *
-   * ```solc
+   * ```solidity
    * function setOwner(address)
    * ```
    */

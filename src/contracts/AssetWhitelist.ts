@@ -17,7 +17,7 @@ export class AssetWhitelist extends Contract {
   /**
    * `AssetWhitelist` contract call for `TAKE_ORDER` function.
    *
-   * ```solc
+   * ```solidity
    * function TAKE_ORDER() view returns (bytes4)
    * ```
    */
@@ -26,7 +26,7 @@ export class AssetWhitelist extends Contract {
   /**
    * `AssetWhitelist` contract call for `authority` function.
    *
-   * ```solc
+   * ```solidity
    * function authority() view returns (address)
    * ```
    */
@@ -35,7 +35,7 @@ export class AssetWhitelist extends Contract {
   /**
    * `AssetWhitelist` contract call for `getAssetIndex` function.
    *
-   * ```solc
+   * ```solidity
    * function getAssetIndex(address) view returns (uint256)
    * ```
    */
@@ -44,7 +44,7 @@ export class AssetWhitelist extends Contract {
   /**
    * `AssetWhitelist` contract call for `getMemberCount` function.
    *
-   * ```solc
+   * ```solidity
    * function getMemberCount() view returns (uint256)
    * ```
    */
@@ -53,7 +53,7 @@ export class AssetWhitelist extends Contract {
   /**
    * `AssetWhitelist` contract call for `getMembers` function.
    *
-   * ```solc
+   * ```solidity
    * function getMembers() view returns (address[])
    * ```
    */
@@ -62,7 +62,7 @@ export class AssetWhitelist extends Contract {
   /**
    * `AssetWhitelist` contract call for `identifier` function.
    *
-   * ```solc
+   * ```solidity
    * function identifier() pure returns (string)
    * ```
    */
@@ -71,7 +71,7 @@ export class AssetWhitelist extends Contract {
   /**
    * `AssetWhitelist` contract call for `isMember` function.
    *
-   * ```solc
+   * ```solidity
    * function isMember(address) view returns (bool)
    * ```
    */
@@ -80,7 +80,7 @@ export class AssetWhitelist extends Contract {
   /**
    * `AssetWhitelist` contract call for `owner` function.
    *
-   * ```solc
+   * ```solidity
    * function owner() view returns (address)
    * ```
    */
@@ -89,7 +89,7 @@ export class AssetWhitelist extends Contract {
   /**
    * `AssetWhitelist` contract call for `position` function.
    *
-   * ```solc
+   * ```solidity
    * function position() pure returns (uint8)
    * ```
    */
@@ -98,7 +98,7 @@ export class AssetWhitelist extends Contract {
   /**
    * `AssetWhitelist` contract call for `removeFromWhitelist` function.
    *
-   * ```solc
+   * ```solidity
    * function removeFromWhitelist(address)
    * ```
    */
@@ -107,7 +107,7 @@ export class AssetWhitelist extends Contract {
   /**
    * `AssetWhitelist` contract call for `rule` function.
    *
-   * ```solc
+   * ```solidity
    * function rule(bytes4,address[5],uint256[3],bytes32) returns (bool)
    * ```
    */
@@ -121,7 +121,7 @@ export class AssetWhitelist extends Contract {
   /**
    * `AssetWhitelist` contract call for `setAuthority` function.
    *
-   * ```solc
+   * ```solidity
    * function setAuthority(address)
    * ```
    */
@@ -130,7 +130,7 @@ export class AssetWhitelist extends Contract {
   /**
    * `AssetWhitelist` contract call for `setOwner` function.
    *
-   * ```solc
+   * ```solidity
    * function setOwner(address)
    * ```
    */
