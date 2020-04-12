@@ -74,16 +74,19 @@ const args = yargs
   const config = await prettier.resolveConfig(args.prettier);
   const result = input.map((item) => {
     const name = path.basename(item).split('.', 1)[0];
+    const file = path.resolve(path.join(args.output, `${name}.ts`));
+    const root = path.dirname(path.relative(file, path.normalize(path.resolve(__dirname, '..', 'src'))));
+
     const content = fs.readFileSync(item).toString('utf8');
     const input = JSON.parse(content);
-    const code = generate(name, input.abi, input.userdoc, input.devdoc);
+    const code = generate(root, name, input.abi, input.userdoc, input.devdoc);
     const output = prettier.format(code, { ...config, parser: 'typescript' });
 
-    return { name, output };
+    return { name, output, file };
   });
 
   result.forEach((item) => {
-    fs.writeFileSync(path.join(args.output, `${item.name}.ts`), item.output, 'utf8');
+    fs.writeFileSync(item.file, item.output, 'utf8');
   });
 
   const index = path.join(args.output, `index.ts`);

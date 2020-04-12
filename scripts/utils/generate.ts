@@ -113,6 +113,7 @@ export interface NatspecUserdoc {
 }
 
 export function generate(
+  root: string,
   name: string,
   interfaze: ethers.ContractInterface,
   devdoc?: NatspecDevdoc,
@@ -257,7 +258,7 @@ export function generate(
   return `
     import { ethers } from "ethers";
     // @ts-ignore
-    import { Contract, TransactionWrapper } from "../Contract";
+    import { Contract, TransactionWrapper } from "${root}/Contract";
 
     /**
      * ${header.join('\n* ')}

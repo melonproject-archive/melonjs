@@ -1,6 +1,6 @@
 import { ethers } from 'ethers';
 // @ts-ignore
-import { Contract, TransactionWrapper } from '../Contract';
+import { Contract, TransactionWrapper } from '../../Contract';
 
 /**
  * `Engine` contract
