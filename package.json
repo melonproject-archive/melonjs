@@ -1,6 +1,6 @@
 {
   "name": "@melonproject/melonjs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A convenient JavaScript interface to the Melon protocol Ethereum smart contracts.",
   "main": "index.js",
   "module": "bundle.esm.js",
