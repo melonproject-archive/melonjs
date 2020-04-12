@@ -25,7 +25,6 @@
     "postbuild": "cp package.json LICENSE README.md dist",
     "prewatch": "cp package.json dist",
     "watch": "tsc --watch",
-    "precodegen": "rimraf src/contracts",
     "codegen": "ts-node --transpile-only scripts/codegen",
     "pretypedocs": "rimraf typedocs",
     "typedocs": "typedoc",
@@ -50,6 +49,7 @@
   "devDependencies": {
     "@types/glob": "^7.1.1",
     "@types/jest": "^25.2.1",
+    "@types/rimraf": "^3.0.0",
     "cp": "^0.2.0",
     "gh-pages": "^2.1.1",
     "glob": "^7.1.5",

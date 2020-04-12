@@ -3,6 +3,7 @@ import path from 'path';
 import glob from 'glob';
 import prettier from 'prettier';
 import yargs from 'yargs';
+import rimraf from 'rimraf';
 import { generate } from './utils/generate';
 
 const args = yargs
@@ -15,15 +16,25 @@ const args = yargs
     type: 'string',
     normalize: true,
     default: path.relative(process.cwd(), path.resolve(__dirname, '..', 'src', 'contracts')),
+    demandOption: true,
+  })
+  .option('clean', {
+    type: 'boolean',
+    default: true,
   })
   .option('prettier', {
     normalize: true,
     default: process.cwd(),
     defaultDescription: 'Relative to current working directory.',
+    demandOption: true,
   })
   .pkgConf('codegen').argv;
 
 (async () => {
+  if (args.clean) {
+    rimraf.sync(args.output);
+  }
+
   if (!fs.existsSync(args.output)) {
     fs.mkdirSync(args.output);
   }
@@ -56,6 +67,10 @@ const args = yargs
     }
   })();
 
+  if (!input.length) {
+    return;
+  }
+
   const config = await prettier.resolveConfig(args.prettier);
   const result = input.map((item) => {
     const name = path.basename(item).split('.', 1)[0];
@@ -71,6 +86,11 @@ const args = yargs
     fs.writeFileSync(path.join(args.output, `${item.name}.ts`), item.output, 'utf8');
   });
 
+  const index = path.join(args.output, `index.ts`);
   const imports = result.map((item) => `export { ${item.name} } from './${item.name}';`);
-  fs.writeFileSync(path.join(args.output, `index.ts`), `${imports.join('\n')}\n`, 'utf8');
+  if (!fs.existsSync(index)) {
+    fs.writeFileSync(index, `${imports.join('\n')}\n`, 'utf8');
+  } else {
+    fs.appendFileSync(index, `${imports.join('\n')}\n`, 'utf8');
+  }
 })();
