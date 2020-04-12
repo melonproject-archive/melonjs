@@ -1,0 +1,1355 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>KyberPriceFeed | @melonproject/melonjs</title>
+	<meta name="description" content="Documentation for @melonproject/melonjs">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">@melonproject/melonjs</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="../modules/_contracts_kyberpricefeed_.html">&quot;contracts/KyberPriceFeed&quot;</a>
+				</li>
+				<li>
+					<a href="_contracts_kyberpricefeed_.kyberpricefeed.html">KyberPriceFeed</a>
+				</li>
+			</ul>
+			<h1>Class KyberPriceFeed</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Price Feed Template</p>
+					</div>
+					<p>Routes external prices to smart contracts from Kyber</p>
+					<dl class="tsd-comment-tags">
+						<dt>author</dt>
+						<dd><p>Melonport AG <a href="mailto:&#116;&#101;&#x61;&#109;&#64;&#109;&#x65;&#x6c;&#111;&#110;&#x70;&#111;&#x72;&#116;&#x2e;&#99;&#x6f;&#109;">&#116;&#101;&#x61;&#109;&#64;&#109;&#x65;&#x6c;&#111;&#110;&#x70;&#111;&#x72;&#116;&#x2e;&#99;&#x6f;&#109;</a></p>
+						</dd>
+					</dl>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<a href="_contract_.contract.html" class="tsd-signature-type">Contract</a>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">KyberPriceFeed</span>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Constructors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite"><a href="_contracts_kyberpricefeed_.kyberpricefeed.html#constructor" class="tsd-kind-icon">constructor</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_contracts_kyberpricefeed_.kyberpricefeed.html#kyber_network_proxy" class="tsd-kind-icon">KYBER_<wbr>NETWORK_<wbr>PROXY</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_contracts_kyberpricefeed_.kyberpricefeed.html#kyber_precision" class="tsd-kind-icon">KYBER_<wbr>PRECISION</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_contracts_kyberpricefeed_.kyberpricefeed.html#quote_asset" class="tsd-kind-icon">QUOTE_<wbr>ASSET</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_contracts_kyberpricefeed_.kyberpricefeed.html#validity_interval" class="tsd-kind-icon">VALIDITY_<wbr>INTERVAL</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_contracts_kyberpricefeed_.kyberpricefeed.html#convertquantity" class="tsd-kind-icon">convert<wbr>Quantity</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite"><a href="_contracts_kyberpricefeed_.kyberpricefeed.html#ethers" class="tsd-kind-icon">ethers</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_contracts_kyberpricefeed_.kyberpricefeed.html#getkyberprice" class="tsd-kind-icon">get<wbr>Kyber<wbr>Price</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_contracts_kyberpricefeed_.kyberpricefeed.html#getorderpriceinfo" class="tsd-kind-icon">get<wbr>Order<wbr>Price<wbr>Info</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_contracts_kyberpricefeed_.kyberpricefeed.html#getprice" class="tsd-kind-icon">get<wbr>Price</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_contracts_kyberpricefeed_.kyberpricefeed.html#getprices" class="tsd-kind-icon">get<wbr>Prices</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_contracts_kyberpricefeed_.kyberpricefeed.html#getreferencepriceinfo" class="tsd-kind-icon">get<wbr>Reference<wbr>Price<wbr>Info</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_contracts_kyberpricefeed_.kyberpricefeed.html#hasvalidprice" class="tsd-kind-icon">has<wbr>Valid<wbr>Price</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_contracts_kyberpricefeed_.kyberpricefeed.html#hasvalidprices" class="tsd-kind-icon">has<wbr>Valid<wbr>Prices</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_contracts_kyberpricefeed_.kyberpricefeed.html#lastupdate" class="tsd-kind-icon">last<wbr>Update</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_contracts_kyberpricefeed_.kyberpricefeed.html#maxpricedeviation" class="tsd-kind-icon">max<wbr>Price<wbr>Deviation</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_contracts_kyberpricefeed_.kyberpricefeed.html#maxspread" class="tsd-kind-icon">max<wbr>Spread</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_contracts_kyberpricefeed_.kyberpricefeed.html#prices" class="tsd-kind-icon">prices</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_contracts_kyberpricefeed_.kyberpricefeed.html#registry" class="tsd-kind-icon">registry</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_contracts_kyberpricefeed_.kyberpricefeed.html#setmaxpricedeviation" class="tsd-kind-icon">set<wbr>Max<wbr>Price<wbr>Deviation</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_contracts_kyberpricefeed_.kyberpricefeed.html#setmaxspread" class="tsd-kind-icon">set<wbr>Max<wbr>Spread</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_contracts_kyberpricefeed_.kyberpricefeed.html#setregistry" class="tsd-kind-icon">set<wbr>Registry</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_contracts_kyberpricefeed_.kyberpricefeed.html#setupdater" class="tsd-kind-icon">set<wbr>Updater</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_contracts_kyberpricefeed_.kyberpricefeed.html#update" class="tsd-kind-icon">update</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_contracts_kyberpricefeed_.kyberpricefeed.html#updater" class="tsd-kind-icon">updater</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><a href="_contracts_kyberpricefeed_.kyberpricefeed.html#abi" class="tsd-kind-icon">abi</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Constructors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
+					<a name="constructor" class="tsd-anchor"></a>
+					<h3>constructor</h3>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Kyber<wbr>Price<wbr>Feed<span class="tsd-signature-symbol">(</span>addressOrName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, providerOrSigner<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Signer</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Provider</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_contracts_kyberpricefeed_.kyberpricefeed.html" class="tsd-signature-type">KyberPriceFeed</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overrides <a href="_contract_.contract.html">Contract</a>.<a href="_contract_.contract.html#constructor">constructor</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/KyberPriceFeed.ts#L13">src/contracts/KyberPriceFeed.ts:13</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>addressOrName: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>providerOrSigner: <span class="tsd-signature-type">Signer</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Provider</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_contracts_kyberpricefeed_.kyberpricefeed.html" class="tsd-signature-type">KyberPriceFeed</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="kyber_network_proxy" class="tsd-anchor"></a>
+					<h3>KYBER_<wbr>NETWORK_<wbr>PROXY</h3>
+					<div class="tsd-signature tsd-kind-icon">KYBER_<wbr>NETWORK_<wbr>PROXY<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>$$overrides<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">CallOverrides</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/KyberPriceFeed.ts#L26">src/contracts/KyberPriceFeed.ts:26</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p><code>KyberPriceFeed</code> contract call for <code>KYBER_NETWORK_PROXY</code> function.</p>
+						</div>
+						<pre><code class="language-solidity"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">KYBER_NETWORK_PROXY</span>(<span class="hljs-params"></span>) <span class="hljs-title"><span class="hljs-keyword">view</span></span> <span class="hljs-title"><span class="hljs-keyword">returns</span></span> (<span class="hljs-params"><span class="hljs-keyword">address</span></span>)</span></code></pre>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>$$overrides<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">CallOverrides</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5><span class="tsd-flag ts-flagOptional">Optional</span> $$overrides: <span class="tsd-signature-type">CallOverrides</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="kyber_precision" class="tsd-anchor"></a>
+					<h3>KYBER_<wbr>PRECISION</h3>
+					<div class="tsd-signature tsd-kind-icon">KYBER_<wbr>PRECISION<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>$$overrides<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">CallOverrides</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/KyberPriceFeed.ts#L35">src/contracts/KyberPriceFeed.ts:35</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p><code>KyberPriceFeed</code> contract call for <code>KYBER_PRECISION</code> function.</p>
+						</div>
+						<pre><code class="language-solidity"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">KYBER_PRECISION</span>(<span class="hljs-params"></span>) <span class="hljs-title"><span class="hljs-keyword">view</span></span> <span class="hljs-title"><span class="hljs-keyword">returns</span></span> (<span class="hljs-params"><span class="hljs-keyword">uint8</span></span>)</span></code></pre>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>$$overrides<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">CallOverrides</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5><span class="tsd-flag ts-flagOptional">Optional</span> $$overrides: <span class="tsd-signature-type">CallOverrides</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="quote_asset" class="tsd-anchor"></a>
+					<h3>QUOTE_<wbr>ASSET</h3>
+					<div class="tsd-signature tsd-kind-icon">QUOTE_<wbr>ASSET<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>$$overrides<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">CallOverrides</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/KyberPriceFeed.ts#L44">src/contracts/KyberPriceFeed.ts:44</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p><code>KyberPriceFeed</code> contract call for <code>QUOTE_ASSET</code> function.</p>
+						</div>
+						<pre><code class="language-solidity"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">QUOTE_ASSET</span>(<span class="hljs-params"></span>) <span class="hljs-title"><span class="hljs-keyword">view</span></span> <span class="hljs-title"><span class="hljs-keyword">returns</span></span> (<span class="hljs-params"><span class="hljs-keyword">address</span></span>)</span></code></pre>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>$$overrides<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">CallOverrides</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5><span class="tsd-flag ts-flagOptional">Optional</span> $$overrides: <span class="tsd-signature-type">CallOverrides</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="validity_interval" class="tsd-anchor"></a>
+					<h3>VALIDITY_<wbr>INTERVAL</h3>
+					<div class="tsd-signature tsd-kind-icon">VALIDITY_<wbr>INTERVAL<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>$$overrides<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">CallOverrides</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/KyberPriceFeed.ts#L53">src/contracts/KyberPriceFeed.ts:53</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p><code>KyberPriceFeed</code> contract call for <code>VALIDITY_INTERVAL</code> function.</p>
+						</div>
+						<pre><code class="language-solidity"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">VALIDITY_INTERVAL</span>(<span class="hljs-params"></span>) <span class="hljs-title"><span class="hljs-keyword">view</span></span> <span class="hljs-title"><span class="hljs-keyword">returns</span></span> (<span class="hljs-params"><span class="hljs-keyword">uint32</span></span>)</span></code></pre>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>$$overrides<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">CallOverrides</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5><span class="tsd-flag ts-flagOptional">Optional</span> $$overrides: <span class="tsd-signature-type">CallOverrides</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="convertquantity" class="tsd-anchor"></a>
+					<h3>convert<wbr>Quantity</h3>
+					<div class="tsd-signature tsd-kind-icon">convert<wbr>Quantity<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>_fromAssetQuantity<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ethers.BigNumberish</span>, _fromAsset<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, _toAsset<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, $$overrides<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">CallOverrides</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/KyberPriceFeed.ts#L67">src/contracts/KyberPriceFeed.ts:67</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Get quantity of _toAsset equal in value to some quantity of _fromAsset</p>
+						</div>
+						<pre><code class="language-solidity"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">convertQuantity</span>(<span class="hljs-params"><span class="hljs-keyword">uint256</span>,<span class="hljs-keyword">address</span>,<span class="hljs-keyword">address</span></span>) <span class="hljs-title"><span class="hljs-keyword">view</span></span> <span class="hljs-title"><span class="hljs-keyword">returns</span></span> (<span class="hljs-params"><span class="hljs-keyword">uint256</span></span>)</span></code></pre>
+						<dl class="tsd-comment-tags">
+							<dt>param</dt>
+							<dd><p>Address of _fromAsset</p>
+							</dd>
+							<dt>param</dt>
+							<dd><p>Amount of _fromAsset</p>
+							</dd>
+							<dt>param</dt>
+							<dd><p>Address of _toAsset</p>
+							</dd>
+							<dt>returns</dt>
+							<dd><p>Amount of _toAsset equal in value to _fromAssetQuantity</p>
+							</dd>
+						</dl>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>_fromAssetQuantity<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ethers.BigNumberish</span>, _fromAsset<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, _toAsset<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, $$overrides<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">CallOverrides</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">&gt;</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>_fromAssetQuantity: <span class="tsd-signature-type">ethers.BigNumberish</span></h5>
+											</li>
+											<li>
+												<h5>_fromAsset: <span class="tsd-signature-type">string</span></h5>
+											</li>
+											<li>
+												<h5>_toAsset: <span class="tsd-signature-type">string</span></h5>
+											</li>
+											<li>
+												<h5><span class="tsd-flag ts-flagOptional">Optional</span> $$overrides: <span class="tsd-signature-type">CallOverrides</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">&gt;</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-overwrite">
+					<a name="ethers" class="tsd-anchor"></a>
+					<h3>ethers</h3>
+					<div class="tsd-signature tsd-kind-icon">ethers<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_contracts_kyberpricefeed_.kyberpricefeedetherscontract.html" class="tsd-signature-type">KyberPriceFeedEthersContract</a></div>
+					<aside class="tsd-sources">
+						<p>Overrides <a href="_contract_.contract.html">Contract</a>.<a href="_contract_.contract.html#ethers">ethers</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/KyberPriceFeed.ts#L13">src/contracts/KyberPriceFeed.ts:13</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="getkyberprice" class="tsd-anchor"></a>
+					<h3>get<wbr>Kyber<wbr>Price</h3>
+					<div class="tsd-signature tsd-kind-icon">get<wbr>Kyber<wbr>Price<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>_baseAsset<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, _quoteAsset<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, $$overrides<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">CallOverrides</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{ </span>kyberPrice_<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">; </span>validity_<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/KyberPriceFeed.ts#L87">src/contracts/KyberPriceFeed.ts:87</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Returns validity and price for some pair of assets from Kyber</p>
+						</div>
+						<pre><code class="language-solidity"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getKyberPrice</span>(<span class="hljs-params"><span class="hljs-keyword">address</span>,<span class="hljs-keyword">address</span></span>) <span class="hljs-title"><span class="hljs-keyword">view</span></span> <span class="hljs-title"><span class="hljs-keyword">returns</span></span> (<span class="hljs-params"><span class="hljs-keyword">bool</span>, <span class="hljs-keyword">uint256</span></span>)</span></code></pre>
+						<dl class="tsd-comment-tags">
+							<dt>param</dt>
+							<dd><p>Address of base asset from the pair</p>
+							</dd>
+							<dt>param</dt>
+							<dd><p>Address of quote asset from the pair</p>
+							</dd>
+							<dt>returns</dt>
+							<dd><ul>
+									<li><code>kyberPrice_</code> — The price of _baseAsset in terms of _quoteAsset</li>
+									<li><code>validity_</code> — Whether the price for this pair is valid</li>
+								</ul>
+							</dd>
+						</dl>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>_baseAsset<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, _quoteAsset<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, $$overrides<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">CallOverrides</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{ </span>kyberPrice_<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">; </span>validity_<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">&gt;</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>_baseAsset: <span class="tsd-signature-type">string</span></h5>
+											</li>
+											<li>
+												<h5>_quoteAsset: <span class="tsd-signature-type">string</span></h5>
+											</li>
+											<li>
+												<h5><span class="tsd-flag ts-flagOptional">Optional</span> $$overrides: <span class="tsd-signature-type">CallOverrides</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{ </span>kyberPrice_<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">; </span>validity_<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">&gt;</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="getorderpriceinfo" class="tsd-anchor"></a>
+					<h3>get<wbr>Order<wbr>Price<wbr>Info</h3>
+					<div class="tsd-signature tsd-kind-icon">get<wbr>Order<wbr>Price<wbr>Info<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>_sellAsset<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, _sellQuantity<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ethers.BigNumberish</span>, _buyQuantity<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ethers.BigNumberish</span>, $$overrides<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">CallOverrides</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/KyberPriceFeed.ts#L105">src/contracts/KyberPriceFeed.ts:105</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Returns price as determined by an order</p>
+						</div>
+						<pre><code class="language-solidity"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getOrderPriceInfo</span>(<span class="hljs-params"><span class="hljs-keyword">address</span>,<span class="hljs-keyword">uint256</span>,<span class="hljs-keyword">uint256</span></span>) <span class="hljs-title"><span class="hljs-keyword">view</span></span> <span class="hljs-title"><span class="hljs-keyword">returns</span></span> (<span class="hljs-params"><span class="hljs-keyword">uint256</span></span>)</span></code></pre>
+						<dl class="tsd-comment-tags">
+							<dt>param</dt>
+							<dd><p>Quantity (in base units) of _buyAsset being bought</p>
+							</dd>
+							<dt>param</dt>
+							<dd><p>Address of the asset to be sold</p>
+							</dd>
+							<dt>param</dt>
+							<dd><p>Quantity (in base units) of _sellAsset being sold</p>
+							</dd>
+							<dt>returns</dt>
+							<dd><p>Price determined by buy/sell quantities</p>
+							</dd>
+						</dl>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>_sellAsset<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, _sellQuantity<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ethers.BigNumberish</span>, _buyQuantity<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ethers.BigNumberish</span>, $$overrides<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">CallOverrides</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">&gt;</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>_sellAsset: <span class="tsd-signature-type">string</span></h5>
+											</li>
+											<li>
+												<h5>_sellQuantity: <span class="tsd-signature-type">ethers.BigNumberish</span></h5>
+											</li>
+											<li>
+												<h5>_buyQuantity: <span class="tsd-signature-type">ethers.BigNumberish</span></h5>
+											</li>
+											<li>
+												<h5><span class="tsd-flag ts-flagOptional">Optional</span> $$overrides: <span class="tsd-signature-type">CallOverrides</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">&gt;</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="getprice" class="tsd-anchor"></a>
+					<h3>get<wbr>Price</h3>
+					<div class="tsd-signature tsd-kind-icon">get<wbr>Price<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>_asset<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, $$overrides<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">CallOverrides</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{ </span>price_<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">; </span>timestamp_<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/KyberPriceFeed.ts#L126">src/contracts/KyberPriceFeed.ts:126</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Gets price of an asset times 10^assetDecimals</p>
+						</div>
+						<p>Asset must be registered</p>
+						<pre><code class="language-solidity"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getPrice</span>(<span class="hljs-params"><span class="hljs-keyword">address</span></span>) <span class="hljs-title"><span class="hljs-keyword">view</span></span> <span class="hljs-title"><span class="hljs-keyword">returns</span></span> (<span class="hljs-params"><span class="hljs-keyword">uint256</span>, <span class="hljs-keyword">uint256</span></span>)</span></code></pre>
+						<dl class="tsd-comment-tags">
+							<dt>param</dt>
+							<dd><p>Asset for which price should be returned</p>
+							</dd>
+							<dt>returns</dt>
+							<dd><ul>
+									<li><code>price_</code> — Formatting: exchangePrice * 10^decimals (to avoid floating point)</li>
+									<li><code>timestamp_</code> — When the asset&#39;s price was last updated</li>
+								</ul>
+							</dd>
+						</dl>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>_asset<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, $$overrides<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">CallOverrides</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{ </span>price_<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">; </span>timestamp_<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">&gt;</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>_asset: <span class="tsd-signature-type">string</span></h5>
+											</li>
+											<li>
+												<h5><span class="tsd-flag ts-flagOptional">Optional</span> $$overrides: <span class="tsd-signature-type">CallOverrides</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{ </span>price_<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">; </span>timestamp_<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">&gt;</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="getprices" class="tsd-anchor"></a>
+					<h3>get<wbr>Prices</h3>
+					<div class="tsd-signature tsd-kind-icon">get<wbr>Prices<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>_assets<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>, $$overrides<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">CallOverrides</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{ </span>prices_<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>timestamps_<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/KyberPriceFeed.ts#L143">src/contracts/KyberPriceFeed.ts:143</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Return getPrice for each of _assets</p>
+						</div>
+						<pre><code class="language-solidity"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getPrices</span>(<span class="hljs-params"><span class="hljs-keyword">address</span>[]</span>) <span class="hljs-title"><span class="hljs-keyword">view</span></span> <span class="hljs-title"><span class="hljs-keyword">returns</span></span> (<span class="hljs-params"><span class="hljs-keyword">uint256</span>[], <span class="hljs-keyword">uint256</span>[]</span>)</span></code></pre>
+						<dl class="tsd-comment-tags">
+							<dt>param</dt>
+							<dd><p>Assets for which prices should be returned</p>
+							</dd>
+							<dt>returns</dt>
+							<dd><ul>
+									<li><code>prices_</code> — Prices for each of the assets_</li>
+									<li><code>timestamps_</code> — Update times for each of the assets_</li>
+								</ul>
+							</dd>
+						</dl>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>_assets<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>, $$overrides<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">CallOverrides</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{ </span>prices_<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>timestamps_<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">&gt;</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>_assets: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
+											</li>
+											<li>
+												<h5><span class="tsd-flag ts-flagOptional">Optional</span> $$overrides: <span class="tsd-signature-type">CallOverrides</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{ </span>prices_<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>timestamps_<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">&gt;</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="getreferencepriceinfo" class="tsd-anchor"></a>
+					<h3>get<wbr>Reference<wbr>Price<wbr>Info</h3>
+					<div class="tsd-signature tsd-kind-icon">get<wbr>Reference<wbr>Price<wbr>Info<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>_baseAsset<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, _quoteAsset<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, $$overrides<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">CallOverrides</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{ </span>decimals_<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">; </span>referencePrice_<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/KyberPriceFeed.ts#L161">src/contracts/KyberPriceFeed.ts:161</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Get price of an asset in terms of some quote asset, plus the quote asset&#39;s decimalsThis function reverts if either the base or quote have invalid prices</p>
+						</div>
+						<pre><code class="language-solidity"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getReferencePriceInfo</span>(<span class="hljs-params"><span class="hljs-keyword">address</span>,<span class="hljs-keyword">address</span></span>) <span class="hljs-title"><span class="hljs-keyword">view</span></span> <span class="hljs-title"><span class="hljs-keyword">returns</span></span> (<span class="hljs-params"><span class="hljs-keyword">uint256</span>, <span class="hljs-keyword">uint256</span></span>)</span></code></pre>
+						<dl class="tsd-comment-tags">
+							<dt>param</dt>
+							<dd><p>Address of base asset</p>
+							</dd>
+							<dt>param</dt>
+							<dd><p>Address of quote asset</p>
+							</dd>
+							<dt>returns</dt>
+							<dd><ul>
+									<li><code>decimals_</code> — Decimal places for _quoteAsset</li>
+									<li><code>referencePrice_</code> — Quantity of _quoteAsset per whole _baseAsset</li>
+								</ul>
+							</dd>
+						</dl>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>_baseAsset<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, _quoteAsset<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, $$overrides<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">CallOverrides</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{ </span>decimals_<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">; </span>referencePrice_<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">&gt;</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>_baseAsset: <span class="tsd-signature-type">string</span></h5>
+											</li>
+											<li>
+												<h5>_quoteAsset: <span class="tsd-signature-type">string</span></h5>
+											</li>
+											<li>
+												<h5><span class="tsd-flag ts-flagOptional">Optional</span> $$overrides: <span class="tsd-signature-type">CallOverrides</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{ </span>decimals_<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">; </span>referencePrice_<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">&gt;</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="hasvalidprice" class="tsd-anchor"></a>
+					<h3>has<wbr>Valid<wbr>Price</h3>
+					<div class="tsd-signature tsd-kind-icon">has<wbr>Valid<wbr>Price<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>_asset<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, $$overrides<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">CallOverrides</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/KyberPriceFeed.ts#L177">src/contracts/KyberPriceFeed.ts:177</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Whether an asset is registered and has a fresh price</p>
+						</div>
+						<pre><code class="language-solidity"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">hasValidPrice</span>(<span class="hljs-params"><span class="hljs-keyword">address</span></span>) <span class="hljs-title"><span class="hljs-keyword">view</span></span> <span class="hljs-title"><span class="hljs-keyword">returns</span></span> (<span class="hljs-params"><span class="hljs-keyword">bool</span></span>)</span></code></pre>
+						<dl class="tsd-comment-tags">
+							<dt>param</dt>
+							<dd><p>Asset to check for a valid price</p>
+							</dd>
+							<dt>returns</dt>
+							<dd><p>whether price of _asset is valid</p>
+							</dd>
+						</dl>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>_asset<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, $$overrides<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">CallOverrides</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>_asset: <span class="tsd-signature-type">string</span></h5>
+											</li>
+											<li>
+												<h5><span class="tsd-flag ts-flagOptional">Optional</span> $$overrides: <span class="tsd-signature-type">CallOverrides</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="hasvalidprices" class="tsd-anchor"></a>
+					<h3>has<wbr>Valid<wbr>Prices</h3>
+					<div class="tsd-signature tsd-kind-icon">has<wbr>Valid<wbr>Prices<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>_assets<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>, $$overrides<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">CallOverrides</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/KyberPriceFeed.ts#L189">src/contracts/KyberPriceFeed.ts:189</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Whether each of the _assets is registered and has a fresh price</p>
+						</div>
+						<pre><code class="language-solidity"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">hasValidPrices</span>(<span class="hljs-params"><span class="hljs-keyword">address</span>[]</span>) <span class="hljs-title"><span class="hljs-keyword">view</span></span> <span class="hljs-title"><span class="hljs-keyword">returns</span></span> (<span class="hljs-params"><span class="hljs-keyword">bool</span></span>)</span></code></pre>
+						<dl class="tsd-comment-tags">
+							<dt>param</dt>
+							<dd><p>Assets for which validity information should be returned</p>
+							</dd>
+							<dt>returns</dt>
+							<dd><p>Validity of prices for each of _assets (true/false)</p>
+							</dd>
+						</dl>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>_assets<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>, $$overrides<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">CallOverrides</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>_assets: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
+											</li>
+											<li>
+												<h5><span class="tsd-flag ts-flagOptional">Optional</span> $$overrides: <span class="tsd-signature-type">CallOverrides</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="lastupdate" class="tsd-anchor"></a>
+					<h3>last<wbr>Update</h3>
+					<div class="tsd-signature tsd-kind-icon">last<wbr>Update<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>$$overrides<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">CallOverrides</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/KyberPriceFeed.ts#L198">src/contracts/KyberPriceFeed.ts:198</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p><code>KyberPriceFeed</code> contract call for <code>lastUpdate</code> function.</p>
+						</div>
+						<pre><code class="language-solidity"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">lastUpdate</span>(<span class="hljs-params"></span>) <span class="hljs-title"><span class="hljs-keyword">view</span></span> <span class="hljs-title"><span class="hljs-keyword">returns</span></span> (<span class="hljs-params"><span class="hljs-keyword">uint256</span></span>)</span></code></pre>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>$$overrides<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">CallOverrides</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">&gt;</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5><span class="tsd-flag ts-flagOptional">Optional</span> $$overrides: <span class="tsd-signature-type">CallOverrides</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">&gt;</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="maxpricedeviation" class="tsd-anchor"></a>
+					<h3>max<wbr>Price<wbr>Deviation</h3>
+					<div class="tsd-signature tsd-kind-icon">max<wbr>Price<wbr>Deviation<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>$$overrides<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">CallOverrides</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/KyberPriceFeed.ts#L207">src/contracts/KyberPriceFeed.ts:207</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p><code>KyberPriceFeed</code> contract call for <code>maxPriceDeviation</code> function.</p>
+						</div>
+						<pre><code class="language-solidity"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">maxPriceDeviation</span>(<span class="hljs-params"></span>) <span class="hljs-title"><span class="hljs-keyword">view</span></span> <span class="hljs-title"><span class="hljs-keyword">returns</span></span> (<span class="hljs-params"><span class="hljs-keyword">uint256</span></span>)</span></code></pre>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>$$overrides<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">CallOverrides</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">&gt;</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5><span class="tsd-flag ts-flagOptional">Optional</span> $$overrides: <span class="tsd-signature-type">CallOverrides</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">&gt;</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="maxspread" class="tsd-anchor"></a>
+					<h3>max<wbr>Spread</h3>
+					<div class="tsd-signature tsd-kind-icon">max<wbr>Spread<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>$$overrides<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">CallOverrides</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/KyberPriceFeed.ts#L216">src/contracts/KyberPriceFeed.ts:216</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p><code>KyberPriceFeed</code> contract call for <code>maxSpread</code> function.</p>
+						</div>
+						<pre><code class="language-solidity"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">maxSpread</span>(<span class="hljs-params"></span>) <span class="hljs-title"><span class="hljs-keyword">view</span></span> <span class="hljs-title"><span class="hljs-keyword">returns</span></span> (<span class="hljs-params"><span class="hljs-keyword">uint256</span></span>)</span></code></pre>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>$$overrides<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">CallOverrides</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">&gt;</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5><span class="tsd-flag ts-flagOptional">Optional</span> $$overrides: <span class="tsd-signature-type">CallOverrides</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">&gt;</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="prices" class="tsd-anchor"></a>
+					<h3>prices</h3>
+					<div class="tsd-signature tsd-kind-icon">prices<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>$$0<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, $$overrides<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">CallOverrides</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/KyberPriceFeed.ts#L225">src/contracts/KyberPriceFeed.ts:225</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p><code>KyberPriceFeed</code> contract call for <code>prices</code> function.</p>
+						</div>
+						<pre><code class="language-solidity"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">prices</span>(<span class="hljs-params"><span class="hljs-keyword">address</span></span>) <span class="hljs-title"><span class="hljs-keyword">view</span></span> <span class="hljs-title"><span class="hljs-keyword">returns</span></span> (<span class="hljs-params"><span class="hljs-keyword">uint256</span></span>)</span></code></pre>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>$$0<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, $$overrides<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">CallOverrides</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">&gt;</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>$$0: <span class="tsd-signature-type">string</span></h5>
+											</li>
+											<li>
+												<h5><span class="tsd-flag ts-flagOptional">Optional</span> $$overrides: <span class="tsd-signature-type">CallOverrides</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">&gt;</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="registry" class="tsd-anchor"></a>
+					<h3>registry</h3>
+					<div class="tsd-signature tsd-kind-icon">registry<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>$$overrides<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">CallOverrides</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/KyberPriceFeed.ts#L234">src/contracts/KyberPriceFeed.ts:234</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p><code>KyberPriceFeed</code> contract call for <code>registry</code> function.</p>
+						</div>
+						<pre><code class="language-solidity"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">registry</span>(<span class="hljs-params"></span>) <span class="hljs-title"><span class="hljs-keyword">view</span></span> <span class="hljs-title"><span class="hljs-keyword">returns</span></span> (<span class="hljs-params"><span class="hljs-keyword">address</span></span>)</span></code></pre>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>$$overrides<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">CallOverrides</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5><span class="tsd-flag ts-flagOptional">Optional</span> $$overrides: <span class="tsd-signature-type">CallOverrides</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="setmaxpricedeviation" class="tsd-anchor"></a>
+					<h3>set<wbr>Max<wbr>Price<wbr>Deviation</h3>
+					<div class="tsd-signature tsd-kind-icon">set<wbr>Max<wbr>Price<wbr>Deviation<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>_newMaxPriceDeviation<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ethers.BigNumberish</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="../interfaces/_contract_.transactionwrapper.html" class="tsd-signature-type">TransactionWrapper</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Overrides</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/KyberPriceFeed.ts#L254">src/contracts/KyberPriceFeed.ts:254</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Update maximum price deviation between price hints and Kyber pricePrice deviation becomes a % when divided by 10^18 (e.g. 10^17 becomes 10%)</p>
+						</div>
+						<pre><code class="language-solidity"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setMaxPriceDeviation</span>(<span class="hljs-params"><span class="hljs-keyword">uint256</span></span>)</span></code></pre>
+						<dl class="tsd-comment-tags">
+							<dt>param</dt>
+							<dd><p>New maximum price deviation</p>
+							</dd>
+						</dl>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>_newMaxPriceDeviation<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ethers.BigNumberish</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_contract_.transactionwrapper.html" class="tsd-signature-type">TransactionWrapper</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Overrides</span><span class="tsd-signature-symbol">&gt;</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>_newMaxPriceDeviation: <span class="tsd-signature-type">ethers.BigNumberish</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <a href="../interfaces/_contract_.transactionwrapper.html" class="tsd-signature-type">TransactionWrapper</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Overrides</span><span class="tsd-signature-symbol">&gt;</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="setmaxspread" class="tsd-anchor"></a>
+					<h3>set<wbr>Max<wbr>Spread</h3>
+					<div class="tsd-signature tsd-kind-icon">set<wbr>Max<wbr>Spread<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>_newMaxSpread<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ethers.BigNumberish</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="../interfaces/_contract_.transactionwrapper.html" class="tsd-signature-type">TransactionWrapper</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Overrides</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/KyberPriceFeed.ts#L265">src/contracts/KyberPriceFeed.ts:265</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Update maximum spread for prices derived from KyberMax spread becomes a % when divided by 10^18 (e.g. 10^17 becomes 10%)</p>
+						</div>
+						<pre><code class="language-solidity"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setMaxSpread</span>(<span class="hljs-params"><span class="hljs-keyword">uint256</span></span>)</span></code></pre>
+						<dl class="tsd-comment-tags">
+							<dt>param</dt>
+							<dd><p>New maximum spread</p>
+							</dd>
+						</dl>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>_newMaxSpread<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ethers.BigNumberish</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_contract_.transactionwrapper.html" class="tsd-signature-type">TransactionWrapper</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Overrides</span><span class="tsd-signature-symbol">&gt;</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>_newMaxSpread: <span class="tsd-signature-type">ethers.BigNumberish</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <a href="../interfaces/_contract_.transactionwrapper.html" class="tsd-signature-type">TransactionWrapper</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Overrides</span><span class="tsd-signature-symbol">&gt;</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="setregistry" class="tsd-anchor"></a>
+					<h3>set<wbr>Registry</h3>
+					<div class="tsd-signature tsd-kind-icon">set<wbr>Registry<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>_newRegistry<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="../interfaces/_contract_.transactionwrapper.html" class="tsd-signature-type">TransactionWrapper</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Overrides</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/KyberPriceFeed.ts#L276">src/contracts/KyberPriceFeed.ts:276</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Update this feed&#39;s Registry reference</p>
+						</div>
+						<pre><code class="language-solidity"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setRegistry</span>(<span class="hljs-params"><span class="hljs-keyword">address</span></span>)</span></code></pre>
+						<dl class="tsd-comment-tags">
+							<dt>param</dt>
+							<dd><p>New Registry this feed should point to</p>
+							</dd>
+						</dl>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>_newRegistry<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_contract_.transactionwrapper.html" class="tsd-signature-type">TransactionWrapper</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Overrides</span><span class="tsd-signature-symbol">&gt;</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>_newRegistry: <span class="tsd-signature-type">string</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <a href="../interfaces/_contract_.transactionwrapper.html" class="tsd-signature-type">TransactionWrapper</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Overrides</span><span class="tsd-signature-symbol">&gt;</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="setupdater" class="tsd-anchor"></a>
+					<h3>set<wbr>Updater</h3>
+					<div class="tsd-signature tsd-kind-icon">set<wbr>Updater<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>_newUpdater<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="../interfaces/_contract_.transactionwrapper.html" class="tsd-signature-type">TransactionWrapper</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Overrides</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/KyberPriceFeed.ts#L287">src/contracts/KyberPriceFeed.ts:287</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Update this feed&#39;s designated updater</p>
+						</div>
+						<pre><code class="language-solidity"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setUpdater</span>(<span class="hljs-params"><span class="hljs-keyword">address</span></span>)</span></code></pre>
+						<dl class="tsd-comment-tags">
+							<dt>param</dt>
+							<dd><p>New designated updater for this feed</p>
+							</dd>
+						</dl>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>_newUpdater<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_contract_.transactionwrapper.html" class="tsd-signature-type">TransactionWrapper</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Overrides</span><span class="tsd-signature-symbol">&gt;</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>_newUpdater: <span class="tsd-signature-type">string</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <a href="../interfaces/_contract_.transactionwrapper.html" class="tsd-signature-type">TransactionWrapper</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Overrides</span><span class="tsd-signature-symbol">&gt;</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="update" class="tsd-anchor"></a>
+					<h3>update</h3>
+					<div class="tsd-signature tsd-kind-icon">update<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>_saneAssets<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>, _sanePrices<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="../interfaces/_contract_.transactionwrapper.html" class="tsd-signature-type">TransactionWrapper</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Overrides</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/KyberPriceFeed.ts#L301">src/contracts/KyberPriceFeed.ts:301</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Update prices for registered assets</p>
+						</div>
+						<p>Stores zero as a convention for invalid price</p>
+						<pre><code class="language-solidity"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">update</span>(<span class="hljs-params"><span class="hljs-keyword">address</span>[],<span class="hljs-keyword">uint256</span>[]</span>)</span></code></pre>
+						<dl class="tsd-comment-tags">
+							<dt>param</dt>
+							<dd><p>Asset addresses (must match assets array from getRegisteredAssets)</p>
+							</dd>
+							<dt>param</dt>
+							<dd><p>Asset price hints (checked against prices from Kyber)</p>
+							</dd>
+						</dl>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>_saneAssets<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>, _sanePrices<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_contract_.transactionwrapper.html" class="tsd-signature-type">TransactionWrapper</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Overrides</span><span class="tsd-signature-symbol">&gt;</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>_saneAssets: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
+											</li>
+											<li>
+												<h5>_sanePrices: <span class="tsd-signature-type">BigNumber</span><span class="tsd-signature-symbol">[]</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <a href="../interfaces/_contract_.transactionwrapper.html" class="tsd-signature-type">TransactionWrapper</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Overrides</span><span class="tsd-signature-symbol">&gt;</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="updater" class="tsd-anchor"></a>
+					<h3>updater</h3>
+					<div class="tsd-signature tsd-kind-icon">updater<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>$$overrides<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">CallOverrides</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/KyberPriceFeed.ts#L243">src/contracts/KyberPriceFeed.ts:243</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p><code>KyberPriceFeed</code> contract call for <code>updater</code> function.</p>
+						</div>
+						<pre><code class="language-solidity"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">updater</span>(<span class="hljs-params"></span>) <span class="hljs-title"><span class="hljs-keyword">view</span></span> <span class="hljs-title"><span class="hljs-keyword">returns</span></span> (<span class="hljs-params"><span class="hljs-keyword">address</span></span>)</span></code></pre>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>$$overrides<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">CallOverrides</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5><span class="tsd-flag ts-flagOptional">Optional</span> $$overrides: <span class="tsd-signature-type">CallOverrides</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static">
+					<a name="abi" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> abi</h3>
+					<div class="tsd-signature tsd-kind-icon">abi<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = [&#x27;constructor(address _registry, address _kyberNetworkProxy, uint256 _maxSpread, address _quoteAsset, uint256 _maxPriceDeviation)&#x27;,&#x27;event MaxPriceDeviationSet(uint256 maxPriceDeviation)&#x27;,&#x27;event MaxSpreadSet(uint256 maxSpread)&#x27;,&#x27;event PricesUpdated(address[] assets, uint256[] prices)&#x27;,&#x27;event RegistrySet(address newRegistry)&#x27;,&#x27;event UpdaterSet(address updater)&#x27;,&#x27;function KYBER_NETWORK_PROXY() view returns (address)&#x27;,&#x27;function KYBER_PRECISION() view returns (uint8)&#x27;,&#x27;function QUOTE_ASSET() view returns (address)&#x27;,&#x27;function VALIDITY_INTERVAL() view returns (uint32)&#x27;,&#x27;function convertQuantity(uint256 _fromAssetQuantity, address _fromAsset, address _toAsset) view returns (uint256 toAssetQuantity_)&#x27;,&#x27;function getKyberPrice(address _baseAsset, address _quoteAsset) view returns (bool validity_, uint256 kyberPrice_)&#x27;,&#x27;function getOrderPriceInfo(address _sellAsset, uint256 _sellQuantity, uint256 _buyQuantity) view returns (uint256 orderPrice_)&#x27;,&#x27;function getPrice(address _asset) view returns (uint256 price_, uint256 timestamp_)&#x27;,&#x27;function getPrices(address[] _assets) view returns (uint256[] prices_, uint256[] timestamps_)&#x27;,&#x27;function getReferencePriceInfo(address _baseAsset, address _quoteAsset) view returns (uint256 referencePrice_, uint256 decimals_)&#x27;,&#x27;function hasValidPrice(address _asset) view returns (bool isValid_)&#x27;,&#x27;function hasValidPrices(address[] _assets) view returns (bool allValid_)&#x27;,&#x27;function lastUpdate() view returns (uint256)&#x27;,&#x27;function maxPriceDeviation() view returns (uint256)&#x27;,&#x27;function maxSpread() view returns (uint256)&#x27;,&#x27;function prices(address) view returns (uint256)&#x27;,&#x27;function registry() view returns (address)&#x27;,&#x27;function setMaxPriceDeviation(uint256 _newMaxPriceDeviation)&#x27;,&#x27;function setMaxSpread(uint256 _newMaxSpread)&#x27;,&#x27;function setRegistry(address _newRegistry)&#x27;,&#x27;function setUpdater(address _newUpdater)&#x27;,&#x27;function update(address[] _saneAssets, uint256[] _sanePrices)&#x27;,&#x27;function updater() view returns (address)&#x27;,]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/melonproject/melonjs/blob/master/src/contracts/KyberPriceFeed.ts#L303">src/contracts/KyberPriceFeed.ts:303</a></li>
+						</ul>
+					</aside>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="../modules/_contracts_kyberpricefeed_.html">&quot;contracts/<wbr>Kyber<wbr>Price<wbr>Feed&quot;</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-class tsd-parent-kind-module">
+						<a href="_contracts_kyberpricefeed_.kyberpricefeed.html" class="tsd-kind-icon">Kyber<wbr>Price<wbr>Feed</a>
+						<ul>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
+								<a href="_contracts_kyberpricefeed_.kyberpricefeed.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_contracts_kyberpricefeed_.kyberpricefeed.html#kyber_network_proxy" class="tsd-kind-icon">KYBER_<wbr>NETWORK_<wbr>PROXY</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_contracts_kyberpricefeed_.kyberpricefeed.html#kyber_precision" class="tsd-kind-icon">KYBER_<wbr>PRECISION</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_contracts_kyberpricefeed_.kyberpricefeed.html#quote_asset" class="tsd-kind-icon">QUOTE_<wbr>ASSET</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_contracts_kyberpricefeed_.kyberpricefeed.html#validity_interval" class="tsd-kind-icon">VALIDITY_<wbr>INTERVAL</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_contracts_kyberpricefeed_.kyberpricefeed.html#convertquantity" class="tsd-kind-icon">convert<wbr>Quantity</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite">
+								<a href="_contracts_kyberpricefeed_.kyberpricefeed.html#ethers" class="tsd-kind-icon">ethers</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_contracts_kyberpricefeed_.kyberpricefeed.html#getkyberprice" class="tsd-kind-icon">get<wbr>Kyber<wbr>Price</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_contracts_kyberpricefeed_.kyberpricefeed.html#getorderpriceinfo" class="tsd-kind-icon">get<wbr>Order<wbr>Price<wbr>Info</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_contracts_kyberpricefeed_.kyberpricefeed.html#getprice" class="tsd-kind-icon">get<wbr>Price</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_contracts_kyberpricefeed_.kyberpricefeed.html#getprices" class="tsd-kind-icon">get<wbr>Prices</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_contracts_kyberpricefeed_.kyberpricefeed.html#getreferencepriceinfo" class="tsd-kind-icon">get<wbr>Reference<wbr>Price<wbr>Info</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_contracts_kyberpricefeed_.kyberpricefeed.html#hasvalidprice" class="tsd-kind-icon">has<wbr>Valid<wbr>Price</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_contracts_kyberpricefeed_.kyberpricefeed.html#hasvalidprices" class="tsd-kind-icon">has<wbr>Valid<wbr>Prices</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_contracts_kyberpricefeed_.kyberpricefeed.html#lastupdate" class="tsd-kind-icon">last<wbr>Update</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_contracts_kyberpricefeed_.kyberpricefeed.html#maxpricedeviation" class="tsd-kind-icon">max<wbr>Price<wbr>Deviation</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_contracts_kyberpricefeed_.kyberpricefeed.html#maxspread" class="tsd-kind-icon">max<wbr>Spread</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_contracts_kyberpricefeed_.kyberpricefeed.html#prices" class="tsd-kind-icon">prices</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_contracts_kyberpricefeed_.kyberpricefeed.html#registry" class="tsd-kind-icon">registry</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_contracts_kyberpricefeed_.kyberpricefeed.html#setmaxpricedeviation" class="tsd-kind-icon">set<wbr>Max<wbr>Price<wbr>Deviation</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_contracts_kyberpricefeed_.kyberpricefeed.html#setmaxspread" class="tsd-kind-icon">set<wbr>Max<wbr>Spread</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_contracts_kyberpricefeed_.kyberpricefeed.html#setregistry" class="tsd-kind-icon">set<wbr>Registry</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_contracts_kyberpricefeed_.kyberpricefeed.html#setupdater" class="tsd-kind-icon">set<wbr>Updater</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_contracts_kyberpricefeed_.kyberpricefeed.html#update" class="tsd-kind-icon">update</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_contracts_kyberpricefeed_.kyberpricefeed.html#updater" class="tsd-kind-icon">updater</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-static">
+								<a href="_contracts_kyberpricefeed_.kyberpricefeed.html#abi" class="tsd-kind-icon">abi</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="../interfaces/_contracts_kyberpricefeed_.kyberpricefeedetherscontract.html" class="tsd-kind-icon">Kyber<wbr>Price<wbr>Feed<wbr>Ethers<wbr>Contract</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>
