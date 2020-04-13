@@ -29,8 +29,8 @@
     "pretypedocs": "rimraf typedocs",
     "typedocs": "typedoc",
     "posttypedocs": "cp jekyll.config.yml typedocs/_config.yml",
-    "pretest": "rimraf coverage",
     "test": "jest --verbose --config tests/jest.config.js",
+    "precoverage": "rimraf coverage",
     "coverage": "yarn test --coverage",
     "format": "prettier --write {src,scripts}/{*,**/*}.ts",
     "lint": "yarn prettier --list-different {src,scripts}/{*,**/*}.ts",
@@ -43,8 +43,7 @@
   },
   "dependencies": {
     "bignumber.js": "^9.0.0",
-    "ethers": "^5.0.0-beta.180",
-    "typedoc-plugin-solidity": "^1.0.0"
+    "ethers": "^5.0.0-beta.180"
   },
   "devDependencies": {
     "@types/glob": "^7.1.1",
@@ -64,6 +63,7 @@
     "ts-jest": "^25.3.1",
     "ts-node": "^8.8.2",
     "typedoc": "^0.17.4",
+    "typedoc-plugin-solidity": "^1.0.0",
     "typescript": "^3.8.3",
     "yargs": "^15.3.1"
   },
