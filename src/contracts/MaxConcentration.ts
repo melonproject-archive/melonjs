@@ -5,7 +5,7 @@ import { Contract, TransactionWrapper } from '../Contract';
 /**
  * `MaxConcentration` contract
  */
-export class MaxConcentration extends Contract {
+export class MaxConcentrationContract extends Contract {
   public readonly ethers: MaxConcentrationEthersContract;
 
   constructor(addressOrName: string, providerOrSigner: ethers.Signer | ethers.providers.Provider) {

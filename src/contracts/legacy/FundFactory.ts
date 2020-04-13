@@ -7,7 +7,7 @@ import { Contract, TransactionWrapper } from '../../Contract';
  *
  * Creates fund routes and links them together
  */
-export class FundFactory extends Contract {
+export class FundFactoryContract extends Contract {
   public readonly ethers: FundFactoryEthersContract;
 
   constructor(addressOrName: string, providerOrSigner: ethers.Signer | ethers.providers.Provider) {

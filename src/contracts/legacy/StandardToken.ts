@@ -5,7 +5,7 @@ import { Contract, TransactionWrapper } from '../../Contract';
 /**
  * Standard ERC20 token
  */
-export class StandardToken extends Contract {
+export class StandardTokenContract extends Contract {
   public readonly ethers: StandardTokenEthersContract;
 
   constructor(addressOrName: string, providerOrSigner: ethers.Signer | ethers.providers.Provider) {

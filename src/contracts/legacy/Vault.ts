@@ -7,7 +7,7 @@ import { Contract, TransactionWrapper } from '../../Contract';
  *
  * Dumb custody component
  */
-export class Vault extends Contract {
+export class VaultContract extends Contract {
   public readonly ethers: VaultEthersContract;
 
   constructor(addressOrName: string, providerOrSigner: ethers.Signer | ethers.providers.Provider) {

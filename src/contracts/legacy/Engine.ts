@@ -7,7 +7,7 @@ import { Contract, TransactionWrapper } from '../../Contract';
  *
  * Liquidity contract and token sink
  */
-export class Engine extends Contract {
+export class EngineContract extends Contract {
   public readonly ethers: EngineEthersContract;
 
   constructor(addressOrName: string, providerOrSigner: ethers.Signer | ethers.providers.Provider) {

@@ -7,7 +7,7 @@ import { Contract, TransactionWrapper } from '../Contract';
  *
  * Router for communication between componentsHas one or more Spokes
  */
-export class Hub extends Contract {
+export class HubContract extends Contract {
   public readonly ethers: HubEthersContract;
 
   constructor(addressOrName: string, providerOrSigner: ethers.Signer | ethers.providers.Provider) {

@@ -7,7 +7,7 @@ import { Contract, TransactionWrapper } from '../Contract';
  *
  * Assets can be added but not removed from blacklist
  */
-export class AssetBlacklist extends Contract {
+export class AssetBlacklistContract extends Contract {
   public readonly ethers: AssetBlacklistEthersContract;
 
   constructor(addressOrName: string, providerOrSigner: ethers.Signer | ethers.providers.Provider) {

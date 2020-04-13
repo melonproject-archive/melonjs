@@ -9,7 +9,7 @@ import { Contract, TransactionWrapper } from '../Contract';
  *
  * @author Melon Council DAO <security@meloncoucil.io>
  */
-export class Shares extends Contract {
+export class SharesContract extends Contract {
   public readonly ethers: SharesEthersContract;
 
   constructor(addressOrName: string, providerOrSigner: ethers.Signer | ethers.providers.Provider) {

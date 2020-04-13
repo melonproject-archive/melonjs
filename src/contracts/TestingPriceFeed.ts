@@ -7,7 +7,7 @@ import { Contract, TransactionWrapper } from '../Contract';
  *
  * Intended for testing purposes onlyUpdates and exposes price information
  */
-export class TestingPriceFeed extends Contract {
+export class TestingPriceFeedContract extends Contract {
   public readonly ethers: TestingPriceFeedEthersContract;
 
   constructor(addressOrName: string, providerOrSigner: ethers.Signer | ethers.providers.Provider) {

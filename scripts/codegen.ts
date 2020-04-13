@@ -72,25 +72,33 @@ const args = yargs
   }
 
   const config = await prettier.resolveConfig(args.prettier);
-  const result = input.map((item) => {
-    const name = path.basename(item).split('.', 1)[0];
-    const file = path.resolve(path.join(args.output, `${name}.ts`));
-    const root = path.dirname(path.relative(file, path.normalize(path.resolve(__dirname, '..', 'src'))));
+  const result = input.map((file) => {
+    const name = path.basename(file).split('.', 1)[0];
 
-    const content = fs.readFileSync(item).toString('utf8');
-    const input = JSON.parse(content);
-    const code = generate(root, name, input.abi, input.userdoc, input.devdoc);
-    const output = prettier.format(code, { ...config, parser: 'typescript' });
+    {
+      const out = path.resolve(path.join(args.output, `${name}.ts`));
+      const root = path.dirname(path.relative(out, path.normalize(path.resolve(__dirname, '..', 'src'))));
+      const content = fs.readFileSync(file).toString('utf8');
+      const input = JSON.parse(content);
+      const code = generate(root, name, input.abi, input.userdoc, input.devdoc);
+      const output = prettier.format(code, { ...config, parser: 'typescript' });
+      fs.writeFileSync(out, output, 'utf8');
+    }
 
-    return { name, output, file };
-  });
+    {
+      const out = path.resolve(path.join(args.output, `${name}.bin.ts`));
+      const bin = path.join(path.dirname(file), `${name}.bin`);
+      const content = fs.readFileSync(bin).toString('utf8');
+      const code = `export const ${name}ContractBytecode = '0x${content.trim()}';`;
+      const output = prettier.format(code, { ...config, parser: 'typescript' });
+      fs.writeFileSync(out, output, 'utf8');
+    }
 
-  result.forEach((item) => {
-    fs.writeFileSync(item.file, item.output, 'utf8');
+    return name;
   });
 
   const index = path.join(args.output, `index.ts`);
-  const imports = result.map((item) => `export { ${item.name} } from './${item.name}';`);
+  const imports = result.map((name) => `export { ${name}Contract } from './${name}';`);
   if (!fs.existsSync(index)) {
     fs.writeFileSync(index, `${imports.join('\n')}\n`, 'utf8');
   } else {

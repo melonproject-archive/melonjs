@@ -7,7 +7,7 @@ import { Contract, TransactionWrapper } from '../Contract';
  *
  * Assets can be removed from but not added to whitelist
  */
-export class AssetWhitelist extends Contract {
+export class AssetWhitelistContract extends Contract {
   public readonly ethers: AssetWhitelistEthersContract;
 
   constructor(addressOrName: string, providerOrSigner: ethers.Signer | ethers.providers.Provider) {

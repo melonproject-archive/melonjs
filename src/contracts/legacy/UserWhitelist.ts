@@ -5,7 +5,7 @@ import { Contract, TransactionWrapper } from '../../Contract';
 /**
  * `UserWhitelist` contract
  */
-export class UserWhitelist extends Contract {
+export class UserWhitelistContract extends Contract {
   public readonly ethers: UserWhitelistEthersContract;
 
   constructor(addressOrName: string, providerOrSigner: ethers.Signer | ethers.providers.Provider) {

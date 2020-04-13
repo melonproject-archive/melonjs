@@ -7,7 +7,7 @@ import { Contract, TransactionWrapper } from '../Contract';
  *
  * @author Melonport AG <team@melonport.com>
  */
-export class OrderTaker extends Contract {
+export class OrderTakerContract extends Contract {
   public readonly ethers: OrderTakerEthersContract;
 
   constructor(addressOrName: string, providerOrSigner: ethers.Signer | ethers.providers.Provider) {

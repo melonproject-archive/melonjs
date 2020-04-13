@@ -9,7 +9,7 @@ import { Contract, TransactionWrapper } from '../Contract';
  *
  * @author Melonport AG <team@melonport.com>
  */
-export class KyberPriceFeed extends Contract {
+export class KyberPriceFeedContract extends Contract {
   public readonly ethers: KyberPriceFeedEthersContract;
 
   constructor(addressOrName: string, providerOrSigner: ethers.Signer | ethers.providers.Provider) {

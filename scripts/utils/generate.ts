@@ -263,7 +263,7 @@ export function generate(
     /**
      * ${header.join('\n* ')}
      */
-    export class ${name} extends Contract {
+    export class ${name}Contract extends Contract {
       public readonly ethers: ${name}EthersContract;
 
       constructor(addressOrName: string, providerOrSigner: ethers.Signer | ethers.providers.Provider) {

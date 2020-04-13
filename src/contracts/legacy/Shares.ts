@@ -5,7 +5,7 @@ import { Contract, TransactionWrapper } from '../../Contract';
 /**
  * `Shares` contract
  */
-export class Shares extends Contract {
+export class SharesContract extends Contract {
   public readonly ethers: SharesEthersContract;
 
   constructor(addressOrName: string, providerOrSigner: ethers.Signer | ethers.providers.Provider) {
