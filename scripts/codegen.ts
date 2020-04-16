@@ -5,6 +5,13 @@ import prettier from 'prettier';
 import yargs from 'yargs';
 import rimraf from 'rimraf';
 import { generate } from './utils/generate';
+import { Project, QuoteKind, IndentationText, Node } from 'ts-morph';
+
+function prettifyText(node: Node, config: prettier.Options) {
+  const options: prettier.Options = { ...config, parser: 'typescript' };
+  const text = node.getText({ includeJsDocComments: true });
+  return prettier.format(text, options);
+}
 
 const args = yargs
   .option('input', {
@@ -71,37 +78,52 @@ const args = yargs
     return;
   }
 
+  const project = new Project({
+    tsConfigFilePath: `${process.cwd()}/tsconfig.json`,
+    addFilesFromTsConfig: true,
+    skipFileDependencyResolution: true,
+    manipulationSettings: {
+      useTrailingCommas: true,
+      insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces: true,
+      quoteKind: QuoteKind.Single,
+      indentationText: IndentationText.TwoSpaces,
+    },
+  });
+
   const config = await prettier.resolveConfig(args.prettier);
   const result = input.map((file) => {
     const name = path.basename(file).split('.', 1)[0];
 
     {
       const out = path.resolve(path.join(args.output, `${name}.ts`));
-      const root = path.dirname(path.relative(out, path.normalize(path.resolve(__dirname, '..', 'src'))));
       const content = fs.readFileSync(file).toString('utf8');
       const input = JSON.parse(content);
-      const code = generate(root, name, input.abi, input.userdoc, input.devdoc);
-      const output = prettier.format(code, { ...config, parser: 'typescript' });
-      fs.writeFileSync(out, output, 'utf8');
+      const output = generate(project, out, name, input.abi, input.userdoc, input.devdoc);
+      output.replaceWithText(prettifyText(output, config));
+
+      // const output = prettier.format(code, { ...config, parser: 'typescript' });
+      // fs.writeFileSync(out, output, 'utf8');
     }
 
-    {
-      const out = path.resolve(path.join(args.output, `${name}.bin.ts`));
-      const bin = path.join(path.dirname(file), `${name}.bin`);
-      const content = fs.readFileSync(bin).toString('utf8');
-      const code = `export const ${name}ContractBytecode = '0x${content.trim()}';`;
-      const output = prettier.format(code, { ...config, parser: 'typescript' });
-      fs.writeFileSync(out, output, 'utf8');
-    }
+    // {
+    //   const out = path.resolve(path.join(args.output, `${name}.bin.ts`));
+    //   const bin = path.join(path.dirname(file), `${name}.bin`);
+    //   const content = fs.readFileSync(bin).toString('utf8');
+    //   const code = `export const ${name}ContractBytecode = '0x${content.trim()}';`;
+    //   const output = prettier.format(code, { ...config, parser: 'typescript' });
+    //   fs.writeFileSync(out, output, 'utf8');
+    // }
 
     return name;
   });
 
-  const index = path.join(args.output, `index.ts`);
-  const imports = result.map((name) => `export { ${name}Contract } from './${name}';`);
-  if (!fs.existsSync(index)) {
-    fs.writeFileSync(index, `${imports.join('\n')}\n`, 'utf8');
-  } else {
-    fs.appendFileSync(index, `${imports.join('\n')}\n`, 'utf8');
-  }
+  project.save();
+
+  // const index = path.join(args.output, `index.ts`);
+  // const imports = result.map((name) => `export { ${name}Contract } from './${name}';`);
+  // if (!fs.existsSync(index)) {
+  //   fs.writeFileSync(index, `${imports.join('\n')}\n`, 'utf8');
+  // } else {
+  //   fs.appendFileSync(index, `${imports.join('\n')}\n`, 'utf8');
+  // }
 })();

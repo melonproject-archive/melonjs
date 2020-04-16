@@ -1,18 +1,21 @@
 import { ethers } from 'ethers';
 import { Contract, TransactionWrapper } from '../..';
 
-/** Creates fund routes and links them together */
-export class FundFactoryContract extends Contract {
+/** Controlled by governance */
+export class VersionContract extends Contract {
   /**
    * The contract abis.
    */
   public static readonly abi: string[] = [
-    'constructor(address _accountingFactory, address _feeManagerFactory, address _participationFactory, address _sharesFactory, address _tradingFactory, address _vaultFactory, address _policyManagerFactory, address _version)',
+    'constructor(address _accountingFactory, address _feeManagerFactory, address _participationFactory, address _sharesFactory, address _tradingFactory, address _vaultFactory, address _policyManagerFactory, address _registry, address _postDeployOwner)',
     'event AmguPaid(address indexed payer, uint256 totalAmguPaidInEth, uint256 amguChargableGas, uint256 incentivePaid)',
+    'event LogSetAuthority(address indexed authority)',
+    'event LogSetOwner(address indexed owner)',
     'event NewFund(address indexed manager, address indexed hub, address[11] routes)',
     'event NewInstance(address indexed hub, address indexed instance)',
     'function accountingFactory() view returns (address)',
     'function associatedRegistry() view returns (address)',
+    'function authority() view returns (address)',
     'function beginSetup(string _name, address[] _fees, uint256[] _feeRates, uint256[] _feePeriods, address[] _exchanges, address[] _adapters, address _denominationAsset, address[] _defaultInvestmentAssets)',
     'function childExists(address) view returns (bool)',
     'function completeSetup() payable',
@@ -42,11 +45,15 @@ export class FundFactoryContract extends Contract {
     'function managersToRoutes(address) view returns (address accounting, address feeManager, address participation, address policyManager, address shares, address trading, address vault, address registry, address version, address engine, address mlnToken)',
     'function managersToSettings(address) view returns (string name, address denominationAsset)',
     'function mlnToken() view returns (address)',
+    'function owner() view returns (address)',
     'function participationFactory() view returns (address)',
     'function policyManagerFactory() view returns (address)',
     'function priceSource() view returns (address)',
     'function registry() view returns (address)',
+    'function setAuthority(address authority_)',
+    'function setOwner(address owner_)',
     'function sharesFactory() view returns (address)',
+    'function shutDownFund(address _hub)',
     'function tradingFactory() view returns (address)',
     'function vaultFactory() view returns (address)',
     'function version() view returns (address)',
@@ -77,6 +84,13 @@ export class FundFactoryContract extends Contract {
    *
    */
   associatedRegistry: ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  /**
+   * ```solidity
+   * function authority() view returns (address)
+   * ```
+   *
+   */
+  authority: ($$overrides?: ethers.CallOverrides) => Promise<string>;
   /**
    * ```solidity
    * function childExists(address) view returns (bool)
@@ -179,6 +193,13 @@ export class FundFactoryContract extends Contract {
    *
    */
   mlnToken: ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  /**
+   * ```solidity
+   * function owner() view returns (address)
+   * ```
+   *
+   */
+  owner: ($$overrides?: ethers.CallOverrides) => Promise<string>;
   /**
    * ```solidity
    * function participationFactory() view returns (address)
@@ -363,4 +384,25 @@ export class FundFactoryContract extends Contract {
    *
    */
   createVaultFor: (_manager: string) => TransactionWrapper<ethers.PayableOverrides>;
+  /**
+   * ```solidity
+   * function setAuthority(address)
+   * ```
+   *
+   */
+  setAuthority: (authority_: string) => TransactionWrapper<ethers.Overrides>;
+  /**
+   * ```solidity
+   * function setOwner(address)
+   * ```
+   *
+   */
+  setOwner: (owner_: string) => TransactionWrapper<ethers.Overrides>;
+  /**
+   * ```solidity
+   * function shutDownFund(address)
+   * ```
+   *
+   */
+  shutDownFund: (_hub: string) => TransactionWrapper<ethers.Overrides>;
 }

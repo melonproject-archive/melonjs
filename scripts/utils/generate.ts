@@ -1,10 +1,13 @@
+import path from 'path';
 import { ethers } from 'ethers';
+import { Project } from 'ts-morph';
+import { contractClassStructure } from './templates';
 
 function getInputs(fragment: ethers.utils.FunctionFragment) {
-  let inputs: Array<string> = [];
+  const inputs: Array<string> = [];
   fragment.inputs.forEach((input, index) => {
-    let name = input.name || `$$${index}`;
-    let type = getType(input, true);
+    const name = input.name || `$$${index}`;
+    const type = getType(input, true);
     inputs.push(`${name}: ${type}`);
   });
 
@@ -100,7 +103,9 @@ function getType(param: ethers.utils.ParamType, flexible?: boolean): string {
 export interface NatspecDevdoc {
   notice?: string;
   methods?: {
-    [key: string]: any;
+    [key: string]: {
+      notice?: string;
+    };
   };
 }
 
@@ -108,19 +113,29 @@ export interface NatspecUserdoc {
   title?: string;
   author?: string;
   methods?: {
-    [key: string]: any;
+    [key: string]: {
+      details?: string;
+      params?: {
+        [key: string]: string;
+      };
+      returns?: {
+        [key: string]: string;
+      };
+    };
   };
 }
 
 export function generate(
-  root: string,
+  project: Project,
+  file: string,
   name: string,
   interfaze: ethers.ContractInterface,
   devdoc?: NatspecDevdoc,
   userdoc?: NatspecUserdoc,
-): string {
+) {
+  const root = path.resolve(path.resolve(__dirname, '..', '..', 'src'));
+  const relative = path.normalize(path.relative(path.dirname(file), root));
   const contract = ethers.utils.Interface.isInterface(interfaze) ? interfaze : new ethers.utils.Interface(interfaze);
-  const abis = contract.fragments.map((fragment) => `"${fragment.format(ethers.utils.FormatTypes.full)}"`);
   const signatures = Object.keys(contract.functions);
   const functions = signatures.map((signature) => {
     const fragment = contract.functions[signature];
@@ -129,8 +144,8 @@ export function generate(
       fragment,
       signature,
       contract: name,
-      userdoc: userdoc?.methods?.[signature],
-      devdoc: devdoc?.methods?.[signature],
+      userdoc: userdoc?.methods?.[signature] ?? undefined,
+      devdoc: devdoc?.methods?.[signature] ?? undefined,
       output: getOutput(fragment),
       inputs: getInputs(fragment),
       overrides: getOverrides(fragment),
@@ -146,155 +161,135 @@ export function generate(
   const calls = uniques.filter((item) => item.fragment.constant);
   const transactions = uniques.filter((item) => !item.fragment.constant);
 
-  const body: string[] = [];
-  const fields: { [key: string]: string[] } = {
-    functions: [],
-    call: [],
-    estimate: [],
-    populate: [],
-  };
+  const contractFile = project.createSourceFile(file, contractClassStructure, {
+    overwrite: true,
+  });
 
-  const fallback = `\`${name}\` contract`;
-  const header: string[] = [userdoc?.title ?? fallback];
+  contractFile.addImportDeclaration({
+    namedImports: ['Contract', 'TransactionWrapper'],
+    moduleSpecifier: relative,
+  });
 
-  if (devdoc.notice) {
-    header.push('', devdoc.notice);
+  const contractClass = contractFile.getClassOrThrow('MyContract').rename(`${name}Contract`);
+  const contractDocs = contractClass.addJsDoc({
+    description: devdoc.notice || undefined,
+    tags: [
+      {
+        tagName: 'title',
+        text: userdoc?.title || undefined,
+      },
+      {
+        tagName: 'author',
+        text: userdoc?.author || undefined,
+      },
+    ].filter((item) => !!item.text),
+  });
+
+  if (!contractDocs.getInnerText()) {
+    contractDocs.remove();
   }
 
-  if (userdoc.author) {
-    header.push('', `@author ${userdoc.author}`);
-  }
+  contractClass.getPropertyOrThrow('abi').setInitializer((writer) => {
+    writer.writeLine('[');
+
+    contract.fragments.forEach((fragment) => {
+      writer.writeLine(`'${fragment.format(ethers.utils.FormatTypes.full)}',`);
+    });
+
+    writer.writeLine(']');
+  });
 
   calls.forEach((item) => {
-    const params = item.inputs.concat([`$$overrides?: ${item.overrides}`]).join(', ');
-    fields.functions.push(`'${item.signature}': (${params}) => Promise<${item.output}>;`);
-    fields.call.push(`'${item.signature}': (${params}) => Promise<${item.output}>;`);
-
-    const fallback = `\`${item.contract}\` contract call for \`${item.fragment.name}\` function.`;
-    const header = item.devdoc?.notice ?? fallback;
-    const docs = [header, ``];
-
-    if (item.userdoc?.details) {
-      docs.push(item.userdoc.details, '');
-    }
-
-    docs.push('```solidity', item.minimal, '```');
-
-    const paramz = Object.entries(item.userdoc?.params ?? {});
-    const returnz = Object.entries(item.userdoc?.returns ?? {});
-
-    if (paramz.length || returnz.length) {
-      docs.push('');
-    }
-
-    paramz.forEach(([key, value]) => {
-      docs.push(`@param ${key} ${value}`);
+    const inputs = item.inputs.concat([`$$overrides?: ${item.overrides}`]).join(', ');
+    const callDeclaration = contractClass.addProperty({
+      name: item.fragment.name,
+      type: `(${inputs}) => Promise<${item.output}>`,
     });
 
-    returnz.forEach(([key, value], index, array) => {
-      index === 0 && array.length !== 1 && docs.push('@returns  ');
+    const callDocs = callDeclaration.addJsDoc({
+      description: (write) => {
+        write.conditionalWriteLine(!!item.devdoc?.notice, item.devdoc?.notice);
+        write.conditionalBlankLine(!!item.devdoc?.notice && !!item.userdoc?.details);
+        write.conditionalWriteLine(!!item.userdoc?.details, item.userdoc?.details);
+        write.conditionalBlankLine(!!item.devdoc?.notice || !!item.userdoc?.details);
 
-      if (array.length === 1) {
-        docs.push(`@returns ${value}`);
-      } else {
-        docs.push(`  - \`${key}\` — ${value}${index === array.length - 1 ? '' : '  '}`);
-      }
+        write.writeLine('```solidity');
+        write.writeLine(item.minimal);
+        write.writeLine('```');
+      },
     });
 
-    body.push(`
-      /**
-       * ${docs.join('\n* ')}
-       */
-      ${item.fragment.name}: (${params}) => Promise<${item.output}>;
-    `);
+    const params = Object.entries(item.userdoc?.params ?? {});
+    callDocs.addTags(
+      params.map(([key, value]) => ({
+        tagName: 'param',
+        text: `${key} ${value}`,
+      })),
+    );
+
+    const returns = Object.entries(item.userdoc?.returns ?? {});
+    if (returns.length) {
+      callDocs.addTag({
+        tagName: 'returns',
+        text: (writer) => {
+          returns.forEach(([key, value]) => {
+            if (returns.length === 1) {
+              writer.writeLine(value);
+            } else {
+              writer.writeLine(`- \`${key}\` — ${value}`);
+            }
+          });
+        },
+      });
+    }
   });
 
   transactions.forEach((item) => {
-    const params = item.inputs.concat([`$$overrides?: ${item.overrides}`]).join(', ');
-    fields.functions.push(`'${item.signature}': (${params}) => Promise<ethers.providers.TransactionResponse>;`);
-    fields.call.push(`'${item.signature}': (${params}) => Promise<${item.output}>;`);
-    fields.estimate.push(`'${item.signature}': (${params}) => Promise<ethers.BigNumber>;`);
-    fields.populate.push(`'${item.signature}': (${params}) => Promise<ethers.UnsignedTransaction>;`);
-
-    const fallback = `\`${item.contract}\` contract call for \`${item.fragment.name}\` function.`;
-    const header = item.devdoc?.notice ?? fallback;
-    const docs = [header, ``];
-
-    if (item.userdoc?.details) {
-      docs.push(item.userdoc.details, '');
-    }
-
-    docs.push('```solidity', item.minimal, '```');
-
-    const paramz = Object.entries(item.userdoc?.params ?? {});
-    const returnz = Object.entries(item.userdoc?.returns ?? {});
-
-    if (paramz.length || returnz.length) {
-      docs.push('');
-    }
-
-    paramz.forEach(([key, value]) => {
-      docs.push(`@param ${key} ${value}`);
+    const inputs = item.inputs.join(', ');
+    const transactionDeclaration = contractClass.addProperty({
+      name: item.fragment.name,
+      type: `(${inputs}) => TransactionWrapper<${item.overrides}>`,
     });
 
-    returnz.forEach(([key, value], index, array) => {
-      index === 0 && array.length !== 1 && docs.push('@returns  ');
+    const transactionDocs = transactionDeclaration.addJsDoc({
+      description: (write) => {
+        write.conditionalWriteLine(!!item.devdoc?.notice, item.devdoc?.notice);
+        write.conditionalBlankLine(!!item.devdoc?.notice && !!item.userdoc?.details);
+        write.conditionalWriteLine(!!item.userdoc?.details, item.userdoc?.details);
+        write.conditionalBlankLine(!!item.devdoc?.notice || !!item.userdoc?.details);
 
-      if (array.length === 1) {
-        docs.push(`@returns ${value}`);
-      } else {
-        docs.push(`  - \`${key}\` — ${value}${index === array.length - 1 ? '' : '  '}`);
-      }
+        write.writeLine('```solidity');
+        write.writeLine(item.minimal);
+        write.writeLine('```');
+      },
     });
 
-    body.push(`
-      /**
-       * ${docs.join('\n* ')}
-       */
-      ${item.fragment.name}: (${item.inputs.join(', ')}) => TransactionWrapper<${item.overrides}>
-    `);
+    const params = Object.entries(item.userdoc?.params ?? {});
+    transactionDocs.addTags(
+      params.map(([key, value]) => ({
+        tagName: 'param',
+        text: `${key} ${value}`,
+      })),
+    );
+
+    const returns = Object.entries(item.userdoc?.returns ?? {});
+    if (returns.length) {
+      transactionDocs.addTag({
+        tagName: 'returns',
+        text: (writer) => {
+          returns.forEach(([key, value]) => {
+            if (returns.length === 1) {
+              writer.writeLine(value);
+            } else {
+              writer.writeLine(`- \`${key}\` — ${value}`);
+            }
+          });
+        },
+      });
+    }
   });
 
-  return `
-    import { ethers } from "ethers";
-    // @ts-ignore
-    import { Contract, TransactionWrapper } from "${root}/Contract";
+  contractFile.fixUnusedIdentifiers().fixMissingImports();
 
-    /**
-     * ${header.join('\n* ')}
-     */
-    export class ${name}Contract extends Contract {
-      public readonly ethers: ${name}EthersContract;
-
-      constructor(addressOrName: string, providerOrSigner: ethers.Signer | ethers.providers.Provider) {
-        super(new.target.abi, addressOrName, providerOrSigner);
-      }
-
-      ${body.join('\n\n')}
-
-      static abi: string[] = [
-        ${abis.join(',\n')}
-      ];
-    }
-
-    export interface ${name}EthersContract extends ethers.Contract {
-      ${fields.functions.join('\n')}
-
-      functions: {
-        ${fields.functions.join('\n')}
-      }
-
-      callStatic: {
-        ${fields.call.join('\n')}
-      };
-
-      estimateGas: {
-        ${fields.estimate.join('\n')}
-      };
-
-      populateTransaction: {
-        ${fields.populate.join('\n')}
-      };
-    }
-  `;
+  return contractFile;
 }

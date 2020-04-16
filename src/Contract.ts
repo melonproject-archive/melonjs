@@ -21,8 +21,18 @@ export class TransactionWrapper<TOverrides extends ethers.Overrides = ethers.Ove
 }
 
 export class Contract {
+  /**
+   * The underlying ethers.js contract instance.
+   */
   public readonly $$ethers: ethers.Contract;
 
+  /**
+   * Constructs a new contract instance.
+   *
+   * @param contract The contract interface.
+   * @param addressOrName The address or name of the contract.
+   * @param signerOrProvider The ethers.js signer or provider instance to use.
+   */
   constructor(
     contract: ethers.ContractInterface,
     addressOrName: string,

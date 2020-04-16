@@ -1,340 +1,12 @@
 import { ethers } from 'ethers';
-// @ts-ignore
-import { Contract, TransactionWrapper } from '../Contract';
+import { Contract, TransactionWrapper } from '..';
 
-/**
- * `FundFactory` contract
- *
- * Creates fund routes and links them together
- */
+/** Creates fund routes and links them together */
 export class FundFactoryContract extends Contract {
-  public readonly ethers: FundFactoryEthersContract;
-
-  constructor(addressOrName: string, providerOrSigner: ethers.Signer | ethers.providers.Provider) {
-    super(new.target.abi, addressOrName, providerOrSigner);
-  }
-
   /**
-   * `FundFactory` contract call for `REGISTRY` function.
-   *
-   * ```solidity
-   * function REGISTRY() view returns (address)
-   * ```
+   * The contract abis.
    */
-  REGISTRY: ($$overrides?: ethers.CallOverrides) => Promise<string>;
-
-  /**
-   * `FundFactory` contract call for `accountingFactory` function.
-   *
-   * ```solidity
-   * function accountingFactory() view returns (address)
-   * ```
-   */
-  accountingFactory: ($$overrides?: ethers.CallOverrides) => Promise<string>;
-
-  /**
-   * `FundFactory` contract call for `authority` function.
-   *
-   * ```solidity
-   * function authority() view returns (address)
-   * ```
-   */
-  authority: ($$overrides?: ethers.CallOverrides) => Promise<string>;
-
-  /**
-   * `FundFactory` contract call for `childExists` function.
-   *
-   * ```solidity
-   * function childExists(address) view returns (bool)
-   * ```
-   */
-  childExists: ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
-
-  /**
-   * `FundFactory` contract call for `feeManagerFactory` function.
-   *
-   * ```solidity
-   * function feeManagerFactory() view returns (address)
-   * ```
-   */
-  feeManagerFactory: ($$overrides?: ethers.CallOverrides) => Promise<string>;
-
-  /**
-   * `FundFactory` contract call for `funds` function.
-   *
-   * ```solidity
-   * function funds(uint256) view returns (address)
-   * ```
-   */
-  funds: ($$0: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<string>;
-
-  /**
-   * `FundFactory` contract call for `getExchangesInfo` function.
-   *
-   * ```solidity
-   * function getExchangesInfo(address) view returns (address[])
-   * ```
-   */
-  getExchangesInfo: (_user: string, $$overrides?: ethers.CallOverrides) => Promise<string[]>;
-
-  /**
-   * `FundFactory` contract call for `getFundById` function.
-   *
-   * ```solidity
-   * function getFundById(uint256) view returns (address)
-   * ```
-   */
-  getFundById: (_id: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<string>;
-
-  /**
-   * `FundFactory` contract call for `getLastFundId` function.
-   *
-   * ```solidity
-   * function getLastFundId() view returns (uint256)
-   * ```
-   */
-  getLastFundId: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
-
-  /**
-   * `FundFactory` contract call for `isInstance` function.
-   *
-   * ```solidity
-   * function isInstance(address) view returns (bool)
-   * ```
-   */
-  isInstance: (_child: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
-
-  /**
-   * `FundFactory` contract call for `managersToHubs` function.
-   *
-   * ```solidity
-   * function managersToHubs(address) view returns (address)
-   * ```
-   */
-  managersToHubs: ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<string>;
-
-  /**
-   * `FundFactory` contract call for `managersToRoutes` function.
-   *
-   * ```solidity
-   * function managersToRoutes(address) view returns (address, address, address, address, address, address, address)
-   * ```
-   */
-  managersToRoutes: (
-    $$0: string,
-    $$overrides?: ethers.CallOverrides,
-  ) => Promise<{
-    accounting: string;
-    feeManager: string;
-    policyManager: string;
-    shares: string;
-    vault: string;
-    registry: string;
-    fundFactory: string;
-  }>;
-
-  /**
-   * `FundFactory` contract call for `managersToSettings` function.
-   *
-   * ```solidity
-   * function managersToSettings(address) view returns (string, address)
-   * ```
-   */
-  managersToSettings: (
-    $$0: string,
-    $$overrides?: ethers.CallOverrides,
-  ) => Promise<{ name: string; denominationAsset: string }>;
-
-  /**
-   * `FundFactory` contract call for `owner` function.
-   *
-   * ```solidity
-   * function owner() view returns (address)
-   * ```
-   */
-  owner: ($$overrides?: ethers.CallOverrides) => Promise<string>;
-
-  /**
-   * `FundFactory` contract call for `policyManagerFactory` function.
-   *
-   * ```solidity
-   * function policyManagerFactory() view returns (address)
-   * ```
-   */
-  policyManagerFactory: ($$overrides?: ethers.CallOverrides) => Promise<string>;
-
-  /**
-   * `FundFactory` contract call for `sharesFactory` function.
-   *
-   * ```solidity
-   * function sharesFactory() view returns (address)
-   * ```
-   */
-  sharesFactory: ($$overrides?: ethers.CallOverrides) => Promise<string>;
-
-  /**
-   * `FundFactory` contract call for `vaultFactory` function.
-   *
-   * ```solidity
-   * function vaultFactory() view returns (address)
-   * ```
-   */
-  vaultFactory: ($$overrides?: ethers.CallOverrides) => Promise<string>;
-
-  /**
-   * `FundFactory` contract call for `beginSetup` function.
-   *
-   * ```solidity
-   * function beginSetup(string,address[],uint256[],uint256[],address[],address[],address,address[])
-   * ```
-   */
-  beginSetup: (
-    _name: string,
-    _fees: string[],
-    _feeRates: ethers.BigNumber[],
-    _feePeriods: ethers.BigNumber[],
-    _exchanges: string[],
-    _adapters: string[],
-    _denominationAsset: string,
-    _defaultInvestmentAssets: string[],
-  ) => TransactionWrapper<ethers.Overrides>;
-
-  /**
-   * `FundFactory` contract call for `completeSetup` function.
-   *
-   * ```solidity
-   * function completeSetup() payable
-   * ```
-   */
-  completeSetup: () => TransactionWrapper<ethers.PayableOverrides>;
-
-  /**
-   * `FundFactory` contract call for `completeSetupFor` function.
-   *
-   * ```solidity
-   * function completeSetupFor(address) payable
-   * ```
-   */
-  completeSetupFor: (_manager: string) => TransactionWrapper<ethers.PayableOverrides>;
-
-  /**
-   * `FundFactory` contract call for `createAccounting` function.
-   *
-   * ```solidity
-   * function createAccounting() payable
-   * ```
-   */
-  createAccounting: () => TransactionWrapper<ethers.PayableOverrides>;
-
-  /**
-   * `FundFactory` contract call for `createAccountingFor` function.
-   *
-   * ```solidity
-   * function createAccountingFor(address) payable
-   * ```
-   */
-  createAccountingFor: (_manager: string) => TransactionWrapper<ethers.PayableOverrides>;
-
-  /**
-   * `FundFactory` contract call for `createFeeManager` function.
-   *
-   * ```solidity
-   * function createFeeManager() payable
-   * ```
-   */
-  createFeeManager: () => TransactionWrapper<ethers.PayableOverrides>;
-
-  /**
-   * `FundFactory` contract call for `createFeeManagerFor` function.
-   *
-   * ```solidity
-   * function createFeeManagerFor(address) payable
-   * ```
-   */
-  createFeeManagerFor: (_manager: string) => TransactionWrapper<ethers.PayableOverrides>;
-
-  /**
-   * `FundFactory` contract call for `createPolicyManager` function.
-   *
-   * ```solidity
-   * function createPolicyManager() payable
-   * ```
-   */
-  createPolicyManager: () => TransactionWrapper<ethers.PayableOverrides>;
-
-  /**
-   * `FundFactory` contract call for `createPolicyManagerFor` function.
-   *
-   * ```solidity
-   * function createPolicyManagerFor(address) payable
-   * ```
-   */
-  createPolicyManagerFor: (_manager: string) => TransactionWrapper<ethers.PayableOverrides>;
-
-  /**
-   * `FundFactory` contract call for `createShares` function.
-   *
-   * ```solidity
-   * function createShares() payable
-   * ```
-   */
-  createShares: () => TransactionWrapper<ethers.PayableOverrides>;
-
-  /**
-   * `FundFactory` contract call for `createSharesFor` function.
-   *
-   * ```solidity
-   * function createSharesFor(address) payable
-   * ```
-   */
-  createSharesFor: (_manager: string) => TransactionWrapper<ethers.PayableOverrides>;
-
-  /**
-   * `FundFactory` contract call for `createVault` function.
-   *
-   * ```solidity
-   * function createVault() payable
-   * ```
-   */
-  createVault: () => TransactionWrapper<ethers.PayableOverrides>;
-
-  /**
-   * `FundFactory` contract call for `createVaultFor` function.
-   *
-   * ```solidity
-   * function createVaultFor(address) payable
-   * ```
-   */
-  createVaultFor: (_manager: string) => TransactionWrapper<ethers.PayableOverrides>;
-
-  /**
-   * `FundFactory` contract call for `setAuthority` function.
-   *
-   * ```solidity
-   * function setAuthority(address)
-   * ```
-   */
-  setAuthority: (authority_: string) => TransactionWrapper<ethers.Overrides>;
-
-  /**
-   * `FundFactory` contract call for `setOwner` function.
-   *
-   * ```solidity
-   * function setOwner(address)
-   * ```
-   */
-  setOwner: (owner_: string) => TransactionWrapper<ethers.Overrides>;
-
-  /**
-   * `FundFactory` contract call for `shutDownFund` function.
-   *
-   * ```solidity
-   * function shutDownFund(address)
-   * ```
-   */
-  shutDownFund: (_hub: string) => TransactionWrapper<ethers.Overrides>;
-
-  static abi: string[] = [
+  public static readonly abi: string[] = [
     'constructor(address _accountingFactory, address _feeManagerFactory, address _sharesFactory, address _vaultFactory, address _policyManagerFactory, address _registry, address _postDeployOwner)',
     'event AmguPaid(address indexed payer, uint256 totalAmguPaidInEth, uint256 amguChargableGas)',
     'event IncentivePaid(address indexed payer, uint256 incentiveAmount)',
@@ -376,21 +48,102 @@ export class FundFactoryContract extends Contract {
     'function shutDownFund(address _hub)',
     'function vaultFactory() view returns (address)',
   ];
-}
 
-export interface FundFactoryEthersContract extends ethers.Contract {
-  'REGISTRY()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
-  'accountingFactory()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
-  'authority()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
-  'childExists(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
-  'feeManagerFactory()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
-  'funds(uint256)': ($$0: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<string>;
-  'getExchangesInfo(address)': (_user: string, $$overrides?: ethers.CallOverrides) => Promise<string[]>;
-  'getFundById(uint256)': (_id: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<string>;
-  'getLastFundId()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
-  'isInstance(address)': (_child: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
-  'managersToHubs(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<string>;
-  'managersToRoutes(address)': (
+  /**
+   * Constructs a new contract instance.
+   *
+   * @param contract The contract interface.
+   * @param addressOrName The address or name of the contract.
+   * @param signerOrProvider The ethers.js signer or provider instance to use.
+   */
+  constructor(addressOrName: string, providerOrSigner: ethers.Signer | ethers.providers.Provider) {
+    super(new.target.abi, addressOrName, providerOrSigner);
+  }
+
+  /**
+   * ```solidity
+   * function REGISTRY() view returns (address)
+   * ```
+   *
+   */
+  REGISTRY: ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  /**
+   * ```solidity
+   * function accountingFactory() view returns (address)
+   * ```
+   *
+   */
+  accountingFactory: ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  /**
+   * ```solidity
+   * function authority() view returns (address)
+   * ```
+   *
+   */
+  authority: ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  /**
+   * ```solidity
+   * function childExists(address) view returns (bool)
+   * ```
+   *
+   */
+  childExists: ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+  /**
+   * ```solidity
+   * function feeManagerFactory() view returns (address)
+   * ```
+   *
+   */
+  feeManagerFactory: ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  /**
+   * ```solidity
+   * function funds(uint256) view returns (address)
+   * ```
+   *
+   */
+  funds: ($$0: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<string>;
+  /**
+   * ```solidity
+   * function getExchangesInfo(address) view returns (address[])
+   * ```
+   *
+   */
+  getExchangesInfo: (_user: string, $$overrides?: ethers.CallOverrides) => Promise<string[]>;
+  /**
+   * ```solidity
+   * function getFundById(uint256) view returns (address)
+   * ```
+   *
+   */
+  getFundById: (_id: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<string>;
+  /**
+   * ```solidity
+   * function getLastFundId() view returns (uint256)
+   * ```
+   *
+   */
+  getLastFundId: ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
+  /**
+   * ```solidity
+   * function isInstance(address) view returns (bool)
+   * ```
+   *
+   */
+  isInstance: (_child: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
+  /**
+   * ```solidity
+   * function managersToHubs(address) view returns (address)
+   * ```
+   *
+   */
+  managersToHubs: ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<string>;
+  /**
+   * ```solidity
+   * function managersToRoutes(address) view returns (address, address, address, address, address, address, address)
+   * ```
+   *
+   */
+  managersToRoutes: (
     $$0: string,
     $$overrides?: ethers.CallOverrides,
   ) => Promise<{
@@ -402,15 +155,51 @@ export interface FundFactoryEthersContract extends ethers.Contract {
     registry: string;
     fundFactory: string;
   }>;
-  'managersToSettings(address)': (
+  /**
+   * ```solidity
+   * function managersToSettings(address) view returns (string, address)
+   * ```
+   *
+   */
+  managersToSettings: (
     $$0: string,
     $$overrides?: ethers.CallOverrides,
   ) => Promise<{ name: string; denominationAsset: string }>;
-  'owner()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
-  'policyManagerFactory()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
-  'sharesFactory()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
-  'vaultFactory()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
-  'beginSetup(string,address[],uint256[],uint256[],address[],address[],address,address[])': (
+  /**
+   * ```solidity
+   * function owner() view returns (address)
+   * ```
+   *
+   */
+  owner: ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  /**
+   * ```solidity
+   * function policyManagerFactory() view returns (address)
+   * ```
+   *
+   */
+  policyManagerFactory: ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  /**
+   * ```solidity
+   * function sharesFactory() view returns (address)
+   * ```
+   *
+   */
+  sharesFactory: ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  /**
+   * ```solidity
+   * function vaultFactory() view returns (address)
+   * ```
+   *
+   */
+  vaultFactory: ($$overrides?: ethers.CallOverrides) => Promise<string>;
+  /**
+   * ```solidity
+   * function beginSetup(string,address[],uint256[],uint256[],address[],address[],address,address[])
+   * ```
+   *
+   */
+  beginSetup: (
     _name: string,
     _fees: string[],
     _feeRates: ethers.BigNumber[],
@@ -419,283 +208,110 @@ export interface FundFactoryEthersContract extends ethers.Contract {
     _adapters: string[],
     _denominationAsset: string,
     _defaultInvestmentAssets: string[],
-    $$overrides?: ethers.Overrides,
-  ) => Promise<ethers.providers.TransactionResponse>;
-  'completeSetup()': ($$overrides?: ethers.PayableOverrides) => Promise<ethers.providers.TransactionResponse>;
-  'completeSetupFor(address)': (
-    _manager: string,
-    $$overrides?: ethers.PayableOverrides,
-  ) => Promise<ethers.providers.TransactionResponse>;
-  'createAccounting()': ($$overrides?: ethers.PayableOverrides) => Promise<ethers.providers.TransactionResponse>;
-  'createAccountingFor(address)': (
-    _manager: string,
-    $$overrides?: ethers.PayableOverrides,
-  ) => Promise<ethers.providers.TransactionResponse>;
-  'createFeeManager()': ($$overrides?: ethers.PayableOverrides) => Promise<ethers.providers.TransactionResponse>;
-  'createFeeManagerFor(address)': (
-    _manager: string,
-    $$overrides?: ethers.PayableOverrides,
-  ) => Promise<ethers.providers.TransactionResponse>;
-  'createPolicyManager()': ($$overrides?: ethers.PayableOverrides) => Promise<ethers.providers.TransactionResponse>;
-  'createPolicyManagerFor(address)': (
-    _manager: string,
-    $$overrides?: ethers.PayableOverrides,
-  ) => Promise<ethers.providers.TransactionResponse>;
-  'createShares()': ($$overrides?: ethers.PayableOverrides) => Promise<ethers.providers.TransactionResponse>;
-  'createSharesFor(address)': (
-    _manager: string,
-    $$overrides?: ethers.PayableOverrides,
-  ) => Promise<ethers.providers.TransactionResponse>;
-  'createVault()': ($$overrides?: ethers.PayableOverrides) => Promise<ethers.providers.TransactionResponse>;
-  'createVaultFor(address)': (
-    _manager: string,
-    $$overrides?: ethers.PayableOverrides,
-  ) => Promise<ethers.providers.TransactionResponse>;
-  'setAuthority(address)': (
-    authority_: string,
-    $$overrides?: ethers.Overrides,
-  ) => Promise<ethers.providers.TransactionResponse>;
-  'setOwner(address)': (
-    owner_: string,
-    $$overrides?: ethers.Overrides,
-  ) => Promise<ethers.providers.TransactionResponse>;
-  'shutDownFund(address)': (
-    _hub: string,
-    $$overrides?: ethers.Overrides,
-  ) => Promise<ethers.providers.TransactionResponse>;
-
-  functions: {
-    'REGISTRY()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
-    'accountingFactory()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
-    'authority()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
-    'childExists(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
-    'feeManagerFactory()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
-    'funds(uint256)': ($$0: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<string>;
-    'getExchangesInfo(address)': (_user: string, $$overrides?: ethers.CallOverrides) => Promise<string[]>;
-    'getFundById(uint256)': (_id: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<string>;
-    'getLastFundId()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
-    'isInstance(address)': (_child: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
-    'managersToHubs(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<string>;
-    'managersToRoutes(address)': (
-      $$0: string,
-      $$overrides?: ethers.CallOverrides,
-    ) => Promise<{
-      accounting: string;
-      feeManager: string;
-      policyManager: string;
-      shares: string;
-      vault: string;
-      registry: string;
-      fundFactory: string;
-    }>;
-    'managersToSettings(address)': (
-      $$0: string,
-      $$overrides?: ethers.CallOverrides,
-    ) => Promise<{ name: string; denominationAsset: string }>;
-    'owner()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
-    'policyManagerFactory()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
-    'sharesFactory()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
-    'vaultFactory()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
-    'beginSetup(string,address[],uint256[],uint256[],address[],address[],address,address[])': (
-      _name: string,
-      _fees: string[],
-      _feeRates: ethers.BigNumber[],
-      _feePeriods: ethers.BigNumber[],
-      _exchanges: string[],
-      _adapters: string[],
-      _denominationAsset: string,
-      _defaultInvestmentAssets: string[],
-      $$overrides?: ethers.Overrides,
-    ) => Promise<ethers.providers.TransactionResponse>;
-    'completeSetup()': ($$overrides?: ethers.PayableOverrides) => Promise<ethers.providers.TransactionResponse>;
-    'completeSetupFor(address)': (
-      _manager: string,
-      $$overrides?: ethers.PayableOverrides,
-    ) => Promise<ethers.providers.TransactionResponse>;
-    'createAccounting()': ($$overrides?: ethers.PayableOverrides) => Promise<ethers.providers.TransactionResponse>;
-    'createAccountingFor(address)': (
-      _manager: string,
-      $$overrides?: ethers.PayableOverrides,
-    ) => Promise<ethers.providers.TransactionResponse>;
-    'createFeeManager()': ($$overrides?: ethers.PayableOverrides) => Promise<ethers.providers.TransactionResponse>;
-    'createFeeManagerFor(address)': (
-      _manager: string,
-      $$overrides?: ethers.PayableOverrides,
-    ) => Promise<ethers.providers.TransactionResponse>;
-    'createPolicyManager()': ($$overrides?: ethers.PayableOverrides) => Promise<ethers.providers.TransactionResponse>;
-    'createPolicyManagerFor(address)': (
-      _manager: string,
-      $$overrides?: ethers.PayableOverrides,
-    ) => Promise<ethers.providers.TransactionResponse>;
-    'createShares()': ($$overrides?: ethers.PayableOverrides) => Promise<ethers.providers.TransactionResponse>;
-    'createSharesFor(address)': (
-      _manager: string,
-      $$overrides?: ethers.PayableOverrides,
-    ) => Promise<ethers.providers.TransactionResponse>;
-    'createVault()': ($$overrides?: ethers.PayableOverrides) => Promise<ethers.providers.TransactionResponse>;
-    'createVaultFor(address)': (
-      _manager: string,
-      $$overrides?: ethers.PayableOverrides,
-    ) => Promise<ethers.providers.TransactionResponse>;
-    'setAuthority(address)': (
-      authority_: string,
-      $$overrides?: ethers.Overrides,
-    ) => Promise<ethers.providers.TransactionResponse>;
-    'setOwner(address)': (
-      owner_: string,
-      $$overrides?: ethers.Overrides,
-    ) => Promise<ethers.providers.TransactionResponse>;
-    'shutDownFund(address)': (
-      _hub: string,
-      $$overrides?: ethers.Overrides,
-    ) => Promise<ethers.providers.TransactionResponse>;
-  };
-
-  callStatic: {
-    'REGISTRY()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
-    'accountingFactory()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
-    'authority()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
-    'childExists(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
-    'feeManagerFactory()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
-    'funds(uint256)': ($$0: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<string>;
-    'getExchangesInfo(address)': (_user: string, $$overrides?: ethers.CallOverrides) => Promise<string[]>;
-    'getFundById(uint256)': (_id: ethers.BigNumberish, $$overrides?: ethers.CallOverrides) => Promise<string>;
-    'getLastFundId()': ($$overrides?: ethers.CallOverrides) => Promise<ethers.BigNumber>;
-    'isInstance(address)': (_child: string, $$overrides?: ethers.CallOverrides) => Promise<boolean>;
-    'managersToHubs(address)': ($$0: string, $$overrides?: ethers.CallOverrides) => Promise<string>;
-    'managersToRoutes(address)': (
-      $$0: string,
-      $$overrides?: ethers.CallOverrides,
-    ) => Promise<{
-      accounting: string;
-      feeManager: string;
-      policyManager: string;
-      shares: string;
-      vault: string;
-      registry: string;
-      fundFactory: string;
-    }>;
-    'managersToSettings(address)': (
-      $$0: string,
-      $$overrides?: ethers.CallOverrides,
-    ) => Promise<{ name: string; denominationAsset: string }>;
-    'owner()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
-    'policyManagerFactory()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
-    'sharesFactory()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
-    'vaultFactory()': ($$overrides?: ethers.CallOverrides) => Promise<string>;
-    'beginSetup(string,address[],uint256[],uint256[],address[],address[],address,address[])': (
-      _name: string,
-      _fees: string[],
-      _feeRates: ethers.BigNumber[],
-      _feePeriods: ethers.BigNumber[],
-      _exchanges: string[],
-      _adapters: string[],
-      _denominationAsset: string,
-      _defaultInvestmentAssets: string[],
-      $$overrides?: ethers.Overrides,
-    ) => Promise<void>;
-    'completeSetup()': ($$overrides?: ethers.PayableOverrides) => Promise<void>;
-    'completeSetupFor(address)': (_manager: string, $$overrides?: ethers.PayableOverrides) => Promise<void>;
-    'createAccounting()': ($$overrides?: ethers.PayableOverrides) => Promise<void>;
-    'createAccountingFor(address)': (_manager: string, $$overrides?: ethers.PayableOverrides) => Promise<void>;
-    'createFeeManager()': ($$overrides?: ethers.PayableOverrides) => Promise<void>;
-    'createFeeManagerFor(address)': (_manager: string, $$overrides?: ethers.PayableOverrides) => Promise<void>;
-    'createPolicyManager()': ($$overrides?: ethers.PayableOverrides) => Promise<void>;
-    'createPolicyManagerFor(address)': (_manager: string, $$overrides?: ethers.PayableOverrides) => Promise<void>;
-    'createShares()': ($$overrides?: ethers.PayableOverrides) => Promise<void>;
-    'createSharesFor(address)': (_manager: string, $$overrides?: ethers.PayableOverrides) => Promise<void>;
-    'createVault()': ($$overrides?: ethers.PayableOverrides) => Promise<void>;
-    'createVaultFor(address)': (_manager: string, $$overrides?: ethers.PayableOverrides) => Promise<void>;
-    'setAuthority(address)': (authority_: string, $$overrides?: ethers.Overrides) => Promise<void>;
-    'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => Promise<void>;
-    'shutDownFund(address)': (_hub: string, $$overrides?: ethers.Overrides) => Promise<void>;
-  };
-
-  estimateGas: {
-    'beginSetup(string,address[],uint256[],uint256[],address[],address[],address,address[])': (
-      _name: string,
-      _fees: string[],
-      _feeRates: ethers.BigNumber[],
-      _feePeriods: ethers.BigNumber[],
-      _exchanges: string[],
-      _adapters: string[],
-      _denominationAsset: string,
-      _defaultInvestmentAssets: string[],
-      $$overrides?: ethers.Overrides,
-    ) => Promise<ethers.BigNumber>;
-    'completeSetup()': ($$overrides?: ethers.PayableOverrides) => Promise<ethers.BigNumber>;
-    'completeSetupFor(address)': (_manager: string, $$overrides?: ethers.PayableOverrides) => Promise<ethers.BigNumber>;
-    'createAccounting()': ($$overrides?: ethers.PayableOverrides) => Promise<ethers.BigNumber>;
-    'createAccountingFor(address)': (
-      _manager: string,
-      $$overrides?: ethers.PayableOverrides,
-    ) => Promise<ethers.BigNumber>;
-    'createFeeManager()': ($$overrides?: ethers.PayableOverrides) => Promise<ethers.BigNumber>;
-    'createFeeManagerFor(address)': (
-      _manager: string,
-      $$overrides?: ethers.PayableOverrides,
-    ) => Promise<ethers.BigNumber>;
-    'createPolicyManager()': ($$overrides?: ethers.PayableOverrides) => Promise<ethers.BigNumber>;
-    'createPolicyManagerFor(address)': (
-      _manager: string,
-      $$overrides?: ethers.PayableOverrides,
-    ) => Promise<ethers.BigNumber>;
-    'createShares()': ($$overrides?: ethers.PayableOverrides) => Promise<ethers.BigNumber>;
-    'createSharesFor(address)': (_manager: string, $$overrides?: ethers.PayableOverrides) => Promise<ethers.BigNumber>;
-    'createVault()': ($$overrides?: ethers.PayableOverrides) => Promise<ethers.BigNumber>;
-    'createVaultFor(address)': (_manager: string, $$overrides?: ethers.PayableOverrides) => Promise<ethers.BigNumber>;
-    'setAuthority(address)': (authority_: string, $$overrides?: ethers.Overrides) => Promise<ethers.BigNumber>;
-    'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => Promise<ethers.BigNumber>;
-    'shutDownFund(address)': (_hub: string, $$overrides?: ethers.Overrides) => Promise<ethers.BigNumber>;
-  };
-
-  populateTransaction: {
-    'beginSetup(string,address[],uint256[],uint256[],address[],address[],address,address[])': (
-      _name: string,
-      _fees: string[],
-      _feeRates: ethers.BigNumber[],
-      _feePeriods: ethers.BigNumber[],
-      _exchanges: string[],
-      _adapters: string[],
-      _denominationAsset: string,
-      _defaultInvestmentAssets: string[],
-      $$overrides?: ethers.Overrides,
-    ) => Promise<ethers.UnsignedTransaction>;
-    'completeSetup()': ($$overrides?: ethers.PayableOverrides) => Promise<ethers.UnsignedTransaction>;
-    'completeSetupFor(address)': (
-      _manager: string,
-      $$overrides?: ethers.PayableOverrides,
-    ) => Promise<ethers.UnsignedTransaction>;
-    'createAccounting()': ($$overrides?: ethers.PayableOverrides) => Promise<ethers.UnsignedTransaction>;
-    'createAccountingFor(address)': (
-      _manager: string,
-      $$overrides?: ethers.PayableOverrides,
-    ) => Promise<ethers.UnsignedTransaction>;
-    'createFeeManager()': ($$overrides?: ethers.PayableOverrides) => Promise<ethers.UnsignedTransaction>;
-    'createFeeManagerFor(address)': (
-      _manager: string,
-      $$overrides?: ethers.PayableOverrides,
-    ) => Promise<ethers.UnsignedTransaction>;
-    'createPolicyManager()': ($$overrides?: ethers.PayableOverrides) => Promise<ethers.UnsignedTransaction>;
-    'createPolicyManagerFor(address)': (
-      _manager: string,
-      $$overrides?: ethers.PayableOverrides,
-    ) => Promise<ethers.UnsignedTransaction>;
-    'createShares()': ($$overrides?: ethers.PayableOverrides) => Promise<ethers.UnsignedTransaction>;
-    'createSharesFor(address)': (
-      _manager: string,
-      $$overrides?: ethers.PayableOverrides,
-    ) => Promise<ethers.UnsignedTransaction>;
-    'createVault()': ($$overrides?: ethers.PayableOverrides) => Promise<ethers.UnsignedTransaction>;
-    'createVaultFor(address)': (
-      _manager: string,
-      $$overrides?: ethers.PayableOverrides,
-    ) => Promise<ethers.UnsignedTransaction>;
-    'setAuthority(address)': (
-      authority_: string,
-      $$overrides?: ethers.Overrides,
-    ) => Promise<ethers.UnsignedTransaction>;
-    'setOwner(address)': (owner_: string, $$overrides?: ethers.Overrides) => Promise<ethers.UnsignedTransaction>;
-    'shutDownFund(address)': (_hub: string, $$overrides?: ethers.Overrides) => Promise<ethers.UnsignedTransaction>;
-  };
+  ) => TransactionWrapper<ethers.Overrides>;
+  /**
+   * ```solidity
+   * function completeSetup() payable
+   * ```
+   *
+   */
+  completeSetup: () => TransactionWrapper<ethers.PayableOverrides>;
+  /**
+   * ```solidity
+   * function completeSetupFor(address) payable
+   * ```
+   *
+   */
+  completeSetupFor: (_manager: string) => TransactionWrapper<ethers.PayableOverrides>;
+  /**
+   * ```solidity
+   * function createAccounting() payable
+   * ```
+   *
+   */
+  createAccounting: () => TransactionWrapper<ethers.PayableOverrides>;
+  /**
+   * ```solidity
+   * function createAccountingFor(address) payable
+   * ```
+   *
+   */
+  createAccountingFor: (_manager: string) => TransactionWrapper<ethers.PayableOverrides>;
+  /**
+   * ```solidity
+   * function createFeeManager() payable
+   * ```
+   *
+   */
+  createFeeManager: () => TransactionWrapper<ethers.PayableOverrides>;
+  /**
+   * ```solidity
+   * function createFeeManagerFor(address) payable
+   * ```
+   *
+   */
+  createFeeManagerFor: (_manager: string) => TransactionWrapper<ethers.PayableOverrides>;
+  /**
+   * ```solidity
+   * function createPolicyManager() payable
+   * ```
+   *
+   */
+  createPolicyManager: () => TransactionWrapper<ethers.PayableOverrides>;
+  /**
+   * ```solidity
+   * function createPolicyManagerFor(address) payable
+   * ```
+   *
+   */
+  createPolicyManagerFor: (_manager: string) => TransactionWrapper<ethers.PayableOverrides>;
+  /**
+   * ```solidity
+   * function createShares() payable
+   * ```
+   *
+   */
+  createShares: () => TransactionWrapper<ethers.PayableOverrides>;
+  /**
+   * ```solidity
+   * function createSharesFor(address) payable
+   * ```
+   *
+   */
+  createSharesFor: (_manager: string) => TransactionWrapper<ethers.PayableOverrides>;
+  /**
+   * ```solidity
+   * function createVault() payable
+   * ```
+   *
+   */
+  createVault: () => TransactionWrapper<ethers.PayableOverrides>;
+  /**
+   * ```solidity
+   * function createVaultFor(address) payable
+   * ```
+   *
+   */
+  createVaultFor: (_manager: string) => TransactionWrapper<ethers.PayableOverrides>;
+  /**
+   * ```solidity
+   * function setAuthority(address)
+   * ```
+   *
+   */
+  setAuthority: (authority_: string) => TransactionWrapper<ethers.Overrides>;
+  /**
+   * ```solidity
+   * function setOwner(address)
+   * ```
+   *
+   */
+  setOwner: (owner_: string) => TransactionWrapper<ethers.Overrides>;
+  /**
+   * ```solidity
+   * function shutDownFund(address)
+   * ```
+   *
+   */
+  shutDownFund: (_hub: string) => TransactionWrapper<ethers.Overrides>;
 }
