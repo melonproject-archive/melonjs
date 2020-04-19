@@ -25,15 +25,15 @@
     "postbuild": "cp package.json LICENSE README.md dist",
     "prewatch": "cp package.json dist",
     "watch": "tsc --watch",
-    "codegen": "ts-node --transpile-only scripts/codegen",
+    "codegen": "ts-node --transpile-only codegen",
     "pretypedocs": "rimraf typedocs",
     "typedocs": "typedoc",
     "posttypedocs": "cp jekyll.config.yml typedocs/_config.yml",
-    "test": "jest --verbose --config tests/jest.config.js",
+    "test": "jest --verbose",
     "precoverage": "rimraf coverage",
     "coverage": "yarn test --coverage",
-    "format": "prettier --write {src,scripts}/{*,**/*}.ts",
-    "lint": "yarn prettier --list-different {src,scripts}/{*,**/*}.ts",
+    "format": "prettier --write {src,codegen}/{*,**/*}.ts",
+    "lint": "yarn prettier --list-different {src,codegen}/{*,**/*}.ts",
     "typecheck": "tsc --noEmit",
     "preversion": "yarn typecheck && yarn test && yarn lint && yarn typedocs && yarn build",
     "postversion": "cp package.json dist",
@@ -69,7 +69,7 @@
     "yargs": "^15.3.1"
   },
   "codegen": {
-    "input": "../melon-protocol/out/{Registry,KyberPriceFeed,TestingPriceFeed,Vault,Shares,PolicyManager,Hub,Accounting,ManagementFee,PerformanceFee,Accounting,FundFactory,Version,OrderTaker,Engine,StandardToken,AssetBlacklist,AssetWhitelist,MaxConcentration,MaxPositions,PriceTolerance,UserWhitelist}.json"
+    "input": "../melon-protocol/out"
   },
   "husky": {
     "hooks": {
@@ -80,5 +80,16 @@
     "*.ts": [
       "yarn format"
     ]
+  },
+  "jest": {
+    "rootDir": "src",
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ],
+    "coverageDirectory": "coverage"
   }
 }
