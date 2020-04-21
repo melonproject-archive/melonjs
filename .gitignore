@@ -17,4 +17,7 @@ typedocs/
 !.gitignore
 !.prettierrc
 !.dockerignore
-!.travis.yml
+!.travis.yaml
+!.typedocs.yaml
+!.gitbook.yaml
+!.env.defaults

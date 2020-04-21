@@ -4,34 +4,23 @@ import glob from 'glob';
 import prettier from 'prettier';
 import yargs from 'yargs';
 import rimraf from 'rimraf';
-import { generate } from './utils/generate';
-import { Project, QuoteKind, IndentationText, Node } from 'ts-morph';
-
-function prettifyText(node: Node, config: prettier.Options) {
-  const options: prettier.Options = { ...config, parser: 'typescript' };
-  const text = node.getText({ includeJsDocComments: true });
-  return prettier.format(text, options);
-}
+import { ethers } from 'ethers';
+import { Project, QuoteKind, IndentationText } from 'ts-morph';
+import { generate, ContractData } from './utils/generate';
 
 interface Config {
-  version: string;
   contracts: {
     [key: string]: string;
   };
 }
 
 const args = yargs
-  .options('config', {
-    default: path.resolve(__dirname, 'config', 'next.json'),
-    defaultDescription: 'Latest contract version (master branch).',
-    coerce: (file) => JSON.parse(fs.readFileSync(file, 'utf8')),
-  })
   .option('input', {
     array: true,
     normalize: true,
     demandOption: true,
     coerce: (input) => {
-      const nested = input.map((item) => {
+      const nested = input.map((item: string) => {
         if (item.indexOf('*') !== -1 || item.indexOf('{') !== -1) {
           return glob.sync(item);
         }
@@ -56,6 +45,10 @@ const args = yargs
       return nested.flat();
     },
   })
+  .options('config', {
+    default: path.relative(process.cwd(), path.join(__dirname, 'config.json')),
+    coerce: (file) => JSON.parse(fs.readFileSync(file, 'utf8')),
+  })
   .option('prettier', {
     default: process.cwd(),
     defaultDescription: 'Relative to current working directory.',
@@ -65,7 +58,7 @@ const args = yargs
 
 (async () => {
   const config = (args.config as any) as Config;
-  const output = path.resolve(__dirname, '..', 'src', 'versions', config.version, 'contracts');
+  const output = path.resolve(__dirname, '..', 'src', 'contracts');
 
   rimraf.sync(output);
   if (!fs.existsSync(output)) {
@@ -82,12 +75,17 @@ const args = yargs
         throw new Error(`Missing contract output for ${contract}.`);
       }
 
+      const output = JSON.parse(fs.readFileSync(path.resolve(source), 'utf8'));
+      const bytecode = fs.readFileSync(path.resolve(path.dirname(source), `${contract}.bin`), 'utf8').trim();
+
       return {
+        destination,
         name: contract,
-        output: JSON.parse(fs.readFileSync(path.resolve(source), 'utf8')),
-        bytecode: fs.readFileSync(path.resolve(path.dirname(source), `${contract}.bin`), 'utf8').trim(),
-        destination: path.resolve(path.join(output, destination)),
-      };
+        bytecode: bytecode.startsWith('0x') ? bytecode : `0x${bytecode}`,
+        interface: new ethers.utils.Interface(output.abi),
+        userdoc: output.userdoc,
+        devdoc: output.devdoc,
+      } as ContractData;
     } catch (error) {
       throw new Error(`Failed to load source data for contract ${contract}: ${error}`);
     }
@@ -105,40 +103,25 @@ const args = yargs
     },
   });
 
-  mapping.forEach((contract) => {
-    const output = generate(
-      project,
-      contract.name,
-      contract.destination,
-      contract.output.abi,
-      contract.output.userdoc,
-      contract.output.devdoc,
-    );
-
-    output.replaceWithText(prettifyText(output, args.prettier as any));
+  generate(project, output, mapping, (source: string) => {
+    const options: prettier.Options = { ...config, parser: 'typescript' };
+    return prettier.format(source, options);
   });
 
   await project.save();
 
-  mapping.forEach((contract) => {
-    const out = path.join(path.dirname(contract.destination), `${contract.name}.bin.ts`);
-    const code = `export const ${contract.name}ContractBytecode = '0x${contract.bytecode}';`;
-    const output = prettier.format(code, { ...(args.prettier as any), parser: 'typescript' });
-    fs.writeFileSync(out, output, 'utf8');
-  });
+  // const index = path.join(output, `index.ts`);
+  // const imports = mapping
+  //   .map((contract) => {
+  //     const name = path.join(path.relative(path.dirname(index), path.dirname(contract.destination)), contract.name);
 
-  const index = path.join(output, `index.ts`);
-  const imports = mapping
-    .map((contract) => {
-      const name = path.join(path.relative(path.dirname(index), path.dirname(contract.destination)), contract.name);
+  //     return [
+  //       `export { ${contract.name} } from './${name}';`,
+  //       `export { ${contract.name}Bytecode } from './${name}.bin';`,
+  //     ];
+  //   })
+  //   .flat()
+  //   .join('\n');
 
-      return [
-        `export { ${contract.name}Contract } from './${name}';`,
-        `export { ${contract.name}ContractBytecode } from './${name}.bin';`,
-      ];
-    })
-    .flat()
-    .join('\n');
-
-  fs.writeFileSync(index, `${imports}\n`, 'utf8');
+  // fs.writeFileSync(index, `${imports}\n`, 'utf8');
 })();

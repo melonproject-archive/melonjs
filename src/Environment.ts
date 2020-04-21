@@ -1,5 +1,5 @@
 import { DeploymentOutput } from './Deployment';
-import { Address, isAddress, sameAddress } from './Address';
+import { isAddress, sameAddress } from './Address';
 
 export interface EnvironmentOptions {
   adapters?: ExchangeAdapterDefinition[];
@@ -121,8 +121,8 @@ export class Environment {
   }
 
   public getToken(symbol: string): TokenDefinition;
-  public getToken(address: Address): TokenDefinition;
-  public getToken(which: string | Address): TokenDefinition {
+  public getToken(address: string): TokenDefinition;
+  public getToken(which: string): TokenDefinition {
     if (isAddress(which)) {
       return this.getTokenByAddress(which);
     }
@@ -130,7 +130,7 @@ export class Environment {
     return this.getTokenBySymbol(which);
   }
 
-  public getTokenByAddress(address: Address) {
+  public getTokenByAddress(address: string) {
     return this.tokens.find((token) => sameAddress(address, token.address));
   }
 
@@ -139,8 +139,8 @@ export class Environment {
   }
 
   public getAdapter(id: string): ExchangeAdapterDefinition;
-  public getAdapter(address: Address): ExchangeAdapterDefinition;
-  public getAdapter(which: string | Address): ExchangeAdapterDefinition {
+  public getAdapter(address: string): ExchangeAdapterDefinition;
+  public getAdapter(which: string): ExchangeAdapterDefinition {
     if (isAddress(which)) {
       return this.getAdapterByAddress(which);
     }
@@ -148,7 +148,7 @@ export class Environment {
     return this.getAdapterById(which);
   }
 
-  public getAdapterByAddress(address: Address) {
+  public getAdapterByAddress(address: string) {
     return this.adapters.find((exchange) => sameAddress(address, exchange.adapter));
   }
 
