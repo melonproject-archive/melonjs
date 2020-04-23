@@ -1,4 +1,4 @@
-import ethers from 'ethers';
+import { ethers } from 'ethers';
 
 export function isAddress(address: any): address is string {
   return typeof address === 'string' && !!address.match(/^(0x)?[0-9a-fA-F]{40}$/);
