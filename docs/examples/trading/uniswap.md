@@ -45,7 +45,8 @@ const takerQuantity = new BigNumber(100).multipliedBy(
 // first we'll find the available price for 100 MLN
 
 // get the address of the WETH/MLN uniswap exchange
-const exchangeAddress = await UniswapFactory.getExchange(taker.address);
+const factory = new UniswapFactory(environment, fundManager)
+const exchangeAddress = await factory.getExchange(taker.address);
 
 // create an instance of that exchange
 const exchange = new UniswapExchange(environment, exchangeAddress); 

@@ -6,17 +6,17 @@ description: >-
 
 # Interacting with Contracts
 
-In MelonJS,  a contract object is a JavaScript representation of a specific contract on the Ethereum blockchain. This object exposes methods that query the blockchain, or methods that create and execute transactions on the blockchain.
+In MelonJS, a contract object is a JavaScript representation of a specific contract on the Ethereum blockchain. This object exposes methods that query the blockchain, or methods that create and execute transactions on the blockchain.
 
 {% hint style="warning" %}
-Every address used in this documentation \(aside from the deployment JSON files\) is fake. You will need to use the environment methods to get addresses for tokens and exchanges, and other methods for getting your fund's contract addresses. 
+Every address used in this documentation \(aside from the deployment JSON files\) is fake. You will need to use the environment methods to get addresses for tokens and exchanges, and other methods for getting your fund's contract addresses.
 {% endhint %}
 
 {% hint style="info" %}
 The below examples require an [environment](environment/) instance as described [here](environment/).
 {% endhint %}
 
-### Contract Creation
+## Contract Creation
 
 Specific contract class types are imported from MelonJS and passed an `environment` object and the `address` string. This `address` will usually be specific to the contract that is associated with the fund and fund manager in question
 
@@ -27,19 +27,19 @@ import { Hub } from '@melonproject/melonjs';
 const hubAddress = '0xb672b818f8c785627772b1a69f1f3f3627eaa25c'; 
 
 // create an instance of the fund's hub contract
-const hub = new Hub(environment, feeManagerAddress); 
+const hub = new Hub(environment, feeManagerAddress);
 ```
 
-### Calls
+## Calls
 
-We can use the class we just instantiated to query different data in the contract's state. We'll use the `feeManager` above to check how much of the fund's management fee is available to be claimed. 
+We can use the class we just instantiated to query different data in the contract's state. We'll use the `feeManager` above to check how much of the fund's management fee is available to be claimed.
 
 ```javascript
 const managerAddress = await hub.getManager()
 console.log(manager) // => 0xc8c617ef185830b51a3ad97b53916c18f99ed559
 ```
 
-### Transactions
+## Transactions
 
 Every time you call a transaction method on contract, it returns a `Transaction` instance. This object is a convenience wrapper around the web3 transaction and exposes methods for validating, estimating and sending the underlying transaction.
 
@@ -68,7 +68,7 @@ to `Transaction.prepare()` with a number you believe will guarantee transaction 
 
 **Completion** - Pass the resolution of `Transaction.prepare()` to `Transaction.send()`, which returns a Web3 `PromiEvent`. Check [their docs](https://web3js.readthedocs.io/en/v1.2.6/callbacks-promises-events.html) for details, but these are promises with multiple stages of asynchronicity, each of which can be listened for to trigger UI interactions.
 
-Below we'll create an instance of the Version contract and use it to shut down the fund with the hub address above. 
+Below we'll create an instance of the Version contract and use it to shut down the fund with the hub address above.
 
 ```javascript
 import { Version } from '@melonproject/melonjs';
