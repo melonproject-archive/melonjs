@@ -8,7 +8,6 @@ This example requires an [environment](../../building-blocks/environment/) insta
 
 ```javascript
 import {
-  ExchangeIdentifier,
   Hub,
   Trading,
   UniswapExchange, 
