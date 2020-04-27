@@ -21,6 +21,13 @@ export interface EstimateGasOptions extends Omit<EthEstimateGasOptions, 'value'>
   gasPrice?: string | number;
 }
 
+export interface ValidateEthOptions {
+  from: Address;
+  value: BigNumber;
+  gas: number;
+  gasPrice: string;
+}
+
 export class Transaction<T = TransactionReceipt> {
   public readonly amguPayable: boolean = false;
   public readonly incentivePayable: boolean = false;
@@ -42,32 +49,7 @@ export class Transaction<T = TransactionReceipt> {
   }
 
   public send(options?: SendOptions): PromiEvent<T> {
-    const from: Address = (options && options.from) || this.from;
-    let value: BigNumber = (options && options.value) || this.value;
-
-    if (this.amguPayable && !options.amgu) {
-      throw new Error('Missing amgu for transaction.');
-    }
-
-    if (this.incentivePayable && !options.incentive) {
-      throw new Error('Missing incentive for transaction.');
-    }
-
-    if (options.amgu) {
-      value = (value || new BigNumber(0)).plus(options.amgu);
-    }
-
-    if (options.incentive) {
-      value = (value || new BigNumber(0)).plus(options.incentive);
-    }
-
-    const opts = {
-      ...(value && { value: value.toFixed() }),
-      ...(from && { from }),
-      ...(options?.gas && { gas: options.gas }),
-      ...(options?.gasPrice && { gasPrice: options.gasPrice }),
-    };
-
+    const opts = this.checkSendOptions(options);
     return this.transaction.send(opts);
   }
 
@@ -114,6 +96,47 @@ export class Transaction<T = TransactionReceipt> {
     ]);
 
     return Math.ceil(Math.min(estimation * 1.1, block.gasLimit));
+  }
+
+  public async checkEthBalance(options: SendOptions): Promise<void> {
+    const opts = this.checkSendOptions(options);
+
+    const gasValue = new BigNumber(options.gas).multipliedBy(new BigNumber(options.gasPrice));
+    const totalValue = new BigNumber(opts.value).plus(gasValue);
+
+    const balance = new BigNumber(await this.environment.client.getBalance(options.from));
+
+    if (balance.isLessThan(totalValue)) {
+      throw new Error('Insufficient ETH to pay for this transaction.');
+    }
+  }
+
+  protected checkSendOptions(options?: SendOptions) {
+    const from: Address = (options && options.from) || this.from;
+    let value: BigNumber = (options && options.value) || this.value;
+
+    if (this.amguPayable && !options.amgu) {
+      throw new Error('Missing amgu for transaction.');
+    }
+
+    if (this.incentivePayable && !options.incentive) {
+      throw new Error('Missing incentive for transaction.');
+    }
+
+    if (options.amgu) {
+      value = (value || new BigNumber(0)).plus(options.amgu);
+    }
+
+    if (options.incentive) {
+      value = (value || new BigNumber(0)).plus(options.incentive);
+    }
+
+    return {
+      ...(value && { value: value.toFixed() }),
+      ...(from && { from }),
+      ...(options?.gas && { gas: options.gas }),
+      ...(options?.gasPrice && { gasPrice: options.gasPrice }),
+    };
   }
 }
 
