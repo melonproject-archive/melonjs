@@ -46,7 +46,7 @@ describe('Weth', () => {
   it('should throw OutOfBalanceError', async () => {
     const tx = weth.withdraw(randomAddress(), new BigNumber(2));
 
-    jest.spyOn(weth, 'getBalanceOf').mockReturnValue(new Promise(resolve => resolve(new BigNumber(1))));
+    jest.spyOn(weth, 'getBalanceOf').mockReturnValue(new Promise((resolve) => resolve(new BigNumber(1))));
 
     const rejects = expect(tx.validate()).rejects;
     await rejects.toThrowError(OutOfBalanceError);

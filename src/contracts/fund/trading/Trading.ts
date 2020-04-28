@@ -217,10 +217,10 @@ export class Trading extends Contract {
     const [exchangeInfo, registryAddress] = await Promise.all([this.getExchangeInfo(block), this.getRegistry(block)]);
     const registry = new Registry(this.environment, registryAddress);
     const assets = await registry.getRegisteredAssets(block);
-    const exchanges = exchangeInfo.map(exchange => exchange.exchange);
+    const exchanges = exchangeInfo.map((exchange) => exchange.exchange);
     const possibilities = [].concat.apply(
       [],
-      exchanges.map(exchange => assets.map(asset => [exchange, asset])),
+      exchanges.map((exchange) => assets.map((asset) => [exchange, asset])),
     ) as [string, string][];
 
     const openOrders = await Promise.all(
@@ -230,7 +230,7 @@ export class Trading extends Contract {
       }),
     );
 
-    return openOrders.filter(o => !isZeroAddress(o.buyAsset));
+    return openOrders.filter((o) => !isZeroAddress(o.buyAsset));
   }
 
   /**
@@ -345,7 +345,7 @@ export class Trading extends Contract {
       args.exchangeIndex.toFixed(0),
       args.methodSignature,
       args.orderAddresses,
-      args.orderValues.map(orderValue => orderValue.toFixed(0)),
+      args.orderValues.map((orderValue) => orderValue.toFixed(0)),
       args.orderData,
       args.identifier,
       hexToBytes(args.signature),

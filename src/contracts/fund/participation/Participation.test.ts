@@ -53,7 +53,7 @@ describe('Participation', () => {
   it('should return an array of investor addresses', async () => {
     const result = await participation.getHistoricalInvestors();
     expect(result.length).toBeGreaterThanOrEqual(0);
-    result.forEach(investor => {
+    result.forEach((investor) => {
       expect(investor.startsWith('0x')).toBe(true);
     });
   });

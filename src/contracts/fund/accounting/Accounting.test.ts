@@ -113,7 +113,7 @@ describe('Accounting', () => {
     const result = await accounting.getFundHoldings();
     expect(result.length).toBeGreaterThan(0);
 
-    result.forEach(item => {
+    result.forEach((item) => {
       expect(item.address.startsWith('0x')).toBe(true);
       expect(item.amount).toBeInstanceOf(BigNumber);
       expect(item.amount.isGreaterThanOrEqualTo(0)).toBe(true);

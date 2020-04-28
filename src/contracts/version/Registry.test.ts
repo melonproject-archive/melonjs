@@ -92,7 +92,7 @@ describe('Registry', () => {
     });
 
     jest.spyOn(registry, 'getExchangeInformation').mockReturnValue(
-      new Promise(resolve =>
+      new Promise((resolve) =>
         resolve({
           exists: true,
           exchangeAddress: '',
@@ -101,8 +101,12 @@ describe('Registry', () => {
         }),
       ),
     );
-    jest.spyOn(registry, 'getRegisteredExchangeAdapters').mockReturnValue(new Promise(resolve => resolve([undefined])));
-    jest.spyOn(registry, 'getMaxRegisteredEntities').mockReturnValue(new Promise(resolve => resolve(new BigNumber(2))));
+    jest
+      .spyOn(registry, 'getRegisteredExchangeAdapters')
+      .mockReturnValue(new Promise((resolve) => resolve([undefined])));
+    jest
+      .spyOn(registry, 'getMaxRegisteredEntities')
+      .mockReturnValue(new Promise((resolve) => resolve(new BigNumber(2))));
 
     await expect(tx.validate()).rejects.toThrowError(ExchangeAdapterAlreadyRegisteredError);
   });
@@ -116,7 +120,7 @@ describe('Registry', () => {
     });
 
     jest.spyOn(registry, 'getExchangeInformation').mockReturnValue(
-      new Promise(resolve =>
+      new Promise((resolve) =>
         resolve({
           exists: false,
           exchangeAddress: '',
@@ -128,8 +132,10 @@ describe('Registry', () => {
 
     jest
       .spyOn(registry, 'getRegisteredExchangeAdapters')
-      .mockReturnValue(new Promise(resolve => resolve([undefined, undefined])));
-    jest.spyOn(registry, 'getMaxRegisteredEntities').mockReturnValue(new Promise(resolve => resolve(new BigNumber(1))));
+      .mockReturnValue(new Promise((resolve) => resolve([undefined, undefined])));
+    jest
+      .spyOn(registry, 'getMaxRegisteredEntities')
+      .mockReturnValue(new Promise((resolve) => resolve(new BigNumber(1))));
 
     const rejects = await expect(tx.validate()).rejects;
     await rejects.toThrowError(ExchangeAdaptersRegisteredOutOfBoundsError);
@@ -151,7 +157,7 @@ describe('Registry', () => {
     });
 
     jest.spyOn(registry, 'getAssetInformation').mockReturnValue(
-      new Promise(resolve =>
+      new Promise((resolve) =>
         resolve({
           exists: true,
           decimals: 0,
@@ -164,8 +170,10 @@ describe('Registry', () => {
         }),
       ),
     );
-    jest.spyOn(registry, 'getRegisteredAssets').mockReturnValue(new Promise(resolve => resolve([undefined])));
-    jest.spyOn(registry, 'getMaxRegisteredEntities').mockReturnValue(new Promise(resolve => resolve(new BigNumber(2))));
+    jest.spyOn(registry, 'getRegisteredAssets').mockReturnValue(new Promise((resolve) => resolve([undefined])));
+    jest
+      .spyOn(registry, 'getMaxRegisteredEntities')
+      .mockReturnValue(new Promise((resolve) => resolve(new BigNumber(2))));
 
     await expect(tx.validate()).rejects.toThrowError(AssetAlreadyRegisteredError);
   });
@@ -182,7 +190,7 @@ describe('Registry', () => {
     });
 
     jest.spyOn(registry, 'getAssetInformation').mockReturnValue(
-      new Promise(resolve =>
+      new Promise((resolve) =>
         resolve({
           exists: false,
           decimals: 0,
@@ -197,8 +205,10 @@ describe('Registry', () => {
     );
     jest
       .spyOn(registry, 'getRegisteredAssets')
-      .mockReturnValue(new Promise(resolve => resolve([undefined, undefined])));
-    jest.spyOn(registry, 'getMaxRegisteredEntities').mockReturnValue(new Promise(resolve => resolve(new BigNumber(1))));
+      .mockReturnValue(new Promise((resolve) => resolve([undefined, undefined])));
+    jest
+      .spyOn(registry, 'getMaxRegisteredEntities')
+      .mockReturnValue(new Promise((resolve) => resolve(new BigNumber(1))));
 
     const rejects = expect(tx.validate()).rejects;
     await rejects.toThrowError(AssetsRegisteredOutOfBoundsError);

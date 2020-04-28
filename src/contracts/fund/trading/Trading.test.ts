@@ -72,7 +72,7 @@ describe('Trading', () => {
   it('should return the correct exchange info for all exchanges', async () => {
     const result = await trading.getExchangeInfo();
 
-    result.forEach(item => {
+    result.forEach((item) => {
       expect(typeof item.takesCustody).toBe('boolean');
       expect(item.exchange.startsWith('0x')).toBe(true);
       expect(item.adapter.startsWith('0x')).toBe(true);

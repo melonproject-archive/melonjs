@@ -157,7 +157,7 @@ export class Deployment<T extends Contract> extends Transaction<T> {
     const result = (super.send(options) as any) as PromiEvent<EthContract>;
     const promise = new Promise<T>((resolve, reject) => {
       result.catch(reject);
-      result.then(receipt => {
+      result.then((receipt) => {
         try {
           resolve(new this.clazz(this.environment, receipt) as T);
         } catch (e) {

@@ -17,8 +17,8 @@ export class TestingPriceFeed extends IPriceSource {
    * @param block The block number to execute the call on.
    */
   public update(from: Address, updates: PriceUpdate[]) {
-    const prices = updates.map(item => item.price.toFixed(0));
-    const assets = updates.map(item => item.asset);
+    const prices = updates.map((item) => item.price.toFixed(0));
+    const assets = updates.map((item) => item.asset);
     return this.createTransaction({ from, method: 'update', args: [assets, prices] });
   }
 }

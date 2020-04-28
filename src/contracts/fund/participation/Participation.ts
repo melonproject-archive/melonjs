@@ -82,8 +82,8 @@ export class Participation extends Contract {
       const registry = new Registry(this.environment, await this.getRegistry());
       const registeredAssets = await registry.getRegisteredAssets();
 
-      assets.map(asset => {
-        const assetIsRegistered = registeredAssets.some(registered => sameAddress(registered, asset));
+      assets.map((asset) => {
+        const assetIsRegistered = registeredAssets.some((registered) => sameAddress(registered, asset));
         if (!assetIsRegistered) {
           throw new AssetIsNotRegisteredError(asset);
         }

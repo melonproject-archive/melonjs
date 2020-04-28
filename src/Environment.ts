@@ -50,7 +50,7 @@ export class DeployedEnvironment extends Environment {
   public getToken(address: Address): TokenDefinition;
   public getToken(which: string | Address): TokenDefinition {
     const address = which.startsWith('0x');
-    const token = this.tokens.find(token => {
+    const token = this.tokens.find((token) => {
       if (address && sameAddress(which, token.address)) {
         return true;
       }
@@ -71,7 +71,7 @@ export class DeployedEnvironment extends Environment {
     if (typeof which === 'object') {
       const { adapter, exchange } = which;
       if (adapter?.startsWith('0x') && exchange.startsWith('0x')) {
-        return this.exchanges.find(item => {
+        return this.exchanges.find((item) => {
           if (sameAddress(adapter, item.adapter) && sameAddress(exchange, item.exchange)) {
             return true;
           }
@@ -80,7 +80,7 @@ export class DeployedEnvironment extends Environment {
         });
       }
     } else {
-      return this.exchanges.find(item => {
+      return this.exchanges.find((item) => {
         if (which === item.id) {
           return true;
         }

@@ -76,7 +76,7 @@ describe('PolicyManager', () => {
   it.only('should load the available policies', async () => {
     const policies = availablePolicies();
 
-    policies.forEach(policy =>
+    policies.forEach((policy) =>
       expect(policy).toMatchObject({
         id: expect.any(String),
         name: expect.any(String),
