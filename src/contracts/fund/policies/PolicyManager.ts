@@ -138,21 +138,21 @@ export class PolicyManager extends Contract {
     ];
 
     const retrievedPolicies = await Promise.all(
-      sigsToCheck.map(sig => {
+      sigsToCheck.map((sig) => {
         return this.getPoliciesBySignature(sig, block);
       }),
     );
 
-    const policyAddresses = retrievedPolicies.map(policy => {
+    const policyAddresses = retrievedPolicies.map((policy) => {
       return [...policy.pre, ...policy.post];
     });
 
     const uniquePolicyAddresses = policyAddresses.reduce((carry, current) => {
-      const add = current.filter(address => carry.indexOf(address) === -1);
+      const add = current.filter((address) => carry.indexOf(address) === -1);
       return [...carry, ...add];
     }, []);
 
-    const policyObjects = uniquePolicyAddresses.map(async address => {
+    const policyObjects = uniquePolicyAddresses.map(async (address) => {
       const policy = new IPolicy(this.environment, address);
       const identifier = await policy.getIdentifier(block);
 
@@ -177,7 +177,7 @@ export class PolicyManager extends Contract {
       [
         hexToBytes(args.signature),
         args.addresses,
-        args.values.map(value => value.toFixed(0)),
+        args.values.map((value) => value.toFixed(0)),
         hexToBytes(args.identifier),
       ],
       block,
@@ -196,7 +196,7 @@ export class PolicyManager extends Contract {
       [
         hexToBytes(args.signature),
         args.addresses,
-        args.values.map(value => value.toFixed(0)),
+        args.values.map((value) => value.toFixed(0)),
         hexToBytes(args.identifier),
       ],
       block,

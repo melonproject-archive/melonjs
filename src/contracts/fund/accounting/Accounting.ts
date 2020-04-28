@@ -258,7 +258,7 @@ export class Accounting extends Contract {
     const priceSource = new IPriceSource(this.environment, await registry.getPriceSource(block));
 
     const assetGavs = await Promise.all(
-      holdings.map(holding => {
+      holdings.map((holding) => {
         return !sameAddress(holding.address, denominationAsset)
           ? priceSource.convertQuantity(holding.amount, holding.address, denominationAsset, block)
           : holding.amount;

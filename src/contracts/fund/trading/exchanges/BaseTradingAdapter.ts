@@ -23,7 +23,7 @@ export class BaseTradingAdapter extends Contract {
     trading: Trading,
   ) {
     const info = await trading.getExchangeInfo();
-    const index = info.findIndex(exchange => sameAddress(exchange.exchange, address));
+    const index = info.findIndex((exchange) => sameAddress(exchange.exchange, address));
     if (index === -1) {
       throw new ExchangeNotRegisteredWithFundError(address);
     }

@@ -129,8 +129,8 @@ export class FundFactory extends Contract {
     const args = [
       stringToBytes(settings.name, 32),
       settings.fees,
-      settings.feeRates.map(rate => rate.toFixed(0)),
-      settings.feePeriods.map(period => period.toFixed(0)),
+      settings.feeRates.map((rate) => rate.toFixed(0)),
+      settings.feePeriods.map((period) => period.toFixed(0)),
       settings.exchanges,
       settings.adapters,
       settings.denominationAsset,
@@ -162,7 +162,7 @@ export class FundFactory extends Contract {
       }
 
       // validation for createFeeManager
-      settings.fees.map(async fee => {
+      settings.fees.map(async (fee) => {
         if (!(await registry.isFeeRegistered(fee))) {
           throw new FeeNotRegisteredError(fee);
         }
@@ -184,7 +184,7 @@ export class FundFactory extends Contract {
 
       // validation for createParticipation
       await Promise.all(
-        settings.defaultAssets.map(async asset => {
+        settings.defaultAssets.map(async (asset) => {
           if (!(await registry.isAssetRegistered(asset))) {
             throw new AssetNotRegisteredError(asset);
           }

@@ -34,7 +34,9 @@ describe('FeeManager', () => {
       denominationAsset: '',
     });
 
-    jest.spyOn(performanceFee, 'getLastPayoutTime').mockReturnValue(new Promise(resolve => resolve(new BigNumber(1))));
+    jest
+      .spyOn(performanceFee, 'getLastPayoutTime')
+      .mockReturnValue(new Promise((resolve) => resolve(new BigNumber(1))));
 
     await expect(tx.validate()).rejects.toThrowError(FeeAlreadyInitializedError);
   });
@@ -45,7 +47,9 @@ describe('FeeManager', () => {
   });
 
   it('should get the last payout time', async () => {
-    jest.spyOn(performanceFee, 'getLastPayoutTime').mockReturnValue(new Promise(resolve => resolve(new BigNumber(1))));
+    jest
+      .spyOn(performanceFee, 'getLastPayoutTime')
+      .mockReturnValue(new Promise((resolve) => resolve(new BigNumber(1))));
 
     const result = await performanceFee.getLastPayoutTime(randomAddress());
     expect(result.isEqualTo(1)).toBe(true);

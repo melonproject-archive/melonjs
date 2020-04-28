@@ -184,7 +184,7 @@ export class Registry extends Contract {
       registerArgs.url,
       registerArgs.reserveMin.toFixed(0),
       registerArgs.standards,
-      registerArgs.sigs.map(sig => hexToBytes(sig)),
+      registerArgs.sigs.map((sig) => hexToBytes(sig)),
     ];
 
     const validate = async () => {

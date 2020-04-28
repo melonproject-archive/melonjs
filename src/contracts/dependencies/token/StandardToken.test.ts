@@ -25,7 +25,7 @@ describe('StandardToken', () => {
     const amount = new BigNumber(2);
     const tx = standardToken.transfer(randomAddress(), randomAddress(), amount);
 
-    jest.spyOn(standardToken, 'getBalanceOf').mockReturnValue(new Promise(resolve => resolve(new BigNumber(1))));
+    jest.spyOn(standardToken, 'getBalanceOf').mockReturnValue(new Promise((resolve) => resolve(new BigNumber(1))));
 
     const rejects = expect(tx.validate()).rejects;
     await rejects.toThrowError(OutOfBalanceError);
@@ -41,7 +41,7 @@ describe('StandardToken', () => {
     const to = '0x0000000000000000000000000000000000000000';
     const tx = standardToken.transfer(from, to, amount);
 
-    jest.spyOn(standardToken, 'getBalanceOf').mockReturnValue(new Promise(resolve => resolve(new BigNumber(2))));
+    jest.spyOn(standardToken, 'getBalanceOf').mockReturnValue(new Promise((resolve) => resolve(new BigNumber(2))));
 
     await expect(tx.validate()).rejects.toThrowError(ZeroAddressError);
   });

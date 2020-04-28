@@ -29,8 +29,8 @@ describe('AddressList', () => {
 
   it('should return a list of members', async () => {
     const result = await addressList.getMembers();
-    result.map(address => {
-      expect(addresses.some(a => sameAddress(a, address))).toBe(true);
+    result.map((address) => {
+      expect(addresses.some((a) => sameAddress(a, address))).toBe(true);
     });
   });
 });
