@@ -8,26 +8,26 @@ import { Environment } from '../../../../Environment';
 export class BaseTradingAdapter extends Contract {
   constructor(
     public readonly environment: Environment,
-    public readonly address: Address,
+    public readonly adapterAddress: Address,
     public readonly trading: Trading,
     public readonly info: ExchangeInfo,
     public readonly index: number,
   ) {
-    super(environment, address);
+    super(environment, adapterAddress);
   }
 
   public static async create<T extends typeof BaseTradingAdapter>(
     this: T,
     environment: Environment,
-    address: Address,
+    adapterAddress: Address,
     trading: Trading,
   ) {
     const info = await trading.getExchangeInfo();
-    const index = info.findIndex((exchange) => sameAddress(exchange.exchange, address));
+    const index = info.findIndex(exchange => sameAddress(exchange.adapter, adapterAddress));
     if (index === -1) {
-      throw new ExchangeNotRegisteredWithFundError(address);
+      throw new ExchangeNotRegisteredWithFundError(adapterAddress);
     }
 
-    return new this(environment, address, trading, info[index], index) as InstanceType<T>;
+    return new this(environment, adapterAddress, trading, info[index], index) as InstanceType<T>;
   }
 }
