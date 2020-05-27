@@ -27,7 +27,7 @@ import { Hub } from '@melonproject/melonjs';
 const hubAddress = '0xb672b818f8c785627772b1a69f1f3f3627eaa25c'; 
 
 // create an instance of the fund's hub contract
-const hub = new Hub(environment, feeManagerAddress);
+const hub = new Hub(environment, hubAddress);
 ```
 
 ## Calls

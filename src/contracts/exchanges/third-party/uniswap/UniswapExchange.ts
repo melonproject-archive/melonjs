@@ -26,7 +26,7 @@ export class UniswapExchange extends Contract {
   /**
    * Gets the input price for a swap from token to ETH
    *
-   * @param tokensBought The amount of token sold (in base unit)
+   * @param tokensSold The amount of token sold (in base unit)
    * @param block The block number to execute the call on.
    */
   public async getTokenToEthInputPrice(tokensBought: BigNumber, block?: number) {
