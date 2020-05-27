@@ -31,7 +31,7 @@ describe('FeeManager', () => {
       denominationAsset: '',
     });
 
-    jest.spyOn(managementFee, 'getLastPayoutTime').mockReturnValue(new Promise((resolve) => resolve(new BigNumber(1))));
+    jest.spyOn(managementFee, 'getLastPayoutTime').mockReturnValue(new Promise((resolve) => resolve(new Date(1))));
 
     await expect(tx.validate()).rejects.toThrowError(FeeAlreadyInitializedError);
   });
@@ -43,7 +43,7 @@ describe('FeeManager', () => {
 
   it('should get the last payout time', async () => {
     const result = await managementFee.getLastPayoutTime(environment.accounts[0]);
-    expect(result.isGreaterThanOrEqualTo(0)).toBe(true);
+    expect(result.getTime() >= 0).toBe(true);
   });
 
   it('should return the correct identifier', async () => {

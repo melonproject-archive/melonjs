@@ -5,6 +5,7 @@ import { toBigNumber } from '../../../utils/toBigNumber';
 import { IFeeAbi } from '../../../abis/IFee.abi';
 import BigNumber from 'bignumber.js';
 import { ValidationError } from '../../../errors/ValidationError';
+import { toDate } from '../../../utils/toDate';
 
 export interface FeeInitializationArguments {
   feeRate: BigNumber;
@@ -55,7 +56,7 @@ export class IFee extends Contract {
    */
   public async getLastPayoutTime(feeManagerAddress: Address, block?: number) {
     const result = await this.makeCall<string>('lastPayoutTime', [feeManagerAddress], block);
-    return toBigNumber(result);
+    return toDate(result);
   }
 
   /**
@@ -69,7 +70,7 @@ export class IFee extends Contract {
 
     const validate = async () => {
       const lastPayoutTime = await this.getLastPayoutTime(from);
-      if (!lastPayoutTime.isZero()) {
+      if (lastPayoutTime.getTime() !== 0) {
         throw new FeeAlreadyInitializedError();
       }
     };

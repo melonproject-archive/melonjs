@@ -46,17 +46,6 @@ export class PerformanceFee extends IFee {
   }
 
   /**
-   * Gets the last payout time
-   *
-   * @param address The address of the fee manager contract
-   * @param block The block number to execute the call on.
-   */
-  public async getLastPayoutTime(address: Address, block?: number) {
-    const result = await this.makeCall<string>('lastPayoutTime', [address], block);
-    return toBigNumber(result);
-  }
-
-  /**
    * Gets the initialize time
    *
    * @param address The address of the fee manager contract

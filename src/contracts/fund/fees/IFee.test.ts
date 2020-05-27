@@ -44,7 +44,7 @@ describe('FeeManager', () => {
       denominationAsset: '',
     });
 
-    jest.spyOn(fee, 'getLastPayoutTime').mockReturnValue(new Promise((resolve) => resolve(new BigNumber(1))));
+    jest.spyOn(fee, 'getLastPayoutTime').mockReturnValue(new Promise((resolve) => resolve(new Date(1))));
 
     await expect(tx.validate()).rejects.toThrowError(FeeAlreadyInitializedError);
   });
