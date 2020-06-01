@@ -12,6 +12,8 @@ const eth = new Eth(new HttpProvider('https://mainnet.infura.io/v3/9136e09ace014
   confirmTransactionBlocks: 1,
 }}));
 const deployment = fs.readFileSync('./deployment.json');
-const environment = new DeployedEnvironment(eth, deployment);
+
+// pass eth, the network id, and the deployment to the DeployedEnvironment constructor
+const environment = new DeployedEnvironment(eth, 1,  deployment);
 ```
 
