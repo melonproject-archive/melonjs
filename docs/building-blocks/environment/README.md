@@ -13,7 +13,8 @@ const eth = new Eth(new HttpProvider('https://mainnet.infura.io/v3/9136e09ace014
 }}));
 const deployment = fs.readFileSync('./deployment.json');
 
-// pass eth, the network id, and the deployment to the DeployedEnvironment constructor
+// pass eth, the networkID, and the deployment to the DeployedEnvironment constructor
+// for networkID: Mainnet 1, rinkeby 4, kovan 42, local 4447
 const environment = new DeployedEnvironment(eth, 1,  deployment);
 ```
 
