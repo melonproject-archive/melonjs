@@ -43,7 +43,7 @@ const investmentAmount = new BigNumber(1).multipliedBy('1e18');
 const sharesAmount = new BigNumber(1).multipliedBy('1e18');
 
 // specify the gas price (refer to http://ethgasstation.info/).
-const gasPrice = 2000000000000; 
+const gasPrice = 30000000000; 
 
 // declare an instance of the fund's participation contract
 const participation = new Participation(environment, participationAddress);

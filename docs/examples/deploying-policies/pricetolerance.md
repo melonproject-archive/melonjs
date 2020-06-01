@@ -30,7 +30,7 @@ const policyManagerAddress = hub.getRoutes().policyManager;
 const tolerance = 10; 
 
 // specify the gas price (refer to http://ethgasstation.info/).
-const gasPrice = 2000000000000; 
+const gasPrice = 30000000000; 
 
 // declare the instance of the fund's PolicyManager contract
 const manager = new PolicyManager(environment, policyManagerAddress);

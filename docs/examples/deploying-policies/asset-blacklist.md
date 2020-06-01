@@ -30,7 +30,7 @@ const policyManagerAddress = hub.getRoutes().policyManager;
 const bannedTokens = ['0x603b6ff5667ea0610122ff483a540aa60f18d545', '0x83a422230f49ce9ab2d8e75c3d493a6ccf91e36a']; 
 
 // specify the gas price (refer to http://ethgasstation.info/)
-const gasPrice = 2000000000000; 
+const gasPrice = 30000000000; 
 
 // declare the instance of the fund's PolicyManager contract
 const manager = new PolicyManager(environment, policyManagerAddress);

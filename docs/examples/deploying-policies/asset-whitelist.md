@@ -30,7 +30,7 @@ const policyManagerAddress = hub.getRoutes().policyManager;
 const allowedTokens = ['0xd8db29f05b7d85bdaba1ed86dde8308f2338a485', '0x813879c9ba21271431dab30069863f604837b031']; 
 
 // specify the gas price (refer to http://ethgasstation.info/)
-const gasPrice = 2000000000000; 
+const gasPrice = 30000000000; 
 
 // declare the instance of the fund's PolicyManager contract
 const manager = new PolicyManager(environment, policyManagerAddress);
@@ -74,7 +74,7 @@ const managerAddress = '0xdea8136d4a64e9dbdc0191ed51a321973850d074';
 const tokenToRemove = '0x6cd90a734f84feb8ca99ab479ecc753eec8f1030'; 
 
 // specify the gas price (refer to http://ethgasstation.info/)
-const gasPrice = 2000000000000; 
+const gasPrice = 30000000000; 
 
 // declare the instance of the fund's AssetWhiteList contract
 const whitelist = new AssetWhitelist(environment, AssetWhitelistAddress);

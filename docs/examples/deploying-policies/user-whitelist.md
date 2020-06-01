@@ -30,7 +30,7 @@ const policyManagerAddress = hub.getRoutes().policyManager;
 const approvedUser = '0x44de0560774bb11b67a08716de486f7a8803f850'; 
 
 // specify the gas price (refer to http://ethgasstation.info/)
-const gasPrice = 2000000000000; 
+const gasPrice = 30000000000; 
 
 // declare the instance of the PolicyManager contract
 const manager = new PolicyManager(environment, policyManagerAddress);
@@ -77,7 +77,7 @@ const KYCdAddress = '0xfbf4e3511bbb80f335988e7482efe2f6e1ef387e';
 const DPRKPropDesk = '0x6cd90a734f84feb8ca99ab479ecc753eec8f1030'; 
 
 // specify the gas price (refer to http://ethgasstation.info/).
-const gasPrice = 2000000000000;
+const gasPrice = 30000000000;
 
 // declare the instance of the fund's WhiteList contract
 const whiteList = new UserWhiteList(environment, userWhiteListAddress);

@@ -63,7 +63,7 @@ const offer = await market.getOffer(order.id);
 const quantity = new BigNumber(100);
 
 // specify the gas price (refer to http://ethgasstation.info/).
-const gasPrice = 2000000000000; 
+const gasPrice = 30000000000; 
 
 // create and execute the transaction
 const transaction = adapter.takeOrder(

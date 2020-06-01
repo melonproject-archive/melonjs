@@ -27,7 +27,7 @@ const accountingAddress = hub.getRoutes().accounting;
 const fundManagerAddress = '0x33b2f147a2526ac8abccccf38b71c0467673bffd';
 
 // specify the gas price (refer to http://ethgasstation.info/)
-const gasPrice = 2000000000000; 
+const gasPrice = 30000000000; 
 
 // declare instances of the fund's FeeManager and Accounting contracts
 const feeManager = new FeeManager(environment, feeManagerAddress);

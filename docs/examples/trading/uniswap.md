@@ -28,7 +28,7 @@ const hub = new Hub(environment, hubAddress);
 const tradingAddress = hub.getRoutes().trading; 
 
 // specify the gas price (refer to http://ethgasstation.info/).
-const gasPrice = 2000000000000; 
+const gasPrice = 30000000000; 
 
 // the maker token object
 const maker = environment.getToken('WETH');

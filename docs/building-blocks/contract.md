@@ -82,7 +82,7 @@ const managerAddress = '0x86f2b76bbb2e747a6585e9d0daa3a87cffc5339a';
 const hubAddress = '0x94b76e27c0caf9db8a64b6b86c8dd1d89e21d709';
 
 // specify the gas price (refer to http://ethgasstation.info/).
-const gasPrice = 2000000000000; 
+const gasPrice = 30000000000; 
 
 const shutDownTx = factory.shutDownFund(managerAddress, hubAddress);
 const shutDownOpts = await shutDownTx.prepare({gasPrice});

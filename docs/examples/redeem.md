@@ -22,7 +22,7 @@ const participationAddress = hub.getRoutes().participation;
 const userAddress = '0xf039e6893ffa43196fd9d1d7038b74bf39dda4a5'; 
 
 // specify the gas price (refer to http://ethgasstation.info/).
-const gasPrice = 2000000000000; 
+const gasPrice = 30000000000;
 
 // declare the instance of the fund's Participation contract
 const participation = new Participation(environment, participationAddress);

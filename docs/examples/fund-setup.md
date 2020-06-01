@@ -30,7 +30,7 @@ const factory = new Version(environment, environment.deployment.melon.addr.Versi
 const managerAddress = '0x5b8677fb951517d55b224fbc07cd7e3ffb075203';
 
 // specify the gas price (refer to http://ethgasstation.info/)
-const gasPrice = 2000000000000; 
+const gasPrice = 30000000000; 
 
 // currently all funds are denominated in WETH
 const denominationAddress = environment.getToken('WETH'); 
