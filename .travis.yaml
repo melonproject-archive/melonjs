@@ -5,23 +5,29 @@ branches:
     - master
 
 node_js:
-  - '8'
-  - '10'
-
-before_install:
-  - curl -o- -L https://yarnpkg.com/install.sh | bash
-  - export PATH="$HOME/.yarn/bin:$PATH"
+  - '12'
+  - '13'
+  - '14'
 
 install: yarn --frozen-lockfile
 
 script:
-  - node --version
-  - yarn --version
   - yarn codegen
-  - yarn typecheck
   - yarn build
   - yarn test
+  - yarn typecheck
   - yarn lint
+
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: >-
+    yarn config set _authToken $NPM_AUTH_TOKEN &&
+    yarn version --cwd dist --non-interactive --no-git-tag-version --new-version=$(jq -r .version package.json)-dev.${TRAVIS_COMMIT::8} &&
+    yarn publish --cwd dist --non-interactive --tag=dev
+  on:
+    branch: develop
+    condition: $TRAVIS_NODE_VERSION = 14
 
 notifications:
   email:

@@ -16,8 +16,6 @@ typedocs/
 # Allowed dot files
 !.gitignore
 !.prettierrc
-!.dockerignore
 !.travis.yaml
 !.typedocs.yaml
 !.gitbook.yaml
-!.env.defaults

@@ -1,12 +1,12 @@
 {
   "name": "@melonproject/melonjs",
-  "version": "2.0.0-next.4",
+  "version": "2.0.1",
   "description": "A convenient JavaScript interface to the Melon protocol Ethereum smart contracts.",
   "main": "index.js",
   "module": "bundle.esm.js",
   "typings": "index.d.ts",
   "license": "MIT",
-  "author": "Avantgarde Finance <team@avantgarde.finance>",
+  "author": "Melon Council DAO <team@meloncouncil.io>",
   "homepage": "https://melonprotocol.com",
   "publishConfig": {
     "access": "public"
@@ -22,75 +22,49 @@
     "clean": "rimraf dist typedocs coverage",
     "prebuild": "rimraf dist",
     "build": "tsc && rollup --config",
-    "postbuild": "cp package.json LICENSE README.md dist",
-    "prewatch": "cp package.json dist",
+    "postbuild": "node scripts/postbuild",
+    "prewatch": "yarn build",
     "watch": "tsc --watch",
     "codegen": "ts-node --transpile-only codegen",
     "pretypedocs": "rimraf typedocs",
     "typedocs": "typedoc",
-    "posttypedocs": "cp .typedocs.yaml typedocs/_config.yaml",
-    "test": "dotenv-extended jest --verbose",
+    "posttypedocs": "node scripts/posttypedoc",
+    "test": "jest --passWithNoTests",
     "precoverage": "rimraf coverage",
     "coverage": "yarn test --coverage",
-    "format": "prettier --write {src,codegen}/{*,**/*}.ts",
-    "lint": "yarn prettier --list-different {src,codegen}/{*,**/*}.ts",
+    "format": "prettier --write src/{*,**/*}.ts",
+    "lint": "yarn prettier --list-different src/{*,**/*}.ts",
     "typecheck": "tsc --noEmit",
-    "preversion": "yarn typecheck && yarn test && yarn lint && yarn typedocs && yarn build",
-    "postversion": "cp package.json dist",
-    "prerelease": "yarn version",
+    "prerelease": "yarn version && yarn typecheck && yarn test && yarn lint && yarn typedocs && yarn build",
     "release": "git push --tags && yarn publish dist --new-version $npm_package_version",
     "postrelease": "git push && gh-pages -d typedocs"
   },
   "dependencies": {
+    "@melonproject/protocol": "^2.0.0-dev.77179589",
     "bignumber.js": "^9.0.0",
-    "ethers": "^5.0.0-beta.182"
+    "ethers": "^5.0.8"
   },
   "devDependencies": {
-    "@types/glob": "^7.1.1",
-    "@types/jest": "^25.2.1",
-    "@types/rimraf": "^3.0.0",
-    "cp": "^0.2.0",
-    "dotenv-extended": "^2.8.0",
-    "gh-pages": "^2.1.1",
-    "glob": "^7.1.5",
-    "husky": "^4.2.3",
-    "jest": "^25.2.7",
-    "lint-staged": "^10.1.2",
+    "@crestproject/crestproject": "^0.0.19",
+    "@types/jest": "^26.0.9",
+    "fs-extra": "^9.0.1",
+    "gh-pages": "^3.1.0",
+    "jest": "^26.3.0",
     "prettier": "^2.0.4",
     "rimraf": "^3.0.2",
     "rollup": "^2.3.3",
     "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-sourcemaps": "^0.5.0",
-    "ts-jest": "^25.3.1",
-    "ts-morph": "^7.0.2",
+    "rollup-plugin-sourcemaps": "^0.6.2",
+    "ts-jest": "^26.2.0",
     "ts-node": "^8.8.2",
-    "typedoc": "^0.17.4",
+    "typedoc": "^0.18.0",
     "typedoc-plugin-solidity": "^1.0.0",
-    "typescript": "^3.8.3",
-    "yargs": "^15.3.1"
-  },
-  "codegen": {
-    "input": "../melon-protocol/out"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.ts": [
-      "yarn format"
-    ]
+    "typescript": "^4.0.0-beta"
   },
   "jest": {
-    "rootDir": "src",
-    "transform": {
-      "^.+\\.ts$": "ts-jest"
-    },
-    "moduleFileExtensions": [
-      "ts",
-      "js"
-    ],
-    "coverageDirectory": "coverage"
+    "preset": "ts-jest",
+    "roots": [
+      "<rootDir>/src"
+    ]
   }
 }
