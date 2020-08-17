@@ -6,6 +6,7 @@ package-lock.json
 coverage/
 dist/
 typedocs/
+contracts/
 
 # Ignore all dot files.
 .*
